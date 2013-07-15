@@ -156,55 +156,5 @@ namespace Desktop
         {
             //homeBrowser.Document = ""
         }
-
-        private void bReprice_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void webBrowser3_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-
-        }
-
-        private void status_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void lPrestaUrl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lPrestaToken_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ePrestaToken_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbJoomlaSetup_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lSupplier_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void eReprice_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

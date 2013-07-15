@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Core.Presta
 {
-    public class RESTAccessor<T> where T : class 
+    public class RESTAccessor//<T> where T : class 
     {
         //http://testpresta.mzf.cz/prestashop/api/manufacturers
 

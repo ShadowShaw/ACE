@@ -170,7 +170,6 @@
             this.status.Size = new System.Drawing.Size(1015, 22);
             this.status.TabIndex = 14;
             this.status.Text = "Status";
-            this.status.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.status_ItemClicked);
             // 
             // statusAgent
             // 
@@ -265,7 +264,6 @@
             this.gbJoomlaSetup.TabIndex = 1;
             this.gbJoomlaSetup.TabStop = false;
             this.gbJoomlaSetup.Text = "Připojení k Joomla eshopu";
-            this.gbJoomlaSetup.Enter += new System.EventHandler(this.gbJoomlaSetup_Enter);
             // 
             // setupBrowser
             // 
@@ -315,7 +313,6 @@
             this.priceBrowser.Name = "priceBrowser";
             this.priceBrowser.Size = new System.Drawing.Size(400, 573);
             this.priceBrowser.TabIndex = 22;
-            this.priceBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser3_DocumentCompleted);
             // 
             // groupBox2
             // 
@@ -386,7 +383,6 @@
             this.bReprice.TabIndex = 8;
             this.bReprice.Text = "Přeceň";
             this.bReprice.UseVisualStyleBackColor = true;
-            this.bReprice.Click += new System.EventHandler(this.bReprice_Click_1);
             // 
             // textBox4
             // 
@@ -419,7 +415,6 @@
             this.eReprice.Name = "eReprice";
             this.eReprice.Size = new System.Drawing.Size(100, 20);
             this.eReprice.TabIndex = 4;
-            this.eReprice.TextChanged += new System.EventHandler(this.eReprice_TextChanged);
             // 
             // label1
             // 
@@ -586,7 +581,6 @@
             this.lPrestaUrl.Size = new System.Drawing.Size(78, 13);
             this.lPrestaUrl.TabIndex = 0;
             this.lPrestaUrl.Text = "Adresa eshopu";
-            this.lPrestaUrl.Click += new System.EventHandler(this.lPrestaUrl_Click);
             // 
             // lPrestaToken
             // 
@@ -596,7 +590,6 @@
             this.lPrestaToken.Size = new System.Drawing.Size(91, 13);
             this.lPrestaToken.TabIndex = 1;
             this.lPrestaToken.Text = "Autorizační token";
-            this.lPrestaToken.Click += new System.EventHandler(this.lPrestaToken_Click);
             // 
             // ePrestaUrl
             // 
@@ -615,7 +608,6 @@
             this.ePrestaToken.Size = new System.Drawing.Size(532, 20);
             this.ePrestaToken.TabIndex = 3;
             this.ePrestaToken.Text = "BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8";
-            this.ePrestaToken.TextChanged += new System.EventHandler(this.ePrestaToken_TextChanged);
             // 
             // bSavePresta
             // 
@@ -638,7 +630,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(223, 21);
             this.comboBox1.TabIndex = 13;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // lSupplier
             // 
@@ -648,7 +639,6 @@
             this.lSupplier.Size = new System.Drawing.Size(56, 13);
             this.lSupplier.TabIndex = 14;
             this.lSupplier.Text = "Dodavatel";
-            this.lSupplier.Click += new System.EventHandler(this.lSupplier_Click);
             // 
             // lProcenta
             // 
