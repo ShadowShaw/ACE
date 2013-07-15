@@ -1,0 +1,9 @@
+c:\CSVUpdater\CSVUpdater\CSVUpdater\obj\x86\Debug\CSVUpdater.Properties.Resources.resources
+c:\CSVUpdater\CSVUpdater\CSVUpdater\bin\Debug\CSVUpdater.exe
+c:\CSVUpdater\CSVUpdater\CSVUpdater\bin\Debug\CSVUpdater.pdb
+c:\CSVUpdater\CSVUpdater\CSVUpdater\obj\x86\Debug\CSVUpdater.exe
+c:\CSVUpdater\CSVUpdater\CSVUpdater\obj\x86\Debug\CSVUpdater.pdb
+c:\CSVUpdater\CSVUpdater\CSVUpdater\obj\x86\Debug\CSVUpdater.Main.resources
+c:\CSVUpdater\CSVUpdater\CSVUpdater\bin\Debug\LINQtoCSV.dll
+c:\CSVUpdater\CSVUpdater\CSVUpdater\bin\Debug\LINQtoCSV.pdb
+C:\CSVUpdater\CSVUpdater\CSVUpdater\obj\x86\Debug\CSVUpdater.csproj.GenerateResource.Cache

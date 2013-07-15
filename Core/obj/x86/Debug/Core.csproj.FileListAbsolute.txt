@@ -1,0 +1,12 @@
+C:\GitHub\PriceUpdater\Core\bin\Debug\Core.dll.config
+C:\GitHub\PriceUpdater\Core\bin\Debug\Core.dll
+C:\GitHub\PriceUpdater\Core\bin\Debug\Core.pdb
+C:\GitHub\PriceUpdater\Core\bin\Debug\EntityFramework.dll
+C:\GitHub\PriceUpdater\Core\bin\Debug\EntityFramework.xml
+C:\GitHub\PriceUpdater\Core\obj\x86\Debug\Core.dll
+C:\GitHub\PriceUpdater\Core\obj\x86\Debug\Core.pdb
+C:\GitHub\PriceUpdater\Core\bin\Debug\LINQtoCSV.dll
+C:\GitHub\PriceUpdater\Core\bin\Debug\LINQtoCSV.pdb
+C:\GitHub\PriceUpdater\Core\obj\x86\Debug\Core.csprojResolveAssemblyReference.cache
+C:\GitHub\PriceUpdater\Core\bin\Debug\RestSharp.dll
+C:\GitHub\PriceUpdater\Core\bin\Debug\RestSharp.xml

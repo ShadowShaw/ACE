@@ -1,0 +1,11 @@
+C:\GitHub\PriceUpdater\Core\bin\Debug\Core.dll.config
+C:\GitHub\PriceUpdater\Core\bin\Debug\Core.dll
+C:\GitHub\PriceUpdater\Core\bin\Debug\Core.pdb
+C:\GitHub\PriceUpdater\Core\bin\Debug\EntityFramework.dll
+C:\GitHub\PriceUpdater\Core\bin\Debug\LINQtoCSV.dll
+C:\GitHub\PriceUpdater\Core\bin\Debug\EntityFramework.xml
+C:\GitHub\PriceUpdater\Core\bin\Debug\LINQtoCSV.pdb
+C:\GitHub\PriceUpdater\Core\obj\Debug\Core.dll
+C:\GitHub\PriceUpdater\Core\obj\Debug\Core.pdb
+C:\GitHub\PriceUpdater\Core\obj\Debug\Core.Migrations.M01.resources
+C:\GitHub\PriceUpdater\Core\obj\Debug\Core.csproj.GenerateResource.Cache
