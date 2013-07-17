@@ -15,5 +15,11 @@ namespace Core.Models
         //[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         //public int UserId { get; set; }
         public string UserName { get; set; }
+        // nazev firmy
+        // adrersa
+        // platce dph ano ne
+        // identifikace platby - variabilni symbol
+        // jmeno prijmeni
+        // ic / dic
     }
 }

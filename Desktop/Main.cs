@@ -9,17 +9,23 @@ using System.IO;
 using System.Windows.Forms;
 
 using Core.Presta;
+using PrestaSharp.Models;
+using Core.Bussiness;
+using PrestaAccesor.Serializers;
 
 namespace Desktop
 {
     public partial class Main : Form
     {
         CoreX coreX;
+        public EngineService Engine;
 
         public Main()
         {
             InitializeComponent();
             coreX = new CoreX();
+            Engine = new EngineService();
+
             openDialog.InitialDirectory = Application.StartupPath;
             saveDialog.InitialDirectory = Application.StartupPath;
             if (File.Exists("manufacturers.txt"))
@@ -128,33 +134,49 @@ namespace Desktop
 
         private void Main_Shown(object sender, EventArgs e)
         {
-            //var LoginForm = new Login();
-            //if (LoginForm.ShowDialog() == DialogResult.OK)
-            //{
-     
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Pro použití ACE se musíte přihlásit.");
-            //    this.Close();
-            //}
+            
         }
+
+        private static void PopulateTree(TreeView tree, ICollection<TreeItem> items)
+        {
+            tree.Nodes.Clear();
+            List<TreeNode> roots = new List<TreeNode>();
+            roots.Add(tree.Nodes.Add("Kategorie Eshopu"));
+            foreach (TreeItem item in items)
+            {
+                if (item.Level == roots.Count)
+                {
+                    roots.Add(roots[roots.Count - 1].LastNode);
+                }
+
+                roots[item.Level].Nodes.Add(item.Name);
+            }
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RESTAccessor acc = new RESTAccessor("", "");
-            var a = acc.Receive("");
-            var b = acc.GetManufacturer("1");
-        }
-
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-
+            PopulateTree(CategoryTree, Engine.CreateCategoryTreeList());
+            CategoryTree.ExpandAll();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
             //homeBrowser.Document = ""
+        }
+
+        private void bLogin_Click(object sender, EventArgs e)
+        {
+            var LoginForm = new Login(Engine);
+            if (LoginForm.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Pro použití ACE se musíte přihlásit.");
+                this.Close();
+            }
         }
     }
 }

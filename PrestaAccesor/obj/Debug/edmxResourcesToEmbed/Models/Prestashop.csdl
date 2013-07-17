@@ -1,0 +1,3062 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models.Prestashop" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PrestashopConnection" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="ps_access" EntityType="Models.Prestashop.ps_access" />
+    <EntitySet Name="ps_accessory" EntityType="Models.Prestashop.ps_accessory" />
+    <EntitySet Name="ps_address" EntityType="Models.Prestashop.ps_address" />
+    <EntitySet Name="ps_address_format" EntityType="Models.Prestashop.ps_address_format" />
+    <EntitySet Name="ps_advice" EntityType="Models.Prestashop.ps_advice" />
+    <EntitySet Name="ps_advice_lang" EntityType="Models.Prestashop.ps_advice_lang" />
+    <EntitySet Name="ps_alias" EntityType="Models.Prestashop.ps_alias" />
+    <EntitySet Name="ps_attachment" EntityType="Models.Prestashop.ps_attachment" />
+    <EntitySet Name="ps_attachment_lang" EntityType="Models.Prestashop.ps_attachment_lang" />
+    <EntitySet Name="ps_attribute" EntityType="Models.Prestashop.ps_attribute" />
+    <EntitySet Name="ps_attribute_group" EntityType="Models.Prestashop.ps_attribute_group" />
+    <EntitySet Name="ps_attribute_group_lang" EntityType="Models.Prestashop.ps_attribute_group_lang" />
+    <EntitySet Name="ps_attribute_group_shop" EntityType="Models.Prestashop.ps_attribute_group_shop" />
+    <EntitySet Name="ps_attribute_impact" EntityType="Models.Prestashop.ps_attribute_impact" />
+    <EntitySet Name="ps_attribute_lang" EntityType="Models.Prestashop.ps_attribute_lang" />
+    <EntitySet Name="ps_attribute_shop" EntityType="Models.Prestashop.ps_attribute_shop" />
+    <EntitySet Name="ps_badge" EntityType="Models.Prestashop.ps_badge" />
+    <EntitySet Name="ps_badge_lang" EntityType="Models.Prestashop.ps_badge_lang" />
+    <EntitySet Name="ps_carrier" EntityType="Models.Prestashop.ps_carrier" />
+    <EntitySet Name="ps_carrier_group" EntityType="Models.Prestashop.ps_carrier_group" />
+    <EntitySet Name="ps_carrier_lang" EntityType="Models.Prestashop.ps_carrier_lang" />
+    <EntitySet Name="ps_carrier_shop" EntityType="Models.Prestashop.ps_carrier_shop" />
+    <EntitySet Name="ps_carrier_tax_rules_group_shop" EntityType="Models.Prestashop.ps_carrier_tax_rules_group_shop" />
+    <EntitySet Name="ps_carrier_zone" EntityType="Models.Prestashop.ps_carrier_zone" />
+    <EntitySet Name="ps_cart" EntityType="Models.Prestashop.ps_cart" />
+    <EntitySet Name="ps_cart_cart_rule" EntityType="Models.Prestashop.ps_cart_cart_rule" />
+    <EntitySet Name="ps_cart_product" EntityType="Models.Prestashop.ps_cart_product" />
+    <EntitySet Name="ps_cart_rule" EntityType="Models.Prestashop.ps_cart_rule" />
+    <EntitySet Name="ps_cart_rule_carrier" EntityType="Models.Prestashop.ps_cart_rule_carrier" />
+    <EntitySet Name="ps_cart_rule_combination" EntityType="Models.Prestashop.ps_cart_rule_combination" />
+    <EntitySet Name="ps_cart_rule_country" EntityType="Models.Prestashop.ps_cart_rule_country" />
+    <EntitySet Name="ps_cart_rule_group" EntityType="Models.Prestashop.ps_cart_rule_group" />
+    <EntitySet Name="ps_cart_rule_lang" EntityType="Models.Prestashop.ps_cart_rule_lang" />
+    <EntitySet Name="ps_cart_rule_product_rule" EntityType="Models.Prestashop.ps_cart_rule_product_rule" />
+    <EntitySet Name="ps_cart_rule_product_rule_group" EntityType="Models.Prestashop.ps_cart_rule_product_rule_group" />
+    <EntitySet Name="ps_cart_rule_product_rule_value" EntityType="Models.Prestashop.ps_cart_rule_product_rule_value" />
+    <EntitySet Name="ps_cart_rule_shop" EntityType="Models.Prestashop.ps_cart_rule_shop" />
+    <EntitySet Name="ps_category" EntityType="Models.Prestashop.ps_category" />
+    <EntitySet Name="ps_category_group" EntityType="Models.Prestashop.ps_category_group" />
+    <EntitySet Name="ps_category_lang" EntityType="Models.Prestashop.ps_category_lang" />
+    <EntitySet Name="ps_category_product" EntityType="Models.Prestashop.ps_category_product" />
+    <EntitySet Name="ps_category_shop" EntityType="Models.Prestashop.ps_category_shop" />
+    <EntitySet Name="ps_cms" EntityType="Models.Prestashop.ps_cms" />
+    <EntitySet Name="ps_cms_block" EntityType="Models.Prestashop.ps_cms_block" />
+    <EntitySet Name="ps_cms_block_lang" EntityType="Models.Prestashop.ps_cms_block_lang" />
+    <EntitySet Name="ps_cms_block_page" EntityType="Models.Prestashop.ps_cms_block_page" />
+    <EntitySet Name="ps_cms_block_shop" EntityType="Models.Prestashop.ps_cms_block_shop" />
+    <EntitySet Name="ps_cms_category" EntityType="Models.Prestashop.ps_cms_category" />
+    <EntitySet Name="ps_cms_category_lang" EntityType="Models.Prestashop.ps_cms_category_lang" />
+    <EntitySet Name="ps_cms_lang" EntityType="Models.Prestashop.ps_cms_lang" />
+    <EntitySet Name="ps_cms_shop" EntityType="Models.Prestashop.ps_cms_shop" />
+    <EntitySet Name="ps_compare" EntityType="Models.Prestashop.ps_compare" />
+    <EntitySet Name="ps_compare_product" EntityType="Models.Prestashop.ps_compare_product" />
+    <EntitySet Name="ps_condition" EntityType="Models.Prestashop.ps_condition" />
+    <EntitySet Name="ps_condition_advice" EntityType="Models.Prestashop.ps_condition_advice" />
+    <EntitySet Name="ps_condition_badge" EntityType="Models.Prestashop.ps_condition_badge" />
+    <EntitySet Name="ps_configuration" EntityType="Models.Prestashop.ps_configuration" />
+    <EntitySet Name="ps_configuration_lang" EntityType="Models.Prestashop.ps_configuration_lang" />
+    <EntitySet Name="ps_connections" EntityType="Models.Prestashop.ps_connections" />
+    <EntitySet Name="ps_connections_page" EntityType="Models.Prestashop.ps_connections_page" />
+    <EntitySet Name="ps_connections_source" EntityType="Models.Prestashop.ps_connections_source" />
+    <EntitySet Name="ps_contact" EntityType="Models.Prestashop.ps_contact" />
+    <EntitySet Name="ps_contact_lang" EntityType="Models.Prestashop.ps_contact_lang" />
+    <EntitySet Name="ps_contact_shop" EntityType="Models.Prestashop.ps_contact_shop" />
+    <EntitySet Name="ps_country" EntityType="Models.Prestashop.ps_country" />
+    <EntitySet Name="ps_country_lang" EntityType="Models.Prestashop.ps_country_lang" />
+    <EntitySet Name="ps_country_shop" EntityType="Models.Prestashop.ps_country_shop" />
+    <EntitySet Name="ps_currency" EntityType="Models.Prestashop.ps_currency" />
+    <EntitySet Name="ps_currency_shop" EntityType="Models.Prestashop.ps_currency_shop" />
+    <EntitySet Name="ps_customer" EntityType="Models.Prestashop.ps_customer" />
+    <EntitySet Name="ps_customer_group" EntityType="Models.Prestashop.ps_customer_group" />
+    <EntitySet Name="ps_customer_message" EntityType="Models.Prestashop.ps_customer_message" />
+    <EntitySet Name="ps_customer_message_sync_imap" EntityType="Models.Prestashop.ps_customer_message_sync_imap" />
+    <EntitySet Name="ps_customer_thread" EntityType="Models.Prestashop.ps_customer_thread" />
+    <EntitySet Name="ps_customization" EntityType="Models.Prestashop.ps_customization" />
+    <EntitySet Name="ps_customization_field" EntityType="Models.Prestashop.ps_customization_field" />
+    <EntitySet Name="ps_customization_field_lang" EntityType="Models.Prestashop.ps_customization_field_lang" />
+    <EntitySet Name="ps_customized_data" EntityType="Models.Prestashop.ps_customized_data" />
+    <EntitySet Name="ps_date_range" EntityType="Models.Prestashop.ps_date_range" />
+    <EntitySet Name="ps_delivery" EntityType="Models.Prestashop.ps_delivery" />
+    <EntitySet Name="ps_employee" EntityType="Models.Prestashop.ps_employee" />
+    <EntitySet Name="ps_employee_shop" EntityType="Models.Prestashop.ps_employee_shop" />
+    <EntitySet Name="ps_favorite_product" EntityType="Models.Prestashop.ps_favorite_product" />
+    <EntitySet Name="ps_feature" EntityType="Models.Prestashop.ps_feature" />
+    <EntitySet Name="ps_feature_lang" EntityType="Models.Prestashop.ps_feature_lang" />
+    <EntitySet Name="ps_feature_product" EntityType="Models.Prestashop.ps_feature_product" />
+    <EntitySet Name="ps_feature_shop" EntityType="Models.Prestashop.ps_feature_shop" />
+    <EntitySet Name="ps_feature_value" EntityType="Models.Prestashop.ps_feature_value" />
+    <EntitySet Name="ps_feature_value_lang" EntityType="Models.Prestashop.ps_feature_value_lang" />
+    <EntitySet Name="ps_gender" EntityType="Models.Prestashop.ps_gender" />
+    <EntitySet Name="ps_gender_lang" EntityType="Models.Prestashop.ps_gender_lang" />
+    <EntitySet Name="ps_group" EntityType="Models.Prestashop.ps_group" />
+    <EntitySet Name="ps_group_lang" EntityType="Models.Prestashop.ps_group_lang" />
+    <EntitySet Name="ps_group_reduction" EntityType="Models.Prestashop.ps_group_reduction" />
+    <EntitySet Name="ps_group_shop" EntityType="Models.Prestashop.ps_group_shop" />
+    <EntitySet Name="ps_guest" EntityType="Models.Prestashop.ps_guest" />
+    <EntitySet Name="ps_help_access" EntityType="Models.Prestashop.ps_help_access" />
+    <EntitySet Name="ps_homeslider" EntityType="Models.Prestashop.ps_homeslider" />
+    <EntitySet Name="ps_homeslider_slides" EntityType="Models.Prestashop.ps_homeslider_slides" />
+    <EntitySet Name="ps_homeslider_slides_lang" EntityType="Models.Prestashop.ps_homeslider_slides_lang" />
+    <EntitySet Name="ps_hook" EntityType="Models.Prestashop.ps_hook" />
+    <EntitySet Name="ps_hook_alias" EntityType="Models.Prestashop.ps_hook_alias" />
+    <EntitySet Name="ps_hook_module" EntityType="Models.Prestashop.ps_hook_module" />
+    <EntitySet Name="ps_hook_module_exceptions" EntityType="Models.Prestashop.ps_hook_module_exceptions" />
+    <EntitySet Name="ps_image" EntityType="Models.Prestashop.ps_image" />
+    <EntitySet Name="ps_image_lang" EntityType="Models.Prestashop.ps_image_lang" />
+    <EntitySet Name="ps_image_shop" EntityType="Models.Prestashop.ps_image_shop" />
+    <EntitySet Name="ps_image_type" EntityType="Models.Prestashop.ps_image_type" />
+    <EntitySet Name="ps_import_match" EntityType="Models.Prestashop.ps_import_match" />
+    <EntitySet Name="ps_lang" EntityType="Models.Prestashop.ps_lang" />
+    <EntitySet Name="ps_lang_shop" EntityType="Models.Prestashop.ps_lang_shop" />
+    <EntitySet Name="ps_linksmenutop" EntityType="Models.Prestashop.ps_linksmenutop" />
+    <EntitySet Name="ps_linksmenutop_lang" EntityType="Models.Prestashop.ps_linksmenutop_lang" />
+    <EntitySet Name="ps_log" EntityType="Models.Prestashop.ps_log" />
+    <EntitySet Name="ps_manufacturer" EntityType="Models.Prestashop.ps_manufacturer" />
+    <EntitySet Name="ps_manufacturer_lang" EntityType="Models.Prestashop.ps_manufacturer_lang" />
+    <EntitySet Name="ps_manufacturer_shop" EntityType="Models.Prestashop.ps_manufacturer_shop" />
+    <EntitySet Name="ps_memcached_servers" EntityType="Models.Prestashop.ps_memcached_servers" />
+    <EntitySet Name="ps_message" EntityType="Models.Prestashop.ps_message" />
+    <EntitySet Name="ps_message_readed" EntityType="Models.Prestashop.ps_message_readed" />
+    <EntitySet Name="ps_meta" EntityType="Models.Prestashop.ps_meta" />
+    <EntitySet Name="ps_meta_lang" EntityType="Models.Prestashop.ps_meta_lang" />
+    <EntitySet Name="ps_module" EntityType="Models.Prestashop.ps_module" />
+    <EntitySet Name="ps_module_access" EntityType="Models.Prestashop.ps_module_access" />
+    <EntitySet Name="ps_module_country" EntityType="Models.Prestashop.ps_module_country" />
+    <EntitySet Name="ps_module_currency" EntityType="Models.Prestashop.ps_module_currency" />
+    <EntitySet Name="ps_module_group" EntityType="Models.Prestashop.ps_module_group" />
+    <EntitySet Name="ps_module_preference" EntityType="Models.Prestashop.ps_module_preference" />
+    <EntitySet Name="ps_module_shop" EntityType="Models.Prestashop.ps_module_shop" />
+    <EntitySet Name="ps_newsletter" EntityType="Models.Prestashop.ps_newsletter" />
+    <EntitySet Name="ps_operating_system" EntityType="Models.Prestashop.ps_operating_system" />
+    <EntitySet Name="ps_order_carrier" EntityType="Models.Prestashop.ps_order_carrier" />
+    <EntitySet Name="ps_order_cart_rule" EntityType="Models.Prestashop.ps_order_cart_rule" />
+    <EntitySet Name="ps_order_detail" EntityType="Models.Prestashop.ps_order_detail" />
+    <EntitySet Name="ps_order_detail_tax" EntityType="Models.Prestashop.ps_order_detail_tax" />
+    <EntitySet Name="ps_order_history" EntityType="Models.Prestashop.ps_order_history" />
+    <EntitySet Name="ps_order_invoice" EntityType="Models.Prestashop.ps_order_invoice" />
+    <EntitySet Name="ps_order_invoice_payment" EntityType="Models.Prestashop.ps_order_invoice_payment" />
+    <EntitySet Name="ps_order_invoice_tax" EntityType="Models.Prestashop.ps_order_invoice_tax" />
+    <EntitySet Name="ps_order_message" EntityType="Models.Prestashop.ps_order_message" />
+    <EntitySet Name="ps_order_message_lang" EntityType="Models.Prestashop.ps_order_message_lang" />
+    <EntitySet Name="ps_order_payment" EntityType="Models.Prestashop.ps_order_payment" />
+    <EntitySet Name="ps_order_return" EntityType="Models.Prestashop.ps_order_return" />
+    <EntitySet Name="ps_order_return_detail" EntityType="Models.Prestashop.ps_order_return_detail" />
+    <EntitySet Name="ps_order_return_state" EntityType="Models.Prestashop.ps_order_return_state" />
+    <EntitySet Name="ps_order_return_state_lang" EntityType="Models.Prestashop.ps_order_return_state_lang" />
+    <EntitySet Name="ps_order_slip" EntityType="Models.Prestashop.ps_order_slip" />
+    <EntitySet Name="ps_order_slip_detail" EntityType="Models.Prestashop.ps_order_slip_detail" />
+    <EntitySet Name="ps_order_state" EntityType="Models.Prestashop.ps_order_state" />
+    <EntitySet Name="ps_order_state_lang" EntityType="Models.Prestashop.ps_order_state_lang" />
+    <EntitySet Name="ps_orders" EntityType="Models.Prestashop.ps_orders" />
+    <EntitySet Name="ps_pack" EntityType="Models.Prestashop.ps_pack" />
+    <EntitySet Name="ps_page" EntityType="Models.Prestashop.ps_page" />
+    <EntitySet Name="ps_page_type" EntityType="Models.Prestashop.ps_page_type" />
+    <EntitySet Name="ps_page_viewed" EntityType="Models.Prestashop.ps_page_viewed" />
+    <EntitySet Name="ps_pagenotfound" EntityType="Models.Prestashop.ps_pagenotfound" />
+    <EntitySet Name="ps_product" EntityType="Models.Prestashop.ps_product" />
+    <EntitySet Name="ps_product_attachment" EntityType="Models.Prestashop.ps_product_attachment" />
+    <EntitySet Name="ps_product_attribute" EntityType="Models.Prestashop.ps_product_attribute" />
+    <EntitySet Name="ps_product_attribute_combination" EntityType="Models.Prestashop.ps_product_attribute_combination" />
+    <EntitySet Name="ps_product_attribute_image" EntityType="Models.Prestashop.ps_product_attribute_image" />
+    <EntitySet Name="ps_product_attribute_shop" EntityType="Models.Prestashop.ps_product_attribute_shop" />
+    <EntitySet Name="ps_product_carrier" EntityType="Models.Prestashop.ps_product_carrier" />
+    <EntitySet Name="ps_product_country_tax" EntityType="Models.Prestashop.ps_product_country_tax" />
+    <EntitySet Name="ps_product_download" EntityType="Models.Prestashop.ps_product_download" />
+    <EntitySet Name="ps_product_group_reduction_cache" EntityType="Models.Prestashop.ps_product_group_reduction_cache" />
+    <EntitySet Name="ps_product_lang" EntityType="Models.Prestashop.ps_product_lang" />
+    <EntitySet Name="ps_product_sale" EntityType="Models.Prestashop.ps_product_sale" />
+    <EntitySet Name="ps_product_shop" EntityType="Models.Prestashop.ps_product_shop" />
+    <EntitySet Name="ps_product_supplier" EntityType="Models.Prestashop.ps_product_supplier" />
+    <EntitySet Name="ps_product_tag" EntityType="Models.Prestashop.ps_product_tag" />
+    <EntitySet Name="ps_profile" EntityType="Models.Prestashop.ps_profile" />
+    <EntitySet Name="ps_profile_lang" EntityType="Models.Prestashop.ps_profile_lang" />
+    <EntitySet Name="ps_quick_access" EntityType="Models.Prestashop.ps_quick_access" />
+    <EntitySet Name="ps_quick_access_lang" EntityType="Models.Prestashop.ps_quick_access_lang" />
+    <EntitySet Name="ps_range_price" EntityType="Models.Prestashop.ps_range_price" />
+    <EntitySet Name="ps_range_weight" EntityType="Models.Prestashop.ps_range_weight" />
+    <EntitySet Name="ps_referrer" EntityType="Models.Prestashop.ps_referrer" />
+    <EntitySet Name="ps_referrer_cache" EntityType="Models.Prestashop.ps_referrer_cache" />
+    <EntitySet Name="ps_referrer_shop" EntityType="Models.Prestashop.ps_referrer_shop" />
+    <EntitySet Name="ps_reinsurance" EntityType="Models.Prestashop.ps_reinsurance" />
+    <EntitySet Name="ps_reinsurance_lang" EntityType="Models.Prestashop.ps_reinsurance_lang" />
+    <EntitySet Name="ps_request_sql" EntityType="Models.Prestashop.ps_request_sql" />
+    <EntitySet Name="ps_required_field" EntityType="Models.Prestashop.ps_required_field" />
+    <EntitySet Name="ps_risk" EntityType="Models.Prestashop.ps_risk" />
+    <EntitySet Name="ps_risk_lang" EntityType="Models.Prestashop.ps_risk_lang" />
+    <EntitySet Name="ps_scene" EntityType="Models.Prestashop.ps_scene" />
+    <EntitySet Name="ps_scene_category" EntityType="Models.Prestashop.ps_scene_category" />
+    <EntitySet Name="ps_scene_lang" EntityType="Models.Prestashop.ps_scene_lang" />
+    <EntitySet Name="ps_scene_products" EntityType="Models.Prestashop.ps_scene_products" />
+    <EntitySet Name="ps_scene_shop" EntityType="Models.Prestashop.ps_scene_shop" />
+    <EntitySet Name="ps_search_engine" EntityType="Models.Prestashop.ps_search_engine" />
+    <EntitySet Name="ps_search_index" EntityType="Models.Prestashop.ps_search_index" />
+    <EntitySet Name="ps_search_word" EntityType="Models.Prestashop.ps_search_word" />
+    <EntitySet Name="ps_sekeyword" EntityType="Models.Prestashop.ps_sekeyword" />
+    <EntitySet Name="ps_shop" EntityType="Models.Prestashop.ps_shop" />
+    <EntitySet Name="ps_shop_group" EntityType="Models.Prestashop.ps_shop_group" />
+    <EntitySet Name="ps_shop_url" EntityType="Models.Prestashop.ps_shop_url" />
+    <EntitySet Name="ps_specific_price" EntityType="Models.Prestashop.ps_specific_price" />
+    <EntitySet Name="ps_specific_price_priority" EntityType="Models.Prestashop.ps_specific_price_priority" />
+    <EntitySet Name="ps_specific_price_rule" EntityType="Models.Prestashop.ps_specific_price_rule" />
+    <EntitySet Name="ps_specific_price_rule_condition" EntityType="Models.Prestashop.ps_specific_price_rule_condition" />
+    <EntitySet Name="ps_specific_price_rule_condition_group" EntityType="Models.Prestashop.ps_specific_price_rule_condition_group" />
+    <EntitySet Name="ps_state" EntityType="Models.Prestashop.ps_state" />
+    <EntitySet Name="ps_statssearch" EntityType="Models.Prestashop.ps_statssearch" />
+    <EntitySet Name="ps_stock" EntityType="Models.Prestashop.ps_stock" />
+    <EntitySet Name="ps_stock_available" EntityType="Models.Prestashop.ps_stock_available" />
+    <EntitySet Name="ps_stock_mvt" EntityType="Models.Prestashop.ps_stock_mvt" />
+    <EntitySet Name="ps_stock_mvt_reason" EntityType="Models.Prestashop.ps_stock_mvt_reason" />
+    <EntitySet Name="ps_stock_mvt_reason_lang" EntityType="Models.Prestashop.ps_stock_mvt_reason_lang" />
+    <EntitySet Name="ps_store" EntityType="Models.Prestashop.ps_store" />
+    <EntitySet Name="ps_store_shop" EntityType="Models.Prestashop.ps_store_shop" />
+    <EntitySet Name="ps_supplier" EntityType="Models.Prestashop.ps_supplier" />
+    <EntitySet Name="ps_supplier_lang" EntityType="Models.Prestashop.ps_supplier_lang" />
+    <EntitySet Name="ps_supplier_shop" EntityType="Models.Prestashop.ps_supplier_shop" />
+    <EntitySet Name="ps_supply_order" EntityType="Models.Prestashop.ps_supply_order" />
+    <EntitySet Name="ps_supply_order_detail" EntityType="Models.Prestashop.ps_supply_order_detail" />
+    <EntitySet Name="ps_supply_order_history" EntityType="Models.Prestashop.ps_supply_order_history" />
+    <EntitySet Name="ps_supply_order_receipt_history" EntityType="Models.Prestashop.ps_supply_order_receipt_history" />
+    <EntitySet Name="ps_supply_order_state" EntityType="Models.Prestashop.ps_supply_order_state" />
+    <EntitySet Name="ps_supply_order_state_lang" EntityType="Models.Prestashop.ps_supply_order_state_lang" />
+    <EntitySet Name="ps_tab" EntityType="Models.Prestashop.ps_tab" />
+    <EntitySet Name="ps_tab_lang" EntityType="Models.Prestashop.ps_tab_lang" />
+    <EntitySet Name="ps_tab_module_preference" EntityType="Models.Prestashop.ps_tab_module_preference" />
+    <EntitySet Name="ps_tag" EntityType="Models.Prestashop.ps_tag" />
+    <EntitySet Name="ps_tax" EntityType="Models.Prestashop.ps_tax" />
+    <EntitySet Name="ps_tax_lang" EntityType="Models.Prestashop.ps_tax_lang" />
+    <EntitySet Name="ps_tax_rule" EntityType="Models.Prestashop.ps_tax_rule" />
+    <EntitySet Name="ps_tax_rules_group" EntityType="Models.Prestashop.ps_tax_rules_group" />
+    <EntitySet Name="ps_tax_rules_group_shop" EntityType="Models.Prestashop.ps_tax_rules_group_shop" />
+    <EntitySet Name="ps_theme" EntityType="Models.Prestashop.ps_theme" />
+    <EntitySet Name="ps_theme_specific" EntityType="Models.Prestashop.ps_theme_specific" />
+    <EntitySet Name="ps_timezone" EntityType="Models.Prestashop.ps_timezone" />
+    <EntitySet Name="ps_warehouse" EntityType="Models.Prestashop.ps_warehouse" />
+    <EntitySet Name="ps_warehouse_carrier" EntityType="Models.Prestashop.ps_warehouse_carrier" />
+    <EntitySet Name="ps_warehouse_product_location" EntityType="Models.Prestashop.ps_warehouse_product_location" />
+    <EntitySet Name="ps_warehouse_shop" EntityType="Models.Prestashop.ps_warehouse_shop" />
+    <EntitySet Name="ps_web_browser" EntityType="Models.Prestashop.ps_web_browser" />
+    <EntitySet Name="ps_webservice_account" EntityType="Models.Prestashop.ps_webservice_account" />
+    <EntitySet Name="ps_webservice_account_shop" EntityType="Models.Prestashop.ps_webservice_account_shop" />
+    <EntitySet Name="ps_webservice_permission" EntityType="Models.Prestashop.ps_webservice_permission" />
+    <EntitySet Name="ps_zone" EntityType="Models.Prestashop.ps_zone" />
+    <EntitySet Name="ps_zone_shop" EntityType="Models.Prestashop.ps_zone_shop" />
+  </EntityContainer>
+  <EntityType Name="ps_access">
+    <Key>
+      <PropertyRef Name="id_profile" />
+      <PropertyRef Name="id_tab" />
+    </Key>
+    <Property Name="id_profile" Type="Int64" Nullable="false" />
+    <Property Name="id_tab" Type="Int64" Nullable="false" />
+    <Property Name="view" Type="Int32" Nullable="false" />
+    <Property Name="add" Type="Int32" Nullable="false" />
+    <Property Name="edit" Type="Int32" Nullable="false" />
+    <Property Name="delete" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_accessory">
+    <Key>
+      <PropertyRef Name="id_product_1" />
+      <PropertyRef Name="id_product_2" />
+    </Key>
+    <Property Name="id_product_1" Type="Int64" Nullable="false" />
+    <Property Name="id_product_2" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_address">
+    <Key>
+      <PropertyRef Name="id_address" />
+    </Key>
+    <Property Name="id_address" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_country" Type="Int64" Nullable="false" />
+    <Property Name="id_state" Type="Int64" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="id_manufacturer" Type="Int64" Nullable="false" />
+    <Property Name="id_supplier" Type="Int64" Nullable="false" />
+    <Property Name="id_warehouse" Type="Int64" Nullable="false" />
+    <Property Name="alias" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="company" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="lastname" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="firstname" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="address1" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="address2" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="postcode" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="other" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="phone" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="phone_mobile" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="vat_number" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="dni" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_address_format">
+    <Key>
+      <PropertyRef Name="id_country" />
+    </Key>
+    <Property Name="id_country" Type="Int64" Nullable="false" />
+    <Property Name="format" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_advice">
+    <Key>
+      <PropertyRef Name="id_advice" />
+    </Key>
+    <Property Name="id_advice" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_ps_advice" Type="Int32" Nullable="false" />
+    <Property Name="id_tab" Type="Int32" Nullable="false" />
+    <Property Name="validated" Type="Boolean" Nullable="false" />
+    <Property Name="location" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="selector" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_advice_lang">
+    <Key>
+      <PropertyRef Name="id_advice" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_advice" Type="Int32" Nullable="false" />
+    <Property Name="id_lang" Type="Int32" Nullable="false" />
+    <Property Name="html" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_alias">
+    <Key>
+      <PropertyRef Name="id_alias" />
+    </Key>
+    <Property Name="id_alias" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="alias" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="search" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_attachment">
+    <Key>
+      <PropertyRef Name="id_attachment" />
+    </Key>
+    <Property Name="id_attachment" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="file" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+    <Property Name="file_name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="mime" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_attachment_lang">
+    <Key>
+      <PropertyRef Name="id_attachment" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_attachment" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_attribute">
+    <Key>
+      <PropertyRef Name="id_attribute" />
+    </Key>
+    <Property Name="id_attribute" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_attribute_group" Type="Int64" Nullable="false" />
+    <Property Name="color" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_attribute_group">
+    <Key>
+      <PropertyRef Name="id_attribute_group" />
+    </Key>
+    <Property Name="id_attribute_group" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="is_color_group" Type="Boolean" Nullable="false" />
+    <Property Name="group_type" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_attribute_group_lang">
+    <Key>
+      <PropertyRef Name="id_attribute_group" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_attribute_group" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="public_name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_attribute_group_shop">
+    <Key>
+      <PropertyRef Name="id_attribute_group" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_attribute_group" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_attribute_impact">
+    <Key>
+      <PropertyRef Name="id_attribute_impact" />
+    </Key>
+    <Property Name="id_attribute_impact" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_attribute" Type="Int64" Nullable="false" />
+    <Property Name="weight" Type="Decimal" Nullable="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_attribute_lang">
+    <Key>
+      <PropertyRef Name="id_attribute" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_attribute" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_attribute_shop">
+    <Key>
+      <PropertyRef Name="id_attribute" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_attribute" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_badge">
+    <Key>
+      <PropertyRef Name="id_badge" />
+    </Key>
+    <Property Name="id_badge" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_ps_badge" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="id_group" Type="Int32" Nullable="false" />
+    <Property Name="group_position" Type="Int32" Nullable="false" />
+    <Property Name="scoring" Type="Int32" Nullable="false" />
+    <Property Name="validated" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_badge_lang">
+    <Key>
+      <PropertyRef Name="id_badge" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_badge" Type="Int32" Nullable="false" />
+    <Property Name="id_lang" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="group_name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_carrier">
+    <Key>
+      <PropertyRef Name="id_carrier" />
+    </Key>
+    <Property Name="id_carrier" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_reference" Type="Int64" Nullable="false" />
+    <Property Name="id_tax_rules_group" Type="Int64" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="url" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+    <Property Name="shipping_handling" Type="Boolean" Nullable="false" />
+    <Property Name="range_behavior" Type="Boolean" Nullable="false" />
+    <Property Name="is_module" Type="Boolean" Nullable="false" />
+    <Property Name="is_free" Type="Boolean" Nullable="false" />
+    <Property Name="shipping_external" Type="Boolean" Nullable="false" />
+    <Property Name="need_range" Type="Boolean" Nullable="false" />
+    <Property Name="external_module_name" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="shipping_method" Type="Int32" Nullable="false" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+    <Property Name="max_width" Type="Int32" />
+    <Property Name="max_height" Type="Int32" />
+    <Property Name="max_depth" Type="Int32" />
+    <Property Name="max_weight" Type="Decimal" />
+    <Property Name="grade" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ps_carrier_group">
+    <Key>
+      <PropertyRef Name="id_carrier" />
+      <PropertyRef Name="id_group" />
+    </Key>
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_carrier_lang">
+    <Key>
+      <PropertyRef Name="id_carrier" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="delay" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_carrier_shop">
+    <Key>
+      <PropertyRef Name="id_carrier" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_carrier_tax_rules_group_shop">
+    <Key>
+      <PropertyRef Name="id_carrier" />
+      <PropertyRef Name="id_tax_rules_group" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="id_tax_rules_group" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_carrier_zone">
+    <Key>
+      <PropertyRef Name="id_carrier" />
+      <PropertyRef Name="id_zone" />
+    </Key>
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="id_zone" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart">
+    <Key>
+      <PropertyRef Name="id_cart" />
+    </Key>
+    <Property Name="id_cart" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="delivery_option" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="id_address_delivery" Type="Int64" Nullable="false" />
+    <Property Name="id_address_invoice" Type="Int64" Nullable="false" />
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="id_guest" Type="Int64" Nullable="false" />
+    <Property Name="secure_key" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="recyclable" Type="Boolean" Nullable="false" />
+    <Property Name="gift" Type="Boolean" Nullable="false" />
+    <Property Name="gift_message" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="mobile_theme" Type="Boolean" Nullable="false" />
+    <Property Name="allow_seperated_package" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_cart_rule">
+    <Key>
+      <PropertyRef Name="id_cart" />
+      <PropertyRef Name="id_cart_rule" />
+    </Key>
+    <Property Name="id_cart" Type="Int64" Nullable="false" />
+    <Property Name="id_cart_rule" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_product">
+    <Key>
+      <PropertyRef Name="id_cart" />
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="date_add" />
+    </Key>
+    <Property Name="id_cart" Type="Int64" Nullable="false" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_address_delivery" Type="Int64" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_product_attribute" Type="Int64" />
+    <Property Name="quantity" Type="Int64" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_rule">
+    <Key>
+      <PropertyRef Name="id_cart_rule" />
+    </Key>
+    <Property Name="id_cart_rule" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="date_from" Type="DateTime" Nullable="false" />
+    <Property Name="date_to" Type="DateTime" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="quantity" Type="Int64" Nullable="false" />
+    <Property Name="quantity_per_user" Type="Int64" Nullable="false" />
+    <Property Name="priority" Type="Int64" Nullable="false" />
+    <Property Name="partial_use" Type="Boolean" Nullable="false" />
+    <Property Name="code" Type="String" Nullable="false" MaxLength="254" Unicode="false" FixedLength="false" />
+    <Property Name="minimum_amount" Type="Decimal" Nullable="false" />
+    <Property Name="minimum_amount_tax" Type="Boolean" Nullable="false" />
+    <Property Name="minimum_amount_currency" Type="Int64" Nullable="false" />
+    <Property Name="minimum_amount_shipping" Type="Boolean" Nullable="false" />
+    <Property Name="country_restriction" Type="Boolean" Nullable="false" />
+    <Property Name="carrier_restriction" Type="Boolean" Nullable="false" />
+    <Property Name="group_restriction" Type="Boolean" Nullable="false" />
+    <Property Name="cart_rule_restriction" Type="Boolean" Nullable="false" />
+    <Property Name="product_restriction" Type="Boolean" Nullable="false" />
+    <Property Name="shop_restriction" Type="Boolean" Nullable="false" />
+    <Property Name="free_shipping" Type="Boolean" Nullable="false" />
+    <Property Name="reduction_percent" Type="Decimal" Nullable="false" />
+    <Property Name="reduction_amount" Type="Decimal" Nullable="false" />
+    <Property Name="reduction_tax" Type="Boolean" Nullable="false" />
+    <Property Name="reduction_currency" Type="Int64" Nullable="false" />
+    <Property Name="reduction_product" Type="Int32" Nullable="false" />
+    <Property Name="gift_product" Type="Int64" Nullable="false" />
+    <Property Name="gift_product_attribute" Type="Int64" Nullable="false" />
+    <Property Name="highlight" Type="Boolean" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_rule_carrier">
+    <Key>
+      <PropertyRef Name="id_cart_rule" />
+      <PropertyRef Name="id_carrier" />
+    </Key>
+    <Property Name="id_cart_rule" Type="Int64" Nullable="false" />
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_rule_combination">
+    <Key>
+      <PropertyRef Name="id_cart_rule_1" />
+      <PropertyRef Name="id_cart_rule_2" />
+    </Key>
+    <Property Name="id_cart_rule_1" Type="Int64" Nullable="false" />
+    <Property Name="id_cart_rule_2" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_rule_country">
+    <Key>
+      <PropertyRef Name="id_cart_rule" />
+      <PropertyRef Name="id_country" />
+    </Key>
+    <Property Name="id_cart_rule" Type="Int64" Nullable="false" />
+    <Property Name="id_country" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_rule_group">
+    <Key>
+      <PropertyRef Name="id_cart_rule" />
+      <PropertyRef Name="id_group" />
+    </Key>
+    <Property Name="id_cart_rule" Type="Int64" Nullable="false" />
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_rule_lang">
+    <Key>
+      <PropertyRef Name="id_cart_rule" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_cart_rule" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="254" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_rule_product_rule">
+    <Key>
+      <PropertyRef Name="id_product_rule" />
+    </Key>
+    <Property Name="id_product_rule" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product_rule_group" Type="Int64" Nullable="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_rule_product_rule_group">
+    <Key>
+      <PropertyRef Name="id_product_rule_group" />
+    </Key>
+    <Property Name="id_product_rule_group" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cart_rule" Type="Int64" Nullable="false" />
+    <Property Name="quantity" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_rule_product_rule_value">
+    <Key>
+      <PropertyRef Name="id_product_rule" />
+      <PropertyRef Name="id_item" />
+    </Key>
+    <Property Name="id_product_rule" Type="Int64" Nullable="false" />
+    <Property Name="id_item" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cart_rule_shop">
+    <Key>
+      <PropertyRef Name="id_cart_rule" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_cart_rule" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_category">
+    <Key>
+      <PropertyRef Name="id_category" />
+    </Key>
+    <Property Name="id_category" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_parent" Type="Int64" Nullable="false" />
+    <Property Name="id_shop_default" Type="Int64" Nullable="false" />
+    <Property Name="level_depth" Type="Byte" Nullable="false" />
+    <Property Name="nleft" Type="Int64" Nullable="false" />
+    <Property Name="nright" Type="Int64" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+    <Property Name="is_root_category" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_category_group">
+    <Key>
+      <PropertyRef Name="id_category" />
+      <PropertyRef Name="id_group" />
+    </Key>
+    <Property Name="id_category" Type="Int64" Nullable="false" />
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_category_lang">
+    <Key>
+      <PropertyRef Name="id_category" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_category" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="link_rewrite" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="meta_title" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="meta_keywords" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="meta_description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_category_product">
+    <Key>
+      <PropertyRef Name="id_category" />
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_category" Type="Int64" Nullable="false" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_category_shop">
+    <Key>
+      <PropertyRef Name="id_category" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_category" Type="Int32" Nullable="false" />
+    <Property Name="id_shop" Type="Int32" Nullable="false" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cms">
+    <Key>
+      <PropertyRef Name="id_cms" />
+    </Key>
+    <Property Name="id_cms" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cms_category" Type="Int64" Nullable="false" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cms_block">
+    <Key>
+      <PropertyRef Name="id_cms_block" />
+    </Key>
+    <Property Name="id_cms_block" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cms_category" Type="Int64" Nullable="false" />
+    <Property Name="location" Type="Boolean" Nullable="false" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+    <Property Name="display_store" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cms_block_lang">
+    <Key>
+      <PropertyRef Name="id_cms_block" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_cms_block" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_cms_block_page">
+    <Key>
+      <PropertyRef Name="id_cms_block_page" />
+    </Key>
+    <Property Name="id_cms_block_page" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cms_block" Type="Int64" Nullable="false" />
+    <Property Name="id_cms" Type="Int64" Nullable="false" />
+    <Property Name="is_category" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cms_block_shop">
+    <Key>
+      <PropertyRef Name="id_cms_block" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_cms_block" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cms_category">
+    <Key>
+      <PropertyRef Name="id_cms_category" />
+    </Key>
+    <Property Name="id_cms_category" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_parent" Type="Int64" Nullable="false" />
+    <Property Name="level_depth" Type="Byte" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_cms_category_lang">
+    <Key>
+      <PropertyRef Name="id_cms_category" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_cms_category" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="link_rewrite" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="meta_title" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="meta_keywords" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="meta_description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_cms_lang">
+    <Key>
+      <PropertyRef Name="id_cms" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_cms" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="meta_title" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="meta_description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="meta_keywords" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="content" Type="String" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+    <Property Name="link_rewrite" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_cms_shop">
+    <Key>
+      <PropertyRef Name="id_cms" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_cms" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_compare">
+    <Key>
+      <PropertyRef Name="id_compare" />
+    </Key>
+    <Property Name="id_compare" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_compare_product">
+    <Key>
+      <PropertyRef Name="id_compare" />
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_compare" Type="Int64" Nullable="false" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_condition">
+    <Key>
+      <PropertyRef Name="id_condition" />
+      <PropertyRef Name="id_ps_condition" />
+    </Key>
+    <Property Name="id_condition" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_ps_condition" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="request" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="operator" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="value" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="result" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="calculation_type" Type="String" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="calculation_detail" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="validated" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_condition_advice">
+    <Key>
+      <PropertyRef Name="id_condition" />
+      <PropertyRef Name="id_advice" />
+    </Key>
+    <Property Name="id_condition" Type="Int32" Nullable="false" />
+    <Property Name="id_advice" Type="Int32" Nullable="false" />
+    <Property Name="display" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_condition_badge">
+    <Key>
+      <PropertyRef Name="id_condition" />
+      <PropertyRef Name="id_badge" />
+    </Key>
+    <Property Name="id_condition" Type="Int32" Nullable="false" />
+    <Property Name="id_badge" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_configuration">
+    <Key>
+      <PropertyRef Name="id_configuration" />
+    </Key>
+    <Property Name="id_configuration" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop_group" Type="Int64" />
+    <Property Name="id_shop" Type="Int64" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="value" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_configuration_lang">
+    <Key>
+      <PropertyRef Name="id_configuration" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_configuration" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="value" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="date_upd" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="ps_connections">
+    <Key>
+      <PropertyRef Name="id_connections" />
+    </Key>
+    <Property Name="id_connections" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_guest" Type="Int64" Nullable="false" />
+    <Property Name="id_page" Type="Int64" Nullable="false" />
+    <Property Name="ip_address" Type="Int64" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="http_referer" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_connections_page">
+    <Key>
+      <PropertyRef Name="id_connections" />
+      <PropertyRef Name="id_page" />
+      <PropertyRef Name="time_start" />
+    </Key>
+    <Property Name="id_connections" Type="Int64" Nullable="false" />
+    <Property Name="id_page" Type="Int64" Nullable="false" />
+    <Property Name="time_start" Type="DateTime" Nullable="false" />
+    <Property Name="time_end" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="ps_connections_source">
+    <Key>
+      <PropertyRef Name="id_connections_source" />
+    </Key>
+    <Property Name="id_connections_source" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_connections" Type="Int64" Nullable="false" />
+    <Property Name="http_referer" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="request_uri" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="keywords" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_contact">
+    <Key>
+      <PropertyRef Name="id_contact" />
+    </Key>
+    <Property Name="id_contact" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="customer_service" Type="Boolean" Nullable="false" />
+    <Property Name="position" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_contact_lang">
+    <Key>
+      <PropertyRef Name="id_contact" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_contact" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_contact_shop">
+    <Key>
+      <PropertyRef Name="id_contact" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_contact" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_country">
+    <Key>
+      <PropertyRef Name="id_country" />
+    </Key>
+    <Property Name="id_country" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_zone" Type="Int64" Nullable="false" />
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+    <Property Name="iso_code" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="call_prefix" Type="Int32" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="contains_states" Type="Boolean" Nullable="false" />
+    <Property Name="need_identification_number" Type="Boolean" Nullable="false" />
+    <Property Name="need_zip_code" Type="Boolean" Nullable="false" />
+    <Property Name="zip_code_format" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="display_tax_label" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_country_lang">
+    <Key>
+      <PropertyRef Name="id_country" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_country" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_country_shop">
+    <Key>
+      <PropertyRef Name="id_country" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_country" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_currency">
+    <Key>
+      <PropertyRef Name="id_currency" />
+    </Key>
+    <Property Name="id_currency" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="iso_code" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="iso_code_num" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="sign" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+    <Property Name="blank" Type="Boolean" Nullable="false" />
+    <Property Name="format" Type="Boolean" Nullable="false" />
+    <Property Name="decimals" Type="Boolean" Nullable="false" />
+    <Property Name="conversion_rate" Type="Decimal" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_currency_shop">
+    <Key>
+      <PropertyRef Name="id_currency" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="conversion_rate" Type="Decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_customer">
+    <Key>
+      <PropertyRef Name="id_customer" />
+    </Key>
+    <Property Name="id_customer" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_gender" Type="Int64" Nullable="false" />
+    <Property Name="id_default_group" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" />
+    <Property Name="id_risk" Type="Int64" Nullable="false" />
+    <Property Name="company" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="siret" Type="String" MaxLength="14" Unicode="false" FixedLength="false" />
+    <Property Name="ape" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="firstname" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="lastname" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="passwd" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="last_passwd_gen" Type="DateTime" Nullable="false" />
+    <Property Name="birthday" Type="DateTime" />
+    <Property Name="newsletter" Type="Boolean" Nullable="false" />
+    <Property Name="ip_registration_newsletter" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="newsletter_date_add" Type="DateTime" />
+    <Property Name="optin" Type="Boolean" Nullable="false" />
+    <Property Name="website" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="outstanding_allow_amount" Type="Decimal" Nullable="false" />
+    <Property Name="show_public_prices" Type="Boolean" Nullable="false" />
+    <Property Name="max_payment_days" Type="Int64" Nullable="false" />
+    <Property Name="secure_key" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="note" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="is_guest" Type="Boolean" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_customer_group">
+    <Key>
+      <PropertyRef Name="id_customer" />
+      <PropertyRef Name="id_group" />
+    </Key>
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_customer_message">
+    <Key>
+      <PropertyRef Name="id_customer_message" />
+    </Key>
+    <Property Name="id_customer_message" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_customer_thread" Type="Int32" />
+    <Property Name="id_employee" Type="Int64" />
+    <Property Name="message" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="file_name" Type="String" MaxLength="18" Unicode="false" FixedLength="false" />
+    <Property Name="ip_address" Type="Int32" />
+    <Property Name="user_agent" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="private" Type="SByte" Nullable="false" />
+    <Property Name="read" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_customer_message_sync_imap">
+    <Key>
+      <PropertyRef Name="md5_header" />
+    </Key>
+    <Property Name="md5_header" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_customer_thread">
+    <Key>
+      <PropertyRef Name="id_customer_thread" />
+    </Key>
+    <Property Name="id_customer_thread" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="id_contact" Type="Int64" Nullable="false" />
+    <Property Name="id_customer" Type="Int64" />
+    <Property Name="id_order" Type="Int64" />
+    <Property Name="id_product" Type="Int64" />
+    <Property Name="status" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="token" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_customization">
+    <Key>
+      <PropertyRef Name="id_customization" />
+      <PropertyRef Name="id_address_delivery" />
+      <PropertyRef Name="id_cart" />
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_customization" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" />
+    <Property Name="id_address_delivery" Type="Int64" Nullable="false" />
+    <Property Name="id_cart" Type="Int64" Nullable="false" />
+    <Property Name="id_product" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="quantity_refunded" Type="Int32" Nullable="false" />
+    <Property Name="quantity_returned" Type="Int32" Nullable="false" />
+    <Property Name="in_cart" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_customization_field">
+    <Key>
+      <PropertyRef Name="id_customization_field" />
+    </Key>
+    <Property Name="id_customization_field" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="type" Type="Boolean" Nullable="false" />
+    <Property Name="required" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_customization_field_lang">
+    <Key>
+      <PropertyRef Name="id_customization_field" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_customization_field" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_customized_data">
+    <Key>
+      <PropertyRef Name="id_customization" />
+      <PropertyRef Name="type" />
+      <PropertyRef Name="index" />
+    </Key>
+    <Property Name="id_customization" Type="Int64" Nullable="false" />
+    <Property Name="type" Type="Boolean" Nullable="false" />
+    <Property Name="index" Type="Int32" Nullable="false" />
+    <Property Name="value" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_date_range">
+    <Key>
+      <PropertyRef Name="id_date_range" />
+    </Key>
+    <Property Name="id_date_range" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="time_start" Type="DateTime" Nullable="false" />
+    <Property Name="time_end" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_delivery">
+    <Key>
+      <PropertyRef Name="id_delivery" />
+    </Key>
+    <Property Name="id_delivery" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" />
+    <Property Name="id_shop_group" Type="Int64" />
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="id_range_price" Type="Int64" />
+    <Property Name="id_range_weight" Type="Int64" />
+    <Property Name="id_zone" Type="Int64" Nullable="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_employee">
+    <Key>
+      <PropertyRef Name="id_employee" />
+    </Key>
+    <Property Name="id_employee" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_profile" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="lastname" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="firstname" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="passwd" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="last_passwd_gen" Type="DateTime" Nullable="false" />
+    <Property Name="stats_date_from" Type="DateTime" />
+    <Property Name="stats_date_to" Type="DateTime" />
+    <Property Name="bo_color" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="bo_theme" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="default_tab" Type="Int64" Nullable="false" />
+    <Property Name="bo_width" Type="Int64" Nullable="false" />
+    <Property Name="bo_show_screencast" Type="Boolean" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="id_last_order" Type="Int64" Nullable="false" />
+    <Property Name="id_last_customer_message" Type="Int64" Nullable="false" />
+    <Property Name="id_last_customer" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_employee_shop">
+    <Key>
+      <PropertyRef Name="id_employee" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_employee" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_favorite_product">
+    <Key>
+      <PropertyRef Name="id_favorite_product" />
+    </Key>
+    <Property Name="id_favorite_product" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_feature">
+    <Key>
+      <PropertyRef Name="id_feature" />
+    </Key>
+    <Property Name="id_feature" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_feature_lang">
+    <Key>
+      <PropertyRef Name="id_feature" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_feature" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_feature_product">
+    <Key>
+      <PropertyRef Name="id_feature" />
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_feature" Type="Int64" Nullable="false" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_feature_value" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_feature_shop">
+    <Key>
+      <PropertyRef Name="id_feature" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_feature" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_feature_value">
+    <Key>
+      <PropertyRef Name="id_feature_value" />
+    </Key>
+    <Property Name="id_feature_value" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_feature" Type="Int64" Nullable="false" />
+    <Property Name="custom" Type="Byte" />
+  </EntityType>
+  <EntityType Name="ps_feature_value_lang">
+    <Key>
+      <PropertyRef Name="id_feature_value" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_feature_value" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="value" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_gender">
+    <Key>
+      <PropertyRef Name="id_gender" />
+    </Key>
+    <Property Name="id_gender" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_gender_lang">
+    <Key>
+      <PropertyRef Name="id_gender" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_gender" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_group">
+    <Key>
+      <PropertyRef Name="id_group" />
+    </Key>
+    <Property Name="id_group" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="reduction" Type="Decimal" Nullable="false" />
+    <Property Name="price_display_method" Type="SByte" Nullable="false" />
+    <Property Name="show_prices" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_group_lang">
+    <Key>
+      <PropertyRef Name="id_group" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_group_reduction">
+    <Key>
+      <PropertyRef Name="id_group_reduction" />
+    </Key>
+    <Property Name="id_group_reduction" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+    <Property Name="id_category" Type="Int64" Nullable="false" />
+    <Property Name="reduction" Type="Decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_group_shop">
+    <Key>
+      <PropertyRef Name="id_group" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_guest">
+    <Key>
+      <PropertyRef Name="id_guest" />
+    </Key>
+    <Property Name="id_guest" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_operating_system" Type="Int64" />
+    <Property Name="id_web_browser" Type="Int64" />
+    <Property Name="id_customer" Type="Int64" />
+    <Property Name="javascript" Type="Boolean" />
+    <Property Name="screen_resolution_x" Type="Int32" />
+    <Property Name="screen_resolution_y" Type="Int32" />
+    <Property Name="screen_color" Type="Byte" />
+    <Property Name="sun_java" Type="Boolean" />
+    <Property Name="adobe_flash" Type="Boolean" />
+    <Property Name="adobe_director" Type="Boolean" />
+    <Property Name="apple_quicktime" Type="Boolean" />
+    <Property Name="real_player" Type="Boolean" />
+    <Property Name="windows_media" Type="Boolean" />
+    <Property Name="accept_language" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+    <Property Name="mobile_theme" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_help_access">
+    <Key>
+      <PropertyRef Name="id_help_access" />
+    </Key>
+    <Property Name="id_help_access" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="label" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="version" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_homeslider">
+    <Key>
+      <PropertyRef Name="id_homeslider_slides" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_homeslider_slides" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_homeslider_slides">
+    <Key>
+      <PropertyRef Name="id_homeslider_slides" />
+    </Key>
+    <Property Name="id_homeslider_slides" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_homeslider_slides_lang">
+    <Key>
+      <PropertyRef Name="id_homeslider_slides" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_homeslider_slides" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="legend" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="url" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="image" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_hook">
+    <Key>
+      <PropertyRef Name="id_hook" />
+    </Key>
+    <Property Name="id_hook" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="position" Type="Boolean" Nullable="false" />
+    <Property Name="live_edit" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_hook_alias">
+    <Key>
+      <PropertyRef Name="id_hook_alias" />
+    </Key>
+    <Property Name="id_hook_alias" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="alias" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_hook_module">
+    <Key>
+      <PropertyRef Name="id_module" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="id_hook" />
+    </Key>
+    <Property Name="id_module" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_hook" Type="Int64" Nullable="false" />
+    <Property Name="position" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_hook_module_exceptions">
+    <Key>
+      <PropertyRef Name="id_hook_module_exceptions" />
+    </Key>
+    <Property Name="id_hook_module_exceptions" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_module" Type="Int64" Nullable="false" />
+    <Property Name="id_hook" Type="Int64" Nullable="false" />
+    <Property Name="file_name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_image">
+    <Key>
+      <PropertyRef Name="id_image" />
+    </Key>
+    <Property Name="id_image" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="position" Type="Int32" Nullable="false" />
+    <Property Name="cover" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_image_lang">
+    <Key>
+      <PropertyRef Name="id_image" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_image" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="legend" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_image_shop">
+    <Key>
+      <PropertyRef Name="id_image" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="cover" />
+    </Key>
+    <Property Name="id_image" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="cover" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_image_type">
+    <Key>
+      <PropertyRef Name="id_image_type" />
+    </Key>
+    <Property Name="id_image_type" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="width" Type="Int64" Nullable="false" />
+    <Property Name="height" Type="Int64" Nullable="false" />
+    <Property Name="products" Type="Boolean" Nullable="false" />
+    <Property Name="categories" Type="Boolean" Nullable="false" />
+    <Property Name="manufacturers" Type="Boolean" Nullable="false" />
+    <Property Name="suppliers" Type="Boolean" Nullable="false" />
+    <Property Name="scenes" Type="Boolean" Nullable="false" />
+    <Property Name="stores" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_import_match">
+    <Key>
+      <PropertyRef Name="id_import_match" />
+    </Key>
+    <Property Name="id_import_match" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="match" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="skip" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_lang">
+    <Key>
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_lang" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Byte" Nullable="false" />
+    <Property Name="iso_code" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+    <Property Name="language_code" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="date_format_lite" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="date_format_full" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="is_rtl" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_lang_shop">
+    <Key>
+      <PropertyRef Name="id_lang" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_linksmenutop">
+    <Key>
+      <PropertyRef Name="id_linksmenutop" />
+    </Key>
+    <Property Name="id_linksmenutop" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="new_window" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_linksmenutop_lang">
+    <Key>
+      <PropertyRef Name="id_linksmenutop" />
+      <PropertyRef Name="id_lang" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="label" />
+      <PropertyRef Name="link" />
+    </Key>
+    <Property Name="id_linksmenutop" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="label" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="link" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_log">
+    <Key>
+      <PropertyRef Name="id_log" />
+    </Key>
+    <Property Name="id_log" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="severity" Type="Boolean" Nullable="false" />
+    <Property Name="error_code" Type="Int32" />
+    <Property Name="message" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="object_type" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="object_id" Type="Int64" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_manufacturer">
+    <Key>
+      <PropertyRef Name="id_manufacturer" />
+    </Key>
+    <Property Name="id_manufacturer" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_manufacturer_lang">
+    <Key>
+      <PropertyRef Name="id_manufacturer" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_manufacturer" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="short_description" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+    <Property Name="meta_title" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="meta_keywords" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="meta_description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_manufacturer_shop">
+    <Key>
+      <PropertyRef Name="id_manufacturer" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_manufacturer" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_memcached_servers">
+    <Key>
+      <PropertyRef Name="id_memcached_server" />
+    </Key>
+    <Property Name="id_memcached_server" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ip" Type="String" Nullable="false" MaxLength="254" Unicode="false" FixedLength="false" />
+    <Property Name="port" Type="Int64" Nullable="false" />
+    <Property Name="weight" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_message">
+    <Key>
+      <PropertyRef Name="id_message" />
+    </Key>
+    <Property Name="id_message" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cart" Type="Int64" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="id_employee" Type="Int64" />
+    <Property Name="id_order" Type="Int64" Nullable="false" />
+    <Property Name="message" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="private" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_message_readed">
+    <Key>
+      <PropertyRef Name="id_message" />
+      <PropertyRef Name="id_employee" />
+    </Key>
+    <Property Name="id_message" Type="Int64" Nullable="false" />
+    <Property Name="id_employee" Type="Int64" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_meta">
+    <Key>
+      <PropertyRef Name="id_meta" />
+    </Key>
+    <Property Name="id_meta" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="page" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_meta_lang">
+    <Key>
+      <PropertyRef Name="id_meta" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_meta" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="keywords" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="url_rewrite" Type="String" Nullable="false" MaxLength="254" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_module">
+    <Key>
+      <PropertyRef Name="id_module" />
+    </Key>
+    <Property Name="id_module" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="version" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_module_access">
+    <Key>
+      <PropertyRef Name="id_profile" />
+      <PropertyRef Name="id_module" />
+    </Key>
+    <Property Name="id_profile" Type="Int64" Nullable="false" />
+    <Property Name="id_module" Type="Int64" Nullable="false" />
+    <Property Name="view" Type="Boolean" Nullable="false" />
+    <Property Name="configure" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_module_country">
+    <Key>
+      <PropertyRef Name="id_module" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="id_country" />
+    </Key>
+    <Property Name="id_module" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_country" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_module_currency">
+    <Key>
+      <PropertyRef Name="id_module" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="id_currency" />
+    </Key>
+    <Property Name="id_module" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_currency" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_module_group">
+    <Key>
+      <PropertyRef Name="id_module" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="id_group" />
+    </Key>
+    <Property Name="id_module" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_module_preference">
+    <Key>
+      <PropertyRef Name="id_module_preference" />
+    </Key>
+    <Property Name="id_module_preference" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_employee" Type="Int32" Nullable="false" />
+    <Property Name="module" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="interest" Type="Boolean" />
+    <Property Name="favorite" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ps_module_shop">
+    <Key>
+      <PropertyRef Name="id_module" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_module" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_newsletter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="newsletter_date_add" Type="DateTime" />
+    <Property Name="ip_registration_newsletter" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="http_referer" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_operating_system">
+    <Key>
+      <PropertyRef Name="id_operating_system" />
+    </Key>
+    <Property Name="id_operating_system" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_order_carrier">
+    <Key>
+      <PropertyRef Name="id_order_carrier" />
+    </Key>
+    <Property Name="id_order_carrier" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_order" Type="Int64" Nullable="false" />
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="id_order_invoice" Type="Int64" />
+    <Property Name="weight" Type="Decimal" />
+    <Property Name="shipping_cost_tax_excl" Type="Decimal" />
+    <Property Name="shipping_cost_tax_incl" Type="Decimal" />
+    <Property Name="tracking_number" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_cart_rule">
+    <Key>
+      <PropertyRef Name="id_order_cart_rule" />
+    </Key>
+    <Property Name="id_order_cart_rule" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_order" Type="Int64" Nullable="false" />
+    <Property Name="id_cart_rule" Type="Int64" Nullable="false" />
+    <Property Name="id_order_invoice" Type="Int64" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="254" Unicode="false" FixedLength="false" />
+    <Property Name="value" Type="Decimal" Nullable="false" />
+    <Property Name="value_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="free_shipping" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_detail">
+    <Key>
+      <PropertyRef Name="id_order_detail" />
+    </Key>
+    <Property Name="id_order_detail" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_order" Type="Int64" Nullable="false" />
+    <Property Name="id_order_invoice" Type="Int32" />
+    <Property Name="id_warehouse" Type="Int64" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="product_id" Type="Int64" Nullable="false" />
+    <Property Name="product_attribute_id" Type="Int64" />
+    <Property Name="product_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="product_quantity" Type="Int64" Nullable="false" />
+    <Property Name="product_quantity_in_stock" Type="Int32" Nullable="false" />
+    <Property Name="product_quantity_refunded" Type="Int64" Nullable="false" />
+    <Property Name="product_quantity_return" Type="Int64" Nullable="false" />
+    <Property Name="product_quantity_reinjected" Type="Int64" Nullable="false" />
+    <Property Name="product_price" Type="Decimal" Nullable="false" />
+    <Property Name="reduction_percent" Type="Decimal" Nullable="false" />
+    <Property Name="reduction_amount" Type="Decimal" Nullable="false" />
+    <Property Name="reduction_amount_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="reduction_amount_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="group_reduction" Type="Decimal" Nullable="false" />
+    <Property Name="product_quantity_discount" Type="Decimal" Nullable="false" />
+    <Property Name="product_ean13" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="product_upc" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="product_reference" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="product_supplier_reference" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="product_weight" Type="Decimal" Nullable="false" />
+    <Property Name="tax_computation_method" Type="Boolean" Nullable="false" />
+    <Property Name="tax_name" Type="String" Nullable="false" MaxLength="16" Unicode="false" FixedLength="false" />
+    <Property Name="tax_rate" Type="Decimal" Nullable="false" />
+    <Property Name="ecotax" Type="Decimal" Nullable="false" />
+    <Property Name="ecotax_tax_rate" Type="Decimal" Nullable="false" />
+    <Property Name="discount_quantity_applied" Type="Boolean" Nullable="false" />
+    <Property Name="download_hash" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="download_nb" Type="Int64" />
+    <Property Name="download_deadline" Type="DateTime" />
+    <Property Name="total_price_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="total_price_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="unit_price_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="unit_price_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="total_shipping_price_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="total_shipping_price_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="purchase_supplier_price" Type="Decimal" Nullable="false" />
+    <Property Name="original_product_price" Type="Decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_detail_tax">
+    <Key>
+      <PropertyRef Name="id_order_detail" />
+      <PropertyRef Name="id_tax" />
+      <PropertyRef Name="unit_amount" />
+      <PropertyRef Name="total_amount" />
+    </Key>
+    <Property Name="id_order_detail" Type="Int32" Nullable="false" />
+    <Property Name="id_tax" Type="Int32" Nullable="false" />
+    <Property Name="unit_amount" Type="Decimal" Nullable="false" />
+    <Property Name="total_amount" Type="Decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_history">
+    <Key>
+      <PropertyRef Name="id_order_history" />
+    </Key>
+    <Property Name="id_order_history" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_employee" Type="Int64" Nullable="false" />
+    <Property Name="id_order" Type="Int64" Nullable="false" />
+    <Property Name="id_order_state" Type="Int64" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_invoice">
+    <Key>
+      <PropertyRef Name="id_order_invoice" />
+    </Key>
+    <Property Name="id_order_invoice" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_order" Type="Int32" Nullable="false" />
+    <Property Name="number" Type="Int32" Nullable="false" />
+    <Property Name="delivery_number" Type="Int32" Nullable="false" />
+    <Property Name="delivery_date" Type="DateTime" />
+    <Property Name="total_discount_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="total_discount_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="total_paid_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="total_paid_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="total_products" Type="Decimal" Nullable="false" />
+    <Property Name="total_products_wt" Type="Decimal" Nullable="false" />
+    <Property Name="total_shipping_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="total_shipping_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="shipping_tax_computation_method" Type="Int64" Nullable="false" />
+    <Property Name="total_wrapping_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="total_wrapping_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="note" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_invoice_payment">
+    <Key>
+      <PropertyRef Name="id_order_invoice" />
+      <PropertyRef Name="id_order_payment" />
+    </Key>
+    <Property Name="id_order_invoice" Type="Int64" Nullable="false" />
+    <Property Name="id_order_payment" Type="Int64" Nullable="false" />
+    <Property Name="id_order" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_invoice_tax">
+    <Key>
+      <PropertyRef Name="id_order_invoice" />
+      <PropertyRef Name="type" />
+      <PropertyRef Name="id_tax" />
+      <PropertyRef Name="amount" />
+    </Key>
+    <Property Name="id_order_invoice" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="id_tax" Type="Int32" Nullable="false" />
+    <Property Name="amount" Type="Decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_message">
+    <Key>
+      <PropertyRef Name="id_order_message" />
+    </Key>
+    <Property Name="id_order_message" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_message_lang">
+    <Key>
+      <PropertyRef Name="id_order_message" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_order_message" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="message" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_order_payment">
+    <Key>
+      <PropertyRef Name="id_order_payment" />
+    </Key>
+    <Property Name="id_order_payment" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="order_reference" Type="String" MaxLength="9" Unicode="false" FixedLength="false" />
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+    <Property Name="amount" Type="Decimal" Nullable="false" />
+    <Property Name="payment_method" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="conversion_rate" Type="Decimal" Nullable="false" />
+    <Property Name="transaction_id" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+    <Property Name="card_number" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+    <Property Name="card_brand" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+    <Property Name="card_expiration" Type="String" MaxLength="7" Unicode="false" FixedLength="false" />
+    <Property Name="card_holder" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_return">
+    <Key>
+      <PropertyRef Name="id_order_return" />
+    </Key>
+    <Property Name="id_order_return" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="id_order" Type="Int64" Nullable="false" />
+    <Property Name="state" Type="Boolean" Nullable="false" />
+    <Property Name="question" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_return_detail">
+    <Key>
+      <PropertyRef Name="id_order_return" />
+      <PropertyRef Name="id_order_detail" />
+      <PropertyRef Name="id_customization" />
+    </Key>
+    <Property Name="id_order_return" Type="Int64" Nullable="false" />
+    <Property Name="id_order_detail" Type="Int64" Nullable="false" />
+    <Property Name="id_customization" Type="Int64" Nullable="false" />
+    <Property Name="product_quantity" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_return_state">
+    <Key>
+      <PropertyRef Name="id_order_return_state" />
+    </Key>
+    <Property Name="id_order_return_state" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="color" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_order_return_state_lang">
+    <Key>
+      <PropertyRef Name="id_order_return_state" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_order_return_state" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_order_slip">
+    <Key>
+      <PropertyRef Name="id_order_slip" />
+    </Key>
+    <Property Name="id_order_slip" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="conversion_rate" Type="Decimal" Nullable="false" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="id_order" Type="Int64" Nullable="false" />
+    <Property Name="shipping_cost" Type="Byte" Nullable="false" />
+    <Property Name="amount" Type="Decimal" Nullable="false" />
+    <Property Name="shipping_cost_amount" Type="Decimal" Nullable="false" />
+    <Property Name="partial" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_slip_detail">
+    <Key>
+      <PropertyRef Name="id_order_slip" />
+      <PropertyRef Name="id_order_detail" />
+    </Key>
+    <Property Name="id_order_slip" Type="Int64" Nullable="false" />
+    <Property Name="id_order_detail" Type="Int64" Nullable="false" />
+    <Property Name="product_quantity" Type="Int64" Nullable="false" />
+    <Property Name="amount_tax_excl" Type="Decimal" />
+    <Property Name="amount_tax_incl" Type="Decimal" />
+  </EntityType>
+  <EntityType Name="ps_order_state">
+    <Key>
+      <PropertyRef Name="id_order_state" />
+    </Key>
+    <Property Name="id_order_state" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="invoice" Type="Boolean" />
+    <Property Name="send_email" Type="Boolean" Nullable="false" />
+    <Property Name="module_name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="color" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="unremovable" Type="Boolean" Nullable="false" />
+    <Property Name="hidden" Type="Boolean" Nullable="false" />
+    <Property Name="logable" Type="Boolean" Nullable="false" />
+    <Property Name="delivery" Type="Boolean" Nullable="false" />
+    <Property Name="shipped" Type="Boolean" Nullable="false" />
+    <Property Name="paid" Type="Boolean" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_order_state_lang">
+    <Key>
+      <PropertyRef Name="id_order_state" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_order_state" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="template" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_orders">
+    <Key>
+      <PropertyRef Name="id_order" />
+    </Key>
+    <Property Name="id_order" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="reference" Type="String" MaxLength="9" Unicode="false" FixedLength="false" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="id_cart" Type="Int64" Nullable="false" />
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+    <Property Name="id_address_delivery" Type="Int64" Nullable="false" />
+    <Property Name="id_address_invoice" Type="Int64" Nullable="false" />
+    <Property Name="current_state" Type="Int64" Nullable="false" />
+    <Property Name="secure_key" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="payment" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="conversion_rate" Type="Decimal" Nullable="false" />
+    <Property Name="module" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="recyclable" Type="Boolean" Nullable="false" />
+    <Property Name="gift" Type="Boolean" Nullable="false" />
+    <Property Name="gift_message" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="mobile_theme" Type="Boolean" Nullable="false" />
+    <Property Name="shipping_number" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="total_discounts" Type="Decimal" Nullable="false" />
+    <Property Name="total_discounts_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="total_discounts_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="total_paid" Type="Decimal" Nullable="false" />
+    <Property Name="total_paid_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="total_paid_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="total_paid_real" Type="Decimal" Nullable="false" />
+    <Property Name="total_products" Type="Decimal" Nullable="false" />
+    <Property Name="total_products_wt" Type="Decimal" Nullable="false" />
+    <Property Name="total_shipping" Type="Decimal" Nullable="false" />
+    <Property Name="total_shipping_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="total_shipping_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="carrier_tax_rate" Type="Decimal" Nullable="false" />
+    <Property Name="total_wrapping" Type="Decimal" Nullable="false" />
+    <Property Name="total_wrapping_tax_incl" Type="Decimal" Nullable="false" />
+    <Property Name="total_wrapping_tax_excl" Type="Decimal" Nullable="false" />
+    <Property Name="invoice_number" Type="Int64" Nullable="false" />
+    <Property Name="delivery_number" Type="Int64" Nullable="false" />
+    <Property Name="invoice_date" Type="DateTime" Nullable="false" />
+    <Property Name="delivery_date" Type="DateTime" Nullable="false" />
+    <Property Name="valid" Type="Int64" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_pack">
+    <Key>
+      <PropertyRef Name="id_product_pack" />
+      <PropertyRef Name="id_product_item" />
+    </Key>
+    <Property Name="id_product_pack" Type="Int64" Nullable="false" />
+    <Property Name="id_product_item" Type="Int64" Nullable="false" />
+    <Property Name="quantity" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_page">
+    <Key>
+      <PropertyRef Name="id_page" />
+    </Key>
+    <Property Name="id_page" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_page_type" Type="Int64" Nullable="false" />
+    <Property Name="id_object" Type="Int64" />
+  </EntityType>
+  <EntityType Name="ps_page_type">
+    <Key>
+      <PropertyRef Name="id_page_type" />
+    </Key>
+    <Property Name="id_page_type" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_page_viewed">
+    <Key>
+      <PropertyRef Name="id_page" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="id_date_range" />
+    </Key>
+    <Property Name="id_page" Type="Int64" Nullable="false" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_date_range" Type="Int64" Nullable="false" />
+    <Property Name="counter" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_pagenotfound">
+    <Key>
+      <PropertyRef Name="id_pagenotfound" />
+    </Key>
+    <Property Name="id_pagenotfound" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="request_uri" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
+    <Property Name="http_referer" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product">
+    <Key>
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_product" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_supplier" Type="Int64" />
+    <Property Name="id_manufacturer" Type="Int64" />
+    <Property Name="id_category_default" Type="Int64" />
+    <Property Name="id_shop_default" Type="Int64" Nullable="false" />
+    <Property Name="id_tax_rules_group" Type="Int64" Nullable="false" />
+    <Property Name="on_sale" Type="Boolean" Nullable="false" />
+    <Property Name="online_only" Type="Boolean" Nullable="false" />
+    <Property Name="ean13" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="upc" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="ecotax" Type="Decimal" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="minimal_quantity" Type="Int64" Nullable="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" />
+    <Property Name="wholesale_price" Type="Decimal" Nullable="false" />
+    <Property Name="unity" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="unit_price_ratio" Type="Decimal" Nullable="false" />
+    <Property Name="additional_shipping_cost" Type="Decimal" Nullable="false" />
+    <Property Name="reference" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="supplier_reference" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="location" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="width" Type="Decimal" Nullable="false" />
+    <Property Name="height" Type="Decimal" Nullable="false" />
+    <Property Name="depth" Type="Decimal" Nullable="false" />
+    <Property Name="weight" Type="Decimal" Nullable="false" />
+    <Property Name="out_of_stock" Type="Int64" Nullable="false" />
+    <Property Name="quantity_discount" Type="Boolean" />
+    <Property Name="customizable" Type="SByte" Nullable="false" />
+    <Property Name="uploadable_files" Type="SByte" Nullable="false" />
+    <Property Name="text_fields" Type="SByte" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="redirect_type" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="id_product_redirected" Type="Int64" Nullable="false" />
+    <Property Name="available_for_order" Type="Boolean" Nullable="false" />
+    <Property Name="available_date" Type="DateTime" Nullable="false" />
+    <Property Name="condition" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="show_price" Type="Boolean" Nullable="false" />
+    <Property Name="indexed" Type="Boolean" Nullable="false" />
+    <Property Name="visibility" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="cache_is_pack" Type="Boolean" Nullable="false" />
+    <Property Name="cache_has_attachments" Type="Boolean" Nullable="false" />
+    <Property Name="is_virtual" Type="Boolean" Nullable="false" />
+    <Property Name="cache_default_attribute" Type="Int64" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+    <Property Name="advanced_stock_management" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_attachment">
+    <Key>
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_attachment" />
+    </Key>
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_attachment" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_attribute">
+    <Key>
+      <PropertyRef Name="id_product_attribute" />
+    </Key>
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="reference" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="supplier_reference" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="location" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="ean13" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="upc" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="wholesale_price" Type="Decimal" Nullable="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" />
+    <Property Name="ecotax" Type="Decimal" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="weight" Type="Decimal" Nullable="false" />
+    <Property Name="unit_price_impact" Type="Decimal" Nullable="false" />
+    <Property Name="default_on" Type="Boolean" Nullable="false" />
+    <Property Name="minimal_quantity" Type="Int64" Nullable="false" />
+    <Property Name="available_date" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_attribute_combination">
+    <Key>
+      <PropertyRef Name="id_attribute" />
+      <PropertyRef Name="id_product_attribute" />
+    </Key>
+    <Property Name="id_attribute" Type="Int64" Nullable="false" />
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_attribute_image">
+    <Key>
+      <PropertyRef Name="id_product_attribute" />
+      <PropertyRef Name="id_image" />
+    </Key>
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" />
+    <Property Name="id_image" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_attribute_shop">
+    <Key>
+      <PropertyRef Name="id_product_attribute" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="wholesale_price" Type="Decimal" Nullable="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" />
+    <Property Name="ecotax" Type="Decimal" Nullable="false" />
+    <Property Name="weight" Type="Decimal" Nullable="false" />
+    <Property Name="unit_price_impact" Type="Decimal" Nullable="false" />
+    <Property Name="default_on" Type="Boolean" Nullable="false" />
+    <Property Name="minimal_quantity" Type="Int64" Nullable="false" />
+    <Property Name="available_date" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_carrier">
+    <Key>
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_carrier_reference" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_carrier_reference" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_country_tax">
+    <Key>
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_country" />
+    </Key>
+    <Property Name="id_product" Type="Int32" Nullable="false" />
+    <Property Name="id_country" Type="Int32" Nullable="false" />
+    <Property Name="id_tax" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_download">
+    <Key>
+      <PropertyRef Name="id_product_download" />
+    </Key>
+    <Property Name="id_product_download" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="display_filename" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="filename" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_expiration" Type="DateTime" />
+    <Property Name="nb_days_accessible" Type="Int64" />
+    <Property Name="nb_downloadable" Type="Int64" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="is_shareable" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_group_reduction_cache">
+    <Key>
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_group" />
+    </Key>
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+    <Property Name="reduction" Type="Decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_lang">
+    <Key>
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="description_short" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="link_rewrite" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="meta_description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="meta_keywords" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="meta_title" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="available_now" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="available_later" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_product_sale">
+    <Key>
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="quantity" Type="Int64" Nullable="false" />
+    <Property Name="sale_nbr" Type="Int64" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_shop">
+    <Key>
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_category_default" Type="Int64" />
+    <Property Name="id_tax_rules_group" Type="Int64" Nullable="false" />
+    <Property Name="on_sale" Type="Boolean" Nullable="false" />
+    <Property Name="online_only" Type="Boolean" Nullable="false" />
+    <Property Name="ecotax" Type="Decimal" Nullable="false" />
+    <Property Name="minimal_quantity" Type="Int64" Nullable="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" />
+    <Property Name="wholesale_price" Type="Decimal" Nullable="false" />
+    <Property Name="unity" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="unit_price_ratio" Type="Decimal" Nullable="false" />
+    <Property Name="additional_shipping_cost" Type="Decimal" Nullable="false" />
+    <Property Name="customizable" Type="SByte" Nullable="false" />
+    <Property Name="uploadable_files" Type="SByte" Nullable="false" />
+    <Property Name="text_fields" Type="SByte" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="redirect_type" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="id_product_redirected" Type="Int64" Nullable="false" />
+    <Property Name="available_for_order" Type="Boolean" Nullable="false" />
+    <Property Name="available_date" Type="DateTime" Nullable="false" />
+    <Property Name="condition" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="show_price" Type="Boolean" Nullable="false" />
+    <Property Name="indexed" Type="Boolean" Nullable="false" />
+    <Property Name="visibility" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="cache_default_attribute" Type="Int64" />
+    <Property Name="advanced_stock_management" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_supplier">
+    <Key>
+      <PropertyRef Name="id_product_supplier" />
+    </Key>
+    <Property Name="id_product_supplier" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" />
+    <Property Name="id_supplier" Type="Int64" Nullable="false" />
+    <Property Name="product_supplier_reference" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="product_supplier_price_te" Type="Decimal" Nullable="false" />
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_product_tag">
+    <Key>
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_tag" />
+    </Key>
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_tag" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_profile">
+    <Key>
+      <PropertyRef Name="id_profile" />
+    </Key>
+    <Property Name="id_profile" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="ps_profile_lang">
+    <Key>
+      <PropertyRef Name="id_lang" />
+      <PropertyRef Name="id_profile" />
+    </Key>
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="id_profile" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_quick_access">
+    <Key>
+      <PropertyRef Name="id_quick_access" />
+    </Key>
+    <Property Name="id_quick_access" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="new_window" Type="Boolean" Nullable="false" />
+    <Property Name="link" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_quick_access_lang">
+    <Key>
+      <PropertyRef Name="id_quick_access" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_quick_access" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_range_price">
+    <Key>
+      <PropertyRef Name="id_range_price" />
+    </Key>
+    <Property Name="id_range_price" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="delimiter1" Type="Decimal" Nullable="false" />
+    <Property Name="delimiter2" Type="Decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_range_weight">
+    <Key>
+      <PropertyRef Name="id_range_weight" />
+    </Key>
+    <Property Name="id_range_weight" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="delimiter1" Type="Decimal" Nullable="false" />
+    <Property Name="delimiter2" Type="Decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_referrer">
+    <Key>
+      <PropertyRef Name="id_referrer" />
+    </Key>
+    <Property Name="id_referrer" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="passwd" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="http_referer_regexp" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="http_referer_like" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="request_uri_regexp" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="request_uri_like" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="http_referer_regexp_not" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="http_referer_like_not" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="request_uri_regexp_not" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="request_uri_like_not" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="base_fee" Type="Decimal" Nullable="false" />
+    <Property Name="percent_fee" Type="Decimal" Nullable="false" />
+    <Property Name="click_fee" Type="Decimal" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_referrer_cache">
+    <Key>
+      <PropertyRef Name="id_connections_source" />
+      <PropertyRef Name="id_referrer" />
+    </Key>
+    <Property Name="id_connections_source" Type="Int64" Nullable="false" />
+    <Property Name="id_referrer" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_referrer_shop">
+    <Key>
+      <PropertyRef Name="id_referrer" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_referrer" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="cache_visitors" Type="Int32" />
+    <Property Name="cache_visits" Type="Int32" />
+    <Property Name="cache_pages" Type="Int32" />
+    <Property Name="cache_registrations" Type="Int32" />
+    <Property Name="cache_orders" Type="Int32" />
+    <Property Name="cache_sales" Type="Decimal" />
+    <Property Name="cache_reg_rate" Type="Decimal" />
+    <Property Name="cache_order_rate" Type="Decimal" />
+  </EntityType>
+  <EntityType Name="ps_reinsurance">
+    <Key>
+      <PropertyRef Name="id_reinsurance" />
+    </Key>
+    <Property Name="id_reinsurance" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="file_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_reinsurance_lang">
+    <Key>
+      <PropertyRef Name="id_reinsurance" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_reinsurance" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="text" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_request_sql">
+    <Key>
+      <PropertyRef Name="id_request_sql" />
+    </Key>
+    <Property Name="id_request_sql" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="sql" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_required_field">
+    <Key>
+      <PropertyRef Name="id_required_field" />
+    </Key>
+    <Property Name="id_required_field" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="object_name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="field_name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_risk">
+    <Key>
+      <PropertyRef Name="id_risk" />
+    </Key>
+    <Property Name="id_risk" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="percent" Type="SByte" Nullable="false" />
+    <Property Name="color" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_risk_lang">
+    <Key>
+      <PropertyRef Name="id_risk" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_risk" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_scene">
+    <Key>
+      <PropertyRef Name="id_scene" />
+    </Key>
+    <Property Name="id_scene" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_scene_category">
+    <Key>
+      <PropertyRef Name="id_scene" />
+      <PropertyRef Name="id_category" />
+    </Key>
+    <Property Name="id_scene" Type="Int64" Nullable="false" />
+    <Property Name="id_category" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_scene_lang">
+    <Key>
+      <PropertyRef Name="id_scene" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_scene" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_scene_products">
+    <Key>
+      <PropertyRef Name="id_scene" />
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="x_axis" />
+      <PropertyRef Name="y_axis" />
+    </Key>
+    <Property Name="id_scene" Type="Int64" Nullable="false" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="x_axis" Type="Int32" Nullable="false" />
+    <Property Name="y_axis" Type="Int32" Nullable="false" />
+    <Property Name="zone_width" Type="Int32" Nullable="false" />
+    <Property Name="zone_height" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_scene_shop">
+    <Key>
+      <PropertyRef Name="id_scene" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_scene" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_search_engine">
+    <Key>
+      <PropertyRef Name="id_search_engine" />
+    </Key>
+    <Property Name="id_search_engine" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="server" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="getvar" Type="String" Nullable="false" MaxLength="16" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_search_index">
+    <Key>
+      <PropertyRef Name="id_product" />
+      <PropertyRef Name="id_word" />
+    </Key>
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_word" Type="Int64" Nullable="false" />
+    <Property Name="weight" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_search_word">
+    <Key>
+      <PropertyRef Name="id_word" />
+    </Key>
+    <Property Name="id_word" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="word" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_sekeyword">
+    <Key>
+      <PropertyRef Name="id_sekeyword" />
+    </Key>
+    <Property Name="id_sekeyword" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="keyword" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_shop">
+    <Key>
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_shop" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="id_category" Type="Int64" Nullable="false" />
+    <Property Name="id_theme" Type="Int64" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_shop_group">
+    <Key>
+      <PropertyRef Name="id_shop_group" />
+    </Key>
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="share_customer" Type="Boolean" Nullable="false" />
+    <Property Name="share_order" Type="Boolean" Nullable="false" />
+    <Property Name="share_stock" Type="Boolean" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_shop_url">
+    <Key>
+      <PropertyRef Name="id_shop_url" />
+    </Key>
+    <Property Name="id_shop_url" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="domain" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="domain_ssl" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="physical_uri" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="virtual_uri" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="main" Type="Boolean" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_specific_price">
+    <Key>
+      <PropertyRef Name="id_specific_price" />
+    </Key>
+    <Property Name="id_specific_price" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_specific_price_rule" Type="Int64" Nullable="false" />
+    <Property Name="id_cart" Type="Int64" Nullable="false" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+    <Property Name="id_country" Type="Int64" Nullable="false" />
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+    <Property Name="id_customer" Type="Int64" Nullable="false" />
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" />
+    <Property Name="from_quantity" Type="Int32" Nullable="false" />
+    <Property Name="reduction" Type="Decimal" Nullable="false" />
+    <Property Name="reduction_type" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="from" Type="DateTime" Nullable="false" />
+    <Property Name="to" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_specific_price_priority">
+    <Key>
+      <PropertyRef Name="id_specific_price_priority" />
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_specific_price_priority" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product" Type="Int32" Nullable="false" />
+    <Property Name="priority" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_specific_price_rule">
+    <Key>
+      <PropertyRef Name="id_specific_price_rule" />
+    </Key>
+    <Property Name="id_specific_price_rule" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+    <Property Name="id_country" Type="Int64" Nullable="false" />
+    <Property Name="id_group" Type="Int64" Nullable="false" />
+    <Property Name="from_quantity" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Decimal" />
+    <Property Name="reduction" Type="Decimal" Nullable="false" />
+    <Property Name="reduction_type" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="from" Type="DateTime" Nullable="false" />
+    <Property Name="to" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_specific_price_rule_condition">
+    <Key>
+      <PropertyRef Name="id_specific_price_rule_condition" />
+    </Key>
+    <Property Name="id_specific_price_rule_condition" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_specific_price_rule_condition_group" Type="Int64" Nullable="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="value" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_specific_price_rule_condition_group">
+    <Key>
+      <PropertyRef Name="id_specific_price_rule_condition_group" />
+      <PropertyRef Name="id_specific_price_rule" />
+    </Key>
+    <Property Name="id_specific_price_rule_condition_group" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_specific_price_rule" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_state">
+    <Key>
+      <PropertyRef Name="id_state" />
+    </Key>
+    <Property Name="id_state" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_country" Type="Int64" Nullable="false" />
+    <Property Name="id_zone" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="iso_code" Type="String" Nullable="false" MaxLength="7" Unicode="false" FixedLength="false" />
+    <Property Name="tax_behavior" Type="Int16" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_statssearch">
+    <Key>
+      <PropertyRef Name="id_statssearch" />
+    </Key>
+    <Property Name="id_statssearch" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="keywords" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="results" Type="Int32" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_stock">
+    <Key>
+      <PropertyRef Name="id_stock" />
+    </Key>
+    <Property Name="id_stock" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_warehouse" Type="Int64" Nullable="false" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" />
+    <Property Name="reference" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="ean13" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="upc" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="physical_quantity" Type="Int64" Nullable="false" />
+    <Property Name="usable_quantity" Type="Int64" Nullable="false" />
+    <Property Name="price_te" Type="Decimal" />
+  </EntityType>
+  <EntityType Name="ps_stock_available">
+    <Key>
+      <PropertyRef Name="id_stock_available" />
+    </Key>
+    <Property Name="id_stock_available" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_shop_group" Type="Int64" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="depends_on_stock" Type="Boolean" Nullable="false" />
+    <Property Name="out_of_stock" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_stock_mvt">
+    <Key>
+      <PropertyRef Name="id_stock_mvt" />
+    </Key>
+    <Property Name="id_stock_mvt" Type="Decimal" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_stock" Type="Int64" Nullable="false" />
+    <Property Name="id_order" Type="Int64" />
+    <Property Name="id_supply_order" Type="Int64" />
+    <Property Name="id_stock_mvt_reason" Type="Int64" Nullable="false" />
+    <Property Name="id_employee" Type="Int64" Nullable="false" />
+    <Property Name="employee_lastname" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="employee_firstname" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="physical_quantity" Type="Int64" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="sign" Type="Boolean" Nullable="false" />
+    <Property Name="price_te" Type="Decimal" />
+    <Property Name="last_wa" Type="Decimal" />
+    <Property Name="current_wa" Type="Decimal" />
+    <Property Name="referer" Type="Decimal" />
+  </EntityType>
+  <EntityType Name="ps_stock_mvt_reason">
+    <Key>
+      <PropertyRef Name="id_stock_mvt_reason" />
+    </Key>
+    <Property Name="id_stock_mvt_reason" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="sign" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_stock_mvt_reason_lang">
+    <Key>
+      <PropertyRef Name="id_stock_mvt_reason" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_stock_mvt_reason" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_store">
+    <Key>
+      <PropertyRef Name="id_store" />
+    </Key>
+    <Property Name="id_store" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_country" Type="Int64" Nullable="false" />
+    <Property Name="id_state" Type="Int64" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="address1" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="address2" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="postcode" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="latitude" Type="Decimal" />
+    <Property Name="longitude" Type="Decimal" />
+    <Property Name="hours" Type="String" MaxLength="254" Unicode="false" FixedLength="false" />
+    <Property Name="phone" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
+    <Property Name="fax" Type="String" MaxLength="16" Unicode="false" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="note" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_store_shop">
+    <Key>
+      <PropertyRef Name="id_store" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_store" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_supplier">
+    <Key>
+      <PropertyRef Name="id_supplier" />
+    </Key>
+    <Property Name="id_supplier" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_supplier_lang">
+    <Key>
+      <PropertyRef Name="id_supplier" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_supplier" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="meta_title" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="meta_keywords" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="meta_description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_supplier_shop">
+    <Key>
+      <PropertyRef Name="id_supplier" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_supplier" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_supply_order">
+    <Key>
+      <PropertyRef Name="id_supply_order" />
+    </Key>
+    <Property Name="id_supply_order" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_supplier" Type="Int64" Nullable="false" />
+    <Property Name="supplier_name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="id_warehouse" Type="Int64" Nullable="false" />
+    <Property Name="id_supply_order_state" Type="Int64" Nullable="false" />
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+    <Property Name="id_ref_currency" Type="Int64" Nullable="false" />
+    <Property Name="reference" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+    <Property Name="date_upd" Type="DateTime" Nullable="false" />
+    <Property Name="date_delivery_expected" Type="DateTime" />
+    <Property Name="total_te" Type="Decimal" />
+    <Property Name="total_with_discount_te" Type="Decimal" />
+    <Property Name="total_tax" Type="Decimal" />
+    <Property Name="total_ti" Type="Decimal" />
+    <Property Name="discount_rate" Type="Decimal" />
+    <Property Name="discount_value_te" Type="Decimal" />
+    <Property Name="is_template" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ps_supply_order_detail">
+    <Key>
+      <PropertyRef Name="id_supply_order_detail" />
+    </Key>
+    <Property Name="id_supply_order_detail" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_supply_order" Type="Int64" Nullable="false" />
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" />
+    <Property Name="reference" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="supplier_reference" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="ean13" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+    <Property Name="upc" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="exchange_rate" Type="Decimal" />
+    <Property Name="unit_price_te" Type="Decimal" />
+    <Property Name="quantity_expected" Type="Int64" Nullable="false" />
+    <Property Name="quantity_received" Type="Int64" Nullable="false" />
+    <Property Name="price_te" Type="Decimal" />
+    <Property Name="discount_rate" Type="Decimal" />
+    <Property Name="discount_value_te" Type="Decimal" />
+    <Property Name="price_with_discount_te" Type="Decimal" />
+    <Property Name="tax_rate" Type="Decimal" />
+    <Property Name="tax_value" Type="Decimal" />
+    <Property Name="price_ti" Type="Decimal" />
+    <Property Name="tax_value_with_order_discount" Type="Decimal" />
+    <Property Name="price_with_order_discount_te" Type="Decimal" />
+  </EntityType>
+  <EntityType Name="ps_supply_order_history">
+    <Key>
+      <PropertyRef Name="id_supply_order_history" />
+    </Key>
+    <Property Name="id_supply_order_history" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_supply_order" Type="Int64" Nullable="false" />
+    <Property Name="id_employee" Type="Int64" Nullable="false" />
+    <Property Name="employee_lastname" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="employee_firstname" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="id_state" Type="Int64" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_supply_order_receipt_history">
+    <Key>
+      <PropertyRef Name="id_supply_order_receipt_history" />
+    </Key>
+    <Property Name="id_supply_order_receipt_history" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_supply_order_detail" Type="Int64" Nullable="false" />
+    <Property Name="id_employee" Type="Int64" Nullable="false" />
+    <Property Name="employee_lastname" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="employee_firstname" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="id_supply_order_state" Type="Int64" Nullable="false" />
+    <Property Name="quantity" Type="Int64" Nullable="false" />
+    <Property Name="date_add" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_supply_order_state">
+    <Key>
+      <PropertyRef Name="id_supply_order_state" />
+    </Key>
+    <Property Name="id_supply_order_state" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="delivery_note" Type="Boolean" Nullable="false" />
+    <Property Name="editable" Type="Boolean" Nullable="false" />
+    <Property Name="receipt_state" Type="Boolean" Nullable="false" />
+    <Property Name="pending_receipt" Type="Boolean" Nullable="false" />
+    <Property Name="enclosed" Type="Boolean" Nullable="false" />
+    <Property Name="color" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_supply_order_state_lang">
+    <Key>
+      <PropertyRef Name="id_supply_order_state" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_supply_order_state" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_tab">
+    <Key>
+      <PropertyRef Name="id_tab" />
+    </Key>
+    <Property Name="id_tab" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_parent" Type="Int32" Nullable="false" />
+    <Property Name="class_name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="module" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="position" Type="Int64" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_tab_lang">
+    <Key>
+      <PropertyRef Name="id_tab" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_tab" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_tab_module_preference">
+    <Key>
+      <PropertyRef Name="id_tab_module_preference" />
+    </Key>
+    <Property Name="id_tab_module_preference" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_employee" Type="Int32" Nullable="false" />
+    <Property Name="id_tab" Type="Int32" Nullable="false" />
+    <Property Name="module" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_tag">
+    <Key>
+      <PropertyRef Name="id_tag" />
+    </Key>
+    <Property Name="id_tag" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_tax">
+    <Key>
+      <PropertyRef Name="id_tax" />
+    </Key>
+    <Property Name="id_tax" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="rate" Type="Decimal" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_tax_lang">
+    <Key>
+      <PropertyRef Name="id_tax" />
+      <PropertyRef Name="id_lang" />
+    </Key>
+    <Property Name="id_tax" Type="Int64" Nullable="false" />
+    <Property Name="id_lang" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_tax_rule">
+    <Key>
+      <PropertyRef Name="id_tax_rule" />
+    </Key>
+    <Property Name="id_tax_rule" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_tax_rules_group" Type="Int32" Nullable="false" />
+    <Property Name="id_country" Type="Int32" Nullable="false" />
+    <Property Name="id_state" Type="Int32" Nullable="false" />
+    <Property Name="zipcode_from" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="zipcode_to" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="id_tax" Type="Int32" Nullable="false" />
+    <Property Name="behavior" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_tax_rules_group">
+    <Key>
+      <PropertyRef Name="id_tax_rules_group" />
+    </Key>
+    <Property Name="id_tax_rules_group" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_tax_rules_group_shop">
+    <Key>
+      <PropertyRef Name="id_tax_rules_group" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_tax_rules_group" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_theme">
+    <Key>
+      <PropertyRef Name="id_theme" />
+    </Key>
+    <Property Name="id_theme" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="directory" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_theme_specific">
+    <Key>
+      <PropertyRef Name="id_theme" />
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="entity" />
+      <PropertyRef Name="id_object" />
+    </Key>
+    <Property Name="id_theme" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="entity" Type="Int64" Nullable="false" />
+    <Property Name="id_object" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_timezone">
+    <Key>
+      <PropertyRef Name="id_timezone" />
+    </Key>
+    <Property Name="id_timezone" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_warehouse">
+    <Key>
+      <PropertyRef Name="id_warehouse" />
+    </Key>
+    <Property Name="id_warehouse" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_currency" Type="Int64" Nullable="false" />
+    <Property Name="id_address" Type="Int64" Nullable="false" />
+    <Property Name="id_employee" Type="Int64" Nullable="false" />
+    <Property Name="reference" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="management_type" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_warehouse_carrier">
+    <Key>
+      <PropertyRef Name="id_carrier" />
+      <PropertyRef Name="id_warehouse" />
+    </Key>
+    <Property Name="id_carrier" Type="Int64" Nullable="false" />
+    <Property Name="id_warehouse" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_warehouse_product_location">
+    <Key>
+      <PropertyRef Name="id_warehouse_product_location" />
+    </Key>
+    <Property Name="id_warehouse_product_location" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_product" Type="Int64" Nullable="false" />
+    <Property Name="id_product_attribute" Type="Int64" Nullable="false" />
+    <Property Name="id_warehouse" Type="Int64" Nullable="false" />
+    <Property Name="location" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_warehouse_shop">
+    <Key>
+      <PropertyRef Name="id_shop" />
+      <PropertyRef Name="id_warehouse" />
+    </Key>
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+    <Property Name="id_warehouse" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_web_browser">
+    <Key>
+      <PropertyRef Name="id_web_browser" />
+    </Key>
+    <Property Name="id_web_browser" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ps_webservice_account">
+    <Key>
+      <PropertyRef Name="id_webservice_account" />
+    </Key>
+    <Property Name="id_webservice_account" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="key" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="class_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="is_module" Type="SByte" Nullable="false" />
+    <Property Name="module_name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="SByte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_webservice_account_shop">
+    <Key>
+      <PropertyRef Name="id_webservice_account" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_webservice_account" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_webservice_permission">
+    <Key>
+      <PropertyRef Name="id_webservice_permission" />
+    </Key>
+    <Property Name="id_webservice_permission" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="resource" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="method" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+    <Property Name="id_webservice_account" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_zone">
+    <Key>
+      <PropertyRef Name="id_zone" />
+    </Key>
+    <Property Name="id_zone" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ps_zone_shop">
+    <Key>
+      <PropertyRef Name="id_zone" />
+      <PropertyRef Name="id_shop" />
+    </Key>
+    <Property Name="id_zone" Type="Int64" Nullable="false" />
+    <Property Name="id_shop" Type="Int64" Nullable="false" />
+  </EntityType>
+</Schema>

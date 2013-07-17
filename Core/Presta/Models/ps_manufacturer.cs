@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace PrestaSharp.Models
 {
-    public class ps_manufacturer
+    public class ps_manufacturer    
     {
-        public long id_manufacturer { get; set; }
+        public long id { get; set; }
         public string name { get; set; }
         public System.DateTime date_add { get; set; }
         public System.DateTime date_upd { get; set; }

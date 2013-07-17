@@ -36,3 +36,5 @@ C:\GitHub\ACE\Desktop\bin\Debug\Core.pdb
 C:\GitHub\ACE\Desktop\bin\Debug\EntityFramework.xml
 C:\GitHub\ACE\Desktop\bin\Debug\LINQtoCSV.pdb
 C:\GitHub\ACE\Desktop\bin\Debug\RestSharp.xml
+C:\GitHub\ACE\Desktop\bin\Debug\PrestaSharp.dll
+C:\GitHub\ACE\Desktop\bin\Debug\PrestaSharp.pdb

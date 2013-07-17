@@ -11,80 +11,50 @@ namespace Core.Presta
 {
     public class RESTAccessor//<T> where T : class 
     {
+        //IRestResponse response = restClient.Execute(request);
+        //var content = response.Content; // raw content as string
         //http://testpresta.mzf.cz/prestashop/api/manufacturers
 
-        private RestClient restClient;
+        protected RestClient restClient;
         public RESTAccessor(string Url, string Token)
         {
-            Url = "http://testpresta.mzf.cz/prestashop/";
-            Token = "BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8";
             restClient = new RestClient(Url);
             restClient.Authenticator = new HttpBasicAuthenticator(Token, "");
         }
 
-        public ps_manufacturer GetManufacturer(string id)
+        protected ps_manufacturer Get(string segment, string id)
         {
             var request = new RestRequest(Method.GET);
-            request.Resource = "api/manufacturers/{CallSid}";
-
+            request.Resource = "api/{CallParam}/{CallSid}";
+            
+            request.AddParameter("CallParam", segment, ParameterType.UrlSegment);
             request.AddParameter("CallSid", id, ParameterType.UrlSegment);
 
             return restClient.Execute<ps_manufacturer>(request).Data;
         }
 
-        public class Manufacturers
-        {
-            public List<ps_manufacturer> manufacturers { get; set; }
-        }
-
-        public List<ps_manufacturer> Receive(string requestString)
-        {
-            List<ps_manufacturer> result = new List<ps_manufacturer>();
-            requestString = "api/manufacturers/?display=full";
-            IRestRequest request = new RestRequest(requestString, Method.GET);
-            Manufacturers man = new Manufacturers();
-            
-            var xids = restClient.Execute<Manufacturers>(request).Data;
-
-            IRestResponse response = restClient.Execute(request);
-            var content = response.Content; // raw content as string
-            
-            return result;
-        }
-
-        public void DeleteManufacturer(string id)
+        protected void Delete(string segment, string id)
         {
             var request = new RestRequest(Method.DELETE);
-            request.Resource = "api/manufacturers/{CallSid}";
+            request.Resource = "api/{CallParam}/{CallSid}";
 
+            request.AddParameter("CallParam", segment, ParameterType.UrlSegment);
             request.AddParameter("CallSid", id, ParameterType.UrlSegment);
 
             restClient.Execute<ps_manufacturer>(request);
         }
 
-        public void CreateManufacturer(ps_manufacturer item)
+        public void Update(string segment, string id, List<KeyValuePair<string,string>> parameters)
         {
-            //var request = new RestRequest(Method.POST);
+            //var request = new RestRequest(Method.PATCH);
             //request.Resource = "api/manufacturers/{CallSid}";
 
-            //request.AddParameter("CallSid", id, ParameterType.UrlSegment);
+            //request.AddParameter("name", item.name);
+            //request.AddParameter("date_add", item.date_add);
+            //request.AddParameter("date_upd", item.date_upd);
+            //request.AddParameter("active", item.active);
 
             //restClient.Execute<ps_manufacturer>(request);
-        }
-
-
-        public void UpdateManufacturer(ps_manufacturer item)
-        {
-            var request = new RestRequest(Method.PATCH );
-            request.Resource = "api/manufacturers/{CallSid}";
-
-            request.AddParameter("id_manufacturer", item.id_manufacturer);
-            request.AddParameter("name", item.name);
-            request.AddParameter("date_add", item.date_add);
-            request.AddParameter("date_upd", item.date_upd);
-            request.AddParameter("active", item.active);
-            
-            restClient.Execute<ps_manufacturer>(request);
         }
     }
 }

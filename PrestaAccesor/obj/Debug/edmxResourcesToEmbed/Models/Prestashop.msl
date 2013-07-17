@@ -1,0 +1,2914 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelsPrestashopStoreContainer" CdmEntityContainer="PrestashopConnection">
+    <EntitySetMapping Name="ps_access">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_access">
+        <MappingFragment StoreEntitySet="ps_access">
+          <ScalarProperty Name="id_profile" ColumnName="id_profile" />
+          <ScalarProperty Name="id_tab" ColumnName="id_tab" />
+          <ScalarProperty Name="view" ColumnName="view" />
+          <ScalarProperty Name="add" ColumnName="add" />
+          <ScalarProperty Name="edit" ColumnName="edit" />
+          <ScalarProperty Name="delete" ColumnName="delete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_accessory">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_accessory">
+        <MappingFragment StoreEntitySet="ps_accessory">
+          <ScalarProperty Name="id_product_1" ColumnName="id_product_1" />
+          <ScalarProperty Name="id_product_2" ColumnName="id_product_2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_address">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_address">
+        <MappingFragment StoreEntitySet="ps_address">
+          <ScalarProperty Name="id_address" ColumnName="id_address" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="id_state" ColumnName="id_state" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_manufacturer" ColumnName="id_manufacturer" />
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="id_warehouse" ColumnName="id_warehouse" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="address1" ColumnName="address1" />
+          <ScalarProperty Name="address2" ColumnName="address2" />
+          <ScalarProperty Name="postcode" ColumnName="postcode" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="other" ColumnName="other" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="phone_mobile" ColumnName="phone_mobile" />
+          <ScalarProperty Name="vat_number" ColumnName="vat_number" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_address_format">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_address_format">
+        <MappingFragment StoreEntitySet="ps_address_format">
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="format" ColumnName="format" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_advice">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_advice">
+        <MappingFragment StoreEntitySet="ps_advice">
+          <ScalarProperty Name="id_advice" ColumnName="id_advice" />
+          <ScalarProperty Name="id_ps_advice" ColumnName="id_ps_advice" />
+          <ScalarProperty Name="id_tab" ColumnName="id_tab" />
+          <ScalarProperty Name="validated" ColumnName="validated" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="selector" ColumnName="selector" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_advice_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_advice_lang">
+        <MappingFragment StoreEntitySet="ps_advice_lang">
+          <ScalarProperty Name="id_advice" ColumnName="id_advice" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="html" ColumnName="html" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_alias">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_alias">
+        <MappingFragment StoreEntitySet="ps_alias">
+          <ScalarProperty Name="id_alias" ColumnName="id_alias" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="search" ColumnName="search" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_attachment">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_attachment">
+        <MappingFragment StoreEntitySet="ps_attachment">
+          <ScalarProperty Name="id_attachment" ColumnName="id_attachment" />
+          <ScalarProperty Name="file" ColumnName="file" />
+          <ScalarProperty Name="file_name" ColumnName="file_name" />
+          <ScalarProperty Name="mime" ColumnName="mime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_attachment_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_attachment_lang">
+        <MappingFragment StoreEntitySet="ps_attachment_lang">
+          <ScalarProperty Name="id_attachment" ColumnName="id_attachment" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_attribute">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_attribute">
+        <MappingFragment StoreEntitySet="ps_attribute">
+          <ScalarProperty Name="id_attribute" ColumnName="id_attribute" />
+          <ScalarProperty Name="id_attribute_group" ColumnName="id_attribute_group" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_attribute_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_attribute_group">
+        <MappingFragment StoreEntitySet="ps_attribute_group">
+          <ScalarProperty Name="id_attribute_group" ColumnName="id_attribute_group" />
+          <ScalarProperty Name="is_color_group" ColumnName="is_color_group" />
+          <ScalarProperty Name="group_type" ColumnName="group_type" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_attribute_group_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_attribute_group_lang">
+        <MappingFragment StoreEntitySet="ps_attribute_group_lang">
+          <ScalarProperty Name="id_attribute_group" ColumnName="id_attribute_group" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="public_name" ColumnName="public_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_attribute_group_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_attribute_group_shop">
+        <MappingFragment StoreEntitySet="ps_attribute_group_shop">
+          <ScalarProperty Name="id_attribute_group" ColumnName="id_attribute_group" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_attribute_impact">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_attribute_impact">
+        <MappingFragment StoreEntitySet="ps_attribute_impact">
+          <ScalarProperty Name="id_attribute_impact" ColumnName="id_attribute_impact" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_attribute" ColumnName="id_attribute" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_attribute_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_attribute_lang">
+        <MappingFragment StoreEntitySet="ps_attribute_lang">
+          <ScalarProperty Name="id_attribute" ColumnName="id_attribute" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_attribute_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_attribute_shop">
+        <MappingFragment StoreEntitySet="ps_attribute_shop">
+          <ScalarProperty Name="id_attribute" ColumnName="id_attribute" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_badge">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_badge">
+        <MappingFragment StoreEntitySet="ps_badge">
+          <ScalarProperty Name="id_badge" ColumnName="id_badge" />
+          <ScalarProperty Name="id_ps_badge" ColumnName="id_ps_badge" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="group_position" ColumnName="group_position" />
+          <ScalarProperty Name="scoring" ColumnName="scoring" />
+          <ScalarProperty Name="validated" ColumnName="validated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_badge_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_badge_lang">
+        <MappingFragment StoreEntitySet="ps_badge_lang">
+          <ScalarProperty Name="id_badge" ColumnName="id_badge" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="group_name" ColumnName="group_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_carrier">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_carrier">
+        <MappingFragment StoreEntitySet="ps_carrier">
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="id_reference" ColumnName="id_reference" />
+          <ScalarProperty Name="id_tax_rules_group" ColumnName="id_tax_rules_group" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="shipping_handling" ColumnName="shipping_handling" />
+          <ScalarProperty Name="range_behavior" ColumnName="range_behavior" />
+          <ScalarProperty Name="is_module" ColumnName="is_module" />
+          <ScalarProperty Name="is_free" ColumnName="is_free" />
+          <ScalarProperty Name="shipping_external" ColumnName="shipping_external" />
+          <ScalarProperty Name="need_range" ColumnName="need_range" />
+          <ScalarProperty Name="external_module_name" ColumnName="external_module_name" />
+          <ScalarProperty Name="shipping_method" ColumnName="shipping_method" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="max_width" ColumnName="max_width" />
+          <ScalarProperty Name="max_height" ColumnName="max_height" />
+          <ScalarProperty Name="max_depth" ColumnName="max_depth" />
+          <ScalarProperty Name="max_weight" ColumnName="max_weight" />
+          <ScalarProperty Name="grade" ColumnName="grade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_carrier_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_carrier_group">
+        <MappingFragment StoreEntitySet="ps_carrier_group">
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_carrier_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_carrier_lang">
+        <MappingFragment StoreEntitySet="ps_carrier_lang">
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="delay" ColumnName="delay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_carrier_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_carrier_shop">
+        <MappingFragment StoreEntitySet="ps_carrier_shop">
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_carrier_tax_rules_group_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_carrier_tax_rules_group_shop">
+        <MappingFragment StoreEntitySet="ps_carrier_tax_rules_group_shop">
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="id_tax_rules_group" ColumnName="id_tax_rules_group" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_carrier_zone">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_carrier_zone">
+        <MappingFragment StoreEntitySet="ps_carrier_zone">
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="id_zone" ColumnName="id_zone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart">
+        <MappingFragment StoreEntitySet="ps_cart">
+          <ScalarProperty Name="id_cart" ColumnName="id_cart" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="delivery_option" ColumnName="delivery_option" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="id_address_delivery" ColumnName="id_address_delivery" />
+          <ScalarProperty Name="id_address_invoice" ColumnName="id_address_invoice" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_guest" ColumnName="id_guest" />
+          <ScalarProperty Name="secure_key" ColumnName="secure_key" />
+          <ScalarProperty Name="recyclable" ColumnName="recyclable" />
+          <ScalarProperty Name="gift" ColumnName="gift" />
+          <ScalarProperty Name="gift_message" ColumnName="gift_message" />
+          <ScalarProperty Name="mobile_theme" ColumnName="mobile_theme" />
+          <ScalarProperty Name="allow_seperated_package" ColumnName="allow_seperated_package" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_cart_rule">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_cart_rule">
+        <MappingFragment StoreEntitySet="ps_cart_cart_rule">
+          <ScalarProperty Name="id_cart" ColumnName="id_cart" />
+          <ScalarProperty Name="id_cart_rule" ColumnName="id_cart_rule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_product">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_product">
+        <MappingFragment StoreEntitySet="ps_cart_product">
+          <ScalarProperty Name="id_cart" ColumnName="id_cart" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_address_delivery" ColumnName="id_address_delivery" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_rule">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_rule">
+        <MappingFragment StoreEntitySet="ps_cart_rule">
+          <ScalarProperty Name="id_cart_rule" ColumnName="id_cart_rule" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="date_from" ColumnName="date_from" />
+          <ScalarProperty Name="date_to" ColumnName="date_to" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="quantity_per_user" ColumnName="quantity_per_user" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+          <ScalarProperty Name="partial_use" ColumnName="partial_use" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="minimum_amount" ColumnName="minimum_amount" />
+          <ScalarProperty Name="minimum_amount_tax" ColumnName="minimum_amount_tax" />
+          <ScalarProperty Name="minimum_amount_currency" ColumnName="minimum_amount_currency" />
+          <ScalarProperty Name="minimum_amount_shipping" ColumnName="minimum_amount_shipping" />
+          <ScalarProperty Name="country_restriction" ColumnName="country_restriction" />
+          <ScalarProperty Name="carrier_restriction" ColumnName="carrier_restriction" />
+          <ScalarProperty Name="group_restriction" ColumnName="group_restriction" />
+          <ScalarProperty Name="cart_rule_restriction" ColumnName="cart_rule_restriction" />
+          <ScalarProperty Name="product_restriction" ColumnName="product_restriction" />
+          <ScalarProperty Name="shop_restriction" ColumnName="shop_restriction" />
+          <ScalarProperty Name="free_shipping" ColumnName="free_shipping" />
+          <ScalarProperty Name="reduction_percent" ColumnName="reduction_percent" />
+          <ScalarProperty Name="reduction_amount" ColumnName="reduction_amount" />
+          <ScalarProperty Name="reduction_tax" ColumnName="reduction_tax" />
+          <ScalarProperty Name="reduction_currency" ColumnName="reduction_currency" />
+          <ScalarProperty Name="reduction_product" ColumnName="reduction_product" />
+          <ScalarProperty Name="gift_product" ColumnName="gift_product" />
+          <ScalarProperty Name="gift_product_attribute" ColumnName="gift_product_attribute" />
+          <ScalarProperty Name="highlight" ColumnName="highlight" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_rule_carrier">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_rule_carrier">
+        <MappingFragment StoreEntitySet="ps_cart_rule_carrier">
+          <ScalarProperty Name="id_cart_rule" ColumnName="id_cart_rule" />
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_rule_combination">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_rule_combination">
+        <MappingFragment StoreEntitySet="ps_cart_rule_combination">
+          <ScalarProperty Name="id_cart_rule_1" ColumnName="id_cart_rule_1" />
+          <ScalarProperty Name="id_cart_rule_2" ColumnName="id_cart_rule_2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_rule_country">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_rule_country">
+        <MappingFragment StoreEntitySet="ps_cart_rule_country">
+          <ScalarProperty Name="id_cart_rule" ColumnName="id_cart_rule" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_rule_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_rule_group">
+        <MappingFragment StoreEntitySet="ps_cart_rule_group">
+          <ScalarProperty Name="id_cart_rule" ColumnName="id_cart_rule" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_rule_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_rule_lang">
+        <MappingFragment StoreEntitySet="ps_cart_rule_lang">
+          <ScalarProperty Name="id_cart_rule" ColumnName="id_cart_rule" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_rule_product_rule">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_rule_product_rule">
+        <MappingFragment StoreEntitySet="ps_cart_rule_product_rule">
+          <ScalarProperty Name="id_product_rule" ColumnName="id_product_rule" />
+          <ScalarProperty Name="id_product_rule_group" ColumnName="id_product_rule_group" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_rule_product_rule_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_rule_product_rule_group">
+        <MappingFragment StoreEntitySet="ps_cart_rule_product_rule_group">
+          <ScalarProperty Name="id_product_rule_group" ColumnName="id_product_rule_group" />
+          <ScalarProperty Name="id_cart_rule" ColumnName="id_cart_rule" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_rule_product_rule_value">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_rule_product_rule_value">
+        <MappingFragment StoreEntitySet="ps_cart_rule_product_rule_value">
+          <ScalarProperty Name="id_product_rule" ColumnName="id_product_rule" />
+          <ScalarProperty Name="id_item" ColumnName="id_item" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cart_rule_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cart_rule_shop">
+        <MappingFragment StoreEntitySet="ps_cart_rule_shop">
+          <ScalarProperty Name="id_cart_rule" ColumnName="id_cart_rule" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_category">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_category">
+        <MappingFragment StoreEntitySet="ps_category">
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="id_parent" ColumnName="id_parent" />
+          <ScalarProperty Name="id_shop_default" ColumnName="id_shop_default" />
+          <ScalarProperty Name="level_depth" ColumnName="level_depth" />
+          <ScalarProperty Name="nleft" ColumnName="nleft" />
+          <ScalarProperty Name="nright" ColumnName="nright" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="is_root_category" ColumnName="is_root_category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_category_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_category_group">
+        <MappingFragment StoreEntitySet="ps_category_group">
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_category_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_category_lang">
+        <MappingFragment StoreEntitySet="ps_category_lang">
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="link_rewrite" ColumnName="link_rewrite" />
+          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+          <ScalarProperty Name="meta_keywords" ColumnName="meta_keywords" />
+          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_category_product">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_category_product">
+        <MappingFragment StoreEntitySet="ps_category_product">
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_category_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_category_shop">
+        <MappingFragment StoreEntitySet="ps_category_shop">
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cms">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cms">
+        <MappingFragment StoreEntitySet="ps_cms">
+          <ScalarProperty Name="id_cms" ColumnName="id_cms" />
+          <ScalarProperty Name="id_cms_category" ColumnName="id_cms_category" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cms_block">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cms_block">
+        <MappingFragment StoreEntitySet="ps_cms_block">
+          <ScalarProperty Name="id_cms_block" ColumnName="id_cms_block" />
+          <ScalarProperty Name="id_cms_category" ColumnName="id_cms_category" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="display_store" ColumnName="display_store" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cms_block_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cms_block_lang">
+        <MappingFragment StoreEntitySet="ps_cms_block_lang">
+          <ScalarProperty Name="id_cms_block" ColumnName="id_cms_block" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cms_block_page">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cms_block_page">
+        <MappingFragment StoreEntitySet="ps_cms_block_page">
+          <ScalarProperty Name="id_cms_block_page" ColumnName="id_cms_block_page" />
+          <ScalarProperty Name="id_cms_block" ColumnName="id_cms_block" />
+          <ScalarProperty Name="id_cms" ColumnName="id_cms" />
+          <ScalarProperty Name="is_category" ColumnName="is_category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cms_block_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cms_block_shop">
+        <MappingFragment StoreEntitySet="ps_cms_block_shop">
+          <ScalarProperty Name="id_cms_block" ColumnName="id_cms_block" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cms_category">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cms_category">
+        <MappingFragment StoreEntitySet="ps_cms_category">
+          <ScalarProperty Name="id_cms_category" ColumnName="id_cms_category" />
+          <ScalarProperty Name="id_parent" ColumnName="id_parent" />
+          <ScalarProperty Name="level_depth" ColumnName="level_depth" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cms_category_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cms_category_lang">
+        <MappingFragment StoreEntitySet="ps_cms_category_lang">
+          <ScalarProperty Name="id_cms_category" ColumnName="id_cms_category" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="link_rewrite" ColumnName="link_rewrite" />
+          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+          <ScalarProperty Name="meta_keywords" ColumnName="meta_keywords" />
+          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cms_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cms_lang">
+        <MappingFragment StoreEntitySet="ps_cms_lang">
+          <ScalarProperty Name="id_cms" ColumnName="id_cms" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+          <ScalarProperty Name="meta_keywords" ColumnName="meta_keywords" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="link_rewrite" ColumnName="link_rewrite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_cms_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_cms_shop">
+        <MappingFragment StoreEntitySet="ps_cms_shop">
+          <ScalarProperty Name="id_cms" ColumnName="id_cms" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_compare">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_compare">
+        <MappingFragment StoreEntitySet="ps_compare">
+          <ScalarProperty Name="id_compare" ColumnName="id_compare" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_compare_product">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_compare_product">
+        <MappingFragment StoreEntitySet="ps_compare_product">
+          <ScalarProperty Name="id_compare" ColumnName="id_compare" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_condition">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_condition">
+        <MappingFragment StoreEntitySet="ps_condition">
+          <ScalarProperty Name="id_condition" ColumnName="id_condition" />
+          <ScalarProperty Name="id_ps_condition" ColumnName="id_ps_condition" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="request" ColumnName="request" />
+          <ScalarProperty Name="operator" ColumnName="operator" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="calculation_type" ColumnName="calculation_type" />
+          <ScalarProperty Name="calculation_detail" ColumnName="calculation_detail" />
+          <ScalarProperty Name="validated" ColumnName="validated" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_condition_advice">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_condition_advice">
+        <MappingFragment StoreEntitySet="ps_condition_advice">
+          <ScalarProperty Name="id_condition" ColumnName="id_condition" />
+          <ScalarProperty Name="id_advice" ColumnName="id_advice" />
+          <ScalarProperty Name="display" ColumnName="display" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_condition_badge">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_condition_badge">
+        <MappingFragment StoreEntitySet="ps_condition_badge">
+          <ScalarProperty Name="id_condition" ColumnName="id_condition" />
+          <ScalarProperty Name="id_badge" ColumnName="id_badge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_configuration">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_configuration">
+        <MappingFragment StoreEntitySet="ps_configuration">
+          <ScalarProperty Name="id_configuration" ColumnName="id_configuration" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_configuration_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_configuration_lang">
+        <MappingFragment StoreEntitySet="ps_configuration_lang">
+          <ScalarProperty Name="id_configuration" ColumnName="id_configuration" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_connections">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_connections">
+        <MappingFragment StoreEntitySet="ps_connections">
+          <ScalarProperty Name="id_connections" ColumnName="id_connections" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_guest" ColumnName="id_guest" />
+          <ScalarProperty Name="id_page" ColumnName="id_page" />
+          <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="http_referer" ColumnName="http_referer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_connections_page">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_connections_page">
+        <MappingFragment StoreEntitySet="ps_connections_page">
+          <ScalarProperty Name="id_connections" ColumnName="id_connections" />
+          <ScalarProperty Name="id_page" ColumnName="id_page" />
+          <ScalarProperty Name="time_start" ColumnName="time_start" />
+          <ScalarProperty Name="time_end" ColumnName="time_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_connections_source">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_connections_source">
+        <MappingFragment StoreEntitySet="ps_connections_source">
+          <ScalarProperty Name="id_connections_source" ColumnName="id_connections_source" />
+          <ScalarProperty Name="id_connections" ColumnName="id_connections" />
+          <ScalarProperty Name="http_referer" ColumnName="http_referer" />
+          <ScalarProperty Name="request_uri" ColumnName="request_uri" />
+          <ScalarProperty Name="keywords" ColumnName="keywords" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_contact">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_contact">
+        <MappingFragment StoreEntitySet="ps_contact">
+          <ScalarProperty Name="id_contact" ColumnName="id_contact" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="customer_service" ColumnName="customer_service" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_contact_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_contact_lang">
+        <MappingFragment StoreEntitySet="ps_contact_lang">
+          <ScalarProperty Name="id_contact" ColumnName="id_contact" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_contact_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_contact_shop">
+        <MappingFragment StoreEntitySet="ps_contact_shop">
+          <ScalarProperty Name="id_contact" ColumnName="id_contact" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_country">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_country">
+        <MappingFragment StoreEntitySet="ps_country">
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="id_zone" ColumnName="id_zone" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="iso_code" ColumnName="iso_code" />
+          <ScalarProperty Name="call_prefix" ColumnName="call_prefix" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="contains_states" ColumnName="contains_states" />
+          <ScalarProperty Name="need_identification_number" ColumnName="need_identification_number" />
+          <ScalarProperty Name="need_zip_code" ColumnName="need_zip_code" />
+          <ScalarProperty Name="zip_code_format" ColumnName="zip_code_format" />
+          <ScalarProperty Name="display_tax_label" ColumnName="display_tax_label" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_country_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_country_lang">
+        <MappingFragment StoreEntitySet="ps_country_lang">
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_country_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_country_shop">
+        <MappingFragment StoreEntitySet="ps_country_shop">
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_currency">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_currency">
+        <MappingFragment StoreEntitySet="ps_currency">
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="iso_code" ColumnName="iso_code" />
+          <ScalarProperty Name="iso_code_num" ColumnName="iso_code_num" />
+          <ScalarProperty Name="sign" ColumnName="sign" />
+          <ScalarProperty Name="blank" ColumnName="blank" />
+          <ScalarProperty Name="format" ColumnName="format" />
+          <ScalarProperty Name="decimals" ColumnName="decimals" />
+          <ScalarProperty Name="conversion_rate" ColumnName="conversion_rate" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_currency_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_currency_shop">
+        <MappingFragment StoreEntitySet="ps_currency_shop">
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="conversion_rate" ColumnName="conversion_rate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_customer">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_customer">
+        <MappingFragment StoreEntitySet="ps_customer">
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+          <ScalarProperty Name="id_default_group" ColumnName="id_default_group" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="id_risk" ColumnName="id_risk" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="siret" ColumnName="siret" />
+          <ScalarProperty Name="ape" ColumnName="ape" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="passwd" ColumnName="passwd" />
+          <ScalarProperty Name="last_passwd_gen" ColumnName="last_passwd_gen" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="newsletter" ColumnName="newsletter" />
+          <ScalarProperty Name="ip_registration_newsletter" ColumnName="ip_registration_newsletter" />
+          <ScalarProperty Name="newsletter_date_add" ColumnName="newsletter_date_add" />
+          <ScalarProperty Name="optin" ColumnName="optin" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="outstanding_allow_amount" ColumnName="outstanding_allow_amount" />
+          <ScalarProperty Name="show_public_prices" ColumnName="show_public_prices" />
+          <ScalarProperty Name="max_payment_days" ColumnName="max_payment_days" />
+          <ScalarProperty Name="secure_key" ColumnName="secure_key" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="is_guest" ColumnName="is_guest" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_customer_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_customer_group">
+        <MappingFragment StoreEntitySet="ps_customer_group">
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_customer_message">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_customer_message">
+        <MappingFragment StoreEntitySet="ps_customer_message">
+          <ScalarProperty Name="id_customer_message" ColumnName="id_customer_message" />
+          <ScalarProperty Name="id_customer_thread" ColumnName="id_customer_thread" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="file_name" ColumnName="file_name" />
+          <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+          <ScalarProperty Name="user_agent" ColumnName="user_agent" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="private" ColumnName="private" />
+          <ScalarProperty Name="read" ColumnName="read" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_customer_message_sync_imap">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_customer_message_sync_imap">
+        <MappingFragment StoreEntitySet="ps_customer_message_sync_imap">
+          <ScalarProperty Name="md5_header" ColumnName="md5_header" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_customer_thread">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_customer_thread">
+        <MappingFragment StoreEntitySet="ps_customer_thread">
+          <ScalarProperty Name="id_customer_thread" ColumnName="id_customer_thread" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="id_contact" ColumnName="id_contact" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_customization">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_customization">
+        <MappingFragment StoreEntitySet="ps_customization">
+          <ScalarProperty Name="id_customization" ColumnName="id_customization" />
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="id_address_delivery" ColumnName="id_address_delivery" />
+          <ScalarProperty Name="id_cart" ColumnName="id_cart" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="quantity_refunded" ColumnName="quantity_refunded" />
+          <ScalarProperty Name="quantity_returned" ColumnName="quantity_returned" />
+          <ScalarProperty Name="in_cart" ColumnName="in_cart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_customization_field">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_customization_field">
+        <MappingFragment StoreEntitySet="ps_customization_field">
+          <ScalarProperty Name="id_customization_field" ColumnName="id_customization_field" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="required" ColumnName="required" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_customization_field_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_customization_field_lang">
+        <MappingFragment StoreEntitySet="ps_customization_field_lang">
+          <ScalarProperty Name="id_customization_field" ColumnName="id_customization_field" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_customized_data">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_customized_data">
+        <MappingFragment StoreEntitySet="ps_customized_data">
+          <ScalarProperty Name="id_customization" ColumnName="id_customization" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="index" ColumnName="index" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_date_range">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_date_range">
+        <MappingFragment StoreEntitySet="ps_date_range">
+          <ScalarProperty Name="id_date_range" ColumnName="id_date_range" />
+          <ScalarProperty Name="time_start" ColumnName="time_start" />
+          <ScalarProperty Name="time_end" ColumnName="time_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_delivery">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_delivery">
+        <MappingFragment StoreEntitySet="ps_delivery">
+          <ScalarProperty Name="id_delivery" ColumnName="id_delivery" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="id_range_price" ColumnName="id_range_price" />
+          <ScalarProperty Name="id_range_weight" ColumnName="id_range_weight" />
+          <ScalarProperty Name="id_zone" ColumnName="id_zone" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_employee">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_employee">
+        <MappingFragment StoreEntitySet="ps_employee">
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="id_profile" ColumnName="id_profile" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="passwd" ColumnName="passwd" />
+          <ScalarProperty Name="last_passwd_gen" ColumnName="last_passwd_gen" />
+          <ScalarProperty Name="stats_date_from" ColumnName="stats_date_from" />
+          <ScalarProperty Name="stats_date_to" ColumnName="stats_date_to" />
+          <ScalarProperty Name="bo_color" ColumnName="bo_color" />
+          <ScalarProperty Name="bo_theme" ColumnName="bo_theme" />
+          <ScalarProperty Name="default_tab" ColumnName="default_tab" />
+          <ScalarProperty Name="bo_width" ColumnName="bo_width" />
+          <ScalarProperty Name="bo_show_screencast" ColumnName="bo_show_screencast" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="id_last_order" ColumnName="id_last_order" />
+          <ScalarProperty Name="id_last_customer_message" ColumnName="id_last_customer_message" />
+          <ScalarProperty Name="id_last_customer" ColumnName="id_last_customer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_employee_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_employee_shop">
+        <MappingFragment StoreEntitySet="ps_employee_shop">
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_favorite_product">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_favorite_product">
+        <MappingFragment StoreEntitySet="ps_favorite_product">
+          <ScalarProperty Name="id_favorite_product" ColumnName="id_favorite_product" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_feature">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_feature">
+        <MappingFragment StoreEntitySet="ps_feature">
+          <ScalarProperty Name="id_feature" ColumnName="id_feature" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_feature_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_feature_lang">
+        <MappingFragment StoreEntitySet="ps_feature_lang">
+          <ScalarProperty Name="id_feature" ColumnName="id_feature" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_feature_product">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_feature_product">
+        <MappingFragment StoreEntitySet="ps_feature_product">
+          <ScalarProperty Name="id_feature" ColumnName="id_feature" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_feature_value" ColumnName="id_feature_value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_feature_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_feature_shop">
+        <MappingFragment StoreEntitySet="ps_feature_shop">
+          <ScalarProperty Name="id_feature" ColumnName="id_feature" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_feature_value">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_feature_value">
+        <MappingFragment StoreEntitySet="ps_feature_value">
+          <ScalarProperty Name="id_feature_value" ColumnName="id_feature_value" />
+          <ScalarProperty Name="id_feature" ColumnName="id_feature" />
+          <ScalarProperty Name="custom" ColumnName="custom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_feature_value_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_feature_value_lang">
+        <MappingFragment StoreEntitySet="ps_feature_value_lang">
+          <ScalarProperty Name="id_feature_value" ColumnName="id_feature_value" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_gender">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_gender">
+        <MappingFragment StoreEntitySet="ps_gender">
+          <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_gender_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_gender_lang">
+        <MappingFragment StoreEntitySet="ps_gender_lang">
+          <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_group">
+        <MappingFragment StoreEntitySet="ps_group">
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="reduction" ColumnName="reduction" />
+          <ScalarProperty Name="price_display_method" ColumnName="price_display_method" />
+          <ScalarProperty Name="show_prices" ColumnName="show_prices" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_group_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_group_lang">
+        <MappingFragment StoreEntitySet="ps_group_lang">
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_group_reduction">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_group_reduction">
+        <MappingFragment StoreEntitySet="ps_group_reduction">
+          <ScalarProperty Name="id_group_reduction" ColumnName="id_group_reduction" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="reduction" ColumnName="reduction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_group_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_group_shop">
+        <MappingFragment StoreEntitySet="ps_group_shop">
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_guest">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_guest">
+        <MappingFragment StoreEntitySet="ps_guest">
+          <ScalarProperty Name="id_guest" ColumnName="id_guest" />
+          <ScalarProperty Name="id_operating_system" ColumnName="id_operating_system" />
+          <ScalarProperty Name="id_web_browser" ColumnName="id_web_browser" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="javascript" ColumnName="javascript" />
+          <ScalarProperty Name="screen_resolution_x" ColumnName="screen_resolution_x" />
+          <ScalarProperty Name="screen_resolution_y" ColumnName="screen_resolution_y" />
+          <ScalarProperty Name="screen_color" ColumnName="screen_color" />
+          <ScalarProperty Name="sun_java" ColumnName="sun_java" />
+          <ScalarProperty Name="adobe_flash" ColumnName="adobe_flash" />
+          <ScalarProperty Name="adobe_director" ColumnName="adobe_director" />
+          <ScalarProperty Name="apple_quicktime" ColumnName="apple_quicktime" />
+          <ScalarProperty Name="real_player" ColumnName="real_player" />
+          <ScalarProperty Name="windows_media" ColumnName="windows_media" />
+          <ScalarProperty Name="accept_language" ColumnName="accept_language" />
+          <ScalarProperty Name="mobile_theme" ColumnName="mobile_theme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_help_access">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_help_access">
+        <MappingFragment StoreEntitySet="ps_help_access">
+          <ScalarProperty Name="id_help_access" ColumnName="id_help_access" />
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_homeslider">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_homeslider">
+        <MappingFragment StoreEntitySet="ps_homeslider">
+          <ScalarProperty Name="id_homeslider_slides" ColumnName="id_homeslider_slides" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_homeslider_slides">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_homeslider_slides">
+        <MappingFragment StoreEntitySet="ps_homeslider_slides">
+          <ScalarProperty Name="id_homeslider_slides" ColumnName="id_homeslider_slides" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_homeslider_slides_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_homeslider_slides_lang">
+        <MappingFragment StoreEntitySet="ps_homeslider_slides_lang">
+          <ScalarProperty Name="id_homeslider_slides" ColumnName="id_homeslider_slides" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="legend" ColumnName="legend" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_hook">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_hook">
+        <MappingFragment StoreEntitySet="ps_hook">
+          <ScalarProperty Name="id_hook" ColumnName="id_hook" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="live_edit" ColumnName="live_edit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_hook_alias">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_hook_alias">
+        <MappingFragment StoreEntitySet="ps_hook_alias">
+          <ScalarProperty Name="id_hook_alias" ColumnName="id_hook_alias" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_hook_module">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_hook_module">
+        <MappingFragment StoreEntitySet="ps_hook_module">
+          <ScalarProperty Name="id_module" ColumnName="id_module" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_hook" ColumnName="id_hook" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_hook_module_exceptions">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_hook_module_exceptions">
+        <MappingFragment StoreEntitySet="ps_hook_module_exceptions">
+          <ScalarProperty Name="id_hook_module_exceptions" ColumnName="id_hook_module_exceptions" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_module" ColumnName="id_module" />
+          <ScalarProperty Name="id_hook" ColumnName="id_hook" />
+          <ScalarProperty Name="file_name" ColumnName="file_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_image">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_image">
+        <MappingFragment StoreEntitySet="ps_image">
+          <ScalarProperty Name="id_image" ColumnName="id_image" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="cover" ColumnName="cover" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_image_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_image_lang">
+        <MappingFragment StoreEntitySet="ps_image_lang">
+          <ScalarProperty Name="id_image" ColumnName="id_image" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="legend" ColumnName="legend" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_image_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_image_shop">
+        <MappingFragment StoreEntitySet="ps_image_shop">
+          <ScalarProperty Name="id_image" ColumnName="id_image" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="cover" ColumnName="cover" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_image_type">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_image_type">
+        <MappingFragment StoreEntitySet="ps_image_type">
+          <ScalarProperty Name="id_image_type" ColumnName="id_image_type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="products" ColumnName="products" />
+          <ScalarProperty Name="categories" ColumnName="categories" />
+          <ScalarProperty Name="manufacturers" ColumnName="manufacturers" />
+          <ScalarProperty Name="suppliers" ColumnName="suppliers" />
+          <ScalarProperty Name="scenes" ColumnName="scenes" />
+          <ScalarProperty Name="stores" ColumnName="stores" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_import_match">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_import_match">
+        <MappingFragment StoreEntitySet="ps_import_match">
+          <ScalarProperty Name="id_import_match" ColumnName="id_import_match" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="match" ColumnName="match" />
+          <ScalarProperty Name="skip" ColumnName="skip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_lang">
+        <MappingFragment StoreEntitySet="ps_lang">
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="iso_code" ColumnName="iso_code" />
+          <ScalarProperty Name="language_code" ColumnName="language_code" />
+          <ScalarProperty Name="date_format_lite" ColumnName="date_format_lite" />
+          <ScalarProperty Name="date_format_full" ColumnName="date_format_full" />
+          <ScalarProperty Name="is_rtl" ColumnName="is_rtl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_lang_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_lang_shop">
+        <MappingFragment StoreEntitySet="ps_lang_shop">
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_linksmenutop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_linksmenutop">
+        <MappingFragment StoreEntitySet="ps_linksmenutop">
+          <ScalarProperty Name="id_linksmenutop" ColumnName="id_linksmenutop" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="new_window" ColumnName="new_window" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_linksmenutop_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_linksmenutop_lang">
+        <MappingFragment StoreEntitySet="ps_linksmenutop_lang">
+          <ScalarProperty Name="id_linksmenutop" ColumnName="id_linksmenutop" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="link" ColumnName="link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_log">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_log">
+        <MappingFragment StoreEntitySet="ps_log">
+          <ScalarProperty Name="id_log" ColumnName="id_log" />
+          <ScalarProperty Name="severity" ColumnName="severity" />
+          <ScalarProperty Name="error_code" ColumnName="error_code" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="object_type" ColumnName="object_type" />
+          <ScalarProperty Name="object_id" ColumnName="object_id" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_manufacturer">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_manufacturer">
+        <MappingFragment StoreEntitySet="ps_manufacturer">
+          <ScalarProperty Name="id_manufacturer" ColumnName="id_manufacturer" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_manufacturer_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_manufacturer_lang">
+        <MappingFragment StoreEntitySet="ps_manufacturer_lang">
+          <ScalarProperty Name="id_manufacturer" ColumnName="id_manufacturer" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="short_description" ColumnName="short_description" />
+          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+          <ScalarProperty Name="meta_keywords" ColumnName="meta_keywords" />
+          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_manufacturer_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_manufacturer_shop">
+        <MappingFragment StoreEntitySet="ps_manufacturer_shop">
+          <ScalarProperty Name="id_manufacturer" ColumnName="id_manufacturer" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_memcached_servers">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_memcached_servers">
+        <MappingFragment StoreEntitySet="ps_memcached_servers">
+          <ScalarProperty Name="id_memcached_server" ColumnName="id_memcached_server" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="port" ColumnName="port" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_message">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_message">
+        <MappingFragment StoreEntitySet="ps_message">
+          <ScalarProperty Name="id_message" ColumnName="id_message" />
+          <ScalarProperty Name="id_cart" ColumnName="id_cart" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="private" ColumnName="private" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_message_readed">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_message_readed">
+        <MappingFragment StoreEntitySet="ps_message_readed">
+          <ScalarProperty Name="id_message" ColumnName="id_message" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_meta">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_meta">
+        <MappingFragment StoreEntitySet="ps_meta">
+          <ScalarProperty Name="id_meta" ColumnName="id_meta" />
+          <ScalarProperty Name="page" ColumnName="page" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_meta_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_meta_lang">
+        <MappingFragment StoreEntitySet="ps_meta_lang">
+          <ScalarProperty Name="id_meta" ColumnName="id_meta" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="keywords" ColumnName="keywords" />
+          <ScalarProperty Name="url_rewrite" ColumnName="url_rewrite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_module">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_module">
+        <MappingFragment StoreEntitySet="ps_module">
+          <ScalarProperty Name="id_module" ColumnName="id_module" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_module_access">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_module_access">
+        <MappingFragment StoreEntitySet="ps_module_access">
+          <ScalarProperty Name="id_profile" ColumnName="id_profile" />
+          <ScalarProperty Name="id_module" ColumnName="id_module" />
+          <ScalarProperty Name="view" ColumnName="view" />
+          <ScalarProperty Name="configure" ColumnName="configure" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_module_country">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_module_country">
+        <MappingFragment StoreEntitySet="ps_module_country">
+          <ScalarProperty Name="id_module" ColumnName="id_module" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_module_currency">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_module_currency">
+        <MappingFragment StoreEntitySet="ps_module_currency">
+          <ScalarProperty Name="id_module" ColumnName="id_module" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_module_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_module_group">
+        <MappingFragment StoreEntitySet="ps_module_group">
+          <ScalarProperty Name="id_module" ColumnName="id_module" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_module_preference">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_module_preference">
+        <MappingFragment StoreEntitySet="ps_module_preference">
+          <ScalarProperty Name="id_module_preference" ColumnName="id_module_preference" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="module" ColumnName="module" />
+          <ScalarProperty Name="interest" ColumnName="interest" />
+          <ScalarProperty Name="favorite" ColumnName="favorite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_module_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_module_shop">
+        <MappingFragment StoreEntitySet="ps_module_shop">
+          <ScalarProperty Name="id_module" ColumnName="id_module" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_newsletter">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_newsletter">
+        <MappingFragment StoreEntitySet="ps_newsletter">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="newsletter_date_add" ColumnName="newsletter_date_add" />
+          <ScalarProperty Name="ip_registration_newsletter" ColumnName="ip_registration_newsletter" />
+          <ScalarProperty Name="http_referer" ColumnName="http_referer" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_operating_system">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_operating_system">
+        <MappingFragment StoreEntitySet="ps_operating_system">
+          <ScalarProperty Name="id_operating_system" ColumnName="id_operating_system" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_carrier">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_carrier">
+        <MappingFragment StoreEntitySet="ps_order_carrier">
+          <ScalarProperty Name="id_order_carrier" ColumnName="id_order_carrier" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="id_order_invoice" ColumnName="id_order_invoice" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="shipping_cost_tax_excl" ColumnName="shipping_cost_tax_excl" />
+          <ScalarProperty Name="shipping_cost_tax_incl" ColumnName="shipping_cost_tax_incl" />
+          <ScalarProperty Name="tracking_number" ColumnName="tracking_number" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_cart_rule">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_cart_rule">
+        <MappingFragment StoreEntitySet="ps_order_cart_rule">
+          <ScalarProperty Name="id_order_cart_rule" ColumnName="id_order_cart_rule" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="id_cart_rule" ColumnName="id_cart_rule" />
+          <ScalarProperty Name="id_order_invoice" ColumnName="id_order_invoice" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="value_tax_excl" ColumnName="value_tax_excl" />
+          <ScalarProperty Name="free_shipping" ColumnName="free_shipping" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_detail">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_detail">
+        <MappingFragment StoreEntitySet="ps_order_detail">
+          <ScalarProperty Name="id_order_detail" ColumnName="id_order_detail" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="id_order_invoice" ColumnName="id_order_invoice" />
+          <ScalarProperty Name="id_warehouse" ColumnName="id_warehouse" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_attribute_id" ColumnName="product_attribute_id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+          <ScalarProperty Name="product_quantity_in_stock" ColumnName="product_quantity_in_stock" />
+          <ScalarProperty Name="product_quantity_refunded" ColumnName="product_quantity_refunded" />
+          <ScalarProperty Name="product_quantity_return" ColumnName="product_quantity_return" />
+          <ScalarProperty Name="product_quantity_reinjected" ColumnName="product_quantity_reinjected" />
+          <ScalarProperty Name="product_price" ColumnName="product_price" />
+          <ScalarProperty Name="reduction_percent" ColumnName="reduction_percent" />
+          <ScalarProperty Name="reduction_amount" ColumnName="reduction_amount" />
+          <ScalarProperty Name="reduction_amount_tax_incl" ColumnName="reduction_amount_tax_incl" />
+          <ScalarProperty Name="reduction_amount_tax_excl" ColumnName="reduction_amount_tax_excl" />
+          <ScalarProperty Name="group_reduction" ColumnName="group_reduction" />
+          <ScalarProperty Name="product_quantity_discount" ColumnName="product_quantity_discount" />
+          <ScalarProperty Name="product_ean13" ColumnName="product_ean13" />
+          <ScalarProperty Name="product_upc" ColumnName="product_upc" />
+          <ScalarProperty Name="product_reference" ColumnName="product_reference" />
+          <ScalarProperty Name="product_supplier_reference" ColumnName="product_supplier_reference" />
+          <ScalarProperty Name="product_weight" ColumnName="product_weight" />
+          <ScalarProperty Name="tax_computation_method" ColumnName="tax_computation_method" />
+          <ScalarProperty Name="tax_name" ColumnName="tax_name" />
+          <ScalarProperty Name="tax_rate" ColumnName="tax_rate" />
+          <ScalarProperty Name="ecotax" ColumnName="ecotax" />
+          <ScalarProperty Name="ecotax_tax_rate" ColumnName="ecotax_tax_rate" />
+          <ScalarProperty Name="discount_quantity_applied" ColumnName="discount_quantity_applied" />
+          <ScalarProperty Name="download_hash" ColumnName="download_hash" />
+          <ScalarProperty Name="download_nb" ColumnName="download_nb" />
+          <ScalarProperty Name="download_deadline" ColumnName="download_deadline" />
+          <ScalarProperty Name="total_price_tax_incl" ColumnName="total_price_tax_incl" />
+          <ScalarProperty Name="total_price_tax_excl" ColumnName="total_price_tax_excl" />
+          <ScalarProperty Name="unit_price_tax_incl" ColumnName="unit_price_tax_incl" />
+          <ScalarProperty Name="unit_price_tax_excl" ColumnName="unit_price_tax_excl" />
+          <ScalarProperty Name="total_shipping_price_tax_incl" ColumnName="total_shipping_price_tax_incl" />
+          <ScalarProperty Name="total_shipping_price_tax_excl" ColumnName="total_shipping_price_tax_excl" />
+          <ScalarProperty Name="purchase_supplier_price" ColumnName="purchase_supplier_price" />
+          <ScalarProperty Name="original_product_price" ColumnName="original_product_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_detail_tax">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_detail_tax">
+        <MappingFragment StoreEntitySet="ps_order_detail_tax">
+          <ScalarProperty Name="id_order_detail" ColumnName="id_order_detail" />
+          <ScalarProperty Name="id_tax" ColumnName="id_tax" />
+          <ScalarProperty Name="unit_amount" ColumnName="unit_amount" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_history">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_history">
+        <MappingFragment StoreEntitySet="ps_order_history">
+          <ScalarProperty Name="id_order_history" ColumnName="id_order_history" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="id_order_state" ColumnName="id_order_state" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_invoice">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_invoice">
+        <MappingFragment StoreEntitySet="ps_order_invoice">
+          <ScalarProperty Name="id_order_invoice" ColumnName="id_order_invoice" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="delivery_number" ColumnName="delivery_number" />
+          <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+          <ScalarProperty Name="total_discount_tax_excl" ColumnName="total_discount_tax_excl" />
+          <ScalarProperty Name="total_discount_tax_incl" ColumnName="total_discount_tax_incl" />
+          <ScalarProperty Name="total_paid_tax_excl" ColumnName="total_paid_tax_excl" />
+          <ScalarProperty Name="total_paid_tax_incl" ColumnName="total_paid_tax_incl" />
+          <ScalarProperty Name="total_products" ColumnName="total_products" />
+          <ScalarProperty Name="total_products_wt" ColumnName="total_products_wt" />
+          <ScalarProperty Name="total_shipping_tax_excl" ColumnName="total_shipping_tax_excl" />
+          <ScalarProperty Name="total_shipping_tax_incl" ColumnName="total_shipping_tax_incl" />
+          <ScalarProperty Name="shipping_tax_computation_method" ColumnName="shipping_tax_computation_method" />
+          <ScalarProperty Name="total_wrapping_tax_excl" ColumnName="total_wrapping_tax_excl" />
+          <ScalarProperty Name="total_wrapping_tax_incl" ColumnName="total_wrapping_tax_incl" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_invoice_payment">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_invoice_payment">
+        <MappingFragment StoreEntitySet="ps_order_invoice_payment">
+          <ScalarProperty Name="id_order_invoice" ColumnName="id_order_invoice" />
+          <ScalarProperty Name="id_order_payment" ColumnName="id_order_payment" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_invoice_tax">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_invoice_tax">
+        <MappingFragment StoreEntitySet="ps_order_invoice_tax">
+          <ScalarProperty Name="id_order_invoice" ColumnName="id_order_invoice" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id_tax" ColumnName="id_tax" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_message">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_message">
+        <MappingFragment StoreEntitySet="ps_order_message">
+          <ScalarProperty Name="id_order_message" ColumnName="id_order_message" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_message_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_message_lang">
+        <MappingFragment StoreEntitySet="ps_order_message_lang">
+          <ScalarProperty Name="id_order_message" ColumnName="id_order_message" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="message" ColumnName="message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_payment">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_payment">
+        <MappingFragment StoreEntitySet="ps_order_payment">
+          <ScalarProperty Name="id_order_payment" ColumnName="id_order_payment" />
+          <ScalarProperty Name="order_reference" ColumnName="order_reference" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="payment_method" ColumnName="payment_method" />
+          <ScalarProperty Name="conversion_rate" ColumnName="conversion_rate" />
+          <ScalarProperty Name="transaction_id" ColumnName="transaction_id" />
+          <ScalarProperty Name="card_number" ColumnName="card_number" />
+          <ScalarProperty Name="card_brand" ColumnName="card_brand" />
+          <ScalarProperty Name="card_expiration" ColumnName="card_expiration" />
+          <ScalarProperty Name="card_holder" ColumnName="card_holder" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_return">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_return">
+        <MappingFragment StoreEntitySet="ps_order_return">
+          <ScalarProperty Name="id_order_return" ColumnName="id_order_return" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_return_detail">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_return_detail">
+        <MappingFragment StoreEntitySet="ps_order_return_detail">
+          <ScalarProperty Name="id_order_return" ColumnName="id_order_return" />
+          <ScalarProperty Name="id_order_detail" ColumnName="id_order_detail" />
+          <ScalarProperty Name="id_customization" ColumnName="id_customization" />
+          <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_return_state">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_return_state">
+        <MappingFragment StoreEntitySet="ps_order_return_state">
+          <ScalarProperty Name="id_order_return_state" ColumnName="id_order_return_state" />
+          <ScalarProperty Name="color" ColumnName="color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_return_state_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_return_state_lang">
+        <MappingFragment StoreEntitySet="ps_order_return_state_lang">
+          <ScalarProperty Name="id_order_return_state" ColumnName="id_order_return_state" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_slip">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_slip">
+        <MappingFragment StoreEntitySet="ps_order_slip">
+          <ScalarProperty Name="id_order_slip" ColumnName="id_order_slip" />
+          <ScalarProperty Name="conversion_rate" ColumnName="conversion_rate" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="shipping_cost" ColumnName="shipping_cost" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="shipping_cost_amount" ColumnName="shipping_cost_amount" />
+          <ScalarProperty Name="partial" ColumnName="partial" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_slip_detail">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_slip_detail">
+        <MappingFragment StoreEntitySet="ps_order_slip_detail">
+          <ScalarProperty Name="id_order_slip" ColumnName="id_order_slip" />
+          <ScalarProperty Name="id_order_detail" ColumnName="id_order_detail" />
+          <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+          <ScalarProperty Name="amount_tax_excl" ColumnName="amount_tax_excl" />
+          <ScalarProperty Name="amount_tax_incl" ColumnName="amount_tax_incl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_state">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_state">
+        <MappingFragment StoreEntitySet="ps_order_state">
+          <ScalarProperty Name="id_order_state" ColumnName="id_order_state" />
+          <ScalarProperty Name="invoice" ColumnName="invoice" />
+          <ScalarProperty Name="send_email" ColumnName="send_email" />
+          <ScalarProperty Name="module_name" ColumnName="module_name" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="unremovable" ColumnName="unremovable" />
+          <ScalarProperty Name="hidden" ColumnName="hidden" />
+          <ScalarProperty Name="logable" ColumnName="logable" />
+          <ScalarProperty Name="delivery" ColumnName="delivery" />
+          <ScalarProperty Name="shipped" ColumnName="shipped" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_order_state_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_order_state_lang">
+        <MappingFragment StoreEntitySet="ps_order_state_lang">
+          <ScalarProperty Name="id_order_state" ColumnName="id_order_state" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="template" ColumnName="template" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_orders">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_orders">
+        <MappingFragment StoreEntitySet="ps_orders">
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_cart" ColumnName="id_cart" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="id_address_delivery" ColumnName="id_address_delivery" />
+          <ScalarProperty Name="id_address_invoice" ColumnName="id_address_invoice" />
+          <ScalarProperty Name="current_state" ColumnName="current_state" />
+          <ScalarProperty Name="secure_key" ColumnName="secure_key" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+          <ScalarProperty Name="conversion_rate" ColumnName="conversion_rate" />
+          <ScalarProperty Name="module" ColumnName="module" />
+          <ScalarProperty Name="recyclable" ColumnName="recyclable" />
+          <ScalarProperty Name="gift" ColumnName="gift" />
+          <ScalarProperty Name="gift_message" ColumnName="gift_message" />
+          <ScalarProperty Name="mobile_theme" ColumnName="mobile_theme" />
+          <ScalarProperty Name="shipping_number" ColumnName="shipping_number" />
+          <ScalarProperty Name="total_discounts" ColumnName="total_discounts" />
+          <ScalarProperty Name="total_discounts_tax_incl" ColumnName="total_discounts_tax_incl" />
+          <ScalarProperty Name="total_discounts_tax_excl" ColumnName="total_discounts_tax_excl" />
+          <ScalarProperty Name="total_paid" ColumnName="total_paid" />
+          <ScalarProperty Name="total_paid_tax_incl" ColumnName="total_paid_tax_incl" />
+          <ScalarProperty Name="total_paid_tax_excl" ColumnName="total_paid_tax_excl" />
+          <ScalarProperty Name="total_paid_real" ColumnName="total_paid_real" />
+          <ScalarProperty Name="total_products" ColumnName="total_products" />
+          <ScalarProperty Name="total_products_wt" ColumnName="total_products_wt" />
+          <ScalarProperty Name="total_shipping" ColumnName="total_shipping" />
+          <ScalarProperty Name="total_shipping_tax_incl" ColumnName="total_shipping_tax_incl" />
+          <ScalarProperty Name="total_shipping_tax_excl" ColumnName="total_shipping_tax_excl" />
+          <ScalarProperty Name="carrier_tax_rate" ColumnName="carrier_tax_rate" />
+          <ScalarProperty Name="total_wrapping" ColumnName="total_wrapping" />
+          <ScalarProperty Name="total_wrapping_tax_incl" ColumnName="total_wrapping_tax_incl" />
+          <ScalarProperty Name="total_wrapping_tax_excl" ColumnName="total_wrapping_tax_excl" />
+          <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
+          <ScalarProperty Name="delivery_number" ColumnName="delivery_number" />
+          <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+          <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_pack">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_pack">
+        <MappingFragment StoreEntitySet="ps_pack">
+          <ScalarProperty Name="id_product_pack" ColumnName="id_product_pack" />
+          <ScalarProperty Name="id_product_item" ColumnName="id_product_item" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_page">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_page">
+        <MappingFragment StoreEntitySet="ps_page">
+          <ScalarProperty Name="id_page" ColumnName="id_page" />
+          <ScalarProperty Name="id_page_type" ColumnName="id_page_type" />
+          <ScalarProperty Name="id_object" ColumnName="id_object" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_page_type">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_page_type">
+        <MappingFragment StoreEntitySet="ps_page_type">
+          <ScalarProperty Name="id_page_type" ColumnName="id_page_type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_page_viewed">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_page_viewed">
+        <MappingFragment StoreEntitySet="ps_page_viewed">
+          <ScalarProperty Name="id_page" ColumnName="id_page" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_date_range" ColumnName="id_date_range" />
+          <ScalarProperty Name="counter" ColumnName="counter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_pagenotfound">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_pagenotfound">
+        <MappingFragment StoreEntitySet="ps_pagenotfound">
+          <ScalarProperty Name="id_pagenotfound" ColumnName="id_pagenotfound" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="request_uri" ColumnName="request_uri" />
+          <ScalarProperty Name="http_referer" ColumnName="http_referer" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product">
+        <MappingFragment StoreEntitySet="ps_product">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="id_manufacturer" ColumnName="id_manufacturer" />
+          <ScalarProperty Name="id_category_default" ColumnName="id_category_default" />
+          <ScalarProperty Name="id_shop_default" ColumnName="id_shop_default" />
+          <ScalarProperty Name="id_tax_rules_group" ColumnName="id_tax_rules_group" />
+          <ScalarProperty Name="on_sale" ColumnName="on_sale" />
+          <ScalarProperty Name="online_only" ColumnName="online_only" />
+          <ScalarProperty Name="ean13" ColumnName="ean13" />
+          <ScalarProperty Name="upc" ColumnName="upc" />
+          <ScalarProperty Name="ecotax" ColumnName="ecotax" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="minimal_quantity" ColumnName="minimal_quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="wholesale_price" ColumnName="wholesale_price" />
+          <ScalarProperty Name="unity" ColumnName="unity" />
+          <ScalarProperty Name="unit_price_ratio" ColumnName="unit_price_ratio" />
+          <ScalarProperty Name="additional_shipping_cost" ColumnName="additional_shipping_cost" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="supplier_reference" ColumnName="supplier_reference" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="depth" ColumnName="depth" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="out_of_stock" ColumnName="out_of_stock" />
+          <ScalarProperty Name="quantity_discount" ColumnName="quantity_discount" />
+          <ScalarProperty Name="customizable" ColumnName="customizable" />
+          <ScalarProperty Name="uploadable_files" ColumnName="uploadable_files" />
+          <ScalarProperty Name="text_fields" ColumnName="text_fields" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="redirect_type" ColumnName="redirect_type" />
+          <ScalarProperty Name="id_product_redirected" ColumnName="id_product_redirected" />
+          <ScalarProperty Name="available_for_order" ColumnName="available_for_order" />
+          <ScalarProperty Name="available_date" ColumnName="available_date" />
+          <ScalarProperty Name="condition" ColumnName="condition" />
+          <ScalarProperty Name="show_price" ColumnName="show_price" />
+          <ScalarProperty Name="indexed" ColumnName="indexed" />
+          <ScalarProperty Name="visibility" ColumnName="visibility" />
+          <ScalarProperty Name="cache_is_pack" ColumnName="cache_is_pack" />
+          <ScalarProperty Name="cache_has_attachments" ColumnName="cache_has_attachments" />
+          <ScalarProperty Name="is_virtual" ColumnName="is_virtual" />
+          <ScalarProperty Name="cache_default_attribute" ColumnName="cache_default_attribute" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+          <ScalarProperty Name="advanced_stock_management" ColumnName="advanced_stock_management" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_attachment">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_attachment">
+        <MappingFragment StoreEntitySet="ps_product_attachment">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_attachment" ColumnName="id_attachment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_attribute">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_attribute">
+        <MappingFragment StoreEntitySet="ps_product_attribute">
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="supplier_reference" ColumnName="supplier_reference" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="ean13" ColumnName="ean13" />
+          <ScalarProperty Name="upc" ColumnName="upc" />
+          <ScalarProperty Name="wholesale_price" ColumnName="wholesale_price" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="ecotax" ColumnName="ecotax" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="unit_price_impact" ColumnName="unit_price_impact" />
+          <ScalarProperty Name="default_on" ColumnName="default_on" />
+          <ScalarProperty Name="minimal_quantity" ColumnName="minimal_quantity" />
+          <ScalarProperty Name="available_date" ColumnName="available_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_attribute_combination">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_attribute_combination">
+        <MappingFragment StoreEntitySet="ps_product_attribute_combination">
+          <ScalarProperty Name="id_attribute" ColumnName="id_attribute" />
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_attribute_image">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_attribute_image">
+        <MappingFragment StoreEntitySet="ps_product_attribute_image">
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="id_image" ColumnName="id_image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_attribute_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_attribute_shop">
+        <MappingFragment StoreEntitySet="ps_product_attribute_shop">
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="wholesale_price" ColumnName="wholesale_price" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="ecotax" ColumnName="ecotax" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="unit_price_impact" ColumnName="unit_price_impact" />
+          <ScalarProperty Name="default_on" ColumnName="default_on" />
+          <ScalarProperty Name="minimal_quantity" ColumnName="minimal_quantity" />
+          <ScalarProperty Name="available_date" ColumnName="available_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_carrier">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_carrier">
+        <MappingFragment StoreEntitySet="ps_product_carrier">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_carrier_reference" ColumnName="id_carrier_reference" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_country_tax">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_country_tax">
+        <MappingFragment StoreEntitySet="ps_product_country_tax">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="id_tax" ColumnName="id_tax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_download">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_download">
+        <MappingFragment StoreEntitySet="ps_product_download">
+          <ScalarProperty Name="id_product_download" ColumnName="id_product_download" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="display_filename" ColumnName="display_filename" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_expiration" ColumnName="date_expiration" />
+          <ScalarProperty Name="nb_days_accessible" ColumnName="nb_days_accessible" />
+          <ScalarProperty Name="nb_downloadable" ColumnName="nb_downloadable" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="is_shareable" ColumnName="is_shareable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_group_reduction_cache">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_group_reduction_cache">
+        <MappingFragment StoreEntitySet="ps_product_group_reduction_cache">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="reduction" ColumnName="reduction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_lang">
+        <MappingFragment StoreEntitySet="ps_product_lang">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="description_short" ColumnName="description_short" />
+          <ScalarProperty Name="link_rewrite" ColumnName="link_rewrite" />
+          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+          <ScalarProperty Name="meta_keywords" ColumnName="meta_keywords" />
+          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="available_now" ColumnName="available_now" />
+          <ScalarProperty Name="available_later" ColumnName="available_later" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_sale">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_sale">
+        <MappingFragment StoreEntitySet="ps_product_sale">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="sale_nbr" ColumnName="sale_nbr" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_shop">
+        <MappingFragment StoreEntitySet="ps_product_shop">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_category_default" ColumnName="id_category_default" />
+          <ScalarProperty Name="id_tax_rules_group" ColumnName="id_tax_rules_group" />
+          <ScalarProperty Name="on_sale" ColumnName="on_sale" />
+          <ScalarProperty Name="online_only" ColumnName="online_only" />
+          <ScalarProperty Name="ecotax" ColumnName="ecotax" />
+          <ScalarProperty Name="minimal_quantity" ColumnName="minimal_quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="wholesale_price" ColumnName="wholesale_price" />
+          <ScalarProperty Name="unity" ColumnName="unity" />
+          <ScalarProperty Name="unit_price_ratio" ColumnName="unit_price_ratio" />
+          <ScalarProperty Name="additional_shipping_cost" ColumnName="additional_shipping_cost" />
+          <ScalarProperty Name="customizable" ColumnName="customizable" />
+          <ScalarProperty Name="uploadable_files" ColumnName="uploadable_files" />
+          <ScalarProperty Name="text_fields" ColumnName="text_fields" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="redirect_type" ColumnName="redirect_type" />
+          <ScalarProperty Name="id_product_redirected" ColumnName="id_product_redirected" />
+          <ScalarProperty Name="available_for_order" ColumnName="available_for_order" />
+          <ScalarProperty Name="available_date" ColumnName="available_date" />
+          <ScalarProperty Name="condition" ColumnName="condition" />
+          <ScalarProperty Name="show_price" ColumnName="show_price" />
+          <ScalarProperty Name="indexed" ColumnName="indexed" />
+          <ScalarProperty Name="visibility" ColumnName="visibility" />
+          <ScalarProperty Name="cache_default_attribute" ColumnName="cache_default_attribute" />
+          <ScalarProperty Name="advanced_stock_management" ColumnName="advanced_stock_management" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_supplier">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_supplier">
+        <MappingFragment StoreEntitySet="ps_product_supplier">
+          <ScalarProperty Name="id_product_supplier" ColumnName="id_product_supplier" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="product_supplier_reference" ColumnName="product_supplier_reference" />
+          <ScalarProperty Name="product_supplier_price_te" ColumnName="product_supplier_price_te" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_product_tag">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_product_tag">
+        <MappingFragment StoreEntitySet="ps_product_tag">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_tag" ColumnName="id_tag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_profile">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_profile">
+        <MappingFragment StoreEntitySet="ps_profile">
+          <ScalarProperty Name="id_profile" ColumnName="id_profile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_profile_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_profile_lang">
+        <MappingFragment StoreEntitySet="ps_profile_lang">
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="id_profile" ColumnName="id_profile" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_quick_access">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_quick_access">
+        <MappingFragment StoreEntitySet="ps_quick_access">
+          <ScalarProperty Name="id_quick_access" ColumnName="id_quick_access" />
+          <ScalarProperty Name="new_window" ColumnName="new_window" />
+          <ScalarProperty Name="link" ColumnName="link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_quick_access_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_quick_access_lang">
+        <MappingFragment StoreEntitySet="ps_quick_access_lang">
+          <ScalarProperty Name="id_quick_access" ColumnName="id_quick_access" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_range_price">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_range_price">
+        <MappingFragment StoreEntitySet="ps_range_price">
+          <ScalarProperty Name="id_range_price" ColumnName="id_range_price" />
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="delimiter1" ColumnName="delimiter1" />
+          <ScalarProperty Name="delimiter2" ColumnName="delimiter2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_range_weight">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_range_weight">
+        <MappingFragment StoreEntitySet="ps_range_weight">
+          <ScalarProperty Name="id_range_weight" ColumnName="id_range_weight" />
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="delimiter1" ColumnName="delimiter1" />
+          <ScalarProperty Name="delimiter2" ColumnName="delimiter2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_referrer">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_referrer">
+        <MappingFragment StoreEntitySet="ps_referrer">
+          <ScalarProperty Name="id_referrer" ColumnName="id_referrer" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="passwd" ColumnName="passwd" />
+          <ScalarProperty Name="http_referer_regexp" ColumnName="http_referer_regexp" />
+          <ScalarProperty Name="http_referer_like" ColumnName="http_referer_like" />
+          <ScalarProperty Name="request_uri_regexp" ColumnName="request_uri_regexp" />
+          <ScalarProperty Name="request_uri_like" ColumnName="request_uri_like" />
+          <ScalarProperty Name="http_referer_regexp_not" ColumnName="http_referer_regexp_not" />
+          <ScalarProperty Name="http_referer_like_not" ColumnName="http_referer_like_not" />
+          <ScalarProperty Name="request_uri_regexp_not" ColumnName="request_uri_regexp_not" />
+          <ScalarProperty Name="request_uri_like_not" ColumnName="request_uri_like_not" />
+          <ScalarProperty Name="base_fee" ColumnName="base_fee" />
+          <ScalarProperty Name="percent_fee" ColumnName="percent_fee" />
+          <ScalarProperty Name="click_fee" ColumnName="click_fee" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_referrer_cache">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_referrer_cache">
+        <MappingFragment StoreEntitySet="ps_referrer_cache">
+          <ScalarProperty Name="id_connections_source" ColumnName="id_connections_source" />
+          <ScalarProperty Name="id_referrer" ColumnName="id_referrer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_referrer_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_referrer_shop">
+        <MappingFragment StoreEntitySet="ps_referrer_shop">
+          <ScalarProperty Name="id_referrer" ColumnName="id_referrer" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="cache_visitors" ColumnName="cache_visitors" />
+          <ScalarProperty Name="cache_visits" ColumnName="cache_visits" />
+          <ScalarProperty Name="cache_pages" ColumnName="cache_pages" />
+          <ScalarProperty Name="cache_registrations" ColumnName="cache_registrations" />
+          <ScalarProperty Name="cache_orders" ColumnName="cache_orders" />
+          <ScalarProperty Name="cache_sales" ColumnName="cache_sales" />
+          <ScalarProperty Name="cache_reg_rate" ColumnName="cache_reg_rate" />
+          <ScalarProperty Name="cache_order_rate" ColumnName="cache_order_rate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_reinsurance">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_reinsurance">
+        <MappingFragment StoreEntitySet="ps_reinsurance">
+          <ScalarProperty Name="id_reinsurance" ColumnName="id_reinsurance" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="file_name" ColumnName="file_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_reinsurance_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_reinsurance_lang">
+        <MappingFragment StoreEntitySet="ps_reinsurance_lang">
+          <ScalarProperty Name="id_reinsurance" ColumnName="id_reinsurance" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="text" ColumnName="text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_request_sql">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_request_sql">
+        <MappingFragment StoreEntitySet="ps_request_sql">
+          <ScalarProperty Name="id_request_sql" ColumnName="id_request_sql" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="sql" ColumnName="sql" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_required_field">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_required_field">
+        <MappingFragment StoreEntitySet="ps_required_field">
+          <ScalarProperty Name="id_required_field" ColumnName="id_required_field" />
+          <ScalarProperty Name="object_name" ColumnName="object_name" />
+          <ScalarProperty Name="field_name" ColumnName="field_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_risk">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_risk">
+        <MappingFragment StoreEntitySet="ps_risk">
+          <ScalarProperty Name="id_risk" ColumnName="id_risk" />
+          <ScalarProperty Name="percent" ColumnName="percent" />
+          <ScalarProperty Name="color" ColumnName="color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_risk_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_risk_lang">
+        <MappingFragment StoreEntitySet="ps_risk_lang">
+          <ScalarProperty Name="id_risk" ColumnName="id_risk" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_scene">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_scene">
+        <MappingFragment StoreEntitySet="ps_scene">
+          <ScalarProperty Name="id_scene" ColumnName="id_scene" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_scene_category">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_scene_category">
+        <MappingFragment StoreEntitySet="ps_scene_category">
+          <ScalarProperty Name="id_scene" ColumnName="id_scene" />
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_scene_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_scene_lang">
+        <MappingFragment StoreEntitySet="ps_scene_lang">
+          <ScalarProperty Name="id_scene" ColumnName="id_scene" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_scene_products">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_scene_products">
+        <MappingFragment StoreEntitySet="ps_scene_products">
+          <ScalarProperty Name="id_scene" ColumnName="id_scene" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="x_axis" ColumnName="x_axis" />
+          <ScalarProperty Name="y_axis" ColumnName="y_axis" />
+          <ScalarProperty Name="zone_width" ColumnName="zone_width" />
+          <ScalarProperty Name="zone_height" ColumnName="zone_height" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_scene_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_scene_shop">
+        <MappingFragment StoreEntitySet="ps_scene_shop">
+          <ScalarProperty Name="id_scene" ColumnName="id_scene" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_search_engine">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_search_engine">
+        <MappingFragment StoreEntitySet="ps_search_engine">
+          <ScalarProperty Name="id_search_engine" ColumnName="id_search_engine" />
+          <ScalarProperty Name="server" ColumnName="server" />
+          <ScalarProperty Name="getvar" ColumnName="getvar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_search_index">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_search_index">
+        <MappingFragment StoreEntitySet="ps_search_index">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_word" ColumnName="id_word" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_search_word">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_search_word">
+        <MappingFragment StoreEntitySet="ps_search_word">
+          <ScalarProperty Name="id_word" ColumnName="id_word" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="word" ColumnName="word" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_sekeyword">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_sekeyword">
+        <MappingFragment StoreEntitySet="ps_sekeyword">
+          <ScalarProperty Name="id_sekeyword" ColumnName="id_sekeyword" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="keyword" ColumnName="keyword" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_shop">
+        <MappingFragment StoreEntitySet="ps_shop">
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_category" ColumnName="id_category" />
+          <ScalarProperty Name="id_theme" ColumnName="id_theme" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_shop_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_shop_group">
+        <MappingFragment StoreEntitySet="ps_shop_group">
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="share_customer" ColumnName="share_customer" />
+          <ScalarProperty Name="share_order" ColumnName="share_order" />
+          <ScalarProperty Name="share_stock" ColumnName="share_stock" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_shop_url">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_shop_url">
+        <MappingFragment StoreEntitySet="ps_shop_url">
+          <ScalarProperty Name="id_shop_url" ColumnName="id_shop_url" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="domain" ColumnName="domain" />
+          <ScalarProperty Name="domain_ssl" ColumnName="domain_ssl" />
+          <ScalarProperty Name="physical_uri" ColumnName="physical_uri" />
+          <ScalarProperty Name="virtual_uri" ColumnName="virtual_uri" />
+          <ScalarProperty Name="main" ColumnName="main" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_specific_price">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_specific_price">
+        <MappingFragment StoreEntitySet="ps_specific_price">
+          <ScalarProperty Name="id_specific_price" ColumnName="id_specific_price" />
+          <ScalarProperty Name="id_specific_price_rule" ColumnName="id_specific_price_rule" />
+          <ScalarProperty Name="id_cart" ColumnName="id_cart" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="from_quantity" ColumnName="from_quantity" />
+          <ScalarProperty Name="reduction" ColumnName="reduction" />
+          <ScalarProperty Name="reduction_type" ColumnName="reduction_type" />
+          <ScalarProperty Name="from" ColumnName="from" />
+          <ScalarProperty Name="to" ColumnName="to" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_specific_price_priority">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_specific_price_priority">
+        <MappingFragment StoreEntitySet="ps_specific_price_priority">
+          <ScalarProperty Name="id_specific_price_priority" ColumnName="id_specific_price_priority" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_specific_price_rule">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_specific_price_rule">
+        <MappingFragment StoreEntitySet="ps_specific_price_rule">
+          <ScalarProperty Name="id_specific_price_rule" ColumnName="id_specific_price_rule" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="from_quantity" ColumnName="from_quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="reduction" ColumnName="reduction" />
+          <ScalarProperty Name="reduction_type" ColumnName="reduction_type" />
+          <ScalarProperty Name="from" ColumnName="from" />
+          <ScalarProperty Name="to" ColumnName="to" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_specific_price_rule_condition">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_specific_price_rule_condition">
+        <MappingFragment StoreEntitySet="ps_specific_price_rule_condition">
+          <ScalarProperty Name="id_specific_price_rule_condition" ColumnName="id_specific_price_rule_condition" />
+          <ScalarProperty Name="id_specific_price_rule_condition_group" ColumnName="id_specific_price_rule_condition_group" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_specific_price_rule_condition_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_specific_price_rule_condition_group">
+        <MappingFragment StoreEntitySet="ps_specific_price_rule_condition_group">
+          <ScalarProperty Name="id_specific_price_rule_condition_group" ColumnName="id_specific_price_rule_condition_group" />
+          <ScalarProperty Name="id_specific_price_rule" ColumnName="id_specific_price_rule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_state">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_state">
+        <MappingFragment StoreEntitySet="ps_state">
+          <ScalarProperty Name="id_state" ColumnName="id_state" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="id_zone" ColumnName="id_zone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="iso_code" ColumnName="iso_code" />
+          <ScalarProperty Name="tax_behavior" ColumnName="tax_behavior" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_statssearch">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_statssearch">
+        <MappingFragment StoreEntitySet="ps_statssearch">
+          <ScalarProperty Name="id_statssearch" ColumnName="id_statssearch" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="keywords" ColumnName="keywords" />
+          <ScalarProperty Name="results" ColumnName="results" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_stock">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_stock">
+        <MappingFragment StoreEntitySet="ps_stock">
+          <ScalarProperty Name="id_stock" ColumnName="id_stock" />
+          <ScalarProperty Name="id_warehouse" ColumnName="id_warehouse" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="ean13" ColumnName="ean13" />
+          <ScalarProperty Name="upc" ColumnName="upc" />
+          <ScalarProperty Name="physical_quantity" ColumnName="physical_quantity" />
+          <ScalarProperty Name="usable_quantity" ColumnName="usable_quantity" />
+          <ScalarProperty Name="price_te" ColumnName="price_te" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_stock_available">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_stock_available">
+        <MappingFragment StoreEntitySet="ps_stock_available">
+          <ScalarProperty Name="id_stock_available" ColumnName="id_stock_available" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_shop_group" ColumnName="id_shop_group" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="depends_on_stock" ColumnName="depends_on_stock" />
+          <ScalarProperty Name="out_of_stock" ColumnName="out_of_stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_stock_mvt">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_stock_mvt">
+        <MappingFragment StoreEntitySet="ps_stock_mvt">
+          <ScalarProperty Name="id_stock_mvt" ColumnName="id_stock_mvt" />
+          <ScalarProperty Name="id_stock" ColumnName="id_stock" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="id_supply_order" ColumnName="id_supply_order" />
+          <ScalarProperty Name="id_stock_mvt_reason" ColumnName="id_stock_mvt_reason" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="employee_lastname" ColumnName="employee_lastname" />
+          <ScalarProperty Name="employee_firstname" ColumnName="employee_firstname" />
+          <ScalarProperty Name="physical_quantity" ColumnName="physical_quantity" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="sign" ColumnName="sign" />
+          <ScalarProperty Name="price_te" ColumnName="price_te" />
+          <ScalarProperty Name="last_wa" ColumnName="last_wa" />
+          <ScalarProperty Name="current_wa" ColumnName="current_wa" />
+          <ScalarProperty Name="referer" ColumnName="referer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_stock_mvt_reason">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_stock_mvt_reason">
+        <MappingFragment StoreEntitySet="ps_stock_mvt_reason">
+          <ScalarProperty Name="id_stock_mvt_reason" ColumnName="id_stock_mvt_reason" />
+          <ScalarProperty Name="sign" ColumnName="sign" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_stock_mvt_reason_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_stock_mvt_reason_lang">
+        <MappingFragment StoreEntitySet="ps_stock_mvt_reason_lang">
+          <ScalarProperty Name="id_stock_mvt_reason" ColumnName="id_stock_mvt_reason" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_store">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_store">
+        <MappingFragment StoreEntitySet="ps_store">
+          <ScalarProperty Name="id_store" ColumnName="id_store" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="id_state" ColumnName="id_state" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address1" ColumnName="address1" />
+          <ScalarProperty Name="address2" ColumnName="address2" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="postcode" ColumnName="postcode" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="hours" ColumnName="hours" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_store_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_store_shop">
+        <MappingFragment StoreEntitySet="ps_store_shop">
+          <ScalarProperty Name="id_store" ColumnName="id_store" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_supplier">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_supplier">
+        <MappingFragment StoreEntitySet="ps_supplier">
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_supplier_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_supplier_lang">
+        <MappingFragment StoreEntitySet="ps_supplier_lang">
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+          <ScalarProperty Name="meta_keywords" ColumnName="meta_keywords" />
+          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_supplier_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_supplier_shop">
+        <MappingFragment StoreEntitySet="ps_supplier_shop">
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_supply_order">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_supply_order">
+        <MappingFragment StoreEntitySet="ps_supply_order">
+          <ScalarProperty Name="id_supply_order" ColumnName="id_supply_order" />
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="supplier_name" ColumnName="supplier_name" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="id_warehouse" ColumnName="id_warehouse" />
+          <ScalarProperty Name="id_supply_order_state" ColumnName="id_supply_order_state" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="id_ref_currency" ColumnName="id_ref_currency" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+          <ScalarProperty Name="date_upd" ColumnName="date_upd" />
+          <ScalarProperty Name="date_delivery_expected" ColumnName="date_delivery_expected" />
+          <ScalarProperty Name="total_te" ColumnName="total_te" />
+          <ScalarProperty Name="total_with_discount_te" ColumnName="total_with_discount_te" />
+          <ScalarProperty Name="total_tax" ColumnName="total_tax" />
+          <ScalarProperty Name="total_ti" ColumnName="total_ti" />
+          <ScalarProperty Name="discount_rate" ColumnName="discount_rate" />
+          <ScalarProperty Name="discount_value_te" ColumnName="discount_value_te" />
+          <ScalarProperty Name="is_template" ColumnName="is_template" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_supply_order_detail">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_supply_order_detail">
+        <MappingFragment StoreEntitySet="ps_supply_order_detail">
+          <ScalarProperty Name="id_supply_order_detail" ColumnName="id_supply_order_detail" />
+          <ScalarProperty Name="id_supply_order" ColumnName="id_supply_order" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="supplier_reference" ColumnName="supplier_reference" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ean13" ColumnName="ean13" />
+          <ScalarProperty Name="upc" ColumnName="upc" />
+          <ScalarProperty Name="exchange_rate" ColumnName="exchange_rate" />
+          <ScalarProperty Name="unit_price_te" ColumnName="unit_price_te" />
+          <ScalarProperty Name="quantity_expected" ColumnName="quantity_expected" />
+          <ScalarProperty Name="quantity_received" ColumnName="quantity_received" />
+          <ScalarProperty Name="price_te" ColumnName="price_te" />
+          <ScalarProperty Name="discount_rate" ColumnName="discount_rate" />
+          <ScalarProperty Name="discount_value_te" ColumnName="discount_value_te" />
+          <ScalarProperty Name="price_with_discount_te" ColumnName="price_with_discount_te" />
+          <ScalarProperty Name="tax_rate" ColumnName="tax_rate" />
+          <ScalarProperty Name="tax_value" ColumnName="tax_value" />
+          <ScalarProperty Name="price_ti" ColumnName="price_ti" />
+          <ScalarProperty Name="tax_value_with_order_discount" ColumnName="tax_value_with_order_discount" />
+          <ScalarProperty Name="price_with_order_discount_te" ColumnName="price_with_order_discount_te" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_supply_order_history">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_supply_order_history">
+        <MappingFragment StoreEntitySet="ps_supply_order_history">
+          <ScalarProperty Name="id_supply_order_history" ColumnName="id_supply_order_history" />
+          <ScalarProperty Name="id_supply_order" ColumnName="id_supply_order" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="employee_lastname" ColumnName="employee_lastname" />
+          <ScalarProperty Name="employee_firstname" ColumnName="employee_firstname" />
+          <ScalarProperty Name="id_state" ColumnName="id_state" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_supply_order_receipt_history">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_supply_order_receipt_history">
+        <MappingFragment StoreEntitySet="ps_supply_order_receipt_history">
+          <ScalarProperty Name="id_supply_order_receipt_history" ColumnName="id_supply_order_receipt_history" />
+          <ScalarProperty Name="id_supply_order_detail" ColumnName="id_supply_order_detail" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="employee_lastname" ColumnName="employee_lastname" />
+          <ScalarProperty Name="employee_firstname" ColumnName="employee_firstname" />
+          <ScalarProperty Name="id_supply_order_state" ColumnName="id_supply_order_state" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="date_add" ColumnName="date_add" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_supply_order_state">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_supply_order_state">
+        <MappingFragment StoreEntitySet="ps_supply_order_state">
+          <ScalarProperty Name="id_supply_order_state" ColumnName="id_supply_order_state" />
+          <ScalarProperty Name="delivery_note" ColumnName="delivery_note" />
+          <ScalarProperty Name="editable" ColumnName="editable" />
+          <ScalarProperty Name="receipt_state" ColumnName="receipt_state" />
+          <ScalarProperty Name="pending_receipt" ColumnName="pending_receipt" />
+          <ScalarProperty Name="enclosed" ColumnName="enclosed" />
+          <ScalarProperty Name="color" ColumnName="color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_supply_order_state_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_supply_order_state_lang">
+        <MappingFragment StoreEntitySet="ps_supply_order_state_lang">
+          <ScalarProperty Name="id_supply_order_state" ColumnName="id_supply_order_state" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_tab">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_tab">
+        <MappingFragment StoreEntitySet="ps_tab">
+          <ScalarProperty Name="id_tab" ColumnName="id_tab" />
+          <ScalarProperty Name="id_parent" ColumnName="id_parent" />
+          <ScalarProperty Name="class_name" ColumnName="class_name" />
+          <ScalarProperty Name="module" ColumnName="module" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_tab_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_tab_lang">
+        <MappingFragment StoreEntitySet="ps_tab_lang">
+          <ScalarProperty Name="id_tab" ColumnName="id_tab" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_tab_module_preference">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_tab_module_preference">
+        <MappingFragment StoreEntitySet="ps_tab_module_preference">
+          <ScalarProperty Name="id_tab_module_preference" ColumnName="id_tab_module_preference" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="id_tab" ColumnName="id_tab" />
+          <ScalarProperty Name="module" ColumnName="module" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_tag">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_tag">
+        <MappingFragment StoreEntitySet="ps_tag">
+          <ScalarProperty Name="id_tag" ColumnName="id_tag" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_tax">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_tax">
+        <MappingFragment StoreEntitySet="ps_tax">
+          <ScalarProperty Name="id_tax" ColumnName="id_tax" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_tax_lang">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_tax_lang">
+        <MappingFragment StoreEntitySet="ps_tax_lang">
+          <ScalarProperty Name="id_tax" ColumnName="id_tax" />
+          <ScalarProperty Name="id_lang" ColumnName="id_lang" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_tax_rule">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_tax_rule">
+        <MappingFragment StoreEntitySet="ps_tax_rule">
+          <ScalarProperty Name="id_tax_rule" ColumnName="id_tax_rule" />
+          <ScalarProperty Name="id_tax_rules_group" ColumnName="id_tax_rules_group" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="id_state" ColumnName="id_state" />
+          <ScalarProperty Name="zipcode_from" ColumnName="zipcode_from" />
+          <ScalarProperty Name="zipcode_to" ColumnName="zipcode_to" />
+          <ScalarProperty Name="id_tax" ColumnName="id_tax" />
+          <ScalarProperty Name="behavior" ColumnName="behavior" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_tax_rules_group">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_tax_rules_group">
+        <MappingFragment StoreEntitySet="ps_tax_rules_group">
+          <ScalarProperty Name="id_tax_rules_group" ColumnName="id_tax_rules_group" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_tax_rules_group_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_tax_rules_group_shop">
+        <MappingFragment StoreEntitySet="ps_tax_rules_group_shop">
+          <ScalarProperty Name="id_tax_rules_group" ColumnName="id_tax_rules_group" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_theme">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_theme">
+        <MappingFragment StoreEntitySet="ps_theme">
+          <ScalarProperty Name="id_theme" ColumnName="id_theme" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="directory" ColumnName="directory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_theme_specific">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_theme_specific">
+        <MappingFragment StoreEntitySet="ps_theme_specific">
+          <ScalarProperty Name="id_theme" ColumnName="id_theme" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="entity" ColumnName="entity" />
+          <ScalarProperty Name="id_object" ColumnName="id_object" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_timezone">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_timezone">
+        <MappingFragment StoreEntitySet="ps_timezone">
+          <ScalarProperty Name="id_timezone" ColumnName="id_timezone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_warehouse">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_warehouse">
+        <MappingFragment StoreEntitySet="ps_warehouse">
+          <ScalarProperty Name="id_warehouse" ColumnName="id_warehouse" />
+          <ScalarProperty Name="id_currency" ColumnName="id_currency" />
+          <ScalarProperty Name="id_address" ColumnName="id_address" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="management_type" ColumnName="management_type" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_warehouse_carrier">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_warehouse_carrier">
+        <MappingFragment StoreEntitySet="ps_warehouse_carrier">
+          <ScalarProperty Name="id_carrier" ColumnName="id_carrier" />
+          <ScalarProperty Name="id_warehouse" ColumnName="id_warehouse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_warehouse_product_location">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_warehouse_product_location">
+        <MappingFragment StoreEntitySet="ps_warehouse_product_location">
+          <ScalarProperty Name="id_warehouse_product_location" ColumnName="id_warehouse_product_location" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_product_attribute" ColumnName="id_product_attribute" />
+          <ScalarProperty Name="id_warehouse" ColumnName="id_warehouse" />
+          <ScalarProperty Name="location" ColumnName="location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_warehouse_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_warehouse_shop">
+        <MappingFragment StoreEntitySet="ps_warehouse_shop">
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+          <ScalarProperty Name="id_warehouse" ColumnName="id_warehouse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_web_browser">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_web_browser">
+        <MappingFragment StoreEntitySet="ps_web_browser">
+          <ScalarProperty Name="id_web_browser" ColumnName="id_web_browser" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_webservice_account">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_webservice_account">
+        <MappingFragment StoreEntitySet="ps_webservice_account">
+          <ScalarProperty Name="id_webservice_account" ColumnName="id_webservice_account" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="class_name" ColumnName="class_name" />
+          <ScalarProperty Name="is_module" ColumnName="is_module" />
+          <ScalarProperty Name="module_name" ColumnName="module_name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_webservice_account_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_webservice_account_shop">
+        <MappingFragment StoreEntitySet="ps_webservice_account_shop">
+          <ScalarProperty Name="id_webservice_account" ColumnName="id_webservice_account" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_webservice_permission">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_webservice_permission">
+        <MappingFragment StoreEntitySet="ps_webservice_permission">
+          <ScalarProperty Name="id_webservice_permission" ColumnName="id_webservice_permission" />
+          <ScalarProperty Name="resource" ColumnName="resource" />
+          <ScalarProperty Name="method" ColumnName="method" />
+          <ScalarProperty Name="id_webservice_account" ColumnName="id_webservice_account" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_zone">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_zone">
+        <MappingFragment StoreEntitySet="ps_zone">
+          <ScalarProperty Name="id_zone" ColumnName="id_zone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ps_zone_shop">
+      <EntityTypeMapping TypeName="Models.Prestashop.ps_zone_shop">
+        <MappingFragment StoreEntitySet="ps_zone_shop">
+          <ScalarProperty Name="id_zone" ColumnName="id_zone" />
+          <ScalarProperty Name="id_shop" ColumnName="id_shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

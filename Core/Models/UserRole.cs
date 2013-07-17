@@ -12,6 +12,6 @@ namespace Core.Models
     public class UserRole : EFEntity<int>
     {
         public int UserId { get; set; }
-	    public string RoleName { get; set; }
+	    public string RoleName { get; set; }  //enum - admin / uzivatel 
     }
 }

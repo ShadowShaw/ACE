@@ -1,0 +1,12 @@
+C:\GitHub\PrestaSharp\bin\Debug\PrestaSharp.dll.config
+C:\GitHub\PrestaSharp\bin\Debug\PrestaSharp.dll
+C:\GitHub\PrestaSharp\bin\Debug\PrestaSharp.pdb
+C:\GitHub\PrestaSharp\bin\Debug\RestSharp.dll
+C:\GitHub\PrestaSharp\bin\Debug\RestSharp.xml
+C:\GitHub\PrestaSharp\obj\Debug\PrestaSharp.dll
+C:\GitHub\PrestaSharp\obj\Debug\PrestaSharp.pdb
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\PrestaSharp.dll.config
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\PrestaSharp.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\PrestaSharp.pdb
+C:\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaSharp.dll
+C:\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaSharp.pdb
