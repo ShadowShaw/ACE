@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Bussiness\EngineService.cs" />
     <Compile Include="Bussiness\LoginService.cs" />
+    <Compile Include="Bussiness\TreeItem.cs" />
     <Compile Include="Data\EFEntity.cs" />
     <Compile Include="Data\ACEContext.cs" />
     <Compile Include="Data\EFRepository.cs" />
@@ -74,12 +75,6 @@
     <Compile Include="Models\MemberShip.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Models\UserRole.cs" />
-    <Compile Include="Presta\Containers.cs" />
-    <Compile Include="Presta\ManufacturersAccesor.cs" />
-    <Compile Include="Presta\Models\ps_category_group.cs" />
-    <Compile Include="Presta\Models\ps_manufacturer.cs" />
-    <Compile Include="Presta\Models\ps_product.cs" />
-    <Compile Include="Presta\RESTAccessor.cs" />
     <Compile Include="Security\DesktopLogin.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,9 +84,6 @@
     <Reference Include="LINQtoCSV">
       <HintPath>..\packages\LINQtoCSV.1.2.0.0\lib\LINQtoCSV.dll</HintPath>
     </Reference>
-    <Reference Include="PrestaSharp">
-      <HintPath>..\PrestaAccesor\bin\Debug\PrestaSharp.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
@@ -100,7 +92,12 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.XML" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PrestaAccesor\PrestaAccesor.csproj">
+      <Project>{3d494a24-06ba-475b-a158-162745683ec3}</Project>
+      <Name>PrestaAccesor</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

@@ -8,10 +8,9 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 
-using Core.Presta;
-using PrestaSharp.Models;
 using Core.Bussiness;
 using PrestaAccesor.Serializers;
+using Desktop.UserSettings;
 
 namespace Desktop
 {
@@ -19,6 +18,7 @@ namespace Desktop
     {
         CoreX coreX;
         public EngineService Engine;
+        private MainSettings mainSettings;
 
         public Main()
         {
@@ -26,8 +26,15 @@ namespace Desktop
             coreX = new CoreX();
             Engine = new EngineService();
 
+            // Loading settings from configuration.
+            mainSettings = new MainSettings();
+            ePrestaToken.Text = mainSettings.PrestaApiToken;
+            ePrestaUrl.Text = mainSettings.PrestaShopUrl;
+            Engine.PrestaSetup(mainSettings.PrestaShopUrl, mainSettings.PrestaApiToken);
+
             openDialog.InitialDirectory = Application.StartupPath;
             saveDialog.InitialDirectory = Application.StartupPath;
+            
             if (File.Exists("manufacturers.txt"))
             {
                 var u = File.ReadAllLines("manufacturers.txt").ToList();
@@ -132,16 +139,11 @@ namespace Desktop
             dgView.DataSource = coreX.getProducts();
         }
 
-        private void Main_Shown(object sender, EventArgs e)
-        {
-            
-        }
-
         private static void PopulateTree(TreeView tree, ICollection<TreeItem> items)
         {
             tree.Nodes.Clear();
             List<TreeNode> roots = new List<TreeNode>();
-            roots.Add(tree.Nodes.Add("Kategorie Eshopu"));
+            roots.Add(tree.Nodes.Add("-1", "Kategorie Eshopu"));
             foreach (TreeItem item in items)
             {
                 if (item.Level == roots.Count)
@@ -149,7 +151,7 @@ namespace Desktop
                     roots.Add(roots[roots.Count - 1].LastNode);
                 }
 
-                roots[item.Level].Nodes.Add(item.Name);
+                roots[item.Level].Nodes.Add(item.Id.ToString(), item.Name);
             }
         }
 
@@ -177,6 +179,48 @@ namespace Desktop
                 MessageBox.Show("Pro použití ACE se musíte přihlásit.");
                 this.Close();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TreeNode x = CategoryTree.SelectedNode;
+            int a = System.Convert.ToInt32(x.Name);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var m_productsAccesor = new ProductsAccesor(Engine.ShopUrl + "api/", Engine.ApiToken, "");
+            var a = m_productsAccesor.GetAll();
+            var aa = m_productsAccesor.GetIds();
+            var aaa = m_productsAccesor.Get(2);
+        }
+
+        private void Main_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mainSettings.Save();
+        }
+
+        private void bSavePresta_Click(object sender, EventArgs e)
+        {
+            Engine.PrestaSetup(ePrestaUrl.Text, ePrestaToken.Text);
+            mainSettings.PrestaShopUrl = ePrestaUrl.Text;
+            mainSettings.PrestaApiToken = ePrestaToken.Text;
+            mainSettings.Save();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dgConsistency.DataSource = Engine.GetProductWithEmptyCategory();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dgConsistency.DataSource = Engine.GetProductWithEmptyManufacturer();
         }
     }
 }

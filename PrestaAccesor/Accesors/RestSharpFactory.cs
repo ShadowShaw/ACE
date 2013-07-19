@@ -23,6 +23,13 @@ namespace PrestaAccesor.Serializers
             this.Password = Password;
         }
 
+        public void Setup(string BaseUrl, string Account, string Password)
+        {
+            this.BaseUrl = BaseUrl;
+            this.Account = Account;
+            this.Password = Password;
+        }
+
         protected T Execute<T>(RestRequest Request) where T : new()
         {
             var client = new RestClient();
@@ -76,13 +83,18 @@ namespace PrestaAccesor.Serializers
             client.BaseUrl = this.BaseUrl;
             client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
+            Request.RequestFormat = DataFormat.Json;
             var response = client.Execute<T>(Request);
+            if (response.Content == null)
+            {
+                return null;
+            }
             XDocument xDcoument = XDocument.Parse(response.Content);
             var ids = (from doc in xDcoument.Descendants(RootElement)
                        select int.Parse(doc.Attribute("id").Value)).ToList();
             return ids;
         }
-
+        
         protected RestRequest RequestForAdd(string Resource, Entities.prestashopentity Entity)
         {
             var request = new RestRequest();

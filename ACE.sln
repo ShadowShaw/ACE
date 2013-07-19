@@ -2,8 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{7C146499-374C-4A00-A35E-97D2D1CEC397}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D494A24-06BA-475B-A158-162745683EC3} = {3D494A24-06BA-475B-A158-162745683EC3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop", "Desktop\Desktop.csproj", "{0F1FAC26-84A5-4BB9-B6B2-9CC8870F24B2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D494A24-06BA-475B-A158-162745683EC3} = {3D494A24-06BA-475B-A158-162745683EC3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAgent", "WebAgent\WebAgent.csproj", "{79942DBB-15DA-4B73-B1FC-240767A7A8D5}"
 EndProject

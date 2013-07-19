@@ -110,3 +110,5 @@ C:\GitHub\ACE\WebAgent\bin\DotNetOpenAuth.OAuth.xml
 C:\GitHub\ACE\WebAgent\bin\DotNetOpenAuth.OpenId.xml
 C:\GitHub\ACE\WebAgent\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\GitHub\ACE\WebAgent\bin\RestSharp.xml
+C:\GitHub\ACE\WebAgent\bin\PrestaAccesor.dll
+C:\GitHub\ACE\WebAgent\bin\PrestaAccesor.pdb

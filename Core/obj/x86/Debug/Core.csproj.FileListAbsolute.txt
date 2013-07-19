@@ -21,6 +21,6 @@ C:\GitHub\ACE\Core\bin\Debug\LINQtoCSV.pdb
 C:\GitHub\ACE\Core\bin\Debug\RestSharp.xml
 C:\GitHub\ACE\Core\obj\x86\Debug\Core.dll
 C:\GitHub\ACE\Core\obj\x86\Debug\Core.pdb
-C:\GitHub\ACE\Core\bin\Debug\PrestaSharp.dll
-C:\GitHub\ACE\Core\bin\Debug\PrestaSharp.pdb
+C:\GitHub\ACE\Core\bin\Debug\PrestaAccesor.dll
+C:\GitHub\ACE\Core\bin\Debug\PrestaAccesor.pdb
 C:\GitHub\ACE\Core\obj\x86\Debug\Core.csprojResolveAssemblyReference.cache

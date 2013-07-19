@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PrestaAccesor</RootNamespace>
-    <AssemblyName>PrestaSharp</AssemblyName>
+    <AssemblyName>PrestaAccesor</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -58,8 +58,9 @@
     <Compile Include="Entities\language.cs" />
     <Compile Include="Entities\manufacturer.cs" />
     <Compile Include="Entities\name.cs" />
-    <Compile Include="Accesors\ManufacturerAccesor.cs" />
+    <Compile Include="Accesors\ManufacturersAccesor.cs" />
     <Compile Include="Accesors\RestSharpFactory.cs" />
+    <Compile Include="Entities\product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,9 +8,9 @@ using System.Xml.Serialization;
 
 namespace PrestaAccesor.Serializers
 {
-    public class ManufacturerAccesor : RestSharpAccesor
+    public class ManufacturersAccesor : RestSharpAccesor
     {
-        public ManufacturerAccesor(string BaseUrl, string Account, string SecretKey)
+        public ManufacturersAccesor(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
         {
 
