@@ -37,3 +37,4 @@ C:\GitHub\ACE\Desktop\bin\Debug\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\bin\Debug\ACEDesktop.pdb
 C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.pdb
+C:\GitHub\ACE\Desktop\bin\Debug\RestSharp.xml

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>@ViewBag.Title - ACE Agent</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
@@ -12,7 +12,9 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("vhodné logo", "Index", "Home")</p>
+                    <h1>@ViewBag.Title</h1>
+                    <p class="site-title">@Html.ActionLink("Logo", "Index", "Home")</p>
+                    
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -21,6 +23,9 @@
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            @if (Request.IsAuthenticated) {
+                                <li>@Html.ActionLink("Uživatelský profil", "Manage", "Account")</li>
+                            }
                             <li>@Html.ActionLink("O nás", "About", "Home")</li>
                             <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                         </ul>
@@ -37,7 +42,7 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Shadow MVC Application</p>
+                    <p>&copy; @DateTime.Now.Year - Shadow MVC4 Application</p>
                 </div>
             </div>
         </footer>

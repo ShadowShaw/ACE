@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Core.Bussiness;
 using PrestaAccesor.Serializers;
 using Desktop.UserSettings;
+using PrestaAccesor.Entities;
 
 namespace Desktop
 {
@@ -29,9 +30,14 @@ namespace Desktop
             // Loading settings from configuration.
             mainSettings = new MainSettings();
             ePrestaToken.Text = mainSettings.PrestaApiToken;
-            ePrestaUrl.Text = mainSettings.PrestaShopUrl;
-            Engine.PrestaSetup(mainSettings.PrestaShopUrl, mainSettings.PrestaApiToken);
+            ePrestaUrl.Text = mainSettings.PrestaBaseUrl;
+            Engine.PrestaSetup(mainSettings.PrestaBaseUrl, mainSettings.PrestaApiToken);
 
+            // Lenght of edit boxes.
+            ePrestaToken.MaxLength = 50;
+            ePrestaUrl.MaxLength = 100;
+            
+            // Old Code.
             openDialog.InitialDirectory = Application.StartupPath;
             saveDialog.InitialDirectory = Application.StartupPath;
             
@@ -186,20 +192,7 @@ namespace Desktop
             TreeNode x = CategoryTree.SelectedNode;
             int a = System.Convert.ToInt32(x.Name);
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            var m_productsAccesor = new ProductsAccesor(Engine.ShopUrl + "api/", Engine.ApiToken, "");
-            var a = m_productsAccesor.GetAll();
-            var aa = m_productsAccesor.GetIds();
-            var aaa = m_productsAccesor.Get(2);
-        }
-
-        private void Main_Leave(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             mainSettings.Save();
@@ -207,20 +200,56 @@ namespace Desktop
 
         private void bSavePresta_Click(object sender, EventArgs e)
         {
-            Engine.PrestaSetup(ePrestaUrl.Text, ePrestaToken.Text);
-            mainSettings.PrestaShopUrl = ePrestaUrl.Text;
-            mainSettings.PrestaApiToken = ePrestaToken.Text;
+            string token = UITools.GetStringFromEditBox(ePrestaToken);
+            string url = UITools.GetBaseUrlFromEditBox(ePrestaUrl);
+
+            ePrestaUrl.Text = url;
+            ePrestaToken.Text = token;
+            Engine.PrestaSetup(url, token);
+            mainSettings.PrestaBaseUrl = Engine.BaseUrl;
+            mainSettings.PrestaApiToken = Engine.ApiToken;
             mainSettings.Save();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void bEmptyCategory4_Click(object sender, EventArgs e)
         {
-            dgConsistency.DataSource = Engine.GetProductWithEmptyCategory();
+            dgConsistency.DataSource = Engine.Products.GetProductWithEmptyCategory();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void bEmptyManufacturer_Click(object sender, EventArgs e)
         {
-            dgConsistency.DataSource = Engine.GetProductWithEmptyManufacturer();
+            dgConsistency.DataSource = Engine.Products.GetProductWithEmptyManufacturer();
+        }
+
+        private void bWithoutImage_Click(object sender, EventArgs e)
+        {
+            dgConsistency.DataSource = Engine.Products.GetProductWithEmptyImage();
+        }
+
+        private void bWithoutShortDescription_Click(object sender, EventArgs e)
+        {
+            dgConsistency.DataSource = Engine.Products.GetProductWithEmptyShortDescription();
+        }
+
+        private void bWithoutLongDescription_Click(object sender, EventArgs e)
+        {
+            dgConsistency.DataSource = Engine.Products.GetProductWithEmptyLongDescription();
+        }
+
+        private void bWithoutPrice_Click(object sender, EventArgs e)
+        {
+            dgConsistency.DataSource = Engine.Products.GetProductWithEmptyPrice();
+        }
+
+        private void bWithoutWeight_Click(object sender, EventArgs e)
+        {
+            dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWeight();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Engine.Products.LoadProductsAsync(statusProgress, statusMessage);
+            gbConsistency.Enabled = true;
         }
     }
 }

@@ -76,6 +76,7 @@ Global
 		{3D494A24-06BA-475B-A158-162745683EC3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3D494A24-06BA-475B-A158-162745683EC3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3D494A24-06BA-475B-A158-162745683EC3}.Release|x86.ActiveCfg = Release|Any CPU
+		{3D494A24-06BA-475B-A158-162745683EC3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

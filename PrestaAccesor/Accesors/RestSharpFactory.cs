@@ -12,6 +12,9 @@ namespace PrestaAccesor.Serializers
 {
     public abstract class RestSharpAccesor
     {
+        public const int StepCount = 500;
+
+        protected RestClient client;
         protected string BaseUrl{get;set;}
         protected string Account{get;set;}
         protected string Password{get;set;}
@@ -21,6 +24,10 @@ namespace PrestaAccesor.Serializers
             this.BaseUrl = BaseUrl;
             this.Account = Account;
             this.Password = Password;
+
+            client = new RestClient();
+            client.BaseUrl = this.BaseUrl;
+            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
         }
 
         public void Setup(string BaseUrl, string Account, string Password)
@@ -28,13 +35,13 @@ namespace PrestaAccesor.Serializers
             this.BaseUrl = BaseUrl;
             this.Account = Account;
             this.Password = Password;
+            
+            client.BaseUrl = this.BaseUrl;
+            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
         }
 
         protected T Execute<T>(RestRequest Request) where T : new()
         {
-            var client = new RestClient();
-            client.BaseUrl = this.BaseUrl;
-            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
             var response = client.Execute<T>(Request);
             if (response.ErrorException != null)
@@ -48,7 +55,6 @@ namespace PrestaAccesor.Serializers
 
         protected void ExecuteAsync<T>(RestRequest Request) where T : new()
         {
-            var client = new RestClient(this.BaseUrl);
             try
             {
                 client.ExecuteAsync(Request, response =>
@@ -79,9 +85,6 @@ namespace PrestaAccesor.Serializers
 
         protected List<int> ExecuteForGetIds<T>(RestRequest Request, string RootElement) where T : new()
         {
-            var client = new RestClient();
-            client.BaseUrl = this.BaseUrl;
-            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
             Request.RequestFormat = DataFormat.Json;
             var response = client.Execute<T>(Request);

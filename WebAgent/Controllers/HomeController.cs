@@ -10,21 +10,21 @@ namespace PriceUpdater.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "ASP.NET MVC application.";
+            ViewBag.Message = "Automatická aktualizace cen eshopů.";
 
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Message = "Aplikace sloužící ke snadné a rychlé kontrole konzistence databáze eshopů a její přečeňování dle ceníků dodavatelů.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Kontakty:";
 
             return View();
         }

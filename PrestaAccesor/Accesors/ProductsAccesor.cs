@@ -1,4 +1,5 @@
-﻿using PrestaAccesor.Entities;
+﻿using PrestaAccesor.Accesors;
+using PrestaAccesor.Entities;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,17 @@ using System.Xml.Serialization;
 
 namespace PrestaAccesor.Serializers
 {
-    public class ProductsAccesor : RestSharpAccesor
+    public class ProductList
+    {
+        public List<Product> Products { get; set; }
+    }
+
+    public class Product
+    {
+        public string id { get; set; }
+    }
+
+    public class ProductsAccesor : RestSharpAccesor, IRestAccesor
     {
         public ProductsAccesor(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
@@ -19,9 +30,9 @@ namespace PrestaAccesor.Serializers
 
         }
 
-        public Entities.product Get(int ProductId)
+        public Entities.prestashopentity Get(int EntityId)
         {
-            RestRequest request = this.RequestForGet("products", ProductId, "product");
+            RestRequest request = this.RequestForGet("products", EntityId, "product");
             return this.Execute<Entities.product>(request);
         }
 
@@ -63,34 +74,19 @@ namespace PrestaAccesor.Serializers
             return this.ExecuteForGetIds<List<int>>(request, "product");
         }
 
-        public class ProductList
-        {
-            public List<Product> Products { get; set; }
-        }
-
-        public class Product
-        {
-            public string id { get; set; }
-        }
-
-
         public List<int> GetIdsPartial()
         {
             int startItem = 0;
-            int count = 500;
-            var client = new RestClient();
-            client.BaseUrl = this.BaseUrl;
-            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
-
+            
             List<int> result = new List<int>();
             ProductList IdList = new ProductList();
             do
             {
-                string requestString = String.Format("products/?display=[id]&limit={0},{1}", startItem, count);
+                string requestString = String.Format("products/?display=[id]&limit={0},{1}", startItem, StepCount);
                 IRestRequest request = new RestRequest(requestString, Method.GET);
 
                 IdList = client.Execute<ProductList>(request).Data;
-                startItem = startItem + count;
+                startItem = startItem + StepCount;
 
                 foreach (var item in IdList.Products)
                 {
@@ -98,11 +94,9 @@ namespace PrestaAccesor.Serializers
                 }
             } while (IdList.Products.Count == 500);
 
-            
-
             return result;
         }
-        
+
         /// <summary>
         /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
         /// </summary>

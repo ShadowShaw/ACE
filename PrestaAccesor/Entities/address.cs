@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace PrestaAccesor.Entities
 {
-    public class address:prestashopentity
+    public class address : prestashopentity
     {
         public int id { get; set; }
     }

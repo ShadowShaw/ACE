@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using PrestaAccesor.Accesors;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,18 @@ using System.Xml.Serialization;
 
 namespace PrestaAccesor.Serializers
 {
-    public class CategoriesAccesor : RestSharpAccesor
+    public class CategoryList
+    {
+        public List<Category> Categories { get; set; }
+    }
+
+    public class Category
+    {
+        public string id { get; set; }
+    }
+
+
+    public class CategoriesAccesor : RestSharpAccesor, IRestAccesor
     {
         public CategoriesAccesor(string BaseUrl, string Account, string SecretKey)
             : base(BaseUrl, Account, SecretKey)
@@ -16,9 +28,9 @@ namespace PrestaAccesor.Serializers
 
         }
 
-        public Entities.category Get(int CategoryId)
+        public Entities.prestashopentity Get(int EntityId)
         {
-            RestRequest request = this.RequestForGet("categories", CategoryId, "category");
+            RestRequest request = this.RequestForGet("categories", EntityId, "category");
             return this.Execute<Entities.category>(request);
         }
 
@@ -59,6 +71,29 @@ namespace PrestaAccesor.Serializers
             RestRequest request = this.RequestForGet("categories", null, "prestashop");
             return this.ExecuteForGetIds<List<int>>(request, "category");
         }
+
+        public List<int> GetIdsPartial()
+        {
+            int startItem = 0;
+
+            List<int> result = new List<int>();
+            CategoryList IdList = new CategoryList();
+            do
+            {
+                string requestString = String.Format("categories/?display=[id]&limit={0},{1}", startItem, StepCount);
+                IRestRequest request = new RestRequest(requestString, Method.GET);
+
+                IdList = client.Execute<CategoryList>(request).Data;
+                startItem = startItem + StepCount;
+
+                foreach (var item in IdList.Categories)
+                {
+                    result.Add(System.Convert.ToInt32(item.id));
+                }
+            } while (IdList.Categories.Count == 500);
+
+            return result;
+        }
         
         /// <summary>
         /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
@@ -67,17 +102,17 @@ namespace PrestaAccesor.Serializers
         /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
         /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
         /// <returns></returns>
-        public List<Entities.category> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
+        public List<Entities.prestashopentity> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter("categories", "full", Filter, Sort, Limit, "categories");
-            return this.Execute<List<Entities.category>>(request);
+            return this.Execute<List<Entities.prestashopentity>>(request);
         }
 
         /// <summary>
         /// Get all manufacturers.
         /// </summary>
         /// <returns>A list of manufacturers</returns>
-        public List<Entities.category> GetAll()
+        public List<Entities.prestashopentity> GetAll()
         {
             return this.GetByFilter(null, null, null);
         }

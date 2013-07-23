@@ -10,4 +10,6 @@ C:\GitHub\ACE\PrestaAccesor\bin\Debug\PrestaAccesor.dll
 C:\GitHub\ACE\PrestaAccesor\bin\Debug\PrestaAccesor.pdb
 C:\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.dll
 C:\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.pdb
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\RestSharp.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\RestSharp.xml
 C:\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.csprojResolveAssemblyReference.cache

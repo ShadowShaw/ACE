@@ -1,0 +1,7 @@
+C:\GitHub\ACE\PrestaAccesor\bin\Release\PrestaAccesor.dll.config
+C:\GitHub\ACE\PrestaAccesor\bin\Release\PrestaAccesor.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Release\PrestaAccesor.pdb
+C:\GitHub\ACE\PrestaAccesor\bin\Release\RestSharp.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Release\RestSharp.xml
+C:\GitHub\ACE\PrestaAccesor\obj\Release\PrestaAccesor.dll
+C:\GitHub\ACE\PrestaAccesor\obj\Release\PrestaAccesor.pdb

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.openDialog = new System.Windows.Forms.OpenFileDialog();
             this.productsSD = new System.Windows.Forms.SaveFileDialog();
             this.menu = new System.Windows.Forms.MenuStrip();
@@ -48,11 +48,10 @@
             this.statusLogin = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusPresta = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.statusMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveDialog = new System.Windows.Forms.SaveFileDialog();
             this.tc = new System.Windows.Forms.TabControl();
             this.tpHome = new System.Windows.Forms.TabPage();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.CategoryTree = new System.Windows.Forms.TreeView();
             this.bLogin = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -85,15 +84,18 @@
             this.dgView = new System.Windows.Forms.DataGridView();
             this.bSave = new System.Windows.Forms.Button();
             this.tpConsistency = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.dgConsistency = new System.Windows.Forms.DataGridView();
             this.gbConsistency = new System.Windows.Forms.GroupBox();
-            this.bConsistencyAskino = new System.Windows.Forms.Button();
+            this.bWithoutLongDescription = new System.Windows.Forms.Button();
+            this.bWithoutPrice = new System.Windows.Forms.Button();
             this.bConsistencyNoviko = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.bWithoutWeight = new System.Windows.Forms.Button();
+            this.bConsistencyAskino = new System.Windows.Forms.Button();
+            this.bEmptyManufacturer = new System.Windows.Forms.Button();
+            this.bWithoutShortDescription = new System.Windows.Forms.Button();
+            this.bEmptyCategory = new System.Windows.Forms.Button();
+            this.bWithoutImage = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.status.SuspendLayout();
             this.tc.SuspendLayout();
@@ -171,7 +173,8 @@
             this.statusAgent,
             this.statusLogin,
             this.statusPresta,
-            this.statusProgress});
+            this.statusProgress,
+            this.statusMessage});
             this.status.Location = new System.Drawing.Point(0, 644);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(1015, 22);
@@ -180,21 +183,18 @@
             // 
             // statusAgent
             // 
-            this.statusAgent.Enabled = false;
             this.statusAgent.Name = "statusAgent";
             this.statusAgent.Size = new System.Drawing.Size(59, 17);
             this.statusAgent.Text = "ACE Agent";
             // 
             // statusLogin
             // 
-            this.statusLogin.Enabled = false;
             this.statusLogin.Name = "statusLogin";
             this.statusLogin.Size = new System.Drawing.Size(32, 17);
             this.statusLogin.Text = "Login";
             // 
             // statusPresta
             // 
-            this.statusPresta.Enabled = false;
             this.statusPresta.Name = "statusPresta";
             this.statusPresta.Size = new System.Drawing.Size(70, 17);
             this.statusPresta.Text = "Eshop Presta";
@@ -205,6 +205,11 @@
             this.statusProgress.Name = "statusProgress";
             this.statusProgress.Size = new System.Drawing.Size(200, 16);
             this.statusProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            // 
+            // statusMessage
+            // 
+            this.statusMessage.Name = "statusMessage";
+            this.statusMessage.Size = new System.Drawing.Size(0, 17);
             // 
             // tc
             // 
@@ -224,8 +229,6 @@
             // 
             // tpHome
             // 
-            this.tpHome.Controls.Add(this.button4);
-            this.tpHome.Controls.Add(this.button3);
             this.tpHome.Controls.Add(this.CategoryTree);
             this.tpHome.Controls.Add(this.bLogin);
             this.tpHome.Controls.Add(this.button1);
@@ -238,39 +241,20 @@
             this.tpHome.Text = "Home";
             this.tpHome.UseVisualStyleBackColor = true;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(238, 450);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(82, 450);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // CategoryTree
             // 
             this.CategoryTree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CategoryTree.Location = new System.Drawing.Point(40, 65);
+            this.CategoryTree.Location = new System.Drawing.Point(20, 16);
             this.CategoryTree.Name = "CategoryTree";
-            this.CategoryTree.Size = new System.Drawing.Size(233, 296);
+            this.CategoryTree.Size = new System.Drawing.Size(363, 412);
             this.CategoryTree.TabIndex = 3;
             // 
             // bLogin
             // 
-            this.bLogin.Location = new System.Drawing.Point(294, 16);
+            this.bLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bLogin.Location = new System.Drawing.Point(20, 486);
             this.bLogin.Name = "bLogin";
-            this.bLogin.Size = new System.Drawing.Size(75, 23);
+            this.bLogin.Size = new System.Drawing.Size(363, 79);
             this.bLogin.TabIndex = 2;
             this.bLogin.Text = "Login";
             this.bLogin.UseVisualStyleBackColor = true;
@@ -278,11 +262,12 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(40, 16);
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(20, 440);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(363, 35);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "test tree";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -558,34 +543,34 @@
             // 
             this.dgView.AllowUserToAddRows = false;
             this.dgView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgView.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgView.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgView.Location = new System.Drawing.Point(8, 171);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgView.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgView.Size = new System.Drawing.Size(991, 370);
             this.dgView.TabIndex = 17;
             // 
@@ -601,9 +586,7 @@
             // 
             // tpConsistency
             // 
-            this.tpConsistency.Controls.Add(this.button9);
-            this.tpConsistency.Controls.Add(this.button8);
-            this.tpConsistency.Controls.Add(this.button7);
+            this.tpConsistency.Controls.Add(this.button3);
             this.tpConsistency.Controls.Add(this.dgConsistency);
             this.tpConsistency.Controls.Add(this.gbConsistency);
             this.tpConsistency.Location = new System.Drawing.Point(4, 25);
@@ -613,122 +596,169 @@
             this.tpConsistency.Text = "Kontrola konzistence";
             this.tpConsistency.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(19, 15);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(200, 30);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "Načti produkty";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // dgConsistency
             // 
             this.dgConsistency.AllowUserToAddRows = false;
             this.dgConsistency.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgConsistency.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgConsistency.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgConsistency.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsistency.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dgConsistency.Location = new System.Drawing.Point(279, 3);
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsistency.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgConsistency.Location = new System.Drawing.Point(243, 3);
             this.dgConsistency.Name = "dgConsistency";
             this.dgConsistency.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgConsistency.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            this.dgConsistency.Size = new System.Drawing.Size(725, 579);
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgConsistency.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgConsistency.Size = new System.Drawing.Size(761, 579);
             this.dgConsistency.TabIndex = 22;
             // 
             // gbConsistency
             // 
-            this.gbConsistency.Controls.Add(this.button6);
-            this.gbConsistency.Controls.Add(this.button5);
-            this.gbConsistency.Controls.Add(this.bConsistencyAskino);
+            this.gbConsistency.Controls.Add(this.bWithoutLongDescription);
+            this.gbConsistency.Controls.Add(this.bWithoutPrice);
             this.gbConsistency.Controls.Add(this.bConsistencyNoviko);
-            this.gbConsistency.Location = new System.Drawing.Point(8, 0);
+            this.gbConsistency.Controls.Add(this.bWithoutWeight);
+            this.gbConsistency.Controls.Add(this.bConsistencyAskino);
+            this.gbConsistency.Controls.Add(this.bEmptyManufacturer);
+            this.gbConsistency.Controls.Add(this.bWithoutShortDescription);
+            this.gbConsistency.Controls.Add(this.bEmptyCategory);
+            this.gbConsistency.Controls.Add(this.bWithoutImage);
+            this.gbConsistency.Enabled = false;
+            this.gbConsistency.Location = new System.Drawing.Point(8, 51);
             this.gbConsistency.Name = "gbConsistency";
-            this.gbConsistency.Size = new System.Drawing.Size(265, 213);
+            this.gbConsistency.Size = new System.Drawing.Size(229, 531);
             this.gbConsistency.TabIndex = 20;
             this.gbConsistency.TabStop = false;
-            this.gbConsistency.Text = "Kontrola konzistence";
+            this.gbConsistency.Text = "Vyhledej produkty:";
             // 
-            // bConsistencyAskino
+            // bWithoutLongDescription
             // 
-            this.bConsistencyAskino.Enabled = false;
-            this.bConsistencyAskino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConsistencyAskino.Location = new System.Drawing.Point(11, 50);
-            this.bConsistencyAskino.Name = "bConsistencyAskino";
-            this.bConsistencyAskino.Size = new System.Drawing.Size(239, 25);
-            this.bConsistencyAskino.TabIndex = 13;
-            this.bConsistencyAskino.Text = "Zkontroluj konzistenci dodavatele Askino";
-            this.bConsistencyAskino.UseVisualStyleBackColor = true;
+            this.bWithoutLongDescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bWithoutLongDescription.Location = new System.Drawing.Point(11, 205);
+            this.bWithoutLongDescription.Name = "bWithoutLongDescription";
+            this.bWithoutLongDescription.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutLongDescription.TabIndex = 27;
+            this.bWithoutLongDescription.Text = "bez dlouhého popisu";
+            this.bWithoutLongDescription.UseVisualStyleBackColor = true;
+            this.bWithoutLongDescription.Click += new System.EventHandler(this.bWithoutLongDescription_Click);
+            // 
+            // bWithoutPrice
+            // 
+            this.bWithoutPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bWithoutPrice.Location = new System.Drawing.Point(11, 253);
+            this.bWithoutPrice.Name = "bWithoutPrice";
+            this.bWithoutPrice.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutPrice.TabIndex = 26;
+            this.bWithoutPrice.Text = " bez ceny";
+            this.bWithoutPrice.UseVisualStyleBackColor = true;
+            this.bWithoutPrice.Click += new System.EventHandler(this.bWithoutPrice_Click);
             // 
             // bConsistencyNoviko
             // 
             this.bConsistencyNoviko.Enabled = false;
             this.bConsistencyNoviko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConsistencyNoviko.Location = new System.Drawing.Point(11, 19);
+            this.bConsistencyNoviko.Location = new System.Drawing.Point(11, 477);
             this.bConsistencyNoviko.Name = "bConsistencyNoviko";
-            this.bConsistencyNoviko.Size = new System.Drawing.Size(239, 25);
+            this.bConsistencyNoviko.Size = new System.Drawing.Size(200, 48);
             this.bConsistencyNoviko.TabIndex = 12;
             this.bConsistencyNoviko.Text = "Zkontroluj konzistenci dodavatele Noviko";
             this.bConsistencyNoviko.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // bWithoutWeight
             // 
-            this.button5.Location = new System.Drawing.Point(11, 96);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(239, 37);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Vyhledej v databázi záznamy s prázdnou kategorií";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.bWithoutWeight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bWithoutWeight.Location = new System.Drawing.Point(11, 301);
+            this.bWithoutWeight.Name = "bWithoutWeight";
+            this.bWithoutWeight.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutWeight.TabIndex = 25;
+            this.bWithoutWeight.Text = "s nulovou váhou";
+            this.bWithoutWeight.UseVisualStyleBackColor = true;
+            this.bWithoutWeight.Click += new System.EventHandler(this.bWithoutWeight_Click);
             // 
-            // button6
+            // bConsistencyAskino
             // 
-            this.button6.Location = new System.Drawing.Point(11, 139);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(239, 39);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "Vyhledej v databázi záznamy s prázdný výrobcem";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.bConsistencyAskino.Enabled = false;
+            this.bConsistencyAskino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bConsistencyAskino.Location = new System.Drawing.Point(11, 424);
+            this.bConsistencyAskino.Name = "bConsistencyAskino";
+            this.bConsistencyAskino.Size = new System.Drawing.Size(200, 47);
+            this.bConsistencyAskino.TabIndex = 13;
+            this.bConsistencyAskino.Text = "Zkontroluj konzistenci dodavatele Askino";
+            this.bConsistencyAskino.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // bEmptyManufacturer
             // 
-            this.button7.Location = new System.Drawing.Point(77, 305);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(161, 23);
-            this.button7.TabIndex = 23;
-            this.button7.Text = "produkty bez obrazku";
-            this.button7.UseVisualStyleBackColor = true;
+            this.bEmptyManufacturer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bEmptyManufacturer.Location = new System.Drawing.Point(11, 64);
+            this.bEmptyManufacturer.Name = "bEmptyManufacturer";
+            this.bEmptyManufacturer.Size = new System.Drawing.Size(200, 30);
+            this.bEmptyManufacturer.TabIndex = 15;
+            this.bEmptyManufacturer.Text = "s prázdným výrobcem";
+            this.bEmptyManufacturer.UseVisualStyleBackColor = true;
+            this.bEmptyManufacturer.Click += new System.EventHandler(this.bEmptyManufacturer_Click);
             // 
-            // button8
+            // bWithoutShortDescription
             // 
-            this.button8.Location = new System.Drawing.Point(66, 355);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(131, 23);
-            this.button8.TabIndex = 24;
-            this.button8.Text = "cena, popis - kratky, dlouhy";
-            this.button8.UseVisualStyleBackColor = true;
+            this.bWithoutShortDescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bWithoutShortDescription.Location = new System.Drawing.Point(11, 158);
+            this.bWithoutShortDescription.Name = "bWithoutShortDescription";
+            this.bWithoutShortDescription.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutShortDescription.TabIndex = 24;
+            this.bWithoutShortDescription.Text = "bez krátkého popisu";
+            this.bWithoutShortDescription.UseVisualStyleBackColor = true;
+            this.bWithoutShortDescription.Click += new System.EventHandler(this.bWithoutShortDescription_Click);
             // 
-            // button9
+            // bEmptyCategory
             // 
-            this.button9.Location = new System.Drawing.Point(77, 447);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 25;
-            this.button9.Text = "vaha";
-            this.button9.UseVisualStyleBackColor = true;
+            this.bEmptyCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bEmptyCategory.Location = new System.Drawing.Point(11, 19);
+            this.bEmptyCategory.Name = "bEmptyCategory";
+            this.bEmptyCategory.Size = new System.Drawing.Size(200, 30);
+            this.bEmptyCategory.TabIndex = 14;
+            this.bEmptyCategory.Text = "s prázdnou kategorií";
+            this.bEmptyCategory.UseVisualStyleBackColor = true;
+            this.bEmptyCategory.Click += new System.EventHandler(this.bEmptyCategory4_Click);
+            // 
+            // bWithoutImage
+            // 
+            this.bWithoutImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bWithoutImage.Location = new System.Drawing.Point(11, 109);
+            this.bWithoutImage.Name = "bWithoutImage";
+            this.bWithoutImage.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutImage.TabIndex = 23;
+            this.bWithoutImage.Text = "bez obrázku";
+            this.bWithoutImage.UseVisualStyleBackColor = true;
+            this.bWithoutImage.Click += new System.EventHandler(this.bWithoutImage_Click);
             // 
             // Main
             // 
@@ -744,7 +774,6 @@
             this.Text = "ACE Desktop";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
-            this.Leave += new System.EventHandler(this.Main_Leave);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.status.ResumeLayout(false);
@@ -821,13 +850,15 @@
         private System.Windows.Forms.Label lProcenta;
         private System.Windows.Forms.Button bLogin;
         private System.Windows.Forms.TreeView CategoryTree;
+        private System.Windows.Forms.Button bEmptyManufacturer;
+        private System.Windows.Forms.Button bEmptyCategory;
+        private System.Windows.Forms.Button bWithoutWeight;
+        private System.Windows.Forms.Button bWithoutShortDescription;
+        private System.Windows.Forms.Button bWithoutImage;
+        private System.Windows.Forms.ToolStripStatusLabel statusMessage;
+        private System.Windows.Forms.Button bWithoutLongDescription;
+        private System.Windows.Forms.Button bWithoutPrice;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
     }
 }
 

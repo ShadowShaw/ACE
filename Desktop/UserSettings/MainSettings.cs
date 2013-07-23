@@ -17,10 +17,10 @@ namespace Desktop.UserSettings
         }
 
         [UserScopedSettingAttribute()]
-        public string PrestaShopUrl
+        public string PrestaBaseUrl
         {
-            get { return (string)this["PrestaShopUrl"]; }
-            set { this["PrestaShopUrl"] = value; }
+            get { return (string)this["PrestaBaseUrl"]; }
+            set { this["PrestaBaseUrl"] = value; }
         }
 
         [UserScopedSettingAttribute()]
