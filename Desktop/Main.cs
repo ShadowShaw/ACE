@@ -12,6 +12,7 @@ using Core.Bussiness;
 using PrestaAccesor.Serializers;
 using Desktop.UserSettings;
 using PrestaAccesor.Entities;
+using Core;
 
 namespace Desktop
 {
@@ -21,11 +22,15 @@ namespace Desktop
         public EngineService Engine;
         private MainSettings mainSettings;
 
+        private VersionService Version = new VersionService();
+
         public Main()
         {
             InitializeComponent();
             coreX = new CoreX();
             Engine = new EngineService();
+
+            this.Text = "ACE Desktop " + Version.AssemblyVersion;
 
             // Loading settings from configuration.
             mainSettings = new MainSettings();
@@ -213,43 +218,114 @@ namespace Desktop
 
         private void bEmptyCategory4_Click(object sender, EventArgs e)
         {
+            dgConsistency.Columns.Clear();
+            dgConsistency.AutoGenerateColumns = false;
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyCategory();
+
+            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
+            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
+            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
         }
 
         private void bEmptyManufacturer_Click(object sender, EventArgs e)
         {
+            dgConsistency.Columns.Clear();
+            dgConsistency.AutoGenerateColumns = false;
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyManufacturer();
+
+            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
+            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
+            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
+            AddColumnToDataGrid(dgConsistency, 3, "id_manufacturer", TextResources.Manufacturer);
         }
 
         private void bWithoutImage_Click(object sender, EventArgs e)
         {
+            dgConsistency.Columns.Clear();
+            dgConsistency.AutoGenerateColumns = false;
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyImage();
+
+            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
+            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
+            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
+            AddColumnToDataGrid(dgConsistency, 3, "id_image", TextResources.ProductImage);
         }
 
         private void bWithoutShortDescription_Click(object sender, EventArgs e)
         {
+            dgConsistency.Columns.Clear();
+            dgConsistency.AutoGenerateColumns = false;
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyShortDescription();
+
+            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
+            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
+            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
+            AddColumnToDataGrid(dgConsistency, 3, "description_short", TextResources.ShortDescription);
         }
 
         private void bWithoutLongDescription_Click(object sender, EventArgs e)
         {
+            dgConsistency.Columns.Clear();
+            dgConsistency.AutoGenerateColumns = false;
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyLongDescription();
+
+            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
+            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
+            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
+            AddColumnToDataGrid(dgConsistency, 3, "description", TextResources.Description);
         }
 
         private void bWithoutPrice_Click(object sender, EventArgs e)
         {
+            dgConsistency.Columns.Clear();
+            dgConsistency.AutoGenerateColumns = false;
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyPrice();
+
+            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
+            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
+            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
+            AddColumnToDataGrid(dgConsistency, 3, "price", TextResources.SalePrice);
         }
 
         private void bWithoutWeight_Click(object sender, EventArgs e)
         {
+            dgConsistency.Columns.Clear();
+            dgConsistency.AutoGenerateColumns = false;
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWeight();
+
+            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
+            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
+            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
+            AddColumnToDataGrid(dgConsistency, 3, "weight", TextResources.Weight);
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
             Engine.Products.LoadProductsAsync(statusProgress, statusMessage);
             gbConsistency.Enabled = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            String strVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        }
+
+        private void bWithoutWholeSalePrice_Click(object sender, EventArgs e)
+        {
+            dgConsistency.Columns.Clear();
+            dgConsistency.AutoGenerateColumns = false;
+            dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWholesalePrice();
+
+            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
+            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
+            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
+            AddColumnToDataGrid(dgConsistency, 3, "wholesale_price", TextResources.WholeSalePrice);
+        }
+        
+        private void AddColumnToDataGrid(DataGridView grid, int index, string dataProperty, string header)
+        {
+            grid.Columns.Add(dataProperty, header);
+            grid.Columns[index].DataPropertyName = dataProperty;
         }
     }
 }

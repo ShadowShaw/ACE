@@ -19,3 +19,8 @@ C:\GitHub\ACE\Desktop\bin\Release\RestSharp.xml
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csprojResolveAssemblyReference.cache
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.pdb
+C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.exe.manifest
+C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.application
+C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.TrustInfo.xml
+C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.exe.manifest
+C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.application

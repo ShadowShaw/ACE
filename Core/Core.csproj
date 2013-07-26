@@ -58,6 +58,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bussiness\CategoryService.cs" />
+    <Compile Include="Bussiness\ManufacturerService.cs" />
+    <Compile Include="Bussiness\VersionService.cs" />
     <Compile Include="Bussiness\ResourceBackgroundWorker.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -81,6 +84,7 @@
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Security\DesktopLogin.cs" />
+    <Compile Include="TextResources.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">

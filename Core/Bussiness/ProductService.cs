@@ -197,7 +197,22 @@ namespace Core.Bussiness
 
             foreach (product item in this.Products)
             {
-                if ((item.price.HasValue == false) && (item.price > 0))
+                if ((item.price.HasValue == false) || (item.price <= 0))
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result;
+        }
+
+        public List<product> GetProductWithEmptyWholesalePrice()
+        {
+            List<product> result = new List<product>();
+
+            foreach (product item in this.Products)
+            {
+                if ((item.wholesale_price.HasValue == false) || (item.price <= 0))
                 {
                     result.Add(item);
                 }
@@ -212,7 +227,7 @@ namespace Core.Bussiness
 
             foreach (product item in this.Products)
             {
-                if (item.weight.HasValue == false)
+                if ((item.weight.HasValue == false) || (item.weight <= 0))
                 {
                     result.Add(item);
                 }

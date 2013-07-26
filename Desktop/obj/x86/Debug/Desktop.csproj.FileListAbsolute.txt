@@ -38,3 +38,8 @@ C:\GitHub\ACE\Desktop\bin\Debug\ACEDesktop.pdb
 C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.pdb
 C:\GitHub\ACE\Desktop\bin\Debug\RestSharp.xml
+C:\GitHub\ACE\Desktop\bin\Debug\ACEDesktop.exe.manifest
+C:\GitHub\ACE\Desktop\bin\Debug\ACEDesktop.application
+C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.TrustInfo.xml
+C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.exe.manifest
+C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.application
