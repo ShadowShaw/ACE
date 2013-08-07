@@ -41,17 +41,13 @@ namespace Core.Bussiness
             m_manufacturerAccesor.Setup(BaseUrl, Account, "");
         }
 
-        public void LoadProductsAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel)
+        public void LoadManufacturersAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel)
         {
             Worker = new ResourceBackgroundWorker();
-            Worker.WorkerReportsProgress = true;
             Worker.WorkerSupportsCancellation = true;
             Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-            Worker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
             Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
-            Worker.progressBar = progressBar;
-            Worker.progressLabel = progressLabel;
-
+            
             if (Worker.IsBusy != true)
             {
                 Worker.RunWorkerAsync();
@@ -62,17 +58,10 @@ namespace Core.Bussiness
         {
             ResourceBackgroundWorker worker = sender as ResourceBackgroundWorker;
 
-            worker.progressLabel.Text = "Načítám kategorie, prosím čekejte...";
-            worker.ReportProgress(5);
             List<int> ids = m_manufacturerAccesor.GetIdsPartial();
-            worker.ReportProgress(15);
-
+            
             int startItem = 0;
-            double step = 85.0 / (ids.Count / 500.0);
-            Math.Floor(step);
-
-            double progress = 12.0;
-
+            
             List<manufacturer> items = new List<manufacturer>();
             do
             {
@@ -83,12 +72,8 @@ namespace Core.Bussiness
                 {
                     Manufacturers.Add(item);
                 }
-                progress = progress + step;
-                worker.ReportProgress(System.Convert.ToInt32(progress));
-
+            
             } while (items.Count == 500);
-            worker.ReportProgress(0);
-            worker.progressLabel.Text = "Načítám kategorie, hotovo.";
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -107,12 +92,6 @@ namespace Core.Bussiness
             {
                 //Worker.ReportProgress(0);
             }
-        }
-
-        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            ResourceBackgroundWorker worker = sender as ResourceBackgroundWorker;
-            worker.progressBar.Value = (e.ProgressPercentage);
         }
     }
 }

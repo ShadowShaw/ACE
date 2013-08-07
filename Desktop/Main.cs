@@ -19,6 +19,9 @@ namespace Desktop
     public partial class Main : Form
     {
         CoreX coreX;
+
+        List<category> test = new List<category>();
+
         public EngineService Engine;
         private MainSettings mainSettings;
 
@@ -301,8 +304,27 @@ namespace Desktop
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            Engine.Products.LoadProductsAsync(statusProgress, statusMessage);
-            gbConsistency.Enabled = true;
+            Engine.Manufacturers.LoadManufacturersAsync(statusProgress, statusMessage);
+            Engine.Categories.LoadCategoriesAsync();
+            Engine.Products.LoadProductsAsync(statusProgress, statusMessage, gbConsistency );
+                        
+            //dgConsistency.Columns.Clear();
+            //dgConsistency.AutoGenerateColumns = false;
+            //dgConsistency.DataSource = Engine.Products.GetProductWithEmptyCategory();
+
+            //AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
+            //AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
+            //AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
+
+            //category item1 = new category();
+            //category item2 = new category();
+            //item1.name = "item1";
+            //item2.name = "item2";
+            //item1.id = 1;
+            //item2.id = 2;
+            //test.Add(item1);
+            //test.Add(item2);
+            //dgConsistency.DataSource = test;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -326,6 +348,16 @@ namespace Desktop
         {
             grid.Columns.Add(dataProperty, header);
             grid.Columns[index].DataPropertyName = dataProperty;
+        }
+
+        private void dgConsistency_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.ColumnIndex;
+            int y = e.RowIndex;
+            var value = dgConsistency[x, y].Value;
+            var id = dgConsistency["id", y].Value;
+
+            test[y].name = dgConsistency["name", y].Value as string;
         }
     }
 }

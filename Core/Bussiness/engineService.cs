@@ -14,11 +14,13 @@ namespace Core.Bussiness
     {
         private LoginService m_loginService;
         private ProductService m_productService;
+        private ManufactuerService m_manufacturerService;
+        private CategoryService m_CategoryService;
 
         private string m_BaseUrl;
         private string m_apiToken;
-        private CategoriesAccesor m_categoryAccesor;
-        private ManufacturersAccesor m_manufacturerAccesor;
+        //private CategoriesAccesor m_categoryAccesor;
+        //private ManufacturersAccesor m_manufacturerAccesor;
         
         public string BaseUrl
         {
@@ -52,16 +54,34 @@ namespace Core.Bussiness
             }
         }
 
+        public ManufactuerService Manufacturers
+        {
+            get
+            {
+                return m_manufacturerService;
+            }
+        }
+
+        public CategoryService Categories
+        {
+            get
+            {
+                return m_CategoryService;
+            }
+        }
+
         public EngineService()
         {
             m_loginService = new LoginService();
             m_productService = new ProductService(m_BaseUrl, m_apiToken, "");
+            m_manufacturerService = new ManufactuerService(m_BaseUrl, m_apiToken, "");
+            m_CategoryService = new CategoryService(m_BaseUrl, m_apiToken, "");
 
            // m_BaseUrl = "http://testpresta.mzf.cz/prestashop/";
            // m_apiToken = "BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8";
 
-            m_categoryAccesor = new CategoriesAccesor(m_BaseUrl, m_apiToken, "");
-            m_manufacturerAccesor = new ManufacturersAccesor(m_BaseUrl, m_apiToken, "");
+            //m_categoryAccesor = new CategoriesAccesor(m_BaseUrl, m_apiToken, "");
+            //m_manufacturerAccesor = new ManufacturersAccesor(m_BaseUrl, m_apiToken, "");
         }
         
         public void PrestaSetup(string url, string apiToken)
@@ -69,21 +89,21 @@ namespace Core.Bussiness
             m_apiToken = apiToken;
             m_BaseUrl = url;
 
-            m_categoryAccesor.Setup(m_BaseUrl, m_apiToken, "");
-            m_manufacturerAccesor.Setup(m_BaseUrl, m_apiToken, "");
+            Categories.Setup(m_BaseUrl, m_apiToken, "");
+            Manufacturers.Setup(m_BaseUrl, m_apiToken, "");
             Products.Setup(m_BaseUrl, m_apiToken, "");
         }
 
         public List<TreeItem> CreateCategoryTreeList()
         {
             List<TreeItem> result = new List<TreeItem>();
-            List<int> Ids = m_categoryAccesor.GetIds();
+            //List<int> Ids = m_categoryAccesor.GetIds();
 
-            foreach (int id in Ids)
-            {
-                category item = m_categoryAccesor.Get(id) as category;
-                result.Add(new TreeItem(item.name, item.level_depth, item.id.Value));
-            }
+            //foreach (int id in Ids)
+            //{
+            //    category item = m_categoryAccesor.Get(id) as category;
+            //    result.Add(new TreeItem(item.name, item.level_depth, item.id.Value));
+            //}
 
             return result;
         }

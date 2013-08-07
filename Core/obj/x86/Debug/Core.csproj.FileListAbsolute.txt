@@ -23,4 +23,17 @@ C:\GitHub\ACE\Core\obj\x86\Debug\Core.dll
 C:\GitHub\ACE\Core\obj\x86\Debug\Core.pdb
 C:\GitHub\ACE\Core\bin\Debug\PrestaAccesor.dll
 C:\GitHub\ACE\Core\bin\Debug\PrestaAccesor.pdb
+C:\Card\GitHub\ACE\Core\bin\Debug\Core.dll.config
+C:\Card\GitHub\ACE\Core\bin\Debug\Core.dll
+C:\Card\GitHub\ACE\Core\bin\Debug\Core.pdb
+C:\Card\GitHub\ACE\Core\bin\Debug\EntityFramework.dll
+C:\Card\GitHub\ACE\Core\bin\Debug\LINQtoCSV.dll
+C:\Card\GitHub\ACE\Core\bin\Debug\PrestaAccesor.dll
+C:\Card\GitHub\ACE\Core\bin\Debug\RestSharp.dll
+C:\Card\GitHub\ACE\Core\bin\Debug\PrestaAccesor.pdb
+C:\Card\GitHub\ACE\Core\bin\Debug\EntityFramework.xml
+C:\Card\GitHub\ACE\Core\bin\Debug\LINQtoCSV.pdb
+C:\Card\GitHub\ACE\Core\bin\Debug\RestSharp.xml
+C:\Card\GitHub\ACE\Core\obj\x86\Debug\Core.dll
+C:\Card\GitHub\ACE\Core\obj\x86\Debug\Core.pdb
 C:\GitHub\ACE\Core\obj\x86\Debug\Core.csprojResolveAssemblyReference.cache

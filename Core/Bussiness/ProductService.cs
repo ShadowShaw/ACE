@@ -17,6 +17,10 @@ namespace Core.Bussiness
         public List<product> Products;
         public ProductsAccesor m_productsAccesor;
 
+        public ToolStripProgressBar ProgressBar;
+        public ToolStripStatusLabel ProgressLabel;
+        public GroupBox FunctionBox;
+
         public const int StepCount = 500;
 
         private bool m_loaded;
@@ -41,37 +45,44 @@ namespace Core.Bussiness
             m_productsAccesor.Setup(BaseUrl, Account, "");
         }
 
-        public void LoadProductsAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel)
+        public void LoadProductsAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel, GroupBox gb)
         {
+            this.ProgressBar = progressBar;
+            this.ProgressLabel = progressLabel;
+            this.FunctionBox = gb;
             Worker = new ResourceBackgroundWorker();
             Worker.WorkerReportsProgress = true;
             Worker.WorkerSupportsCancellation = true;
             Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-            Worker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
+            Worker.ProgressChanged +=  new ProgressChangedEventHandler(worker_ProgressChanged);
             Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
-            Worker.progressBar = progressBar;
-            Worker.progressLabel = progressLabel;
-
+            
             if (Worker.IsBusy != true)
             {
                 Worker.RunWorkerAsync();
             }
         }
 
+        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            if (e.ProgressPercentage == 0)
+            {
+                this.ProgressBar.Visible = false;
+                this.ProgressLabel.Text = "";
+            }
+            if (e.ProgressPercentage == 1)
+            {
+                this.ProgressBar.Visible = true;
+                this.ProgressLabel.Text = "Načítám produkty, prosím čekejte...";
+            }
+        }
+
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
+            Worker.ReportProgress(1);
             ResourceBackgroundWorker worker = sender as ResourceBackgroundWorker;
-
-            worker.progressLabel.Text = "Načítám produkty, prosím čekejte...";
-            worker.ReportProgress(5);
-            List<int> ids = m_productsAccesor.GetIdsPartial();
-            worker.ReportProgress(15);
-
+                        
             int startItem = 0;
-            double step = 85.0 / (ids.Count / 500.0);
-            Math.Floor(step);
-            
-            double progress = 12.0;
             
             List<product> items = new List<product>();
             do
@@ -83,16 +94,17 @@ namespace Core.Bussiness
                 {
                     Products.Add(item);
                 }
-                progress = progress + step;
-                worker.ReportProgress(System.Convert.ToInt32(progress));
                 
             } while (items.Count == 500);
-            worker.ReportProgress(0);
-            worker.progressLabel.Text = "Načítám produkty, hotovo.";
+            
+            Worker.ReportProgress(0);
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            FunctionBox.Enabled = true;
+            ProgressBar.Visible = false;
+            m_loaded = true;
             if ((e.Cancelled == true))
             {
                 //this.tbProgress.Text = "Canceled!";
@@ -108,14 +120,7 @@ namespace Core.Bussiness
                 //Worker.ReportProgress(0);
             }
         }
-
-        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            ResourceBackgroundWorker worker = sender as ResourceBackgroundWorker;
-            worker.progressBar.Value = (e.ProgressPercentage);
-        }
-
-
+        
         public List<product> GetProductWithEmptyManufacturer()
         {
             List<product> result = new List<product>();

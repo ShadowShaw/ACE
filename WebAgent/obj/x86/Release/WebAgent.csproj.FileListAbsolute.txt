@@ -1,4 +1,3 @@
-C:\GitHub\ACE\WebAgent\obj\x86\Release\WebAgent.csprojResolveAssemblyReference.cache
 C:\GitHub\ACE\WebAgent\bin\PriceUpdater.dll
 C:\GitHub\ACE\WebAgent\bin\PriceUpdater.pdb
 C:\GitHub\ACE\WebAgent\bin\Antlr3.Runtime.dll
@@ -57,3 +56,4 @@ C:\GitHub\ACE\WebAgent\bin\PrestaAccesor.pdb
 C:\GitHub\ACE\WebAgent\bin\RestSharp.xml
 C:\GitHub\ACE\WebAgent\obj\x86\Release\PriceUpdater.dll
 C:\GitHub\ACE\WebAgent\obj\x86\Release\PriceUpdater.pdb
+C:\GitHub\ACE\WebAgent\obj\x86\Release\ResolveAssemblyReference.cache

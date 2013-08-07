@@ -2,7 +2,6 @@ C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.exe.config
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Login.resources
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Main.resources
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Properties.Resources.resources
-C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csproj.GenerateResource.Cache
 C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.pdb
 C:\GitHub\ACE\Desktop\bin\Release\Core.dll
@@ -16,7 +15,6 @@ C:\GitHub\ACE\Desktop\bin\Release\PrestaAccesor.pdb
 C:\GitHub\ACE\Desktop\bin\Release\EntityFramework.xml
 C:\GitHub\ACE\Desktop\bin\Release\LINQtoCSV.pdb
 C:\GitHub\ACE\Desktop\bin\Release\RestSharp.xml
-C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csprojResolveAssemblyReference.cache
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.pdb
 C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.exe.manifest
@@ -24,3 +22,6 @@ C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.application
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.TrustInfo.xml
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.exe.manifest
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.application
+C:\GitHub\ACE\Desktop\obj\x86\Release\ResolveAssemblyReference.cache
+C:\GitHub\ACE\Desktop\obj\x86\Release\GenerateResource.read.1.tlog
+C:\GitHub\ACE\Desktop\obj\x86\Release\GenerateResource.write.1.tlog

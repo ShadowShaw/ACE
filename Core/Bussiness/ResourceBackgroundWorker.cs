@@ -11,7 +11,6 @@ namespace Core.Bussiness
 {
     public class ResourceBackgroundWorker : BackgroundWorker
     {
-        public ToolStripProgressBar progressBar;
-        public ToolStripStatusLabel progressLabel; 
+         
     }
 }

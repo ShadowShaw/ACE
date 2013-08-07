@@ -88,10 +88,14 @@ namespace PrestaAccesor.Serializers
                 IdList = client.Execute<ProductList>(request).Data;
                 startItem = startItem + StepCount;
 
-                foreach (var item in IdList.Products)
+                if (IdList == null)
                 {
-                    result.Add(System.Convert.ToInt32(item.id));
+                    return null;
                 }
+                    foreach (var item in IdList.Products)
+                    {
+                        result.Add(System.Convert.ToInt32(item.id));
+                    }
             } while (IdList.Products.Count == 500);
 
             return result;
