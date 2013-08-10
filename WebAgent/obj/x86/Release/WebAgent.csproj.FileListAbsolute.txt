@@ -56,4 +56,4 @@ C:\GitHub\ACE\WebAgent\bin\PrestaAccesor.pdb
 C:\GitHub\ACE\WebAgent\bin\RestSharp.xml
 C:\GitHub\ACE\WebAgent\obj\x86\Release\PriceUpdater.dll
 C:\GitHub\ACE\WebAgent\obj\x86\Release\PriceUpdater.pdb
-C:\GitHub\ACE\WebAgent\obj\x86\Release\ResolveAssemblyReference.cache
+C:\GitHub\ACE\WebAgent\obj\x86\Release\WebAgent.csprojResolveAssemblyReference.cache

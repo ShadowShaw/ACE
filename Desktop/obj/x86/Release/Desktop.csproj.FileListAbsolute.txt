@@ -22,6 +22,5 @@ C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.application
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.TrustInfo.xml
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.exe.manifest
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.application
-C:\GitHub\ACE\Desktop\obj\x86\Release\ResolveAssemblyReference.cache
-C:\GitHub\ACE\Desktop\obj\x86\Release\GenerateResource.read.1.tlog
-C:\GitHub\ACE\Desktop\obj\x86\Release\GenerateResource.write.1.tlog
+C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csprojResolveAssemblyReference.cache
+C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csproj.GenerateResource.Cache

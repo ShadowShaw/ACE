@@ -17,5 +17,16 @@ namespace Core
         public const string Description = "Dlouhý popis";
         public const string Weight = "Váha";
         public const string Id = "Id";
+
+        //button context help
+        public const string hLoadProducts = "Načte";
+        public const string hEmptyCategory = "Načte";
+        public const string hEmptyManufacturer = "Načte";
+        public const string hWithoutImage = "Načte";
+        public const string hWithoutShortDescription = "Načte";
+        public const string hWithoutLongDescription = "Načte";
+        public const string hWithoutPrice = "Načte";
+        public const string hWithoutWholeSalePrice = "Načte";
+        public const string hWithoutWeight = "Načte";
     }
 }
