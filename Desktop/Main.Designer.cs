@@ -85,6 +85,7 @@
             this.dgView = new System.Windows.Forms.DataGridView();
             this.bSave = new System.Windows.Forms.Button();
             this.tpConsistency = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.lListOf = new System.Windows.Forms.Label();
             this.bLoadProducts = new System.Windows.Forms.Button();
             this.dgConsistency = new System.Windows.Forms.DataGridView();
@@ -99,7 +100,6 @@
             this.bWithoutShortDescription = new System.Windows.Forms.Button();
             this.bEmptyCategory = new System.Windows.Forms.Button();
             this.bWithoutImage = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.status.SuspendLayout();
             this.tc.SuspendLayout();
@@ -616,6 +616,16 @@
             this.tpConsistency.Text = "Kontrola konzistence";
             this.tpConsistency.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(430, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 25;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_2);
+            // 
             // lListOf
             // 
             this.lListOf.AutoSize = true;
@@ -672,6 +682,7 @@
             this.dgConsistency.Size = new System.Drawing.Size(761, 552);
             this.dgConsistency.TabIndex = 22;
             this.dgConsistency.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellEnter);
+            this.dgConsistency.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgConsistency_CellFormatting);
             this.dgConsistency.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellValueChanged);
             // 
             // gbConsistency
@@ -791,7 +802,7 @@
             this.bEmptyCategory.TabIndex = 14;
             this.bEmptyCategory.Text = "s prázdnou kategorií";
             this.bEmptyCategory.UseVisualStyleBackColor = true;
-            this.bEmptyCategory.Click += new System.EventHandler(this.bEmptyCategory4_Click);
+            this.bEmptyCategory.Click += new System.EventHandler(this.bEmptyCategory_Click);
             // 
             // bWithoutImage
             // 
@@ -804,16 +815,6 @@
             this.bWithoutImage.Text = "bez obrázku";
             this.bWithoutImage.UseVisualStyleBackColor = true;
             this.bWithoutImage.Click += new System.EventHandler(this.bWithoutImage_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(430, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_2);
             // 
             // Main
             // 

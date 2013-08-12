@@ -13,6 +13,7 @@ using PrestaAccesor.Serializers;
 using Desktop.UserSettings;
 using PrestaAccesor.Entities;
 using Core;
+using Desktop.Tools;
 
 namespace Desktop
 {
@@ -21,7 +22,7 @@ namespace Desktop
         CoreX coreX;
 
         List<category> test = new List<category>();
-
+        List<HistoryRecord> history = new List<HistoryRecord>();
         public EngineService Engine;
         private MainSettings mainSettings;
 
@@ -236,114 +237,87 @@ namespace Desktop
             mainSettings.Save();
         }
 
-        private void bEmptyCategory4_Click(object sender, EventArgs e)
+        private void bEmptyCategory_Click(object sender, EventArgs e)
         {
             lListOf.Text = "Zobrazuji produkty s prázdnou kategorii.";
-            dgConsistency.Columns.Clear();
-            dgConsistency.AutoGenerateColumns = false;
+            DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyCategory();
 
-            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
-            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
-            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
-
-
-            DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
-            
-            DataTable data = new DataTable();
-
-            data.Columns.Add(new DataColumn("Value", typeof(string)));
-            data.Columns.Add(new DataColumn("Description", typeof(string)));
-
-            data.Rows.Add("5", "aaaaa");
-            data.Rows.Add("51", "bbbb");
-            data.Rows.Add("531", "cccccc");
-
-            column.DataSource = data;
-            column.ValueMember = "Value";
-            column.DisplayMember = "Description";
-
-            dgConsistency.Columns.Add(column); 
-
-
+            DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
+            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category, false);
         }
 
         private void bEmptyManufacturer_Click(object sender, EventArgs e)
         {
             lListOf.Text = "Zobrazuji produkty s prázdným výrobcem.";
-            dgConsistency.Columns.Clear();
-            dgConsistency.AutoGenerateColumns = false;
+            DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyManufacturer();
 
-            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
-            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
-            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
-            AddColumnToDataGrid(dgConsistency, 3, "id_manufacturer", TextResources.Manufacturer);
+            DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
+            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category);
+            DataGridTools.AddColumn(dgConsistency, "id_manufacturer", TextResources.Manufacturer, false);
         }
 
         private void bWithoutImage_Click(object sender, EventArgs e)
         {
             lListOf.Text = "Zobrazuji produkty bez obrázku.";
-            dgConsistency.Columns.Clear();
-            dgConsistency.AutoGenerateColumns = false;
+            DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyImage();
 
-            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
-            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
-            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
-            AddColumnToDataGrid(dgConsistency, 3, "id_image", TextResources.ProductImage);
+            DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
+            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category);
+            DataGridTools.AddColumn(dgConsistency, "id_image", TextResources.ProductImage, false);
         }
 
         private void bWithoutShortDescription_Click(object sender, EventArgs e)
         {
             lListOf.Text = "Zobrazuji produkty s prázdným krátkým popisem.";
-            dgConsistency.Columns.Clear();
-            dgConsistency.AutoGenerateColumns = false;
+            DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyShortDescription();
 
-            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
-            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
-            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
-            AddColumnToDataGrid(dgConsistency, 3, "description_short", TextResources.ShortDescription);
+            DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
+            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category);
+            DataGridTools.AddColumn(dgConsistency, "description_short", TextResources.ShortDescription, false);
         }
 
         private void bWithoutLongDescription_Click(object sender, EventArgs e)
         {
             lListOf.Text = "Zobrazuji produkty s prázdným dlouhým popisem.";
-            dgConsistency.Columns.Clear();
-            dgConsistency.AutoGenerateColumns = false;
+            DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyLongDescription();
 
-            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
-            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
-            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
-            AddColumnToDataGrid(dgConsistency, 3, "description", TextResources.Description);
+            DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
+            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category);
+            DataGridTools.AddColumn(dgConsistency, "description", TextResources.Description, false);
         }
 
         private void bWithoutPrice_Click(object sender, EventArgs e)
         {
             lListOf.Text = "Zobrazuji produkty bez maloobchodní ceny.";
-            dgConsistency.Columns.Clear();
-            dgConsistency.AutoGenerateColumns = false;
+            DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyPrice();
 
-            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
-            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
-            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
-            AddColumnToDataGrid(dgConsistency, 3, "price", TextResources.SalePrice);
+            DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
+            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category);
+            DataGridTools.AddColumn(dgConsistency, "price", TextResources.SalePrice, false);
         }
 
         private void bWithoutWeight_Click(object sender, EventArgs e)
         {
             lListOf.Text = "Zobrazuji produkty bez udané váhy.";
-            dgConsistency.Columns.Clear();
-            dgConsistency.AutoGenerateColumns = false;
+            DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWeight();
 
-            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
-            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
-            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
-            AddColumnToDataGrid(dgConsistency, 3, "weight", TextResources.Weight);
+            DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
+            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category);
+            DataGridTools.AddColumn(dgConsistency, "weight", TextResources.Weight, false);
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -361,30 +335,30 @@ namespace Desktop
         private void bWithoutWholeSalePrice_Click(object sender, EventArgs e)
         {
             lListOf.Text = "Zobrazuji produkty bez velkoobchodní ceny.";
-            dgConsistency.Columns.Clear();
-            dgConsistency.AutoGenerateColumns = false;
+            DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWholesalePrice();
 
-            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
-            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
-            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
-            AddColumnToDataGrid(dgConsistency, 3, "wholesale_price", TextResources.WholeSalePrice);
+            DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
+            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category);
+            DataGridTools.AddColumn(dgConsistency, "wholesale_price", TextResources.WholeSalePrice, false);
         }
         
-        private void AddColumnToDataGrid(DataGridView grid, int index, string dataProperty, string header)
-        {
-            grid.Columns.Add(dataProperty, header);
-            grid.Columns[index].DataPropertyName = dataProperty;
-        }
-
         private void dgConsistency_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //int x = e.ColumnIndex;
-            //int y = e.RowIndex;
-            //var value = dgConsistency[x, y].Value;
-            //var id = dgConsistency["id", y].Value;
+            //if (e.ColumnIndex == this.dgConsistency.Columns["id_category_default"].Index)
+            //{
+            //    string value = dgConsistency[e.ColumnIndex, e.RowIndex].Value.ToString();
+            //    int id = System.Convert.ToInt32(dgConsistency["id", e.RowIndex].Value);
 
-            //test[y].name = dgConsistency["name", y].Value as string;
+            //    HistoryRecord record = new HistoryRecord();
+            //    record.Type = RecordType.product;
+            //    record.Field = FieldType.category;
+            //    record.Id = id;
+            //    record.Value = value;
+
+            //    history.Add(record);
+            //}
         }
 
         private List<product> GetTestList()
@@ -394,6 +368,8 @@ namespace Desktop
             product p2 = new product();
             p1.id = 1;
             p2.id = 2;
+            p1.name = "rrr";
+            p2.name = "rtttt";
             p1.id_category_default = 1;
             p2.id_category_default = 2;
 
@@ -402,50 +378,128 @@ namespace Desktop
 
             return testList;
         }
-        
+
+
+        public class ComboValue
+        {
+            public int Id;
+            public string Desc;
+        }
+
+        private List<category> GetCatList()
+        {
+
+            List<category> ccc = new List<category>();
+            category c1 = new category();
+            category c2 = new category();
+            c1.id = 1;
+            c2.id = 2;
+            c1.name = "aaa";
+            c2.name = "bbb";
+            ccc.Add(c1);
+            ccc.Add(c2);
+
+            return ccc;
+        }
+
+        public static void AddColumnCombo(DataGridView grid, string dataProperty, string header, bool readOnly = true)
+        {
+            DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
+
+            //DataGridViewCell cell = new DataGridViewComboBoxCell();
+            //column.CellTemplate = cell;
+            column.HeaderText = header;
+            column.ReadOnly = readOnly;
+            column.Name = dataProperty;
+            column.Items.Add("jedna");
+            column.Items.Add("dva");
+            //column.DataPropertyName = dataProperty;
+
+
+
+            //column.DataSource = GetCatList();
+            //column.ValueMember = "id";
+            //column.DisplayMember = "name";
+
+            grid.Columns.Add(column);
+
+
+        }
+
         private void button3_Click_2(object sender, EventArgs e)
         {
            lListOf.Text = "Zobrazuji produkty bez velkoobchodní ceny.";
-            dgConsistency.Columns.Clear();
-            dgConsistency.AutoGenerateColumns = false;
+           DataGridTools.InitGrid(dgConsistency);
             //dgConsistency.DataSource = Engine.Products.GetProductWithEmptyShortDescription();
-            
-            AddColumnToDataGrid(dgConsistency, 0, "id", TextResources.Id);
-            AddColumnToDataGrid(dgConsistency, 1, "name", TextResources.Name);
-            AddColumnToDataGrid(dgConsistency, 2, "id_category_default", TextResources.Category);
+
+            DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
+            //DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category, false);
+            AddColumnCombo(dgConsistency, "category_default", TextResources.Category, false);
 
             dgConsistency.DataSource = GetTestList();
+
+            for (int i = 0; i < dgConsistency.Rows.Count; i++)
+            {
+                DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)dgConsistency.Rows[i].Cells["category_default"];
+                comboCell.Value = "jedna";
+            };
         }
  
-        delegate void SetComboBoxCellType(int iRowIndex);
-        bool bIsComboBox = false;
+        //delegate void SetComboBoxCellType(int iRowIndex);
+        //bool bIsComboBox = false;
 
         private void dgConsistency_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            SetComboBoxCellType objChangeCellType = new SetComboBoxCellType(ChangeCellToComboBox);
+        //    SetComboBoxCellType objChangeCellType = new SetComboBoxCellType(ChangeCellToComboBox);
 
-            if (e.ColumnIndex == this.dgConsistency.Columns["id_category_default"].Index)
-            {
-                this.dgConsistency.BeginInvoke(objChangeCellType, e.RowIndex);
-                bIsComboBox = false;
-            }
+        //    if (e.ColumnIndex == this.dgConsistency.Columns["id_category_default"].Index)
+        //    {
+        //        this.dgConsistency.BeginInvoke(objChangeCellType, e.RowIndex);
+        //        bIsComboBox = false;
+        //    }
         }
 
-        private void ChangeCellToComboBox(int iRowIndex)
+        //private void ChangeCellToComboBox(int iRowIndex)
+        //{
+        //    if (bIsComboBox == false)
+        //    {
+        //        DataGridViewComboBoxCell dgComboCell = new DataGridViewComboBoxCell();
+        //        //dgComboCell.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
+
+        //        DataTable dt = new DataTable();
+        //        dt.Columns.Add("cat", typeof(string));
+                
+        //        for (int i = 0; i < 5; i++)
+        //        {
+        //            DataRow dr = dt.NewRow();
+        //            dr["cat"] = "Name - " + i.ToString();
+                    
+
+        //            dt.Rows.Add(dr);
+        //        }
+
+
+        //        dgComboCell.DataSource = dt; // GetTestList();
+        //        dgComboCell.ValueMember = "cat";
+        //        dgComboCell.DisplayMember = "cat";
+        //        //dgComboCell.Items.Add("jedna");
+        //        //dgComboCell.Items.Add("dva");
+        //        dgComboCell.FlatStyle = FlatStyle.Flat;
+
+        //        dgConsistency.Rows[iRowIndex].Cells[dgConsistency.CurrentCell.ColumnIndex] = dgComboCell;
+        //        bIsComboBox = true;
+        //    }
+        //}
+
+        private void dgConsistency_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (bIsComboBox == false)
-            {
-                DataGridViewComboBoxCell dgComboCell = new DataGridViewComboBoxCell();
-                dgComboCell.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
-
-                dgComboCell.DataSource = GetTestList();
-                dgComboCell.ValueMember = "id_category_default";
-                dgComboCell.DisplayMember = "id_category_default";
-
-                dgConsistency.Rows[iRowIndex].Cells[dgConsistency.CurrentCell.ColumnIndex] = dgComboCell;
-                bIsComboBox = true;
-            }
+            //dgConsistency.Rows[e.RowIndex].Cells["category_default"].Value = 1;
+        //    //if (this.dgConsistency.Columns[e.ColumnIndex].Name == "id_category_default")
+        //    //{
+        //    //    string value = dgConsistency[e.ColumnIndex, e.RowIndex].Value.ToString();
+        //    //    e.Value = e.Value.ToString() + " c1";
+        //    //}
         }         
-
     }
 }

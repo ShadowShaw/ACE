@@ -30,6 +30,25 @@ namespace PrestaAccesor.Entities
         public Nullable<long> id_supplier { get; set; }
         public Nullable<long> id_manufacturer { get; set; }
         public Nullable<long> id_category_default { get; set; }
+        //public string category_name
+        //{
+        //    get
+        //    {
+        //        if (id_category_default == 1)
+        //        {
+        //            return "jedna";
+        //        }
+        //        else
+        //        {
+        //            return "dva";
+        //        }
+        //    }
+        //    set 
+        //    {
+        //        id_category_default = 1;
+        //    }
+        //}
+
         //public long id_shop_default { get; set; }
         //public long id_tax_rules_group { get; set; }
         //public bool on_sale { get; set; }
