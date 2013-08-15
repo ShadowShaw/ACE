@@ -69,3 +69,6 @@ C:\Card\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.exe.manifest
 C:\Card\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.application
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.csprojResolveAssemblyReference.cache
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.csproj.GenerateResource.Cache
+C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.ChangesView.resources
+C:\GitHub\ACE\Desktop\bin\Debug\HtmlDocs\ChangeLog.html
+C:\GitHub\ACE\Desktop\bin\Debug\HtmlDocs\Home.html

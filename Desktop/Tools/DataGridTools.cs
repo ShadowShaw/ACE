@@ -13,7 +13,14 @@ namespace Desktop.Tools
 
     public enum FieldType
     {
-        category = 0
+        category = 0,
+        manufacturer = 1,
+        image,
+        shortDescription,
+        longDescription,
+        price,
+        weight,
+        wholesalePrice
     }
 
     public class HistoryRecord
@@ -26,7 +33,24 @@ namespace Desktop.Tools
 
     public class DataGridTools
     {
-        public static void AddColumn(DataGridView grid, string dataProperty, string header, bool readOnly = true)
+
+        public static void AddComboBoxColumn(DataGridView grid, string dataProperty, string header, List<string> items, bool readOnly = true, bool visibility = true)
+        {
+            DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
+
+            column.HeaderText = header;
+            column.ReadOnly = readOnly;
+            column.Visible = visibility;
+            column.Name = dataProperty;
+            foreach (string category in items)
+            {
+                column.Items.Add(category);
+            }
+            
+            grid.Columns.Add(column);
+        }
+
+        public static void AddColumn(DataGridView grid, string dataProperty, string header, bool readOnly = true, bool visibility = true)
         {
             DataGridViewColumn column = new DataGridViewColumn();
             
@@ -34,6 +58,7 @@ namespace Desktop.Tools
             column.CellTemplate = cell;
             column.HeaderText = header;
             column.ReadOnly = readOnly;
+            column.Visible = visibility;
             column.Name = dataProperty;
             column.DataPropertyName = dataProperty;
             

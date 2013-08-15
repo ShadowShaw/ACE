@@ -58,22 +58,14 @@ namespace Core.Bussiness
         {
             ResourceBackgroundWorker worker = sender as ResourceBackgroundWorker;
 
-            List<int> ids = m_manufacturerAccesor.GetIdsPartial();
-            
-            int startItem = 0;
-            
-            List<manufacturer> items = new List<manufacturer>();
-            do
-            {
-                items = m_manufacturerAccesor.GetByFilter(null, null, startItem + "," + StepCount);
-                startItem = startItem + StepCount;
+            List<int> ids = new List<int>();
+            ids = m_manufacturerAccesor.GetIds();
 
-                foreach (manufacturer item in items)
-                {
-                    Manufacturers.Add(item);
-                }
-            
-            } while (items.Count == 500);
+            foreach (int id in ids)
+            {
+                prestashopentity man = m_manufacturerAccesor.Get(id);
+                Manufacturers.Add(man as manufacturer);
+            }
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -92,6 +84,28 @@ namespace Core.Bussiness
             {
                 //Worker.ReportProgress(0);
             }
+        }
+
+        public string GetManufacturerName(int id)
+        {
+            if (id == 0)
+            {
+                return "";
+            }
+            manufacturer result = Manufacturers.Where(x => x.id == id).FirstOrDefault();
+            return result.name;
+        }
+        
+        public List<string> GetManufacturersList()
+        {
+            List<string> result = new List<string>();
+
+            foreach (manufacturer item in Manufacturers)
+            {
+                result.Add(item.name);
+            }
+
+            return result;
         }
     }
 }

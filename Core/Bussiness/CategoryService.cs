@@ -55,26 +55,32 @@ namespace Core.Bussiness
             }
         }
 
+        public bool GetFirstCategory()
+        {
+            bool result = false;
+
+            prestashopentity cat = m_categoriesAccesor.Get(1);
+            if (cat != null)
+            {
+                result = true;
+            }
+
+            return result;
+
+        }
+
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             ResourceBackgroundWorker worker = sender as ResourceBackgroundWorker;
 
-            List<int> ids = m_categoriesAccesor.GetIdsPartial();
-            worker.ReportProgress(15);
-
-            int startItem = 0;
+            List<int> ids = new List<int>();
+            ids = m_categoriesAccesor.GetIds();
             
-            List<category> items = new List<category>();
-            do
+            foreach (int id in ids)
             {
-                items = m_categoriesAccesor.GetByFilter(null, null, startItem + "," + StepCount);
-                startItem = startItem + StepCount;
-
-                foreach (category item in items)
-                {
-                    Categories.Add(item);
-                }
-            } while (items.Count == 500);
+                prestashopentity cat = m_categoriesAccesor.Get(id);
+                Categories.Add(cat as category );
+            }
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -96,10 +102,27 @@ namespace Core.Bussiness
             }
         }
 
-        private string GetCategoryName(int id)
+        public string GetCategoryName(int id)
         {
+            if (id == 0)
+            {
+                return "";
+            }
+
             category result = Categories.Where(x => x.id == id).FirstOrDefault();
             return result.name;
+        }
+
+        public List<string> GetCategoryList()
+        { 
+            List<string> result = new List<string>();
+
+            foreach (category item in Categories)
+            {
+                result.Add(item.name);
+            }
+
+            return result;
         }
     }
 }

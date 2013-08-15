@@ -43,6 +43,7 @@
             this.openZverac = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importManufactures = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuShowChangeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusAgent = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLogin = new System.Windows.Forms.ToolStripStatusLabel();
@@ -60,7 +61,7 @@
             this.gbJoomlaSetup = new System.Windows.Forms.GroupBox();
             this.setupBrowser = new System.Windows.Forms.WebBrowser();
             this.gbPrestaSetup = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.bPrestaTest = new System.Windows.Forms.Button();
             this.bSavePresta = new System.Windows.Forms.Button();
             this.ePrestaToken = new System.Windows.Forms.TextBox();
             this.ePrestaUrl = new System.Windows.Forms.TextBox();
@@ -85,11 +86,11 @@
             this.dgView = new System.Windows.Forms.DataGridView();
             this.bSave = new System.Windows.Forms.Button();
             this.tpConsistency = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
             this.lListOf = new System.Windows.Forms.Label();
             this.bLoadProducts = new System.Windows.Forms.Button();
             this.dgConsistency = new System.Windows.Forms.DataGridView();
             this.gbConsistency = new System.Windows.Forms.GroupBox();
+            this.bSaveChanges = new System.Windows.Forms.Button();
             this.bWithoutWholeSalePrice = new System.Windows.Forms.Button();
             this.bWithoutLongDescription = new System.Windows.Forms.Button();
             this.bWithoutPrice = new System.Windows.Forms.Button();
@@ -100,6 +101,7 @@
             this.bWithoutShortDescription = new System.Windows.Forms.Button();
             this.bEmptyCategory = new System.Windows.Forms.Button();
             this.bWithoutImage = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.status.SuspendLayout();
             this.tc.SuspendLayout();
@@ -159,7 +161,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importManufactures});
+            this.importManufactures,
+            this.menuShowChangeLog});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -167,9 +170,16 @@
             // importManufactures
             // 
             this.importManufactures.Name = "importManufactures";
-            this.importManufactures.Size = new System.Drawing.Size(157, 22);
+            this.importManufactures.Size = new System.Drawing.Size(159, 22);
             this.importManufactures.Text = "Importuj výrobce";
             this.importManufactures.Click += new System.EventHandler(this.importManufactures_Click);
+            // 
+            // menuShowChangeLog
+            // 
+            this.menuShowChangeLog.Name = "menuShowChangeLog";
+            this.menuShowChangeLog.Size = new System.Drawing.Size(159, 22);
+            this.menuShowChangeLog.Text = "Zobraz changelog";
+            this.menuShowChangeLog.Click += new System.EventHandler(this.menuShowChangeLog_Click);
             // 
             // status
             // 
@@ -325,7 +335,7 @@
             // 
             // gbPrestaSetup
             // 
-            this.gbPrestaSetup.Controls.Add(this.button4);
+            this.gbPrestaSetup.Controls.Add(this.bPrestaTest);
             this.gbPrestaSetup.Controls.Add(this.bSavePresta);
             this.gbPrestaSetup.Controls.Add(this.ePrestaToken);
             this.gbPrestaSetup.Controls.Add(this.ePrestaUrl);
@@ -338,15 +348,16 @@
             this.gbPrestaSetup.TabStop = false;
             this.gbPrestaSetup.Text = "Připojení k Presta eshopu";
             // 
-            // button4
+            // bPrestaTest
             // 
-            this.button4.Location = new System.Drawing.Point(58, 138);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.bPrestaTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bPrestaTest.Location = new System.Drawing.Point(306, 138);
+            this.bPrestaTest.Name = "bPrestaTest";
+            this.bPrestaTest.Size = new System.Drawing.Size(121, 23);
+            this.bPrestaTest.TabIndex = 5;
+            this.bPrestaTest.Text = "Test připojení";
+            this.bPrestaTest.UseVisualStyleBackColor = true;
+            this.bPrestaTest.Click += new System.EventHandler(this.bPrestaTest_Click);
             // 
             // bSavePresta
             // 
@@ -616,16 +627,6 @@
             this.tpConsistency.Text = "Kontrola konzistence";
             this.tpConsistency.UseVisualStyleBackColor = true;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(430, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_2);
-            // 
             // lListOf
             // 
             this.lListOf.AutoSize = true;
@@ -645,7 +646,7 @@
             this.bLoadProducts.Tag = "";
             this.bLoadProducts.Text = "Načti produkty";
             this.bLoadProducts.UseVisualStyleBackColor = true;
-            this.bLoadProducts.Click += new System.EventHandler(this.button3_Click_1);
+            this.bLoadProducts.Click += new System.EventHandler(this.bLoadProducts_Click);
             // 
             // dgConsistency
             // 
@@ -681,12 +682,11 @@
             this.dgConsistency.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgConsistency.Size = new System.Drawing.Size(761, 552);
             this.dgConsistency.TabIndex = 22;
-            this.dgConsistency.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellEnter);
-            this.dgConsistency.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgConsistency_CellFormatting);
             this.dgConsistency.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellValueChanged);
             // 
             // gbConsistency
             // 
+            this.gbConsistency.Controls.Add(this.bSaveChanges);
             this.gbConsistency.Controls.Add(this.bWithoutWholeSalePrice);
             this.gbConsistency.Controls.Add(this.bWithoutLongDescription);
             this.gbConsistency.Controls.Add(this.bWithoutPrice);
@@ -704,6 +704,17 @@
             this.gbConsistency.TabIndex = 20;
             this.gbConsistency.TabStop = false;
             this.gbConsistency.Text = "Vyhledej produkty:";
+            // 
+            // bSaveChanges
+            // 
+            this.bSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSaveChanges.Location = new System.Drawing.Point(11, 401);
+            this.bSaveChanges.Name = "bSaveChanges";
+            this.bSaveChanges.Size = new System.Drawing.Size(200, 30);
+            this.bSaveChanges.TabIndex = 29;
+            this.bSaveChanges.Text = "Zapiš změny";
+            this.bSaveChanges.UseVisualStyleBackColor = true;
+            this.bSaveChanges.Click += new System.EventHandler(this.bSaveChanges_Click);
             // 
             // bWithoutWholeSalePrice
             // 
@@ -742,9 +753,9 @@
             // 
             this.bConsistencyNoviko.Enabled = false;
             this.bConsistencyNoviko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConsistencyNoviko.Location = new System.Drawing.Point(11, 477);
+            this.bConsistencyNoviko.Location = new System.Drawing.Point(11, 489);
             this.bConsistencyNoviko.Name = "bConsistencyNoviko";
-            this.bConsistencyNoviko.Size = new System.Drawing.Size(200, 48);
+            this.bConsistencyNoviko.Size = new System.Drawing.Size(200, 36);
             this.bConsistencyNoviko.TabIndex = 12;
             this.bConsistencyNoviko.Text = "Zkontroluj konzistenci dodavatele Noviko";
             this.bConsistencyNoviko.UseVisualStyleBackColor = true;
@@ -764,9 +775,9 @@
             // 
             this.bConsistencyAskino.Enabled = false;
             this.bConsistencyAskino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConsistencyAskino.Location = new System.Drawing.Point(11, 424);
+            this.bConsistencyAskino.Location = new System.Drawing.Point(11, 437);
             this.bConsistencyAskino.Name = "bConsistencyAskino";
-            this.bConsistencyAskino.Size = new System.Drawing.Size(200, 47);
+            this.bConsistencyAskino.Size = new System.Drawing.Size(200, 46);
             this.bConsistencyAskino.TabIndex = 13;
             this.bConsistencyAskino.Text = "Zkontroluj konzistenci dodavatele Askino";
             this.bConsistencyAskino.UseVisualStyleBackColor = true;
@@ -815,6 +826,16 @@
             this.bWithoutImage.Text = "bez obrázku";
             this.bWithoutImage.UseVisualStyleBackColor = true;
             this.bWithoutImage.Click += new System.EventHandler(this.bWithoutImage_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(500, 1);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 25;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // Main
             // 
@@ -916,9 +937,11 @@
         private System.Windows.Forms.Button bWithoutLongDescription;
         private System.Windows.Forms.Button bWithoutPrice;
         private System.Windows.Forms.Button bLoadProducts;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button bWithoutWholeSalePrice;
         private System.Windows.Forms.Label lListOf;
+        private System.Windows.Forms.Button bSaveChanges;
+        private System.Windows.Forms.Button bPrestaTest;
+        private System.Windows.Forms.ToolStripMenuItem menuShowChangeLog;
         private System.Windows.Forms.Button button3;
     }
 }

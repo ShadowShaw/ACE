@@ -94,6 +94,13 @@ namespace Core.Bussiness
             Products.Setup(m_BaseUrl, m_apiToken, "");
         }
 
+        public bool TestPrestaAccess()
+        {
+            bool result = false;
+            result = m_CategoryService.GetFirstCategory();
+            return result;
+        }
+
         public List<TreeItem> CreateCategoryTreeList()
         {
             List<TreeItem> result = new List<TreeItem>();

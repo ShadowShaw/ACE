@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="ACEDesktop.exe" version="0.1.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="ACEDesktop" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="ACEDesktop" version="1.0.0.1" language="neutral" processorArchitecture="x86" />
     <commandLine file="ACEDesktop.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="58880">
-      <assemblyIdentity name="ACEDesktop" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="59392">
+      <assemblyIdentity name="ACEDesktop" version="1.0.0.1" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>H8tlk6oVSkffY3LBbNn0g2RPnlc=</dsig:DigestValue>
+        <dsig:DigestValue>pwmPyZ5v2XL8s313rwcZakcAnwc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="24576">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="23552">
       <assemblyIdentity name="Core" version="0.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>DaSFhb08MAoH2Qawelzz3j/TMwY=</dsig:DigestValue>
+        <dsig:DigestValue>KjwJrsLzsTW/cZyF4iOIlHuINd8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,7 +97,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Ip9ww/ITv6QFfATtPf9MmOnNMKw=</dsig:DigestValue>
+        <dsig:DigestValue>qCVFynYABIqO85jinyRNiqqXQl8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
