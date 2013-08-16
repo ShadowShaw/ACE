@@ -107,5 +107,16 @@ namespace Core.Bussiness
 
             return result;
         }
+
+        public int? GetManufacturerId(string manufacturerName)
+        {
+            if (manufacturerName != "")
+            {
+                return Manufacturers.Where(x => x.name == manufacturerName).FirstOrDefault().id;
+            }
+
+            return 0;
+        }
+
     }
 }

@@ -7,6 +7,7 @@ namespace Core
 {
     public static class TextResources
     {
+        // dgConsistency view
         public const string Name = "Jméno";
         public const string Category = "Kategorie";
         public const string WholeSalePrice = "Velkoobchodní cena";
@@ -17,6 +18,12 @@ namespace Core
         public const string Description = "Dlouhý popis";
         public const string Weight = "Váha";
         public const string Id = "Id";
+
+        // dgChanges view
+        public const string Type = "Typ";
+        public const string Field = "Pole";
+        public const string Value = "Hodnota";
+        public const string Confirmation = "Potvrzení";
 
         //button context help
         public const string hLoadProducts = "Načte";

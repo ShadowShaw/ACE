@@ -22,7 +22,7 @@ namespace Desktop
         CoreX coreX;
 
         public Version ACEVersion;
-        List<HistoryRecord> history = new List<HistoryRecord>();
+        List<ChangeRecord> Changes = new List<ChangeRecord>();
         public EngineService Engine;
         private MainSettings mainSettings;
 
@@ -435,13 +435,13 @@ namespace Desktop
                 string value = dgConsistency[e.ColumnIndex, e.RowIndex].Value.ToString();
                 int id = System.Convert.ToInt32(dgConsistency["id", e.RowIndex].Value);
 
-                HistoryRecord record = new HistoryRecord();
+                ChangeRecord record = new ChangeRecord();
                 record.Type = RecordType.product;
                 record.Field = ChangedType;
                 record.Id = id;
                 record.Value = value;
 
-                history.Add(record);
+                Changes.Add(record);
             }
         }
 
@@ -462,14 +462,14 @@ namespace Desktop
 
         private void bSaveChanges_Click(object sender, EventArgs e)
         {
-            ChangesView changes = new ChangesView(history);
+            ChangesView changes = new ChangesView(Changes);
             if (changes.ShowDialog() == DialogResult.OK)
             {
-
+                // write changes
             }
             else
             {
-             
+                //do nothing
             }
         }
 
@@ -493,31 +493,71 @@ namespace Desktop
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            HistoryRecord record = new HistoryRecord();
+            ChangeRecord record = new ChangeRecord();
             record.Type = RecordType.product;
             record.Field = FieldType.category;
             record.Id = 1;
             record.Value = "Test";
 
-            history.Add(record);
+            Changes.Add(record);
 
-            HistoryRecord record2 = new HistoryRecord();
+            ChangeRecord record2 = new ChangeRecord();
             record2.Type = RecordType.product;
             record2.Field = ChangedType;
             record2.Id = 2;
             record2.Value = "value";
 
-            history.Add(record2);
+            Changes.Add(record2);
             
-            dgConsistency.Columns.Add("Id", "Id");
-            ChangesView changes = new ChangesView(history);
+            ChangesView changes = new ChangesView(Changes);
             if (changes.ShowDialog() == DialogResult.OK)
             {
+                // write changes
 
+                foreach (ChangeRecord change in Changes)
+                {
+                    if (change.Type == RecordType.product)
+                    {
+                        product item = Engine.Products.GetById(change.Id);
+                        if (change.Field == FieldType.category)
+                        {
+                            item.id_category_default = Engine.Categories.GetCategoryId(change.Value);
+                        }
+                        if (change.Field == FieldType.longDescription)
+                        {
+                            item.description = change.Value;
+                        }
+                        if (change.Field == FieldType.manufacturer)
+                        {
+                            item.id_manufacturer = Engine.Manufacturers.GetManufacturerId(change.Value);
+                        }
+                        if (change.Field == FieldType.price)
+                        {
+                            item.price = System.Convert.ToDecimal(change.Value);
+                        }
+                        if (change.Field == FieldType.shortDescription)
+                        {
+                            item.description_short = change.Value;
+                        }
+                        if (change.Field == FieldType.weight)
+                        {
+                            item.weight = System.Convert.ToDecimal(change.Value);
+                        }
+                        if (change.Field == FieldType.wholesalePrice)
+                        {
+                            item.wholesale_price = System.Convert.ToDecimal(change.Value);
+                        }
+                        Engine.Products.Edit(item);
+                    }
+                    //zjistit typ zaznamu
+                    //ziskat aktualni
+                    //zmenit hodnoty
+                    //zapsat hodnoty
+                }
             }
             else
             {
-
+                //do nothing
             }
         }
     }

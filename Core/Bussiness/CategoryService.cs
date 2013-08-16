@@ -113,6 +113,16 @@ namespace Core.Bussiness
             return result.name;
         }
 
+        public int? GetCategoryId(string categoryName)
+        {
+            if (categoryName != "")
+            {
+                return Categories.Where(x => x.name == categoryName).FirstOrDefault().id;
+            }
+
+            return 0;
+        }
+
         public List<string> GetCategoryList()
         { 
             List<string> result = new List<string>();

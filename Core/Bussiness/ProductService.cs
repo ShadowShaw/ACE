@@ -33,6 +33,11 @@ namespace Core.Bussiness
             }
         }
 
+        public product GetById(int id)
+        {
+            return m_productsAccesor.Get(id) as product;
+        }
+
         public ProductService(string BaseUrl, string Account, string Password)
         {
             m_productsAccesor = new ProductsAccesor(BaseUrl, Account, "");
@@ -239,6 +244,11 @@ namespace Core.Bussiness
             }
 
             return result;
+        }
+
+        public void Edit(product entity)
+        {
+            m_productsAccesor.Update(entity);
         }
 
     }

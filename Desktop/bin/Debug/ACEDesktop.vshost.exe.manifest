@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="67584">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="105984">
       <assemblyIdentity name="ACEDesktop" version="1.0.0.1" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ezJ3j5pQFJPuMDsuqsSxUL+w9gs=</dsig:DigestValue>
+        <dsig:DigestValue>XCE+K83l5aRg1B4F3FeheMsuzho=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>RPngtZRVQWxeZ25wu7SFicM899Y=</dsig:DigestValue>
+        <dsig:DigestValue>VZcyjRE8K3C3vsWvD6T+0x5KVjs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,7 +97,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>sAR2L8XDtFpv9e5Yioc/5YAJPic=</dsig:DigestValue>
+        <dsig:DigestValue>tah52ovpM/DxNIGaSpVJvwlv+d0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

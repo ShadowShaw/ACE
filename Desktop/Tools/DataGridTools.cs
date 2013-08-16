@@ -23,7 +23,7 @@ namespace Desktop.Tools
         wholesalePrice
     }
 
-    public class HistoryRecord
+    public class ChangeRecord
     {
         public RecordType Type;
         public FieldType Field;
@@ -41,11 +41,27 @@ namespace Desktop.Tools
             column.HeaderText = header;
             column.ReadOnly = readOnly;
             column.Visible = visibility;
+            column.FlatStyle = FlatStyle.Standard;
             column.Name = dataProperty;
             foreach (string category in items)
             {
                 column.Items.Add(category);
             }
+            
+            grid.Columns.Add(column);
+        }
+
+        public static void AddCheckBoxColumn(DataGridView grid, string dataProperty, string header, bool readOnly = true, bool visibility = true)
+        {
+            DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn();
+
+            column.HeaderText = header;
+            column.FlatStyle = FlatStyle.Standard;
+            column.ReadOnly = readOnly;
+            column.Visible = visibility;
+            column.Name = dataProperty;
+            column.TrueValue = true;
+            column.FalseValue = false;
             
             grid.Columns.Add(column);
         }
