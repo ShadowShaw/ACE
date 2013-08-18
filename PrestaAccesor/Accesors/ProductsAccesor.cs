@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace PrestaAccesor.Serializers
+namespace PrestaAccesor.Accesors
 {
     public class ProductList
     {

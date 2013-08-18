@@ -1,6 +1,5 @@
 ﻿using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
-using PrestaAccesor.Serializers;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -11,34 +10,22 @@ using System.Windows.Forms;
 
 namespace Core.Bussiness
 {
-    public class ManufactuerService
+    public class ManufactuerService : ServiceBase
     {
         private ResourceBackgroundWorker Worker;
         public List<manufacturer> Manufacturers;
-        public ManufacturersAccesor m_manufacturerAccesor;
-
-        public const int StepCount = 500;
-
-        private bool m_loaded;
-
-        public bool Loaded
-        {
-            get
-            {
-                return m_loaded;
-            }
-        }
+        public ManufacturersAccesor manufacturerAccesor;
 
         public ManufactuerService(string BaseUrl, string Account, string Password)
         {
-            m_manufacturerAccesor = new ManufacturersAccesor(BaseUrl, Account, "");
+            manufacturerAccesor = new ManufacturersAccesor(BaseUrl, Account, "");
             Manufacturers = new List<manufacturer>();
-            m_loaded = false;
+            loaded = false;
         }
 
-        public void Setup(string BaseUrl, string Account, string Password)
+        public void Setup()
         {
-            m_manufacturerAccesor.Setup(BaseUrl, Account, "");
+            manufacturerAccesor.Setup(baseUrl, apiToken, "");
         }
 
         public void LoadManufacturersAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel)
@@ -59,11 +46,11 @@ namespace Core.Bussiness
             ResourceBackgroundWorker worker = sender as ResourceBackgroundWorker;
 
             List<int> ids = new List<int>();
-            ids = m_manufacturerAccesor.GetIds();
+            ids = manufacturerAccesor.GetIds();
 
             foreach (int id in ids)
             {
-                prestashopentity man = m_manufacturerAccesor.Get(id);
+                prestashopentity man = manufacturerAccesor.Get(id);
                 Manufacturers.Add(man as manufacturer);
             }
         }
@@ -116,6 +103,21 @@ namespace Core.Bussiness
             }
 
             return 0;
+        }
+
+        public void Edit(manufacturer entity)
+        {
+            manufacturerAccesor.Update(entity);
+        }
+
+        public void Add(manufacturer entity)
+        {
+            manufacturerAccesor.Add(entity);
+        }
+
+        public manufacturer GetById(int id)
+        {
+            return manufacturerAccesor.Get(id) as manufacturer;
         }
 
     }

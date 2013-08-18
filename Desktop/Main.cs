@@ -9,11 +9,12 @@ using System.IO;
 using System.Windows.Forms;
 
 using Core.Bussiness;
-using PrestaAccesor.Serializers;
+using PrestaAccesor.Accesors;
 using Desktop.UserSettings;
 using PrestaAccesor.Entities;
 using Core;
 using Desktop.Tools;
+using PrestaAccesor.Utils;
 
 namespace Desktop
 {
@@ -259,6 +260,9 @@ namespace Desktop
             {
                 DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)dgConsistency.Rows[i].Cells["category"];
                 comboCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
+                DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["name"];
+                int id = System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id"].Value);
+                textCell.Value = Engine.Products.GetProductName(id);
             };
 
             IndexForChange = 3;
@@ -323,8 +327,7 @@ namespace Desktop
 
             DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
             DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
-            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category);
-            dgConsistency.Columns["id_category_default"].Visible = false;
+            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category, true, false);
             DataGridTools.AddColumn(dgConsistency, "category", TextResources.Category);
             DataGridTools.AddColumn(dgConsistency, "description_short", TextResources.ShortDescription, false);
 
@@ -334,9 +337,12 @@ namespace Desktop
             {
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
+                DataGridViewTextBoxCell cell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["description_short"];
+                int id = System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id"].Value);
+                textCell.Value = Engine.Products.GetProductShortDescription(id);
             };
 
-            IndexForChange = 5;
+            IndexForChange = 4;
             ChangedType = FieldType.shortDescription;
         }
 
@@ -356,9 +362,12 @@ namespace Desktop
             {
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
+                DataGridViewTextBoxCell cell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["description"];
+                int id = System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id"].Value);
+                textCell.Value = Engine.Products.GetProductDescription(id);
             };
 
-            IndexForChange = 5;
+            IndexForChange = 4;
             ChangedType = FieldType.longDescription;
         }
 
@@ -380,7 +389,7 @@ namespace Desktop
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
             };
 
-            IndexForChange = 5;
+            IndexForChange = 4;
             ChangedType = FieldType.price;
         }
 
@@ -401,7 +410,7 @@ namespace Desktop
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
             };
-            IndexForChange = 5;
+            IndexForChange = 4;
             ChangedType = FieldType.weight;
         }
         
@@ -423,7 +432,7 @@ namespace Desktop
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
             };
 
-            IndexForChange = 5;
+            IndexForChange = 4;
             ChangedType = FieldType.wholesalePrice;
 
         }
@@ -456,16 +465,65 @@ namespace Desktop
             {
                 Engine.Manufacturers.LoadManufacturersAsync(statusProgress, statusMessage);
                 Engine.Categories.LoadCategoriesAsync();
+                Engine.Languages.LoadLanguages();
+                Engine.GetActiveLanguage();
                 Engine.Products.LoadProductsAsync(statusProgress, statusMessage, gbConsistency);
             }
         }
 
         private void bSaveChanges_Click(object sender, EventArgs e)
         {
+            int languageId = 2;
             ChangesView changes = new ChangesView(Changes);
             if (changes.ShowDialog() == DialogResult.OK)
             {
                 // write changes
+
+                foreach (ChangeRecord change in Changes)
+                {
+                    if (change.Type == RecordType.product)
+                    {
+                        product item = Engine.Products.GetById(change.Id);
+                        
+                        if (PrestaValues.GetValueForLanguage(item.link_rewrite, languageId) == "")
+                        {
+                            PrestaValues.SetValueForLanguage(item.link_rewrite, languageId, PrestaValues.GetValueForLanguage(item.name, languageId));    
+                        }
+                        if (change.Field == FieldType.category)
+                        {
+                            item.id_category_default = Engine.Categories.GetCategoryId(change.Value);
+                        }
+                        if (change.Field == FieldType.longDescription)
+                        {
+                            PrestaValues.SetValueForLanguage(item.description, languageId, change.Value);
+                        }
+                        if (change.Field == FieldType.manufacturer)
+                        {
+                            item.id_manufacturer = Engine.Manufacturers.GetManufacturerId(change.Value);
+                        }
+                        if (change.Field == FieldType.price)
+                        {
+                            item.price = System.Convert.ToDecimal(change.Value);
+                        }
+                        if (change.Field == FieldType.shortDescription)
+                        {
+                            PrestaValues.SetValueForLanguage(item.description_short, languageId, change.Value);
+                        }
+                        if (change.Field == FieldType.weight)
+                        {
+                            item.weight = System.Convert.ToDecimal(change.Value);
+                        }
+                        if (change.Field == FieldType.wholesalePrice)
+                        {
+                            item.wholesale_price = System.Convert.ToDecimal(change.Value);
+                        }
+                        Engine.Products.Edit(item);
+                    }
+                    //zjistit typ zaznamu
+                    //ziskat aktualni
+                    //zmenit hodnoty
+                    //zapsat hodnoty
+                }
             }
             else
             {
@@ -493,6 +551,11 @@ namespace Desktop
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+            //product p = Engine.Products.GetById(6);
+            //SetValueForLanguage(p.name, 2, "Xproduct");
+            //Engine.Products.Edit(p);
+            ////Engine.Products.Add(p);
+
             ChangeRecord record = new ChangeRecord();
             record.Type = RecordType.product;
             record.Field = FieldType.category;
@@ -508,7 +571,8 @@ namespace Desktop
             record2.Value = "value";
 
             Changes.Add(record2);
-            
+
+            int languageId = 2;
             ChangesView changes = new ChangesView(Changes);
             if (changes.ShowDialog() == DialogResult.OK)
             {
@@ -525,7 +589,7 @@ namespace Desktop
                         }
                         if (change.Field == FieldType.longDescription)
                         {
-                            item.description = change.Value;
+                            PrestaValues.SetValueForLanguage(item.description, languageId, change.Value);
                         }
                         if (change.Field == FieldType.manufacturer)
                         {
@@ -537,7 +601,7 @@ namespace Desktop
                         }
                         if (change.Field == FieldType.shortDescription)
                         {
-                            item.description_short = change.Value;
+                            PrestaValues.SetValueForLanguage(item.description_short, languageId, change.Value);
                         }
                         if (change.Field == FieldType.weight)
                         {

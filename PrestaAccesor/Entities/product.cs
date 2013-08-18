@@ -1,11 +1,7 @@
-﻿using RestSharp.Serializers;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace PrestaAccesor.Entities
 {
@@ -16,13 +12,13 @@ namespace PrestaAccesor.Entities
         public long id_product { get; set; }
         //public long id_shop { get; set; }
         public long id_lang { get; set; }
-        public string description { get; set; }
-        public string description_short { get; set; }
-        //public string link_rewrite { get; set; }
-        //public string meta_description { get; set; }
-        //public string meta_keywords { get; set; }
-        //public string meta_title { get; set; }
-        public string name { get; set; }
+        public List<Entities.language> description { get; set; }
+        public List<Entities.language> description_short { get; set; }
+        public List<Entities.language> link_rewrite { get; set; }
+        public List<Entities.language> meta_description { get; set; }
+        public List<Entities.language> meta_keywords { get; set; }
+        public List<Entities.language> meta_title { get; set; }
+        public List<Entities.language> name { get; set; }
         //public string available_now { get; set; }
         //public string available_later { get; set; }
 
@@ -30,26 +26,7 @@ namespace PrestaAccesor.Entities
         public Nullable<long> id_supplier { get; set; }
         public Nullable<long> id_manufacturer { get; set; }
         public Nullable<long> id_category_default { get; set; }
-        //public string category_name
-        //{
-        //    get
-        //    {
-        //        if (id_category_default == 1)
-        //        {
-        //            return "jedna";
-        //        }
-        //        else
-        //        {
-        //            return "dva";
-        //        }
-        //    }
-        //    set 
-        //    {
-        //        id_category_default = 1;
-        //    }
-        //}
-
-        //public long id_shop_default { get; set; }
+          //public long id_shop_default { get; set; }
         //public long id_tax_rules_group { get; set; }
         //public bool on_sale { get; set; }
         //public bool online_only { get; set; }
@@ -111,6 +88,6 @@ namespace PrestaAccesor.Entities
         //////public string date_upd { get; set; }
         //public bool advanced_stock_management { get; set; }
         
-        public long id_image { get; set; }
+        //public long id_image { get; set; }
     }
 }

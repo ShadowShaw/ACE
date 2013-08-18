@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Core.Bussiness
 {
-    public class LoginService
+    public class LoginService : ServiceBase
     {
         private UnitOfWorkProvider UoWProvider;
 

@@ -22,19 +22,61 @@ namespace PriceUpdater.Models
     {
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Současné heslo")]
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nové heslo")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Nové heslo znovu")]
+        [Compare("NewPassword", ErrorMessage = "Hesla se neshodují.")]
         public string ConfirmPassword { get; set; }
+    }
+
+    public class UserPropertiesModel 
+    {
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Název společnosti")]
+        public string CompanyName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Křestní jméno")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Příjmení")]
+        public string LastName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Adresa")]
+        public string Address { get; set; }
+        
+        [Required]
+        [Display(Name = "Plátce DPH")]
+        public bool Dph { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Platební symbol")]
+        public string PaymentSymbol { get; set; } // identifikace platby - variabilni symbol
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "ICO")]
+        public string ICO { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "DIC")]
+        public string DIC { get; set; }
     }
 
     public class LoginModel
@@ -45,29 +87,68 @@ namespace PriceUpdater.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Heslo")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Pamatovat si mě?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Uživatelské jméno")]
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Heslo")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Heslo znovu")]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 6)]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Název společnosti")]
+        public string CompanyName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Křestní jméno")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Příjmení")]
+        public string LastName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Adresa")]
+        public string Address { get; set; }
+        
+        [Required]
+        [Display(Name = "Plátce DPH")]
+        public bool Dph { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Platební symbol")]
+        public string PaymentSymbol { get; set; } // identifikace platby - variabilni symbol
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "ICO")]
+        public string ICO { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "DIC")]
+        public string DIC { get; set; }
     }
 
     public class ExternalLogin

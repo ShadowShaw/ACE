@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace PrestaAccesor.Serializers
+namespace PrestaAccesor.Accesors
 {
     public abstract class RestSharpAccesor
     {
@@ -43,6 +43,7 @@ namespace PrestaAccesor.Serializers
         protected T Execute<T>(RestRequest Request) where T : new()
         {
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
+            Request.RequestFormat = DataFormat.Json;
             var response = client.Execute<T>(Request);
             if (response.ErrorException != null)
             {
@@ -78,6 +79,7 @@ namespace PrestaAccesor.Serializers
         protected RestRequest RequestForGet(string Resource, int? Id, string RootElement)
         {
             var request = new RestRequest();
+            //request.XmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(Entities.product)) as RestSharp.Serializers.ISerializer;
             request.Resource = Resource + "/" + Id;
             request.RootElement = RootElement;
             return request;

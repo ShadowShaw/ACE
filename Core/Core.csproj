@@ -59,6 +59,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bussiness\CategoryService.cs" />
+    <Compile Include="Bussiness\LanguageService.cs" />
     <Compile Include="Bussiness\ManufacturerService.cs" />
     <Compile Include="Bussiness\ResourceBackgroundWorker.cs">
       <SubType>Component</SubType>
@@ -66,6 +67,7 @@
     <Compile Include="Bussiness\EngineService.cs" />
     <Compile Include="Bussiness\LoginService.cs" />
     <Compile Include="Bussiness\ProductService.cs" />
+    <Compile Include="Bussiness\ServiceBase.cs" />
     <Compile Include="Bussiness\TreeItem.cs" />
     <Compile Include="Bussiness\UITools.cs" />
     <Compile Include="Data\EFEntity.cs" />

@@ -1,6 +1,5 @@
 ﻿using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
-using PrestaAccesor.Serializers;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -11,43 +10,31 @@ using System.Windows.Forms;
 
 namespace Core.Bussiness
 {
-    public class ProductService
+    public class ProductService : ServiceBase
     {
         private ResourceBackgroundWorker Worker;
         public List<product> Products;
-        public ProductsAccesor m_productsAccesor;
+        public ProductsAccesor productsAccesor;
 
         public ToolStripProgressBar ProgressBar;
         public ToolStripStatusLabel ProgressLabel;
         public GroupBox FunctionBox;
 
-        public const int StepCount = 500;
-
-        private bool m_loaded;
-
-        public bool Loaded
-        {
-            get
-            {
-                return m_loaded;
-            }
-        }
-
         public product GetById(int id)
         {
-            return m_productsAccesor.Get(id) as product;
+            return productsAccesor.Get(id) as product;
         }
 
         public ProductService(string BaseUrl, string Account, string Password)
         {
-            m_productsAccesor = new ProductsAccesor(BaseUrl, Account, "");
+            productsAccesor = new ProductsAccesor(BaseUrl, Account, "");
             Products = new List<product>();
-            m_loaded = false;
+            loaded = false;
         }
 
-        public void Setup(string BaseUrl, string Account, string Password)
+        public void Setup()
         {
-            m_productsAccesor.Setup(BaseUrl, Account, "");
+            productsAccesor.Setup(baseUrl, apiToken, "");
         }
 
         public void LoadProductsAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel, GroupBox gb)
@@ -92,7 +79,7 @@ namespace Core.Bussiness
             List<product> items = new List<product>();
             do
             {
-                items = m_productsAccesor.GetByFilter(null, null, startItem + "," + StepCount);
+                items = productsAccesor.GetByFilter(null, null, startItem + "," + StepCount);
                 startItem = startItem + StepCount;
                 
                 foreach (product item in items)
@@ -109,7 +96,7 @@ namespace Core.Bussiness
         {
             FunctionBox.Enabled = true;
             ProgressBar.Visible = false;
-            m_loaded = true;
+            loaded = true;
             if ((e.Cancelled == true))
             {
                 //this.tbProgress.Text = "Canceled!";
@@ -162,10 +149,10 @@ namespace Core.Bussiness
 
             foreach (product item in this.Products)
             {
-                if (item.id_image == 0)
-                {
-                    result.Add(item);
-                }
+                //if (item.id_image == 0)
+                //{
+                //    result.Add(item);
+                //}
             }
 
             return result;
@@ -177,7 +164,7 @@ namespace Core.Bussiness
 
             foreach (product item in this.Products)
             {
-                if (item.description_short == "")
+                //if (item.description_short == "")
                 {
                     result.Add(item);
                 }
@@ -192,7 +179,7 @@ namespace Core.Bussiness
 
             foreach (product item in this.Products)
             {
-                if (item.description == "")
+                //if (item.description == "")
                 {
                     result.Add(item);
                 }
@@ -248,8 +235,33 @@ namespace Core.Bussiness
 
         public void Edit(product entity)
         {
-            m_productsAccesor.Update(entity);
+            productsAccesor.Update(entity);
         }
 
+        public void Add(product entity)
+        {
+            productsAccesor.Add(entity);
+        }
+
+        public string GetProductName(int id)
+        {
+            int productIndex = Products.FindIndex(product => product.id == id);
+            int languageIndex = Products[productIndex].name.FindIndex(language => language.id == activeLanguage);
+            return Products[productIndex].name[languageIndex].Value;
+        }
+
+        public string GetProductShortDescription(int id)
+        {
+            int productIndex = Products.FindIndex(product => product.id == id);
+            int languageIndex = Products[productIndex].description_short.FindIndex(language => language.id == activeLanguage);
+            return Products[productIndex].description_short[languageIndex].Value;
+        }
+
+        public string GetProductDescription(int id)
+        {
+            int productIndex = Products.FindIndex(product => product.id == id);
+            int languageIndex = Products[productIndex].description.FindIndex(language => language.id == activeLanguage);
+            return Products[productIndex].description[languageIndex].Value;
+        }
     }
 }

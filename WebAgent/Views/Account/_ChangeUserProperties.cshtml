@@ -1,35 +1,18 @@
-﻿@model PriceUpdater.Models.RegisterModel
-@{
-    ViewBag.Title = "Registrace";
-}
+﻿@model PriceUpdater.Models.UserPropertiesModel
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2> Vytvoření nového účtu.</h2>
-</hgroup>
+<h3>Editace u6ivatelsk0ho profilu</h3>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Manage", "AccountProperties")) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
-    <fieldset>
-        <legend>Registration Form</legend>
+    <section>
+        <fieldset>
+        <legend>Change User Properties Form</legend>
         <ol>
             <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.CompanyName)
-                @Html.TextBoxFor(m => m.CompanyName)
+                @Html.LabelFor(model => model.CompanyName)
+                @Html.TextBoxFor(model => model.CompanyName)
             </li>
             <li>
                 @Html.LabelFor(m => m.FirstName)
@@ -60,10 +43,7 @@
                 @Html.TextBoxFor(m => m.DIC)
             </li>
         </ol>
-        <input type="submit" value="Register" />
-    </fieldset>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+        <input type="submit" value="Změnit údaje o uživateli" />
+        </fieldset>
+    </section>
 }

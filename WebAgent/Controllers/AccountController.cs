@@ -81,7 +81,17 @@ namespace PriceUpdater.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, propertyValues: new
+                                                {
+                                                    CompanyName = model.CompanyName,
+                                                    Address = model.Address,
+                                                    Dph = model.Dph,
+                                                    Dic = model.DIC,
+                                                    FirstName = model.FirstName,
+                                                    ICO = model.ICO,
+                                                    LastName = model.LastName,
+                                                    PaymentSymbol = model.PaymentSymbol
+                                                });
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
@@ -130,12 +140,18 @@ namespace PriceUpdater.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Vaše heslo bylo změněno."
+                : message == ManageMessageId.SetPasswordSuccess ? "Vaše heslo bylo nastaveno."
+                : message == ManageMessageId.RemoveLoginSuccess ? "Externí příhlášení bylo odstraněno."
                 : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
+            
+            int memberId = WebSecurity.GetUserId(User.Identity.Name);
+            UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
+            var uow = uowProvider.CreateNew();
+            ViewBag.UserProperties = uow.Users.GetByID(memberId);
+            
             return View();
         }
 

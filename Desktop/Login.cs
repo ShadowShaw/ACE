@@ -16,17 +16,17 @@ namespace Desktop
 {
     public partial class Login : Form
     {
-        private EngineService m_engine;
+        private EngineService engine;
 
         public Login(EngineService engine)
         {
-            m_engine = engine;
+            this.engine = engine;
             InitializeComponent();
         }
         
         private void bOk_Click(object sender, EventArgs e)
         {
-            if (m_engine.Login.checkDesktopLogin(eUserName.Text.Trim(), ePassword.Text.Trim()))
+            if (engine.Login.checkDesktopLogin(eUserName.Text.Trim(), ePassword.Text.Trim()))
             {
                 DialogResult = DialogResult.OK;
             }
