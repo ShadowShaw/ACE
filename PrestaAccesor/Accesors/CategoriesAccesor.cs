@@ -28,7 +28,7 @@ namespace PrestaAccesor.Accesors
 
         }
 
-        public Entities.prestashopentity Get(int EntityId)
+        public Entities.PrestashopEntity Get(long? EntityId)
         {
             RestRequest request = this.RequestForGet("categories", EntityId, "category");
             return this.Execute<Entities.category>(request);
@@ -47,7 +47,7 @@ namespace PrestaAccesor.Accesors
             this.Execute<Entities.manufacturer>(request);
         }
 
-        public void Update(Entities.category Category)
+        public void Update(Entities.PrestashopEntity Category)
         {
             RestRequest request = this.RequestForUpdate("categories", Category.id, Category);
             try
@@ -60,7 +60,7 @@ namespace PrestaAccesor.Accesors
             }
         }
 
-        public void Delete(Entities.category Category)
+        public void Delete(Entities.PrestashopEntity Category)
         {
             RestRequest request = this.RequestForDelete("categories", Category.id);
             this.Execute<Entities.category>(request);

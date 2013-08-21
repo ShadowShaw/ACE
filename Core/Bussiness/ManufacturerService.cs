@@ -30,6 +30,7 @@ namespace Core.Bussiness
 
         public void LoadManufacturersAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel)
         {
+            Manufacturers.Clear();
             Worker = new BackgroundWorker();
             Worker.WorkerSupportsCancellation = true;
             Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
@@ -50,7 +51,7 @@ namespace Core.Bussiness
 
             foreach (int id in ids)
             {
-                prestashopentity man = manufacturerAccesor.Get(id);
+                PrestashopEntity man = manufacturerAccesor.Get(id);
                 Manufacturers.Add(man as manufacturer);
             }
         }
@@ -95,7 +96,7 @@ namespace Core.Bussiness
             return result;
         }
 
-        public int? GetManufacturerId(string manufacturerName)
+        public long? GetManufacturerId(string manufacturerName)
         {
             if (manufacturerName != "")
             {

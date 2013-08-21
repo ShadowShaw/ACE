@@ -25,10 +25,10 @@ namespace PrestaAccesor.Accesors
 
         }
 
-        public Entities.prestashopentity Get(int EntityId)
+        public Entities.PrestashopEntity Get(long? EntityId)
         {
             RestRequest request = this.RequestForGet("languages", EntityId, "language");
-            return this.Execute<Entities.languageEntity>(request);
+            return this.Execute<Entities.LanguageEntity>(request);
         }
 
         public List<int> GetIds()
@@ -42,6 +42,25 @@ namespace PrestaAccesor.Accesors
             return GetIds();
         }
 
+        public void Update(Entities.PrestashopEntity Language)
+        {
+            RestRequest request = this.RequestForUpdate("languages", Language.id, Language);
+            try
+            {
+                this.Execute<Entities.LanguageEntity>(request);
+            }
+            catch (ApplicationException ex)
+            {
+                ex.ToString();
+            }
+        }
+
+        public void Delete(Entities.PrestashopEntity Language)
+        {
+            RestRequest request = this.RequestForDelete("languages", Language.id);
+            this.Execute<Entities.language>(request);
+        }
+
         /// <summary>
         /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
         /// </summary>
@@ -49,17 +68,17 @@ namespace PrestaAccesor.Accesors
         /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
         /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
         /// <returns></returns>
-        public List<Entities.languageEntity> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
+        public List<Entities.LanguageEntity> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter("languages", "full", Filter, Sort, Limit, "language");
-            return this.Execute<List<Entities.languageEntity>>(request);
+            return this.Execute<List<Entities.LanguageEntity>>(request);
         }
 
         /// <summary>
         /// Get all manufacturers.
         /// </summary>
         /// <returns>A list of manufacturers</returns>
-        public List<Entities.languageEntity> GetAll()
+        public List<Entities.LanguageEntity> GetAll()
         {
             return this.GetByFilter(null, null, null);
         }

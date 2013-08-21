@@ -5,7 +5,8 @@ using System.Text;
 
 namespace PrestaAccesor.Entities
 {
-    abstract public class prestashopentity
+    abstract public class PrestashopEntity
     {
+        public Nullable<long> id { get; set; }
     }
 }

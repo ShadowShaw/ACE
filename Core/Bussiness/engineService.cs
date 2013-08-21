@@ -87,10 +87,11 @@ namespace Core.Bussiness
             Languages.Setup();
         }
 
-        public int GetActiveLanguage()
-        {
-            this.activePrestaLanguage = languageService.GetActiveLanguage();
-            return this.activePrestaLanguage;
+        public void SetupPrestaLanguages()
+        { 
+            Categories.SetupLanguage(Languages.ActivePrestaLanguage);
+            Manufacturers.SetupLanguage(Languages.ActivePrestaLanguage);
+            Products.SetupLanguage(Languages.ActivePrestaLanguage);
         }
 
         public bool TestPrestaAccess()
@@ -101,11 +102,9 @@ namespace Core.Bussiness
                 Languages.LoadLanguages();
             }
             
-            this.activePrestaLanguage = -1;
+            Languages.GetActiveLanguage();
 
-            this.activePrestaLanguage = GetActiveLanguage();
-            
-            if (this.activePrestaLanguage != -1)
+            if (Languages.ActivePrestaLanguage != -1)
             {
                 result = true;
             }

@@ -57,7 +57,7 @@
     <Compile Include="Entities\associations.cs" />
     <Compile Include="Entities\category.cs" />
     <Compile Include="Entities\languageEntity.cs" />
-    <Compile Include="Entities\prestashopentity.cs" />
+    <Compile Include="Entities\PrestashopEntity.cs" />
     <Compile Include="Entities\language.cs" />
     <Compile Include="Entities\manufacturer.cs" />
     <Compile Include="Accesors\ManufacturersAccesor.cs" />

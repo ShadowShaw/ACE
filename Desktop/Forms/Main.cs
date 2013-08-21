@@ -14,7 +14,6 @@ using Desktop.UserSettings;
 using PrestaAccesor.Entities;
 using Core;
 using Desktop.Utils;
-using PrestaAccesor.Utils;
 using Core.Utils;
 using Core.ViewModels;
 using System.Xml.Serialization;
@@ -459,10 +458,11 @@ namespace Desktop
             }
             else
             {
+                Engine.Languages.LoadLanguages();
+                Engine.Languages.GetActiveLanguage();
+                Engine.SetupPrestaLanguages();
                 Engine.Manufacturers.LoadManufacturersAsync(statusProgress, statusMessage);
                 Engine.Categories.LoadCategoriesAsync();
-                Engine.Languages.LoadLanguages();
-                Engine.GetActiveLanguage();
                 Engine.Products.LoadProductsAsync(statusProgress, statusMessage, gbConsistency);
             }
         }
@@ -488,7 +488,7 @@ namespace Desktop
                         }
                         if (change.Field == FieldType.longDescription)
                         {
-                            PrestaValues.SetValueForLanguage(item.description, Engine.GlanguageId, change.Value);
+                            item.description = change.Value;
                         }
                         if (change.Field == FieldType.manufacturer)
                         {
@@ -500,7 +500,7 @@ namespace Desktop
                         }
                         if (change.Field == FieldType.shortDescription)
                         {
-                            PrestaValues.SetValueForLanguage(item.description_short, languageId, change.Value);
+                            item.description_short = change.Value;
                         }
                         if (change.Field == FieldType.weight)
                         {
@@ -510,7 +510,7 @@ namespace Desktop
                         {
                             item.wholesale_price = System.Convert.ToDecimal(change.Value);
                         }
-                        //Engine.Products.Edit(item);
+                        Engine.Products.Edit(item);
                     }
                 }
             }

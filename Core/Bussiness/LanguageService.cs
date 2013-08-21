@@ -12,18 +12,36 @@ namespace Core.Bussiness
 {
     public class LanguageService : ServiceBase
     {
-        public List<languageEntity> Languages;
+        public List<LanguageEntity> Languages;
         public LanguageAccesor languageAccesor;
-        
-        public languageEntity GetById(int id)
+
+        public long? GetActiveLanguage()
         {
-            return languageAccesor.Get(id) as languageEntity;
+            if (loaded == false)
+            {
+                this.LoadLanguages();
+            }
+
+            foreach (LanguageEntity entity in Languages)
+            {
+                if (entity.active)
+                {
+                    activePrestaLanguage = entity.id;
+                }
+            }
+
+            return activePrestaLanguage;
+        }
+
+        public LanguageEntity GetById(int id)
+        {
+            return languageAccesor.Get(id) as LanguageEntity;
         }
 
         public LanguageService(string BaseUrl, string Account, string Password)
         {
             languageAccesor = new LanguageAccesor(BaseUrl, Account, "");
-            Languages = new List<languageEntity>();
+            Languages = new List<LanguageEntity>();
             loaded = false;
         }
 
@@ -34,36 +52,16 @@ namespace Core.Bussiness
 
         public void LoadLanguages()
         {
+            Languages.Clear();
             List<int> ids = new List<int>();
             ids = languageAccesor.GetIds();
 
             foreach (int id in ids)
             {
-                prestashopentity lang = languageAccesor.Get(id);
-                Languages.Add(lang as languageEntity);
+                PrestashopEntity lang = languageAccesor.Get(id);
+                Languages.Add(lang as LanguageEntity);
             }
             loaded = true;
         }
-
-        public int GetActiveLanguage()
-        {
-            int result = -1;
-            
-            if (loaded)
-            {
-                foreach (languageEntity item in Languages)
-                {
-                    if (item.active)
-                    {
-                        result = System.Convert.ToInt32(item.id);
-                    }
-                }
-            }
-
-            this.activePrestaLanguage = result;
-
-            return result;
-        }
-
     }
 }

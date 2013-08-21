@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace PrestaAccesor.Entities
 {
     [Serializable]
-    public class language : prestashopentity
+    public class language
     {
         [XmlAttribute]
         public int id { get; set; }

@@ -30,6 +30,7 @@ namespace Core.Bussiness
 
         public void LoadCategoriesAsync()
         {
+            Categories.Clear();
             Worker = new BackgroundWorker();
             Worker.WorkerReportsProgress = true;
             Worker.WorkerSupportsCancellation = true;
@@ -51,7 +52,7 @@ namespace Core.Bussiness
             
             foreach (int id in ids)
             {
-                prestashopentity cat = categoriesAccesor.Get(id);
+                PrestashopEntity cat = categoriesAccesor.Get(id);
                 Categories.Add(cat as category );
             }
         }
@@ -86,7 +87,7 @@ namespace Core.Bussiness
             return result.name;
         }
 
-        public int? GetCategoryId(string categoryName)
+        public long? GetCategoryId(string categoryName)
         {
             if (categoryName != "")
             {

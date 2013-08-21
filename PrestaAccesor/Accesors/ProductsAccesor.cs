@@ -24,13 +24,12 @@ namespace PrestaAccesor.Accesors
 
     public class ProductsAccesor : RestSharpAccesor, IRestAccesor
     {
-        public ProductsAccesor(string BaseUrl, string Account, string SecretKey)
-            : base(BaseUrl, Account, SecretKey)
+        public ProductsAccesor(string BaseUrl, string Account, string SecretKey) : base(BaseUrl, Account, SecretKey)
         {
 
         }
 
-        public Entities.prestashopentity Get(int EntityId)
+        public Entities.PrestashopEntity Get(long? EntityId)
         {
             RestRequest request = this.RequestForGet("products", EntityId, "product");
             return this.Execute<Entities.product>(request);
@@ -49,7 +48,7 @@ namespace PrestaAccesor.Accesors
             this.Execute<Entities.product>(request);
         }
 
-        public void Update(Entities.product Product)
+        public void Update(Entities.PrestashopEntity Product)
         {
             RestRequest request = this.RequestForUpdate("products", Product.id, Product);
             try
@@ -62,7 +61,7 @@ namespace PrestaAccesor.Accesors
             }
         }
 
-        public void Delete(Entities.product Product)
+        public void Delete(Entities.PrestashopEntity Product)
         {
             RestRequest request = this.RequestForDelete("products", Product.id);
             this.Execute<Entities.product>(request);

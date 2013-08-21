@@ -5,10 +5,8 @@ using System.Text;
 
 namespace PrestaAccesor.Entities
 {
-    public class product : prestashopentity
+    public class product : PrestashopEntity
     {
-        public int? id { get; set; }
-
         public long id_product { get; set; }
         //public long id_shop { get; set; }
         public long id_lang { get; set; }

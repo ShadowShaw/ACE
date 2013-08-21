@@ -7,7 +7,6 @@ namespace Core.Bussiness
 {
     public abstract class ServiceBase
     {
-        protected int activePrestaLanguage;
         public const int StepCount = 500;
 
         protected bool loaded;
@@ -16,6 +15,16 @@ namespace Core.Bussiness
             get
             {
                 return loaded;
+            }
+        }
+
+        protected long? activePrestaLanguage;
+        
+        public long? ActivePrestaLanguage
+        {
+            get
+            {
+                return activePrestaLanguage;
             }
         }
 
@@ -36,8 +45,12 @@ namespace Core.Bussiness
             {
                 return apiToken;
             }
-        } 
+        }
 
+        public void SetupLanguage(long? activeLanguage)
+        {
+            this.activePrestaLanguage = activeLanguage;
+        }
 
         //list
         //accesor

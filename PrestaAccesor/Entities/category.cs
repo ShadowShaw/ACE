@@ -6,9 +6,8 @@ using System.Text;
 
 namespace PrestaAccesor.Entities
 {
-    public class category : prestashopentity
+    public class category : PrestashopEntity
     {
-        public Nullable<int> id { get; set; }
         public long id_shop { get; set; }  //entity.shop
         public List<Entities.language > description { get; set; }
         public List<Entities.language> short_description { get; set; }

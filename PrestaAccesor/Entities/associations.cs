@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PrestaAccesor.Entities
 {
-    public class associations : prestashopentity
+    public class associations
     {
         public List<address> addresses { get; set; }
     }

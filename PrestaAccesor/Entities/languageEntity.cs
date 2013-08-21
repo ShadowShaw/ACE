@@ -5,9 +5,8 @@ using System.Text;
 
 namespace PrestaAccesor.Entities
 {
-    public class languageEntity : prestashopentity
+    public class LanguageEntity : PrestashopEntity
     {
-        public long id { get; set; }
         public string name { get; set; }
         public bool active { get; set; }
         public string iso_code { get; set; }

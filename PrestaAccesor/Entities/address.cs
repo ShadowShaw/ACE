@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PrestaAccesor.Entities
 {
-    public class address : prestashopentity
+    public class address
     {
         public int id { get; set; }
     }

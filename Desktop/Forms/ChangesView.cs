@@ -45,7 +45,7 @@ namespace Desktop
 
             foreach (ChangeRecord change in Changes)
             {
-                table.Rows.Add(change.Id, change.Type.ToString(), change.Field.ToString(), change.Value, true);
+                table.Rows.Add(change.Id, GetChangeType(change.Type), GetChangeField(change.Field), change.Value, true);
             }
             
             dgChanges.DataSource = table;
@@ -56,6 +56,54 @@ namespace Desktop
             } 
         }
 
+        private string GetChangeType(RecordType type)
+        {
+            string result = "Neznamý";
+            if (type == RecordType.product)
+            {
+                result = "Produkt";
+            }
+            return result;
+        }
+
+        private string GetChangeField(FieldType field)
+        {
+            string result = "Neznamé";
+            if (field == FieldType.category)
+            {
+                result = "Kategorie";
+            }
+            if (field == FieldType.image)
+            {
+                result = "Obrázek";
+            }
+            if (field == FieldType.longDescription)
+            {
+                result = "Popis";
+            }
+            if (field == FieldType.manufacturer)
+            {
+                result = "Výrobce";
+            }
+            if (field == FieldType.price)
+            {
+                result = "Maloobchodní cena";
+            }
+            if (field == FieldType.shortDescription)
+            {
+                result = "Krátký popis";
+            }
+            if (field == FieldType.weight)
+            {
+                result = "Váha";
+            }
+            if (field == FieldType.wholesalePrice)
+            {
+                result = "Velkoobchodní cena";
+            }
+            return result;
+        }
+        
         private void bOk_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{692CE1
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLAccesor", "SQLAccesor\SQLAccesor.csproj", "{5A31FE7D-2D66-490E-9A9F-819027E3823F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,16 @@ Global
 		{3D494A24-06BA-475B-A158-162745683EC3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3D494A24-06BA-475B-A158-162745683EC3}.Release|x86.ActiveCfg = Release|Any CPU
 		{3D494A24-06BA-475B-A158-162745683EC3}.Release|x86.Build.0 = Release|Any CPU
+		{5A31FE7D-2D66-490E-9A9F-819027E3823F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A31FE7D-2D66-490E-9A9F-819027E3823F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A31FE7D-2D66-490E-9A9F-819027E3823F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5A31FE7D-2D66-490E-9A9F-819027E3823F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5A31FE7D-2D66-490E-9A9F-819027E3823F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A31FE7D-2D66-490E-9A9F-819027E3823F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A31FE7D-2D66-490E-9A9F-819027E3823F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A31FE7D-2D66-490E-9A9F-819027E3823F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5A31FE7D-2D66-490E-9A9F-819027E3823F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5A31FE7D-2D66-490E-9A9F-819027E3823F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

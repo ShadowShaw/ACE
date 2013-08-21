@@ -1,6 +1,7 @@
 ﻿using Core.ViewModels;
 using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
+using PrestaAccesor.Utils;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,8 @@ namespace Core.Bussiness
 
         public ProductViewModel GetById(int id)
         {
-            return ProductFromPresta(productsAccesor.Get(id) as product);
+            return Products.Where(x => x.id == id).FirstOrDefault();
+            //return ProductFromPresta(productsAccesor.Get(id) as product);
         }
 
         public ProductService(string BaseUrl, string apiToken, string Password)
@@ -40,6 +42,7 @@ namespace Core.Bussiness
 
         public void LoadProductsAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel, GroupBox gb)
         {
+            Products.Clear();
             this.ProgressBar = progressBar;
             this.ProgressLabel = progressLabel;
             this.FunctionBox = gb;
@@ -180,7 +183,7 @@ namespace Core.Bussiness
 
             foreach (ProductViewModel item in this.Products)
             {
-                //if (item.description == "")
+                if (item.description == "")
                 {
                     result.Add(item);
                 }
@@ -234,9 +237,9 @@ namespace Core.Bussiness
             return result;
         }
 
-        public void Edit(product entity)
+        public void Edit(ProductViewModel entity)
         {
-            productsAccesor.Update(entity);
+            productsAccesor.Update(ProductToPresta(entity));
         }
 
         public void Add(product entity)
@@ -248,19 +251,63 @@ namespace Core.Bussiness
         {
             ProductViewModel result = new ProductViewModel();
 
-            result.description = entity.description[activePrestaLanguage].Value;
-            result.description_short = entity.description_short[activePrestaLanguage].Value;
+            int languageIndex = entity.description.FindIndex(language => language.id == activePrestaLanguage);
+
+            result.description = entity.description[languageIndex].Value;
+            result.description_short = entity.description_short[languageIndex].Value;
             result.id = entity.id;
             result.id_category_default = entity.id_category_default;
             result.id_image = 0;
             result.id_manufacturer = entity.id_manufacturer;
             result.id_supplier = entity.id_supplier;
-            result.name = entity.name[activePrestaLanguage].Value;
+            result.name = entity.name[languageIndex].Value;
             result.price = entity.price;
             result.weight = entity.weight;
             result.wholesale_price = entity.wholesale_price;
 
             return result;
         }
+
+        private product ProductToPresta(ProductViewModel entity)
+        {
+            product result = productsAccesor.Get(entity.id) as product;
+                        
+            PrestaValues.SetValueForLanguage(result.description, activePrestaLanguage, entity.description);
+            PrestaValues.SetValueForLanguage(result.description_short, activePrestaLanguage, entity.description_short);
+            result.id_category_default = entity.id_category_default;
+            //result.id_image = 0;
+            result.id_manufacturer = entity.id_manufacturer;
+            result.id_supplier = entity.id_supplier;
+            PrestaValues.SetValueForLanguage(result.name, activePrestaLanguage, entity.name);
+            if (entity.price == null)
+            {
+                entity.price = 0;
+            }
+            else
+            {
+                result.price = entity.price;
+            }
+
+            if (entity.wholesale_price == null)
+            {
+                entity.wholesale_price = 0;
+            }
+            else
+            {
+                result.wholesale_price = entity.wholesale_price;
+            }
+
+            if (entity.weight == null)
+            {
+                entity.weight = 0;
+            }
+            else
+            {
+                result.weight = entity.weight;
+            }
+
+            return result;
+        }
+        
     }
 }

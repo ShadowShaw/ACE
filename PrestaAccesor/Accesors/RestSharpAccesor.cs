@@ -76,7 +76,7 @@ namespace PrestaAccesor.Accesors
             }
         }
 
-        protected RestRequest RequestForGet(string Resource, int? Id, string RootElement)
+        protected RestRequest RequestForGet(string Resource, long? Id, string RootElement)
         {
             var request = new RestRequest();
             //request.XmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(Entities.product)) as RestSharp.Serializers.ISerializer;
@@ -100,7 +100,7 @@ namespace PrestaAccesor.Accesors
             return ids;
         }
         
-        protected RestRequest RequestForAdd(string Resource, Entities.prestashopentity Entity)
+        protected RestRequest RequestForAdd(string Resource, Entities.PrestashopEntity Entity)
         {
             var request = new RestRequest();
             request.Resource = Resource;
@@ -133,7 +133,7 @@ namespace PrestaAccesor.Accesors
             return request;
         }
 
-        protected RestRequest RequestForUpdate(string Resource, int? Id, Entities.prestashopentity PrestashopEntity)
+        protected RestRequest RequestForUpdate(string Resource, long? Id, Entities.PrestashopEntity PrestashopEntity)
         {
             if (Id == null)
             {
@@ -152,7 +152,7 @@ namespace PrestaAccesor.Accesors
             return request;
         }
 
-        protected RestRequest RequestForDelete(string Resource, int? Id)
+        protected RestRequest RequestForDelete(string Resource, long? Id)
         {
             if (Id == null)
             {

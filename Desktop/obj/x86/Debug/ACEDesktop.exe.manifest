@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="107520">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="108032">
       <assemblyIdentity name="ACEDesktop" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>axoVLvRul61XsME/1EVCCWVvuNo=</dsig:DigestValue>
+        <dsig:DigestValue>HgSsWVwKv/sQg88J14x9dFruQyE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="30720">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="31744">
       <assemblyIdentity name="Core" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>6bRLftVmlZHmET9eGYbQPU7d9Hs=</dsig:DigestValue>
+        <dsig:DigestValue>txVyfobx6rfYithdv2u7dgqsQjM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrestaAccesor.dll" size="27136">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrestaAccesor.dll" size="26624">
       <assemblyIdentity name="PrestaAccesor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>sv04JbcUaL0127N1CYjL1855y3U=</dsig:DigestValue>
+        <dsig:DigestValue>HEbz9zwaGCatsm1eUvMgVrGoS6Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
