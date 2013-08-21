@@ -31,32 +31,6 @@ namespace PrestaAccesor.Accesors
             return this.Execute<Entities.languageEntity>(request);
         }
 
-        //public void Add(Entities.language language)
-        //{
-        //    language.id_lang = null;
-        //    RestRequest request = this.RequestForAdd("categories", Category);
-        //    this.Execute<Entities.category>(request);
-        //}
-
-        //public void Update(Entities.category Category)
-        //{
-        //    RestRequest request = this.RequestForUpdate("categories", Category.id, Category);
-        //    try
-        //    {
-        //        this.Execute<Entities.category>(request);
-        //    }
-        //    catch (ApplicationException ex)
-        //    {
-        //        ex.ToString();
-        //    }
-        //}
-
-        //public void Delete(Entities.category Category)
-        //{
-        //    RestRequest request = this.RequestForDelete("categories", Category.id);
-        //    this.Execute<Entities.category>(request);
-        //}
-
         public List<int> GetIds()
         {
             RestRequest request = this.RequestForGet("languages", null, "prestashop");

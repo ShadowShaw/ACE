@@ -12,7 +12,7 @@ namespace Core.Bussiness
 {
     public class ManufactuerService : ServiceBase
     {
-        private ResourceBackgroundWorker Worker;
+        private BackgroundWorker Worker;
         public List<manufacturer> Manufacturers;
         public ManufacturersAccesor manufacturerAccesor;
 
@@ -30,7 +30,7 @@ namespace Core.Bussiness
 
         public void LoadManufacturersAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel)
         {
-            Worker = new ResourceBackgroundWorker();
+            Worker = new BackgroundWorker();
             Worker.WorkerSupportsCancellation = true;
             Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
             Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
@@ -43,7 +43,7 @@ namespace Core.Bussiness
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            ResourceBackgroundWorker worker = sender as ResourceBackgroundWorker;
+            BackgroundWorker worker = sender as BackgroundWorker;
 
             List<int> ids = new List<int>();
             ids = manufacturerAccesor.GetIds();

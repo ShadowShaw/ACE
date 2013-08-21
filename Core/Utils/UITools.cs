@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Core.Bussiness
+namespace Core.Utils
 {
     public class UITools
     {

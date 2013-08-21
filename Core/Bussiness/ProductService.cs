@@ -1,4 +1,5 @@
-﻿using PrestaAccesor.Accesors;
+﻿using Core.ViewModels;
+using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using RestSharp;
 using System;
@@ -12,23 +13,23 @@ namespace Core.Bussiness
 {
     public class ProductService : ServiceBase
     {
-        private ResourceBackgroundWorker Worker;
-        public List<product> Products;
+        private BackgroundWorker Worker;
+        public List<ProductViewModel> Products;
         public ProductsAccesor productsAccesor;
 
         public ToolStripProgressBar ProgressBar;
         public ToolStripStatusLabel ProgressLabel;
         public GroupBox FunctionBox;
 
-        public product GetById(int id)
+        public ProductViewModel GetById(int id)
         {
-            return productsAccesor.Get(id) as product;
+            return ProductFromPresta(productsAccesor.Get(id) as product);
         }
 
-        public ProductService(string BaseUrl, string Account, string Password)
+        public ProductService(string BaseUrl, string apiToken, string Password)
         {
-            productsAccesor = new ProductsAccesor(BaseUrl, Account, "");
-            Products = new List<product>();
+            productsAccesor = new ProductsAccesor(BaseUrl, apiToken, "");
+            Products = new List<ProductViewModel>();
             loaded = false;
         }
 
@@ -42,7 +43,7 @@ namespace Core.Bussiness
             this.ProgressBar = progressBar;
             this.ProgressLabel = progressLabel;
             this.FunctionBox = gb;
-            Worker = new ResourceBackgroundWorker();
+            Worker = new BackgroundWorker();
             Worker.WorkerReportsProgress = true;
             Worker.WorkerSupportsCancellation = true;
             Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
@@ -72,7 +73,7 @@ namespace Core.Bussiness
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             Worker.ReportProgress(1);
-            ResourceBackgroundWorker worker = sender as ResourceBackgroundWorker;
+            BackgroundWorker worker = sender as BackgroundWorker;
                         
             int startItem = 0;
             
@@ -84,7 +85,7 @@ namespace Core.Bussiness
                 
                 foreach (product item in items)
                 {
-                    Products.Add(item);
+                    Products.Add(ProductFromPresta(item));
                 }
                 
             } while (items.Count == 500);
@@ -112,14 +113,14 @@ namespace Core.Bussiness
                 //Worker.ReportProgress(0);
             }
         }
-        
-        public List<product> GetProductWithEmptyManufacturer()
-        {
-            List<product> result = new List<product>();
 
-            foreach (product item in this.Products)
+        public List<ProductViewModel> GetProductWithEmptyManufacturer()
+        {
+            List<ProductViewModel> result = new List<ProductViewModel>();
+
+            foreach (ProductViewModel item in this.Products)
             {
-                if (item.id_manufacturer.HasValue == false)
+                if ((item.id_manufacturer.HasValue == false) || (item.id_manufacturer == 0))
                 {
                     result.Add(item);
                 }
@@ -128,11 +129,11 @@ namespace Core.Bussiness
             return result;
         }
 
-        public List<product> GetProductWithEmptyCategory()
+        public List<ProductViewModel> GetProductWithEmptyCategory()
         {
-            List<product> result = new List<product>();
+            List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (product item in this.Products)
+            foreach (ProductViewModel item in this.Products)
             {
                 if (item.id_category_default.HasValue == false)
                 {
@@ -143,28 +144,13 @@ namespace Core.Bussiness
             return result;
         }
 
-        public List<product> GetProductWithEmptyImage()
+        public List<ProductViewModel> GetProductWithEmptyImage()
         {
-            List<product> result = new List<product>();
+            List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (product item in this.Products)
+            foreach (ProductViewModel item in this.Products)
             {
-                //if (item.id_image == 0)
-                //{
-                //    result.Add(item);
-                //}
-            }
-
-            return result;
-        }
-
-            public List<product> GetProductWithEmptyShortDescription()
-        {
-            List<product> result = new List<product>();
-
-            foreach (product item in this.Products)
-            {
-                //if (item.description_short == "")
+                if (item.id_image == 0)
                 {
                     result.Add(item);
                 }
@@ -173,11 +159,26 @@ namespace Core.Bussiness
             return result;
         }
 
-        public List<product> GetProductWithEmptyLongDescription()
+        public List<ProductViewModel> GetProductWithEmptyShortDescription()
         {
-            List<product> result = new List<product>();
+            List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (product item in this.Products)
+            foreach (ProductViewModel item in this.Products)
+            {
+                if (item.description_short == "")
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result;
+        }
+
+        public List<ProductViewModel> GetProductWithEmptyLongDescription()
+        {
+            List<ProductViewModel> result = new List<ProductViewModel>();
+
+            foreach (ProductViewModel item in this.Products)
             {
                 //if (item.description == "")
                 {
@@ -188,11 +189,11 @@ namespace Core.Bussiness
             return result;
         }
 
-        public List<product> GetProductWithEmptyPrice()
+        public List<ProductViewModel> GetProductWithEmptyPrice()
         {
-            List<product> result = new List<product>();
+            List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (product item in this.Products)
+            foreach (ProductViewModel item in this.Products)
             {
                 if ((item.price.HasValue == false) || (item.price <= 0))
                 {
@@ -203,11 +204,11 @@ namespace Core.Bussiness
             return result;
         }
 
-        public List<product> GetProductWithEmptyWholesalePrice()
+        public List<ProductViewModel> GetProductWithEmptyWholesalePrice()
         {
-            List<product> result = new List<product>();
+            List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (product item in this.Products)
+            foreach (ProductViewModel item in this.Products)
             {
                 if ((item.wholesale_price.HasValue == false) || (item.price <= 0))
                 {
@@ -218,11 +219,11 @@ namespace Core.Bussiness
             return result;
         }
 
-        public List<product> GetProductWithEmptyWeight()
+        public List<ProductViewModel> GetProductWithEmptyWeight()
         {
-            List<product> result = new List<product>();
+            List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (product item in this.Products)
+            foreach (ProductViewModel item in this.Products)
             {
                 if ((item.weight.HasValue == false) || (item.weight <= 0))
                 {
@@ -243,25 +244,23 @@ namespace Core.Bussiness
             productsAccesor.Add(entity);
         }
 
-        public string GetProductName(int id)
+        private ProductViewModel ProductFromPresta(product entity)
         {
-            int productIndex = Products.FindIndex(product => product.id == id);
-            int languageIndex = Products[productIndex].name.FindIndex(language => language.id == activeLanguage);
-            return Products[productIndex].name[languageIndex].Value;
-        }
+            ProductViewModel result = new ProductViewModel();
 
-        public string GetProductShortDescription(int id)
-        {
-            int productIndex = Products.FindIndex(product => product.id == id);
-            int languageIndex = Products[productIndex].description_short.FindIndex(language => language.id == activeLanguage);
-            return Products[productIndex].description_short[languageIndex].Value;
-        }
+            result.description = entity.description[activePrestaLanguage].Value;
+            result.description_short = entity.description_short[activePrestaLanguage].Value;
+            result.id = entity.id;
+            result.id_category_default = entity.id_category_default;
+            result.id_image = 0;
+            result.id_manufacturer = entity.id_manufacturer;
+            result.id_supplier = entity.id_supplier;
+            result.name = entity.name[activePrestaLanguage].Value;
+            result.price = entity.price;
+            result.weight = entity.weight;
+            result.wholesale_price = entity.wholesale_price;
 
-        public string GetProductDescription(int id)
-        {
-            int productIndex = Products.FindIndex(product => product.id == id);
-            int languageIndex = Products[productIndex].description.FindIndex(language => language.id == activeLanguage);
-            return Products[productIndex].description[languageIndex].Value;
+            return result;
         }
     }
 }

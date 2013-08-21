@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Desktop.Tools
+namespace Desktop.Utils
 {
     public enum RecordType
     {

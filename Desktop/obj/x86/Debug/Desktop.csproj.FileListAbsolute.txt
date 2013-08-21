@@ -18,7 +18,6 @@ C:\GitHub\PriceUpdater\Desktop\obj\x86\Debug\Desktop.Login.resources
 C:\GitHub\PriceUpdater\Desktop\obj\x86\Debug\Desktop.Main.resources
 C:\GitHub\PriceUpdater\Desktop\obj\x86\Debug\Desktop.Properties.Resources.resources
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Login.resources
-C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Main.resources
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Properties.Resources.resources
 C:\GitHub\ACE\Desktop\bin\Debug\Core.dll
 C:\GitHub\ACE\Desktop\bin\Debug\EntityFramework.dll
@@ -72,3 +71,4 @@ C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.csproj.GenerateResource.Cache
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.ChangesView.resources
 C:\GitHub\ACE\Desktop\bin\Debug\HtmlDocs\ChangeLog.html
 C:\GitHub\ACE\Desktop\bin\Debug\HtmlDocs\Home.html
+C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Main.resources

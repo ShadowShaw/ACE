@@ -13,8 +13,11 @@ using PrestaAccesor.Accesors;
 using Desktop.UserSettings;
 using PrestaAccesor.Entities;
 using Core;
-using Desktop.Tools;
+using Desktop.Utils;
 using PrestaAccesor.Utils;
+using Core.Utils;
+using Core.ViewModels;
+using System.Xml.Serialization;
 
 namespace Desktop
 {
@@ -25,7 +28,7 @@ namespace Desktop
         public Version ACEVersion;
         List<ChangeRecord> Changes = new List<ChangeRecord>();
         public EngineService Engine;
-        private MainSettings mainSettings;
+        private ACESettings mainSettings;
 
         private int IndexForChange = -1;
         private FieldType ChangedType;
@@ -43,10 +46,11 @@ namespace Desktop
             this.Text = "ACE Desktop " + ACEVersion.ToString();
 
             // Loading settings from configuration.
-            mainSettings = new MainSettings();
-            ePrestaToken.Text = mainSettings.PrestaApiToken;
-            ePrestaUrl.Text = mainSettings.PrestaBaseUrl;
-            Engine.PrestaSetup(mainSettings.PrestaBaseUrl, mainSettings.PrestaApiToken);
+            mainSettings = ACESettingsTools.LoadSettings("settings.xml");
+            ePrestaToken.Text = mainSettings.Eshops[0].Password;
+            ePrestaUrl.Text = mainSettings.Eshops[0].BaseUrl;
+            this.Size = mainSettings.DesktopSettings.FormSize;
+            Engine.InitPrestaServices(mainSettings.Eshops[0].BaseUrl, mainSettings.Eshops[0].Password);
 
             // Lenght of edit boxes.
             ePrestaToken.MaxLength = 50;
@@ -56,16 +60,17 @@ namespace Desktop
             openDialog.InitialDirectory = Application.StartupPath;
             saveDialog.InitialDirectory = Application.StartupPath;
             
-            if (File.Exists("manufacturers.txt"))
-            {
-                var u = File.ReadAllLines("manufacturers.txt").ToList();
-                foreach (string s in u)
-                {
-                    cManufacturers.Items.Add(s);
-                }
+            // old code
+            //if (File.Exists("manufacturers.txt"))
+            //{
+            //    var u = File.ReadAllLines("manufacturers.txt").ToList();
+            //    foreach (string s in u)
+            //    {
+            //        cManufacturers.Items.Add(s);
+            //    }
 
-                cManufacturers.SelectedIndex = 0;
-            }
+            //    cManufacturers.SelectedIndex = 0;
+            //}
         }
         
         
@@ -227,7 +232,8 @@ namespace Desktop
         
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            mainSettings.Save();
+            mainSettings.DesktopSettings.FormSize = this.Size;
+            ACESettingsTools.SaveSettings("settings.xml", mainSettings);
         }
 
         private void bSavePresta_Click(object sender, EventArgs e)
@@ -237,10 +243,10 @@ namespace Desktop
 
             ePrestaUrl.Text = url;
             ePrestaToken.Text = token;
-            Engine.PrestaSetup(url, token);
-            mainSettings.PrestaBaseUrl = Engine.BaseUrl;
-            mainSettings.PrestaApiToken = Engine.ApiToken;
-            mainSettings.Save();
+            Engine.SetupPrestaServices(url, token);
+            mainSettings.Eshops[0].BaseUrl = Engine.BaseUrl;
+            mainSettings.Eshops[0].Password = Engine.ApiToken;
+            ACESettingsTools.SaveSettings("settings.xml", mainSettings);
             MessageBox.Show("Nastavení bylo uloženo.", "Uložení nastavení", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -260,9 +266,6 @@ namespace Desktop
             {
                 DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)dgConsistency.Rows[i].Cells["category"];
                 comboCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
-                DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["name"];
-                int id = System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id"].Value);
-                textCell.Value = Engine.Products.GetProductName(id);
             };
 
             IndexForChange = 3;
@@ -335,11 +338,8 @@ namespace Desktop
 
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
             {
-                DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
-                textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
-                DataGridViewTextBoxCell cell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["description_short"];
-                int id = System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id"].Value);
-                textCell.Value = Engine.Products.GetProductShortDescription(id);
+                DataGridViewTextBoxCell categoryCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
+                categoryCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
             };
 
             IndexForChange = 4;
@@ -362,9 +362,6 @@ namespace Desktop
             {
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
-                DataGridViewTextBoxCell cell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["description"];
-                int id = System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id"].Value);
-                textCell.Value = Engine.Products.GetProductDescription(id);
             };
 
             IndexForChange = 4;
@@ -456,10 +453,9 @@ namespace Desktop
 
         private void bLoadProducts_Click(object sender, EventArgs e)
         {
-            if ((Engine.ApiToken == "") || (Engine.BaseUrl == ""))
+            if ((String.IsNullOrEmpty(Engine.ApiToken)) || (String.IsNullOrEmpty(Engine.BaseUrl)))
             {
                 MessageBox.Show("Adresa eshopu, nebo API Token jsou prázdné.", "Chyba připojení", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
             else
             {
@@ -473,29 +469,26 @@ namespace Desktop
 
         private void bSaveChanges_Click(object sender, EventArgs e)
         {
-            int languageId = 2;
             ChangesView changes = new ChangesView(Changes);
             if (changes.ShowDialog() == DialogResult.OK)
             {
-                // write changes
-
                 foreach (ChangeRecord change in Changes)
                 {
                     if (change.Type == RecordType.product)
                     {
-                        product item = Engine.Products.GetById(change.Id);
-                        
-                        if (PrestaValues.GetValueForLanguage(item.link_rewrite, languageId) == "")
-                        {
-                            PrestaValues.SetValueForLanguage(item.link_rewrite, languageId, PrestaValues.GetValueForLanguage(item.name, languageId));    
-                        }
+                        ProductViewModel item = Engine.Products.GetById(change.Id);
+
+                        //if (PrestaValues.GetValueForLanguage(item.link_rewrite, languageId) == "")
+                        //{
+                        //    PrestaValues.SetValueForLanguage(item.link_rewrite, languageId, PrestaValues.GetValueForLanguage(item.name, languageId));
+                        //}
                         if (change.Field == FieldType.category)
                         {
                             item.id_category_default = Engine.Categories.GetCategoryId(change.Value);
                         }
                         if (change.Field == FieldType.longDescription)
                         {
-                            PrestaValues.SetValueForLanguage(item.description, languageId, change.Value);
+                            PrestaValues.SetValueForLanguage(item.description, Engine.GlanguageId, change.Value);
                         }
                         if (change.Field == FieldType.manufacturer)
                         {
@@ -517,12 +510,8 @@ namespace Desktop
                         {
                             item.wholesale_price = System.Convert.ToDecimal(change.Value);
                         }
-                        Engine.Products.Edit(item);
+                        //Engine.Products.Edit(item);
                     }
-                    //zjistit typ zaznamu
-                    //ziskat aktualni
-                    //zmenit hodnoty
-                    //zapsat hodnoty
                 }
             }
             else
@@ -549,80 +538,6 @@ namespace Desktop
             this.homeBrowser.Url = new Uri(String.Format("file:///{0}/HtmlDocs/ChangeLog.html", curDir));
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            //product p = Engine.Products.GetById(6);
-            //SetValueForLanguage(p.name, 2, "Xproduct");
-            //Engine.Products.Edit(p);
-            ////Engine.Products.Add(p);
-
-            ChangeRecord record = new ChangeRecord();
-            record.Type = RecordType.product;
-            record.Field = FieldType.category;
-            record.Id = 1;
-            record.Value = "Test";
-
-            Changes.Add(record);
-
-            ChangeRecord record2 = new ChangeRecord();
-            record2.Type = RecordType.product;
-            record2.Field = ChangedType;
-            record2.Id = 2;
-            record2.Value = "value";
-
-            Changes.Add(record2);
-
-            int languageId = 2;
-            ChangesView changes = new ChangesView(Changes);
-            if (changes.ShowDialog() == DialogResult.OK)
-            {
-                // write changes
-
-                foreach (ChangeRecord change in Changes)
-                {
-                    if (change.Type == RecordType.product)
-                    {
-                        product item = Engine.Products.GetById(change.Id);
-                        if (change.Field == FieldType.category)
-                        {
-                            item.id_category_default = Engine.Categories.GetCategoryId(change.Value);
-                        }
-                        if (change.Field == FieldType.longDescription)
-                        {
-                            PrestaValues.SetValueForLanguage(item.description, languageId, change.Value);
-                        }
-                        if (change.Field == FieldType.manufacturer)
-                        {
-                            item.id_manufacturer = Engine.Manufacturers.GetManufacturerId(change.Value);
-                        }
-                        if (change.Field == FieldType.price)
-                        {
-                            item.price = System.Convert.ToDecimal(change.Value);
-                        }
-                        if (change.Field == FieldType.shortDescription)
-                        {
-                            PrestaValues.SetValueForLanguage(item.description_short, languageId, change.Value);
-                        }
-                        if (change.Field == FieldType.weight)
-                        {
-                            item.weight = System.Convert.ToDecimal(change.Value);
-                        }
-                        if (change.Field == FieldType.wholesalePrice)
-                        {
-                            item.wholesale_price = System.Convert.ToDecimal(change.Value);
-                        }
-                        Engine.Products.Edit(item);
-                    }
-                    //zjistit typ zaznamu
-                    //ziskat aktualni
-                    //zmenit hodnoty
-                    //zapsat hodnoty
-                }
-            }
-            else
-            {
-                //do nothing
-            }
-        }
+        
     }
 }

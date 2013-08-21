@@ -34,14 +34,20 @@ namespace Core.Bussiness
 
         public void LoadLanguages()
         {
-            //List<language> Languages = new List<language>();
-            Languages = languageAccesor.GetAll();
+            List<int> ids = new List<int>();
+            ids = languageAccesor.GetIds();
+
+            foreach (int id in ids)
+            {
+                prestashopentity lang = languageAccesor.Get(id);
+                Languages.Add(lang as languageEntity);
+            }
             loaded = true;
         }
 
-        public long GetActiveLanguage()
+        public int GetActiveLanguage()
         {
-            long result = -1;
+            int result = -1;
             
             if (loaded)
             {
@@ -49,11 +55,13 @@ namespace Core.Bussiness
                 {
                     if (item.active)
                     {
-                        result = item.id_lang;
+                        result = System.Convert.ToInt32(item.id);
                     }
                 }
             }
-            
+
+            this.activePrestaLanguage = result;
+
             return result;
         }
 

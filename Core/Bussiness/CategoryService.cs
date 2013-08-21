@@ -12,7 +12,7 @@ namespace Core.Bussiness
 {
     public class CategoryService : ServiceBase
     {
-        private ResourceBackgroundWorker Worker;
+        private BackgroundWorker Worker;
         public List<category> Categories;
         public CategoriesAccesor categoriesAccesor;
                 
@@ -30,7 +30,7 @@ namespace Core.Bussiness
 
         public void LoadCategoriesAsync()
         {
-            Worker = new ResourceBackgroundWorker();
+            Worker = new BackgroundWorker();
             Worker.WorkerReportsProgress = true;
             Worker.WorkerSupportsCancellation = true;
             Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
@@ -44,7 +44,7 @@ namespace Core.Bussiness
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            ResourceBackgroundWorker worker = sender as ResourceBackgroundWorker;
+            BackgroundWorker worker = sender as BackgroundWorker;
 
             List<int> ids = new List<int>();
             ids = categoriesAccesor.GetIds();

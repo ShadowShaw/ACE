@@ -101,7 +101,6 @@
             this.bWithoutShortDescription = new System.Windows.Forms.Button();
             this.bEmptyCategory = new System.Windows.Forms.Button();
             this.bWithoutImage = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.status.SuspendLayout();
             this.tc.SuspendLayout();
@@ -615,7 +614,6 @@
             // 
             // tpConsistency
             // 
-            this.tpConsistency.Controls.Add(this.button3);
             this.tpConsistency.Controls.Add(this.lListOf);
             this.tpConsistency.Controls.Add(this.bLoadProducts);
             this.tpConsistency.Controls.Add(this.dgConsistency);
@@ -827,16 +825,6 @@
             this.bWithoutImage.UseVisualStyleBackColor = true;
             this.bWithoutImage.Click += new System.EventHandler(this.bWithoutImage_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(500, 1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -942,7 +930,6 @@
         private System.Windows.Forms.Button bSaveChanges;
         private System.Windows.Forms.Button bPrestaTest;
         private System.Windows.Forms.ToolStripMenuItem menuShowChangeLog;
-        private System.Windows.Forms.Button button3;
     }
 }
 

@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="ACEDesktop.exe" version="0.1.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="ACEDesktop" version="1.0.0.1" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="ACEDesktop" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
     <commandLine file="ACEDesktop.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="108032">
-      <assemblyIdentity name="ACEDesktop" version="1.0.0.1" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="107520">
+      <assemblyIdentity name="ACEDesktop" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>cPVnYtngbTHmYPEvRa9gWIH85Q0=</dsig:DigestValue>
+        <dsig:DigestValue>axoVLvRul61XsME/1EVCCWVvuNo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="28672">
-      <assemblyIdentity name="Core" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="30720">
+      <assemblyIdentity name="Core" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Zqc78mQoYHNdyc6LMOWVlAVvin8=</dsig:DigestValue>
+        <dsig:DigestValue>6bRLftVmlZHmET9eGYbQPU7d9Hs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,7 +97,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>qXqlbpnKVUaVS87x5Gjwx1+uNfQ=</dsig:DigestValue>
+        <dsig:DigestValue>sv04JbcUaL0127N1CYjL1855y3U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -5,11 +5,9 @@ using System.Text;
 
 namespace Core.Bussiness
 {
-    public class ServiceBase
+    public abstract class ServiceBase
     {
-        protected long activeLanguage = -1;
-        protected int indexOfActiveLanguage = 0;
-
+        protected int activePrestaLanguage;
         public const int StepCount = 500;
 
         protected bool loaded;

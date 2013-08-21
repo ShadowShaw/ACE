@@ -1,4 +1,5 @@
-﻿using PrestaAccesor.Accesors;
+﻿using Core.Utils;
+using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using System;
 using System.Collections.Generic;
@@ -60,29 +61,36 @@ namespace Core.Bussiness
         public EngineService()
         {
             loginService = new LoginService();
-            productService = new ProductService(baseUrl, apiToken, "");
-            manufacturerService = new ManufactuerService(baseUrl, apiToken, "");
-            categoryService = new CategoryService(baseUrl, apiToken, "");
-            languageService = new LanguageService(baseUrl, apiToken, "");
 
            // BaseUrl = "http://testpresta.mzf.cz/prestashop/";
            // apiToken = "BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8";
         }
 
-        public void GetActiveLanguage()
+        public void InitPrestaServices(string baseUrl, string apiToken)
         {
-            activeLanguage = Languages.GetActiveLanguage();
+            this.baseUrl = baseUrl;
+            this.apiToken = apiToken;
+            productService = new ProductService(baseUrl, apiToken, "");
+            manufacturerService = new ManufactuerService(baseUrl, apiToken, "");
+            categoryService = new CategoryService(baseUrl, apiToken, "");
+            languageService = new LanguageService(baseUrl, apiToken, "");
         }
 
-        public void PrestaSetup(string url, string apiToken)
+        public void SetupPrestaServices(string baseUrl, string apiToken)
         {
             this.apiToken = apiToken;
-            this.baseUrl = url;
+            this.baseUrl = baseUrl;
 
             Categories.Setup();
             Manufacturers.Setup();
             Products.Setup();
             Languages.Setup();
+        }
+
+        public int GetActiveLanguage()
+        {
+            this.activePrestaLanguage = languageService.GetActiveLanguage();
+            return this.activePrestaLanguage;
         }
 
         public bool TestPrestaAccess()
@@ -93,11 +101,11 @@ namespace Core.Bussiness
                 Languages.LoadLanguages();
             }
             
-            activeLanguage = -1;
+            this.activePrestaLanguage = -1;
 
-            GetActiveLanguage();
+            this.activePrestaLanguage = GetActiveLanguage();
             
-            if (activeLanguage != -1)
+            if (this.activePrestaLanguage != -1)
             {
                 result = true;
             }
