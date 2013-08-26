@@ -7,6 +7,16 @@
 
 <p>Jste přihlášeni jako: <strong>@User.Identity.Name</strong>.</p>
 
+<div>
+    <nav>
+        <ul id="usermenu">
+            <li>@Html.ActionLink("Změna hesla", "Index", "Home")</li>
+            <li>@Html.ActionLink("Změna údajů o uživateli", "Manage", "Account")</li>
+            <li>@Html.ActionLink("Platební profil", "About", "Home")</li>
+        </ul>
+    </nav>
+ </div>
+
 @if (ViewBag.HasLocalPassword)
 {
     @Html.Partial("_ChangePasswordPartial")
