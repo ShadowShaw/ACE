@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Core.Bussiness
 {
-    public class ManufactuerService : ServiceBase
+    public class ManufactuerService : ServiceBase, IService
     {
         private BackgroundWorker Worker;
         public List<manufacturer> Manufacturers;
@@ -31,6 +31,7 @@ namespace Core.Bussiness
         public void LoadManufacturersAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel)
         {
             Manufacturers.Clear();
+            Manufacturers = this.manufacturerAccesor.GetAll();
             Worker = new BackgroundWorker();
             Worker.WorkerSupportsCancellation = true;
             Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
@@ -48,6 +49,11 @@ namespace Core.Bussiness
 
             List<int> ids = new List<int>();
             ids = manufacturerAccesor.GetIds();
+            
+            if (ids == null)
+            {
+                return;
+            }
 
             foreach (int id in ids)
             {

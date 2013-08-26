@@ -33,7 +33,7 @@ namespace PrestaAccesor.Accesors
             return this.Execute<Entities.manufacturer>(request);
         }
 
-        public void Add(Entities.manufacturer Manufacturer)
+        public void Add(Entities.PrestashopEntity Manufacturer)
         {
             Manufacturer.id = null;
             RestRequest request = this.RequestForAdd("manufacturers", Manufacturer);

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Core.Bussiness
 {
-    public class CategoryService : ServiceBase
+    public class CategoryService : ServiceBase, IService
     {
         private BackgroundWorker Worker;
         public List<category> Categories;
@@ -49,6 +49,11 @@ namespace Core.Bussiness
 
             List<int> ids = new List<int>();
             ids = categoriesAccesor.GetIds();
+
+            if (ids == null)
+            {
+                return;
+            }
             
             foreach (int id in ids)
             {

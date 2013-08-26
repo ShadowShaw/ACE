@@ -59,6 +59,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bussiness\CategoryService.cs" />
+    <Compile Include="Bussiness\IService.cs" />
     <Compile Include="Bussiness\LanguageService.cs" />
     <Compile Include="Bussiness\ManufacturerService.cs" />
     <Compile Include="Bussiness\EngineService.cs" />

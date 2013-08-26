@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EshopList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Eshops>
+    <EshopConfiguration>
+      <EshopName>test</EshopName>
+      <Type>Prestashop</Type>
+      <BaseUrl>http://testpresta.mzf.cz/prestashop/api/</BaseUrl>
+      <Password>BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8</Password>
+    </EshopConfiguration>
+  </Eshops>
+</EshopList>

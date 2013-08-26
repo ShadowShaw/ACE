@@ -1,4 +1,5 @@
 ﻿using Core;
+using Desktop.UserSettings;
 using Desktop.Utils;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Desktop
     public partial class ChangesView : Form
     {
         private List<ChangeRecord> Changes;
-
+        
         public ChangesView(List<ChangeRecord> history)
         {
             InitializeComponent();

@@ -35,9 +35,9 @@ namespace PrestaAccesor.Accesors
             return this.Execute<Entities.product>(request);
         }
 
-        public void Add(Entities.product Product)
+        public void Add(Entities.PrestashopEntity Product)
         {
-            Product.id=null;
+            Product.id = null;
             RestRequest request = this.RequestForAdd("products", Product);
             this.Execute<Entities.product>(request);
         }

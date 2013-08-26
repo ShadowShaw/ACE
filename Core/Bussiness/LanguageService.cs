@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Core.Bussiness
 {
-    public class LanguageService : ServiceBase
+    public class LanguageService : ServiceBase, IService
     {
         public List<LanguageEntity> Languages;
         public LanguageAccesor languageAccesor;
@@ -55,6 +55,11 @@ namespace Core.Bussiness
             Languages.Clear();
             List<int> ids = new List<int>();
             ids = languageAccesor.GetIds();
+
+            if (ids == null)
+            {
+                return;
+            }
 
             foreach (int id in ids)
             {

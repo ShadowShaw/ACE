@@ -9,6 +9,11 @@ namespace Core.Bussiness
     {
         public const int StepCount = 500;
 
+        public ServiceBase()
+        {
+            loaded = false;
+        }
+
         protected bool loaded;
         public bool Loaded
         {

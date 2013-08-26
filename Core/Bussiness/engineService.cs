@@ -100,6 +100,10 @@ namespace Core.Bussiness
             if (Languages.Loaded == false)
             {
                 Languages.LoadLanguages();
+                if (Languages.Loaded == false)
+                {
+                    return result;
+                }
             }
             
             Languages.GetActiveLanguage();

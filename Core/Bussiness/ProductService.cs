@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Core.Bussiness
 {
-    public class ProductService : ServiceBase
+    public class ProductService : ServiceBase, IService
     {
         private BackgroundWorker Worker;
         public List<ProductViewModel> Products;
@@ -25,14 +25,12 @@ namespace Core.Bussiness
         public ProductViewModel GetById(int id)
         {
             return Products.Where(x => x.id == id).FirstOrDefault();
-            //return ProductFromPresta(productsAccesor.Get(id) as product);
         }
 
         public ProductService(string BaseUrl, string apiToken, string Password)
         {
             productsAccesor = new ProductsAccesor(BaseUrl, apiToken, "");
             Products = new List<ProductViewModel>();
-            loaded = false;
         }
 
         public void Setup()
@@ -85,6 +83,13 @@ namespace Core.Bussiness
             {
                 items = productsAccesor.GetByFilter(null, null, startItem + "," + StepCount);
                 startItem = startItem + StepCount;
+
+
+                if (items == null)
+                {
+                    return;
+                }
+
                 
                 foreach (product item in items)
                 {
@@ -138,7 +143,7 @@ namespace Core.Bussiness
 
             foreach (ProductViewModel item in this.Products)
             {
-                if (item.id_category_default.HasValue == false)
+                if ((item.id_category_default.HasValue == false) || (item.id_category_default == 0))
                 {
                     result.Add(item);
                 }
@@ -257,7 +262,7 @@ namespace Core.Bussiness
             result.description_short = entity.description_short[languageIndex].Value;
             result.id = entity.id;
             result.id_category_default = entity.id_category_default;
-            result.id_image = 0;
+            //result.id_image = 0;
             result.id_manufacturer = entity.id_manufacturer;
             result.id_supplier = entity.id_supplier;
             result.name = entity.name[languageIndex].Value;

@@ -1,4 +1,6 @@
-﻿namespace Desktop
+﻿using System.Drawing;
+using System.Windows.Forms;
+namespace Desktop
 {
     partial class Login
     {
@@ -37,12 +39,13 @@
             // 
             // bOk
             // 
+            //this.bOk.BackColor = System.Drawing.Color.Transparent;
             this.bOk.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bOk.Location = new System.Drawing.Point(157, 27);
             this.bOk.Name = "bOk";
             this.bOk.Size = new System.Drawing.Size(86, 23);
-            this.bOk.TabIndex = 5;
+            this.bOk.TabIndex = 3;
             this.bOk.Text = "Ok";
             this.bOk.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.bOk.UseVisualStyleBackColor = false;
@@ -56,7 +59,7 @@
             this.bClose.Location = new System.Drawing.Point(282, 27);
             this.bClose.Name = "bClose";
             this.bClose.Size = new System.Drawing.Size(86, 23);
-            this.bClose.TabIndex = 6;
+            this.bClose.TabIndex = 4;
             this.bClose.Text = "Cancel";
             this.bClose.UseVisualStyleBackColor = false;
             this.bClose.Click += new System.EventHandler(this.bClose_Click);
@@ -68,7 +71,7 @@
             this.ePassword.Location = new System.Drawing.Point(213, 126);
             this.ePassword.Name = "ePassword";
             this.ePassword.Size = new System.Drawing.Size(125, 14);
-            this.ePassword.TabIndex = 4;
+            this.ePassword.TabIndex = 2;
             this.ePassword.Text = "123456";
             this.ePassword.UseSystemPasswordChar = true;
             // 
@@ -79,7 +82,7 @@
             this.eUserName.Location = new System.Drawing.Point(24, 126);
             this.eUserName.Name = "eUserName";
             this.eUserName.Size = new System.Drawing.Size(121, 14);
-            this.eUserName.TabIndex = 2;
+            this.eUserName.TabIndex = 0;
             this.eUserName.Text = "test";
             // 
             // Login

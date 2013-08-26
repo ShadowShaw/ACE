@@ -90,7 +90,7 @@ namespace PrestaAccesor.Accesors
             Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
             Request.RequestFormat = DataFormat.Json;
             var response = client.Execute<T>(Request);
-            if (response.Content == null)
+            if ((response.Content == null) || (response.Content == ""))
             {
                 return null;
             }

@@ -34,7 +34,7 @@ namespace PrestaAccesor.Accesors
             return this.Execute<Entities.category>(request);
         }
 
-        public void Add(Entities.category Category)
+        public void Add(Entities.PrestashopEntity Category)
         {
             Category.id = null;
             RestRequest request = this.RequestForAdd("categories", Category);

@@ -10,23 +10,34 @@ namespace Desktop.Utils
 {
     public class ACESettingsTools
     {
-        public static void SaveSettings(string path, ACESettings settings)
+        public static void SaveSettings<T>(string path, T toSerialize)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(ACESettings));
+            if (toSerialize == null)
+            {
+                return;
+            }
+
+            if (File.Exists(path) == false)
+            {
+                File.Create(path);
+            }
+            XmlSerializer serializer = new XmlSerializer(toSerialize.GetType());
             StreamWriter writer = new StreamWriter(path);
-            serializer.Serialize(writer, settings);
+            serializer.Serialize(writer, toSerialize);
             writer.Close();
         }
 
-        public static ACESettings LoadSettings(string path)
+        public static T LoadSettings<T>(string path)
         {
-            ACESettings result = new ACESettings();
-            XmlSerializer serializer = new XmlSerializer(typeof(ACESettings));
+            T result = default(T);
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
             FileStream fileStream = new FileStream(path, FileMode.Open);
-
-            result = (ACESettings)serializer.Deserialize(fileStream);
+            if (fileStream.Length > 0)
+            {
+                result = (T)serializer.Deserialize(fileStream);
+            }
+            
             fileStream.Close();
-
             return result;
         }
     }

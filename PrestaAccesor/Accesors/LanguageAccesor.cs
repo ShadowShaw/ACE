@@ -61,6 +61,13 @@ namespace PrestaAccesor.Accesors
             this.Execute<Entities.language>(request);
         }
 
+        public void Add(Entities.PrestashopEntity Language)
+        {
+            Language.id = null;
+            RestRequest request = this.RequestForAdd("languages", Language);
+            this.Execute<Entities.LanguageEntity>(request);
+        }
+
         /// <summary>
         /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
         /// </summary>

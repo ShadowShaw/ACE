@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Desktop.UserSettings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,9 +31,33 @@ namespace Desktop.Utils
         public int Id;
         public string Value;
     }
-
-    public class DataGridTools
+    
+    public sealed class DataGridTools
     {
+        private ACESettings MainSettings;
+
+        public static void SetMainSettings(ACESettings settings)
+        {
+            instance.MainSettings = settings;
+        }
+
+        static readonly DataGridTools instance = new DataGridTools();
+
+        static DataGridTools()
+        {
+        }
+
+        DataGridTools()
+        {
+        }
+
+        public static DataGridTools Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
 
         public static void AddComboBoxColumn(DataGridView grid, string dataProperty, string header, List<string> items, bool readOnly = true, bool visibility = true)
         {
@@ -76,6 +101,7 @@ namespace Desktop.Utils
             column.ReadOnly = readOnly;
             column.Visible = visibility;
             column.Name = dataProperty;
+            column.Width = instance.MainSettings.GetWidth(grid.Name+dataProperty);
             column.DataPropertyName = dataProperty;
             
             grid.Columns.Add(column);

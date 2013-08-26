@@ -44,13 +44,29 @@ namespace Desktop
 
             this.Text = "ACE Desktop " + ACEVersion.ToString();
 
-            // Loading settings from configuration.
-            mainSettings = ACESettingsTools.LoadSettings("settings.xml");
-            ePrestaToken.Text = mainSettings.Eshops[0].Password;
-            ePrestaUrl.Text = mainSettings.Eshops[0].BaseUrl;
-            this.Size = mainSettings.DesktopSettings.FormSize;
-            Engine.InitPrestaServices(mainSettings.Eshops[0].BaseUrl, mainSettings.Eshops[0].Password);
+            mainSettings = new ACESettings();
 
+            if (File.Exists("Eshops.xml"))
+            {
+                mainSettings.LoadEshops();
+                Engine.InitPrestaServices(mainSettings.Eshops.Eshops[0].BaseUrl, mainSettings.Eshops.Eshops[0].Password);
+                ePrestaToken.Text = mainSettings.Eshops.Eshops[0].Password;
+                ePrestaUrl.Text = mainSettings.Eshops.Eshops[0].BaseUrl;
+            }
+
+            if (File.Exists("Columns.xml"))
+            {
+                mainSettings.LoadColumnWidth();
+            }
+
+
+            if (File.Exists("Sizes.xml"))
+            {
+                mainSettings.LoadFormSizes();
+                this.Size = mainSettings.GetSize("main");
+            }
+
+            DataGridTools.SetMainSettings(mainSettings);
             // Lenght of edit boxes.
             ePrestaToken.MaxLength = 50;
             ePrestaUrl.MaxLength = 100;
@@ -231,8 +247,15 @@ namespace Desktop
         
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            mainSettings.DesktopSettings.FormSize = this.Size;
-            ACESettingsTools.SaveSettings("settings.xml", mainSettings);
+            mainSettings.SetSize("main", this.Size);
+            mainSettings.SaveFormSizes();
+            mainSettings.SaveEshops();
+            foreach (DataGridViewColumn item in dgConsistency.Columns)
+            {
+                mainSettings.SetWidth(dgConsistency.Name + item.Name, item.Width);
+            }
+
+            mainSettings.SaveColumnWidth();
         }
 
         private void bSavePresta_Click(object sender, EventArgs e)
@@ -243,14 +266,15 @@ namespace Desktop
             ePrestaUrl.Text = url;
             ePrestaToken.Text = token;
             Engine.SetupPrestaServices(url, token);
-            mainSettings.Eshops[0].BaseUrl = Engine.BaseUrl;
-            mainSettings.Eshops[0].Password = Engine.ApiToken;
-            ACESettingsTools.SaveSettings("settings.xml", mainSettings);
+            mainSettings.Eshops.Eshops[0].BaseUrl = Engine.BaseUrl;
+            mainSettings.Eshops.Eshops[0].Password = Engine.ApiToken;
+            mainSettings.SaveEshops();
             MessageBox.Show("Nastavení bylo uloženo.", "Uložení nastavení", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void bEmptyCategory_Click(object sender, EventArgs e)
         {
+            IndexForChange = -1;
             lListOf.Text = "Zobrazuji produkty s prázdnou kategorii.";
             DataGridTools.InitGrid(dgConsistency);
 
@@ -273,6 +297,7 @@ namespace Desktop
 
         private void bEmptyManufacturer_Click(object sender, EventArgs e)
         {
+            IndexForChange = -1;
             lListOf.Text = "Zobrazuji produkty s prázdným výrobcem.";
             DataGridTools.InitGrid(dgConsistency);
 
@@ -300,6 +325,7 @@ namespace Desktop
 
         private void bWithoutImage_Click(object sender, EventArgs e)
         {
+            IndexForChange = -1;
             lListOf.Text = "Zobrazuji produkty bez obrázku.";
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyImage();
@@ -324,6 +350,7 @@ namespace Desktop
 
         private void bWithoutShortDescription_Click(object sender, EventArgs e)
         {
+            IndexForChange = -1;
             lListOf.Text = "Zobrazuji produkty s prázdným krátkým popisem.";
             DataGridTools.InitGrid(dgConsistency);
 
@@ -347,6 +374,7 @@ namespace Desktop
 
         private void bWithoutLongDescription_Click(object sender, EventArgs e)
         {
+            IndexForChange = -1;
             lListOf.Text = "Zobrazuji produkty s prázdným dlouhým popisem.";
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyLongDescription();
@@ -369,6 +397,7 @@ namespace Desktop
 
         private void bWithoutPrice_Click(object sender, EventArgs e)
         {
+            IndexForChange = -1;
             lListOf.Text = "Zobrazuji produkty bez maloobchodní ceny.";
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyPrice();
@@ -391,6 +420,7 @@ namespace Desktop
 
         private void bWithoutWeight_Click(object sender, EventArgs e)
         {
+            IndexForChange = -1;
             lListOf.Text = "Zobrazuji produkty bez udané váhy.";
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWeight();
@@ -412,6 +442,7 @@ namespace Desktop
         
         private void bWithoutWholeSalePrice_Click(object sender, EventArgs e)
         {
+            IndexForChange = -1;
             lListOf.Text = "Zobrazuji produkty bez velkoobchodní ceny.";
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWholesalePrice();
@@ -470,53 +501,61 @@ namespace Desktop
         private void bSaveChanges_Click(object sender, EventArgs e)
         {
             ChangesView changes = new ChangesView(Changes);
-            if (changes.ShowDialog() == DialogResult.OK)
+            if (Changes.Count == 0)
             {
-                foreach (ChangeRecord change in Changes)
-                {
-                    if (change.Type == RecordType.product)
-                    {
-                        ProductViewModel item = Engine.Products.GetById(change.Id);
-
-                        //if (PrestaValues.GetValueForLanguage(item.link_rewrite, languageId) == "")
-                        //{
-                        //    PrestaValues.SetValueForLanguage(item.link_rewrite, languageId, PrestaValues.GetValueForLanguage(item.name, languageId));
-                        //}
-                        if (change.Field == FieldType.category)
-                        {
-                            item.id_category_default = Engine.Categories.GetCategoryId(change.Value);
-                        }
-                        if (change.Field == FieldType.longDescription)
-                        {
-                            item.description = change.Value;
-                        }
-                        if (change.Field == FieldType.manufacturer)
-                        {
-                            item.id_manufacturer = Engine.Manufacturers.GetManufacturerId(change.Value);
-                        }
-                        if (change.Field == FieldType.price)
-                        {
-                            item.price = System.Convert.ToDecimal(change.Value);
-                        }
-                        if (change.Field == FieldType.shortDescription)
-                        {
-                            item.description_short = change.Value;
-                        }
-                        if (change.Field == FieldType.weight)
-                        {
-                            item.weight = System.Convert.ToDecimal(change.Value);
-                        }
-                        if (change.Field == FieldType.wholesalePrice)
-                        {
-                            item.wholesale_price = System.Convert.ToDecimal(change.Value);
-                        }
-                        Engine.Products.Edit(item);
-                    }
-                }
+                MessageBox.Show("Nejsou žádné změny k zápisu.", "Žádné změny", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                //do nothing
+                if (changes.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (ChangeRecord change in Changes)
+                    {
+                        if (change.Type == RecordType.product)
+                        {
+                            ProductViewModel item = Engine.Products.GetById(change.Id);
+
+                            if (change.Field == FieldType.category)
+                            {
+                                item.id_category_default = Engine.Categories.GetCategoryId(change.Value);
+                            }
+                            if (change.Field == FieldType.longDescription)
+                            {
+                                item.description = change.Value;
+                            }
+                            if (change.Field == FieldType.manufacturer)
+                            {
+                                item.id_manufacturer = Engine.Manufacturers.GetManufacturerId(change.Value);
+                            }
+                            if (change.Field == FieldType.price)
+                            {
+                                item.price = System.Convert.ToDecimal(change.Value);
+                            }
+                            if (change.Field == FieldType.shortDescription)
+                            {
+                                item.description_short = change.Value;
+                            }
+                            if (change.Field == FieldType.weight)
+                            {
+                                item.weight = System.Convert.ToDecimal(change.Value);
+                            }
+                            if (change.Field == FieldType.wholesalePrice)
+                            {
+                                item.wholesale_price = System.Convert.ToDecimal(change.Value);
+                            }
+                            Engine.Products.Edit(item);
+                        }
+                    }
+                    Changes.Clear();
+                    Engine.Products.LoadProductsAsync(statusProgress, statusMessage, gbConsistency);
+                    //zkontrolovat zapis
+                    dgConsistency.DataSource = null;
+                    //refresh gridu
+                }
+                else
+                {
+                    //do nothing
+                }
             }
         }
 

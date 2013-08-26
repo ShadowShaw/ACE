@@ -20,8 +20,10 @@ namespace Desktop
 
         public Login(EngineService engine)
         {
-            this.engine = engine;
             InitializeComponent();
+            this.engine = engine;
+            eUserName.MaxLength = 15;
+            ePassword.MaxLength = 25;
         }
         
         private void bOk_Click(object sender, EventArgs e)
@@ -32,7 +34,7 @@ namespace Desktop
             }
             else
             {
-                MessageBox.Show("Nesprávné uživatelské jméno, či heslo.");
+                MessageBox.Show("Nesprávné uživatelské jméno, či heslo.", "Nesprávné heslo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
