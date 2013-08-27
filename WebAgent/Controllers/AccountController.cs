@@ -137,7 +137,15 @@ namespace PriceUpdater.Controllers
         //
         // GET: /Account/Manage
 
-        public ActionResult Manage(ManageMessageId? message)
+        //
+        // GET: /Account/Manage
+
+        public ActionResult Manage()
+        {
+            return View();
+        }
+
+        public ActionResult ChangePassword(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Vaše heslo bylo změněno."
@@ -145,12 +153,12 @@ namespace PriceUpdater.Controllers
                 : message == ManageMessageId.RemoveLoginSuccess ? "Externí příhlášení bylo odstraněno."
                 : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.ReturnUrl = Url.Action("Manage");
+            ViewBag.ReturnUrl = Url.Action("ChangePassword");
             
-            int memberId = WebSecurity.GetUserId(User.Identity.Name);
-            UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
-            var uow = uowProvider.CreateNew();
-            ViewBag.UserProperties = uow.Users.GetByID(memberId);
+            //int memberId = WebSecurity.GetUserId(User.Identity.Name);
+            //UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
+            //var uow = uowProvider.CreateNew();
+            //ViewBag.UserProperties = uow.Users.GetByID(memberId);
             
             return View();
         }
@@ -160,11 +168,11 @@ namespace PriceUpdater.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage(LocalPasswordModel model)
+        public ActionResult ChangePassword(LocalPasswordModel model)
         {
             bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
-            ViewBag.ReturnUrl = Url.Action("Manage");
+            ViewBag.ReturnUrl = Url.Action("ChangePassword");
             if (hasLocalAccount)
             {
                 if (ModelState.IsValid)
@@ -182,11 +190,11 @@ namespace PriceUpdater.Controllers
 
                     if (changePasswordSucceeded)
                     {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+                        return RedirectToAction("ChangePassword", new { Message = ManageMessageId.ChangePasswordSuccess });
                     }
                     else
                     {
-                        ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                        ModelState.AddModelError("", "Současné heslo je chybné, nebo nové heslo není platné.");
                     }
                 }
             }
@@ -205,7 +213,7 @@ namespace PriceUpdater.Controllers
                     try
                     {
                         WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
+                        return RedirectToAction("ChangePassword", new { Message = ManageMessageId.SetPasswordSuccess });
                     }
                     catch (Exception e)
                     {
@@ -214,6 +222,43 @@ namespace PriceUpdater.Controllers
                 }
             }
 
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        public ActionResult UserProfile(ManageMessageId? message)
+        {
+            ViewBag.StatusMessage =
+                message == ManageMessageId.ChangePasswordSuccess ? "Vaše heslo bylo změněno."
+                : message == ManageMessageId.SetPasswordSuccess ? "Vaše heslo bylo nastaveno."
+                : message == ManageMessageId.RemoveLoginSuccess ? "Externí příhlášení bylo odstraněno."
+                : "";
+            UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
+            var uow = uowProvider.CreateNew();
+            
+            int memberId = WebSecurity.GetUserId(User.Identity.Name);
+     
+            UserProfile userModel = uow.Users.GetByID(memberId);
+            //UserPropertiesModel model = new UserPropertiesModel();
+            //model.Address = "adsjhasfhs";
+
+
+            return View(userModel);
+        }
+
+        //
+        // POST: /Account/Manage
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserProfile(UserProfile model)
+        {
+            ViewBag.ReturnUrl = Url.Action("UserProfile");
+            UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
+            var uow = uowProvider.CreateNew();
+            uow.Users.Edit(model);
+            uow.Commit();
+            return RedirectToAction("UserProfile", new { Message = ManageMessageId.ChangePasswordSuccess });
             // If we got this far, something failed, redisplay form
             return View(model);
         }

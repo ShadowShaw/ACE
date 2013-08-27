@@ -43,6 +43,7 @@ namespace Core.Data
         public virtual void Edit(T entity)
         {
             this.unitOfWork.EfContext.Set<T>().Attach(entity);
+            
             this.unitOfWork.EfContext.Entry(entity).State = System.Data.EntityState.Modified;
             //entity = entity.Clone();
         }

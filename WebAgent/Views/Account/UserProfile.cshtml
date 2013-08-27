@@ -1,8 +1,17 @@
-﻿@model PriceUpdater.Models.UserPropertiesModel
+﻿@model Core.Models.UserProfile
 
-<h3>Editace u6ivatelsk0ho profilu</h3>
+@{
+    ViewBag.Title = "Změna údajů o uživateli";
+}
 
-@using (Html.BeginForm("Manage", "AccountProperties")) {
+<p class="message-success">@ViewBag.StatusMessage</p>
+<p>Jste přihlášeni jako: <strong>@User.Identity.Name</strong>.</p>
+
+
+<h3>Editace uživatelského profilu</h3>
+
+@using (Html.BeginForm("UserProfile", "Account"))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
@@ -10,6 +19,8 @@
         <fieldset>
         <legend>Change User Properties Form</legend>
         <ol>
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.UserName)
             <li>
                 @Html.LabelFor(model => model.CompanyName)
                 @Html.TextBoxFor(model => model.CompanyName)
@@ -46,4 +57,9 @@
         <input type="submit" value="Změnit údaje o uživateli" />
         </fieldset>
     </section>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
