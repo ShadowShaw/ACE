@@ -11,7 +11,7 @@ namespace PriceUpdater.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Automatická aktualizace cen eshopů.";
-
+            
             return View();
         }
 

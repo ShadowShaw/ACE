@@ -26,14 +26,14 @@ namespace Core
         public const string Confirmation = "Potvrzení";
 
         //button context help
-        public const string hLoadProducts = "Načte";
-        public const string hEmptyCategory = "Načte";
-        public const string hEmptyManufacturer = "Načte";
-        public const string hWithoutImage = "Načte";
-        public const string hWithoutShortDescription = "Načte";
-        public const string hWithoutLongDescription = "Načte";
-        public const string hWithoutPrice = "Načte";
-        public const string hWithoutWholeSalePrice = "Načte";
-        public const string hWithoutWeight = "Načte";
+        public const string hLoadProducts = "Načte databázi produktů eshopu";
+        public const string hEmptyCategory = "Vypíše produkty, které nejsou přiřazeny v žádné kategorii, tedy jsou v root kategorii";
+        public const string hEmptyManufacturer = "Vypíše produkty, u kterých není přiřazen žádný výrobce";
+        public const string hWithoutImage = "Vypíše produkty u kterých není přiřazen žádný obrázek";
+        public const string hWithoutShortDescription = "Vypíše produkty bez krátkého popisu";
+        public const string hWithoutLongDescription = "Vypíše produkty bez dlouhého popisu";
+        public const string hWithoutPrice = "Vypíše produkty bez maloobchodní prodejní ceny";
+        public const string hWithoutWholeSalePrice = "Vypíše produkty bez velkoobchodní prodejní ceny";
+        public const string hWithoutWeight = "Vypíše produkty u kterých není zadána váha";
     }
 }

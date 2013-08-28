@@ -25,3 +25,5 @@ C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.application
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csprojResolveAssemblyReference.cache
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csproj.GenerateResource.Cache
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.ChangesView.resources
+C:\GitHub\ACE\Desktop\bin\Release\HtmlDocs\ChangeLog.html
+C:\GitHub\ACE\Desktop\bin\Release\HtmlDocs\Home.html

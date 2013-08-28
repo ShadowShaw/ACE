@@ -66,6 +66,13 @@
     <Compile Include="Bussiness\LoginService.cs" />
     <Compile Include="Bussiness\ProductService.cs" />
     <Compile Include="Bussiness\ServiceBase.cs" />
+    <Compile Include="Migrations\201308282143526_m1.cs" />
+    <Compile Include="Migrations\201308282143526_m1.Designer.cs">
+      <DependentUpon>201308282143526_m1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Module.cs" />
+    <Compile Include="Models\ModuleOrder.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Utils\TreeItem.cs" />
     <Compile Include="Utils\UITools.cs" />
     <Compile Include="Data\EFEntity.cs" />
@@ -112,6 +119,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201308282143526_m1.resx">
+      <DependentUpon>201308282143526_m1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

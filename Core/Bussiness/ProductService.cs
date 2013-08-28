@@ -203,7 +203,7 @@ namespace Core.Bussiness
 
             foreach (ProductViewModel item in this.Products)
             {
-                if ((item.price.HasValue == false) || (item.price <= 0))
+                if ((item.price.HasValue == false) || (item.price == Decimal.Zero))
                 {
                     result.Add(item);
                 }
@@ -218,7 +218,7 @@ namespace Core.Bussiness
 
             foreach (ProductViewModel item in this.Products)
             {
-                if ((item.wholesale_price.HasValue == false) || (item.price <= 0))
+                if ((item.wholesale_price.HasValue == false) || (item.wholesale_price == Decimal.Zero))
                 {
                     result.Add(item);
                 }

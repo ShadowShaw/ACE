@@ -33,6 +33,9 @@ namespace Core.Data
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<MemberShip> MemeberShips { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<ACEModule> ACEModules { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<ModuleOrder> ModuleOrders { get; set; }
         
         public override int SaveChanges()
         {

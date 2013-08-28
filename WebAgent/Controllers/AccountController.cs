@@ -81,10 +81,17 @@ namespace PriceUpdater.Controllers
                 // Attempt to register the user
                 try
                 {
+                    if (model.FacturationAddress == "")
+                    {
+                        model.FacturationAddress = model.CorrespondentionAddress;
+                    }
+
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, propertyValues: new
                                                 {
                                                     CompanyName = model.CompanyName,
-                                                    Address = model.Address,
+                                                    CorrespondentionAddress = model.CorrespondentionAddress,
+                                                    FacturationAddress = model.FacturationAddress,
+                                                    EshopUrl = model.EshopUrl,
                                                     Dph = model.Dph,
                                                     Dic = model.DIC,
                                                     FirstName = model.FirstName,
@@ -93,6 +100,12 @@ namespace PriceUpdater.Controllers
                                                     PaymentSymbol = model.PaymentSymbol
                                                 });
                     WebSecurity.Login(model.UserName, model.Password);
+                    System.Web.Security.Roles.AddUserToRole(model.UserName, "users");
+                    if (model.UserName.StartsWith("hisadmin"))
+                    {
+                        System.Web.Security.Roles.AddUserToRole(model.UserName, "admins");
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -241,7 +254,7 @@ namespace PriceUpdater.Controllers
             UserProfile userModel = uow.Users.GetByID(memberId);
             //UserPropertiesModel model = new UserPropertiesModel();
             //model.Address = "adsjhasfhs";
-
+//TODO
 
             return View(userModel);
         }
@@ -260,7 +273,6 @@ namespace PriceUpdater.Controllers
             uow.Commit();
             return RedirectToAction("UserProfile", new { Message = ManageMessageId.ChangePasswordSuccess });
             // If we got this far, something failed, redisplay form
-            return View(model);
         }
 
         //

@@ -128,8 +128,17 @@ namespace PriceUpdater.Models
 
         [Required]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
-        [Display(Name = "Adresa")]
-        public string Address { get; set; }
+        [Display(Name = "Korespondenční adresa")]
+        public string CorrespondentionAddress { get; set; }
+
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Fakturační adresa (Nevyplňujte, pokud je stejná s Korespondenční adresou)")]
+        public string FacturationAddress { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Web adresa eshopu")]
+        public string EshopUrl { get; set; }
         
         [Required]
         [Display(Name = "Plátce DPH")]

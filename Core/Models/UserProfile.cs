@@ -18,7 +18,9 @@ namespace Core.Models
         public string CompanyName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Address { get; set; }
+        public string CorrespondentionAddress { get; set; }
+        public string FacturationAddress { get; set; }
+        public string EshopUrl { get; set; }
         public bool Dph { get; set; }
         public string PaymentSymbol { get; set; } // identifikace platby - variabilni symbol
         public string ICO { get; set; }

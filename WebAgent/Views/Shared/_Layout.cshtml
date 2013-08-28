@@ -28,6 +28,13 @@
                             }
                             <li>@Html.ActionLink("O nás", "About", "Home")</li>
                             <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                            @{
+                                if (User.IsInRole("admins"))
+                                {
+                                    <li>@Html.ActionLink("Admin rozhraní", "Index", "Admin")</li>
+                                    string[] userRoles = ((System.Web.Security.RolePrincipal)User).GetRoles();
+                                }
+                            }
                         </ul>
                     </nav>
                 </div>

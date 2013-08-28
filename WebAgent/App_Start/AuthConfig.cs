@@ -9,6 +9,19 @@ namespace PriceUpdater
 {
     public static class AuthConfig
     {
+        public static void InitRoles()
+        {
+            if (System.Web.Security.Roles.RoleExists("admins") == false)
+            {
+                System.Web.Security.Roles.CreateRole("admins");
+            }
+
+            if (System.Web.Security.Roles.RoleExists("users") == false)
+            {
+                System.Web.Security.Roles.CreateRole("users");
+            }
+        }
+
         public static void RegisterAuth()
         {
             // To let users of this site log in using their accounts from other sites such as Microsoft, Facebook, and Twitter,

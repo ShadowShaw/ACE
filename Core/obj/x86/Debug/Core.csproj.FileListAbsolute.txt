@@ -37,3 +37,5 @@ C:\Card\GitHub\ACE\Core\bin\Debug\RestSharp.xml
 C:\Card\GitHub\ACE\Core\obj\x86\Debug\Core.dll
 C:\Card\GitHub\ACE\Core\obj\x86\Debug\Core.pdb
 C:\GitHub\ACE\Core\obj\x86\Debug\Core.csprojResolveAssemblyReference.cache
+C:\GitHub\ACE\Core\obj\x86\Debug\Core.Migrations.m1.resources
+C:\GitHub\ACE\Core\obj\x86\Debug\Core.csproj.GenerateResource.Cache
