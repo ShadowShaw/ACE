@@ -7,5 +7,9 @@
       <BaseUrl>http://testpresta.mzf.cz/prestashop/api/</BaseUrl>
       <Password>BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8</Password>
     </EshopConfiguration>
+    <EshopConfiguration>
+      <EshopName>Eshop4</EshopName>
+      <Type>Prestashop</Type>
+    </EshopConfiguration>
   </Eshops>
 </EshopList>

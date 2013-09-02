@@ -31,8 +31,9 @@ namespace Core.Data
         /// Gets or sets DB set of customers
         /// </summary>
         public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<MemberShip> MemeberShips { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<MemberShip> MemberShips { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UsersInRole> UsersInRole { get; set; }
         public DbSet<ACEModule> ACEModules { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<ModuleOrder> ModuleOrders { get; set; }

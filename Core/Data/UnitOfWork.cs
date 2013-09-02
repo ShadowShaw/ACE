@@ -15,9 +15,10 @@ namespace Core.Data
 
         private IRepository<UserProfile, int> userRepository;
         private IRepository<MemberShip, int> memberShipRepository;
-        private IRepository<UserRole, int> userRoleRepository;
+        //private IRepository<Role, int> userRoleRepository;
         private IRepository<ACEModule, int> aceModuleRepository;
         private IRepository<Payment, int> paymentRepository;
+        //private IRepository<UsersInRole, int> usersInRoleRepository;
         private IRepository<ModuleOrder, int> moduleOrderRepository;
         
         public UnitOfWork(ACEContext ef_context)
@@ -29,9 +30,10 @@ namespace Core.Data
             //////////////////////////////////////////////////////////////////////////
             this.userRepository = new EFRepository<UserProfile>(this);
             this.memberShipRepository = new EFRepository<MemberShip>(this);
-            this.userRoleRepository = new EFRepository<UserRole>(this);
+            //this.userRoleRepository = new EFRepository<Role>(this);
             this.aceModuleRepository = new EFRepository<ACEModule>(this);
             this.paymentRepository = new EFRepository<Payment>(this);
+            //this.usersInRoleRepository = new EFRepository<UsersInRole>(this);
             this.moduleOrderRepository = new EFRepository<ModuleOrder>(this);
         }
 
@@ -45,10 +47,10 @@ namespace Core.Data
             get { return this.memberShipRepository; }
         }
 
-        public IRepository<UserRole, int> UserRoles
-        {
-            get { return this.userRoleRepository; }
-        }
+        //public IRepository<Role, int> UserRoles
+        //{
+        //    get { return this.userRoleRepository; }
+        //}
 
         public IRepository<ACEModule, int> ACEModules
         {
@@ -64,6 +66,11 @@ namespace Core.Data
         {
             get { return this.moduleOrderRepository; }
         }
+
+        //public IRepository<UsersInRole, int> UsersInRoles
+        //{
+        //    get { return this.usersInRoleRepository; }
+        //}
         //////////////////////////////////////////////////////////////////////////
         // Methods & Members
         //////////////////////////////////////////////////////////////////////////

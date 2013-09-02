@@ -53,7 +53,11 @@ namespace Desktop
                 ePrestaToken.Text = mainSettings.Eshops.Eshops[0].Password;
                 ePrestaUrl.Text = mainSettings.Eshops.Eshops[0].BaseUrl;
             }
-
+            else
+            {
+                Engine.InitPrestaServices("", "");
+                MessageBox.Show("Nenalezen soubor s konfigurací připojení k eshopům. Prosím nastavte připojení.", "Nenalezen soubor s konfigurací připojení k eshopům.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             if (File.Exists("Columns.xml"))
             {
                 mainSettings.LoadColumnWidth();
@@ -234,7 +238,7 @@ namespace Desktop
             }
             else
             {
-                MessageBox.Show("Pro použití ACE se musíte přihlásit.");
+                MessageBox.Show("Pro použití ACE se musíte přihlásit.", "Vyžadováno přihlášení", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
@@ -577,6 +581,61 @@ namespace Desktop
             this.homeBrowser.Url = new Uri(String.Format("file:///{0}/HtmlDocs/ChangeLog.html", curDir));
         }
 
-        
+        private void bAddEshop_Click(object sender, EventArgs e)
+        {
+            InitEshopConfiguration();
+            EshopConfiguration eshop = new EshopConfiguration();
+            eshop.EshopName = "Eshop" + mainSettings.Eshops.Eshops.Count();
+            if (cbEshopType.SelectedIndex == 0)
+            {
+                eshop.Type = EshopType.Prestashop;
+            }
+            TreeNode treeNode = new TreeNode();
+            mainSettings.Eshops.Eshops.Add(eshop);
+            treeConfiguration.Nodes.Add(treeNode);
+        }
+
+        private void InitEshopConfiguration()
+        {
+            cbEshopType.SelectedIndex = 0;
+            foreach (EshopConfiguration eshop in mainSettings.Eshops.Eshops)
+            {
+                TreeNode treeNode = new TreeNode(eshop.EshopName);
+                treeConfiguration.Nodes.Add(treeNode);
+            }
+        }
+
+        private void treeConfiguration_MouseDown(object sender, MouseEventArgs e)
+        {
+            TreeNode mySelectedNode;
+            mySelectedNode = treeConfiguration.GetNodeAt(e.X, e.Y);
+            if (mySelectedNode != null)
+            {
+                treeConfiguration.SelectedNode = mySelectedNode;
+                treeConfiguration.LabelEdit = true;
+                if (!mySelectedNode.IsEditing)
+                {
+                    mySelectedNode.BeginEdit();
+                }
+            }
+        }
+
+        private void treeConfiguration_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            e.Node.EndEdit(false);
+        }
+
+        private void bDelEshop_Click(object sender, EventArgs e)
+        {
+            if (treeConfiguration.SelectedNode != null)
+            {
+                if (treeConfiguration.SelectedNode.Parent == null)
+                {
+                    MessageBox.Show("Chcete opravdu odstranit konfiguraci eshopu: " + treeConfiguration.SelectedNode.Text, "Odstranit konfiguraci eshopu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    mainSettings.Eshops.Eshops.RemoveAll(n => n.EshopName == treeConfiguration.SelectedNode.Text);
+                    treeConfiguration.Nodes.Remove(treeConfiguration.SelectedNode);
+                }
+            }
+        }
     }
 }

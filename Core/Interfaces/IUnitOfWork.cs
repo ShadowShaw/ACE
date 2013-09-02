@@ -10,7 +10,7 @@ namespace Core.Interfaces
     {
         IRepository<UserProfile, int> Users { get; }
         IRepository<MemberShip, int> MemberShips { get; }
-        IRepository<UserRole, int> UserRoles { get; }
+        //IRepository<Role, int> UserRoles { get; }
 
         // Methods
         void Commit();

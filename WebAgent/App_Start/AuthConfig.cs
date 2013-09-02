@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
 using PriceUpdater.Models;
+using Core.Data;
 
 namespace PriceUpdater
 {
@@ -20,6 +21,13 @@ namespace PriceUpdater
             {
                 System.Web.Security.Roles.CreateRole("users");
             }
+            
+            UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
+            var uow = uowProvider.CreateNew();
+
+            ACEContext ace = new ACEContext();
+            //ace.Roles.Add(
+            
         }
 
         public static void RegisterAuth()

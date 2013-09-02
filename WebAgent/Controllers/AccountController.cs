@@ -82,8 +82,27 @@ namespace PriceUpdater.Controllers
                 try
                 {
                     if (model.FacturationAddress == "")
-                    {
+                    { 
                         model.FacturationAddress = model.CorrespondentionAddress;
+                    }
+
+                    UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
+                    var uow = uowProvider.CreateNew();
+
+                    bool uniqueGuid = uow.Users.GetAll().Any(u => u.EshopUrl == model.EshopUrl);
+
+                    if (uniqueGuid)
+                    {
+                        ViewBag.StatusMessage = "Zadaná adresa eshopu již existuje.";
+                        return View(model);
+                    }
+
+                    uniqueGuid = uow.Users.GetAll().Any(u => u.Email == model.Email);
+
+                    if (uniqueGuid)
+                    {
+                        ViewBag.StatusMessage = "Zadaný email již existuje.";
+                        return View(model);
                     }
 
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, propertyValues: new
@@ -100,7 +119,7 @@ namespace PriceUpdater.Controllers
                                                     PaymentSymbol = model.PaymentSymbol
                                                 });
                     WebSecurity.Login(model.UserName, model.Password);
-                    System.Web.Security.Roles.AddUserToRole(model.UserName, "users");
+                    //System.Web.Security.Roles.AddUserToRole(model.UserName, "users");
                     if (model.UserName.StartsWith("hisadmin"))
                     {
                         System.Web.Security.Roles.AddUserToRole(model.UserName, "admins");
@@ -167,11 +186,6 @@ namespace PriceUpdater.Controllers
                 : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("ChangePassword");
-            
-            //int memberId = WebSecurity.GetUserId(User.Identity.Name);
-            //UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
-            //var uow = uowProvider.CreateNew();
-            //ViewBag.UserProperties = uow.Users.GetByID(memberId);
             
             return View();
         }
@@ -252,11 +266,22 @@ namespace PriceUpdater.Controllers
             int memberId = WebSecurity.GetUserId(User.Identity.Name);
      
             UserProfile userModel = uow.Users.GetByID(memberId);
-            //UserPropertiesModel model = new UserPropertiesModel();
-            //model.Address = "adsjhasfhs";
-//TODO
+            UserPropertiesModel model = new UserPropertiesModel();
+            model.CompanyName = userModel.CompanyName;
+            model.CorrespondentionAddress = userModel.CorrespondentionAddress;
+            model.DIC = userModel.DIC;
+            model.Dph = userModel.Dph;
+            model.EshopUrl = userModel.EshopUrl;
+            model.Email = userModel.Email;
+            model.FacturationAddress = userModel.FacturationAddress;
+            model.FirstName = userModel.FirstName;
+            model.ICO = userModel.ICO;
+            model.LastName = userModel.LastName;
+            model.PaymentSymbol = userModel.PaymentSymbol;
+            model.Id = userModel.Id;
+            model.UserName = userModel.UserName;
 
-            return View(userModel);
+            return View(model);
         }
 
         //
@@ -264,12 +289,28 @@ namespace PriceUpdater.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UserProfile(UserProfile model)
+        public ActionResult UserProfile(UserPropertiesModel model)
         {
-            ViewBag.ReturnUrl = Url.Action("UserProfile");
             UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
             var uow = uowProvider.CreateNew();
-            uow.Users.Edit(model);
+            int memberId = WebSecurity.GetUserId(User.Identity.Name);
+
+            UserProfile userModel = uow.Users.GetByID(memberId);
+            userModel.CompanyName = model.CompanyName;
+            userModel.CorrespondentionAddress = model.CorrespondentionAddress;
+            userModel.DIC = model.DIC;
+            userModel.Dph = model.Dph;
+            userModel.Email = model.Email;
+            userModel.EshopUrl = model.EshopUrl;
+            userModel.FacturationAddress = model.FacturationAddress;
+            userModel.FirstName = model.FirstName;
+            userModel.ICO = model.ICO;
+            userModel.LastName = model.LastName;
+            userModel.PaymentSymbol = model.PaymentSymbol;
+            
+
+            ViewBag.ReturnUrl = Url.Action("UserProfile");
+            uow.Users.Edit(userModel);
             uow.Commit();
             return RedirectToAction("UserProfile", new { Message = ManageMessageId.ChangePasswordSuccess });
             // If we got this far, something failed, redisplay form
@@ -421,6 +462,12 @@ namespace PriceUpdater.Controllers
             ChangePasswordSuccess,
             SetPasswordSuccess,
             RemoveLoginSuccess,
+        }
+
+        public enum RegisterMessageId
+        {
+            InvalidEshopURL,
+            InvalidEmail,
         }
 
         internal class ExternalLoginResult : ActionResult

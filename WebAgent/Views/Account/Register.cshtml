@@ -8,6 +8,8 @@
     <h2> Vytvoření nového účtu.</h2>
 </hgroup>
 
+<p class="message-success">@ViewBag.StatusMessage</p>
+
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
@@ -52,6 +54,10 @@
                 @Html.TextBoxFor(m => m.EshopUrl)
             </li>
             <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+            <li>
                 @Html.LabelFor(m => m.Dph)
                 @Html.CheckBoxFor(m => m.Dph)
             </li>
@@ -68,7 +74,7 @@
                 @Html.TextBoxFor(m => m.DIC)
             </li>
         </ol>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Registrovat" />
     </fieldset>
 }
 

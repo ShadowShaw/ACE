@@ -33,6 +33,12 @@ namespace Desktop.UserSettings
         public string Password { get; set; }
     }
 
+    //public class HtmlAdresses
+    //{
+    //    public string Name { get; set; }
+    //    public string Adress { get; set; }
+    //}
+
     public class FormSize
     {
         public string Name { get; set; }

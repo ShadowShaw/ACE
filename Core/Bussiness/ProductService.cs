@@ -125,7 +125,7 @@ namespace Core.Bussiness
         public List<ProductViewModel> GetProductWithEmptyManufacturer()
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
-
+ 
             foreach (ProductViewModel item in this.Products)
             {
                 if ((item.id_manufacturer.HasValue == false) || (item.id_manufacturer == 0))
@@ -143,7 +143,7 @@ namespace Core.Bussiness
 
             foreach (ProductViewModel item in this.Products)
             {
-                if ((item.id_category_default.HasValue == false) || (item.id_category_default == 0))
+                if ((item.id_category_default.HasValue == false) || (item.id_category_default == 1) || (item.id_category_default == 2))
                 {
                     result.Add(item);
                 }

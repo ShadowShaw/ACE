@@ -18,6 +18,7 @@ namespace Core.Models
         public string CompanyName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Email { get; set; }
         public string CorrespondentionAddress { get; set; }
         public string FacturationAddress { get; set; }
         public string EshopUrl { get; set; }

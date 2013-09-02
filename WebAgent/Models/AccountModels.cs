@@ -39,6 +39,9 @@ namespace PriceUpdater.Models
 
     public class UserPropertiesModel 
     {
+        public int Id { get; set; }
+        public string UserName { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Název společnosti")]
@@ -53,11 +56,26 @@ namespace PriceUpdater.Models
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Příjmení")]
         public string LastName { get; set; }
+        
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Korespondenční adresa")]
+        public string CorrespondentionAddress { get; set; }
+
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Fakturační adresa (Nevyplňujte, pokud je stejná s Korespondenční adresou)")]
+        public string FacturationAddress { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
-        [Display(Name = "Adresa")]
-        public string Address { get; set; }
+        [Display(Name = "Web adresa eshopu")]
+        public string EshopUrl { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
         
         [Required]
         [Display(Name = "Plátce DPH")]
@@ -97,6 +115,7 @@ namespace PriceUpdater.Models
     public class RegisterModel
     {
         [Required]
+        [Remote("doesUserNameExist", "Account", HttpMethod = "POST", ErrorMessage = "User name already exists. Please enter a different user name.")]
         [Display(Name = "Uživatelské jméno")]
         public string UserName { get; set; }
 
@@ -139,7 +158,12 @@ namespace PriceUpdater.Models
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Web adresa eshopu")]
         public string EshopUrl { get; set; }
-        
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
         [Required]
         [Display(Name = "Plátce DPH")]
         public bool Dph { get; set; }

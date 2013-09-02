@@ -1,4 +1,4 @@
-﻿@model Core.Models.UserProfile
+﻿@model PriceUpdater.Models.UserPropertiesModel
 
 @{
     ViewBag.Title = "Změna údajů o uživateli";
@@ -34,8 +34,20 @@
                 @Html.TextBoxFor(m => m.LastName)
             </li>
             <li>
-                @Html.LabelFor(m => m.Address)
-                @Html.TextBoxFor(m => m.Address)
+                @Html.LabelFor(m => m.FacturationAddress)
+                @Html.TextBoxFor(m => m.FacturationAddress)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.CorrespondentionAddress)
+                @Html.TextBoxFor(m => m.CorrespondentionAddress)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.EshopUrl)
+                @Html.TextBoxFor(m => m.EshopUrl)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
             </li>
             <li>
                 @Html.LabelFor(m => m.Dph)
