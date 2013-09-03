@@ -71,6 +71,7 @@ namespace Desktop
             }
 
             DataGridTools.SetMainSettings(mainSettings);
+            InitDisplayEshopConfiguration();
             // Lenght of edit boxes.
             ePrestaToken.MaxLength = 50;
             ePrestaUrl.MaxLength = 100;
@@ -583,7 +584,6 @@ namespace Desktop
 
         private void bAddEshop_Click(object sender, EventArgs e)
         {
-            InitEshopConfiguration();
             EshopConfiguration eshop = new EshopConfiguration();
             eshop.EshopName = "Eshop" + mainSettings.Eshops.Eshops.Count();
             if (cbEshopType.SelectedIndex == 0)
@@ -595,7 +595,7 @@ namespace Desktop
             treeConfiguration.Nodes.Add(treeNode);
         }
 
-        private void InitEshopConfiguration()
+        private void InitDisplayEshopConfiguration()
         {
             cbEshopType.SelectedIndex = 0;
             foreach (EshopConfiguration eshop in mainSettings.Eshops.Eshops)
@@ -634,6 +634,26 @@ namespace Desktop
                     MessageBox.Show("Chcete opravdu odstranit konfiguraci eshopu: " + treeConfiguration.SelectedNode.Text, "Odstranit konfiguraci eshopu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     mainSettings.Eshops.Eshops.RemoveAll(n => n.EshopName == treeConfiguration.SelectedNode.Text);
                     treeConfiguration.Nodes.Remove(treeConfiguration.SelectedNode);
+                }
+            }
+        }
+
+        private void treeConfiguration_DoubleClick(object sender, EventArgs e)
+        {
+            if (treeConfiguration.SelectedNode != null)
+            {
+                if (treeConfiguration.SelectedNode.Parent == null)
+                {
+                    EshopConfiguration eshop = mainSettings.Eshops.Eshops.Where(n => n.EshopName == treeConfiguration.SelectedNode.Text).SingleOrDefault();
+                    if (eshop != null)
+                    {
+                        if (eshop.Type == EshopType.Prestashop)
+                        {
+                            cbTypeEshop.SelectedIndex = 0;
+                            ePrestaUrl.Text = eshop.BaseUrl;
+                            ePrestaToken.Text = eshop.Password;
+                        }
+                    }
                 }
             }
         }
