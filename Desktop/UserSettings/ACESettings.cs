@@ -72,8 +72,8 @@ namespace Desktop.UserSettings
 
     public class ACESettings
     {
-        public const string HomePath = "http://www.ace2.appharbor.com/HtmlDocs/Home.html";
-        public const string ChangeLogPath = "http://www.ace2.appharbor.com/HtmlDocs/ChangeLog.html";
+        public const string HomePath = "http://www.ace-2.apphb.com/HtmlDocs/Home.html";
+        public const string ChangeLogPath = "http://www.ace-2.apphb.com/HtmlDocs/ChangeLog.html";
 
         public EshopList Eshops { get; set; }
         public FormSizesList FormSizes { get; set; }

@@ -12,15 +12,15 @@ namespace PriceUpdater
     {
         public static void InitRoles()
         {
-            if (System.Web.Security.Roles.RoleExists("admins") == false)
-            {
-                System.Web.Security.Roles.CreateRole("admins");
-            }
+            //if (System.Web.Security.Roles.RoleExists("admins") == false)
+            //{
+            //    System.Web.Security.Roles.CreateRole("admins");
+            //}
 
-            if (System.Web.Security.Roles.RoleExists("users") == false)
-            {
-                System.Web.Security.Roles.CreateRole("users");
-            }
+            //if (System.Web.Security.Roles.RoleExists("users") == false)
+            //{
+            //    System.Web.Security.Roles.CreateRole("users");
+            //}
             
             UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
             var uow = uowProvider.CreateNew();
