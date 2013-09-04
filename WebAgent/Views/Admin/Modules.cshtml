@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Core.Models.ACEModule>
+
+@{
+    ViewBag.Title = "Moduly";
+}
+
+Seznam modulů:
+
+<p>
+    @Html.ActionLink("Vytvořit nový modul", "CreateModule")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Editace", "EditModule", new { id=item.Id }) |
+            @Html.ActionLink("Smazat", "DeleteModule", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<p>
+    @Html.ActionLink("Zpět na index", "Index")
+</p>
+
+

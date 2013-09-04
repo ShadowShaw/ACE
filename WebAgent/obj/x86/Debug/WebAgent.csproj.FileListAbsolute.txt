@@ -171,3 +171,5 @@ C:\Card\GitHub\ACE\WebAgent\obj\x86\Debug\WebAgent.csprojResolveAssemblyReferenc
 C:\Card\GitHub\ACE\WebAgent\obj\x86\Debug\PriceUpdater.dll
 C:\Card\GitHub\ACE\WebAgent\obj\x86\Debug\PriceUpdater.pdb
 C:\GitHub\ACE\WebAgent\obj\x86\Debug\WebAgent.csprojResolveAssemblyReference.cache
+C:\GitHub\ACE\WebAgent\bin\HtmlDocs\ChangeLog.html
+C:\GitHub\ACE\WebAgent\bin\HtmlDocs\Home.html

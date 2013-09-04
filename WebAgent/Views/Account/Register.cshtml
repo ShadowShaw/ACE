@@ -63,7 +63,7 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.PaymentSymbol)
-                @Html.TextBoxFor(m => m.PaymentSymbol)
+                @Html.TextBoxFor(m => m.PaymentSymbol, new { @Value = ViewBag.PaymentSymbol })
             </li>
             <li>
                 @Html.LabelFor(m => m.ICO)

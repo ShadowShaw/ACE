@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Admin Interface Index";
+}
+
+<p>Jste přihlášeni jako: <strong>@User.Identity.Name</strong>.</p>
+
+<div>
+    <nav>
+        <ul class="nav nav-pills nav-stacked" id="usermenu">
+            <li>@Html.ActionLink("Správa modulů", "Modules", "Admin")</li>
+            <li>@Html.ActionLink("Správa plateb", "Payments", "Admin")</li>
+            <li>@Html.ActionLink("Správa objednávek modulů", "ModuleOrders", "Admin")</li>
+        </ul>
+    </nav>
+ </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

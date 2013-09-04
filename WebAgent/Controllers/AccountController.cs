@@ -12,6 +12,7 @@ using PriceUpdater.Filters;
 using PriceUpdater.Models;
 using Core.Models;
 using Core.Data;
+using Core.Utils;
 
 namespace PriceUpdater.Controllers
 {
@@ -65,6 +66,7 @@ namespace PriceUpdater.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.PaymentSymbol = AgentUtils.GetPaymentSymbol();
             return View();
         }
 

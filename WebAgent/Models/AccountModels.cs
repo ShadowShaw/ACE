@@ -82,7 +82,7 @@ namespace PriceUpdater.Models
         public bool Dph { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
+        [StringLength(9, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 9)]
         [Display(Name = "Platební symbol")]
         public string PaymentSymbol { get; set; } // identifikace platby - variabilni symbol
 

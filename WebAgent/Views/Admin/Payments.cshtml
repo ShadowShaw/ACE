@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Core.Models.Payment>
+
+@{
+    ViewBag.Title = "Správa plateb";
+}
+
+Seznam plateb:
+
+<p>
+    @Html.ActionLink("Zadat novou platbu", "CreatePayment")
+</p>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentSymbol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentSymbol)
+        </td>
+        <td>
+            @Html.ActionLink("Editace", "EditPayment", new { id=item.Id }) |
+            @Html.ActionLink("Smazat", "DeletePayment", new { id=item.Id })        
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<p>
+    @Html.ActionLink("Zpět na index", "Index")
+</p>

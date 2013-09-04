@@ -44,6 +44,7 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importManufactures = new System.Windows.Forms.ToolStripMenuItem();
             this.menuShowChangeLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuShowHome = new System.Windows.Forms.ToolStripMenuItem();
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusAgent = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLogin = new System.Windows.Forms.ToolStripStatusLabel();
@@ -97,14 +98,14 @@
             this.bAddEshop = new System.Windows.Forms.Button();
             this.treeConfiguration = new System.Windows.Forms.TreeView();
             this.gbPrestaSetup = new System.Windows.Forms.GroupBox();
+            this.lEshopType = new System.Windows.Forms.Label();
+            this.cbTypeEshop = new System.Windows.Forms.ComboBox();
             this.bPrestaTest = new System.Windows.Forms.Button();
             this.bSavePresta = new System.Windows.Forms.Button();
             this.ePrestaToken = new System.Windows.Forms.TextBox();
             this.ePrestaUrl = new System.Windows.Forms.TextBox();
             this.lPrestaToken = new System.Windows.Forms.Label();
             this.lPrestaUrl = new System.Windows.Forms.Label();
-            this.cbTypeEshop = new System.Windows.Forms.ComboBox();
-            this.lEshopType = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.status.SuspendLayout();
             this.tc.SuspendLayout();
@@ -165,7 +166,8 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importManufactures,
-            this.menuShowChangeLog});
+            this.menuShowChangeLog,
+            this.menuShowHome});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -173,16 +175,23 @@
             // importManufactures
             // 
             this.importManufactures.Name = "importManufactures";
-            this.importManufactures.Size = new System.Drawing.Size(159, 22);
+            this.importManufactures.Size = new System.Drawing.Size(175, 22);
             this.importManufactures.Text = "Importuj výrobce";
             this.importManufactures.Click += new System.EventHandler(this.importManufactures_Click);
             // 
             // menuShowChangeLog
             // 
             this.menuShowChangeLog.Name = "menuShowChangeLog";
-            this.menuShowChangeLog.Size = new System.Drawing.Size(159, 22);
-            this.menuShowChangeLog.Text = "Zobraz changelog";
+            this.menuShowChangeLog.Size = new System.Drawing.Size(175, 22);
+            this.menuShowChangeLog.Text = "Zobraz seznam změn";
             this.menuShowChangeLog.Click += new System.EventHandler(this.menuShowChangeLog_Click);
+            // 
+            // menuShowHome
+            // 
+            this.menuShowHome.Name = "menuShowHome";
+            this.menuShowHome.Size = new System.Drawing.Size(175, 22);
+            this.menuShowHome.Text = "Zobraz home stránku";
+            this.menuShowHome.Click += new System.EventHandler(this.menuShowHome_Click);
             // 
             // status
             // 
@@ -815,6 +824,28 @@
             this.gbPrestaSetup.TabStop = false;
             this.gbPrestaSetup.Text = "Nastavení připojení k eshopu";
             // 
+            // lEshopType
+            // 
+            this.lEshopType.AutoSize = true;
+            this.lEshopType.Location = new System.Drawing.Point(22, 35);
+            this.lEshopType.Name = "lEshopType";
+            this.lEshopType.Size = new System.Drawing.Size(63, 13);
+            this.lEshopType.TabIndex = 7;
+            this.lEshopType.Text = "Typ eshopu";
+            // 
+            // cbTypeEshop
+            // 
+            this.cbTypeEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbTypeEshop.Enabled = false;
+            this.cbTypeEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbTypeEshop.FormattingEnabled = true;
+            this.cbTypeEshop.Items.AddRange(new object[] {
+            "Prestashop"});
+            this.cbTypeEshop.Location = new System.Drawing.Point(203, 29);
+            this.cbTypeEshop.Name = "cbTypeEshop";
+            this.cbTypeEshop.Size = new System.Drawing.Size(165, 21);
+            this.cbTypeEshop.TabIndex = 6;
+            // 
             // bPrestaTest
             // 
             this.bPrestaTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -878,28 +909,6 @@
             this.lPrestaUrl.Size = new System.Drawing.Size(78, 13);
             this.lPrestaUrl.TabIndex = 0;
             this.lPrestaUrl.Text = "Adresa eshopu";
-            // 
-            // cbTypeEshop
-            // 
-            this.cbTypeEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbTypeEshop.Enabled = false;
-            this.cbTypeEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbTypeEshop.FormattingEnabled = true;
-            this.cbTypeEshop.Items.AddRange(new object[] {
-            "Prestashop"});
-            this.cbTypeEshop.Location = new System.Drawing.Point(203, 29);
-            this.cbTypeEshop.Name = "cbTypeEshop";
-            this.cbTypeEshop.Size = new System.Drawing.Size(165, 21);
-            this.cbTypeEshop.TabIndex = 6;
-            // 
-            // lEshopType
-            // 
-            this.lEshopType.AutoSize = true;
-            this.lEshopType.Location = new System.Drawing.Point(22, 35);
-            this.lEshopType.Name = "lEshopType";
-            this.lEshopType.Size = new System.Drawing.Size(63, 13);
-            this.lEshopType.TabIndex = 7;
-            this.lEshopType.Text = "Typ eshopu";
             // 
             // Main
             // 
@@ -1010,6 +1019,7 @@
         private System.Windows.Forms.TreeView treeConfiguration;
         private System.Windows.Forms.Label lEshopType;
         private System.Windows.Forms.ComboBox cbTypeEshop;
+        private System.Windows.Forms.ToolStripMenuItem menuShowHome;
     }
 }
 

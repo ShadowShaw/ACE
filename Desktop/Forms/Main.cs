@@ -72,25 +72,15 @@ namespace Desktop
 
             DataGridTools.SetMainSettings(mainSettings);
             InitDisplayEshopConfiguration();
+            
+            this.homeBrowser.Url = new Uri(ACESettings.ChangeLogPath);
+            
             // Lenght of edit boxes.
             ePrestaToken.MaxLength = 50;
             ePrestaUrl.MaxLength = 100;
             
-            // Old Code.
             openDialog.InitialDirectory = Application.StartupPath;
             saveDialog.InitialDirectory = Application.StartupPath;
-            
-            // old code
-            //if (File.Exists("manufacturers.txt"))
-            //{
-            //    var u = File.ReadAllLines("manufacturers.txt").ToList();
-            //    foreach (string s in u)
-            //    {
-            //        cManufacturers.Items.Add(s);
-            //    }
-
-            //    cManufacturers.SelectedIndex = 0;
-            //}
         }
         
         
@@ -576,12 +566,6 @@ namespace Desktop
             }
         }
 
-        private void menuShowChangeLog_Click(object sender, EventArgs e)
-        {
-            string curDir = Directory.GetCurrentDirectory();
-            this.homeBrowser.Url = new Uri(String.Format("file:///{0}/HtmlDocs/ChangeLog.html", curDir));
-        }
-
         private void bAddEshop_Click(object sender, EventArgs e)
         {
             EshopConfiguration eshop = new EshopConfiguration();
@@ -656,6 +640,20 @@ namespace Desktop
                     }
                 }
             }
+        }
+
+        private void menuShowHome_Click(object sender, EventArgs e)
+        {
+            this.tc.SelectedTab = this.tpHome;
+            this.homeBrowser.Url = new Uri(ACESettings.HomePath);
+        }
+
+        private void menuShowChangeLog_Click(object sender, EventArgs e)
+        {
+            //string curDir = Directory.GetCurrentDirectory();
+            //this.homeBrowser.Url = new Uri(String.Format("file:///{0}/HtmlDocs/ChangeLog.html", curDir));
+            this.tc.SelectedTab = this.tpHome;
+            this.homeBrowser.Url = new Uri(ACESettings.ChangeLogPath);
         }
     }
 }

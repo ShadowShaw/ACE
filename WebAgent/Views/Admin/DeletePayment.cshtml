@@ -1,0 +1,39 @@
+﻿@model Core.Models.Payment
+
+@{
+    ViewBag.Title = "Smazat platbu";
+}
+
+<h2>Delete</h2>
+
+<h3>Jste si jisti, zda chce opravdu smazat platbu?</h3>
+<fieldset>
+    <legend>ACEModule</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Amount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PaymentDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PaymentDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PaymentSymbol)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PaymentSymbol)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="DeletePayment" /> |
+        @Html.ActionLink("Zpět na seznam plateb", "ModulePayments")
+    </p>
+}

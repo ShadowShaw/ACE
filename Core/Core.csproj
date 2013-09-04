@@ -70,6 +70,7 @@
     <Compile Include="Models\ModuleOrder.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\UsersInRole.cs" />
+    <Compile Include="Utils\AgentUtils.cs" />
     <Compile Include="Utils\TreeItem.cs" />
     <Compile Include="Utils\UITools.cs" />
     <Compile Include="Data\EFEntity.cs" />

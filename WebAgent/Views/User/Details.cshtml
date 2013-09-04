@@ -1,0 +1,36 @@
+﻿@model Core.Models.ModuleOrder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ModuleOrder</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModuleId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModuleId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OrderDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OrderDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

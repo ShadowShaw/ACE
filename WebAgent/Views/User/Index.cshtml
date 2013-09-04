@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Správa uživatelského účtu";
+}
+
+<p>Jste přihlášeni jako: <strong>@User.Identity.Name</strong>.</p>
+
+<div>
+    <nav>
+        <ul class="nav nav-pills nav-stacked" id="usermenu">
+            <li>@Html.ActionLink("Výpis plateb", "PaymentsList", "User")</li>
+            <li>@Html.ActionLink("Seznam objednaných modulů", "OrderedModules", "User")</li>
+            <li>@Html.ActionLink("Objednání modulů", "OrderModule", "User")</li>
+        </ul>
+    </nav>
+ </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

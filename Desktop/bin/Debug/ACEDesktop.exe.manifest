@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="117248">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="117760">
       <assemblyIdentity name="ACEDesktop" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>hpjc4vhNX9AmGxi8Dv8q9qLVMfs=</dsig:DigestValue>
+        <dsig:DigestValue>f44BoIjujgaBKuvW1nJF2J7AOeg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>uogXYjlOXfuy8NdSkhQfxGZ0uG4=</dsig:DigestValue>
+        <dsig:DigestValue>VEUZhKcnae2wbX6RKfMhFEc6xVE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

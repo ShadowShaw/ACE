@@ -1,0 +1,39 @@
+﻿@model Core.Models.ACEModule
+
+@{
+    ViewBag.Title = "Smazat modul";
+}
+
+<h2>Delete</h2>
+
+<h3>Jste si jisti, zda chce opravdu smazat modul?</h3>
+<fieldset>
+    <legend>ACEModule</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MonthPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MonthPrice)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="DeleteModule" /> |
+        @Html.ActionLink("Zpět na seznam modulů", "Modules")
+    </p>
+}
