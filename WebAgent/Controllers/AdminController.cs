@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Core.Models;
 using Core.Data;
+using Core.Interfaces;
 
 namespace ACEAgent.Controllers
 {
@@ -24,17 +25,26 @@ namespace ACEAgent.Controllers
 
         public ActionResult Modules()
         {
-            return View(db.ACEModules.ToList());
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                return View(uow.ACEModules.GetAll().ToList());
+            }
         }
 
         public ActionResult Payments()
         {
-            return View(db.Payments.ToList());
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                return View(uow.Payments.GetAll().ToList());
+            }
         }
 
         public ActionResult ModuleOrders()
         {
-            return View(db.ModuleOrders.ToList());
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                return View(uow.ModuleOrders.GetAll().ToList());
+            }
         }
       
         //
@@ -53,8 +63,11 @@ namespace ACEAgent.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ACEModules.Add(acemodule);
-                db.SaveChanges();
+                using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+                {
+                    uow.ACEModules.Add(acemodule);
+                    uow.Commit();
+                }
                 return RedirectToAction("Modules");
             }
 
@@ -66,7 +79,11 @@ namespace ACEAgent.Controllers
 
         public ActionResult CreatePayment()
         {
-            ViewBag.UserList = db.UserProfiles.ToList();
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                ViewBag.UserList = uow.Users.GetAll().ToList();
+            }
+            
             return View();
         }
 
@@ -78,18 +95,18 @@ namespace ACEAgent.Controllers
         {
             if (ModelState.IsValid)
             {
-                UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
-                var uow = uowProvider.CreateNew();
+                using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+                {
+                    UserProfile user = uow.Users.GetAll().Where(u => u.PaymentSymbol == payment.PaymentSymbol).FirstOrDefault();
 
-                UserProfile user = uow.Users.GetAll().Where(u => u.PaymentSymbol == payment.PaymentSymbol).FirstOrDefault();
+                    uow.Payments.Add(payment);
 
-                uow.Payments.Add(payment);
-            
-                user.Credit = user.Credit + payment.Amount;
-                uow.Users.Edit(user);
+                    user.Credit = user.Credit + payment.Amount;
+                    uow.Users.Edit(user);
 
-                uow.Commit();
-                return RedirectToAction("Payments");
+                    uow.Commit();
+                    return RedirectToAction("Payments");
+                }
             }
 
             return View(payment);
@@ -111,9 +128,12 @@ namespace ACEAgent.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ModuleOrders.Add(order);
-                db.SaveChanges();
-                return RedirectToAction("ModuleOrders");
+                using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+                {
+                    uow.ModuleOrders.Add(order);
+                    uow.Commit();
+                    return RedirectToAction("ModuleOrders");
+                }
             }
 
             return View(order);
@@ -124,12 +144,16 @@ namespace ACEAgent.Controllers
 
         public ActionResult EditModule(int id = 0)
         {
-            ACEModule acemodule = db.ACEModules.Find(id);
-            if (acemodule == null)
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return HttpNotFound();
+                ACEModule acemodule = uow.ACEModules.GetByID(id);
+                if (acemodule == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(acemodule);
             }
-            return View(acemodule);
         }
 
         //
@@ -140,8 +164,11 @@ namespace ACEAgent.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(acemodule).State = EntityState.Modified;
-                db.SaveChanges();
+                using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+                {
+                    uow.ACEModules.Edit(acemodule); // db.Entry(acemodule).State = EntityState.Modified;
+                    uow.Commit();
+                }
                 return RedirectToAction("Modules");
             }
             return View(acemodule);
@@ -152,12 +179,17 @@ namespace ACEAgent.Controllers
 
         public ActionResult EditPayment(int id = 0)
         {
-            Payment payment = db.Payments.Find(id);
-            if (payment == null)
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return HttpNotFound();
+                Payment payment = uow.Payments.GetByID(id);
+
+                if (payment == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(payment);
             }
-            return View(payment);
         }
 
         //
@@ -168,8 +200,11 @@ namespace ACEAgent.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(payment).State = EntityState.Modified;
-                db.SaveChanges();
+                using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+                {
+                    uow.Payments.Edit(payment);
+                    uow.Commit();
+                }
                 return RedirectToAction("Payments");
             }
             return View(payment);
@@ -180,12 +215,16 @@ namespace ACEAgent.Controllers
 
         public ActionResult EditModuleOrder(int id = 0)
         {
-            ModuleOrder order = db.ModuleOrders.Find(id);
-            if (order == null)
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return HttpNotFound();
+                ModuleOrder order = uow.ModuleOrders.GetByID(id);
+                if (order == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(order);
             }
-            return View(order);
         }
 
         //
@@ -196,8 +235,11 @@ namespace ACEAgent.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
+                using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+                {
+                    uow.ModuleOrders.Edit(order);
+                    uow.Commit();
+                }
                 return RedirectToAction("ModuleOrders");
             }
             return View(order);
@@ -208,12 +250,16 @@ namespace ACEAgent.Controllers
 
         public ActionResult DeleteModule(int id = 0)
         {
-            ACEModule acemodule = db.ACEModules.Find(id);
-            if (acemodule == null)
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return HttpNotFound();
+                ACEModule acemodule = uow.ACEModules.GetByID(id);
+                if (acemodule == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(acemodule);
             }
-            return View(acemodule);
         }
 
         //
@@ -222,20 +268,26 @@ namespace ACEAgent.Controllers
         [HttpPost, ActionName("DeleteModule")]
         public ActionResult DeleteModuleConfirmed(int id)
         {
-            ACEModule acemodule = db.ACEModules.Find(id);
-            db.ACEModules.Remove(acemodule);
-            db.SaveChanges();
-            return RedirectToAction("Modules");
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                ACEModule acemodule = uow.ACEModules.GetByID(id);
+                uow.ACEModules.Delete(acemodule);
+                uow.Commit();
+                return RedirectToAction("Modules");
+            }
         }
 
         public ActionResult DeletePayment(int id = 0)
         {
-            Payment payment = db.Payments.Find(id);
-            if (payment == null)
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return HttpNotFound();
+                Payment payment = uow.Payments.GetByID(id);
+                if (payment == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(payment);
             }
-            return View(payment);
         }
 
         //
@@ -244,20 +296,26 @@ namespace ACEAgent.Controllers
         [HttpPost, ActionName("DeletePayment")]
         public ActionResult DeletePaymentConfirmed(int id)
         {
-            Payment payment = db.Payments.Find(id);
-            db.Payments.Remove(payment);
-            db.SaveChanges();
-            return RedirectToAction("Payments");
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                Payment payment = uow.Payments.GetByID(id);
+                uow.Payments.Delete(payment);
+                uow.Commit();
+                return RedirectToAction("Payments");
+            }
         }
 
         public ActionResult DeleteModuleOrder(int id = 0)
         {
-            ModuleOrder order = db.ModuleOrders.Find(id);
-            if (order == null)
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return HttpNotFound();
+                ModuleOrder order = uow.ModuleOrders.GetByID(id);
+                if (order == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(order);
             }
-            return View(order);
         }
 
         //
@@ -266,10 +324,13 @@ namespace ACEAgent.Controllers
         [HttpPost, ActionName("DeleteModuleOrder")]
         public ActionResult DeleteModuleOrderConfirmed(int id)
         {
-            ModuleOrder order = db.ModuleOrders.Find(id);
-            db.ModuleOrders.Remove(order);
-            db.SaveChanges();
-            return RedirectToAction("ModuleOrders");
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                ModuleOrder order = uow.ModuleOrders.GetByID(id);
+                uow.ModuleOrders.Delete(order);
+                uow.Commit();
+                return RedirectToAction("ModuleOrders");
+            }
         }
 
         protected override void Dispose(bool disposing)

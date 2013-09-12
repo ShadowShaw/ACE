@@ -13,6 +13,8 @@ using ACEAgent.Models;
 using Core.Models;
 using Core.Data;
 using Core.Utils;
+using Core.Data;
+using Core.Interfaces;
 
 namespace ACEAgent.Controllers
 {
@@ -379,19 +381,18 @@ namespace ACEAgent.Controllers
             {
                 return RedirectToAction("Manage");
             }
-
+            
             if (ModelState.IsValid)
             {
-                // Insert a new user into the database
-                using (ACEContext db = new ACEContext())
-                {
-                    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+                using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+                { 
+                    UserProfile user = uow.Users.GetAll().FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists
                     if (user == null)
                     {
                         // Insert name into the profile table
-                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
-                        db.SaveChanges();
+                        uow.Users.Add(new UserProfile { UserName = model.UserName });
+                        uow.Commit();
 
                         OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
                         OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
