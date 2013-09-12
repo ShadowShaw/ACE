@@ -3,15 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
-using PriceUpdater.Models;
+using ACEAgent.Models;
 using Core.Data;
+using Core.Models;
 
-namespace PriceUpdater
+namespace ACEAgent
 {
     public static class AuthConfig
     {
         public static void InitRoles()
         {
+            System.Data.Entity.Database.SetInitializer<ACEContext>(null);
+
+            try
+            {
+                using (var context = new ACEContext())
+                {
+                    if (!context.Database.Exists())
+                    {
+                        // Create the SimpleMembership database without Entity Framework migration schema
+                        //((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
+                    }
+                    else
+                    {
+                        if (context.Roles.Count() == 0)
+                        {
+                            Role userRole = new Role();
+                            userRole.RoleName = "user";
+                            context.Roles.Add(userRole);
+                            
+                            Role adminRole = new Role();
+                            userRole.RoleName = "admin";
+                            context.Roles.Add(adminRole);
+
+                            context.SaveChanges();
+                        }
+                    }
+                }
+
+                WebMatrix.WebData.WebSecurity.InitializeDatabaseConnection("ACEContext", "UserProfile", "Id", "UserName", autoCreateTables: true);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588", ex);
+            }
+
             //if (System.Web.Security.Roles.RoleExists("admins") == false)
             //{
             //    System.Web.Security.Roles.CreateRole("admins");
@@ -25,8 +61,7 @@ namespace PriceUpdater
             UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
             var uow = uowProvider.CreateNew();
 
-            ACEContext ace = new ACEContext();
-            //ace.Roles.Add(
+            
             
         }
 

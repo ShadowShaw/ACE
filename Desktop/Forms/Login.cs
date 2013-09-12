@@ -17,19 +17,25 @@ namespace Desktop
     public partial class Login : Form
     {
         private EngineService engine;
+        public string username;
+        public string password;
 
-        public Login(EngineService engine)
+        public Login(EngineService engine, string username, string password)
         {
             InitializeComponent();
             this.engine = engine;
             eUserName.MaxLength = 15;
             ePassword.MaxLength = 25;
+            eUserName.Text = username;
+            ePassword.Text = password;
         }
         
         private void bOk_Click(object sender, EventArgs e)
         {
             if (engine.Login.checkDesktopLogin(eUserName.Text.Trim(), ePassword.Text.Trim()))
             {
+                username = eUserName.Text;
+                password = ePassword.Text;
                 DialogResult = DialogResult.OK;
             }
             else

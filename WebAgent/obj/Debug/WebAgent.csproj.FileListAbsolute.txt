@@ -57,3 +57,5 @@ C:\GitHub\ACE\WebAgent\bin\RestSharp.xml
 C:\GitHub\ACE\WebAgent\obj\Debug\WebAgent.csprojResolveAssemblyReference.cache
 C:\GitHub\ACE\WebAgent\obj\Debug\PriceUpdater.dll
 C:\GitHub\ACE\WebAgent\obj\Debug\PriceUpdater.pdb
+C:\GitHub\ACE\WebAgent\bin\HtmlDocs\ChangeLog.html
+C:\GitHub\ACE\WebAgent\bin\HtmlDocs\Home.html

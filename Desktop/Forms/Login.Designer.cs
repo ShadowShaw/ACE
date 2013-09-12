@@ -39,7 +39,6 @@ namespace Desktop
             // 
             // bOk
             // 
-            //this.bOk.BackColor = System.Drawing.Color.Transparent;
             this.bOk.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bOk.Location = new System.Drawing.Point(157, 27);
@@ -83,7 +82,6 @@ namespace Desktop
             this.eUserName.Name = "eUserName";
             this.eUserName.Size = new System.Drawing.Size(121, 14);
             this.eUserName.TabIndex = 0;
-            this.eUserName.Text = "test";
             // 
             // Login
             // 
@@ -93,7 +91,7 @@ namespace Desktop
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CancelButton = this.bClose;
-            this.ClientSize = new System.Drawing.Size(401, 169);
+            this.ClientSize = new System.Drawing.Size(401, 172);
             this.Controls.Add(this.bClose);
             this.Controls.Add(this.ePassword);
             this.Controls.Add(this.bOk);

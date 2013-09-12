@@ -7,109 +7,112 @@ using System.Web;
 using System.Web.Mvc;
 using Core.Models;
 using Core.Data;
+using WebMatrix.WebData;
+using ACEAgent.Models;
+using RazorPDF;
 
-namespace PriceUpdater.Controllers
+namespace ACEAgent.Controllers
 {
     public class UserController : Controller
     {
         private ACEContext db = new ACEContext();
 
-        //
-        // GET: /User/
-
+        public ActionResult PaymentList()
+        {
+            int currentUserId = WebSecurity.GetUserId(User.Identity.Name);
+            UserProfile currentUser = db.UserProfiles.Where(u => u.Id == currentUserId).FirstOrDefault();
+            ViewBag.PaymentSymbol = currentUser.PaymentSymbol;
+            ViewBag.Credit = currentUser.Credit;
+            return View(db.Payments.Where(u => u.PaymentSymbol == currentUser.PaymentSymbol).ToList());
+        }
+        
         public ActionResult Index()
         {
+            int currentUserId = WebSecurity.GetUserId(User.Identity.Name);
+            UserProfile currentUser = db.UserProfiles.Where(u => u.Id == currentUserId).FirstOrDefault();
+            ViewBag.PaymentSymbol = currentUser.PaymentSymbol;
+            ViewBag.Credit = currentUser.Credit;
+            
             return View(db.ModuleOrders.ToList());
         }
 
-        //
-        // GET: /User/Details/5
-
-        public ActionResult Details(int id = 0)
+        public ActionResult OrderModule()
         {
-            ModuleOrder moduleorder = db.ModuleOrders.Find(id);
-            if (moduleorder == null)
+            int currentUserId = WebSecurity.GetUserId(User.Identity.Name);
+            ViewBag.Modules = db.ACEModules.ToList();
+            ViewBag.Credit = db.UserProfiles.Where(u => u.Id == currentUserId).FirstOrDefault().Credit;
+            List<ACEAgent.Models.ModuleOrders> viewModel = new List<ACEAgent.Models.ModuleOrders>();
+            foreach (ACEModule module in db.ACEModules.ToList())
             {
-                return HttpNotFound();
+                ModuleOrders item = new ModuleOrders();
+                item.ModuleId = module.Id;
+                item.ModuleName = module.Name;
+                item.MonthPrice = module.MonthPrice;
+                
+                List<ModuleOrder> orders = db.ModuleOrders.Where(u => u.UserId == currentUserId).Where(m => m.ModuleId == item.ModuleId).ToList();
+                
+                item.Active = false;
+                item.OrderDate = null;
+
+                foreach (ModuleOrder order in orders)
+                {
+                    if (order.OrderDate.AddDays(30) > DateTime.Now)
+                    {
+                        item.Active = true;
+                        item.OrderDate = order.OrderDate.AddDays(30);
+                    }
+                }
+                    
+                viewModel.Add(item);
             }
-            return View(moduleorder);
+            
+            return View(viewModel);
+
         }
 
-        //
-        // GET: /User/Create
-
-        public ActionResult Create()
+        public ActionResult MakeOrder(int moduleId)
         {
-            return View();
-        }
+            UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
+            var uow = uowProvider.CreateNew();
 
-        //
-        // POST: /User/Create
+            int currentUserId = WebSecurity.GetUserId(User.Identity.Name);
+            UserProfile user = uow.Users.GetByID(currentUserId);
 
-        [HttpPost]
-        public ActionResult Create(ModuleOrder moduleorder)
-        {
-            if (ModelState.IsValid)
+            decimal moduleCost = uow.ACEModules.GetAll().Where(m => m.Id == moduleId).FirstOrDefault().MonthPrice;
+
+            if (user.Credit >= moduleCost)
             {
-                db.ModuleOrders.Add(moduleorder);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                user.Credit = user.Credit - moduleCost;
+                uow.Users.Edit(user);
+
+                ModuleOrder order = new ModuleOrder();
+                order.ModuleId = moduleId;
+                order.OrderDate = DateTime.Now;
+                order.UserId = currentUserId;
+                uow.ModuleOrders.Add(order);
+                uow.Commit();
+                ViewBag.StatusMessage = "Modul úspěšně objednán.";
+                return RedirectToAction("OrderModule");
+
             }
-
-            return View(moduleorder);
-        }
-
-        //
-        // GET: /User/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            ModuleOrder moduleorder = db.ModuleOrders.Find(id);
-            if (moduleorder == null)
+            else
             {
-                return HttpNotFound();
+                ViewBag.StatusMessage = "Nemáte dostatečný kredit pro aktivaci modulu. Dobijte si prosím kredit.";
+                return RedirectToAction("OrderModule");
             }
-            return View(moduleorder);
         }
 
-        //
-        // POST: /User/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(ModuleOrder moduleorder)
+        public ActionResult MakeFacture(string id)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(moduleorder).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(moduleorder);
-        }
+            // Since type is an ActionResult, we can still return an html view if something isn't right
+            PaymentFacture facture = new PaymentFacture();
+            // pass in Model, then View name
+            var pdf = new PdfResult(facture, "PdfFacture");
 
-        //
-        // GET: /User/Delete/5
+            // Add to the view bag
+            pdf.ViewBag.Title = "Title from ViewBag";
 
-        public ActionResult Delete(int id = 0)
-        {
-            ModuleOrder moduleorder = db.ModuleOrders.Find(id);
-            if (moduleorder == null)
-            {
-                return HttpNotFound();
-            }
-            return View(moduleorder);
-        }
-
-        //
-        // POST: /User/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            ModuleOrder moduleorder = db.ModuleOrders.Find(id);
-            db.ModuleOrders.Remove(moduleorder);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return pdf;
         }
 
         protected override void Dispose(bool disposing)

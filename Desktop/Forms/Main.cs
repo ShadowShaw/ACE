@@ -27,7 +27,7 @@ namespace Desktop
         public Version ACEVersion;
         List<ChangeRecord> Changes = new List<ChangeRecord>();
         public EngineService Engine;
-        private ACESettings mainSettings;
+        public ACESettings mainSettings;
 
         private int IndexForChange = -1;
         private FieldType ChangedType;
@@ -43,6 +43,7 @@ namespace Desktop
             ACEVersion = assemblyName.Version;
 
             this.Text = "ACE Desktop " + ACEVersion.ToString();
+            this.statusAgent.ForeColor = Color.Red;
 
             mainSettings = new ACESettings();
 
@@ -68,6 +69,11 @@ namespace Desktop
             {
                 mainSettings.LoadFormSizes();
                 this.Size = mainSettings.GetSize("main");
+            }
+
+            if (File.Exists("ACEDesktop.xml"))
+            {
+                mainSettings.LoadValues();
             }
 
             DataGridTools.SetMainSettings(mainSettings);
@@ -191,13 +197,6 @@ namespace Desktop
             }
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            PopulateTree(CategoryTree, Engine.CreateCategoryTreeList());
-            CategoryTree.ExpandAll();
-        }
-
         private void Main_Load(object sender, EventArgs e)
         {
             //homeBrowser.Document = ""
@@ -222,29 +221,34 @@ namespace Desktop
 
         private void bLogin_Click(object sender, EventArgs e)
         {
-            var LoginForm = new Login(Engine);
-            if (LoginForm.ShowDialog() == DialogResult.OK)
+            if (Engine.Login.logged)
             {
-
+                Engine.Login.logout();
             }
             else
             {
-                MessageBox.Show("Pro použití ACE se musíte přihlásit.", "Vyžadováno přihlášení", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                var LoginForm = new Login(Engine, mainSettings.DesktopUserName, mainSettings.DesktopPassword);
+                if (LoginForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.mainSettings.DesktopUserName = LoginForm.username;
+                    this.mainSettings.DesktopPassword = LoginForm.password;
+                    this.bLogin.Text = "Odhlášení";
+                    this.statusAgent.ForeColor = Color.Green;
+                }
+                else
+                {
+                    MessageBox.Show("Pro použití ACE se musíte přihlásit.", "Vyžadováno přihlášení", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             //       this.Close();
+                }
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            TreeNode x = CategoryTree.SelectedNode;
-            int a = System.Convert.ToInt32(x.Name);
-        }
-        
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             mainSettings.SetSize("main", this.Size);
             mainSettings.SaveFormSizes();
             mainSettings.SaveEshops();
+            mainSettings.SaveValues();
             foreach (DataGridViewColumn item in dgConsistency.Columns)
             {
                 mainSettings.SetWidth(dgConsistency.Name + item.Name, item.Width);

@@ -61,6 +61,21 @@ namespace Desktop.UserSettings
         }
     }
 
+    public class GenericKeyValueItem
+    {
+        public string Key { get; set; }
+        public string Value { get; set; }
+    }
+
+    public class GenericKeyValueList
+    { 
+        public List<GenericKeyValueItem> Values { get; set; }
+        public GenericKeyValueList()
+        {
+            Values = new List<GenericKeyValueItem>();
+        }
+    }
+
     public class ColumnWidthList
     {
         public List<ColumnWidth> ColumnWidths { get; set; }
@@ -72,12 +87,34 @@ namespace Desktop.UserSettings
 
     public class ACESettings
     {
-        public const string HomePath = "http://www.ace-2.apphb.com/HtmlDocs/Home.html";
-        public const string ChangeLogPath = "http://www.ace-2.apphb.com/HtmlDocs/ChangeLog.html";
+        public const string HomePath = "http://ace-2.apphb.com/HtmlDocs/Home.html";
+        public const string ChangeLogPath = "http://ace-2.apphb.com/HtmlDocs/ChangeLog.html";
 
         public EshopList Eshops { get; set; }
         public FormSizesList FormSizes { get; set; }
         public ColumnWidthList ColumnWidth { get; set; }
+        public GenericKeyValueList Values { get; set; }
+        public string DesktopUserName { 
+            get
+            {
+                return this.GetValue("DesktopUserName");
+            }
+            set
+            {
+                this.SetValue("DesktopUserName", value);
+            }
+         }
+        public string DesktopPassword
+        {
+            get
+            {
+                return this.GetValue("DesktopPassword");
+            }
+            set
+            {
+                this.SetValue("DesktopPassword", value);
+            }
+        }
 
         public Size GetSize(string formName)
         {
@@ -135,6 +172,42 @@ namespace Desktop.UserSettings
             }
         }
 
+        public string GetValue(string key)
+        {
+            if (Values == null)
+            {
+                return "";
+            }
+            var result = Values.Values.Where(v => v.Key == key).FirstOrDefault();
+            if (result == null)
+            {
+                return "";
+            }
+            else
+            {
+                return result.Value;
+            }
+        }
+
+        public void SetValue(string key, string value)
+        {
+            if (Values == null)
+            {
+                Values = new GenericKeyValueList();
+            }
+            if (Values.Values.Where(x => x.Key == key).FirstOrDefault() == null)
+            {
+                GenericKeyValueItem item = new GenericKeyValueItem();
+                item.Key = key;
+                item.Value = value;
+                Values.Values.Add(item);
+            }
+            else
+            {
+                Values.Values.Where(x => x.Key == key).FirstOrDefault().Value = value;
+            }
+        }
+
         public void LoadColumnWidth()
         {
             this.ColumnWidth = ACESettingsTools.LoadSettings<ColumnWidthList>("Columns.xml");
@@ -145,7 +218,16 @@ namespace Desktop.UserSettings
             ACESettingsTools.SaveSettings<ColumnWidthList>("Columns.xml", ColumnWidth);
         }
 
+        public void LoadValues()
+        {
+            this.Values = ACESettingsTools.LoadSettings<GenericKeyValueList>("ACEDesktop.xml");
+        }
 
+        public void SaveValues()
+        {
+            ACESettingsTools.SaveSettings<GenericKeyValueList>("ACEDesktop.xml", Values);
+        }
+        
         public void LoadEshops()
         {
             this.Eshops = ACESettingsTools.LoadSettings<EshopList>("Eshops.xml");
@@ -173,6 +255,7 @@ namespace Desktop.UserSettings
             Eshops = new EshopList();
             FormSizes = new FormSizesList();
             ColumnWidth = new ColumnWidthList();
+            Values = new GenericKeyValueList();
         }
     }
 }

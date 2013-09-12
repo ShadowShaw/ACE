@@ -8,16 +8,16 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using PriceUpdater.Filters;
-using PriceUpdater.Models;
+using ACEAgent.Filters;
+using ACEAgent.Models;
 using Core.Models;
 using Core.Data;
 using Core.Utils;
 
-namespace PriceUpdater.Controllers
+namespace ACEAgent.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
+    //[InitializeSimpleMembership]
     public class AccountController : Controller
     {
         //
@@ -258,9 +258,7 @@ namespace PriceUpdater.Controllers
         public ActionResult UserProfile(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Vaše heslo bylo změněno."
-                : message == ManageMessageId.SetPasswordSuccess ? "Vaše heslo bylo nastaveno."
-                : message == ManageMessageId.RemoveLoginSuccess ? "Externí příhlášení bylo odstraněno."
+                message == ManageMessageId.ChangePasswordSuccess ? "Vaše nastavení bylo změněno."
                 : "";
             UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
             var uow = uowProvider.CreateNew();
@@ -293,29 +291,33 @@ namespace PriceUpdater.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UserProfile(UserPropertiesModel model)
         {
-            UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
-            var uow = uowProvider.CreateNew();
-            int memberId = WebSecurity.GetUserId(User.Identity.Name);
+            if (ModelState.IsValid)
+            {
+                UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
+                var uow = uowProvider.CreateNew();
+                int memberId = WebSecurity.GetUserId(User.Identity.Name);
 
-            UserProfile userModel = uow.Users.GetByID(memberId);
-            userModel.CompanyName = model.CompanyName;
-            userModel.CorrespondentionAddress = model.CorrespondentionAddress;
-            userModel.DIC = model.DIC;
-            userModel.Dph = model.Dph;
-            userModel.Email = model.Email;
-            userModel.EshopUrl = model.EshopUrl;
-            userModel.FacturationAddress = model.FacturationAddress;
-            userModel.FirstName = model.FirstName;
-            userModel.ICO = model.ICO;
-            userModel.LastName = model.LastName;
-            userModel.PaymentSymbol = model.PaymentSymbol;
-            
+                UserProfile userModel = uow.Users.GetByID(memberId);
+                userModel.CompanyName = model.CompanyName;
+                userModel.CorrespondentionAddress = model.CorrespondentionAddress;
+                userModel.DIC = model.DIC;
+                userModel.Dph = model.Dph;
+                userModel.Email = model.Email;
+                userModel.EshopUrl = model.EshopUrl;
+                userModel.FacturationAddress = model.FacturationAddress;
+                userModel.FirstName = model.FirstName;
+                userModel.ICO = model.ICO;
+                userModel.LastName = model.LastName;
+                userModel.PaymentSymbol = model.PaymentSymbol;
 
-            ViewBag.ReturnUrl = Url.Action("UserProfile");
-            uow.Users.Edit(userModel);
-            uow.Commit();
-            return RedirectToAction("UserProfile", new { Message = ManageMessageId.ChangePasswordSuccess });
+
+                ViewBag.ReturnUrl = Url.Action("UserProfile");
+                uow.Users.Edit(userModel);
+                uow.Commit();
+                return RedirectToAction("UserProfile", new { Message = ManageMessageId.ChangePasswordSuccess });
+            }
             // If we got this far, something failed, redisplay form
+            return View(model);
         }
 
         //

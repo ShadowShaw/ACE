@@ -4,11 +4,17 @@
 
 <p>Jste přihlášeni jako: <strong>@User.Identity.Name</strong>.</p>
 
+<nav>
+    <ul id="menu">
+        <li>Jste přihlášeni jako: <strong>@User.Identity.Name</strong>.</li>
+        <li>Stav vašeho učtu: <strong>@ViewBag.Credit</strong>.</li>
+    </ul>
+</nav>
+
 <div>
     <nav>
         <ul class="nav nav-pills nav-stacked" id="usermenu">
-            <li>@Html.ActionLink("Výpis plateb", "PaymentsList", "User")</li>
-            <li>@Html.ActionLink("Seznam objednaných modulů", "OrderedModules", "User")</li>
+            <li>@Html.ActionLink("Výpis plateb", "PaymentList", "User")</li>
             <li>@Html.ActionLink("Objednání modulů", "OrderModule", "User")</li>
         </ul>
     </nav>

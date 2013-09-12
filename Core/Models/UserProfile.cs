@@ -26,5 +26,6 @@ namespace Core.Models
         public string PaymentSymbol { get; set; } // identifikace platby - variabilni symbol
         public string ICO { get; set; }
         public string DIC { get; set; }
+        public decimal Credit { get; set; }
     }
 }

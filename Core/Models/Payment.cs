@@ -11,8 +11,11 @@ namespace Core.Models
     [Table("payments")]
     public class Payment : EFEntity<int>
     {
+        [Display(Name = "Částka")]
         public decimal Amount { get; set; }
+        [Display(Name = "Datum platby")]
         public DateTime PaymentDate { get; set; }
+        [Display(Name = "Platební symbol")]
         public string PaymentSymbol { get; set; }
     }
 }

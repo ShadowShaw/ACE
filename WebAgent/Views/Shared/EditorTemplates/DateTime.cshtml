@@ -1,0 +1,2 @@
+﻿@inherits System.Web.Mvc.WebViewPage<System.DateTime?>  
+@Html.TextBox("", (Model.HasValue ? Model.Value.ToString("MM/dd/yyyy") : DateTime.Today.ToShortDateString()), new { @class = "datefield" })

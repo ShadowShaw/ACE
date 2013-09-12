@@ -30,7 +30,11 @@
             @Html.LabelFor(model => model.PaymentSymbol)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PaymentSymbol)
+            @{
+                List<Core.Models.UserProfile> userList = ViewBag.UserList;
+                var items = new SelectList(userList, "PaymentSymbol", "PaymentSymbol");
+            }
+            @Html.DropDownListFor(model => model.PaymentSymbol, @items)
             @Html.ValidationMessageFor(model => model.PaymentSymbol)
         </div>
 
@@ -46,5 +50,16 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
 
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#PaymentDate").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
+}

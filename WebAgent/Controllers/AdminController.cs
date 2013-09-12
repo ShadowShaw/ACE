@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Core.Models;
 using Core.Data;
 
-namespace PriceUpdater.Controllers
+namespace ACEAgent.Controllers
 {
     public class AdminController : Controller
     {
@@ -66,6 +66,7 @@ namespace PriceUpdater.Controllers
 
         public ActionResult CreatePayment()
         {
+            ViewBag.UserList = db.UserProfiles.ToList();
             return View();
         }
 
@@ -77,8 +78,17 @@ namespace PriceUpdater.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Payments.Add(payment);
-                db.SaveChanges();
+                UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
+                var uow = uowProvider.CreateNew();
+
+                UserProfile user = uow.Users.GetAll().Where(u => u.PaymentSymbol == payment.PaymentSymbol).FirstOrDefault();
+
+                uow.Payments.Add(payment);
+            
+                user.Credit = user.Credit + payment.Amount;
+                uow.Users.Edit(user);
+
+                uow.Commit();
                 return RedirectToAction("Payments");
             }
 
@@ -132,7 +142,7 @@ namespace PriceUpdater.Controllers
             {
                 db.Entry(acemodule).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Modules");
             }
             return View(acemodule);
         }

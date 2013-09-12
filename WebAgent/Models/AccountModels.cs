@@ -7,12 +7,12 @@ using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace PriceUpdater.Models
+namespace ACEAgent.Models
 {
     public class RegisterExternalLoginModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Uživatelské jméno")]
         public string UserName { get; set; }
 
         public string ExternalLoginData { get; set; }
@@ -75,7 +75,6 @@ namespace PriceUpdater.Models
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
         
         [Required]
         [Display(Name = "Plátce DPH")]
@@ -100,7 +99,7 @@ namespace PriceUpdater.Models
     public class LoginModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Uživatelské jméno")]
         public string UserName { get; set; }
 
         [Required]
@@ -115,7 +114,7 @@ namespace PriceUpdater.Models
     public class RegisterModel
     {
         [Required]
-        [Remote("doesUserNameExist", "Account", HttpMethod = "POST", ErrorMessage = "User name already exists. Please enter a different user name.")]
+        [Remote("doesUserNameExist", "Account", HttpMethod = "POST", ErrorMessage = "Uživatelské jméno již existuje, vyberte prosím jiné.")]
         [Display(Name = "Uživatelské jméno")]
         public string UserName { get; set; }
 
