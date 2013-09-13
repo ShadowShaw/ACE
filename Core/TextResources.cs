@@ -18,6 +18,7 @@ namespace Core
         public const string Description = "Dlouhý popis";
         public const string Weight = "Váha";
         public const string Id = "Id";
+        public const string LinkButton = "Otevřít produkt";
 
         // dgChanges view
         public const string Type = "Typ";

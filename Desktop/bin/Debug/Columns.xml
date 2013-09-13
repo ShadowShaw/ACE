@@ -17,5 +17,17 @@
       <Name>dgConsistencycategory</Name>
       <Width>100</Width>
     </ColumnWidth>
+    <ColumnWidth>
+      <Name>dgConsistencylink</Name>
+      <Width>100</Width>
+    </ColumnWidth>
+    <ColumnWidth>
+      <Name>dgConsistencyid_manufacturer</Name>
+      <Width>100</Width>
+    </ColumnWidth>
+    <ColumnWidth>
+      <Name>dgConsistencymanufacturer</Name>
+      <Width>100</Width>
+    </ColumnWidth>
   </ColumnWidths>
 </ColumnWidthList>

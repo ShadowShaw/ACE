@@ -17,6 +17,7 @@ using Desktop.Utils;
 using Core.Utils;
 using Core.ViewModels;
 using System.Xml.Serialization;
+using System.Diagnostics;
 
 namespace Desktop
 {
@@ -281,6 +282,7 @@ namespace Desktop
             DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
             DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category, true, false);
             DataGridTools.AddComboBoxColumn(dgConsistency, "category", TextResources.Category, Engine.Categories.GetCategoryList(), false);
+            DataGridTools.AddButtonColumn(dgConsistency, "link", TextResources.LinkButton);
 
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyCategory();
 
@@ -306,6 +308,7 @@ namespace Desktop
             DataGridTools.AddColumn(dgConsistency, "category", TextResources.Category);
             DataGridTools.AddColumn(dgConsistency, "id_manufacturer", TextResources.Manufacturer, false, false);
             DataGridTools.AddComboBoxColumn(dgConsistency, "manufacturer", TextResources.Manufacturer, Engine.Manufacturers.GetManufacturersList(), false);
+            DataGridTools.AddButtonColumn(dgConsistency, "link", TextResources.LinkButton);
 
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyManufacturer();
 
@@ -654,10 +657,24 @@ namespace Desktop
 
         private void menuShowChangeLog_Click(object sender, EventArgs e)
         {
-            //string curDir = Directory.GetCurrentDirectory();
-            //this.homeBrowser.Url = new Uri(String.Format("file:///{0}/HtmlDocs/ChangeLog.html", curDir));
             this.tc.SelectedTab = this.tpHome;
             this.homeBrowser.Url = new Uri(ACESettings.ChangeLogPath);
+        }
+
+        private void dgConsistency_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Ignore clicks that are not on button cells.  
+            if (e.RowIndex < 0 || e.ColumnIndex != dgConsistency.Columns["link"].Index)
+            {
+                return;
+            }
+
+            // Retrieve the task ID.
+            //int indexOfId = dgConsistency.Columns[""TextResources.LinkButton].Index;
+            var productId = dgConsistency[0, e.RowIndex].Value;
+
+            ProcessStartInfo sInfo = new ProcessStartInfo("http://google.com/");
+            Process.Start(sInfo);
         }
     }
 }

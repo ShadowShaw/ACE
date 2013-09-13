@@ -91,6 +91,19 @@ namespace Desktop.Utils
             grid.Columns.Add(column);
         }
 
+        public static void AddButtonColumn(DataGridView grid, string dataProperty, string header)
+        {
+            DataGridViewButtonColumn column = new DataGridViewButtonColumn();
+
+            column.DataPropertyName = dataProperty;
+            column.HeaderText = header;
+            column.FlatStyle = FlatStyle.Standard;
+            column.Name = dataProperty;
+            column.Text = header;
+            column.UseColumnTextForButtonValue = true;  
+            grid.Columns.Add(column);
+        }
+
         public static void AddColumn(DataGridView grid, string dataProperty, string header, bool readOnly = true, bool visibility = true)
         {
             DataGridViewColumn column = new DataGridViewColumn();
