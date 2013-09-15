@@ -72,3 +72,14 @@ C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.ChangesView.resources
 C:\GitHub\ACE\Desktop\bin\Debug\HtmlDocs\ChangeLog.html
 C:\GitHub\ACE\Desktop\bin\Debug\HtmlDocs\Home.html
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Main.resources
+C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+C:\GitHub\ACE\Desktop\bin\Debug\System.Runtime.dll
+C:\GitHub\ACE\Desktop\bin\Debug\System.Threading.Tasks.dll
+C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\GitHub\ACE\Desktop\bin\Debug\System.Runtime.xml
+C:\GitHub\ACE\Desktop\bin\Debug\System.Threading.Tasks.xml
+C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.csproj.App.config

@@ -1,9 +1,11 @@
 ﻿using Core.Utils;
+using Core.ViewModels;
 using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -81,10 +83,10 @@ namespace Core.Bussiness
             this.apiToken = apiToken;
             this.baseUrl = baseUrl;
 
-            Categories.Setup();
-            Manufacturers.Setup();
-            Products.Setup();
-            Languages.Setup();
+            Categories.Setup(baseUrl, apiToken);
+            Manufacturers.Setup(baseUrl, apiToken);
+            Products.Setup(baseUrl, apiToken);
+            Languages.Setup(baseUrl, apiToken);
         }
 
         public void SetupPrestaLanguages()
@@ -128,6 +130,18 @@ namespace Core.Bussiness
             //}
 
             return result;
+        }
+
+        public void OpenProductInBrowser(int productId)
+        {
+            ProductViewModel product = this.Products.GetById(System.Convert.ToInt32(productId));
+            category cat = Categories.GetById(System.Convert.ToInt32(product.id_category_default));
+            int languageIndex = cat.link_rewrite.FindIndex(language => language.id == Languages.ActivePrestaLanguage);
+            string categoryLink = cat.link_rewrite[languageIndex].Value;
+            string eshopUrl = BaseUrl.Substring(0, BaseUrl.Length - 4);
+            string productUrl = eshopUrl + categoryLink + "/" + product.id + "-" + product.link_rewrite + ".html";
+            ProcessStartInfo sInfo = new ProcessStartInfo(productUrl);
+            Process.Start(sInfo);
         }
     }
 }

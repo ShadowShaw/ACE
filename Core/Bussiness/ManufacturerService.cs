@@ -23,8 +23,9 @@ namespace Core.Bussiness
             loaded = false;
         }
 
-        public void Setup()
+        public void Setup(string baseUrl, string apiToken)
         {
+            Manufacturers.Clear();
             manufacturerAccesor.Setup(baseUrl, apiToken, "");
         }
 

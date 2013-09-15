@@ -33,8 +33,9 @@ namespace Core.Bussiness
             Products = new List<ProductViewModel>();
         }
 
-        public void Setup()
+        public void Setup(string baseUrl, string apiToken)
         {
+            Products.Clear();
             productsAccesor.Setup(baseUrl, apiToken, "");
         }
 
@@ -269,6 +270,7 @@ namespace Core.Bussiness
             result.price = entity.price;
             result.weight = entity.weight;
             result.wholesale_price = entity.wholesale_price;
+            result.link_rewrite = entity.link_rewrite[languageIndex].Value;
 
             return result;
         }
@@ -279,6 +281,7 @@ namespace Core.Bussiness
                         
             PrestaValues.SetValueForLanguage(result.description, activePrestaLanguage, entity.description);
             PrestaValues.SetValueForLanguage(result.description_short, activePrestaLanguage, entity.description_short);
+            PrestaValues.SetValueForLanguage(result.link_rewrite, activePrestaLanguage, entity.link_rewrite);
             result.id_category_default = entity.id_category_default;
             //result.id_image = 0;
             result.id_manufacturer = entity.id_manufacturer;
@@ -313,6 +316,5 @@ namespace Core.Bussiness
 
             return result;
         }
-        
     }
 }

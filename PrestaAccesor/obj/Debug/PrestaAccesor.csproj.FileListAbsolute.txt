@@ -21,3 +21,14 @@ C:\Card\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.csprojResolveAssemblyRe
 C:\Card\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.dll
 C:\Card\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.pdb
 C:\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.csprojResolveAssemblyReference.cache
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\System.Runtime.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\System.Threading.Tasks.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\System.Runtime.xml
+C:\GitHub\ACE\PrestaAccesor\bin\Debug\System.Threading.Tasks.xml
+C:\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.csproj.App.config

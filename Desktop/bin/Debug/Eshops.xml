@@ -4,8 +4,8 @@
     <EshopConfiguration>
       <EshopName>test</EshopName>
       <Type>Prestashop</Type>
-      <BaseUrl>http://testpresta.mzf.cz/prestashop/api/</BaseUrl>
-      <Password>BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8</Password>
+      <BaseUrl>http://zverac.cz/api/</BaseUrl>
+      <Password>F3TGGBDDLKAZAEEOJJ28OWECT4FS5FB6</Password>
     </EshopConfiguration>
   </Eshops>
 </EshopList>

@@ -104,6 +104,20 @@
             this.ePrestaUrl = new System.Windows.Forms.TextBox();
             this.lPrestaToken = new System.Windows.Forms.Label();
             this.lPrestaUrl = new System.Windows.Forms.Label();
+            this.gbUserInfo = new System.Windows.Forms.GroupBox();
+            this.gbModuleInfo = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lHomeCompany = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lHomePaymentSymbol = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lHomeName = new System.Windows.Forms.Label();
+            this.lHomeEmail = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lHomeUserName = new System.Windows.Forms.Label();
+            this.lHomeCredit = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.status.SuspendLayout();
             this.tc.SuspendLayout();
@@ -116,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.tpSetup.SuspendLayout();
             this.gbPrestaSetup.SuspendLayout();
+            this.gbUserInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu
@@ -258,6 +273,8 @@
             // 
             // tpHome
             // 
+            this.tpHome.Controls.Add(this.gbModuleInfo);
+            this.tpHome.Controls.Add(this.gbUserInfo);
             this.tpHome.Controls.Add(this.bLogin);
             this.tpHome.Controls.Add(this.homeBrowser);
             this.tpHome.Location = new System.Drawing.Point(4, 25);
@@ -272,9 +289,9 @@
             // 
             this.bLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bLogin.Location = new System.Drawing.Point(20, 531);
+            this.bLogin.Location = new System.Drawing.Point(10, 537);
             this.bLogin.Name = "bLogin";
-            this.bLogin.Size = new System.Drawing.Size(363, 34);
+            this.bLogin.Size = new System.Drawing.Size(383, 34);
             this.bLogin.TabIndex = 2;
             this.bLogin.Text = "Přihlášení";
             this.bLogin.UseVisualStyleBackColor = true;
@@ -888,6 +905,132 @@
             this.lPrestaUrl.TabIndex = 0;
             this.lPrestaUrl.Text = "Adresa eshopu";
             // 
+            // gbUserInfo
+            // 
+            this.gbUserInfo.Controls.Add(this.label16);
+            this.gbUserInfo.Controls.Add(this.lHomeCredit);
+            this.gbUserInfo.Controls.Add(this.lHomeUserName);
+            this.gbUserInfo.Controls.Add(this.label13);
+            this.gbUserInfo.Controls.Add(this.lHomeEmail);
+            this.gbUserInfo.Controls.Add(this.lHomeName);
+            this.gbUserInfo.Controls.Add(this.label10);
+            this.gbUserInfo.Controls.Add(this.lHomePaymentSymbol);
+            this.gbUserInfo.Controls.Add(this.label8);
+            this.gbUserInfo.Controls.Add(this.label7);
+            this.gbUserInfo.Controls.Add(this.lHomeCompany);
+            this.gbUserInfo.Controls.Add(this.label5);
+            this.gbUserInfo.Location = new System.Drawing.Point(10, 9);
+            this.gbUserInfo.Name = "gbUserInfo";
+            this.gbUserInfo.Size = new System.Drawing.Size(383, 188);
+            this.gbUserInfo.TabIndex = 3;
+            this.gbUserInfo.TabStop = false;
+            this.gbUserInfo.Text = "Info o uživateli";
+            // 
+            // gbModuleInfo
+            // 
+            this.gbModuleInfo.Location = new System.Drawing.Point(10, 203);
+            this.gbModuleInfo.Name = "gbModuleInfo";
+            this.gbModuleInfo.Size = new System.Drawing.Size(383, 322);
+            this.gbModuleInfo.TabIndex = 4;
+            this.gbModuleInfo.TabStop = false;
+            this.gbModuleInfo.Text = "Info o modulech";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 31);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(96, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Uživatelské jméno:";
+            // 
+            // lHomeCompany
+            // 
+            this.lHomeCompany.Location = new System.Drawing.Point(151, 77);
+            this.lHomeCompany.Name = "lHomeCompany";
+            this.lHomeCompany.Size = new System.Drawing.Size(35, 13);
+            this.lHomeCompany.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 77);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Společnost:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 128);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(85, 13);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Platební symbol:";
+            // 
+            // lHomePaymentSymbol
+            // 
+            this.lHomePaymentSymbol.Location = new System.Drawing.Point(151, 128);
+            this.lHomePaymentSymbol.Name = "lHomePaymentSymbol";
+            this.lHomePaymentSymbol.Size = new System.Drawing.Size(35, 13);
+            this.lHomePaymentSymbol.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 55);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Jméno:";
+            // 
+            // lHomeName
+            // 
+            this.lHomeName.Location = new System.Drawing.Point(151, 55);
+            this.lHomeName.Name = "lHomeName";
+            this.lHomeName.Size = new System.Drawing.Size(35, 13);
+            this.lHomeName.TabIndex = 6;
+            // 
+            // lHomeEmail
+            // 
+            this.lHomeEmail.Location = new System.Drawing.Point(151, 104);
+            this.lHomeEmail.Name = "lHomeEmail";
+            this.lHomeEmail.Size = new System.Drawing.Size(35, 13);
+            this.lHomeEmail.TabIndex = 7;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(22, 104);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 13);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Email:";
+            // 
+            // lHomeUserName
+            // 
+            this.lHomeUserName.Location = new System.Drawing.Point(151, 31);
+            this.lHomeUserName.Name = "lHomeUserName";
+            this.lHomeUserName.Size = new System.Drawing.Size(35, 13);
+            this.lHomeUserName.TabIndex = 9;
+            // 
+            // lHomeCredit
+            // 
+            this.lHomeCredit.Location = new System.Drawing.Point(151, 154);
+            this.lHomeCredit.Name = "lHomeCredit";
+            this.lHomeCredit.Size = new System.Drawing.Size(35, 13);
+            this.lHomeCredit.TabIndex = 10;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(22, 154);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(37, 13);
+            this.label16.TabIndex = 11;
+            this.label16.Text = "Kredit:";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -919,6 +1062,8 @@
             this.tpSetup.ResumeLayout(false);
             this.gbPrestaSetup.ResumeLayout(false);
             this.gbPrestaSetup.PerformLayout();
+            this.gbUserInfo.ResumeLayout(false);
+            this.gbUserInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -996,6 +1141,20 @@
         private System.Windows.Forms.Label lEshopType;
         private System.Windows.Forms.ComboBox cbTypeEshop;
         private System.Windows.Forms.ToolStripMenuItem menuShowHome;
+        private System.Windows.Forms.GroupBox gbModuleInfo;
+        private System.Windows.Forms.GroupBox gbUserInfo;
+        private System.Windows.Forms.Label lHomeUserName;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lHomeEmail;
+        private System.Windows.Forms.Label lHomeName;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lHomePaymentSymbol;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lHomeCompany;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lHomeCredit;
     }
 }
 

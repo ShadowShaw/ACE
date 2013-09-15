@@ -11,6 +11,7 @@ namespace PrestaAccesor.Entities
         public long id_shop { get; set; }  //entity.shop
         public List<Entities.language > description { get; set; }
         public List<Entities.language> short_description { get; set; }
+        public List<Entities.language> link_rewrite { get; set; }
         public List<Entities.language> meta_title { get; set; }
         public List<Entities.language> meta_description { get; set; }
         public List<Entities.language> meta_keywords { get; set; }

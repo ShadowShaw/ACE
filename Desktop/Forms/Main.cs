@@ -13,11 +13,15 @@ using PrestaAccesor.Accesors;
 using Desktop.UserSettings;
 using PrestaAccesor.Entities;
 using Core;
+using Core.Data;
+using Core.Models;
+using Core.Security;
 using Desktop.Utils;
 using Core.Utils;
 using Core.ViewModels;
 using System.Xml.Serialization;
 using System.Diagnostics;
+using Core.Interfaces;
 
 namespace Desktop
 {
@@ -225,6 +229,7 @@ namespace Desktop
             if (Engine.Login.logged)
             {
                 Engine.Login.logout();
+                this.statusAgent.ForeColor = Color.Red;
             }
             else
             {
@@ -242,6 +247,7 @@ namespace Desktop
              //       this.Close();
                 }
             }
+            this.InitUserInfo();
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
@@ -266,6 +272,7 @@ namespace Desktop
             ePrestaUrl.Text = url;
             ePrestaToken.Text = token;
             Engine.SetupPrestaServices(url, token);
+            
             mainSettings.Eshops.Eshops[0].BaseUrl = Engine.BaseUrl;
             mainSettings.Eshops.Eshops[0].Password = Engine.ApiToken;
             mainSettings.SaveEshops();
@@ -663,18 +670,39 @@ namespace Desktop
 
         private void dgConsistency_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Ignore clicks that are not on button cells.  
             if (e.RowIndex < 0 || e.ColumnIndex != dgConsistency.Columns["link"].Index)
             {
                 return;
             }
-
-            // Retrieve the task ID.
-            //int indexOfId = dgConsistency.Columns[""TextResources.LinkButton].Index;
+                        
             var productId = dgConsistency[0, e.RowIndex].Value;
+            Engine.OpenProductInBrowser(System.Convert.ToInt32(productId));
+        }
 
-            ProcessStartInfo sInfo = new ProcessStartInfo("http://google.com/");
-            Process.Start(sInfo);
+        private void InitUserInfo()
+        {
+            if (Engine.Login.logged)
+            {
+                using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+                {
+                    UserProfile currentUser = uow.Users.GetAll().Where(x => x.Id == Engine.Login.loggedUserId).FirstOrDefault();
+                    lHomeCompany.Text = currentUser.CompanyName;
+                    lHomeCredit.Text = currentUser.Credit.ToString("D");
+                    lHomeEmail.Text = currentUser.Email;
+                    lHomeName.Text = currentUser.FirstName + " " + currentUser.LastName;
+                    lHomePaymentSymbol.Text = currentUser.PaymentSymbol;
+                    lHomeUserName.Text = currentUser.UserName;
+                }
+            }
+            else 
+            {
+                lHomeCompany.Text = "";
+                lHomeCredit.Text = "";
+                lHomeEmail.Text = "";
+                lHomeName.Text = "";
+                lHomePaymentSymbol.Text = "";
+                lHomeUserName.Text = ""; 
+            }
         }
     }
 }

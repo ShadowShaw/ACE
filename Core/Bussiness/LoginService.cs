@@ -12,8 +12,8 @@ namespace Core.Bussiness
     public class LoginService
     {
         private UnitOfWorkProvider UoWProvider;
-        private string loggedUserName;
-        private int loggedUserId;
+        public string loggedUserName;
+        public int loggedUserId;
         public bool logged;
 
         public LoginService()

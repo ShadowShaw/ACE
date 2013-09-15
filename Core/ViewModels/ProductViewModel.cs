@@ -18,5 +18,6 @@ namespace Core.ViewModels
         public Nullable<decimal> wholesale_price { get; set; }
         public Nullable<decimal> weight { get; set; }
         public int id_image { get; set; }
+        public string link_rewrite { get; set; }
     }
 }

@@ -23,8 +23,9 @@ namespace Core.Bussiness
             loaded = false;
         }
 
-        public void Setup()
+        public void Setup(string baseUrl, string apiToken)
         {
+            Categories.Clear();
             categoriesAccesor.Setup(baseUrl, apiToken, "");
         }
 
@@ -112,6 +113,11 @@ namespace Core.Bussiness
             }
 
             return result;
+        }
+
+        public category GetById(int id)
+        {
+            return Categories.Where(x => x.id == id).FirstOrDefault();
         }
     }
 }

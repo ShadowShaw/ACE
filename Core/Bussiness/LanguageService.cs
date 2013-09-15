@@ -45,8 +45,9 @@ namespace Core.Bussiness
             loaded = false;
         }
 
-        public void Setup()
+        public void Setup(string baseUrl, string apiToken)
         {
+            Languages.Clear();
             languageAccesor.Setup(baseUrl, apiToken, "");
         }
 
