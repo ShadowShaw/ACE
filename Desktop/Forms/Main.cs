@@ -687,7 +687,7 @@ namespace Desktop
                 {
                     UserProfile currentUser = uow.Users.GetAll().Where(x => x.Id == Engine.Login.loggedUserId).FirstOrDefault();
                     lHomeCompany.Text = currentUser.CompanyName;
-                    lHomeCredit.Text = currentUser.Credit.ToString("D");
+                    lHomeCredit.Text = currentUser.Credit.ToString("C");
                     lHomeEmail.Text = currentUser.Email;
                     lHomeName.Text = currentUser.FirstName + " " + currentUser.LastName;
                     lHomePaymentSymbol.Text = currentUser.PaymentSymbol;
