@@ -5,4 +5,14 @@ C:\GitHub\ACE\PrestaAccesor\bin\Release\RestSharp.dll
 C:\GitHub\ACE\PrestaAccesor\bin\Release\RestSharp.xml
 C:\GitHub\ACE\PrestaAccesor\obj\Release\PrestaAccesor.dll
 C:\GitHub\ACE\PrestaAccesor\obj\Release\PrestaAccesor.pdb
-C:\GitHub\ACE\PrestaAccesor\obj\Release\PrestaAccesor.csprojResolveAssemblyReference.cache
+C:\GitHub\ACE\PrestaAccesor\bin\Release\Microsoft.Threading.Tasks.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Release\Microsoft.Threading.Tasks.Extensions.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Release\System.Runtime.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Release\System.Threading.Tasks.dll
+C:\GitHub\ACE\PrestaAccesor\bin\Release\Microsoft.Threading.Tasks.xml
+C:\GitHub\ACE\PrestaAccesor\bin\Release\Microsoft.Threading.Tasks.Extensions.xml
+C:\GitHub\ACE\PrestaAccesor\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\GitHub\ACE\PrestaAccesor\bin\Release\System.Runtime.xml
+C:\GitHub\ACE\PrestaAccesor\bin\Release\System.Threading.Tasks.xml
+C:\GitHub\ACE\PrestaAccesor\obj\Release\PrestaAccesor.csproj.App.config

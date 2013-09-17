@@ -65,10 +65,16 @@ namespace Desktop
             {
                 Engine.InitPrestaServices("", "");
                 MessageBox.Show("Nenalezen soubor s konfigurací připojení k eshopům. Prosím nastavte připojení.", "Nenalezen soubor s konfigurací připojení k eshopům.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                File.Create("Eshops.xml");
             }
+
             if (File.Exists("Columns.xml"))
             {
                 mainSettings.LoadColumnWidth();
+            }
+            else 
+            {
+                File.Create("Columns.xml");
             }
 
 
@@ -77,10 +83,18 @@ namespace Desktop
                 mainSettings.LoadFormSizes();
                 this.Size = mainSettings.GetSize("main");
             }
+            else
+            {
+                File.Create("Sizes.xml");
+            }
 
             if (File.Exists("ACEDesktop.xml"))
             {
                 mainSettings.LoadValues();
+            }
+            else
+            {
+                File.Create("ACEDesktop.xml");
             }
 
             DataGridTools.SetMainSettings(mainSettings);

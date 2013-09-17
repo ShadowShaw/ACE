@@ -19,8 +19,10 @@ namespace Desktop.Utils
 
             if (File.Exists(path) == false)
             {
-                File.Create(path);
+                //File.Create(path);
+                return;
             }
+
             XmlSerializer serializer = new XmlSerializer(toSerialize.GetType());
             StreamWriter writer = new StreamWriter(path);
             serializer.Serialize(writer, toSerialize);

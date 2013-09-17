@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="ACEDesktop.exe" version="0.1.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="ACEDesktop" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="ACEDesktop" version="1.3.0.0" language="neutral" processorArchitecture="x86" />
     <commandLine file="ACEDesktop.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="111104">
-      <assemblyIdentity name="ACEDesktop" version="1.1.0.0" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="126464">
+      <assemblyIdentity name="ACEDesktop" version="1.3.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>4UPsYvWAFE+RQSMmlZtmegk2MJ8=</dsig:DigestValue>
+        <dsig:DigestValue>50eucEFtBnlYLCFFD/7wAWQdA/8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="34816">
-      <assemblyIdentity name="Core" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="50176">
+      <assemblyIdentity name="Core" version="1.3.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>tSddbXn1i1kEdRFT617GqokgexM=</dsig:DigestValue>
+        <dsig:DigestValue>AtR7ly0jHvsfvLkwT3u+xANzi6g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,6 +90,42 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Threading.Tasks.dll" size="37024">
+      <assemblyIdentity name="Microsoft.Threading.Tasks" version="1.0.12.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>maKB2tyz+Piz1oEWnGg9q+MbDQo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Threading.Tasks.Extensions.dll" size="31440">
+      <assemblyIdentity name="Microsoft.Threading.Tasks.Extensions" version="1.0.12.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>EoZqMeePYynMPzsIhzYx5JAORs8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Threading.Tasks.Extensions.Desktop.dll" size="47344">
+      <assemblyIdentity name="Microsoft.Threading.Tasks.Extensions.Desktop" version="1.0.16.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>q7WdiaSqFFObSzAGkfaePksw/Xk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrestaAccesor.dll" size="25088">
       <assemblyIdentity name="PrestaAccesor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -97,7 +133,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>2tnMbA11VMjZa6D/SbrjFlyxiyw=</dsig:DigestValue>
+        <dsig:DigestValue>lv06Lv3JMNCt5gZfPrSmpdb4h38=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -113,13 +149,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="ACEDesktop.exe.config" size="872">
+  <file name="ACEDesktop.exe.config" size="1959">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>PqmKHbuO3EVLPWlifbBnwYEX36M=</dsig:DigestValue>
+      <dsig:DigestValue>Bc67B/rQgbtV33AMygWcxSB8SbE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="HtmlDocs\Home.html" size="174">

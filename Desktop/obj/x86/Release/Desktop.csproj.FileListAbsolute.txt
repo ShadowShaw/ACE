@@ -27,3 +27,14 @@ C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csproj.GenerateResource.Cache
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.ChangesView.resources
 C:\GitHub\ACE\Desktop\bin\Release\HtmlDocs\ChangeLog.html
 C:\GitHub\ACE\Desktop\bin\Release\HtmlDocs\Home.html
+C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.dll
+C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.Extensions.dll
+C:\GitHub\ACE\Desktop\bin\Release\System.Runtime.dll
+C:\GitHub\ACE\Desktop\bin\Release\System.Threading.Tasks.dll
+C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.xml
+C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.Extensions.xml
+C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\GitHub\ACE\Desktop\bin\Release\System.Runtime.xml
+C:\GitHub\ACE\Desktop\bin\Release\System.Threading.Tasks.xml
+C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csproj.App.config
