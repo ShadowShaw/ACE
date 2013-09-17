@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Core.Bussiness
@@ -51,15 +52,42 @@ namespace Core.Bussiness
             languageAccesor.Setup(baseUrl, apiToken, "");
         }
 
-        public void LoadLanguages()
+        public async Task<bool> LoadLanguagesAsync()
         {
             Languages.Clear();
+            try
+            {
+                return await Task.Factory.StartNew(() => LoadLanguages());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
+        }
+
+        public void LoadLanguagesSync()
+        {
+            Languages.Clear();
+            try
+            {
+                LoadLanguages();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private bool LoadLanguages()
+        {
+            
             List<int> ids = new List<int>();
             ids = languageAccesor.GetIds();
 
             if (ids == null)
             {
-                return;
+                return false;
             }
 
             foreach (int id in ids)
@@ -68,6 +96,7 @@ namespace Core.Bussiness
                 Languages.Add(lang as LanguageEntity);
             }
             loaded = true;
+            return true;
         }
     }
 }

@@ -47,22 +47,6 @@ namespace ACEAgent
             {
                 throw new InvalidOperationException("The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588", ex);
             }
-
-            //if (System.Web.Security.Roles.RoleExists("admins") == false)
-            //{
-            //    System.Web.Security.Roles.CreateRole("admins");
-            //}
-
-            //if (System.Web.Security.Roles.RoleExists("users") == false)
-            //{
-            //    System.Web.Security.Roles.CreateRole("users");
-            //}
-            
-            UnitOfWorkProvider uowProvider = new UnitOfWorkProvider();
-            var uow = uowProvider.CreateNew();
-
-            
-            
         }
 
         public static void RegisterAuth()

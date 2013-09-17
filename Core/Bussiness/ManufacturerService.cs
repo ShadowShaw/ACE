@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Core.Bussiness
 {
     public class ManufactuerService : ServiceBase, IService
     {
-        private BackgroundWorker Worker;
         public List<manufacturer> Manufacturers;
         public ManufacturersAccesor manufacturerAccesor;
 
@@ -28,58 +28,43 @@ namespace Core.Bussiness
             Manufacturers.Clear();
             manufacturerAccesor.Setup(baseUrl, apiToken, "");
         }
-
-        public void LoadManufacturersAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel)
+        
+        public async Task<bool> LoadManufacturersAsync()
         {
             Manufacturers.Clear();
-            Manufacturers = this.manufacturerAccesor.GetAll();
-            Worker = new BackgroundWorker();
-            Worker.WorkerSupportsCancellation = true;
-            Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-            Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
-            
-            if (Worker.IsBusy != true)
+            try
             {
-                Worker.RunWorkerAsync();
+                return await Task.Factory.StartNew(() => LoadManufacturers());
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
         }
-
-        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        
+        private bool LoadManufacturers()
         {
-            BackgroundWorker worker = sender as BackgroundWorker;
-
             List<int> ids = new List<int>();
+            
             ids = manufacturerAccesor.GetIds();
             
             if (ids == null)
             {
-                return;
+                return false;
             }
 
+            List<manufacturer> manufacturers = new List<manufacturer>();
             foreach (int id in ids)
             {
                 PrestashopEntity man = manufacturerAccesor.Get(id);
-                Manufacturers.Add(man as manufacturer);
+                manufacturers.Add(man as manufacturer);
             }
+
+            loaded = true;
+            return true;
         }
 
-        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if ((e.Cancelled == true))
-            {
-                //this.tbProgress.Text = "Canceled!";
-            }
-
-            else if (!(e.Error == null))
-            {
-                //this.tbProgress.Text = ("Error: " + e.Error.Message);
-            }
-
-            else
-            {
-                //Worker.ReportProgress(0);
-            }
-        }
 
         public string GetManufacturerName(int id)
         {

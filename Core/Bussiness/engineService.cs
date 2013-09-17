@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Core.Bussiness
@@ -101,7 +102,7 @@ namespace Core.Bussiness
             bool result = false;
             if (Languages.Loaded == false)
             {
-                Languages.LoadLanguages();
+                Languages.LoadLanguagesSync();
                 if (Languages.Loaded == false)
                 {
                     return result;

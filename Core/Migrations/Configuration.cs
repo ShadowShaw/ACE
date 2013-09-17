@@ -4,6 +4,7 @@ namespace Core.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Core.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Core.Data.ACEContext>
     {
@@ -26,6 +27,12 @@ namespace Core.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.ACEModules.AddOrUpdate(
+                  p => p.Name,
+                  new ACEModule { Name = "Pøeceòování", Description = TextResources.PricingModuleDescription, MonthPrice = TextResources.PricingModulePrice },
+                  new ACEModule { Name = "Kontrola konzistence", Description = TextResources.ConsistencyModuleDescription, MonthPrice = TextResources.ConsistencyModulePrice }
+                );
         }
     }
 }

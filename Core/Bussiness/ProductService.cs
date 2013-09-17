@@ -8,19 +8,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Core.Bussiness
 {
     public class ProductService : ServiceBase, IService
     {
-        private BackgroundWorker Worker;
         public List<ProductViewModel> Products;
         public ProductsAccesor productsAccesor;
-
-        public ToolStripProgressBar ProgressBar;
-        public ToolStripStatusLabel ProgressLabel;
-        public GroupBox FunctionBox;
 
         public ProductViewModel GetById(int id)
         {
@@ -39,44 +35,22 @@ namespace Core.Bussiness
             productsAccesor.Setup(baseUrl, apiToken, "");
         }
 
-        public void LoadProductsAsync(ToolStripProgressBar progressBar, ToolStripStatusLabel progressLabel, GroupBox gb)
+        public async Task<bool> LoadProductsAsync()
         {
             Products.Clear();
-            this.ProgressBar = progressBar;
-            this.ProgressLabel = progressLabel;
-            this.FunctionBox = gb;
-            Worker = new BackgroundWorker();
-            Worker.WorkerReportsProgress = true;
-            Worker.WorkerSupportsCancellation = true;
-            Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-            Worker.ProgressChanged +=  new ProgressChangedEventHandler(worker_ProgressChanged);
-            Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
-            
-            if (Worker.IsBusy != true)
+            try
             {
-                Worker.RunWorkerAsync();
+                return await Task.Factory.StartNew(() => LoadProducts());
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
         }
 
-        private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private bool LoadProducts()
         {
-            if (e.ProgressPercentage == 0)
-            {
-                this.ProgressBar.Visible = false;
-                this.ProgressLabel.Text = "";
-            }
-            if (e.ProgressPercentage == 1)
-            {
-                this.ProgressBar.Visible = true;
-                this.ProgressLabel.Text = "Načítám produkty, prosím čekejte...";
-            }
-        }
-
-        private void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Worker.ReportProgress(1);
-            BackgroundWorker worker = sender as BackgroundWorker;
-                        
             int startItem = 0;
             
             List<product> items = new List<product>();
@@ -85,12 +59,10 @@ namespace Core.Bussiness
                 items = productsAccesor.GetByFilter(null, null, startItem + "," + StepCount);
                 startItem = startItem + StepCount;
 
-
                 if (items == null)
                 {
-                    return;
+                    return false;
                 }
-
                 
                 foreach (product item in items)
                 {
@@ -98,34 +70,13 @@ namespace Core.Bussiness
                 }
                 
             } while (items.Count == 500);
-            
-            Worker.ReportProgress(0);
-        }
 
-        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            FunctionBox.Enabled = true;
-            ProgressBar.Visible = false;
-            loaded = true;
-            if ((e.Cancelled == true))
-            {
-                //this.tbProgress.Text = "Canceled!";
-            }
-
-            else if (!(e.Error == null))
-            {
-                //this.tbProgress.Text = ("Error: " + e.Error.Message);
-            }
-
-            else
-            {
-                //Worker.ReportProgress(0);
-            }
+            return true;
         }
 
         public List<ProductViewModel> GetProductWithEmptyManufacturer()
         {
-            List<ProductViewModel> result = new List<ProductViewModel>();
+                List<ProductViewModel> result = new List<ProductViewModel>();
  
             foreach (ProductViewModel item in this.Products)
             {

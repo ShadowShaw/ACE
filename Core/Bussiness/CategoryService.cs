@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Core.Bussiness
 {
     public class CategoryService : ServiceBase, IService
     {
-        private BackgroundWorker Worker;
         public List<category> Categories;
         public CategoriesAccesor categoriesAccesor;
                 
@@ -29,31 +29,29 @@ namespace Core.Bussiness
             categoriesAccesor.Setup(baseUrl, apiToken, "");
         }
 
-        public void LoadCategoriesAsync()
+        public async Task<bool> LoadCategoriesAsync()
         {
             Categories.Clear();
-            Worker = new BackgroundWorker();
-            Worker.WorkerReportsProgress = true;
-            Worker.WorkerSupportsCancellation = true;
-            Worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-            Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
-            
-            if (Worker.IsBusy != true)
+
+            try
             {
-                Worker.RunWorkerAsync();
+                return await Task.Factory.StartNew(() => LoadCategories());
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
         }
 
-        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        private bool LoadCategories()
         {
-            BackgroundWorker worker = sender as BackgroundWorker;
-
             List<int> ids = new List<int>();
             ids = categoriesAccesor.GetIds();
 
             if (ids == null)
             {
-                return;
+                return false;
             }
             
             foreach (int id in ids)
@@ -61,25 +59,8 @@ namespace Core.Bussiness
                 PrestashopEntity cat = categoriesAccesor.Get(id);
                 Categories.Add(cat as category );
             }
-        }
-
-        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
             loaded = true;
-            if ((e.Cancelled == true))
-            {
-                //this.tbProgress.Text = "Canceled!";
-            }
-
-            else if (!(e.Error == null))
-            {
-                //this.tbProgress.Text = ("Error: " + e.Error.Message);
-            }
-
-            else
-            {
-                //Worker.ReportProgress(0);
-            }
+            return true;
         }
 
         public string GetCategoryName(int id)

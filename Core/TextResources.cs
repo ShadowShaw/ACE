@@ -36,5 +36,13 @@ namespace Core
         public const string hWithoutPrice = "Vypíše produkty bez maloobchodní prodejní ceny";
         public const string hWithoutWholeSalePrice = "Vypíše produkty bez velkoobchodní prodejní ceny";
         public const string hWithoutWeight = "Vypíše produkty u kterých není zadána váha";
+
+        //modules names
+        public const string PricingModuleName = "Pricing";
+        public const string ConsistencyModuleName = "Consistency";
+        public const string PricingModuleDescription = "Modul pro přeceňování eshopu.";
+        public const string ConsistencyModuleDescription = "Modul sloužící pro rychlou kontrolu databáze.";
+        public const decimal PricingModulePrice = 499;
+        public const decimal ConsistencyModulePrice = 1;
     }
 }

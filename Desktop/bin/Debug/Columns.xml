@@ -29,5 +29,13 @@
       <Name>dgConsistencymanufacturer</Name>
       <Width>100</Width>
     </ColumnWidth>
+    <ColumnWidth>
+      <Name>dgConsistencywholesale_price</Name>
+      <Width>100</Width>
+    </ColumnWidth>
+    <ColumnWidth>
+      <Name>dgConsistencyweight</Name>
+      <Width>100</Width>
+    </ColumnWidth>
   </ColumnWidths>
 </ColumnWidthList>
