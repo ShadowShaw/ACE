@@ -41,6 +41,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -159,6 +160,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
+    <None Include="App.Debug.config" >
+		<DependentUpon>App.config</DependentUpon>
+		</None>
+    <None Include="App.Release.config" >
+	  <DependentUpon>App.config</DependentUpon>
+	  </None>
     <None Include="Desktop_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
@@ -228,4 +235,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+		<AppConfig>App.Release.config</AppConfig>
+	</PropertyGroup>
 </Project>

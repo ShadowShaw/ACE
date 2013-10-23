@@ -13,7 +13,6 @@ using ACEAgent.Models;
 using Core.Models;
 using Core.Data;
 using Core.Utils;
-using Core.Data;
 using Core.Interfaces;
 
 namespace ACEAgent.Controllers
@@ -138,6 +137,7 @@ namespace ACEAgent.Controllers
             }
 
             // If we got this far, something failed, redisplay form
+            ViewBag.PaymentSymbol = model.PaymentSymbol;
             return View(model);
         }
 

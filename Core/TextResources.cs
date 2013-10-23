@@ -20,6 +20,10 @@ namespace Core
         public const string Id = "Id";
         public const string LinkButton = "Otevřít produkt";
 
+
+        //dgPricing
+        public const string Supplier = "Dodavatel";
+
         // dgChanges view
         public const string Type = "Typ";
         public const string Field = "Pole";
@@ -38,8 +42,8 @@ namespace Core
         public const string hWithoutWeight = "Vypíše produkty u kterých není zadána váha";
 
         //modules names
-        public const string PricingModuleName = "Pricing";
-        public const string ConsistencyModuleName = "Consistency";
+        public const string PricingModuleName = "Přeceňování";
+        public const string ConsistencyModuleName = "Kontrola konzistence";
         public const string PricingModuleDescription = "Modul pro přeceňování eshopu.";
         public const string ConsistencyModuleDescription = "Modul sloužící pro rychlou kontrolu databáze.";
         public const decimal PricingModulePrice = 499;

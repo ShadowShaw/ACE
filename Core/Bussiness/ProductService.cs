@@ -194,6 +194,34 @@ namespace Core.Bussiness
             return result;
         }
 
+        public List<ProductViewModel> GetProductForRepricing(int idManufacturer, int idSupplier, List<int> idCategories)
+        {
+            List<ProductViewModel> result = new List<ProductViewModel>();
+
+            foreach (ProductViewModel item in this.Products)
+            {
+                if ((idManufacturer == 0) || (item.id_manufacturer == idManufacturer))
+                {
+                    if ((idSupplier == 0) || (item.id_supplier == idSupplier))
+                    {
+                        if (idCategories.Count == 0)
+                        {
+                            result.Add(item);
+                        }
+                        else
+                        {
+                            if (idCategories.Contains(System.Convert.ToInt32(item.id_category_default)))
+                            {
+                                result.Add(item);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public void Edit(ProductViewModel entity)
         {
             productsAccesor.Update(ProductToPresta(entity));

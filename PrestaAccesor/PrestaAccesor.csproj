@@ -69,6 +69,7 @@
     <Compile Include="Accesors\IRestAccesor.cs" />
     <Compile Include="Accesors\LanguageAccesor.cs" />
     <Compile Include="Accesors\ProductsAccesor.cs" />
+    <Compile Include="Accesors\SuppliersAccesor.cs" />
     <Compile Include="Entities\address.cs" />
     <Compile Include="Entities\associations.cs" />
     <Compile Include="Entities\category.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Accesors\ManufacturersAccesor.cs" />
     <Compile Include="Accesors\RestSharpAccesor.cs" />
     <Compile Include="Entities\product.cs" />
+    <Compile Include="Entities\supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\PrestaValues.cs" />
   </ItemGroup>

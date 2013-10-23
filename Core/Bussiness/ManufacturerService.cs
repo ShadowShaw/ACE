@@ -54,11 +54,10 @@ namespace Core.Bussiness
                 return false;
             }
 
-            List<manufacturer> manufacturers = new List<manufacturer>();
             foreach (int id in ids)
             {
                 PrestashopEntity man = manufacturerAccesor.Get(id);
-                manufacturers.Add(man as manufacturer);
+                Manufacturers.Add(man as manufacturer);
             }
 
             loaded = true;

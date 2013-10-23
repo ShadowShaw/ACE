@@ -20,6 +20,7 @@ namespace Core.Bussiness
         private ManufactuerService manufacturerService;
         private CategoryService categoryService;
         private LanguageService languageService;
+        private SupplierService supplierService;
 
         public LoginService Login 
         {
@@ -34,6 +35,14 @@ namespace Core.Bussiness
             get
             {
                 return productService;
+            }
+        }
+
+        public SupplierService Suppliers
+        {
+            get
+            {
+                return supplierService;
             }
         }
 
@@ -77,6 +86,7 @@ namespace Core.Bussiness
             manufacturerService = new ManufactuerService(baseUrl, apiToken, "");
             categoryService = new CategoryService(baseUrl, apiToken, "");
             languageService = new LanguageService(baseUrl, apiToken, "");
+            supplierService = new SupplierService(baseUrl, apiToken, "");
         }
 
         public void SetupPrestaServices(string baseUrl, string apiToken)
@@ -88,6 +98,7 @@ namespace Core.Bussiness
             Manufacturers.Setup(baseUrl, apiToken);
             Products.Setup(baseUrl, apiToken);
             Languages.Setup(baseUrl, apiToken);
+            Suppliers.Setup(baseUrl, apiToken);
         }
 
         public void SetupPrestaLanguages()
@@ -95,6 +106,7 @@ namespace Core.Bussiness
             Categories.SetupLanguage(Languages.ActivePrestaLanguage);
             Manufacturers.SetupLanguage(Languages.ActivePrestaLanguage);
             Products.SetupLanguage(Languages.ActivePrestaLanguage);
+            Suppliers.SetupLanguage(Languages.ActivePrestaLanguage);
         }
 
         public bool TestPrestaAccess()

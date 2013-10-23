@@ -47,7 +47,7 @@ namespace Desktop
 
         public void openAskino(string filename)
         {
-            askino = accessor.loadCSV<Askino>(filename);
+                askino = accessor.loadCSV<Askino>(filename);
         }
 
         public List<Askino> getAskino()

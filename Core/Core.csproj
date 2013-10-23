@@ -66,6 +66,7 @@
     <Compile Include="Bussiness\LoginService.cs" />
     <Compile Include="Bussiness\ProductService.cs" />
     <Compile Include="Bussiness\ServiceBase.cs" />
+    <Compile Include="Bussiness\SupplierService.cs" />
     <Compile Include="Migrations\201309071356590_m1.cs" />
     <Compile Include="Migrations\201309071356590_m1.Designer.cs">
       <DependentUpon>201309071356590_m1.cs</DependentUpon>
@@ -74,6 +75,8 @@
     <Compile Include="Models\ModuleOrder.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\UsersInRole.cs" />
+    <Compile Include="SuppliersModels\Askino.cs" />
+    <Compile Include="SuppliersModels\Noviko.cs" />
     <Compile Include="Utils\AgentUtils.cs" />
     <Compile Include="Utils\TreeItem.cs" />
     <Compile Include="Utils\UITools.cs" />

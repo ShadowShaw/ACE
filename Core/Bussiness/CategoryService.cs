@@ -74,6 +74,20 @@ namespace Core.Bussiness
             return result.name;
         }
 
+        public List<int> GetSubcategories(int idCategory, List<int> categories)
+        {
+            foreach (category item in Categories)
+            {
+                if (item.id_parent == idCategory)
+                {
+                    categories.Add(System.Convert.ToInt32(item.id));
+                    categories = GetSubcategories(System.Convert.ToInt32(item.id), categories);
+                }
+            }
+            
+            return categories;
+        }
+
         public long? GetCategoryId(string categoryName)
         {
             if (categoryName != "")

@@ -20,7 +20,6 @@ C:\Card\GitHub\ACE\PrestaAccesor\bin\Debug\RestSharp.xml
 C:\Card\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.csprojResolveAssemblyReference.cache
 C:\Card\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.dll
 C:\Card\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.pdb
-C:\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.csprojResolveAssemblyReference.cache
 C:\GitHub\ACE\PrestaAccesor\bin\Debug\Microsoft.Threading.Tasks.dll
 C:\GitHub\ACE\PrestaAccesor\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 C:\GitHub\ACE\PrestaAccesor\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll

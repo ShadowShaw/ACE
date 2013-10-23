@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="126464">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="132608">
       <assemblyIdentity name="ACEDesktop" version="1.3.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>50eucEFtBnlYLCFFD/7wAWQdA/8=</dsig:DigestValue>
+        <dsig:DigestValue>srfuHIcmaOac46ztYZFBH1MjNDY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="50176">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="57856">
       <assemblyIdentity name="Core" version="1.3.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>AtR7ly0jHvsfvLkwT3u+xANzi6g=</dsig:DigestValue>
+        <dsig:DigestValue>cVe4XD6O0FtxHi1FmS+cB6PkbTw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -126,14 +126,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrestaAccesor.dll" size="25088">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrestaAccesor.dll" size="27136">
       <assemblyIdentity name="PrestaAccesor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>lv06Lv3JMNCt5gZfPrSmpdb4h38=</dsig:DigestValue>
+        <dsig:DigestValue>yQL/PsIw0asdtLVc/sABHFBoZwU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -149,13 +149,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="ACEDesktop.exe.config" size="1959">
+  <file name="ACEDesktop.exe.config" size="2052">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>Bc67B/rQgbtV33AMygWcxSB8SbE=</dsig:DigestValue>
+      <dsig:DigestValue>kvGUSvkCUfrhVjITpWQTPLDF8OE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="HtmlDocs\Home.html" size="174">

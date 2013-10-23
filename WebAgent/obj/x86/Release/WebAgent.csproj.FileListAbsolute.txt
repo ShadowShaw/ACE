@@ -73,3 +73,5 @@ C:\GitHub\ACE\WebAgent\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 C:\GitHub\ACE\WebAgent\bin\System.Runtime.xml
 C:\GitHub\ACE\WebAgent\bin\System.Threading.Tasks.xml
 C:\GitHub\ACE\WebAgent\obj\x86\Release\WebAgent.csproj.App.config
+C:\GitHub\ACE\WebAgent\bin\LINQtoCSV.dll
+C:\GitHub\ACE\WebAgent\bin\LINQtoCSV.pdb

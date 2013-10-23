@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAnnotationsExtensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,7 @@ namespace ACEAgent.Models
 {
     public class RegisterExternalLoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Uživatelské jméno nemůže být prázdné.")]
         [Display(Name = "Uživatelské jméno")]
         public string UserName { get; set; }
 
@@ -20,12 +21,12 @@ namespace ACEAgent.Models
 
     public class LocalPasswordModel
     {
-        [Required]
+        [Required(ErrorMessage = "Heslo nemůže být prázdné.")]
         [DataType(DataType.Password)]
         [Display(Name = "Současné heslo")]
         public string OldPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Heslo nemůže být prázdné.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Nové heslo")]
@@ -42,22 +43,22 @@ namespace ACEAgent.Models
         public int Id { get; set; }
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Název společnosti nemůže bý prázdný.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Název společnosti")]
         public string CompanyName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Křestní jméno nemůže být prázdné.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Křestní jméno")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Příjmení nemůže být prázdné.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Příjmení")]
         public string LastName { get; set; }
-        
-        [Required]
+
+        [Required(ErrorMessage = "Korespondenční adresa nemůže být prázdná.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Korespondenční adresa")]
         public string CorrespondentionAddress { get; set; }
@@ -66,31 +67,33 @@ namespace ACEAgent.Models
         [Display(Name = "Fakturační adresa (Nevyplňujte, pokud je stejná s Korespondenční adresou)")]
         public string FacturationAddress { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Web adresa eshopu nemůže být prázdná.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
-        [Display(Name = "Web adresa eshopu")]
+        [Display(Name = "Web adresa eshopu, včetně http://, https://")]
+        [Url(ErrorMessage = "Web adresa eshopu není ve správném formátu.")]
         public string EshopUrl { get; set; }
 
-        [Required]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Email")]
+        [Required(ErrorMessage = "Email nemůže bý prázdný.")]
+        [Email(ErrorMessage = "Email není ve správném formátu.")]
         public string Email { get; set; }
         
         [Required]
         [Display(Name = "Plátce DPH")]
         public bool Dph { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Platební symbol nemůže být prázdný.")]
         [StringLength(9, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 9)]
         [Display(Name = "Platební symbol")]
         public string PaymentSymbol { get; set; } // identifikace platby - variabilni symbol
 
-        [Required]
+        [Required(ErrorMessage = "ICO nemůže být prázdné.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "ICO")]
         public string ICO { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "DIC nemůže být prázdný.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "DIC")]
         public string DIC { get; set; }
@@ -98,11 +101,11 @@ namespace ACEAgent.Models
 
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Uživatelské jméno nemůže být prázdné.")]
         [Display(Name = "Uživatelské jméno")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Heslo nemůže být prázdné.")]
         [DataType(DataType.Password)]
         [Display(Name = "Heslo")]
         public string Password { get; set; }
@@ -113,12 +116,12 @@ namespace ACEAgent.Models
 
     public class RegisterModel
     {
-        [Required]
+        [Required(ErrorMessage = "Uživatelské jméno nemůže být prázdné.")]
         [Remote("doesUserNameExist", "Account", HttpMethod = "POST", ErrorMessage = "Uživatelské jméno již existuje, vyberte prosím jiné.")]
         [Display(Name = "Uživatelské jméno")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Heslo nemůže být prázdné.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Heslo")]
@@ -129,22 +132,22 @@ namespace ACEAgent.Models
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 6)]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Název společnosti nemůže být prázdný.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Název společnosti")]
         public string CompanyName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Křestní jméno nemůže být prázdné.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Křestní jméno")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Příjmení nemůže být prázdné.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Příjmení")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Korespondenční adresa nemůže být prázdná.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Korespondenční adresa")]
         public string CorrespondentionAddress { get; set; }
@@ -153,31 +156,33 @@ namespace ACEAgent.Models
         [Display(Name = "Fakturační adresa (Nevyplňujte, pokud je stejná s Korespondenční adresou)")]
         public string FacturationAddress { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Web adresa eshopu nemůže být prázdná.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
-        [Display(Name = "Web adresa eshopu")]
+        [Display(Name = "Web adresa eshopu, včetně http://, https://")]
+        [Url(ErrorMessage = "Web adresa eshopu není ve správném formátu.")]
         public string EshopUrl { get; set; }
 
-        [Required]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "Email")]
+        [Required(ErrorMessage = "Email nemůže bý prázdný.")]
+        [Email(ErrorMessage = "Email není ve správném formátu.")]
         public string Email { get; set; }
 
         [Required]
         [Display(Name = "Plátce DPH")]
         public bool Dph { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Platební symbol nemůže být prázdný.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
-        [Display(Name = "Platební symbol")]
+        [Display(Name = "Platební symbol(Variabilní symbol pro identifikaci platby).")]
         public string PaymentSymbol { get; set; } // identifikace platby - variabilni symbol
 
-        [Required]
+        [Required(ErrorMessage = "ICO nemůže být prázdné.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "ICO")]
         public string ICO { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "DIC nemůže být prázdný.")]
         [StringLength(100, ErrorMessage = "{0} musí být minimálně {2} znaky dlouhé.", MinimumLength = 2)]
         [Display(Name = "DIC")]
         public string DIC { get; set; }

@@ -2,7 +2,7 @@
 <EshopList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Eshops>
     <EshopConfiguration>
-      <EshopName>test</EshopName>
+      <EshopName>TestPresta</EshopName>
       <Type>Prestashop</Type>
       <BaseUrl>http://testpresta.mzf.cz/prestashop/api/</BaseUrl>
       <Password>BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8</Password>
@@ -10,6 +10,8 @@
     <EshopConfiguration>
       <EshopName>Eshop1</EshopName>
       <Type>Prestashop</Type>
+      <BaseUrl>/api/</BaseUrl>
+      <Password />
     </EshopConfiguration>
   </Eshops>
 </EshopList>
