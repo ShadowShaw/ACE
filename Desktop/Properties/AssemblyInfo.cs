@@ -9,9 +9,9 @@ using System.Resources;
 [assembly: AssemblyTitle("ACE Desktop")]
 [assembly: AssemblyDescription("Systém pro automatickou aktualizaci a přeceňování eshopů")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Veronika Navrátilová")]
 [assembly: AssemblyProduct("ACE")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright ©  2013 Martin Minařík")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

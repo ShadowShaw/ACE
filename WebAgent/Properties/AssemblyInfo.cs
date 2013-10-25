@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ACE Agent")]
 [assembly: AssemblyDescription("Webový agent systému ACE pro automatickou správu a přečenování eshopů")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Veronika Navrátilová")]
 [assembly: AssemblyProduct("ACE Agent")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright ©  2013 Martin Minařík")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

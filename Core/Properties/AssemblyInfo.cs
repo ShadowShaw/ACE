@@ -9,9 +9,9 @@ using System.Resources;
 [assembly: AssemblyTitle("ACE Core")]
 [assembly: AssemblyDescription("Sdílené assemblies pro systém ACE")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Veronika Navrátilová")]
 [assembly: AssemblyProduct("ACE")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright ©  2013 Martin Minařík")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
