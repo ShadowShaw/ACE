@@ -8,7 +8,7 @@
     </text>
 } else {
     <ul>
-        <li>@Html.ActionLink("Registrovat", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Přihlásit", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <input type="button" class="btn btn-info" value="Registrovat" onclick="location.href='@Url.Action("Register", "Account")'" />
+        <input type="button" class="btn btn-info" value="Přihlásit" onclick="location.href='@Url.Action("Login", "Account")'" />
     </ul>
 }

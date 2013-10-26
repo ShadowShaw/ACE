@@ -1,94 +1,34 @@
 ﻿@{
-    ViewBag.Title = "ACE Home";
+    ViewBag.Title = "Bootstrap";
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
+
+<div class="container marketing">
+    <div class="row">
+
+        <div class="col-lg-4">
+            <img class="img-circle" src="/Content/images/Icon1.png" data-src="holder.js/140x140" alt="140x140" style="width: 140px; height: 140px;">
+            <h2>Úvod</h2>
+            <p>Základní text o ACE.</p>
+            <p><a class="btn btn-default" href="#">View details »</a></p>
         </div>
-    </section>
-}
-<h3>Základní informace:</h3>
-<ol class="round">
-    <li class="one">
-        <h5>Úvod</h5>
-        Základní text o ACE
-    </li>
 
-    <li class="two">
-        <h5>ACE Agent</h5>
-        Něco málo o webovém agentovi, k čemu je atd...
-    </li>
+        <div class="col-lg-4">
+            <img class="img-circle" src="/Content/images/Icon2.png" data-src="holder.js/140x140" alt="140x140" style="width: 140px; height: 140px;">
+            <h2>ACE Agent</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p><a class="btn btn-default" href="#">View details »</a></p>
+        </div>
 
-    <li class="three">
-        <h5>ACE Desktop</h5>
-        Něco málo o desktop aplikaci...
-    </li>
-</ol>
-
-<div id="accordion">
-  <h3>Section 1</h3>
-  <div>
-    <p>
-    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-    </p>
-  </div>
-  <h3>Section 2</h3>
-  <div>
-    <p>
-    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-    suscipit faucibus urna.
-    </p>
-  </div>
-  <h3>Section 3</h3>
-  <div>
-    <p>
-    Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-    Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-    ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-    lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-    </p>
-    <ul>
-      <li>List item one</li>
-      <li>List item two</li>
-      <li>List item three</li>
-    </ul>
-  </div>
-  <h3>Section 4</h3>
-  <div>
-    <p>
-    Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-    et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-    faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-    mauris vel est.
-    </p>
-    <p>
-    Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-    inceptos himenaeos.
-    </p>
-  </div>
+        <div class="col-lg-4">
+            <img class="img-circle" src="/Content/images/Icon3.png" data-src="holder.js/140x140" alt="140x140" style="width: 140px; height: 140px;">
+            <h2>ACE Desktop</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p><a class="btn btn-default" href="#">View details »</a></p>
+        </div>
+    </div>
 </div>
-
-
-@section Scripts {
-
-    @Styles.Render("http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css")
-
-
-    <script>
-        $(function () {
-            $("#accordion").accordion({
-                collapsible: true,
-                heightStyle: "content"
-            });
-        });
-  </script>
+@section Carousel
+{
+    @Html.Partial("_Carousel")
 }
+
