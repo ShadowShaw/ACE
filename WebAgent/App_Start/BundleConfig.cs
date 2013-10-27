@@ -16,6 +16,7 @@ namespace ACEAgent
             bundles.Add(new StyleBundle("~/css")
                             .Include("~/Content/bootstrap.css")
                             .Include("~/Content/carousel.css")
+                            .Include("~/Content/bootstrap-theme.css")
                             .Include("~/Content/site.css"));
         }
 

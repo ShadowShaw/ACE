@@ -1,92 +1,136 @@
 ﻿@model ACEAgent.Models.RegisterModel
 @{
-    ViewBag.Title = "Registrace";
+    ViewBag.Title = "Vytvoření nového účtu.";
 }
 
-
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-        </div>
-    </section>
-}
-
-    
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2> Vytvoření nového účtu.</h2>
+    <h1>@ViewBag.Title</h1>
 </hgroup>
 
 <p class="message-success">@ViewBag.StatusMessage</p>
-
-@using (Html.BeginForm()) {
+    
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
-
+    <ul class="breadcrumb red">
+        @Html.ValidationSummary()
+    </ul>
+    
     <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
+        <legend>Registrace.</legend>
+        <ul>
             <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
+                <div>
+                    @Html.LabelFor(m => m.UserName, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.UserName, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
+                <div>
+                    @Html.LabelFor(m => m.Password, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.PasswordFor(m => m.Password, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
+                <div>
+                    @Html.LabelFor(m => m.ConfirmPassword, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.CompanyName)
-                @Html.TextBoxFor(m => m.CompanyName)
+                <div>
+                    @Html.LabelFor(m => m.CompanyName, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.CompanyName, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.FirstName)
-                @Html.TextBoxFor(m => m.FirstName)
+                <div>
+                    @Html.LabelFor(m => m.FirstName, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.FirstName, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.LastName)
-                @Html.TextBoxFor(m => m.LastName)
+                <div>
+                    @Html.LabelFor(m => m.LastName, new{@class = "control-label"})
+                </div>
+                <div>
+                   @Html.TextBoxFor(m => m.LastName, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.CorrespondentionAddress)
-                @Html.TextBoxFor(m => m.CorrespondentionAddress)
+                <div>
+                    @Html.LabelFor(m => m.CorrespondentionAddress, new{@class = "control-label"})
+                 </div>
+                <div>
+                    @Html.TextBoxFor(m => m.CorrespondentionAddress, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.FacturationAddress)
-                @Html.TextBoxFor(m => m.FacturationAddress)
+                <div>
+                    @Html.LabelFor(m => m.FacturationAddress, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.FacturationAddress, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.EshopUrl)
-                @Html.TextBoxFor(m => m.EshopUrl)
+                <div>
+                    @Html.LabelFor(m => m.EshopUrl, new{@class = "control-label"})
+                </div>
+                <div>
+                   @Html.TextBoxFor(m => m.EshopUrl, new{@Value = "http://", @class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email)
+                <div>
+                    @Html.LabelFor(m => m.Email, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.Email, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.Dph)
-                @Html.CheckBoxFor(m => m.Dph)
+                <div>
+                    @Html.LabelFor(m => m.Dph, new{@class = "control-label"})
+                    @Html.CheckBoxFor(m => m.Dph, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.PaymentSymbol)
-                @Html.TextBoxFor(m => m.PaymentSymbol, new { @Value = ViewBag.PaymentSymbol })
+                <div>
+                    @Html.LabelFor(m => m.PaymentSymbol, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.PaymentSymbol, new { @Value = ViewBag.PaymentSymbol, @class = "control-group" })
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.ICO)
-                @Html.TextBoxFor(m => m.ICO)
+                <div>
+                    @Html.LabelFor(m => m.ICO, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.ICO, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.DIC)
-                @Html.TextBoxFor(m => m.DIC)
+                <div>
+                    @Html.LabelFor(m => m.DIC, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.DIC, new{@class = "control-group"})
+                </div>
             </li>
-        </ol>
-        <input type="submit" value="Registrovat" />
+        </ul>
+        <input type="submit" class="btn btn-primary" value="Registrovat" />
     </fieldset>
 }
 

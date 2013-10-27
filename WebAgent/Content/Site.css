@@ -8,3 +8,7 @@
 [class^="icon-"],[class*=" icon-"] {
     background-image: url("/Content/images/glyphicons-halflings.png");
 }
+
+.red {
+  color: #d14;
+}
