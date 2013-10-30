@@ -9,6 +9,21 @@
     background-image: url("/Content/images/glyphicons-halflings.png");
 }
 
+.img-thumbnailNoBorder {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+  padding: 4px;
+  line-height: 1.428571429;
+  background-color: #ffffff;
+  border: 0px solid #dddddd;
+  border-radius: 4px;
+  -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+}
+
 .red {
   color: #d14;
 }
+
+.navbar .brand { max-height: 40px; overflow: visible;padding-top: 0;padding-bottom: 0; }
