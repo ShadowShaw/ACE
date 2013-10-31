@@ -4,12 +4,12 @@
     ViewBag.Title = "Zadat novou platbu";
 }
 
+@Html.Partial("PageTitlePartial")
+
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>ModuleOrder</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Amount)
         </div>
@@ -39,13 +39,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" class="btn btn-primary" value="Zadat platbu" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Zpět na seznam objednávek modulů", "Payments")
+    @Html.ActionLink("Zpět na seznam plateb", "Payments", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
 </div>
 
 @section Scripts {
@@ -58,7 +58,8 @@
         $(document).ready(function () {
             $("#PaymentDate").datepicker({
                 changeMonth: true,
-                changeYear: true
+                changeYear: true,
+                dateFormat: 'dd.mm.yy'
             });
         });
     </script>

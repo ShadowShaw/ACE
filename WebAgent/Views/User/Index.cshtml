@@ -2,11 +2,10 @@
     ViewBag.Title = "Správa uživatelského účtu";
 }
 
-<p>Jste přihlášeni jako: <strong>@User.Identity.Name</strong>.</p>
+@Html.Partial("PageTitlePartial")
 
 <nav>
-    <ul id="menu">
-        <li>Jste přihlášeni jako: <strong>@User.Identity.Name</strong>.</li>
+    <ul class="breadcrumb">
         <li>Stav vašeho učtu: <strong>@ViewBag.Credit</strong>.</li>
     </ul>
 </nav>

@@ -4,13 +4,13 @@
     ViewBag.Title = "Správa plateb";
 }
 
-Seznam plateb:
+@Html.Partial("PageTitlePartial")
 
 <p>
-    @Html.ActionLink("Zadat novou platbu", "CreatePayment")
+    @Html.ActionLink("Zadat novou platbu", "CreatePayment", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
 </p>
 
-<table>
+<table class="table table-condensed table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Id)
@@ -24,7 +24,9 @@ Seznam plateb:
         <th>
             @Html.DisplayNameFor(model => model.PaymentSymbol)
         </th>
-        <th></th>
+        <th>
+            Akce
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -42,8 +44,8 @@ Seznam plateb:
             @Html.DisplayFor(modelItem => item.PaymentSymbol)
         </td>
         <td>
-            @Html.ActionLink("Editace", "EditPayment", new { id=item.Id }) |
-            @Html.ActionLink("Smazat", "DeletePayment", new { id=item.Id })        
+            @Html.ActionLink("Editace", "EditPayment", new { id=item.Id }, htmlAttributes: new { @class="btn btn-default btn-xs" })
+            @Html.ActionLink("Smazat", "DeletePayment", new { id=item.Id }, htmlAttributes: new { @class="btn btn-default btn-xs" })
         </td>
     </tr>
 }
@@ -52,5 +54,5 @@ Seznam plateb:
 
 
 <p>
-    @Html.ActionLink("Zpět na index", "Index")
+    @Html.ActionLink("Zpět na admin index", "Index", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
 </p>

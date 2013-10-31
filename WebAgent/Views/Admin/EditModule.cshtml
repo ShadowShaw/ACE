@@ -4,14 +4,12 @@
     ViewBag.Title = "Úprava modulu";
 }
 
-<h2>Edit</h2>
+@Html.Partial("PageTitlePartial")
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>ACEModule</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
@@ -39,13 +37,13 @@
         @Html.HiddenFor(model => model.Id)
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" class="btn btn-primary" value="Save" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Zpět na seznam modulů", "Modules")
+    @Html.ActionLink("Zpět na seznam modulů", "Modules", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
 </div>
 
 @section Scripts {

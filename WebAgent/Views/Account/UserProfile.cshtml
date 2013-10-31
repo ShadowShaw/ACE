@@ -4,69 +4,112 @@
     ViewBag.Title = "Změna údajů o uživateli";
 }
 
+@Html.Partial("PageTitlePartial")
+
 <p class="message-success">@ViewBag.StatusMessage</p>
-<p>Jste přihlášeni jako: <strong>@User.Identity.Name</strong>.</p>
-
-
-<h3>Editace uživatelského profilu</h3>
 
 @using (Html.BeginForm("UserProfile", "Account"))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+    <ul class="breadcrumb red">
+        @Html.ValidationSummary()
+    </ul>
 
     <section>
         <fieldset>
-        <legend>Change User Properties Form</legend>
-        <ol>
+        <ul>
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.UserName)
             <li>
-                @Html.LabelFor(model => model.CompanyName)
-                @Html.TextBoxFor(model => model.CompanyName)
+                <div>
+                    @Html.LabelFor(model => model.CompanyName, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.CompanyName, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.FirstName)
-                @Html.TextBoxFor(m => m.FirstName)
+                <div>
+                    @Html.LabelFor(m => m.FirstName, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.FirstName, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.LastName)
-                @Html.TextBoxFor(m => m.LastName)
+                <div>
+                    @Html.LabelFor(m => m.LastName, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.LastName, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.FacturationAddress)
-                @Html.TextBoxFor(m => m.FacturationAddress)
+                <div>
+                    @Html.LabelFor(m => m.FacturationAddress, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.FacturationAddress, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.CorrespondentionAddress)
-                @Html.TextBoxFor(m => m.CorrespondentionAddress)
+                <div>
+                    @Html.LabelFor(m => m.CorrespondentionAddress, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.CorrespondentionAddress, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.EshopUrl)
-                @Html.TextBoxFor(m => m.EshopUrl)
+                <div>
+                    @Html.LabelFor(m => m.EshopUrl, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.EshopUrl, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email)
+                <div>
+                    @Html.LabelFor(m => m.Email, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.Email, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.Dph)
-                @Html.CheckBoxFor(m => m.Dph)
+                <div>
+                    @Html.LabelFor(m => m.Dph, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.CheckBoxFor(m => m.Dph, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.PaymentSymbol)
-                @Html.TextBoxFor(m => m.PaymentSymbol)
+                <div>
+                    @Html.LabelFor(m => m.PaymentSymbol, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.PaymentSymbol, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.ICO)
-                @Html.TextBoxFor(m => m.ICO)
+                <div>
+                    @Html.LabelFor(m => m.ICO, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.ICO, new{@class = "control-group"})
+                </div>
             </li>
             <li>
-                @Html.LabelFor(m => m.DIC)
-                @Html.TextBoxFor(m => m.DIC)
+                <div>
+                    @Html.LabelFor(m => m.DIC, new{@class = "control-label"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.DIC, new{@class = "control-group"})
+                </div>
             </li>
-        </ol>
-        <input type="submit" value="Změnit údaje o uživateli" />
+        </ul>
+        <input type="submit" class="btn btn-primary" value="Změnit údaje o uživateli" />
         </fieldset>
     </section>
 }

@@ -4,12 +4,11 @@
     ViewBag.Title = "Smazat modul";
 }
 
-<h2>Delete</h2>
+@Html.Partial("PageTitlePartial")
 
 <h3>Jste si jisti, zda chce opravdu smazat modul?</h3>
-<fieldset>
-    <legend>ACEModule</legend>
 
+<fieldset>
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Name)
     </div>
@@ -31,9 +30,10 @@
         @Html.DisplayFor(model => model.MonthPrice)
     </div>
 </fieldset>
+
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="DeleteModule" /> |
-        @Html.ActionLink("Zpět na seznam modulů", "Modules")
+        <input type="submit" class="btn btn-primary" value="DeleteModule" /> 
+        @Html.ActionLink("Zpět na seznam modulů", "Modules", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
     </p>
 }

@@ -4,14 +4,17 @@
     ViewBag.Title = "Přehled objednaných modulů";
 }
 
-Přehled objednaných modulů:
+@Html.Partial("PageTitlePartial")
 
-Stav vašeho účtu: @ViewBag.Credit;
-
+<ul class="breadcrumb">
+    Výpis plateb pro platební symbol: @ViewBag.PaymentSymbol
+    <br></br>
+    Stav vašeho účtu: @ViewBag.Credit
+</ul>
 
 <p class="message-success">@ViewBag.StatusMessage</p>
 
-<table>
+<table class="table table-condensed table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ModuleName)
@@ -25,7 +28,9 @@ Stav vašeho účtu: @ViewBag.Credit;
         <th>
             @Html.DisplayNameFor(model => model.OrderDate)
         </th>
-        <th></th>
+        <th>
+            Objednávka
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -48,7 +53,7 @@ Stav vašeho účtu: @ViewBag.Credit;
         <td>
             @if (item.Active == false)
             {
-                @Html.ActionLink("Objednat modul", "MakeOrder", new { moduleId=item.ModuleId })    
+                @Html.ActionLink("Objednat modul", "MakeOrder", new { moduleId=item.ModuleId }, htmlAttributes: new { @class="btn btn-default btn-xs" })    
             }
         </td>
     </tr>
@@ -57,5 +62,5 @@ Stav vašeho účtu: @ViewBag.Credit;
 </table>
 
 <p>
-    @Html.ActionLink("Zpět na index", "Index")
+    @Html.ActionLink("Zpět", "Index", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
 </p>

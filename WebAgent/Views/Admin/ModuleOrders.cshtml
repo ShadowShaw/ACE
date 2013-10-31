@@ -4,13 +4,13 @@
     ViewBag.Title = "Správa objednávek modulů";
 }
 
-Seznam objednávek modulů:
+@Html.Partial("PageTitlePartial")
 
 <p>
-    @Html.ActionLink("Zadat novou objednávku modulu", "CreateModuleOrder")
+    @Html.ActionLink("Zadat novou objednávku modulu", "CreateModuleOrder", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
 </p>
 
-<table>
+<table class="table table-condensed table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Id)
@@ -24,7 +24,9 @@ Seznam objednávek modulů:
         <th>
             @Html.DisplayNameFor(model => model.OrderDate)
         </th>
-        <th></th>
+        <th>
+            Akce
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -42,8 +44,8 @@ Seznam objednávek modulů:
             @Html.DisplayFor(modelItem => item.OrderDate)
         </td>
         <td>
-            @Html.ActionLink("Editace", "EditModuleOrder", new { id=item.Id }) |
-            @Html.ActionLink("Smazat", "DeleteModuleOrder", new { id=item.Id })        
+            @Html.ActionLink("Editace", "EditModuleOrder", new { id=item.Id }, htmlAttributes: new { @class="btn btn-default btn-xs" })
+            @Html.ActionLink("Smazat", "DeleteModuleOrder", new { id=item.Id }, htmlAttributes: new { @class="btn btn-default btn-xs" })        
         </td>
     </tr>
 }
@@ -52,7 +54,7 @@ Seznam objednávek modulů:
 
 
 <p>
-    @Html.ActionLink("Zpět na index", "Index")
+    @Html.ActionLink("Zpět na admin index", "Index", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
 </p>
 
 

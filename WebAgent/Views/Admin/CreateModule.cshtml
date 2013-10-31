@@ -4,12 +4,12 @@
     ViewBag.Title = "Vytvořit nový modul";
 }
 
+@Html.Partial("PageTitlePartial")
+
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>ACEModule</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
@@ -35,13 +35,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" class="btn btn-primary" value="Vytvořit modul"/>
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Zpět na seznam modulů", "Modules")
+    @Html.ActionLink("Zpět na seznam modulů", "Modules", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
 </div>
 
 @section Scripts {

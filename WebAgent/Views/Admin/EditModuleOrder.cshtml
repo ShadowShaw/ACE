@@ -4,14 +4,12 @@
     ViewBag.Title = "Úprava objednávky modulu";
 }
 
-<h2>Edit</h2>
+@Html.Partial("PageTitlePartial")
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>ACEModule</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.UserId)
         </div>
@@ -39,15 +37,29 @@
         @Html.HiddenFor(model => model.Id)
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" class="btn btn-primary" value="Save" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Zpět na seznam objednávek modulů", "ModuleOrders")
+    @Html.ActionLink("Zpět na seznam objednávek modulů", "ModuleOrders", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#PaymentDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd.mm.yy'
+            });
+        });
+    </script>
 }

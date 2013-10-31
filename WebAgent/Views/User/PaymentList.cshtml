@@ -4,9 +4,15 @@
     ViewBag.Title = "Výpis plateb";
 }
 
-Výpis plateb pro platební symbol: @ViewBag.PaymentSymbol;
+@Html.Partial("PageTitlePartial")
 
-<table>
+<ul class="breadcrumb">
+    Výpis plateb pro platební symbol: @ViewBag.PaymentSymbol
+    <br></br>
+    Stav vašeho účtu: @ViewBag.Credit
+</ul>
+
+<table class="table table-condensed table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Amount)
@@ -14,7 +20,9 @@ Výpis plateb pro platební symbol: @ViewBag.PaymentSymbol;
         <th>
             @Html.DisplayNameFor(model => model.PaymentDate)
         </th>
-        <th></th>
+        <th>
+            Faktura
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -26,7 +34,7 @@ Výpis plateb pro platební symbol: @ViewBag.PaymentSymbol;
             @Html.DisplayFor(modelItem => item.PaymentDate)
         </td>
         <td>
-            @Html.ActionLink("Vytvořit fakturu", "MakeFacture", new { paymentId=item.Id })    
+            @Html.ActionLink("Vytvořit fakturu", "MakeFacture", new { paymentId=item.Id}, htmlAttributes: new { @class="btn btn-default btn-xs" })
         </td>
     </tr>
 }
@@ -34,7 +42,7 @@ Výpis plateb pro platební symbol: @ViewBag.PaymentSymbol;
 </table>
 
 <p>
-    @Html.ActionLink("Zpět na index", "Index")
+    @Html.ActionLink("Zpět", "Index", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
 </p>
 
 

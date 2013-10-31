@@ -4,12 +4,10 @@
     ViewBag.Title = "Smazat platbu";
 }
 
-<h2>Delete</h2>
+@Html.Partial("PageTitlePartial")
 
 <h3>Jste si jisti, zda chce opravdu smazat platbu?</h3>
 <fieldset>
-    <legend>ACEModule</legend>
-
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Amount)
     </div>
@@ -33,7 +31,7 @@
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="DeletePayment" /> |
-        @Html.ActionLink("Zpět na seznam plateb", "ModulePayments")
+        <input type="submit" class="btn btn-primary" value="Smazat platbu" />
+        @Html.ActionLink("Zpět na seznam plateb", "Payments", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
     </p>
 }
