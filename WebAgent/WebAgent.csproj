@@ -390,6 +390,7 @@
     <Content Include="Views\Home\Info.cshtml" />
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Shared\PageTitlePartial.cshtml" />
+    <Content Include="Views\User\OrdersList.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

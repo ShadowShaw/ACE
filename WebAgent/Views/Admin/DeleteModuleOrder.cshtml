@@ -12,14 +12,16 @@
          @Html.DisplayNameFor(model => model.UserId)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.UserId)
+        Id: @Html.DisplayFor(model => model.UserId) 
+        Username: @Html.Action("GetUserNameForId", new { Id = ViewBag.UserId })
     </div>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.ModuleId)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ModuleId)
+        Id: @Html.DisplayFor(model => model.ModuleId) 
+        Jméno: @Html.Action("GetModuleNameForId", new { Id = ViewBag.ModuleId })
     </div>
 
     <div class="display-label">
@@ -28,10 +30,18 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.OrderDate)
     </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" class="btn btn-primary" value="DeleteModuleOrder" /> 
+        <input type="submit" class="btn btn-primary" value="Smazat objednávku modulu" /> 
         @Html.ActionLink("Zpět na seznam objednávek modulů", "ModuleOrders", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
     </p>
 }

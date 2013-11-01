@@ -13,10 +13,13 @@ namespace Core.Models
     {
         [Display(Name = "Uživatel")]
         public int UserId { get; set; }
-        [Display(Name = "Id modulu")]
+        [Display(Name = "Modul")]
         public int ModuleId { get; set; }
         [Display(Name = "Datum objednávky")]
         [DataType(DataType.DateTime)]
         public DateTime OrderDate { get; set; }
+        [Display(Name = "Cena")]
+        public decimal Price { get; set; }
+
     }
 }

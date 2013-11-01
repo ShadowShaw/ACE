@@ -29,6 +29,14 @@ namespace ACEAgent.Controllers
             }
         }
 
+        public string GetModuleNameForId(int Id)
+        {
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                return uow.ACEModules.GetAll().Where(m => m.Id == Id).FirstOrDefault().Name;
+            }
+        }
+
         public ActionResult PaymentList()
         {
             UserProfile currentUser = GetCurrentUser();
@@ -39,7 +47,18 @@ namespace ACEAgent.Controllers
                 return View(uow.Payments.GetAll().Where(u => u.PaymentSymbol == currentUser.PaymentSymbol).ToList());
             }
         }
-        
+
+        public ActionResult OrdersList()
+        {
+            UserProfile currentUser = GetCurrentUser();
+            ViewBag.PaymentSymbol = currentUser.PaymentSymbol;
+            ViewBag.Credit = currentUser.Credit;
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                return View(uow.ModuleOrders.GetAll().Where(u => u.UserId == currentUser.Id).ToList());
+            }
+        }
+
         public ActionResult Index()
         {
             UserProfile currentUser = GetCurrentUser();
@@ -58,6 +77,7 @@ namespace ACEAgent.Controllers
             {
                 ViewBag.Modules = uow.ACEModules.GetAll().ToList();
                 ViewBag.Credit = uow.Users.GetAll().Where(u => u.Id == currentUserId).FirstOrDefault().Credit;
+                ViewBag.PaymentSymbol = uow.Users.GetAll().Where(u => u.Id == currentUserId).FirstOrDefault().PaymentSymbol;
                 List<ACEAgent.Models.ModuleOrders> viewModel = new List<ACEAgent.Models.ModuleOrders>();
                 foreach (ACEModule module in ViewBag.Modules)
                 {
@@ -105,6 +125,7 @@ namespace ACEAgent.Controllers
                     order.ModuleId = moduleId;
                     order.OrderDate = DateTime.Now;
                     order.UserId = currentUserId;
+                    order.Price = moduleCost;
                     uow.ModuleOrders.Add(order);
                     uow.Commit();
                     ViewBag.StatusMessage = "Modul úspěšně objednán.";

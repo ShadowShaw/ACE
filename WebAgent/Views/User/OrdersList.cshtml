@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Core.Models.ModuleOrder>
+
+@{
+    ViewBag.Title = "Výpis objednávek modulů";
+}
+
+@Html.Partial("PageTitlePartial")
+
+<ul class="breadcrumb">
+    Výpis objednávek pro platební symbol: <strong>@ViewBag.PaymentSymbol</strong>
+    <br></br>
+    Stav vašeho účtu: <strong>@ViewBag.Credit</strong>
+</ul>
+
+<table class="table table-condensed table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ModuleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModuleId)
+            @Html.Action("GetModuleNameForId", new { Id = item.ModuleId })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Zpět", "Index", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
+</p>
+
+

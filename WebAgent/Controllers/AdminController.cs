@@ -39,6 +39,22 @@ namespace ACEAgent.Controllers
             }
         }
 
+        public string GetUserNameForId(int Id)
+        {
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                return uow.Users.GetAll().Where(u => u.Id == Id).FirstOrDefault().UserName; 
+            }
+        }
+
+        public string GetModuleNameForId(int Id)
+        {
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                return uow.ACEModules.GetAll().Where(m => m.Id == Id).FirstOrDefault().Name;
+            }
+        }
+
         public ActionResult ModuleOrders()
         {
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
@@ -117,6 +133,12 @@ namespace ACEAgent.Controllers
 
         public ActionResult CreateModuleOrder()
         {
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                ViewBag.UserList = uow.Users.GetAll().ToList();
+                ViewBag.ModuleList = uow.ACEModules.GetAll().ToList();
+            }
+            
             return View();
         }
 
@@ -222,7 +244,10 @@ namespace ACEAgent.Controllers
                 {
                     return HttpNotFound();
                 }
-
+                
+                ViewBag.UserList = uow.Users.GetAll().ToList();
+                ViewBag.ModuleList = uow.ACEModules.GetAll().ToList();
+                
                 return View(order);
             }
         }
@@ -314,6 +339,10 @@ namespace ACEAgent.Controllers
                 {
                     return HttpNotFound();
                 }
+
+                ViewBag.UserId = order.UserId;
+                ViewBag.ModuleId = order.ModuleId;
+
                 return View(order);
             }
         }

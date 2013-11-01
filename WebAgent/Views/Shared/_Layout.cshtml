@@ -30,7 +30,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             @if (Request.IsAuthenticated) {
                                 <li>@Html.ActionLink("Uživatelský profil", "Manage", "Account")</li>
-                                <li>@Html.ActionLink("Správa objednávek a modulu", "Index", "User")</li>
+                                <li>@Html.ActionLink("Platby a objednávky", "Index", "User")</li>
                             }
                             <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                             @{
