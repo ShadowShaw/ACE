@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Potvrzení objednávky modulu";
+}
+
+@Html.Partial("PageTitlePartial")
+
+<table class="table table-bordered">
+  <tr>
+    <th>Jméno modulu:</th>
+    <th>Stav kreditu před objednávkou:</th>
+    <th>Cena modulu:</th>
+    <th>Stav kreditu po objednávce:</th>
+  </tr>
+  <tr>
+    <td>@ViewBag.ModuleName</td>
+    <td>@ViewBag.Credit</td>
+    <td>@ViewBag.ModulePrice</td>
+    <td>@ViewBag.CreditAfterOrder</td>
+  </tr>
+</table>
+
+@if (ViewBag.CanOrder == true)
+{
+    @Html.ActionLink("Objednat modul", "MakeOrder", new { moduleId=@ViewBag.ModuleId }, htmlAttributes: new { @class="btn btn-default" })    
+}
+@Html.ActionLink("Zpět", "Index", routeValues: null, htmlAttributes: new { @class="btn btn-default" })

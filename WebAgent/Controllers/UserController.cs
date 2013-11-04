@@ -140,6 +140,31 @@ namespace ACEAgent.Controllers
             }
         }
 
+        public ActionResult ConfirmOrder(int moduleId)
+        {
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                ACEModule module = uow.ACEModules.GetByID(moduleId);
+                ViewBag.ModuleName = module.Name;
+                ViewBag.ModuleId = module.Id;
+                UserProfile currentUser = GetCurrentUser();
+                ViewBag.PaymentSymbol = currentUser.PaymentSymbol;
+                ViewBag.Credit = currentUser.Credit;
+                ViewBag.ModulePrice = module.MonthPrice;
+                if (currentUser.Credit - module.MonthPrice >= 0)
+                {
+                    ViewBag.CreditAfterOrder = currentUser.Credit - module.MonthPrice;
+                    ViewBag.CanOrder = true;
+                }
+                else
+                {
+                    ViewBag.CreditAfterOrder = "Pro objednání modulu nemáte dostatečný kredit";
+                    ViewBag.CanOrder = false;
+                }
+            }
+            return View();
+        }
+
         public ActionResult MakeFacture(string id)
         {
             PaymentFacture facture = new PaymentFacture();

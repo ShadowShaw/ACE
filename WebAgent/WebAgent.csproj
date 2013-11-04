@@ -391,6 +391,7 @@
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Shared\PageTitlePartial.cshtml" />
     <Content Include="Views\User\OrdersList.cshtml" />
+    <Content Include="Views\User\ConfirmOrder.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
