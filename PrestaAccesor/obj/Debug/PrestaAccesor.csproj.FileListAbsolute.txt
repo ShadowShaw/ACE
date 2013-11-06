@@ -31,3 +31,4 @@ C:\GitHub\ACE\PrestaAccesor\bin\Debug\Microsoft.Threading.Tasks.Extensions.Deskt
 C:\GitHub\ACE\PrestaAccesor\bin\Debug\System.Runtime.xml
 C:\GitHub\ACE\PrestaAccesor\bin\Debug\System.Threading.Tasks.xml
 C:\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.csproj.App.config
+C:\GitHub\ACE\PrestaAccesor\obj\Debug\PrestaAccesor.csprojResolveAssemblyReference.cache
