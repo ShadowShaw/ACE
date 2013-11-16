@@ -115,8 +115,6 @@
     <Compile Include="Forms\ChangesView.Designer.cs">
       <DependentUpon>ChangesView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core.cs" />
-    <Compile Include="CSVAccessor.cs" />
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,11 +127,6 @@
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Askino.cs" />
-    <Compile Include="Models\Manufacturer.cs" />
-    <Compile Include="Models\Noviko.cs" />
-    <Compile Include="Models\Products.cs" />
-    <Compile Include="Models\SampleModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -160,12 +153,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
-    <None Include="App.Debug.config" >
-		<DependentUpon>App.config</DependentUpon>
-		</None>
-    <None Include="App.Release.config" >
-	  <DependentUpon>App.config</DependentUpon>
-	  </None>
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
     <None Include="Desktop_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
@@ -202,7 +195,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Settings\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="HtmlDocs\ChangeLog.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -235,7 +230,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-		<AppConfig>App.Release.config</AppConfig>
-	</PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <AppConfig>App.Release.config</AppConfig>
+  </PropertyGroup>
 </Project>

@@ -4,7 +4,11 @@
 
 @Html.Partial("PageTitlePartial")
 
-<a href="/Content/ace.exe" class="btn btn-default" target="_blank" > <span class="glyphicon glyphicon-download"></span> Stáhnout instalační balíček ACE 2.0</a>
+<p>
+    Zde si můžete stáhnout instalační balíček plné verze systému ACE 2.0. Zároveň při registraci od nás dostanete dárek v podobě dostatečného kreditu pro měsíční používání systému ACE 2.0 zdarma a můžete se tak seznámit se všemi jeho funkcemi a vyzkoušet efektivní správu svého eshopu. 
+    V případě, že vám systém bude vyhovovat, stačí dokoupit další kredit a bez jakékoliv změny pokračovat v jeho používání.
+</p>
+<a href="/Content/ace.exe" class="btn btn-primary" target="_blank" > <span class="glyphicon glyphicon-download"></span> Stáhnout instalační balíček ACE 2.0</a>
 
 <div>
     <h3>Systémové požadavky:</h3>
@@ -28,8 +32,8 @@
   <li class="list-group-item">
         <h4>Podporované architektury:</h4>
         <ul class="list-styled">
-            <li>x86</li>
-            <li>x64</li>
+            <li>x86 (32bit)</li>
+            <li>x64 (64bit)</li>
         </ul>
   </li>
   <li class="list-group-item">
@@ -38,6 +42,8 @@
             <li>Procesor: Pentium 1 GHz nebo lepší</li>
             <li>512 MB RAM nebo více</li>
             <li>Disk: 150MB</li>
+            <li>Monitor s rozlišením 1024x768 a vyšším</li>
+            <li>Připojení k internetu</li>
         </ul>
   </li>
   <li class="list-group-item">
@@ -49,6 +55,6 @@
   </li>
 </ul>
 
-<a href="https://www.google.com/chrome" class="btn btn-default" target="_blank" > <span class="glyphicon glyphicon-download"></span> Stažení Google Chrome</a>
-<a href="http://www.microsoft.com/cs-cz/download/details.aspx?id=17851" class="btn btn-default" target="_blank" > <span class="glyphicon glyphicon-download"></span> Stažení .NET Framework 4.0</a>
- @Html.ActionLink("Zpět", "Index", routeValues: null, htmlAttributes: new { @class="btn btn-default" })
+<a href="https://www.google.com/chrome" class="btn btn-primary" target="_blank" > <span class="glyphicon glyphicon-download"></span> Stažení Google Chrome</a>
+<a href="http://www.microsoft.com/cs-cz/download/details.aspx?id=17851" class="btn btn-primary" target="_blank" > <span class="glyphicon glyphicon-download"></span> Stažení .NET Framework 4.0</a>
+ @Html.ActionLink("Zpět", "Index", routeValues: null, htmlAttributes: new { @class="btn btn-primary" })

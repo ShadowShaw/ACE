@@ -1,4 +1,5 @@
-﻿using Core.ViewModels;
+﻿using Core.Suppliers;
+using Core.ViewModels;
 using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using PrestaAccesor.Utils;
@@ -193,6 +194,25 @@ namespace Core.Bussiness
 
             return result;
         }
+
+        public List<ProductViewModel> GetNonAvailableProductOfNoviko(long? novikoId, List<NovikoModel> novikoProducts)
+        {
+            List<ProductViewModel> result = new List<ProductViewModel>();
+
+            List<ProductViewModel> productListNoviko = this.Products.Select(x => x).Where(x => x.id_supplier == novikoId).ToList();
+            
+            foreach (ProductViewModel s in productListNoviko)
+            {
+                var result1 = novikoProducts.Where(y => y.Reference == s.id.ToString()).ToList();
+                if (result1.Count == 0)
+                {
+                    result.Add(s);
+                }
+            }
+
+            return result;
+        }
+
 
         public List<ProductViewModel> GetProductForRepricing(int idManufacturer, int idSupplier, List<int> idCategories)
         {

@@ -23,6 +23,7 @@ namespace ACEAgent.Models
         public bool Active { get; set; }
 
         [Display(Name = "Objednán do")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? OrderDate { get; set; }
     }
 

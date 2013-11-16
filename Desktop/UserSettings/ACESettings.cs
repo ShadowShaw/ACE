@@ -22,6 +22,7 @@ namespace Desktop.UserSettings
         {
             Eshops = new List<EshopConfiguration>();
         }
+        public int ActiveEshopIndex { get; set; }
     }
         
     public class EshopConfiguration
@@ -31,13 +32,11 @@ namespace Desktop.UserSettings
         public string BaseUrl { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public bool UseAskino { get; set; }
+        public bool UseNoviko { get; set; }
+        public string AskinoFilePath { get; set; }
+        public string NovikoFilePath { get; set; }
     }
-
-    //public class HtmlAdresses
-    //{
-    //    public string Name { get; set; }
-    //    public string Adress { get; set; }
-    //}
 
     public class FormSize
     {
@@ -89,6 +88,10 @@ namespace Desktop.UserSettings
     {
         public const string HomePath = "http://ace-2.apphb.com/HtmlDocs/Home.html";
         public const string ChangeLogPath = "http://ace-2.apphb.com/HtmlDocs/ChangeLog.html";
+        public const string EshopsSettingsPath = "Settings\\Eshops.xml";
+        public const string ColumnsSettingsPath = "Settings\\Columns.xml";
+        public const string SizesSettingsPath = "Settings\\Sizes.xml";
+        public const string DesktopSettingsPath = "Settings\\ACEDesktop.xml";
 
         public EshopList Eshops { get; set; }
         public FormSizesList FormSizes { get; set; }
@@ -210,42 +213,42 @@ namespace Desktop.UserSettings
 
         public void LoadColumnWidth()
         {
-            this.ColumnWidth = ACESettingsTools.LoadSettings<ColumnWidthList>("Columns.xml");
+            this.ColumnWidth = ACESettingsTools.LoadSettings<ColumnWidthList>(ColumnsSettingsPath);
         }
 
         public void SaveColumnWidth()
         {
-            ACESettingsTools.SaveSettings<ColumnWidthList>("Columns.xml", ColumnWidth);
+            ACESettingsTools.SaveSettings<ColumnWidthList>(ColumnsSettingsPath, ColumnWidth);
         }
 
         public void LoadValues()
         {
-            this.Values = ACESettingsTools.LoadSettings<GenericKeyValueList>("ACEDesktop.xml");
+            this.Values = ACESettingsTools.LoadSettings<GenericKeyValueList>(DesktopSettingsPath);
         }
 
         public void SaveValues()
         {
-            ACESettingsTools.SaveSettings<GenericKeyValueList>("ACEDesktop.xml", Values);
+            ACESettingsTools.SaveSettings<GenericKeyValueList>(DesktopSettingsPath, Values);
         }
         
         public void LoadEshops()
         {
-            this.Eshops = ACESettingsTools.LoadSettings<EshopList>("Eshops.xml");
+            this.Eshops = ACESettingsTools.LoadSettings<EshopList>(EshopsSettingsPath);
         }
 
         public void SaveEshops()
         {
-            ACESettingsTools.SaveSettings<EshopList>("Eshops.xml", Eshops);
+            ACESettingsTools.SaveSettings<EshopList>(EshopsSettingsPath, Eshops);
         }
 
         public void LoadFormSizes()
         {
-            this.FormSizes = ACESettingsTools.LoadSettings<FormSizesList>("Sizes.xml");
+            this.FormSizes = ACESettingsTools.LoadSettings<FormSizesList>(SizesSettingsPath);
         }
 
         public void SaveFormSizes()
         {
-            ACESettingsTools.SaveSettings<FormSizesList>("Sizes.xml", FormSizes);
+            ACESettingsTools.SaveSettings<FormSizesList>(SizesSettingsPath, FormSizes);
         }
 
 

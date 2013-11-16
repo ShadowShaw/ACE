@@ -6,7 +6,9 @@
 
 @Html.Partial("PageTitlePartial")
 
-<img class="img-thumbnailNoBorder" src="/Images/login.gif" data-src="holder.js/250x250" alt="250x250" style="width: 250px; height: 250px; float:left;">
+
+<div>
+<img class="img-thumbnailNoBorder" src="/Images/login.gif" data-src="holder.js/250x250" alt="250x250" style="width: 250px; height: 250px; float:left">
 
 <section id="loginForm">
 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
@@ -54,6 +56,7 @@
     </p>
 }
 </section>
+</div>
 
 @*<section class="social" id="socialLoginForm">
     <h2>Jiné metody přihlášení</h2>

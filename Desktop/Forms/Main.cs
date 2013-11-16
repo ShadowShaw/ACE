@@ -24,64 +24,23 @@ using System.Diagnostics;
 using Core.Interfaces;
 using System.Threading.Tasks;
 using Microsoft;
+using Core.Suppliers;
 
 namespace Desktop
 {
     public partial class Main : Form
     {
-        //CoreX coreX;
-
         public Version ACEVersion;
-        List<ChangeRecord> ConsistencyChanges = new List<ChangeRecord>();
         public EngineService Engine;
         public ACESettings mainSettings;
-
+        
+        List<ChangeRecord> ConsistencyChanges = new List<ChangeRecord>();
         private int IndexForChange = -1;
         private FieldType ChangedType;
         
         
         #region OldFunctionality
-
-
-        private void bSave_Click(object sender, EventArgs e)
-        {
-            if (saveDialog.ShowDialog() == DialogResult.OK)
-            {
-                //coreX.saveProducts(saveDialog.FileName);
-            }
-        }
-
-        private void openZverac_Click(object sender, EventArgs e)
-        {
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                //coreX.openProducts(openDialog.FileName);
-                //statusAgent.Enabled = true;
-                //dgView.DataSource = coreX.getProducts();
-            }
-        }
-
-        private void openAskino_Click(object sender, EventArgs e)
-        {
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                //coreX.openAskino(openDialog.FileName);
-                //statusPresta.Enabled = true;
-                //dgView.DataSource = coreX.getAskino();
-            }
-        }
-
-        private void openNoviko_Click(object sender, EventArgs e)
-        {
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                //coreX.openNoviko(openDialog.FileName);
-                //statusLogin.Enabled = true;
-                //dgView.DataSource = coreX.getNoviko();
-            }
-        }
-
-
+        
         private void bConsistencyNoviko_Click(object sender, EventArgs e)
         {
             //if ((statusAgent.Enabled) && (statusLogin.Enabled))
@@ -357,50 +316,55 @@ namespace Desktop
 
             mainSettings = new ACESettings();
 
-            if (File.Exists("Eshops.xml"))
+            if (File.Exists(ACESettings.EshopsSettingsPath))
             {
                 mainSettings.LoadEshops();
                 if (mainSettings.Eshops.Eshops.Count > 0)
                 {
-                    Engine.InitPrestaServices(mainSettings.Eshops.Eshops[0].BaseUrl, mainSettings.Eshops.Eshops[0].Password);
-                    ePrestaToken.Text = mainSettings.Eshops.Eshops[0].Password;
-                    ePrestaUrl.Text = mainSettings.Eshops.Eshops[0].BaseUrl;
+                    Engine.InitPrestaServices(mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].BaseUrl, mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].Password);
+                    ePrestaToken.Text = mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].Password;
+                    ePrestaUrl.Text = mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].BaseUrl;
+                    this.statusActiveEshop.Text = "Aktivní eshop: " + mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].EshopName;
+
+                    chAskinoSetup.Checked = mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].UseAskino;
+                    chNovikoSetup.Checked = mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].UseNoviko;
                 }
             }
             else
             {
                 Engine.InitPrestaServices("", "");
                 MessageBox.Show("Nenalezen soubor s konfigurací připojení k eshopům. Prosím nastavte připojení.", "Nenalezen soubor s konfigurací připojení k eshopům.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                File.Create("Eshops.xml");
+                Directory.CreateDirectory(Path.GetDirectoryName(ACESettings.EshopsSettingsPath));
+                File.Create(ACESettings.EshopsSettingsPath);
             }
 
-            if (File.Exists("Columns.xml"))
+            if (File.Exists(ACESettings.ColumnsSettingsPath))
             {
                 mainSettings.LoadColumnWidth();
             }
             else
             {
-                File.Create("Columns.xml");
+                File.Create(ACESettings.ColumnsSettingsPath);
             }
 
 
-            if (File.Exists("Sizes.xml"))
+            if (File.Exists(ACESettings.SizesSettingsPath))
             {
                 mainSettings.LoadFormSizes();
                 this.Size = mainSettings.GetSize("main");
             }
             else
             {
-                File.Create("Sizes.xml");
+                File.Create(ACESettings.SizesSettingsPath);
             }
 
-            if (File.Exists("ACEDesktop.xml"))
+            if (File.Exists(ACESettings.DesktopSettingsPath))
             {
                 mainSettings.LoadValues();
             }
             else
             {
-                File.Create("ACEDesktop.xml");
+                File.Create(ACESettings.DesktopSettingsPath);
             }
 
             DataGridTools.SetMainSettings(mainSettings);
@@ -445,6 +409,7 @@ namespace Desktop
             mainSettings.SaveFormSizes();
             mainSettings.SaveEshops();
             mainSettings.SaveValues();
+
             foreach (DataGridViewColumn item in dgConsistency.Columns)
             {
                 mainSettings.SetWidth(dgConsistency.Name + item.Name, item.Width);
@@ -508,6 +473,14 @@ namespace Desktop
                     this.statusProgress.Visible = false;
                     this.statusMessage.Text = "";
                     this.gbConsistency.Enabled = true;
+                    if (mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].UseAskino)
+                    {
+                        this.bConsistencyAskino.Enabled = true;
+                    }
+                    if (mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].UseNoviko)
+                    {
+                        this.bConsistencyNoviko.Enabled = true;
+                    }
                 }
             }
             else
@@ -626,10 +599,14 @@ namespace Desktop
                     mainSettings.Eshops.Eshops[i].EshopName = treeConfiguration.Nodes[i].Text;
                     mainSettings.Eshops.Eshops[i].BaseUrl = Engine.BaseUrl;
                     mainSettings.Eshops.Eshops[i].Password = Engine.ApiToken;
-                    mainSettings.Eshops.Eshops[i].Type = EshopType.Prestashop;                
+                    mainSettings.Eshops.Eshops[i].Type = EshopType.Prestashop;
+                    mainSettings.Eshops.Eshops[i].UseAskino = chAskinoSetup.Checked;
+                    mainSettings.Eshops.Eshops[i].UseNoviko = chNovikoSetup.Checked;
                 }
             }
-                        
+
+            InitEshopList();
+
             mainSettings.SaveEshops();
             MessageBox.Show("Nastavení bylo uloženo.", "Uložení nastavení", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -650,30 +627,50 @@ namespace Desktop
         {
             EshopConfiguration eshop = new EshopConfiguration();
             eshop.EshopName = "Eshop" + mainSettings.Eshops.Eshops.Count();
-            if (cbEshopType.SelectedIndex == 0)
-            {
-                eshop.Type = EshopType.Prestashop;
-            }
+            eshop.Type = EshopType.Prestashop;
             TreeNode treeNode = new TreeNode();
             mainSettings.Eshops.Eshops.Add(eshop);
             treeConfiguration.Nodes.Add(treeNode);
             InitDisplayEshopConfiguration();
         }
 
+        private void cbActiveEshop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mainSettings.Eshops.ActiveEshopIndex = cbActiveEshop.SelectedIndex;
+            this.statusActiveEshop.Text = "Aktivní eshop: " + mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].EshopName;
+            Engine.SetupPrestaServices(mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].BaseUrl, mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].Password);
+            DisableControlsOnReload();
+        }
+
+        private void InitEshopList()
+        {
+            cbActiveEshop.Items.Clear();
+            foreach (EshopConfiguration eshop in mainSettings.Eshops.Eshops)
+            {
+                cbActiveEshop.Items.Add(eshop.EshopName);
+            }
+
+            if (mainSettings.Eshops.ActiveEshopIndex != -1)
+            {
+                cbActiveEshop.SelectedIndex = mainSettings.Eshops.ActiveEshopIndex;
+            }
+        }
+
         private void InitDisplayEshopConfiguration()
         {
             if (mainSettings.Eshops.Eshops.Count > 0)
             {
-                cbEshopType.SelectedIndex = 0;
+                InitEshopList();
+                                                
                 treeConfiguration.Nodes.Clear();
                 foreach (EshopConfiguration eshop in mainSettings.Eshops.Eshops)
                 {
                     TreeNode treeNode = new TreeNode(eshop.EshopName);
                     treeConfiguration.Nodes.Add(treeNode);
                 }
-                ShowNode(treeConfiguration.Nodes[0]);
+                ShowNode(treeConfiguration.Nodes[mainSettings.Eshops.ActiveEshopIndex]);
 
-                treeConfiguration.SelectedNode = treeConfiguration.Nodes[0];
+                treeConfiguration.SelectedNode = treeConfiguration.Nodes[mainSettings.Eshops.ActiveEshopIndex];
             }
         }
 
@@ -737,6 +734,7 @@ namespace Desktop
                 }
             }
         }
+
         #endregion
 
         #region ACEHome
@@ -1069,5 +1067,76 @@ namespace Desktop
         }
 
         #endregion
+
+        private void bOpenAskino_Click(object sender, EventArgs e)
+        {
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                Engine.askinoPriceList.OpenPriceListCSV(openDialog.FileName);
+                mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].AskinoFilePath = openDialog.FileName;
+                //statusPresta.Enabled = true;
+                //dgView.DataSource = coreX.getAskino();
+            }
+        }
+
+        private void bOpenNoviko_Click(object sender, EventArgs e)
+        {
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].NovikoFilePath = openDialog.FileName;
+                Engine.novikoPriceList.OpenPriceListCSV(openDialog.FileName);
+                //statusLogin.Enabled = true;
+                //dgView.DataSource = coreX.getNoviko();
+            }
+        }
+        
+        private void bConsistencyNoviko_Click_1(object sender, EventArgs e)
+        {
+            string path = mainSettings.Eshops.Eshops[mainSettings.Eshops.ActiveEshopIndex].NovikoFilePath;
+            if (File.Exists(path))
+            {
+                Engine.novikoPriceList.OpenPriceListCSV(path);
+            }
+            else
+            {
+                MessageBox.Show("Ćeník není k dispozici, otevřete ceník Novika", "Ćeník není k dispozici", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            IndexForChange = -1;
+            lListOf.Text = "Zobrazuji produkty jenž dodavatelé již nedodávají.";
+            DataGridTools.InitGrid(dgConsistency);
+            dgConsistency.DataSource = Engine.Products.GetNonAvailableProductOfNoviko(Engine.Suppliers.GetNovikoId(), Engine.novikoPriceList.GetPriceList());
+
+            DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
+            DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category, true, false);
+            DataGridTools.AddColumn(dgConsistency, "category", TextResources.Category);
+            DataGridTools.AddColumn(dgConsistency, "id_supplier", TextResources.Supplier, false);
+            DataGridTools.AddButtonColumn(dgConsistency, "link", TextResources.LinkButton);
+            DataGridTools.AddButtonColumn(dgConsistency, "delete", TextResources.DeleteButton);
+
+            dgConsistency.DataSource = Engine.Products.GetNonAvailableProductOfNoviko(Engine.Suppliers.GetNovikoId(), Engine.novikoPriceList.GetPriceList());
+
+            for (int i = 0; i < dgConsistency.Rows.Count; i++)
+            {
+                DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
+                textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
+            };
+
+            IndexForChange = -1;
+            ChangedType = FieldType.image;
+
+
+
+            //call chceck consistency s produkty a cenikem novika
+            //call chceck consistency s produkty a cenikem askina
+        }
+
+        public void DisableControlsOnReload()
+        {
+            gbConsistency.Enabled = false;
+            gbSelectProduct.Enabled = false;
+        }
     }
 }

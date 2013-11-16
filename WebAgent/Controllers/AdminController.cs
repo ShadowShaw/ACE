@@ -204,7 +204,8 @@ namespace ACEAgent.Controllers
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
                 Payment payment = uow.Payments.GetByID(id);
-
+                ViewBag.UserList = uow.Users.GetAll().ToList();
+                
                 if (payment == null)
                 {
                     return HttpNotFound();

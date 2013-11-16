@@ -55,6 +55,7 @@
         <td>
             @Html.ActionLink("Editace", "EditModuleOrder", new { id=item.Id }, htmlAttributes: new { @class="btn btn-default btn-xs" })
             @Html.ActionLink("Smazat", "DeleteModuleOrder", new { id=item.Id }, htmlAttributes: new { @class="btn btn-default btn-xs" })        
+            @Html.ActionLink("Zobrazit fakturu", "MakeFacture", "User", new { paymentId=item.Id}, htmlAttributes: new { @class="btn btn-default btn-xs" })
         </td>
     </tr>
 }

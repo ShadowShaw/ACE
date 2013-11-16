@@ -19,7 +19,7 @@ namespace Desktop.Utils
 
             if (File.Exists(path) == false)
             {
-                //File.Create(path);
+                File.Create(path);
                 return;
             }
 

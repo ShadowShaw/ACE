@@ -1,12 +1,12 @@
 ﻿@{
-    ViewBag.Title = "Správa uživatelského účtu";
+    ViewBag.Title = "Platby a objednávky";
 }
 
 @Html.Partial("PageTitlePartial")
 
 <nav>
     <ul class="breadcrumb">
-        <li>Stav vašeho učtu: <strong>@ViewBag.Credit</strong>.</li>
+        <li>Stav vašeho učtu: <strong>@ViewBag.Credit</strong></li>
     </ul>
 </nav>
 
@@ -15,10 +15,21 @@
         <ul class="nav nav-pills nav-stacked" id="usermenu">
             <li>@Html.ActionLink("Výpis plateb", "PaymentList", "User")</li>
             <li>@Html.ActionLink("Výpis objednávek modulů", "OrdersList", "User")</li>
-            <li>@Html.ActionLink("Objednání modulů", "OrderModule", "User")</li>
+            <li>@Html.ActionLink("Přehled a objednání modulů", "OrderModule", "User")</li>
         </ul>
     </nav>
  </div>
+
+<br></br>
+<div>
+    <h4>Pokyny k platbě</h4>
+    
+    <ul>
+        <li>Platbu proveďte na učet číslo: <b>239 517 589</b></li>
+        <li>Kód banky: <b>0300</b></li>
+        <li>Jako variabilní symbol použijte svůj platební symbol</li>
+    </ul>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

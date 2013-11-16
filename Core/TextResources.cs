@@ -19,6 +19,7 @@ namespace Core
         public const string Weight = "Váha";
         public const string Id = "Id";
         public const string LinkButton = "Otevřít produkt";
+        public const string DeleteButton = "Smazat produkt";
 
 
         //dgPricing
@@ -43,7 +44,7 @@ namespace Core
 
         //modules names
         public const string PricingModuleName = "Přeceňování";
-        public const string ConsistencyModuleName = "Kontrola konzistence";
+        public const string ConsistencyModuleName = "Kontrola databáze";
         public const string PricingModuleDescription = "Modul pro přeceňování eshopu.";
         public const string ConsistencyModuleDescription = "Modul sloužící pro rychlou kontrolu databáze.";
         public const decimal PricingModulePrice = 499;

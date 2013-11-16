@@ -1,5 +1,4 @@
-﻿using Desktop.Models;
-using PrestaAccesor.Accesors;
+﻿using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using RestSharp;
 using System;
@@ -16,9 +15,7 @@ namespace Core.Bussiness
     {
         public List<supplier> Suppliers;
         public SupplierAccesor supplierAccesor;
-        private List<Askino> askino;
-        private List<Noviko> noviko;
-
+        
         public SupplierService(string BaseUrl, string Account, string Password)
         {
             supplierAccesor = new SupplierAccesor(BaseUrl, Account, "");
@@ -46,6 +43,15 @@ namespace Core.Bussiness
             return false;
         }
 
+        public long? GetAskinoId()
+        {
+            return GetSupplierId("Askino");
+        }
+
+        public long? GetNovikoId()
+        {
+            return Suppliers.Where(x => x.name.Contains("Noviko")).FirstOrDefault().id;
+        }
         private bool LoadSuppliers()
         {
             List<int> ids = new List<int>();

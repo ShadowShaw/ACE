@@ -1,9 +1,9 @@
 ﻿using LINQtoCSV;
 using System;
 
-namespace Desktop.Models
+namespace Core.Suppliers
 {
-    public class Askino
+    public class AskinoModel
     {
         [CsvColumn(FieldIndex = 1)]
         public string LocationCode { get; set; }

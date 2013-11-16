@@ -1,4 +1,5 @@
-﻿using Core.Utils;
+﻿using Core.Suppliers;
+using Core.Utils;
 using Core.ViewModels;
 using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
@@ -21,6 +22,9 @@ namespace Core.Bussiness
         private CategoryService categoryService;
         private LanguageService languageService;
         private SupplierService supplierService;
+
+        public AskinoPriceList askinoPriceList;
+        public NovikoPriceList novikoPriceList;
 
         public LoginService Login 
         {
@@ -73,6 +77,8 @@ namespace Core.Bussiness
         public EngineService()
         {
             loginService = new LoginService();
+            askinoPriceList = new AskinoPriceList();
+            novikoPriceList = new NovikoPriceList();
 
            // BaseUrl = "http://testpresta.mzf.cz/prestashop/";
            // apiToken = "BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8";
@@ -128,20 +134,6 @@ namespace Core.Bussiness
                 result = true;
             }
             
-            return result;
-        }
-
-        public List<TreeItem> CreateCategoryTreeList()
-        {
-            List<TreeItem> result = new List<TreeItem>();
-            //List<int> Ids = categoryAccesor.GetIds();
-
-            //foreach (int id in Ids)
-            //{
-            //    category item = categoryAccesor.Get(id) as category;
-            //    result.Add(new TreeItem(item.name, item.level_depth, item.id.Value));
-            //}
-
             return result;
         }
 

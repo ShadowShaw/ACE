@@ -5,9 +5,7 @@ using System.Text;
 using System.IO;
 using LINQtoCSV;
 
-using Desktop.Models;
-
-namespace Desktop
+namespace Core.Suppliers
 {
     public class CSVAccessor
     {
@@ -63,12 +61,6 @@ namespace Desktop
                 //something
             }
             return result;
-        }
-
-          
-        public void saveProducts(string filename, IEnumerable<Product> products)
-        {
-            context.Write(products, filename, outputFileDescription);
         }
     }
 }

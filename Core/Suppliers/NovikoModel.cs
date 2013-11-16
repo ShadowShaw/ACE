@@ -1,9 +1,9 @@
 ﻿using LINQtoCSV;
 using System;
 
-namespace Desktop.Models
+namespace Core.Suppliers
 {
-    public class Noviko
+    public class NovikoModel
     {
         [CsvColumn(FieldIndex = 1)]
         public string Reference { get; set; }

@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.openDialog = new System.Windows.Forms.OpenFileDialog();
             this.productsSD = new System.Windows.Forms.SaveFileDialog();
             this.menu = new System.Windows.Forms.MenuStrip();
@@ -48,7 +48,7 @@
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusAgent = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLogin = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusPresta = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusActiveEshop = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.statusMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveDialog = new System.Windows.Forms.SaveFileDialog();
@@ -116,19 +116,26 @@
             this.dgPricing = new System.Windows.Forms.DataGridView();
             this.bPricingSave = new System.Windows.Forms.Button();
             this.tpSetup = new System.Windows.Forms.TabPage();
-            this.cbEshopType = new System.Windows.Forms.ComboBox();
+            this.lActiveEshop = new System.Windows.Forms.Label();
+            this.cbActiveEshop = new System.Windows.Forms.ComboBox();
             this.bDelEshop = new System.Windows.Forms.Button();
             this.bAddEshop = new System.Windows.Forms.Button();
             this.treeConfiguration = new System.Windows.Forms.TreeView();
             this.gbPrestaSetup = new System.Windows.Forms.GroupBox();
+            this.setupSeparator = new System.Windows.Forms.Label();
+            this.bOpenNoviko = new System.Windows.Forms.Button();
+            this.bOpenAskino = new System.Windows.Forms.Button();
+            this.lSupplierSetup = new System.Windows.Forms.Label();
+            this.chAskinoSetup = new System.Windows.Forms.CheckBox();
+            this.chNovikoSetup = new System.Windows.Forms.CheckBox();
             this.lEshopType = new System.Windows.Forms.Label();
             this.cbTypeEshop = new System.Windows.Forms.ComboBox();
-            this.bPrestaTest = new System.Windows.Forms.Button();
-            this.bSavePresta = new System.Windows.Forms.Button();
             this.ePrestaToken = new System.Windows.Forms.TextBox();
             this.ePrestaUrl = new System.Windows.Forms.TextBox();
             this.lPrestaToken = new System.Windows.Forms.Label();
             this.lPrestaUrl = new System.Windows.Forms.Label();
+            this.bSavePresta = new System.Windows.Forms.Button();
+            this.bPrestaTest = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.status.SuspendLayout();
             this.tc.SuspendLayout();
@@ -153,7 +160,7 @@
             this.toolsToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(1015, 24);
+            this.menu.Size = new System.Drawing.Size(1031, 24);
             this.menu.TabIndex = 13;
             this.menu.Text = "menuStrip1";
             // 
@@ -200,20 +207,20 @@
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusAgent,
             this.statusLogin,
-            this.statusPresta,
+            this.statusActiveEshop,
             this.statusProgress,
             this.statusMessage});
-            this.status.Location = new System.Drawing.Point(0, 644);
+            this.status.Location = new System.Drawing.Point(0, 647);
             this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(1015, 22);
+            this.status.Size = new System.Drawing.Size(1031, 22);
             this.status.TabIndex = 14;
             this.status.Text = "Status";
             // 
             // statusAgent
             // 
             this.statusAgent.Name = "statusAgent";
-            this.statusAgent.Size = new System.Drawing.Size(109, 17);
-            this.statusAgent.Text = "Přihlášeí k ACE Agent";
+            this.statusAgent.Size = new System.Drawing.Size(115, 17);
+            this.statusAgent.Text = "Přihlášení k ACE Agent";
             // 
             // statusLogin
             // 
@@ -222,12 +229,11 @@
             this.statusLogin.Text = "Login";
             this.statusLogin.Visible = false;
             // 
-            // statusPresta
+            // statusActiveEshop
             // 
-            this.statusPresta.Name = "statusPresta";
-            this.statusPresta.Size = new System.Drawing.Size(70, 17);
-            this.statusPresta.Text = "Eshop Presta";
-            this.statusPresta.Visible = false;
+            this.statusActiveEshop.Name = "statusActiveEshop";
+            this.statusActiveEshop.Size = new System.Drawing.Size(75, 17);
+            this.statusActiveEshop.Text = "Aktivní eshop:";
             // 
             // statusProgress
             // 
@@ -257,7 +263,7 @@
             this.tc.Location = new System.Drawing.Point(0, 27);
             this.tc.Name = "tc";
             this.tc.SelectedIndex = 0;
-            this.tc.Size = new System.Drawing.Size(1015, 614);
+            this.tc.Size = new System.Drawing.Size(1031, 617);
             this.tc.TabIndex = 17;
             // 
             // tpHome
@@ -269,7 +275,7 @@
             this.tpHome.Location = new System.Drawing.Point(4, 25);
             this.tpHome.Name = "tpHome";
             this.tpHome.Padding = new System.Windows.Forms.Padding(3);
-            this.tpHome.Size = new System.Drawing.Size(1007, 585);
+            this.tpHome.Size = new System.Drawing.Size(1023, 584);
             this.tpHome.TabIndex = 0;
             this.tpHome.Text = "Home";
             this.tpHome.UseVisualStyleBackColor = true;
@@ -294,38 +300,38 @@
             this.dgHomeModules.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgHomeModules.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dgHomeModules.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgHomeModules.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgHomeModules.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgHomeModules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgHomeModules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Module,
             this.ModuleActive,
             this.OrderedTo});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgHomeModules.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgHomeModules.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgHomeModules.Location = new System.Drawing.Point(6, 19);
             this.dgHomeModules.Name = "dgHomeModules";
             this.dgHomeModules.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgHomeModules.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgHomeModules.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgHomeModules.RowHeadersVisible = false;
             this.dgHomeModules.Size = new System.Drawing.Size(371, 297);
             this.dgHomeModules.TabIndex = 0;
@@ -471,7 +477,7 @@
             // 
             this.bLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bLogin.Location = new System.Drawing.Point(10, 537);
+            this.bLogin.Location = new System.Drawing.Point(10, 540);
             this.bLogin.Name = "bLogin";
             this.bLogin.Size = new System.Drawing.Size(383, 34);
             this.bLogin.TabIndex = 2;
@@ -487,7 +493,7 @@
             this.homeBrowser.Location = new System.Drawing.Point(404, 6);
             this.homeBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.homeBrowser.Name = "homeBrowser";
-            this.homeBrowser.Size = new System.Drawing.Size(600, 573);
+            this.homeBrowser.Size = new System.Drawing.Size(601, 576);
             this.homeBrowser.TabIndex = 0;
             // 
             // tpConsistency
@@ -498,9 +504,9 @@
             this.tpConsistency.Controls.Add(this.gbConsistency);
             this.tpConsistency.Location = new System.Drawing.Point(4, 25);
             this.tpConsistency.Name = "tpConsistency";
-            this.tpConsistency.Size = new System.Drawing.Size(1007, 585);
+            this.tpConsistency.Size = new System.Drawing.Size(1023, 588);
             this.tpConsistency.TabIndex = 3;
-            this.tpConsistency.Text = "Kontrola konzistence databáze eshopu";
+            this.tpConsistency.Text = "Kontrola databáze eshopu";
             this.tpConsistency.UseVisualStyleBackColor = true;
             // 
             // lListOf
@@ -532,34 +538,34 @@
             this.dgConsistency.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgConsistency.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgConsistency.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgConsistency.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsistency.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsistency.DefaultCellStyle = dataGridViewCellStyle17;
             this.dgConsistency.Location = new System.Drawing.Point(243, 30);
             this.dgConsistency.Name = "dgConsistency";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgConsistency.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgConsistency.Size = new System.Drawing.Size(761, 552);
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgConsistency.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.dgConsistency.Size = new System.Drawing.Size(762, 559);
             this.dgConsistency.TabIndex = 22;
             this.dgConsistency.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellClick);
             this.dgConsistency.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellValueChanged);
@@ -588,7 +594,7 @@
             // bSaveChanges
             // 
             this.bSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSaveChanges.Location = new System.Drawing.Point(11, 401);
+            this.bSaveChanges.Location = new System.Drawing.Point(11, 493);
             this.bSaveChanges.Name = "bSaveChanges";
             this.bSaveChanges.Size = new System.Drawing.Size(200, 30);
             this.bSaveChanges.TabIndex = 29;
@@ -599,7 +605,7 @@
             // bWithoutWholeSalePrice
             // 
             this.bWithoutWholeSalePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutWholeSalePrice.Location = new System.Drawing.Point(11, 298);
+            this.bWithoutWholeSalePrice.Location = new System.Drawing.Point(11, 242);
             this.bWithoutWholeSalePrice.Name = "bWithoutWholeSalePrice";
             this.bWithoutWholeSalePrice.Size = new System.Drawing.Size(200, 30);
             this.bWithoutWholeSalePrice.TabIndex = 28;
@@ -610,7 +616,7 @@
             // bWithoutLongDescription
             // 
             this.bWithoutLongDescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutLongDescription.Location = new System.Drawing.Point(11, 205);
+            this.bWithoutLongDescription.Location = new System.Drawing.Point(11, 166);
             this.bWithoutLongDescription.Name = "bWithoutLongDescription";
             this.bWithoutLongDescription.Size = new System.Drawing.Size(200, 30);
             this.bWithoutLongDescription.TabIndex = 27;
@@ -621,7 +627,7 @@
             // bWithoutPrice
             // 
             this.bWithoutPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutPrice.Location = new System.Drawing.Point(11, 251);
+            this.bWithoutPrice.Location = new System.Drawing.Point(11, 204);
             this.bWithoutPrice.Name = "bWithoutPrice";
             this.bWithoutPrice.Size = new System.Drawing.Size(200, 30);
             this.bWithoutPrice.TabIndex = 26;
@@ -631,19 +637,19 @@
             // 
             // bConsistencyNoviko
             // 
-            this.bConsistencyNoviko.Enabled = false;
             this.bConsistencyNoviko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConsistencyNoviko.Location = new System.Drawing.Point(11, 489);
+            this.bConsistencyNoviko.Location = new System.Drawing.Point(11, 318);
             this.bConsistencyNoviko.Name = "bConsistencyNoviko";
-            this.bConsistencyNoviko.Size = new System.Drawing.Size(200, 36);
+            this.bConsistencyNoviko.Size = new System.Drawing.Size(200, 30);
             this.bConsistencyNoviko.TabIndex = 12;
-            this.bConsistencyNoviko.Text = "Zkontroluj konzistenci dodavatele Noviko";
+            this.bConsistencyNoviko.Text = "jenž se nedodávají";
             this.bConsistencyNoviko.UseVisualStyleBackColor = true;
+            this.bConsistencyNoviko.Click += new System.EventHandler(this.bConsistencyNoviko_Click_1);
             // 
             // bWithoutWeight
             // 
             this.bWithoutWeight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutWeight.Location = new System.Drawing.Point(11, 111);
+            this.bWithoutWeight.Location = new System.Drawing.Point(11, 92);
             this.bWithoutWeight.Name = "bWithoutWeight";
             this.bWithoutWeight.Size = new System.Drawing.Size(200, 30);
             this.bWithoutWeight.TabIndex = 25;
@@ -655,9 +661,9 @@
             // 
             this.bConsistencyAskino.Enabled = false;
             this.bConsistencyAskino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConsistencyAskino.Location = new System.Drawing.Point(11, 437);
+            this.bConsistencyAskino.Location = new System.Drawing.Point(11, 445);
             this.bConsistencyAskino.Name = "bConsistencyAskino";
-            this.bConsistencyAskino.Size = new System.Drawing.Size(200, 46);
+            this.bConsistencyAskino.Size = new System.Drawing.Size(200, 38);
             this.bConsistencyAskino.TabIndex = 13;
             this.bConsistencyAskino.Text = "Zkontroluj konzistenci dodavatele Askino";
             this.bConsistencyAskino.UseVisualStyleBackColor = true;
@@ -665,7 +671,7 @@
             // bEmptyManufacturer
             // 
             this.bEmptyManufacturer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bEmptyManufacturer.Location = new System.Drawing.Point(11, 64);
+            this.bEmptyManufacturer.Location = new System.Drawing.Point(11, 55);
             this.bEmptyManufacturer.Name = "bEmptyManufacturer";
             this.bEmptyManufacturer.Size = new System.Drawing.Size(200, 30);
             this.bEmptyManufacturer.TabIndex = 15;
@@ -676,7 +682,7 @@
             // bWithoutShortDescription
             // 
             this.bWithoutShortDescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutShortDescription.Location = new System.Drawing.Point(11, 158);
+            this.bWithoutShortDescription.Location = new System.Drawing.Point(11, 129);
             this.bWithoutShortDescription.Name = "bWithoutShortDescription";
             this.bWithoutShortDescription.Size = new System.Drawing.Size(200, 30);
             this.bWithoutShortDescription.TabIndex = 24;
@@ -699,7 +705,7 @@
             // 
             this.bWithoutImage.Enabled = false;
             this.bWithoutImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutImage.Location = new System.Drawing.Point(11, 345);
+            this.bWithoutImage.Location = new System.Drawing.Point(11, 280);
             this.bWithoutImage.Name = "bWithoutImage";
             this.bWithoutImage.Size = new System.Drawing.Size(200, 30);
             this.bWithoutImage.TabIndex = 23;
@@ -717,10 +723,9 @@
             this.tpPriceUpdate.Controls.Add(this.lPricingManufacturerIndication);
             this.tpPriceUpdate.Controls.Add(this.gbSelectProduct);
             this.tpPriceUpdate.Controls.Add(this.dgPricing);
-            this.tpPriceUpdate.Controls.Add(this.bPricingSave);
             this.tpPriceUpdate.Location = new System.Drawing.Point(4, 25);
             this.tpPriceUpdate.Name = "tpPriceUpdate";
-            this.tpPriceUpdate.Size = new System.Drawing.Size(1007, 585);
+            this.tpPriceUpdate.Size = new System.Drawing.Size(1023, 588);
             this.tpPriceUpdate.TabIndex = 2;
             this.tpPriceUpdate.Text = "Přeceňování eshopu";
             this.tpPriceUpdate.UseVisualStyleBackColor = true;
@@ -787,6 +792,7 @@
             this.gbSelectProduct.Controls.Add(this.bPricingOverLimit);
             this.gbSelectProduct.Controls.Add(this.lPricingBellowLimit);
             this.gbSelectProduct.Controls.Add(this.ePricingBellowLimit);
+            this.gbSelectProduct.Controls.Add(this.bPricingSave);
             this.gbSelectProduct.Controls.Add(this.rbPricingProcent);
             this.gbSelectProduct.Controls.Add(this.treePricing);
             this.gbSelectProduct.Controls.Add(this.lPricingSupplier);
@@ -799,7 +805,7 @@
             this.gbSelectProduct.Enabled = false;
             this.gbSelectProduct.Location = new System.Drawing.Point(8, 36);
             this.gbSelectProduct.Name = "gbSelectProduct";
-            this.gbSelectProduct.Size = new System.Drawing.Size(289, 504);
+            this.gbSelectProduct.Size = new System.Drawing.Size(289, 542);
             this.gbSelectProduct.TabIndex = 20;
             this.gbSelectProduct.TabStop = false;
             this.gbSelectProduct.Text = "Přeceňování";
@@ -961,43 +967,49 @@
             // 
             this.dgPricing.AllowUserToAddRows = false;
             this.dgPricing.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgPricing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgPricing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgPricing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgPricing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgPricing.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgPricing.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgPricing.Location = new System.Drawing.Point(303, 34);
             this.dgPricing.Name = "dgPricing";
             this.dgPricing.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgPricing.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgPricing.Size = new System.Drawing.Size(696, 506);
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgPricing.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgPricing.Size = new System.Drawing.Size(712, 544);
             this.dgPricing.TabIndex = 17;
             // 
             // bPricingSave
             // 
+            this.bPricingSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bPricingSave.Enabled = false;
             this.bPricingSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPricingSave.Location = new System.Drawing.Point(8, 547);
+            this.bPricingSave.Location = new System.Drawing.Point(10, 507);
             this.bPricingSave.Name = "bPricingSave";
-            this.bPricingSave.Size = new System.Drawing.Size(991, 32);
+            this.bPricingSave.Size = new System.Drawing.Size(269, 24);
             this.bPricingSave.TabIndex = 18;
             this.bPricingSave.Text = "Ulož přeceněné produkty";
             this.bPricingSave.UseVisualStyleBackColor = true;
@@ -1005,36 +1017,48 @@
             // 
             // tpSetup
             // 
-            this.tpSetup.Controls.Add(this.cbEshopType);
+            this.tpSetup.Controls.Add(this.lActiveEshop);
+            this.tpSetup.Controls.Add(this.cbActiveEshop);
             this.tpSetup.Controls.Add(this.bDelEshop);
             this.tpSetup.Controls.Add(this.bAddEshop);
             this.tpSetup.Controls.Add(this.treeConfiguration);
             this.tpSetup.Controls.Add(this.gbPrestaSetup);
+            this.tpSetup.Controls.Add(this.bSavePresta);
+            this.tpSetup.Controls.Add(this.bPrestaTest);
             this.tpSetup.Location = new System.Drawing.Point(4, 25);
             this.tpSetup.Name = "tpSetup";
             this.tpSetup.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSetup.Size = new System.Drawing.Size(1007, 585);
+            this.tpSetup.Size = new System.Drawing.Size(1022, 581);
             this.tpSetup.TabIndex = 1;
-            this.tpSetup.Text = "Nastavení připojení k eshopu";
+            this.tpSetup.Text = "Konfigurace";
             this.tpSetup.UseVisualStyleBackColor = true;
             // 
-            // cbEshopType
+            // lActiveEshop
             // 
-            this.cbEshopType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbEshopType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbEshopType.FormattingEnabled = true;
-            this.cbEshopType.Items.AddRange(new object[] {
-            "Prestashop"});
-            this.cbEshopType.Location = new System.Drawing.Point(8, 522);
-            this.cbEshopType.Name = "cbEshopType";
-            this.cbEshopType.Size = new System.Drawing.Size(121, 21);
-            this.cbEshopType.TabIndex = 5;
+            this.lActiveEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lActiveEshop.AutoSize = true;
+            this.lActiveEshop.Location = new System.Drawing.Point(8, 559);
+            this.lActiveEshop.Name = "lActiveEshop";
+            this.lActiveEshop.Size = new System.Drawing.Size(73, 13);
+            this.lActiveEshop.TabIndex = 6;
+            this.lActiveEshop.Text = "Aktivní eshop";
+            // 
+            // cbActiveEshop
+            // 
+            this.cbActiveEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbActiveEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbActiveEshop.FormattingEnabled = true;
+            this.cbActiveEshop.Location = new System.Drawing.Point(87, 556);
+            this.cbActiveEshop.Name = "cbActiveEshop";
+            this.cbActiveEshop.Size = new System.Drawing.Size(199, 21);
+            this.cbActiveEshop.TabIndex = 5;
+            this.cbActiveEshop.SelectedIndexChanged += new System.EventHandler(this.cbActiveEshop_SelectedIndexChanged);
             // 
             // bDelEshop
             // 
             this.bDelEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bDelEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bDelEshop.Location = new System.Drawing.Point(135, 550);
+            this.bDelEshop.Location = new System.Drawing.Point(450, 554);
             this.bDelEshop.Name = "bDelEshop";
             this.bDelEshop.Size = new System.Drawing.Size(151, 23);
             this.bDelEshop.TabIndex = 4;
@@ -1046,7 +1070,7 @@
             // 
             this.bAddEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bAddEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bAddEshop.Location = new System.Drawing.Point(135, 521);
+            this.bAddEshop.Location = new System.Drawing.Point(293, 554);
             this.bAddEshop.Name = "bAddEshop";
             this.bAddEshop.Size = new System.Drawing.Size(151, 23);
             this.bAddEshop.TabIndex = 3;
@@ -1063,7 +1087,7 @@
             this.treeConfiguration.LabelEdit = true;
             this.treeConfiguration.Location = new System.Drawing.Point(8, 6);
             this.treeConfiguration.Name = "treeConfiguration";
-            this.treeConfiguration.Size = new System.Drawing.Size(278, 510);
+            this.treeConfiguration.Size = new System.Drawing.Size(278, 544);
             this.treeConfiguration.TabIndex = 0;
             this.treeConfiguration.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeConfiguration_AfterLabelEdit);
             this.treeConfiguration.DoubleClick += new System.EventHandler(this.treeConfiguration_DoubleClick);
@@ -1074,20 +1098,88 @@
             this.gbPrestaSetup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbPrestaSetup.Controls.Add(this.setupSeparator);
+            this.gbPrestaSetup.Controls.Add(this.bOpenNoviko);
+            this.gbPrestaSetup.Controls.Add(this.bOpenAskino);
+            this.gbPrestaSetup.Controls.Add(this.lSupplierSetup);
+            this.gbPrestaSetup.Controls.Add(this.chAskinoSetup);
+            this.gbPrestaSetup.Controls.Add(this.chNovikoSetup);
             this.gbPrestaSetup.Controls.Add(this.lEshopType);
             this.gbPrestaSetup.Controls.Add(this.cbTypeEshop);
-            this.gbPrestaSetup.Controls.Add(this.bPrestaTest);
-            this.gbPrestaSetup.Controls.Add(this.bSavePresta);
             this.gbPrestaSetup.Controls.Add(this.ePrestaToken);
             this.gbPrestaSetup.Controls.Add(this.ePrestaUrl);
             this.gbPrestaSetup.Controls.Add(this.lPrestaToken);
             this.gbPrestaSetup.Controls.Add(this.lPrestaUrl);
             this.gbPrestaSetup.Location = new System.Drawing.Point(292, 6);
             this.gbPrestaSetup.Name = "gbPrestaSetup";
-            this.gbPrestaSetup.Size = new System.Drawing.Size(707, 573);
+            this.gbPrestaSetup.Size = new System.Drawing.Size(722, 544);
             this.gbPrestaSetup.TabIndex = 0;
             this.gbPrestaSetup.TabStop = false;
-            this.gbPrestaSetup.Text = "Nastavení připojení k eshopu";
+            this.gbPrestaSetup.Text = "Konfigurace eshopu";
+            // 
+            // setupSeparator
+            // 
+            this.setupSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.setupSeparator.BackColor = System.Drawing.SystemColors.Control;
+            this.setupSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.setupSeparator.Location = new System.Drawing.Point(0, 208);
+            this.setupSeparator.Name = "setupSeparator";
+            this.setupSeparator.Size = new System.Drawing.Size(722, 2);
+            this.setupSeparator.TabIndex = 15;
+            // 
+            // bOpenNoviko
+            // 
+            this.bOpenNoviko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bOpenNoviko.Location = new System.Drawing.Point(198, 288);
+            this.bOpenNoviko.Name = "bOpenNoviko";
+            this.bOpenNoviko.Size = new System.Drawing.Size(182, 23);
+            this.bOpenNoviko.TabIndex = 14;
+            this.bOpenNoviko.Text = "Otevřít ceník Novika";
+            this.bOpenNoviko.UseVisualStyleBackColor = true;
+            this.bOpenNoviko.Click += new System.EventHandler(this.bOpenNoviko_Click);
+            // 
+            // bOpenAskino
+            // 
+            this.bOpenAskino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bOpenAskino.Location = new System.Drawing.Point(198, 250);
+            this.bOpenAskino.Name = "bOpenAskino";
+            this.bOpenAskino.Size = new System.Drawing.Size(182, 23);
+            this.bOpenAskino.TabIndex = 13;
+            this.bOpenAskino.Text = "Otevřít ceník Askina";
+            this.bOpenAskino.UseVisualStyleBackColor = true;
+            this.bOpenAskino.Click += new System.EventHandler(this.bOpenAskino_Click);
+            // 
+            // lSupplierSetup
+            // 
+            this.lSupplierSetup.AutoSize = true;
+            this.lSupplierSetup.Location = new System.Drawing.Point(22, 224);
+            this.lSupplierSetup.Name = "lSupplierSetup";
+            this.lSupplierSetup.Size = new System.Drawing.Size(113, 13);
+            this.lSupplierSetup.TabIndex = 12;
+            this.lSupplierSetup.Text = "Nastavení dodavatelů";
+            // 
+            // chAskinoSetup
+            // 
+            this.chAskinoSetup.AutoSize = true;
+            this.chAskinoSetup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chAskinoSetup.Location = new System.Drawing.Point(35, 253);
+            this.chAskinoSetup.Name = "chAskinoSetup";
+            this.chAskinoSetup.Size = new System.Drawing.Size(55, 17);
+            this.chAskinoSetup.TabIndex = 9;
+            this.chAskinoSetup.Text = "Askino";
+            this.chAskinoSetup.UseVisualStyleBackColor = true;
+            // 
+            // chNovikoSetup
+            // 
+            this.chNovikoSetup.AutoSize = true;
+            this.chNovikoSetup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chNovikoSetup.Location = new System.Drawing.Point(35, 291);
+            this.chNovikoSetup.Name = "chNovikoSetup";
+            this.chNovikoSetup.Size = new System.Drawing.Size(57, 17);
+            this.chNovikoSetup.TabIndex = 8;
+            this.chNovikoSetup.Text = "Noviko";
+            this.chNovikoSetup.UseVisualStyleBackColor = true;
             // 
             // lEshopType
             // 
@@ -1106,34 +1198,10 @@
             this.cbTypeEshop.FormattingEnabled = true;
             this.cbTypeEshop.Items.AddRange(new object[] {
             "Prestashop"});
-            this.cbTypeEshop.Location = new System.Drawing.Point(143, 32);
+            this.cbTypeEshop.Location = new System.Drawing.Point(158, 32);
             this.cbTypeEshop.Name = "cbTypeEshop";
             this.cbTypeEshop.Size = new System.Drawing.Size(544, 21);
             this.cbTypeEshop.TabIndex = 6;
-            // 
-            // bPrestaTest
-            // 
-            this.bPrestaTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bPrestaTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPrestaTest.Location = new System.Drawing.Point(439, 173);
-            this.bPrestaTest.Name = "bPrestaTest";
-            this.bPrestaTest.Size = new System.Drawing.Size(121, 23);
-            this.bPrestaTest.TabIndex = 5;
-            this.bPrestaTest.Text = "Test připojení";
-            this.bPrestaTest.UseVisualStyleBackColor = true;
-            this.bPrestaTest.Click += new System.EventHandler(this.bPrestaTest_Click);
-            // 
-            // bSavePresta
-            // 
-            this.bSavePresta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSavePresta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSavePresta.Location = new System.Drawing.Point(566, 173);
-            this.bSavePresta.Name = "bSavePresta";
-            this.bSavePresta.Size = new System.Drawing.Size(121, 23);
-            this.bSavePresta.TabIndex = 4;
-            this.bSavePresta.Text = "Ulož nastavení";
-            this.bSavePresta.UseVisualStyleBackColor = true;
-            this.bSavePresta.Click += new System.EventHandler(this.bSavePresta_Click);
             // 
             // ePrestaToken
             // 
@@ -1142,7 +1210,7 @@
             this.ePrestaToken.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ePrestaToken.Location = new System.Drawing.Point(22, 131);
             this.ePrestaToken.Name = "ePrestaToken";
-            this.ePrestaToken.Size = new System.Drawing.Size(665, 20);
+            this.ePrestaToken.Size = new System.Drawing.Size(680, 20);
             this.ePrestaToken.TabIndex = 3;
             this.ePrestaToken.Text = "BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8";
             // 
@@ -1153,7 +1221,7 @@
             this.ePrestaUrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ePrestaUrl.Location = new System.Drawing.Point(22, 82);
             this.ePrestaUrl.Name = "ePrestaUrl";
-            this.ePrestaUrl.Size = new System.Drawing.Size(665, 20);
+            this.ePrestaUrl.Size = new System.Drawing.Size(680, 20);
             this.ePrestaUrl.TabIndex = 2;
             this.ePrestaUrl.Text = "http://testpresta.mzf.cz/prestashop/";
             // 
@@ -1175,11 +1243,35 @@
             this.lPrestaUrl.TabIndex = 0;
             this.lPrestaUrl.Text = "Adresa eshopu:";
             // 
+            // bSavePresta
+            // 
+            this.bSavePresta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bSavePresta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSavePresta.Location = new System.Drawing.Point(893, 554);
+            this.bSavePresta.Name = "bSavePresta";
+            this.bSavePresta.Size = new System.Drawing.Size(121, 23);
+            this.bSavePresta.TabIndex = 4;
+            this.bSavePresta.Text = "Ulož nastavení";
+            this.bSavePresta.UseVisualStyleBackColor = true;
+            this.bSavePresta.Click += new System.EventHandler(this.bSavePresta_Click);
+            // 
+            // bPrestaTest
+            // 
+            this.bPrestaTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bPrestaTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bPrestaTest.Location = new System.Drawing.Point(766, 554);
+            this.bPrestaTest.Name = "bPrestaTest";
+            this.bPrestaTest.Size = new System.Drawing.Size(121, 23);
+            this.bPrestaTest.TabIndex = 5;
+            this.bPrestaTest.Text = "Test připojení";
+            this.bPrestaTest.UseVisualStyleBackColor = true;
+            this.bPrestaTest.Click += new System.EventHandler(this.bPrestaTest_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1015, 666);
+            this.ClientSize = new System.Drawing.Size(1031, 669);
             this.Controls.Add(this.tc);
             this.Controls.Add(this.status);
             this.Controls.Add(this.menu);
@@ -1209,6 +1301,7 @@
             this.gbSelectProduct.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPricing)).EndInit();
             this.tpSetup.ResumeLayout(false);
+            this.tpSetup.PerformLayout();
             this.gbPrestaSetup.ResumeLayout(false);
             this.gbPrestaSetup.PerformLayout();
             this.ResumeLayout(false);
@@ -1225,7 +1318,7 @@
         private System.Windows.Forms.StatusStrip status;
         private System.Windows.Forms.ToolStripStatusLabel statusAgent;
         private System.Windows.Forms.ToolStripStatusLabel statusLogin;
-        private System.Windows.Forms.ToolStripStatusLabel statusPresta;
+        private System.Windows.Forms.ToolStripStatusLabel statusActiveEshop;
         private System.Windows.Forms.SaveFileDialog saveDialog;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.TabControl tc;
@@ -1267,7 +1360,7 @@
         private System.Windows.Forms.Button bSaveChanges;
         private System.Windows.Forms.Button bPrestaTest;
         private System.Windows.Forms.ToolStripMenuItem menuShowChangeLog;
-        private System.Windows.Forms.ComboBox cbEshopType;
+        private System.Windows.Forms.ComboBox cbActiveEshop;
         private System.Windows.Forms.Button bDelEshop;
         private System.Windows.Forms.Button bAddEshop;
         private System.Windows.Forms.TreeView treeConfiguration;
@@ -1310,6 +1403,13 @@
         private System.Windows.Forms.Label lPricingCategoryIndication;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chPricingSupplier;
+        private System.Windows.Forms.Button bOpenAskino;
+        private System.Windows.Forms.Label lSupplierSetup;
+        private System.Windows.Forms.CheckBox chAskinoSetup;
+        private System.Windows.Forms.CheckBox chNovikoSetup;
+        private System.Windows.Forms.Button bOpenNoviko;
+        private System.Windows.Forms.Label lActiveEshop;
+        private System.Windows.Forms.Label setupSeparator;
     }
 }
 

@@ -31,7 +31,7 @@ namespace Core.Migrations
             context.ACEModules.AddOrUpdate(
                   p => p.Name,
                   new ACEModule { Name = "Pøeceòování", Description = TextResources.PricingModuleDescription, MonthPrice = TextResources.PricingModulePrice },
-                  new ACEModule { Name = "Kontrola konzistence", Description = TextResources.ConsistencyModuleDescription, MonthPrice = TextResources.ConsistencyModulePrice }
+                  new ACEModule { Name = "Kontrola databáze", Description = TextResources.ConsistencyModuleDescription, MonthPrice = TextResources.ConsistencyModulePrice }
                 );
         }
     }
