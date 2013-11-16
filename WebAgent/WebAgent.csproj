@@ -312,6 +312,7 @@
     <Content Include="Images\logo.gif" />
     <Content Include="Images\logosmall.gif" />
     <Content Include="Images\mail.png" />
+    <Content Include="Images\modules-icon.png" />
     <Content Include="Images\price-tag-icon.png" />
     <Content Include="Images\product-icon.png" />
     <Content Include="Images\update-icon.png" />
