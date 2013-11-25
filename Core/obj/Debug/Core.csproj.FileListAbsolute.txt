@@ -25,3 +25,14 @@ C:\GitHub\ACE\Core\obj\Debug\Core.dll
 C:\GitHub\ACE\Core\obj\Debug\Core.pdb
 C:\GitHub\ACE\Core\obj\Debug\Core.Migrations.m1.resources
 C:\GitHub\ACE\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+C:\GitHub\ACE\Core\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\GitHub\ACE\Core\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\GitHub\ACE\Core\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+C:\GitHub\ACE\Core\bin\Debug\System.Runtime.dll
+C:\GitHub\ACE\Core\bin\Debug\System.Threading.Tasks.dll
+C:\GitHub\ACE\Core\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\GitHub\ACE\Core\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+C:\GitHub\ACE\Core\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\GitHub\ACE\Core\bin\Debug\System.Runtime.xml
+C:\GitHub\ACE\Core\bin\Debug\System.Threading.Tasks.xml
+C:\GitHub\ACE\Core\obj\Debug\Core.csproj.App.config
