@@ -5,28 +5,29 @@
 <div class="container marketing">
     <div class="row">
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
             <img class="img-thumbnail" src="/Content/images/demo.png" data-src="holder.js/100x100" alt="100x100" style="width: 100px; height: 100px;">
-            <h2>Testovací verze</h2>
+            <h3>Testovací verze</h3>
             <p>Stáhněte si zdarma testovací verzi systému ACE 2.0 a vyzkoušejte jeho výhody.</p>
             <p><input type="button" class="btn btn-default" value="Stáhnout ACE 2.0 »" onclick="location.href='@Url.Action("Download", "Home")    '" /></p>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
             <img class="img-thumbnail" src="/Content/images/logoinfo.jpg" data-src="holder.js/100x100" alt="100x100" style="width: 100px; height: 100px;">
-            <h2>Informace o ACE</h2>
+            <h3>Informace o ACE</h3>
             <p>Objevte všechny funkce systému ACE 2.0, které vám ulehčí každodenní práci s Vaším eshopem.</p>
             <p><input type="button" class="btn btn-default" value="Informace o ACE 2.0 »" onclick="location.href='@Url.Action("Info", "Home")    '" /></p>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
             <img class="img-thumbnail" src="/Content/images/terms.jpg" data-src="holder.js/100x100" alt="100x100" style="width: 100px; height: 100px;">
-            <h2>Obchodní podmínky</h2>
+            <h3>Obchodní podmínky</h3>
             <p>Seznamte se s podmínkami používání systému ACE 2.0 a způsoby platby za jeho služby.</p>
             <p><input type="button" class="btn btn-default" value="Obchodní podmínky »" onclick="location.href='@Url.Action("Terms", "Home")    '" /></p>
         </div>
     </div>
 </div>
+
 @section Carousel
 {
     @Html.Partial("_Carousel")
