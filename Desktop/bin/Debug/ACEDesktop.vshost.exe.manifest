@@ -49,19 +49,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>noU6q1JnDMZ+sULPKVpESV+PW6k=</dsig:DigestValue>
+        <dsig:DigestValue>/CEfzM8kH/dNcl3mFyBpWFjXwH8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="66560">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="58880">
       <assemblyIdentity name="Core" version="1.4.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>/2qESuBDBsIEbxjxpvnyVXnBq4c=</dsig:DigestValue>
+        <dsig:DigestValue>uZ9j7sgf0HhQV5C+RHqavyxLpmQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -133,7 +133,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>hFL4KG0IFAwbJowsvfEndY+O/Vo=</dsig:DigestValue>
+        <dsig:DigestValue>TaTYi9qhsT/LmNfxz76o8Ql2LfA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
