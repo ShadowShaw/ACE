@@ -75,3 +75,4 @@ C:\GitHub\ACE\WebAgent\bin\System.Threading.Tasks.xml
 C:\GitHub\ACE\WebAgent\obj\x86\Release\WebAgent.csproj.App.config
 C:\GitHub\ACE\WebAgent\bin\LINQtoCSV.dll
 C:\GitHub\ACE\WebAgent\bin\LINQtoCSV.pdb
+C:\GitHub\ACE\WebAgent\bin\DataAnnotationsExtensions.dll

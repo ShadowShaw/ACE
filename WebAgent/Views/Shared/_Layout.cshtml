@@ -31,6 +31,7 @@
                             @if (Request.IsAuthenticated) {
                                 <li>@Html.ActionLink("Uživatelský profil", "Manage", "Account")</li>
                                 <li>@Html.ActionLink("Platby a objednávky", "Index", "User")</li>
+                                <li>@Html.ActionLink("Nápověda", "Help", "User")</li>
                             }
                             <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                             @{
@@ -67,7 +68,11 @@
             <!--/.nav-collapse -->
         </div>
     </div>
-    @RenderSection("Carousel", false)
+    <div style="height: 10%;"> 
+        @RenderSection("Carousel", false)
+    </div>
+
+    
     <div class="container">
         <noscript>
             <div class="alert">
@@ -102,7 +107,7 @@
         <div class="row">
             <div class="span12">
                 <footer id="footer">
-                    <p class="text-center">&copy; 2013 - Shadow MVC4 Application.</p>
+                    <p class="text-center">&copy; Shadow MVC4 Application.</p>
                 </footer>
             </div>
         </div>

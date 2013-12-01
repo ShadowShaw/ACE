@@ -116,8 +116,10 @@ namespace ACEAgent.Controllers
                                                     EshopUrl = model.EshopUrl,
                                                     Dph = model.Dph,
                                                     Dic = model.DIC,
+                                                    Email = model.Email,
                                                     FirstName = model.FirstName,
                                                     ICO = model.ICO,
+                                                    Credit = 0,
                                                     LastName = model.LastName,
                                                     PaymentSymbol = model.PaymentSymbol
                                                 });
@@ -279,7 +281,6 @@ namespace ACEAgent.Controllers
             model.FirstName = userModel.FirstName;
             model.ICO = userModel.ICO;
             model.LastName = userModel.LastName;
-            model.PaymentSymbol = userModel.PaymentSymbol;
             model.Id = userModel.Id;
             model.UserName = userModel.UserName;
 
@@ -310,9 +311,7 @@ namespace ACEAgent.Controllers
                 userModel.FirstName = model.FirstName;
                 userModel.ICO = model.ICO;
                 userModel.LastName = model.LastName;
-                userModel.PaymentSymbol = model.PaymentSymbol;
-
-
+                
                 ViewBag.ReturnUrl = Url.Action("UserProfile");
                 uow.Users.Edit(userModel);
                 uow.Commit();

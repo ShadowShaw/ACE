@@ -97,7 +97,18 @@ namespace ACEAgent.Controllers
         {
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
+                decimal invoiceNumber;
+                if (uow.Payments.GetAll().Select(x => x.InvoiceNumber).Count() == 0)
+                {
+                    invoiceNumber = 1;
+                }
+                else 
+                {
+                    invoiceNumber = uow.Payments.GetAll().Select(x => x.InvoiceNumber).Max() + 1;
+                }
+                var n = uow.Payments.GetAll().Select(x => x.InvoiceNumber != null);
                 ViewBag.UserList = uow.Users.GetAll().ToList();
+                ViewBag.InvoiceNumber = invoiceNumber;
             }
             
             return View();

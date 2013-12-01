@@ -17,5 +17,7 @@ namespace Core.Models
         public DateTime PaymentDate { get; set; }
         [Display(Name = "Platební symbol")]
         public string PaymentSymbol { get; set; }
+        [Display(Name = "Číslo faktury")]
+        public decimal InvoiceNumber { get; set; }
     }
 }

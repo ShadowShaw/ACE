@@ -38,6 +38,14 @@
             @Html.ValidationMessageFor(model => model.PaymentSymbol)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.InvoiceNumber)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.InvoiceNumber,  new { @Value = ViewBag.InvoiceNumber, @class = "control-group" })
+            @Html.ValidationMessageFor(model => model.InvoiceNumber)
+        </div>
+
         <p>
             <input type="submit" class="btn btn-primary" value="Zadat platbu" />
         </p>

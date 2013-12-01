@@ -6,6 +6,7 @@ using Microsoft.Web.WebPages.OAuth;
 using ACEAgent.Models;
 using Core.Data;
 using Core.Models;
+using System.Data.Entity.Infrastructure;
 
 namespace ACEAgent
 {
@@ -33,7 +34,7 @@ namespace ACEAgent
                             context.Roles.Add(userRole);
                             
                             Role adminRole = new Role();
-                            userRole.RoleName = "admin";
+                            adminRole.RoleName = "admin";
                             context.Roles.Add(adminRole);
 
                             context.SaveChanges();
