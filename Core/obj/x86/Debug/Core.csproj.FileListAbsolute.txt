@@ -14,10 +14,8 @@ C:\GitHub\ACE\Core\bin\Debug\Core.dll.config
 C:\GitHub\ACE\Core\bin\Debug\Core.dll
 C:\GitHub\ACE\Core\bin\Debug\Core.pdb
 C:\GitHub\ACE\Core\bin\Debug\EntityFramework.dll
-C:\GitHub\ACE\Core\bin\Debug\LINQtoCSV.dll
 C:\GitHub\ACE\Core\bin\Debug\RestSharp.dll
 C:\GitHub\ACE\Core\bin\Debug\EntityFramework.xml
-C:\GitHub\ACE\Core\bin\Debug\LINQtoCSV.pdb
 C:\GitHub\ACE\Core\bin\Debug\RestSharp.xml
 C:\GitHub\ACE\Core\obj\x86\Debug\Core.dll
 C:\GitHub\ACE\Core\obj\x86\Debug\Core.pdb
@@ -37,8 +35,6 @@ C:\Card\GitHub\ACE\Core\bin\Debug\RestSharp.xml
 C:\Card\GitHub\ACE\Core\obj\x86\Debug\Core.dll
 C:\Card\GitHub\ACE\Core\obj\x86\Debug\Core.pdb
 C:\GitHub\ACE\Core\obj\x86\Debug\Core.csprojResolveAssemblyReference.cache
-C:\GitHub\ACE\Core\obj\x86\Debug\Core.Migrations.m1.resources
-C:\GitHub\ACE\Core\obj\x86\Debug\Core.csproj.GenerateResource.Cache
 C:\GitHub\ACE\Core\bin\Debug\Microsoft.Threading.Tasks.dll
 C:\GitHub\ACE\Core\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 C:\GitHub\ACE\Core\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll

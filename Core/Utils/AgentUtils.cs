@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.Utils
 {
-    public class AgentUtils
+    public static class AgentUtils
     {
         public static long GetPaymentSymbol()
         { 

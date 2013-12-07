@@ -1,4 +1,4 @@
-﻿using Core;
+﻿using Bussiness;
 using Desktop.UserSettings;
 using Desktop.Utils;
 using System;
@@ -72,35 +72,39 @@ namespace Desktop
             string result = "Neznamé";
             if (field == FieldType.category)
             {
-                result = "Kategorie";
+                result = TextResources.Category;
             }
             if (field == FieldType.image)
             {
-                result = "Obrázek";
+                result = TextResources.ProductImage;
             }
             if (field == FieldType.longDescription)
             {
-                result = "Popis";
+                result = TextResources.Description;
             }
             if (field == FieldType.manufacturer)
             {
-                result = "Výrobce";
+                result = TextResources.Manufacturer;
             }
             if (field == FieldType.price)
             {
-                result = "Maloobchodní cena";
+                result = TextResources.SalePrice;
             }
             if (field == FieldType.shortDescription)
             {
-                result = "Krátký popis";
+                result = TextResources.ShortDescription;
             }
             if (field == FieldType.weight)
             {
-                result = "Váha";
+                result = TextResources.Weight;
             }
             if (field == FieldType.wholesalePrice)
             {
-                result = "Velkoobchodní cena";
+                result = TextResources.WholeSalePrice;
+            }
+            if (field == FieldType.supplier)
+            {
+                result = TextResources.Supplier;
             }
             return result;
         }

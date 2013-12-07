@@ -5,6 +5,7 @@ namespace Core.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using Core.Models;
+    using Core;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Core.Data.ACEContext>
     {
@@ -30,8 +31,8 @@ namespace Core.Migrations
 
             context.ACEModules.AddOrUpdate(
                   p => p.Name,
-                  new ACEModule { Name = "Pøeceòování", Description = TextResources.PricingModuleDescription, MonthPrice = TextResources.PricingModulePrice },
-                  new ACEModule { Name = "Kontrola databáze", Description = TextResources.ConsistencyModuleDescription, MonthPrice = TextResources.ConsistencyModulePrice }
+                  new ACEModule { Name = "Pøeceòování", Description = ModuleInfo.PricingModuleDescription, MonthPrice = ModuleInfo.PricingModulePrice },
+                  new ACEModule { Name = "Kontrola databáze", Description = ModuleInfo.ConsistencyModuleDescription, MonthPrice = ModuleInfo.ConsistencyModulePrice }
                 );
         }
     }

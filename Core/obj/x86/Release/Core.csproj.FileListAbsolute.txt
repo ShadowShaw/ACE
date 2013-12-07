@@ -2,12 +2,10 @@ C:\GitHub\ACE\Core\bin\Release\Core.dll.config
 C:\GitHub\ACE\Core\bin\Release\Core.dll
 C:\GitHub\ACE\Core\bin\Release\Core.pdb
 C:\GitHub\ACE\Core\bin\Release\EntityFramework.dll
-C:\GitHub\ACE\Core\bin\Release\LINQtoCSV.dll
 C:\GitHub\ACE\Core\bin\Release\PrestaAccesor.dll
 C:\GitHub\ACE\Core\bin\Release\RestSharp.dll
 C:\GitHub\ACE\Core\bin\Release\PrestaAccesor.pdb
 C:\GitHub\ACE\Core\bin\Release\EntityFramework.xml
-C:\GitHub\ACE\Core\bin\Release\LINQtoCSV.pdb
 C:\GitHub\ACE\Core\bin\Release\RestSharp.xml
 C:\GitHub\ACE\Core\obj\x86\Release\Core.dll
 C:\GitHub\ACE\Core\obj\x86\Release\Core.pdb

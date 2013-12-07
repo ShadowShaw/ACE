@@ -1,7 +1,4 @@
-﻿using Core.Data;
-using Core.Security;
-using Core.Interfaces;
-using Core.Models;
+﻿using Bussiness.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +7,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Core.Bussiness;
 
 namespace Desktop
 {

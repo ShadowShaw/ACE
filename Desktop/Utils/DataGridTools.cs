@@ -21,7 +21,8 @@ namespace Desktop.Utils
         longDescription,
         price,
         weight,
-        wholesalePrice
+        wholesalePrice,
+        supplier
     }
 
     public class ChangeRecord

@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Desktop.Utils
 {
-    public class ACESettingsTools
+    public static class ACESettingsTools
     {
         public static void SaveSettings<T>(string path, T toSerialize)
         {

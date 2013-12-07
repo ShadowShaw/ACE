@@ -121,7 +121,16 @@ namespace Desktop.UserSettings
 
         public Size GetSize(string formName)
         {
-            return FormSizes.FormSizes.Where(x => x.Name == formName).FirstOrDefault().FSize;
+            //TODO
+            var result = FormSizes.FormSizes.Where(x => x.Name == formName).FirstOrDefault();
+            if (result == null)
+            {
+                return new Size(0, 0); ;
+            }
+            else
+            {
+                return result.FSize;
+            }
         }
 
         public void SetSize(string formName, Size formSize)
@@ -211,42 +220,42 @@ namespace Desktop.UserSettings
             }
         }
 
-        public void LoadColumnWidth()
+        private void LoadColumnWidth()
         {
             this.ColumnWidth = ACESettingsTools.LoadSettings<ColumnWidthList>(ColumnsSettingsPath);
         }
 
-        public void SaveColumnWidth()
+        private void SaveColumnWidth()
         {
             ACESettingsTools.SaveSettings<ColumnWidthList>(ColumnsSettingsPath, ColumnWidth);
         }
 
-        public void LoadValues()
+        private void LoadValues()
         {
             this.Values = ACESettingsTools.LoadSettings<GenericKeyValueList>(DesktopSettingsPath);
         }
 
-        public void SaveValues()
+        private void SaveValues()
         {
             ACESettingsTools.SaveSettings<GenericKeyValueList>(DesktopSettingsPath, Values);
         }
         
-        public void LoadEshops()
+        private void LoadEshops()
         {
             this.Eshops = ACESettingsTools.LoadSettings<EshopList>(EshopsSettingsPath);
         }
 
-        public void SaveEshops()
+        private void SaveEshops()
         {
             ACESettingsTools.SaveSettings<EshopList>(EshopsSettingsPath, Eshops);
         }
 
-        public void LoadFormSizes()
+        private void LoadFormSizes()
         {
             this.FormSizes = ACESettingsTools.LoadSettings<FormSizesList>(SizesSettingsPath);
         }
 
-        public void SaveFormSizes()
+        private void SaveFormSizes()
         {
             ACESettingsTools.SaveSettings<FormSizesList>(SizesSettingsPath, FormSizes);
         }
@@ -254,11 +263,68 @@ namespace Desktop.UserSettings
 
         public ACESettings()
         {
-            //DesktopSettings = new ACEDesktopSettigs();
             Eshops = new EshopList();
             FormSizes = new FormSizesList();
             ColumnWidth = new ColumnWidthList();
             Values = new GenericKeyValueList();
+
+            if (File.Exists(ACESettings.EshopsSettingsPath))
+            {
+                LoadEshops();
+                if (this.Eshops == null)
+                {
+                    Eshops = new EshopList();
+                    Eshops.ActiveEshopIndex = -1;
+                }
+            }
+            else
+            {
+                CreateFile(ACESettings.EshopsSettingsPath); 
+                Eshops.ActiveEshopIndex = -1;
+            }
+
+            if (File.Exists(ACESettings.ColumnsSettingsPath))
+            {
+                LoadColumnWidth();
+            }
+            else
+            {
+                CreateFile(ACESettings.ColumnsSettingsPath);
+            }
+
+            if (File.Exists(ACESettings.SizesSettingsPath))
+            {
+                LoadFormSizes();
+            }
+            else
+            {
+                CreateFile(ACESettings.SizesSettingsPath);
+            }
+
+            if (File.Exists(ACESettings.DesktopSettingsPath))
+            {
+                LoadValues();
+            }
+            else
+            {
+                CreateFile(ACESettings.DesktopSettingsPath);
+            }
+
+        }
+
+        private static void CreateFile(string file)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(file));
+            var myFile = File.Create(file);
+            myFile.Close();
+        }
+
+        public void SaveSettings()
+        {
+            SaveEshops();
+            SaveColumnWidth();
+            SaveFormSizes();
+            SaveValues();
         }
     }
 }

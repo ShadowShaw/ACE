@@ -70,12 +70,12 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ACE.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="LINQtoCSV">
-      <HintPath>..\packages\LinqToCsv.1.2.0.0\lib\LINQtoCSV.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -133,6 +133,7 @@
     <Compile Include="UserSettings\ACESettings.cs" />
     <Compile Include="Utils\ACESettingsTools.cs" />
     <Compile Include="Utils\DataGridTools.cs" />
+    <Compile Include="Utils\UITools.cs" />
     <EmbeddedResource Include="Forms\ChangesView.resx">
       <DependentUpon>ChangesView.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,6 +200,7 @@
     <Folder Include="Settings\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ACE.ico" />
     <Content Include="HtmlDocs\ChangeLog.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -207,13 +209,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bussiness\Bussiness.csproj">
+      <Project>{39b93efc-5081-4e23-93c2-3af9f47f7b38}</Project>
+      <Name>Bussiness</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{7c146499-374c-4a00-a35e-97d2d1cec397}</Project>
       <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PrestaAccesor\PrestaAccesor.csproj">
-      <Project>{3d494a24-06ba-475b-a158-162745683ec3}</Project>
-      <Name>PrestaAccesor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

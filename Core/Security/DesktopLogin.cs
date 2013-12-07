@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Core.Security
 {
-    public class DesktopLogin
+    public static class DesktopLogin
     {
         public static string HashPassword(string password)
         {

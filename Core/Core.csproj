@@ -58,28 +58,13 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Bussiness\CategoryService.cs" />
-    <Compile Include="Bussiness\IService.cs" />
-    <Compile Include="Bussiness\LanguageService.cs" />
-    <Compile Include="Bussiness\ManufacturerService.cs" />
-    <Compile Include="Bussiness\EngineService.cs" />
-    <Compile Include="Bussiness\LoginService.cs" />
-    <Compile Include="Bussiness\ProductService.cs" />
-    <Compile Include="Bussiness\ServiceBase.cs" />
-    <Compile Include="Bussiness\SupplierService.cs" />
-    <Compile Include="Interfaces\ISupplier.cs" />
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\ModuleOrder.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\UsersInRole.cs" />
-    <Compile Include="Suppliers\AskinoModel.cs" />
-    <Compile Include="Suppliers\AskinoPriceList.cs" />
-    <Compile Include="Suppliers\CSVAccessor.cs" />
-    <Compile Include="Suppliers\NovikoModel.cs" />
-    <Compile Include="Suppliers\NovikoPriceList.cs" />
+    <Compile Include="ModuleInfo.cs" />
     <Compile Include="Utils\AgentUtils.cs" />
     <Compile Include="Utils\TreeItem.cs" />
-    <Compile Include="Utils\UITools.cs" />
     <Compile Include="Data\EFEntity.cs" />
     <Compile Include="Data\ACEContext.cs" />
     <Compile Include="Data\EFRepository.cs" />
@@ -96,15 +81,10 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\DesktopLogin.cs" />
-    <Compile Include="TextResources.cs" />
-    <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="LINQtoCSV">
-      <HintPath>..\packages\LINQtoCSV.1.2.0.0\lib\LINQtoCSV.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>

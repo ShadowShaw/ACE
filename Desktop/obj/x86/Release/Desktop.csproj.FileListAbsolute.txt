@@ -6,14 +6,12 @@ C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.pdb
 C:\GitHub\ACE\Desktop\bin\Release\Core.dll
 C:\GitHub\ACE\Desktop\bin\Release\EntityFramework.dll
-C:\GitHub\ACE\Desktop\bin\Release\LINQtoCSV.dll
 C:\GitHub\ACE\Desktop\bin\Release\PrestaAccesor.dll
 C:\GitHub\ACE\Desktop\bin\Release\System.Data.Entity.dll
 C:\GitHub\ACE\Desktop\bin\Release\RestSharp.dll
 C:\GitHub\ACE\Desktop\bin\Release\Core.pdb
 C:\GitHub\ACE\Desktop\bin\Release\PrestaAccesor.pdb
 C:\GitHub\ACE\Desktop\bin\Release\EntityFramework.xml
-C:\GitHub\ACE\Desktop\bin\Release\LINQtoCSV.pdb
 C:\GitHub\ACE\Desktop\bin\Release\RestSharp.xml
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\obj\x86\Release\ACEDesktop.pdb
@@ -38,3 +36,5 @@ C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.x
 C:\GitHub\ACE\Desktop\bin\Release\System.Runtime.xml
 C:\GitHub\ACE\Desktop\bin\Release\System.Threading.Tasks.xml
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csproj.App.config
+C:\GitHub\ACE\Desktop\bin\Release\Bussiness.dll
+C:\GitHub\ACE\Desktop\bin\Release\Bussiness.pdb
