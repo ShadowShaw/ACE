@@ -42,14 +42,29 @@ namespace Bussiness
         public const string hintWithoutWholeSalePrice = "Vypíše produkty bez velkoobchodní prodejní ceny";
         public const string hintWithoutWeight = "Vypíše produkty u kterých není zadána váha";
         public const string hintWithoutSupplier = "Vypíše produkty u kterých není zadán dodavatel";
+        
+        //consistency grid titles
+        public const string titleLoadProducts = "Načte databázi produktů eshopu";
+        public const string titleEmptyCategory = "Zobrazuji produkty s prázdnou kategorii.";
+        public const string titleEmptyManufacturer = "Vypíše produkty, u kterých není přiřazen žádný výrobce";
+        public const string titleWithoutImage = "Vypíše produkty u kterých není přiřazen žádný obrázek";
+        public const string titleWithoutShortDescription = "Vypíše produkty bez krátkého popisu";
+        public const string titleWithoutLongDescription = "Vypíše produkty bez dlouhého popisu";
+        public const string titleWithoutPrice = "Vypíše produkty bez maloobchodní prodejní ceny";
+        public const string titleWithoutWholeSalePrice = "Vypíše produkty bez velkoobchodní prodejní ceny";
+        public const string titleWithoutWeight = "Vypíše produkty u kterých není zadána váha";
+        public const string titleWithoutSupplier = "Zobrazuji produkty jenž dodavatelé již nedodávají.";
 
         //label strings
-        public const string labelPathToAskinoPriceList = "cesta k ceníku Askina";
-        public const string labelPathToNovikoPriceList = "cesta k ceníku Novika";
+        
 
         //message boxes
         public const string msgEmptyConfigurationValue = "Nenalezena konfigurace připojení k eshopům. Prosím nastavte připojení.";
         public const string msgEmptyConfigurationTitle = "Nenalezena konfigurace připojení k eshopům.";
+        public const string msgNoPriceListTitle = "Ceník není k dispozici";
+        public const string msgNoPriceListValue = "Ceník není k dispozici, otevřete ceník";
+        public const string msgDeleteEshopTitle = "Odstranit konfiguraci eshopu";
+        public const string msgDeleteEshopValue = "Chcete opravdu odstranit konfiguraci eshopu: ";
             
     }
 }

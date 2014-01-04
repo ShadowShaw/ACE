@@ -10,33 +10,35 @@ namespace Suppliers
 {
     public class AskinoSupplier : ISupplier
     {
-        private IEnumerable<SupplierModel> askinoPriceList;
+        private IEnumerable<AskinoModel> askinoPriceList;
         private CSVAccessor accessor;
+        public string Path { get; private set;}
 
-        public AskinoSupplier()
+        public AskinoSupplier(string pathToFile)
         {
             accessor = new CSVAccessor();
+            Path = pathToFile;
         }
 
-        public void OpenPriceList(string path)
+        public void OpenPriceList()
         {
-            askinoPriceList = accessor.loadCSV<AskinoModel>(path);
+            askinoPriceList = accessor.loadCSV<AskinoModel>(Path);
         }
 
-        public List<SupplierModel> GetPriceList()
+        public IEnumerable<Object> GetPriceList()
         {
-            return askinoPriceList.ToList();
+            return askinoPriceList.ToList() as IEnumerable<AskinoModel>;
         }
 
-        //private bool HasReference(string reference)
-        //{
-        //    var item = askinoPriceList.Where(x => x.Reference == reference);
-        //    if (item.ToList().Count > 0)
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
+        public bool HasReference(string reference)
+        {
+            var item = askinoPriceList.Where(x => x.Reference == reference);
+            if (item.ToList().Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
         //private decimal GetPrice(string reference)
         //{

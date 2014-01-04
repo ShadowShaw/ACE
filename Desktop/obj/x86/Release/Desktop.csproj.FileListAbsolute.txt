@@ -38,3 +38,8 @@ C:\GitHub\ACE\Desktop\bin\Release\System.Threading.Tasks.xml
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.csproj.App.config
 C:\GitHub\ACE\Desktop\bin\Release\Bussiness.dll
 C:\GitHub\ACE\Desktop\bin\Release\Bussiness.pdb
+C:\GitHub\ACE\Desktop\bin\Release\Suppliers.dll
+C:\GitHub\ACE\Desktop\bin\Release\LINQtoCSV.dll
+C:\GitHub\ACE\Desktop\bin\Release\Suppliers.pdb
+C:\GitHub\ACE\Desktop\bin\Release\LINQtoCSV.pdb
+C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Custom_Contols.EshopConfigurationControl.resources

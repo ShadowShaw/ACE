@@ -1,4 +1,5 @@
-﻿using Desktop.Utils;
+﻿using Bussiness.UserSettings;
+using Desktop.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,12 +10,6 @@ using System.Xml.Serialization;
 
 namespace Desktop.UserSettings
 {
-    public enum EshopType
-    { 
-        Prestashop = 0,
-        MySQLDatabase = 1
-    }
-
     public class EshopList
     {
         public List<EshopConfiguration> Eshops { get; set; }
@@ -25,19 +20,6 @@ namespace Desktop.UserSettings
         public int ActiveEshopIndex { get; set; }
     }
         
-    public class EshopConfiguration
-    {
-        public string EshopName { get; set; }
-        public EshopType Type { get; set; } 
-        public string BaseUrl { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public bool UseAskino { get; set; }
-        public bool UseNoviko { get; set; }
-        public string AskinoFilePath { get; set; }
-        public string NovikoFilePath { get; set; }
-    }
-
     public class FormSize
     {
         public string Name { get; set; }
@@ -119,18 +101,36 @@ namespace Desktop.UserSettings
             }
         }
 
-        public Size GetSize(string formName)
+        public EshopConfiguration ActiveEshop()
         {
-            //TODO
-            var result = FormSizes.FormSizes.Where(x => x.Name == formName).FirstOrDefault();
-            if (result == null)
+            if ((Eshops.Eshops.Count > Eshops.ActiveEshopIndex) && (Eshops.ActiveEshopIndex != -1))
             {
-                return new Size(0, 0); ;
+                return Eshops.Eshops[Eshops.ActiveEshopIndex];
             }
             else
             {
-                return result.FSize;
+                return null;
             }
+        }
+
+        public void UpdateSelectedEshop(EshopConfiguration eshop, int selectedIndex)
+        {
+            Eshops.Eshops[selectedIndex] = eshop;
+        }
+
+        public Size GetSize(string formName)
+        {
+            Size result;
+            if (FormSizes.FormSizes.Exists(x => x.Name == formName))
+            {
+                result = FormSizes.FormSizes.Where(x => x.Name == formName).FirstOrDefault().FSize;
+            }
+            else
+            {
+                result = new Size(400, 400);
+            }
+            
+            return result;
         }
 
         public void SetSize(string formName, Size formSize)
@@ -154,15 +154,13 @@ namespace Desktop.UserSettings
 
         public int GetWidth(string widthName)
         {
-            var result = ColumnWidth.ColumnWidths.Where(x => x.Name == widthName).FirstOrDefault();
-            if (result == null)
+            int result = 100;
+            if (ColumnWidth.ColumnWidths.Exists(x => x.Name == widthName))
             {
-                return 100;
+                result = ColumnWidth.ColumnWidths.Where(x => x.Name == widthName).FirstOrDefault().Width;
             }
-            else
-            {
-                return result.Width;
-            }
+                        
+            return result;
         }
 
         public void SetWidth(string widthName, int width)
@@ -186,19 +184,15 @@ namespace Desktop.UserSettings
 
         public string GetValue(string key)
         {
-            if (Values == null)
+            string result = String.Empty;
+
+            if (Values.Values.Exists(x => x.Key == key))
             {
-                return "";
+                result = Values.Values.Where(v => v.Key == key).FirstOrDefault().Value;
             }
-            var result = Values.Values.Where(v => v.Key == key).FirstOrDefault();
-            if (result == null)
-            {
-                return "";
-            }
-            else
-            {
-                return result.Value;
-            }
+            
+            return result;
+            
         }
 
         public void SetValue(string key, string value)

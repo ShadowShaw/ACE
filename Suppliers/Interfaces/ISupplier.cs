@@ -8,9 +8,9 @@ namespace Suppliers.Interfaces
 {
     public interface ISupplier
     {
-        void OpenPriceList(string path);
-        List<SupplierModel> GetPriceList();
-        //bool HasReference(string reference);
+        void OpenPriceList();
+        IEnumerable<Object> GetPriceList();
+        bool HasReference(string reference);
         //decimal GetPrice(string reference);
     }
 }

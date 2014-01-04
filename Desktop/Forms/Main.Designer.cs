@@ -1,33 +1,33 @@
-﻿namespace Desktop
-{
-    partial class Main
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+﻿﻿namespace Desktop
+ {
+     partial class Main
+     {
+         /// <summary>
+         /// Required designer variable.
+         /// </summary>
+         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+         /// <summary>
+         /// Clean up any resources being used.
+         /// </summary>
+         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+         protected override void Dispose(bool disposing)
+         {
+             if (disposing && (components != null))
+             {
+                 components.Dispose();
+             }
+             base.Dispose(disposing);
+         }
 
-        #region Windows Form Designer generated code
+         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+         /// <summary>
+         /// Required method for Designer support - do not modify
+         /// the contents of this method with the code editor.
+         /// </summary>
+         private void InitializeComponent()
+         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -82,6 +82,7 @@
             this.bLoadProducts = new System.Windows.Forms.Button();
             this.dgConsistency = new System.Windows.Forms.DataGridView();
             this.gbConsistency = new System.Windows.Forms.GroupBox();
+            this.bWithoutSupplier = new System.Windows.Forms.Button();
             this.bSaveChanges = new System.Windows.Forms.Button();
             this.bWithoutWholeSalePrice = new System.Windows.Forms.Button();
             this.bWithoutLongDescription = new System.Windows.Forms.Button();
@@ -119,29 +120,13 @@
             this.ePricingPercent = new System.Windows.Forms.TextBox();
             this.dgPricing = new System.Windows.Forms.DataGridView();
             this.tpSetup = new System.Windows.Forms.TabPage();
+            this.eshopSettings = new Desktop.Custom_Contols.EshopConfigurationControl();
             this.lActiveEshop = new System.Windows.Forms.Label();
             this.cbActiveEshop = new System.Windows.Forms.ComboBox();
             this.bDelEshop = new System.Windows.Forms.Button();
             this.bAddEshop = new System.Windows.Forms.Button();
             this.treeConfiguration = new System.Windows.Forms.TreeView();
-            this.gbPrestaSetup = new System.Windows.Forms.GroupBox();
-            this.setupSeparator = new System.Windows.Forms.Label();
-            this.bOpenNoviko = new System.Windows.Forms.Button();
-            this.bOpenAskino = new System.Windows.Forms.Button();
-            this.lSupplierSetup = new System.Windows.Forms.Label();
-            this.chAskinoSetup = new System.Windows.Forms.CheckBox();
-            this.chNovikoSetup = new System.Windows.Forms.CheckBox();
-            this.lEshopType = new System.Windows.Forms.Label();
-            this.cbTypeEshop = new System.Windows.Forms.ComboBox();
-            this.ePrestaToken = new System.Windows.Forms.TextBox();
-            this.ePrestaUrl = new System.Windows.Forms.TextBox();
-            this.lPrestaToken = new System.Windows.Forms.Label();
-            this.lPrestaUrl = new System.Windows.Forms.Label();
-            this.bSavePresta = new System.Windows.Forms.Button();
             this.bPrestaTest = new System.Windows.Forms.Button();
-            this.lAskinoPath = new System.Windows.Forms.Label();
-            this.lNovikoPath = new System.Windows.Forms.Label();
-            this.bWithoutSupplier = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.status.SuspendLayout();
             this.tc.SuspendLayout();
@@ -156,7 +141,6 @@
             this.gbSelectProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPricing)).BeginInit();
             this.tpSetup.SuspendLayout();
-            this.gbPrestaSetup.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu
@@ -585,7 +569,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgConsistency.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgConsistency.Size = new System.Drawing.Size(762, 559);
+            this.dgConsistency.Size = new System.Drawing.Size(0, 42);
             this.dgConsistency.TabIndex = 22;
             this.dgConsistency.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellClick);
             this.dgConsistency.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellValueChanged);
@@ -611,6 +595,17 @@
             this.gbConsistency.TabIndex = 20;
             this.gbConsistency.TabStop = false;
             this.gbConsistency.Text = "Vyhledej produkty:";
+            // 
+            // bWithoutSupplier
+            // 
+            this.bWithoutSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bWithoutSupplier.Location = new System.Drawing.Point(11, 356);
+            this.bWithoutSupplier.Name = "bWithoutSupplier";
+            this.bWithoutSupplier.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutSupplier.TabIndex = 30;
+            this.bWithoutSupplier.Text = " bez dodavatele";
+            this.bWithoutSupplier.UseVisualStyleBackColor = true;
+            this.bWithoutSupplier.Click += new System.EventHandler(this.bConsistencySupplier_Click);
             // 
             // bSaveChanges
             // 
@@ -1033,18 +1028,17 @@
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgPricing.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgPricing.Size = new System.Drawing.Size(712, 544);
+            this.dgPricing.Size = new System.Drawing.Size(0, 27);
             this.dgPricing.TabIndex = 17;
             // 
             // tpSetup
             // 
+            this.tpSetup.Controls.Add(this.eshopSettings);
             this.tpSetup.Controls.Add(this.lActiveEshop);
             this.tpSetup.Controls.Add(this.cbActiveEshop);
             this.tpSetup.Controls.Add(this.bDelEshop);
             this.tpSetup.Controls.Add(this.bAddEshop);
             this.tpSetup.Controls.Add(this.treeConfiguration);
-            this.tpSetup.Controls.Add(this.gbPrestaSetup);
-            this.tpSetup.Controls.Add(this.bSavePresta);
             this.tpSetup.Controls.Add(this.bPrestaTest);
             this.tpSetup.Location = new System.Drawing.Point(4, 25);
             this.tpSetup.Name = "tpSetup";
@@ -1054,11 +1048,18 @@
             this.tpSetup.Text = "Konfigurace";
             this.tpSetup.UseVisualStyleBackColor = true;
             // 
+            // eshopSettings
+            // 
+            this.eshopSettings.Location = new System.Drawing.Point(292, 6);
+            this.eshopSettings.Name = "eshopSettings";
+            this.eshopSettings.Size = new System.Drawing.Size(721, 544);
+            this.eshopSettings.TabIndex = 7;
+            // 
             // lActiveEshop
             // 
             this.lActiveEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lActiveEshop.AutoSize = true;
-            this.lActiveEshop.Location = new System.Drawing.Point(8, 559);
+            this.lActiveEshop.Location = new System.Drawing.Point(8, 564);
             this.lActiveEshop.Name = "lActiveEshop";
             this.lActiveEshop.Size = new System.Drawing.Size(73, 13);
             this.lActiveEshop.TabIndex = 6;
@@ -1069,7 +1070,7 @@
             this.cbActiveEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbActiveEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbActiveEshop.FormattingEnabled = true;
-            this.cbActiveEshop.Location = new System.Drawing.Point(87, 556);
+            this.cbActiveEshop.Location = new System.Drawing.Point(87, 561);
             this.cbActiveEshop.Name = "cbActiveEshop";
             this.cbActiveEshop.Size = new System.Drawing.Size(199, 21);
             this.cbActiveEshop.TabIndex = 5;
@@ -1079,7 +1080,7 @@
             // 
             this.bDelEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bDelEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bDelEshop.Location = new System.Drawing.Point(450, 554);
+            this.bDelEshop.Location = new System.Drawing.Point(449, 559);
             this.bDelEshop.Name = "bDelEshop";
             this.bDelEshop.Size = new System.Drawing.Size(151, 23);
             this.bDelEshop.TabIndex = 4;
@@ -1091,7 +1092,7 @@
             // 
             this.bAddEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bAddEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bAddEshop.Location = new System.Drawing.Point(293, 554);
+            this.bAddEshop.Location = new System.Drawing.Point(292, 559);
             this.bAddEshop.Name = "bAddEshop";
             this.bAddEshop.Size = new System.Drawing.Size(151, 23);
             this.bAddEshop.TabIndex = 3;
@@ -1114,212 +1115,17 @@
             this.treeConfiguration.DoubleClick += new System.EventHandler(this.treeConfiguration_DoubleClick);
             this.treeConfiguration.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeConfiguration_MouseDown);
             // 
-            // gbPrestaSetup
-            // 
-            this.gbPrestaSetup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbPrestaSetup.Controls.Add(this.lNovikoPath);
-            this.gbPrestaSetup.Controls.Add(this.lAskinoPath);
-            this.gbPrestaSetup.Controls.Add(this.setupSeparator);
-            this.gbPrestaSetup.Controls.Add(this.bOpenNoviko);
-            this.gbPrestaSetup.Controls.Add(this.bOpenAskino);
-            this.gbPrestaSetup.Controls.Add(this.lSupplierSetup);
-            this.gbPrestaSetup.Controls.Add(this.chAskinoSetup);
-            this.gbPrestaSetup.Controls.Add(this.chNovikoSetup);
-            this.gbPrestaSetup.Controls.Add(this.lEshopType);
-            this.gbPrestaSetup.Controls.Add(this.cbTypeEshop);
-            this.gbPrestaSetup.Controls.Add(this.ePrestaToken);
-            this.gbPrestaSetup.Controls.Add(this.ePrestaUrl);
-            this.gbPrestaSetup.Controls.Add(this.lPrestaToken);
-            this.gbPrestaSetup.Controls.Add(this.lPrestaUrl);
-            this.gbPrestaSetup.Location = new System.Drawing.Point(292, 6);
-            this.gbPrestaSetup.Name = "gbPrestaSetup";
-            this.gbPrestaSetup.Size = new System.Drawing.Size(722, 544);
-            this.gbPrestaSetup.TabIndex = 0;
-            this.gbPrestaSetup.TabStop = false;
-            this.gbPrestaSetup.Text = "Konfigurace eshopu";
-            // 
-            // setupSeparator
-            // 
-            this.setupSeparator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.setupSeparator.BackColor = System.Drawing.SystemColors.Control;
-            this.setupSeparator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.setupSeparator.Location = new System.Drawing.Point(0, 208);
-            this.setupSeparator.Name = "setupSeparator";
-            this.setupSeparator.Size = new System.Drawing.Size(722, 2);
-            this.setupSeparator.TabIndex = 15;
-            // 
-            // bOpenNoviko
-            // 
-            this.bOpenNoviko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bOpenNoviko.Location = new System.Drawing.Point(96, 312);
-            this.bOpenNoviko.Name = "bOpenNoviko";
-            this.bOpenNoviko.Size = new System.Drawing.Size(182, 23);
-            this.bOpenNoviko.TabIndex = 14;
-            this.bOpenNoviko.Text = "Otevřít ceník Novika";
-            this.bOpenNoviko.UseVisualStyleBackColor = true;
-            this.bOpenNoviko.Click += new System.EventHandler(this.bOpenNoviko_Click);
-            // 
-            // bOpenAskino
-            // 
-            this.bOpenAskino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bOpenAskino.Location = new System.Drawing.Point(96, 250);
-            this.bOpenAskino.Name = "bOpenAskino";
-            this.bOpenAskino.Size = new System.Drawing.Size(182, 23);
-            this.bOpenAskino.TabIndex = 13;
-            this.bOpenAskino.Text = "Otevřít ceník Askina";
-            this.bOpenAskino.UseVisualStyleBackColor = true;
-            this.bOpenAskino.Click += new System.EventHandler(this.bOpenAskino_Click);
-            // 
-            // lSupplierSetup
-            // 
-            this.lSupplierSetup.AutoSize = true;
-            this.lSupplierSetup.Location = new System.Drawing.Point(22, 224);
-            this.lSupplierSetup.Name = "lSupplierSetup";
-            this.lSupplierSetup.Size = new System.Drawing.Size(113, 13);
-            this.lSupplierSetup.TabIndex = 12;
-            this.lSupplierSetup.Text = "Nastavení dodavatelů";
-            // 
-            // chAskinoSetup
-            // 
-            this.chAskinoSetup.AutoSize = true;
-            this.chAskinoSetup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chAskinoSetup.Location = new System.Drawing.Point(35, 253);
-            this.chAskinoSetup.Name = "chAskinoSetup";
-            this.chAskinoSetup.Size = new System.Drawing.Size(55, 17);
-            this.chAskinoSetup.TabIndex = 9;
-            this.chAskinoSetup.Text = "Askino";
-            this.chAskinoSetup.UseVisualStyleBackColor = true;
-            // 
-            // chNovikoSetup
-            // 
-            this.chNovikoSetup.AutoSize = true;
-            this.chNovikoSetup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chNovikoSetup.Location = new System.Drawing.Point(35, 315);
-            this.chNovikoSetup.Name = "chNovikoSetup";
-            this.chNovikoSetup.Size = new System.Drawing.Size(57, 17);
-            this.chNovikoSetup.TabIndex = 8;
-            this.chNovikoSetup.Text = "Noviko";
-            this.chNovikoSetup.UseVisualStyleBackColor = true;
-            // 
-            // lEshopType
-            // 
-            this.lEshopType.AutoSize = true;
-            this.lEshopType.Location = new System.Drawing.Point(22, 35);
-            this.lEshopType.Name = "lEshopType";
-            this.lEshopType.Size = new System.Drawing.Size(66, 13);
-            this.lEshopType.TabIndex = 7;
-            this.lEshopType.Text = "Typ eshopu:";
-            // 
-            // cbTypeEshop
-            // 
-            this.cbTypeEshop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbTypeEshop.Enabled = false;
-            this.cbTypeEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbTypeEshop.FormattingEnabled = true;
-            this.cbTypeEshop.Items.AddRange(new object[] {
-            "Prestashop"});
-            this.cbTypeEshop.Location = new System.Drawing.Point(94, 32);
-            this.cbTypeEshop.Name = "cbTypeEshop";
-            this.cbTypeEshop.Size = new System.Drawing.Size(608, 21);
-            this.cbTypeEshop.TabIndex = 6;
-            // 
-            // ePrestaToken
-            // 
-            this.ePrestaToken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ePrestaToken.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ePrestaToken.Location = new System.Drawing.Point(22, 131);
-            this.ePrestaToken.Name = "ePrestaToken";
-            this.ePrestaToken.Size = new System.Drawing.Size(680, 20);
-            this.ePrestaToken.TabIndex = 3;
-            this.ePrestaToken.Text = "BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8";
-            // 
-            // ePrestaUrl
-            // 
-            this.ePrestaUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ePrestaUrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ePrestaUrl.Location = new System.Drawing.Point(22, 82);
-            this.ePrestaUrl.Name = "ePrestaUrl";
-            this.ePrestaUrl.Size = new System.Drawing.Size(680, 20);
-            this.ePrestaUrl.TabIndex = 2;
-            this.ePrestaUrl.Text = "http://testpresta.mzf.cz/prestashop/";
-            this.ePrestaUrl.Leave += new System.EventHandler(this.ePrestaUrl_Leave);
-            // 
-            // lPrestaToken
-            // 
-            this.lPrestaToken.AutoSize = true;
-            this.lPrestaToken.Location = new System.Drawing.Point(19, 115);
-            this.lPrestaToken.Name = "lPrestaToken";
-            this.lPrestaToken.Size = new System.Drawing.Size(94, 13);
-            this.lPrestaToken.TabIndex = 1;
-            this.lPrestaToken.Text = "Autorizační token:";
-            // 
-            // lPrestaUrl
-            // 
-            this.lPrestaUrl.AutoSize = true;
-            this.lPrestaUrl.Location = new System.Drawing.Point(19, 66);
-            this.lPrestaUrl.Name = "lPrestaUrl";
-            this.lPrestaUrl.Size = new System.Drawing.Size(81, 13);
-            this.lPrestaUrl.TabIndex = 0;
-            this.lPrestaUrl.Text = "Adresa eshopu:";
-            // 
-            // bSavePresta
-            // 
-            this.bSavePresta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSavePresta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSavePresta.Location = new System.Drawing.Point(893, 554);
-            this.bSavePresta.Name = "bSavePresta";
-            this.bSavePresta.Size = new System.Drawing.Size(121, 23);
-            this.bSavePresta.TabIndex = 4;
-            this.bSavePresta.Text = "Ulož nastavení";
-            this.bSavePresta.UseVisualStyleBackColor = true;
-            this.bSavePresta.Click += new System.EventHandler(this.bSavePresta_Click);
-            // 
             // bPrestaTest
             // 
             this.bPrestaTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bPrestaTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPrestaTest.Location = new System.Drawing.Point(766, 554);
+            this.bPrestaTest.Location = new System.Drawing.Point(893, 559);
             this.bPrestaTest.Name = "bPrestaTest";
             this.bPrestaTest.Size = new System.Drawing.Size(121, 23);
             this.bPrestaTest.TabIndex = 5;
             this.bPrestaTest.Text = "Test připojení";
             this.bPrestaTest.UseVisualStyleBackColor = true;
             this.bPrestaTest.Click += new System.EventHandler(this.bPrestaTest_Click);
-            // 
-            // lAskinoPath
-            // 
-            this.lAskinoPath.AutoSize = true;
-            this.lAskinoPath.Location = new System.Drawing.Point(35, 277);
-            this.lAskinoPath.Name = "lAskinoPath";
-            this.lAskinoPath.Size = new System.Drawing.Size(114, 13);
-            this.lAskinoPath.TabIndex = 16;
-            this.lAskinoPath.Text = "cesta k ceníku Askina";
-            // 
-            // lNovikoPath
-            // 
-            this.lNovikoPath.AutoSize = true;
-            this.lNovikoPath.Location = new System.Drawing.Point(35, 338);
-            this.lNovikoPath.Name = "lNovikoPath";
-            this.lNovikoPath.Size = new System.Drawing.Size(116, 13);
-            this.lNovikoPath.TabIndex = 17;
-            this.lNovikoPath.Text = "cesta k ceníku Novika";
-            // 
-            // bWithoutSupplier
-            // 
-            this.bWithoutSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutSupplier.Location = new System.Drawing.Point(11, 356);
-            this.bWithoutSupplier.Name = "bWithoutSupplier";
-            this.bWithoutSupplier.Size = new System.Drawing.Size(200, 30);
-            this.bWithoutSupplier.TabIndex = 30;
-            this.bWithoutSupplier.Text = " bez dodavatele";
-            this.bWithoutSupplier.UseVisualStyleBackColor = true;
-            this.bWithoutSupplier.Click += new System.EventHandler(this.bConsistencySupplier_Click);
             // 
             // Main
             // 
@@ -1357,119 +1163,102 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgPricing)).EndInit();
             this.tpSetup.ResumeLayout(false);
             this.tpSetup.PerformLayout();
-            this.gbPrestaSetup.ResumeLayout(false);
-            this.gbPrestaSetup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
+         }
 
-        #endregion
+         #endregion
 
-        private System.Windows.Forms.OpenFileDialog openDialog;
-        private System.Windows.Forms.SaveFileDialog productsSD;
-        private System.Windows.Forms.MenuStrip menu;
-        private System.Windows.Forms.ToolStripMenuItem openProducts;
-        private System.Windows.Forms.StatusStrip status;
-        private System.Windows.Forms.ToolStripStatusLabel statusAgent;
-        private System.Windows.Forms.ToolStripStatusLabel statusLogin;
-        private System.Windows.Forms.ToolStripStatusLabel statusActiveEshop;
-        private System.Windows.Forms.SaveFileDialog saveDialog;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.TabControl tc;
-        private System.Windows.Forms.TabPage tpHome;
-        private System.Windows.Forms.TabPage tpSetup;
-        private System.Windows.Forms.TabPage tpPriceUpdate;
-        private System.Windows.Forms.WebBrowser homeBrowser;
-        private System.Windows.Forms.GroupBox gbPrestaSetup;
-        private System.Windows.Forms.GroupBox gbSelectProduct;
-        private System.Windows.Forms.Label lPricingManufacturer;
-        private System.Windows.Forms.ComboBox cPricingManufacturers;
-        private System.Windows.Forms.DataGridView dgPricing;
-        private System.Windows.Forms.Button bPricingSave;
-        private System.Windows.Forms.TabPage tpConsistency;
-        private System.Windows.Forms.GroupBox gbConsistency;
-        private System.Windows.Forms.Button bConsistencyAskino;
-        private System.Windows.Forms.Button bConsistencyNoviko;
-        private System.Windows.Forms.DataGridView dgConsistency;
-        private System.Windows.Forms.ToolStripProgressBar statusProgress;
-        private System.Windows.Forms.Button bSavePresta;
-        private System.Windows.Forms.TextBox ePrestaToken;
-        private System.Windows.Forms.TextBox ePrestaUrl;
-        private System.Windows.Forms.Label lPrestaToken;
-        private System.Windows.Forms.Label lPrestaUrl;
-        private System.Windows.Forms.Label lPricingSupplier;
-        private System.Windows.Forms.ComboBox cPricingSuppliers;
-        private System.Windows.Forms.Button bLogin;
-        private System.Windows.Forms.Button bEmptyManufacturer;
-        private System.Windows.Forms.Button bEmptyCategory;
-        private System.Windows.Forms.Button bWithoutWeight;
-        private System.Windows.Forms.Button bWithoutShortDescription;
-        private System.Windows.Forms.Button bWithoutImage;
-        private System.Windows.Forms.ToolStripStatusLabel statusMessage;
-        private System.Windows.Forms.Button bWithoutLongDescription;
-        private System.Windows.Forms.Button bWithoutPrice;
-        private System.Windows.Forms.Button bLoadProducts;
-        private System.Windows.Forms.Button bWithoutWholeSalePrice;
-        private System.Windows.Forms.Label lListOf;
-        private System.Windows.Forms.Button bSaveChanges;
-        private System.Windows.Forms.Button bPrestaTest;
-        private System.Windows.Forms.ToolStripMenuItem menuShowChangeLog;
-        private System.Windows.Forms.ComboBox cbActiveEshop;
-        private System.Windows.Forms.Button bDelEshop;
-        private System.Windows.Forms.Button bAddEshop;
-        private System.Windows.Forms.TreeView treeConfiguration;
-        private System.Windows.Forms.Label lEshopType;
-        private System.Windows.Forms.ComboBox cbTypeEshop;
-        private System.Windows.Forms.ToolStripMenuItem menuShowHome;
-        private System.Windows.Forms.GroupBox gbModuleInfo;
-        private System.Windows.Forms.GroupBox gbUserInfo;
-        private System.Windows.Forms.Label lHomeUserName;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lHomeEmail;
-        private System.Windows.Forms.Label lHomeName;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lHomePaymentSymbol;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lHomeCompany;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label lHomeCredit;
-        private System.Windows.Forms.DataGridView dgHomeModules;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Module;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ModuleActive;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderedTo;
-        private System.Windows.Forms.ToolStripMenuItem ukončitACEDesktopToolStripMenuItem;
-        private System.Windows.Forms.Label lPricingOverLimit;
-        private System.Windows.Forms.Label lPricingBellowLimit;
-        private System.Windows.Forms.Button bReprice;
-        private System.Windows.Forms.TextBox ePricingLimit;
-        private System.Windows.Forms.TextBox bPricingOverLimit;
-        private System.Windows.Forms.TextBox ePricingBellowLimit;
-        private System.Windows.Forms.TextBox ePricingPercent;
-        private System.Windows.Forms.RadioButton rbPricingLimit;
-        private System.Windows.Forms.RadioButton rbPricingProcent;
-        private System.Windows.Forms.TreeView treePricing;
-        private System.Windows.Forms.Label lPricingManufacturerIndication;
-        private System.Windows.Forms.Button bPricingShow;
-        private System.Windows.Forms.Button bPricingInit;
-        private System.Windows.Forms.Label lPricingSupplierIndication;
-        private System.Windows.Forms.Label lPricingCategoryIndication;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox chPricingSupplier;
-        private System.Windows.Forms.Button bOpenAskino;
-        private System.Windows.Forms.Label lSupplierSetup;
-        private System.Windows.Forms.CheckBox chAskinoSetup;
-        private System.Windows.Forms.CheckBox chNovikoSetup;
-        private System.Windows.Forms.Button bOpenNoviko;
-        private System.Windows.Forms.Label lActiveEshop;
-        private System.Windows.Forms.Label setupSeparator;
-        private System.Windows.Forms.ToolStripStatusLabel statusAskino;
-        private System.Windows.Forms.ToolStripStatusLabel statusNoviko;
-        private System.Windows.Forms.Label lNovikoPath;
-        private System.Windows.Forms.Label lAskinoPath;
-        private System.Windows.Forms.Button bWithoutSupplier;
-    }
-}
+         private System.Windows.Forms.OpenFileDialog openDialog;
+         private System.Windows.Forms.SaveFileDialog productsSD;
+         private System.Windows.Forms.MenuStrip menu;
+         private System.Windows.Forms.ToolStripMenuItem openProducts;
+         private System.Windows.Forms.StatusStrip status;
+         private System.Windows.Forms.ToolStripStatusLabel statusAgent;
+         private System.Windows.Forms.ToolStripStatusLabel statusLogin;
+         private System.Windows.Forms.ToolStripStatusLabel statusActiveEshop;
+         private System.Windows.Forms.SaveFileDialog saveDialog;
+         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+         private System.Windows.Forms.TabControl tc;
+         private System.Windows.Forms.TabPage tpHome;
+         private System.Windows.Forms.TabPage tpSetup;
+         private System.Windows.Forms.TabPage tpPriceUpdate;
+         private System.Windows.Forms.WebBrowser homeBrowser;
+         private System.Windows.Forms.GroupBox gbSelectProduct;
+         private System.Windows.Forms.Label lPricingManufacturer;
+         private System.Windows.Forms.ComboBox cPricingManufacturers;
+         private System.Windows.Forms.DataGridView dgPricing;
+         private System.Windows.Forms.Button bPricingSave;
+         private System.Windows.Forms.TabPage tpConsistency;
+         private System.Windows.Forms.GroupBox gbConsistency;
+         private System.Windows.Forms.Button bConsistencyAskino;
+         private System.Windows.Forms.Button bConsistencyNoviko;
+         private System.Windows.Forms.DataGridView dgConsistency;
+         private System.Windows.Forms.ToolStripProgressBar statusProgress;
+         private System.Windows.Forms.Label lPricingSupplier;
+         private System.Windows.Forms.ComboBox cPricingSuppliers;
+         private System.Windows.Forms.Button bLogin;
+         private System.Windows.Forms.Button bEmptyManufacturer;
+         private System.Windows.Forms.Button bEmptyCategory;
+         private System.Windows.Forms.Button bWithoutWeight;
+         private System.Windows.Forms.Button bWithoutShortDescription;
+         private System.Windows.Forms.Button bWithoutImage;
+         private System.Windows.Forms.ToolStripStatusLabel statusMessage;
+         private System.Windows.Forms.Button bWithoutLongDescription;
+         private System.Windows.Forms.Button bWithoutPrice;
+         private System.Windows.Forms.Button bLoadProducts;
+         private System.Windows.Forms.Button bWithoutWholeSalePrice;
+         private System.Windows.Forms.Label lListOf;
+         private System.Windows.Forms.Button bSaveChanges;
+         private System.Windows.Forms.Button bPrestaTest;
+         private System.Windows.Forms.ToolStripMenuItem menuShowChangeLog;
+         private System.Windows.Forms.ComboBox cbActiveEshop;
+         private System.Windows.Forms.Button bDelEshop;
+         private System.Windows.Forms.Button bAddEshop;
+         private System.Windows.Forms.TreeView treeConfiguration;
+         private System.Windows.Forms.ToolStripMenuItem menuShowHome;
+         private System.Windows.Forms.GroupBox gbModuleInfo;
+         private System.Windows.Forms.GroupBox gbUserInfo;
+         private System.Windows.Forms.Label lHomeUserName;
+         private System.Windows.Forms.Label label13;
+         private System.Windows.Forms.Label lHomeEmail;
+         private System.Windows.Forms.Label lHomeName;
+         private System.Windows.Forms.Label label10;
+         private System.Windows.Forms.Label lHomePaymentSymbol;
+         private System.Windows.Forms.Label label8;
+         private System.Windows.Forms.Label label7;
+         private System.Windows.Forms.Label lHomeCompany;
+         private System.Windows.Forms.Label label5;
+         private System.Windows.Forms.Label label16;
+         private System.Windows.Forms.Label lHomeCredit;
+         private System.Windows.Forms.DataGridView dgHomeModules;
+         private System.Windows.Forms.DataGridViewTextBoxColumn Module;
+         private System.Windows.Forms.DataGridViewCheckBoxColumn ModuleActive;
+         private System.Windows.Forms.DataGridViewTextBoxColumn OrderedTo;
+         private System.Windows.Forms.ToolStripMenuItem ukončitACEDesktopToolStripMenuItem;
+         private System.Windows.Forms.Label lPricingOverLimit;
+         private System.Windows.Forms.Label lPricingBellowLimit;
+         private System.Windows.Forms.Button bReprice;
+         private System.Windows.Forms.TextBox ePricingLimit;
+         private System.Windows.Forms.TextBox bPricingOverLimit;
+         private System.Windows.Forms.TextBox ePricingBellowLimit;
+         private System.Windows.Forms.TextBox ePricingPercent;
+         private System.Windows.Forms.RadioButton rbPricingLimit;
+         private System.Windows.Forms.RadioButton rbPricingProcent;
+         private System.Windows.Forms.TreeView treePricing;
+         private System.Windows.Forms.Label lPricingManufacturerIndication;
+         private System.Windows.Forms.Button bPricingShow;
+         private System.Windows.Forms.Button bPricingInit;
+         private System.Windows.Forms.Label lPricingSupplierIndication;
+         private System.Windows.Forms.Label lPricingCategoryIndication;
+         private System.Windows.Forms.Label label2;
+         private System.Windows.Forms.CheckBox chPricingSupplier;
+         private System.Windows.Forms.Label lActiveEshop;
+         private System.Windows.Forms.ToolStripStatusLabel statusAskino;
+         private System.Windows.Forms.ToolStripStatusLabel statusNoviko;
+         private System.Windows.Forms.Button bWithoutSupplier;
+         private Custom_Contols.EshopConfigurationControl eshopSettings;
+     }
+ }
 

@@ -4,10 +4,10 @@ using System;
 
 namespace Suppliers.Models
 {
-    public class NovikoModel : SupplierModel
+    public class NovikoModel
     {
         [CsvColumn(FieldIndex = 1)]
-        new public string Reference { get; set; }
+        public string Reference { get; set; }
 
         [CsvColumn(FieldIndex = 2)]
         public string Name { get; set; }
@@ -16,7 +16,7 @@ namespace Suppliers.Models
         public decimal PriceWithoutDph { get; set; }
 
         [CsvColumn(FieldIndex = 4)]
-        new public decimal PriceWithDph { get; set; }
+        public decimal PriceWithDph { get; set; }
 
         [CsvColumn(FieldIndex = 5)]
         public decimal SalePriceWithoutDph { get; set; }

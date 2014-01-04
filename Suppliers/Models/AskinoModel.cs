@@ -4,13 +4,13 @@ using System;
 
 namespace Suppliers.Models
 {
-    public class AskinoModel : SupplierModel
+    public class AskinoModel
     {
         [CsvColumn(FieldIndex = 1)]
         public string LocationCode { get; set; }
 
         [CsvColumn(FieldIndex = 2)]
-        new public string Reference { get; set; }
+        public string Reference { get; set; }
 
         [CsvColumn(FieldIndex = 3)]
         public string SupplierCode { get; set; }
@@ -37,7 +37,7 @@ namespace Suppliers.Models
         public float Dph { get; set; }
 
         [CsvColumn(FieldIndex = 11)]
-        new public string PriceWithDph { get; set; }
+        public string PriceWithDph { get; set; }
 
         [CsvColumn(FieldIndex = 12)]
         public string Ean { get; set; }

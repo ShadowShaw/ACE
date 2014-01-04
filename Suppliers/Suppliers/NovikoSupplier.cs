@@ -10,33 +10,35 @@ namespace Suppliers
 {
     public class NovikoSupplier : ISupplier
     {
-        private IEnumerable<SupplierModel> novikoPriceList;
+        private IEnumerable<NovikoModel> novikoPriceList;
         private CSVAccessor accessor;
+        public string Path { get; private set; } 
 
-        public NovikoSupplier()
+        public NovikoSupplier(string pathToFile)
         {
             accessor = new CSVAccessor();
+            Path = pathToFile;
         }
 
-        public void OpenPriceList(string path)
+        public void OpenPriceList()
         {
-            novikoPriceList = accessor.loadCSV<NovikoModel>(path);
+            novikoPriceList = accessor.loadCSV<NovikoModel>(Path);
         }
 
-        public List<SupplierModel> GetPriceList()
+        public IEnumerable<Object> GetPriceList()
         {
-            return novikoPriceList.ToList();
+            return novikoPriceList.ToList() as IEnumerable<NovikoModel>;
         }
 
-        //private bool HasReference(string reference)
-        //{
-        //    var item = novikoPriceList.Where(x => x.Reference == reference);
-        //    if (item.ToList().Count > 0)
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
+        public bool HasReference(string reference)
+        {
+            var item = novikoPriceList.Where(x => x.Reference == reference);
+            if (item.ToList().Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
         //private decimal GetPrice(string reference) 
         //{

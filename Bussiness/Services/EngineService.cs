@@ -1,6 +1,7 @@
 ﻿using Bussiness.ViewModels;
 using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
+using Suppliers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,11 +20,17 @@ namespace Bussiness.Services
         private CategoryService categoryService;
         private LanguageService languageService;
         private SupplierService supplierService;
+        private PriceListsService priceListService;
 
-        //public AskinoPriceList askinoPriceList;
-        //public NovikoPriceList novikoPriceList;
+        public PriceListsService PriceLists
+        {
+            get
+            {
+                return priceListService;
+            }
+        }
 
-        public LoginService Login 
+        public LoginService Login
         {
             get
             {
@@ -74,34 +81,58 @@ namespace Bussiness.Services
         public EngineService()
         {
             loginService = new LoginService();
-            //askinoPriceList = new AskinoPriceList();
-            //novikoPriceList = new NovikoPriceList();
-
-           // BaseUrl = "http://testpresta.mzf.cz/prestashop/";
-           // apiToken = "BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8";
+            priceListService = new PriceListsService();
         }
 
         public void InitPrestaServices(string baseUrl, string apiToken)
         {
             this.baseUrl = baseUrl;
             this.apiToken = apiToken;
+            
+            //if (productService == null)
+            //{
             productService = new ProductService(baseUrl, apiToken, "");
+            //}
+            //else
+            //{
+            //    Products.Setup(baseUrl, apiToken);
+            //}
+            
+            //if (manufacturerService == null)
+            //{
             manufacturerService = new ManufactuerService(baseUrl, apiToken, "");
+            //}
+            //else
+            //{
+            //    Manufacturers.Setup(baseUrl, apiToken);
+            //}
+
+            //if (categoryService == null)
+            //{
             categoryService = new CategoryService(baseUrl, apiToken, "");
+            //}
+            //else
+            //{
+            //    Categories.Setup(baseUrl, apiToken);
+            //}
+
+            //if (languageService == null)
+            //{
             languageService = new LanguageService(baseUrl, apiToken, "");
+            //}
+            //else
+            //{
+            //    Languages.Setup(baseUrl, apiToken);
+            //}
+
+            //if (supplierService == null)
+            //{
             supplierService = new SupplierService(baseUrl, apiToken, "");
-        }
-
-        public void SetupPrestaServices(string baseUrl, string apiToken)
-        {
-            this.apiToken = apiToken;
-            this.baseUrl = baseUrl;
-
-            Categories.Setup(baseUrl, apiToken);
-            Manufacturers.Setup(baseUrl, apiToken);
-            Products.Setup(baseUrl, apiToken);
-            Languages.Setup(baseUrl, apiToken);
-            Suppliers.Setup(baseUrl, apiToken);
+            //}
+            //else
+            //{
+            //    Suppliers.Setup(baseUrl, apiToken);
+            //}
         }
 
         public void SetupPrestaLanguages()

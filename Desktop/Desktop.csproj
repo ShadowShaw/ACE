@@ -109,6 +109,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom Contols\EshopConfiguration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Contols\EshopConfiguration.Designer.cs">
+      <DependentUpon>EshopConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ChangesView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,7 +139,11 @@
     <Compile Include="UserSettings\ACESettings.cs" />
     <Compile Include="Utils\ACESettingsTools.cs" />
     <Compile Include="Utils\DataGridTools.cs" />
+    <Compile Include="Utils\FlexBindingSource.cs" />
     <Compile Include="Utils\UITools.cs" />
+    <EmbeddedResource Include="Custom Contols\EshopConfiguration.resx">
+      <DependentUpon>EshopConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangesView.resx">
       <DependentUpon>ChangesView.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +174,7 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\ChangesView.datasource" />
+    <None Include="Properties\DataSources\Desktop.Custom_Contols.EshopConfigurationControl.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

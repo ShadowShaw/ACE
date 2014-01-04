@@ -2,6 +2,10 @@
 using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using PrestaAccesor.Utils;
+using Suppliers;
+using Suppliers.Accesors;
+using Suppliers.Interfaces;
+using Suppliers.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -209,23 +213,51 @@ namespace Bussiness.Services
             return result;
         }
 
-        //public List<ProductViewModel> GetNonAvailableProductOfSuppliers(List<long?> suppliersId, List<NovikoModel> novikoProducts)
-        //{
-        //    List<ProductViewModel> result = new List<ProductViewModel>();
+        private List<ProductViewModel> GetProductsOfSupplier(int supplierId)
+        {
+            return Products.Select(x => x).Where(x => x.id_supplier == supplierId).ToList();
+        }
 
-        //    List<ProductViewModel> productListNoviko = this.Products.Select(x => x).Where(x => x.id_supplier == 1).ToList();
+        public List<ProductViewModel> GetNonAvailableProductOfSuppliers(PriceListsService priceLists)
+        {
+            List<ProductViewModel> result = new List<ProductViewModel>();
+            int novikoId = 1;
+            int askinoId = 0;
             
-        //    foreach (ProductViewModel s in productListNoviko)
-        //    {
-        //        var result1 = novikoProducts.Where(y => y.Reference == s.id.ToString()).ToList();
-        //        if (result1.Count == 0)
-        //        {
-        //            result.Add(s);
-        //        }
-        //    }
+            //foreach (dodavatel in dodavatele)
+            {
+                List<ProductViewModel> productToCheck = GetProductsOfSupplier(novikoId); //id dodavatele
+                ISupplier supplier = priceLists["Noviko"]; //name dodavatele
+                supplier.OpenPriceList();
 
-        //    return result;
-        //}
+                foreach (ProductViewModel product in productToCheck)
+                {
+                    if (supplier.HasReference(product.id.ToString()) == false)
+                    {
+                        result.Add(product);
+                    }
+                }
+            }
+
+            {
+                List<ProductViewModel> productToCheck = GetProductsOfSupplier(askinoId); //id dodavatele
+                ISupplier supplier2 = priceLists["Askino"]; //name dodavatele
+                supplier2.OpenPriceList();
+
+                IEnumerable<AskinoModel> askinoPriceList = supplier2.GetPriceList() as IEnumerable<AskinoModel>;
+                foreach (ProductViewModel product in productToCheck)
+                {
+
+                    var c = askinoPriceList.Where(y => y.Reference == product.id.ToString()).ToList();
+                    if (c.Count == 0)
+                    {
+                        result.Add(product);
+                    }
+                }
+            }
+            
+            return result;
+        }
 
 
         public List<ProductViewModel> GetProductForRepricing(int idManufacturer, int idSupplier, List<int> idCategories)

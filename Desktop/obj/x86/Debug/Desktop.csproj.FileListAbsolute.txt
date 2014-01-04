@@ -83,3 +83,8 @@ C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.exe.manifest
 C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.application
 C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.pdb
+C:\GitHub\ACE\Desktop\bin\Debug\Suppliers.dll
+C:\GitHub\ACE\Desktop\bin\Debug\LINQtoCSV.dll
+C:\GitHub\ACE\Desktop\bin\Debug\Suppliers.pdb
+C:\GitHub\ACE\Desktop\bin\Debug\LINQtoCSV.pdb
+C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Custom_Contols.EshopConfigurationControl.resources
