@@ -257,11 +257,6 @@ namespace Desktop.UserSettings
 
         public ACESettings()
         {
-            Eshops = new EshopList();
-            FormSizes = new FormSizesList();
-            ColumnWidth = new ColumnWidthList();
-            Values = new GenericKeyValueList();
-
             if (File.Exists(ACESettings.EshopsSettingsPath))
             {
                 LoadEshops();
@@ -304,6 +299,25 @@ namespace Desktop.UserSettings
                 CreateFile(ACESettings.DesktopSettingsPath);
             }
 
+            if (Eshops == null)
+            {
+                Eshops = new EshopList();
+            }
+
+            if (FormSizes == null)
+            {
+                FormSizes = new FormSizesList();
+            }
+
+            if (ColumnWidth == null)
+            {
+                ColumnWidth = new ColumnWidthList();
+            }
+
+            if (Values == null)
+            {
+                Values = new GenericKeyValueList();
+            }
         }
 
         private static void CreateFile(string file)

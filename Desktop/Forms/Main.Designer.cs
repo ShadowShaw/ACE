@@ -87,9 +87,8 @@
             this.bWithoutWholeSalePrice = new System.Windows.Forms.Button();
             this.bWithoutLongDescription = new System.Windows.Forms.Button();
             this.bWithoutPrice = new System.Windows.Forms.Button();
-            this.bConsistencyNoviko = new System.Windows.Forms.Button();
+            this.bConsistencySuppliers = new System.Windows.Forms.Button();
             this.bWithoutWeight = new System.Windows.Forms.Button();
-            this.bConsistencyAskino = new System.Windows.Forms.Button();
             this.bEmptyManufacturer = new System.Windows.Forms.Button();
             this.bWithoutShortDescription = new System.Windows.Forms.Button();
             this.bEmptyCategory = new System.Windows.Forms.Button();
@@ -516,7 +515,7 @@
             // lListOf
             // 
             this.lListOf.AutoSize = true;
-            this.lListOf.Location = new System.Drawing.Point(243, 11);
+            this.lListOf.Location = new System.Drawing.Point(187, 11);
             this.lListOf.Name = "lListOf";
             this.lListOf.Size = new System.Drawing.Size(105, 13);
             this.lListOf.TabIndex = 24;
@@ -525,9 +524,9 @@
             // bLoadProducts
             // 
             this.bLoadProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bLoadProducts.Location = new System.Drawing.Point(19, 15);
+            this.bLoadProducts.Location = new System.Drawing.Point(8, 11);
             this.bLoadProducts.Name = "bLoadProducts";
-            this.bLoadProducts.Size = new System.Drawing.Size(200, 30);
+            this.bLoadProducts.Size = new System.Drawing.Size(173, 30);
             this.bLoadProducts.TabIndex = 23;
             this.bLoadProducts.Tag = "";
             this.bLoadProducts.Text = "Načti produkty";
@@ -559,7 +558,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgConsistency.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgConsistency.Location = new System.Drawing.Point(243, 30);
+            this.dgConsistency.Location = new System.Drawing.Point(187, 30);
             this.dgConsistency.Name = "dgConsistency";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -569,7 +568,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgConsistency.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgConsistency.Size = new System.Drawing.Size(0, 42);
+            this.dgConsistency.Size = new System.Drawing.Size(828, 552);
             this.dgConsistency.TabIndex = 22;
             this.dgConsistency.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellClick);
             this.dgConsistency.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellValueChanged);
@@ -581,9 +580,8 @@
             this.gbConsistency.Controls.Add(this.bWithoutWholeSalePrice);
             this.gbConsistency.Controls.Add(this.bWithoutLongDescription);
             this.gbConsistency.Controls.Add(this.bWithoutPrice);
-            this.gbConsistency.Controls.Add(this.bConsistencyNoviko);
+            this.gbConsistency.Controls.Add(this.bConsistencySuppliers);
             this.gbConsistency.Controls.Add(this.bWithoutWeight);
-            this.gbConsistency.Controls.Add(this.bConsistencyAskino);
             this.gbConsistency.Controls.Add(this.bEmptyManufacturer);
             this.gbConsistency.Controls.Add(this.bWithoutShortDescription);
             this.gbConsistency.Controls.Add(this.bEmptyCategory);
@@ -591,7 +589,7 @@
             this.gbConsistency.Enabled = false;
             this.gbConsistency.Location = new System.Drawing.Point(8, 51);
             this.gbConsistency.Name = "gbConsistency";
-            this.gbConsistency.Size = new System.Drawing.Size(229, 531);
+            this.gbConsistency.Size = new System.Drawing.Size(173, 531);
             this.gbConsistency.TabIndex = 20;
             this.gbConsistency.TabStop = false;
             this.gbConsistency.Text = "Vyhledej produkty:";
@@ -599,9 +597,9 @@
             // bWithoutSupplier
             // 
             this.bWithoutSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutSupplier.Location = new System.Drawing.Point(11, 356);
+            this.bWithoutSupplier.Location = new System.Drawing.Point(11, 266);
             this.bWithoutSupplier.Name = "bWithoutSupplier";
-            this.bWithoutSupplier.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutSupplier.Size = new System.Drawing.Size(150, 25);
             this.bWithoutSupplier.TabIndex = 30;
             this.bWithoutSupplier.Text = " bez dodavatele";
             this.bWithoutSupplier.UseVisualStyleBackColor = true;
@@ -610,9 +608,9 @@
             // bSaveChanges
             // 
             this.bSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSaveChanges.Location = new System.Drawing.Point(11, 493);
+            this.bSaveChanges.Location = new System.Drawing.Point(11, 492);
             this.bSaveChanges.Name = "bSaveChanges";
-            this.bSaveChanges.Size = new System.Drawing.Size(200, 30);
+            this.bSaveChanges.Size = new System.Drawing.Size(150, 30);
             this.bSaveChanges.TabIndex = 29;
             this.bSaveChanges.Text = "Zapiš změny";
             this.bSaveChanges.UseVisualStyleBackColor = true;
@@ -621,9 +619,9 @@
             // bWithoutWholeSalePrice
             // 
             this.bWithoutWholeSalePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutWholeSalePrice.Location = new System.Drawing.Point(11, 242);
+            this.bWithoutWholeSalePrice.Location = new System.Drawing.Point(11, 203);
             this.bWithoutWholeSalePrice.Name = "bWithoutWholeSalePrice";
-            this.bWithoutWholeSalePrice.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutWholeSalePrice.Size = new System.Drawing.Size(150, 25);
             this.bWithoutWholeSalePrice.TabIndex = 28;
             this.bWithoutWholeSalePrice.Text = " bez velkoobchodni ceny";
             this.bWithoutWholeSalePrice.UseVisualStyleBackColor = true;
@@ -632,9 +630,9 @@
             // bWithoutLongDescription
             // 
             this.bWithoutLongDescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutLongDescription.Location = new System.Drawing.Point(11, 166);
+            this.bWithoutLongDescription.Location = new System.Drawing.Point(11, 141);
             this.bWithoutLongDescription.Name = "bWithoutLongDescription";
-            this.bWithoutLongDescription.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutLongDescription.Size = new System.Drawing.Size(150, 25);
             this.bWithoutLongDescription.TabIndex = 27;
             this.bWithoutLongDescription.Text = "bez dlouhého popisu";
             this.bWithoutLongDescription.UseVisualStyleBackColor = true;
@@ -643,53 +641,42 @@
             // bWithoutPrice
             // 
             this.bWithoutPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutPrice.Location = new System.Drawing.Point(11, 204);
+            this.bWithoutPrice.Location = new System.Drawing.Point(11, 172);
             this.bWithoutPrice.Name = "bWithoutPrice";
-            this.bWithoutPrice.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutPrice.Size = new System.Drawing.Size(150, 25);
             this.bWithoutPrice.TabIndex = 26;
             this.bWithoutPrice.Text = " bez maloobchodní ceny";
             this.bWithoutPrice.UseVisualStyleBackColor = true;
             this.bWithoutPrice.Click += new System.EventHandler(this.bWithoutPrice_Click);
             // 
-            // bConsistencyNoviko
+            // bConsistencySuppliers
             // 
-            this.bConsistencyNoviko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConsistencyNoviko.Location = new System.Drawing.Point(11, 318);
-            this.bConsistencyNoviko.Name = "bConsistencyNoviko";
-            this.bConsistencyNoviko.Size = new System.Drawing.Size(200, 30);
-            this.bConsistencyNoviko.TabIndex = 12;
-            this.bConsistencyNoviko.Text = "jenž se nedodávají";
-            this.bConsistencyNoviko.UseVisualStyleBackColor = true;
-            this.bConsistencyNoviko.Click += new System.EventHandler(this.bConsistencyNoviko_Click_1);
+            this.bConsistencySuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bConsistencySuppliers.Location = new System.Drawing.Point(11, 313);
+            this.bConsistencySuppliers.Name = "bConsistencySuppliers";
+            this.bConsistencySuppliers.Size = new System.Drawing.Size(150, 25);
+            this.bConsistencySuppliers.TabIndex = 12;
+            this.bConsistencySuppliers.Text = "jenž se nedodávají";
+            this.bConsistencySuppliers.UseVisualStyleBackColor = true;
+            this.bConsistencySuppliers.Click += new System.EventHandler(this.bConsistencySuppliers_Click_1);
             // 
             // bWithoutWeight
             // 
             this.bWithoutWeight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutWeight.Location = new System.Drawing.Point(11, 92);
+            this.bWithoutWeight.Location = new System.Drawing.Point(11, 79);
             this.bWithoutWeight.Name = "bWithoutWeight";
-            this.bWithoutWeight.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutWeight.Size = new System.Drawing.Size(150, 25);
             this.bWithoutWeight.TabIndex = 25;
             this.bWithoutWeight.Text = "s nulovou váhou";
             this.bWithoutWeight.UseVisualStyleBackColor = true;
             this.bWithoutWeight.Click += new System.EventHandler(this.bWithoutWeight_Click);
             // 
-            // bConsistencyAskino
-            // 
-            this.bConsistencyAskino.Enabled = false;
-            this.bConsistencyAskino.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bConsistencyAskino.Location = new System.Drawing.Point(11, 445);
-            this.bConsistencyAskino.Name = "bConsistencyAskino";
-            this.bConsistencyAskino.Size = new System.Drawing.Size(200, 38);
-            this.bConsistencyAskino.TabIndex = 13;
-            this.bConsistencyAskino.Text = "Zkontroluj konzistenci dodavatele Askino";
-            this.bConsistencyAskino.UseVisualStyleBackColor = true;
-            // 
             // bEmptyManufacturer
             // 
             this.bEmptyManufacturer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bEmptyManufacturer.Location = new System.Drawing.Point(11, 55);
+            this.bEmptyManufacturer.Location = new System.Drawing.Point(11, 49);
             this.bEmptyManufacturer.Name = "bEmptyManufacturer";
-            this.bEmptyManufacturer.Size = new System.Drawing.Size(200, 30);
+            this.bEmptyManufacturer.Size = new System.Drawing.Size(150, 25);
             this.bEmptyManufacturer.TabIndex = 15;
             this.bEmptyManufacturer.Text = "s prázdným výrobcem";
             this.bEmptyManufacturer.UseVisualStyleBackColor = true;
@@ -698,9 +685,9 @@
             // bWithoutShortDescription
             // 
             this.bWithoutShortDescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutShortDescription.Location = new System.Drawing.Point(11, 129);
+            this.bWithoutShortDescription.Location = new System.Drawing.Point(11, 110);
             this.bWithoutShortDescription.Name = "bWithoutShortDescription";
-            this.bWithoutShortDescription.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutShortDescription.Size = new System.Drawing.Size(150, 25);
             this.bWithoutShortDescription.TabIndex = 24;
             this.bWithoutShortDescription.Text = "bez krátkého popisu";
             this.bWithoutShortDescription.UseVisualStyleBackColor = true;
@@ -711,7 +698,7 @@
             this.bEmptyCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bEmptyCategory.Location = new System.Drawing.Point(11, 19);
             this.bEmptyCategory.Name = "bEmptyCategory";
-            this.bEmptyCategory.Size = new System.Drawing.Size(200, 30);
+            this.bEmptyCategory.Size = new System.Drawing.Size(150, 25);
             this.bEmptyCategory.TabIndex = 14;
             this.bEmptyCategory.Text = "s prázdnou kategorií";
             this.bEmptyCategory.UseVisualStyleBackColor = true;
@@ -721,13 +708,12 @@
             // 
             this.bWithoutImage.Enabled = false;
             this.bWithoutImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bWithoutImage.Location = new System.Drawing.Point(11, 280);
+            this.bWithoutImage.Location = new System.Drawing.Point(11, 234);
             this.bWithoutImage.Name = "bWithoutImage";
-            this.bWithoutImage.Size = new System.Drawing.Size(200, 30);
+            this.bWithoutImage.Size = new System.Drawing.Size(150, 25);
             this.bWithoutImage.TabIndex = 23;
             this.bWithoutImage.Text = "bez obrázku";
             this.bWithoutImage.UseVisualStyleBackColor = true;
-            this.bWithoutImage.Visible = false;
             this.bWithoutImage.Click += new System.EventHandler(this.bWithoutImage_Click);
             // 
             // tpPriceUpdate
@@ -1192,8 +1178,7 @@
          private System.Windows.Forms.Button bPricingSave;
          private System.Windows.Forms.TabPage tpConsistency;
          private System.Windows.Forms.GroupBox gbConsistency;
-         private System.Windows.Forms.Button bConsistencyAskino;
-         private System.Windows.Forms.Button bConsistencyNoviko;
+         private System.Windows.Forms.Button bConsistencySuppliers;
          private System.Windows.Forms.DataGridView dgConsistency;
          private System.Windows.Forms.ToolStripProgressBar statusProgress;
          private System.Windows.Forms.Label lPricingSupplier;

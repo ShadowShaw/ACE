@@ -461,14 +461,6 @@ namespace Desktop
                         this.statusProgress.Visible = false;
                         this.statusMessage.Text = "";
                         this.gbConsistency.Enabled = true;
-                        if (mainSettings.ActiveEshop().UseAskino)
-                        {
-                            this.bConsistencyAskino.Enabled = true;
-                        }
-                        if (mainSettings.ActiveEshop().UseNoviko)
-                        {
-                            this.bConsistencyNoviko.Enabled = true;
-                        }
                     }
                     finally
                     {
@@ -851,13 +843,16 @@ namespace Desktop
 
         private void dgConsistency_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex != dgConsistency.Columns["link"].Index)
+            if (e.RowIndex < 0)
             {
                 return;
             }
 
-            var productId = dgConsistency[0, e.RowIndex].Value;
-            Engine.OpenProductInBrowser(System.Convert.ToInt32(productId));
+            if (dgConsistency.Columns[e.ColumnIndex].Name == "link")
+            {
+                var productId = dgConsistency[0, e.RowIndex].Value;
+                Engine.OpenProductInBrowser(System.Convert.ToInt32(productId));
+            }
         }
 
         private void bEmptyCategory_Click(object sender, EventArgs e)
@@ -1088,18 +1083,29 @@ namespace Desktop
             ChangedType = FieldType.manufacturer;
         }
 
-        private void bConsistencyNoviko_Click_1(object sender, EventArgs e)
+        private void bConsistencySuppliers_Click_1(object sender, EventArgs e)
         {
-            if (File.Exists(mainSettings.ActiveEshop().NovikoFilePath))
+            if (mainSettings.ActiveEshop().UseAskino)
             {
-                Engine.PriceLists.AddPriceLists(mainSettings.ActiveEshop());
+                if (File.Exists(mainSettings.ActiveEshop().NovikoFilePath) == false)
+                {
+                    MessageBox.Show(TextResources.msgNoPriceListValue + " Askina", TextResources.msgNoPriceListTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
-            else
+            
+            if (mainSettings.ActiveEshop().UseNoviko)
             {
-                MessageBox.Show(TextResources.msgEmptyConfigurationValue + " Novika", TextResources.msgNoPriceListTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (File.Exists(mainSettings.ActiveEshop().NovikoFilePath) == false)
+                {
+                    MessageBox.Show(TextResources.msgNoPriceListValue + " Novika", TextResources.msgNoPriceListTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
+            Engine.PriceLists.AddPriceLists(mainSettings.ActiveEshop());
+            //Engine.PriceLists.priceLists
+            
             IndexForChange = -1;
             lListOf.Text = TextResources.titleWithoutSupplier;
             DataGridTools.InitGrid(dgConsistency);
@@ -1122,9 +1128,6 @@ namespace Desktop
 
             IndexForChange = -1;
             ChangedType = FieldType.image;
-
-            //call chceck consistency s produkty a cenikem novika
-            //call chceck consistency s produkty a cenikem askina
         }
 
         #endregion
