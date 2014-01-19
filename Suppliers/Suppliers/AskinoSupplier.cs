@@ -13,6 +13,7 @@ namespace Suppliers
         private IEnumerable<AskinoModel> askinoPriceList;
         private CSVAccessor accessor;
         public string Path { get; private set;}
+        public int SupplierId { get; set;}
 
         public AskinoSupplier(string pathToFile)
         {

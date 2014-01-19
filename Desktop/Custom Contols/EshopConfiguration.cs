@@ -57,27 +57,42 @@ namespace Desktop.Custom_Contols
             {
                 eshop = eshopx;
             }
+
+            if (eshop.Suppliers.Exists(s => s.SupplierName == "Askino") == false)
+            {
+                SupplierConfiguration askino = new SupplierConfiguration();
+                askino.SupplierName = "Askino";
+                eshop.Suppliers.Add(askino);
+            }
+
+            if (eshop.Suppliers.Exists(s => s.SupplierName == "Noviko") == false)
+            {
+                SupplierConfiguration noviko = new SupplierConfiguration();
+                noviko.SupplierName = "Noviko";
+                eshop.Suppliers.Add(noviko);
+            }
+
             
             ePrestaUrl.Text = eshop.BaseUrl;
             ePrestaToken.Text = eshop.Password;
-            chAskinoSetup.Checked = eshop.UseAskino;
-            chNovikoSetup.Checked = eshop.UseNoviko;
-            if (String.IsNullOrEmpty(eshop.AskinoFilePath))
+            chAskinoSetup.Checked = eshop.Suppliers[eshop.AskinoIndex()].UseSupplier;
+            chNovikoSetup.Checked = eshop.Suppliers[eshop.NovikoIndex()].UseSupplier;
+            if (String.IsNullOrEmpty(eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName))
             {
                 lAskinoPath.Text = labelPathToAskinoPriceList;
             }
             else
             {
-                lAskinoPath.Text = eshop.AskinoFilePath;
+                lAskinoPath.Text = eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName;
             }
 
-            if (String.IsNullOrEmpty(eshop.NovikoFilePath))
+            if (String.IsNullOrEmpty(eshop.Suppliers[eshop.NovikoIndex()].SupplierFileName))
             {
                 lNovikoPath.Text = labelPathToNovikoPriceList;
             }
             else
             {
-                lNovikoPath.Text = eshop.NovikoFilePath;
+                lNovikoPath.Text = eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName;
             }
             
             gbPrestaSetup.Text = "Konfigurace eshopu " + eshop.EshopName;
@@ -106,10 +121,12 @@ namespace Desktop.Custom_Contols
         {
             if (openDialog.ShowDialog() == DialogResult.OK)
             {
-                eshop.AskinoFilePath = openDialog.FileName;
-                lAskinoPath.Text = eshop.AskinoFilePath;
-                eshop.UseAskino = true;
+                eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName = openDialog.FileName;
+                eshop.Suppliers[eshop.AskinoIndex()].UseSupplier = true;
+                
+                lAskinoPath.Text = eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName;
                 chAskinoSetup.Checked = true;
+                
                 OnSuppliersChanged(new EshopEventArgs(this.eshop));
             }
         }
@@ -118,9 +135,9 @@ namespace Desktop.Custom_Contols
         {
             if (openDialog.ShowDialog() == DialogResult.OK)
             {
-                eshop.NovikoFilePath = openDialog.FileName;
-                lNovikoPath.Text = eshop.NovikoFilePath;
-                eshop.UseNoviko = true;
+                eshop.Suppliers[eshop.NovikoIndex()].SupplierFileName = openDialog.FileName;
+                lNovikoPath.Text = eshop.Suppliers[eshop.NovikoIndex()].SupplierFileName;
+                eshop.Suppliers[eshop.NovikoIndex()].UseSupplier = true;
                 chNovikoSetup.Checked = true;
                 OnSuppliersChanged(new EshopEventArgs(this.eshop));
             }
@@ -140,11 +157,16 @@ namespace Desktop.Custom_Contols
 
             eshop.BaseUrl = ePrestaUrl.Text;
             eshop.Password = ePrestaToken.Text;
-            eshop.UseAskino = chAskinoSetup.Checked;
-            eshop.UseNoviko = chNovikoSetup.Checked;
-            eshop.AskinoFilePath = lAskinoPath.Text;
-            eshop.NovikoFilePath = lNovikoPath.Text;
+            eshop.Suppliers[eshop.AskinoIndex()].UseSupplier = chAskinoSetup.Checked;
+            eshop.Suppliers[eshop.NovikoIndex()].UseSupplier = chNovikoSetup.Checked;
+            eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName = lAskinoPath.Text;
+            eshop.Suppliers[eshop.NovikoIndex()].SupplierFileName = lNovikoPath.Text;
             OnSuppliersChanged(new EshopEventArgs(this.eshop));
+        }
+
+        private void ePrestaUrl_Validating(object sender, CancelEventArgs e)
+        {
+            //GetBaseUrlFromEditBox
         }
     }
 

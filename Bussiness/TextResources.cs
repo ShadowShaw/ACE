@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Bussiness
+﻿namespace Bussiness
 {
     public static class TextResources
     {
@@ -32,39 +27,44 @@ namespace Bussiness
         public const string Confirmation = "Potvrzení";
 
         //button context help
-        public const string hintLoadProducts = "Načte databázi produktů eshopu";
-        public const string hintEmptyCategory = "Vypíše produkty, které nejsou přiřazeny v žádné kategorii, tedy jsou v root kategorii";
-        public const string hintEmptyManufacturer = "Vypíše produkty, u kterých není přiřazen žádný výrobce";
-        public const string hintWithoutImage = "Vypíše produkty u kterých není přiřazen žádný obrázek";
-        public const string hintWithoutShortDescription = "Vypíše produkty bez krátkého popisu";
-        public const string hintWithoutLongDescription = "Vypíše produkty bez dlouhého popisu";
-        public const string hintWithoutPrice = "Vypíše produkty bez maloobchodní prodejní ceny";
-        public const string hintWithoutWholeSalePrice = "Vypíše produkty bez velkoobchodní prodejní ceny";
-        public const string hintWithoutWeight = "Vypíše produkty u kterých není zadána váha";
-        public const string hintWithoutSupplier = "Vypíše produkty u kterých není zadán dodavatel";
+        public const string HintLoadProducts = "Načte databázi produktů eshopu";
+        public const string HintEmptyCategory = "Vypíše produkty, které nejsou přiřazeny v žádné kategorii, tedy jsou v root kategorii";
+        public const string HintEmptyManufacturer = "Vypíše produkty, u kterých není přiřazen žádný výrobce";
+        public const string HintWithoutImage = "Vypíše produkty u kterých není přiřazen žádný obrázek";
+        public const string HintWithoutShortDescription = "Vypíše produkty bez krátkého popisu";
+        public const string HintWithoutLongDescription = "Vypíše produkty bez dlouhého popisu";
+        public const string HintWithoutPrice = "Vypíše produkty bez maloobchodní prodejní ceny";
+        public const string HintWithoutWholeSalePrice = "Vypíše produkty bez velkoobchodní prodejní ceny";
+        public const string HintWithoutWeight = "Vypíše produkty u kterých není zadána váha";
+        public const string HintWithoutSupplier = "Vypíše produkty u kterých není zadán dodavatel";
         
         //consistency grid titles
-        public const string titleLoadProducts = "Načte databázi produktů eshopu";
-        public const string titleEmptyCategory = "Zobrazuji produkty s prázdnou kategorii.";
-        public const string titleEmptyManufacturer = "Vypíše produkty, u kterých není přiřazen žádný výrobce";
-        public const string titleWithoutImage = "Vypíše produkty u kterých není přiřazen žádný obrázek";
-        public const string titleWithoutShortDescription = "Vypíše produkty bez krátkého popisu";
-        public const string titleWithoutLongDescription = "Vypíše produkty bez dlouhého popisu";
-        public const string titleWithoutPrice = "Vypíše produkty bez maloobchodní prodejní ceny";
-        public const string titleWithoutWholeSalePrice = "Vypíše produkty bez velkoobchodní prodejní ceny";
-        public const string titleWithoutWeight = "Vypíše produkty u kterých není zadána váha";
-        public const string titleWithoutSupplier = "Zobrazuji produkty jenž dodavatelé již nedodávají.";
+        public const string TitleLoadProducts = "Načte databázi produktů eshopu";
+        public const string TitleEmptyCategory = "Zobrazuji produkty s prázdnou kategorii.";
+        public const string TitleEmptyManufacturer = "Vypíše produkty, u kterých není přiřazen žádný výrobce";
+        public const string TitleWithoutImage = "Vypíše produkty u kterých není přiřazen žádný obrázek";
+        public const string TitleWithoutShortDescription = "Vypíše produkty bez krátkého popisu";
+        public const string TitleWithoutLongDescription = "Vypíše produkty bez dlouhého popisu";
+        public const string TitleWithoutPrice = "Vypíše produkty bez maloobchodní prodejní ceny";
+        public const string TitleWithoutWholeSalePrice = "Vypíše produkty bez velkoobchodní prodejní ceny";
+        public const string TitleWithoutWeight = "Vypíše produkty u kterých není zadána váha";
+        public const string TitleWithoutSupplier = "Zobrazuji produkty jenž dodavatelé již nedodávají.";
+        public const string TitleEmptyDescription = "Zobrazuji produkty s prázdným krátkým popisem.";
 
         //label strings
         
 
         //message boxes
-        public const string msgEmptyConfigurationValue = "Nenalezena konfigurace připojení k eshopům. Prosím nastavte připojení.";
-        public const string msgEmptyConfigurationTitle = "Nenalezena konfigurace připojení k eshopům.";
-        public const string msgNoPriceListTitle = "Ceník není k dispozici";
-        public const string msgNoPriceListValue = "Ceník není k dispozici, otevřete ceník";
-        public const string msgDeleteEshopTitle = "Odstranit konfiguraci eshopu";
-        public const string msgDeleteEshopValue = "Chcete opravdu odstranit konfiguraci eshopu: ";
-            
+        public const string MsgEmptyConfigurationValue = "Nenalezena konfigurace připojení k eshopům. Prosím nastavte připojení.";
+        public const string MsgEmptyConfigurationTitle = "Nenalezena konfigurace připojení k eshopům.";
+        public const string MsgNoPriceListTitle = "Ceník není k dispozici";
+        public const string MsgNoPriceListValue = "Ceník není k dispozici, otevřete ceník";
+        public const string MsgDeleteEshopTitle = "Odstranit konfiguraci eshopu";
+        public const string MsgDeleteEshopValue = "Chcete opravdu odstranit konfiguraci eshopu: ";
+        public const string MsgDeleteProductTitle = "Odstranit produkt";
+        public const string MsgDeleteProductValue = "Chcete opravdu odstranit produkt?";
+        public const string MsgLoginFailedValue = "Nesprávné uživatelské jméno, či heslo.";
+        public const string MsgLoginFailedTitle = "Nesprávné heslo";
+
     }
 }

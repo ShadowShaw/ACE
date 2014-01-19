@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Bussiness.Services
@@ -20,39 +19,39 @@ namespace Bussiness.Services
 
     public class LoginService
     {
-        private UnitOfWorkProvider UoWProvider;
+        private readonly UnitOfWorkProvider uowProvider;
         public UserProfile CurrentUser { get; private set;}
         public ACERights Rights;
         
         public LoginService()
         {
-            UoWProvider = new UnitOfWorkProvider();
+            uowProvider = new UnitOfWorkProvider();
             Rights = new ACERights();
             CurrentUser = null;
         }
 
-        public bool checkDesktopLogin(string username, string password)
+        public bool CheckDesktopLogin(string username, string password)
         {
             bool result = false;
             
             if ((username != "") && (password != ""))
             {
                 int userId = 0;
-                string HashedPassword = "";
-                using (IUnitOfWork uow = UoWProvider.CreateNew())
+                string hashedPassword = "";
+                using (IUnitOfWork uow = uowProvider.CreateNew())
                 {
-                    var UserList = uow.Users.GetAll().Where(x => x.UserName == username);
-                    if (UserList.Count() == 1)
+                    var userList = uow.Users.GetAll().Where(x => x.UserName == username);
+                    if (userList.Count() == 1)
                     {
-                        userId = UserList.First().Id;
-                        HashedPassword = uow.MemberShips.GetByID(userId).Password;
+                        userId = userList.First().Id;
+                        hashedPassword = uow.MemberShips.GetByID(userId).Password;
                     }
                 }
 
-                if (DesktopLogin.VerifyHashedPassword(HashedPassword, password))
+                if (DesktopLogin.VerifyHashedPassword(hashedPassword, password))
                 {
                     result = true;
-                    this.CurrentUser = UoWProvider.CreateNew().Users.GetByID(userId);
+                    CurrentUser = uowProvider.CreateNew().Users.GetByID(userId);
                     GetRights();
                 }
             }
@@ -69,21 +68,21 @@ namespace Bussiness.Services
             }
             else
             {
-                using (IUnitOfWork uow = UoWProvider.CreateNew())
+                using (IUnitOfWork uow = uowProvider.CreateNew())
                 {
-                    Rights.Pricing = isModuleActive(uow.ACEModules.GetAll().Where(m => m.Name == ModuleInfo.PricingModuleName).FirstOrDefault().Id);
-                    Rights.Consistency = isModuleActive(uow.ACEModules.GetAll().Where(m => m.Name == ModuleInfo.ConsistencyModuleName).FirstOrDefault().Id);
+                    Rights.Pricing = IsModuleActive(uow.ACEModules.GetAll().FirstOrDefault(m => m.Name == ModuleInfo.PricingModuleName).Id);
+                    Rights.Consistency = IsModuleActive(uow.ACEModules.GetAll().FirstOrDefault(m => m.Name == ModuleInfo.ConsistencyModuleName).Id);
                 }
             }
         }
 
-        private bool isModuleActive(int moduleId)
+        private bool IsModuleActive(int moduleId)
         {
             bool result = false;
 
             if (CurrentUser != null)
             {
-                using (IUnitOfWork uow = UoWProvider.CreateNew())
+                using (IUnitOfWork uow = uowProvider.CreateNew())
                 {
                     List<ModuleOrder> orders = uow.ModuleOrders.GetAll().Where(u => u.UserId == CurrentUser.Id).Where(m => m.ModuleId == moduleId).ToList();
                     foreach (ModuleOrder order in orders)
@@ -107,12 +106,9 @@ namespace Bussiness.Services
                 {
                     foreach (ACEModule item in uow.ACEModules.GetAll().ToList())
                     {
-                        bool active = false;
-                        if (isModuleActive(item.Id))
-                        {
-                            active = true;
-                        }
-                        DateTime? date = getActiveDate(item.Id);
+                        bool active = IsModuleActive(item.Id);
+
+                        DateTime? date = GetActiveDate(item.Id);
                         string dateInString = "";
                         if (date != null)
                         {
@@ -137,13 +133,13 @@ namespace Bussiness.Services
             return grid;
         }
 
-        private DateTime? getActiveDate(int moduleId)
+        private DateTime? GetActiveDate(int moduleId)
         {
             DateTime? result = null;
 
             if (CurrentUser != null)
             {
-                using (IUnitOfWork uow = UoWProvider.CreateNew())
+                using (IUnitOfWork uow = uowProvider.CreateNew())
                 {
                     List<ModuleOrder> orders = uow.ModuleOrders.GetAll().Where(u => u.UserId == CurrentUser.Id).Where(m => m.ModuleId == moduleId).ToList();
                     foreach (ModuleOrder order in orders)
@@ -159,7 +155,7 @@ namespace Bussiness.Services
             return result;
         }
 
-        public void logout()
+        public void Logout()
         {
             CurrentUser = null;
             Rights.Consistency = false;

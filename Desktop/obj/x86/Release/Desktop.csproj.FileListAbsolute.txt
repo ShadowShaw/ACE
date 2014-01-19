@@ -1,6 +1,4 @@
 C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.exe.config
-C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Login.resources
-C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Main.resources
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Properties.Resources.resources
 C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.pdb
@@ -43,3 +41,5 @@ C:\GitHub\ACE\Desktop\bin\Release\LINQtoCSV.dll
 C:\GitHub\ACE\Desktop\bin\Release\Suppliers.pdb
 C:\GitHub\ACE\Desktop\bin\Release\LINQtoCSV.pdb
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Custom_Contols.EshopConfigurationControl.resources
+C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Forms.Login.resources
+C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Forms.Main.resources

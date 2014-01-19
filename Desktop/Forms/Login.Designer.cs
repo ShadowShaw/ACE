@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
-namespace Desktop
+﻿namespace Desktop.Forms
 {
     partial class Login
     {
@@ -48,7 +46,7 @@ namespace Desktop
             this.bOk.Text = "Ok";
             this.bOk.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.bOk.UseVisualStyleBackColor = false;
-            this.bOk.Click += new System.EventHandler(this.bOk_Click);
+            this.bOk.Click += new System.EventHandler(this.BOkClick);
             // 
             // bClose
             // 
@@ -61,7 +59,7 @@ namespace Desktop
             this.bClose.TabIndex = 4;
             this.bClose.Text = "Cancel";
             this.bClose.UseVisualStyleBackColor = false;
-            this.bClose.Click += new System.EventHandler(this.bClose_Click);
+            this.bClose.Click += new System.EventHandler(this.BCloseClick);
             // 
             // ePassword
             // 

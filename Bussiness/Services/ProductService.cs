@@ -1,4 +1,5 @@
-﻿using Bussiness.ViewModels;
+﻿using Bussiness.Base;
+using Bussiness.ViewModels;
 using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using PrestaAccesor.Utils;
@@ -35,6 +36,12 @@ namespace Bussiness.Services
         {
             Products.Clear();
             productsAccesor.Setup(baseUrl, apiToken, "");
+        }
+
+        public void DeleteProduct(long? productId)
+        {
+            Products.Remove(Products.Where(x => x.id == productId).FirstOrDefault());
+            productsAccesor.Delete(productId);
         }
 
         public async Task<bool> LoadProductsAsync()
@@ -213,45 +220,46 @@ namespace Bussiness.Services
             return result;
         }
 
-        private List<ProductViewModel> GetProductsOfSupplier(int supplierId)
+        private List<ProductViewModel> GetProductsOfSupplier(long? supplierId)
         {
             return Products.Select(x => x).Where(x => x.id_supplier == supplierId).ToList();
         }
 
-        public List<ProductViewModel> GetNonAvailableProductOfSuppliers(PriceListsService priceLists)
+        public List<ProductViewModel> GetNonAvailableProductOfSuppliers(PriceListsService priceLists, long? askinoId, long? novikoId)
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
-            int novikoId = 1;
-            int askinoId = 0;
             
             //foreach (dodavatel in dodavatele)
             {
-                List<ProductViewModel> productToCheck = GetProductsOfSupplier(novikoId); //id dodavatele
-                ISupplier supplier = priceLists["Noviko"]; //name dodavatele
-                supplier.OpenPriceList();
-
-                foreach (ProductViewModel product in productToCheck)
+                if (priceLists.HasSupplier("Noviko"))
                 {
-                    if (supplier.HasReference(product.id.ToString()) == false)
+                    List<ProductViewModel> productToCheck = GetProductsOfSupplier(novikoId); //id dodavatele
+                    ISupplier supplier = priceLists["Noviko"]; //name dodavatele
+                    supplier.OpenPriceList();
+
+                    foreach (ProductViewModel product in productToCheck)
                     {
-                        result.Add(product);
+                        if (supplier.HasReference(product.id.ToString()) == false)
+                        {
+                            result.Add(product);
+                        }
                     }
                 }
             }
 
             {
-                List<ProductViewModel> productToCheck = GetProductsOfSupplier(askinoId); //id dodavatele
-                ISupplier supplier2 = priceLists["Askino"]; //name dodavatele
-                supplier2.OpenPriceList();
-
-                IEnumerable<AskinoModel> askinoPriceList = supplier2.GetPriceList() as IEnumerable<AskinoModel>;
-                foreach (ProductViewModel product in productToCheck)
+                if (priceLists.HasSupplier("Askino"))
                 {
+                    List<ProductViewModel> productToCheck = GetProductsOfSupplier(askinoId); //id dodavatele
+                    ISupplier supplier2 = priceLists["Askino"]; //name dodavatele
+                    supplier2.OpenPriceList();
 
-                    var c = askinoPriceList.Where(y => y.Reference == product.id.ToString()).ToList();
-                    if (c.Count == 0)
+                    foreach (ProductViewModel product in productToCheck)
                     {
-                        result.Add(product);
+                        if (supplier2.HasReference(product.id.ToString()) == false)
+                        {
+                            result.Add(product);
+                        }
                     }
                 }
             }
@@ -302,7 +310,7 @@ namespace Bussiness.Services
         {
             ProductViewModel result = new ProductViewModel();
 
-            int languageIndex = entity.description.FindIndex(language => language.id == activePrestaLanguage);
+            int languageIndex = entity.description.FindIndex(language => language.id == ServiceActivePrestaLanguage);
 
             result.description = entity.description[languageIndex].Value;
             result.description_short = entity.description_short[languageIndex].Value;
@@ -323,15 +331,15 @@ namespace Bussiness.Services
         private product ProductToPresta(ProductViewModel entity)
         {
             product result = productsAccesor.Get(entity.id) as product;
-                        
-            PrestaValues.SetValueForLanguage(result.description, activePrestaLanguage, entity.description);
-            PrestaValues.SetValueForLanguage(result.description_short, activePrestaLanguage, entity.description_short);
-            PrestaValues.SetValueForLanguage(result.link_rewrite, activePrestaLanguage, entity.link_rewrite);
+
+            PrestaValues.SetValueForLanguage(result.description, ServiceActivePrestaLanguage, entity.description);
+            PrestaValues.SetValueForLanguage(result.description_short, ServiceActivePrestaLanguage, entity.description_short);
+            PrestaValues.SetValueForLanguage(result.link_rewrite, ServiceActivePrestaLanguage, entity.link_rewrite);
             result.id_category_default = entity.id_category_default;
             //result.id_image = 0;
             result.id_manufacturer = entity.id_manufacturer;
             result.id_supplier = entity.id_supplier;
-            PrestaValues.SetValueForLanguage(result.name, activePrestaLanguage, entity.name);
+            PrestaValues.SetValueForLanguage(result.name, ServiceActivePrestaLanguage, entity.name);
             if (entity.price == null)
             {
                 entity.price = 0;

@@ -1,10 +1,9 @@
-﻿using PrestaAccesor.Accesors;
+﻿using Bussiness.Base;
+using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Bussiness.Services
@@ -18,13 +17,13 @@ namespace Bussiness.Services
         {
             supplierAccesor = new SupplierAccesor(BaseUrl, Account, "");
             Suppliers = new List<supplier>();
-            loaded = false;
+            ServiceLoaded = false;
         }
 
-        public void Setup(string baseUrl, string apiToken)
+        public void Setup(string url, string token)
         {
             Suppliers.Clear();
-            supplierAccesor.Setup(baseUrl, apiToken, "");
+            supplierAccesor.Setup(url, token, "");
         }
 
         public async Task<bool> LoadSuppliersAsync()
@@ -69,7 +68,7 @@ namespace Bussiness.Services
                 Suppliers.Add(sup as supplier);
             }
 
-            loaded = true;
+            ServiceLoaded = true;
             return true;
         }
 
@@ -98,12 +97,12 @@ namespace Bussiness.Services
 
         public long? GetSupplierId(string supplierName)
         {
-            if (supplierName != "")
+            if ((supplierName != "") && (Suppliers.Exists(s => s.name == supplierName)))
             {
-                return Suppliers.Where(x => x.name == supplierName).FirstOrDefault().id;
+                return Suppliers.FirstOrDefault(x => x.name == supplierName).id;
             }
 
-            return 0;
+            return -1;
         }
 
         public void Edit(supplier entity)

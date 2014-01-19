@@ -26,23 +26,29 @@ namespace Bussiness.Services
                 return this.priceLists[key];
             }
         }
+
+        public bool HasSupplier(string supplierName)
+        {
+            return priceLists.ContainsKey(supplierName);
+        }
         
         public void AddPriceLists(EshopConfiguration eshop)
         {
-            if (eshop.UseNoviko)
+            // TODO zjednodusit
+            if (eshop.Suppliers[eshop.NovikoIndex()].UseSupplier)
             {
                 if (priceLists.ContainsKey("Noviko") == false)
                 {
-                    NovikoSupplier noviko = new NovikoSupplier(eshop.NovikoFilePath);
+                    NovikoSupplier noviko = new NovikoSupplier(eshop.Suppliers[eshop.NovikoIndex()].SupplierFileName);
                     priceLists.Add("Noviko", noviko);
                 }
             }
 
-            if (eshop.UseAskino)
+            if (eshop.Suppliers[eshop.AskinoIndex()].UseSupplier)
             {
                 if (priceLists.ContainsKey("Askino") == false)
                 {
-                    AskinoSupplier askino = new AskinoSupplier(eshop.AskinoFilePath);
+                    AskinoSupplier askino = new AskinoSupplier(eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName);
                     priceLists.Add("Askino", askino);
                 }
             }

@@ -1,138 +1,46 @@
-﻿using Bussiness.ViewModels;
-using PrestaAccesor.Accesors;
-using PrestaAccesor.Entities;
-using Suppliers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Bussiness.Base;
+using Bussiness.ViewModels;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bussiness.Services
 {
     public class EngineService : ServiceBase
     {
-        private LoginService loginService;
+        private readonly LoginService loginService;
         private ProductService productService;
         private ManufactuerService manufacturerService;
         private CategoryService categoryService;
         private LanguageService languageService;
         private SupplierService supplierService;
-        private PriceListsService priceListService;
+        private readonly PriceListsService priceListService;
+        private readonly PricingService pricingService;
 
-        public PriceListsService PriceLists
-        {
-            get
-            {
-                return priceListService;
-            }
-        }
-
-        public LoginService Login
-        {
-            get
-            {
-                return loginService;
-            }
-        }
-
-        public ProductService Products
-        {
-            get
-            {
-                return productService;
-            }
-        }
-
-        public SupplierService Suppliers
-        {
-            get
-            {
-                return supplierService;
-            }
-        }
-
-        public ManufactuerService Manufacturers
-        {
-            get
-            {
-                return manufacturerService;
-            }
-        }
-
-        public CategoryService Categories
-        {
-            get
-            {
-                return categoryService;
-            }
-        }
-
-        public LanguageService Languages
-        {
-            get
-            {
-                return languageService;
-            }
-        }
+        public PriceListsService PriceLists {  get { return priceListService; } }
+        public LoginService Login { get { return loginService; } }
+        public ProductService Products { get { return productService; } }
+        public SupplierService Suppliers { get { return supplierService; } }
+        public ManufactuerService Manufacturers { get { return manufacturerService; } }
+        public CategoryService Categories { get { return categoryService; } }
+        public LanguageService Languages { get { return languageService; } }
+        public PricingService Pricing { get { return pricingService; } }
 
         public EngineService()
         {
             loginService = new LoginService();
             priceListService = new PriceListsService();
+            pricingService = new PricingService();
         }
 
-        public void InitPrestaServices(string baseUrl, string apiToken)
+        public void InitPrestaServices(string url, string token)
         {
-            this.baseUrl = baseUrl;
-            this.apiToken = apiToken;
-            
-            //if (productService == null)
-            //{
-            productService = new ProductService(baseUrl, apiToken, "");
-            //}
-            //else
-            //{
-            //    Products.Setup(baseUrl, apiToken);
-            //}
-            
-            //if (manufacturerService == null)
-            //{
-            manufacturerService = new ManufactuerService(baseUrl, apiToken, "");
-            //}
-            //else
-            //{
-            //    Manufacturers.Setup(baseUrl, apiToken);
-            //}
-
-            //if (categoryService == null)
-            //{
-            categoryService = new CategoryService(baseUrl, apiToken, "");
-            //}
-            //else
-            //{
-            //    Categories.Setup(baseUrl, apiToken);
-            //}
-
-            //if (languageService == null)
-            //{
-            languageService = new LanguageService(baseUrl, apiToken, "");
-            //}
-            //else
-            //{
-            //    Languages.Setup(baseUrl, apiToken);
-            //}
-
-            //if (supplierService == null)
-            //{
-            supplierService = new SupplierService(baseUrl, apiToken, "");
-            //}
-            //else
-            //{
-            //    Suppliers.Setup(baseUrl, apiToken);
-            //}
+            ServiceBaseUrl = url;
+            ServiceApiToken = token;
+                       
+            productService = new ProductService(url, token, "");
+            manufacturerService = new ManufactuerService(url, token, "");
+            categoryService = new CategoryService(url, token, "");
+            languageService = new LanguageService(url, token, "");
+            supplierService = new SupplierService(url, token, "");
         }
 
         public void SetupPrestaLanguages()
@@ -151,7 +59,7 @@ namespace Bussiness.Services
                 Languages.LoadLanguagesSync();
                 if (Languages.Loaded == false)
                 {
-                    return result;
+                    return false;
                 }
             }
             
@@ -167,10 +75,9 @@ namespace Bussiness.Services
 
         public void OpenProductInBrowser(int productId)
         {
-            ProductViewModel product = this.Products.GetById(System.Convert.ToInt32(productId));
-            category cat = Categories.GetById(System.Convert.ToInt32(product.id_category_default));
-            int languageIndex = cat.link_rewrite.FindIndex(language => language.id == Languages.ActivePrestaLanguage);
-            string categoryLink = cat.link_rewrite[languageIndex].Value;
+            ProductViewModel product = Products.GetById(System.Convert.ToInt32(productId));
+            CategoryViewModel cat = Categories.GetById(System.Convert.ToInt32(product.id_category_default));
+            string categoryLink = cat.link_rewrite;
             string eshopUrl = BaseUrl.Substring(0, BaseUrl.Length - 4);
             string productUrl = eshopUrl + categoryLink + "/" + product.id + "-" + product.link_rewrite + ".html";
             ProcessStartInfo sInfo = new ProcessStartInfo(productUrl);

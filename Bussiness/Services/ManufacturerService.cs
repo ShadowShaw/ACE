@@ -1,4 +1,5 @@
-﻿using PrestaAccesor.Accesors;
+﻿using Bussiness.Base;
+using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Bussiness.Services
         {
             manufacturerAccesor = new ManufacturersAccesor(BaseUrl, Account, "");
             Manufacturers = new List<manufacturer>();
-            loaded = false;
+            ServiceLoaded = false;
         }
 
         public void Setup(string baseUrl, string apiToken)
@@ -59,7 +60,7 @@ namespace Bussiness.Services
                 Manufacturers.Add(man as manufacturer);
             }
 
-            loaded = true;
+            ServiceLoaded = true;
             return true;
         }
 

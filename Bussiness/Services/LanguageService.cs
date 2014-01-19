@@ -1,35 +1,34 @@
-﻿using PrestaAccesor.Accesors;
+﻿using Bussiness.Base;
+using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Bussiness.Services
 {
     public class LanguageService : ServiceBase
     {
         public List<LanguageEntity> Languages;
-        public LanguageAccesor languageAccesor;
+        private readonly LanguageAccesor languageAccesor;
 
         public long? GetActiveLanguage()
         {
-            if (loaded == false)
+            if (ServiceLoaded == false)
             {
-                this.LoadLanguages();
+                LoadLanguages();
             }
 
             foreach (LanguageEntity entity in Languages)
             {
                 if (entity.active)
                 {
-                    activePrestaLanguage = entity.id;
+                    ServiceActivePrestaLanguage = entity.id;
                 }
             }
 
-            return activePrestaLanguage;
+            return ServiceActivePrestaLanguage;
         }
 
         public LanguageEntity GetById(int id)
@@ -37,11 +36,11 @@ namespace Bussiness.Services
             return languageAccesor.Get(id) as LanguageEntity;
         }
 
-        public LanguageService(string BaseUrl, string Account, string Password)
+        public LanguageService(string baseUrl, string account, string password)
         {
-            languageAccesor = new LanguageAccesor(BaseUrl, Account, "");
+            languageAccesor = new LanguageAccesor(baseUrl, account, password);
             Languages = new List<LanguageEntity>();
-            loaded = false;
+            ServiceLoaded = false;
         }
 
         public void Setup(string baseUrl, string apiToken)
@@ -59,8 +58,7 @@ namespace Bussiness.Services
             }
             catch (Exception ex)
             {
-                //TODO
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
             return false;
         }
@@ -74,16 +72,13 @@ namespace Bussiness.Services
             }
             catch (Exception ex)
             {
-                //TODO
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private bool LoadLanguages()
         {
-            
-            List<int> ids = new List<int>();
-            ids = languageAccesor.GetIds();
+            List<int> ids = languageAccesor.GetIds();
 
             if (ids == null)
             {
@@ -95,7 +90,7 @@ namespace Bussiness.Services
                 PrestashopEntity lang = languageAccesor.Get(id);
                 Languages.Add(lang as LanguageEntity);
             }
-            loaded = true;
+            ServiceLoaded = true;
             return true;
         }
     }

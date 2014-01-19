@@ -12,7 +12,8 @@ namespace Suppliers
     {
         private IEnumerable<NovikoModel> novikoPriceList;
         private CSVAccessor accessor;
-        public string Path { get; private set; } 
+        public string Path { get; private set; }
+        public int SupplierId { get; set; }
 
         public NovikoSupplier(string pathToFile)
         {

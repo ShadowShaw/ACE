@@ -1,4 +1,4 @@
-﻿﻿namespace Desktop
+﻿﻿namespace Desktop.Forms
  {
      partial class Main
      {
@@ -104,7 +104,7 @@
             this.bPricingShow = new System.Windows.Forms.Button();
             this.lPricingOverLimit = new System.Windows.Forms.Label();
             this.rbPricingLimit = new System.Windows.Forms.RadioButton();
-            this.bPricingOverLimit = new System.Windows.Forms.TextBox();
+            this.ePricingOverLimit = new System.Windows.Forms.TextBox();
             this.lPricingBellowLimit = new System.Windows.Forms.Label();
             this.ePricingBellowLimit = new System.Windows.Forms.TextBox();
             this.bPricingSave = new System.Windows.Forms.Button();
@@ -658,7 +658,7 @@
             this.bConsistencySuppliers.TabIndex = 12;
             this.bConsistencySuppliers.Text = "jenž se nedodávají";
             this.bConsistencySuppliers.UseVisualStyleBackColor = true;
-            this.bConsistencySuppliers.Click += new System.EventHandler(this.bConsistencySuppliers_Click_1);
+            this.bConsistencySuppliers.Click += new System.EventHandler(this.ConsistencySuppliers_Click);
             // 
             // bWithoutWeight
             // 
@@ -772,7 +772,7 @@
             this.bPricingInit.TabIndex = 22;
             this.bPricingInit.Text = "Inicializace přeceňování";
             this.bPricingInit.UseVisualStyleBackColor = true;
-            this.bPricingInit.Click += new System.EventHandler(this.bPricingInit_Click);
+            this.bPricingInit.Click += new System.EventHandler(this.BPricingInitClick);
             // 
             // lPricingManufacturerIndication
             // 
@@ -791,7 +791,7 @@
             this.gbSelectProduct.Controls.Add(this.bPricingShow);
             this.gbSelectProduct.Controls.Add(this.lPricingOverLimit);
             this.gbSelectProduct.Controls.Add(this.rbPricingLimit);
-            this.gbSelectProduct.Controls.Add(this.bPricingOverLimit);
+            this.gbSelectProduct.Controls.Add(this.ePricingOverLimit);
             this.gbSelectProduct.Controls.Add(this.lPricingBellowLimit);
             this.gbSelectProduct.Controls.Add(this.ePricingBellowLimit);
             this.gbSelectProduct.Controls.Add(this.bPricingSave);
@@ -853,14 +853,14 @@
             this.rbPricingLimit.Text = "podle mezí";
             this.rbPricingLimit.UseVisualStyleBackColor = true;
             // 
-            // bPricingOverLimit
+            // ePricingOverLimit
             // 
-            this.bPricingOverLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bPricingOverLimit.Location = new System.Drawing.Point(104, 423);
-            this.bPricingOverLimit.Name = "bPricingOverLimit";
-            this.bPricingOverLimit.Size = new System.Drawing.Size(175, 20);
-            this.bPricingOverLimit.TabIndex = 18;
-            this.bPricingOverLimit.Text = "20";
+            this.ePricingOverLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ePricingOverLimit.Location = new System.Drawing.Point(104, 423);
+            this.ePricingOverLimit.Name = "ePricingOverLimit";
+            this.ePricingOverLimit.Size = new System.Drawing.Size(175, 20);
+            this.ePricingOverLimit.TabIndex = 18;
+            this.ePricingOverLimit.Text = "20";
             // 
             // lPricingBellowLimit
             // 
@@ -950,7 +950,7 @@
             this.bReprice.TabIndex = 20;
             this.bReprice.Text = "Přeceň";
             this.bReprice.UseVisualStyleBackColor = true;
-            this.bReprice.Click += new System.EventHandler(this.bReprice_Click_1);
+            this.bReprice.Click += new System.EventHandler(this.BRepriceClick);
             // 
             // lPricingManufacturer
             // 
@@ -1003,7 +1003,7 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgPricing.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgPricing.Location = new System.Drawing.Point(303, 34);
+            this.dgPricing.Location = new System.Drawing.Point(303, 36);
             this.dgPricing.Name = "dgPricing";
             this.dgPricing.ReadOnly = true;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1014,7 +1014,7 @@
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgPricing.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgPricing.Size = new System.Drawing.Size(0, 27);
+            this.dgPricing.Size = new System.Drawing.Size(712, 542);
             this.dgPricing.TabIndex = 17;
             // 
             // tpSetup
@@ -1226,7 +1226,7 @@
          private System.Windows.Forms.Label lPricingBellowLimit;
          private System.Windows.Forms.Button bReprice;
          private System.Windows.Forms.TextBox ePricingLimit;
-         private System.Windows.Forms.TextBox bPricingOverLimit;
+         private System.Windows.Forms.TextBox ePricingOverLimit;
          private System.Windows.Forms.TextBox ePricingBellowLimit;
          private System.Windows.Forms.TextBox ePricingPercent;
          private System.Windows.Forms.RadioButton rbPricingLimit;

@@ -1,42 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using Desktop.UserSettings;
 using Desktop.Utils;
-using System.Xml.Serialization;
-using System.Diagnostics;
 using System.Threading.Tasks;
-using Microsoft;
 using Bussiness.Services;
 using Bussiness;
 using Bussiness.ViewModels;
-
-using Core.Models;
 using Bussiness.UserSettings;
 using Desktop.Custom_Contols;
 
-namespace Desktop
+namespace Desktop.Forms
 {
     public partial class Main : Form
     {
         public EngineService Engine;
-        public ACESettings mainSettings;
+        public ACESettings MainSettings;
         private int selectedEshopIndex;
         
-        List<ChangeRecord> ConsistencyChanges = new List<ChangeRecord>();
-        private int IndexForChange = -1;
-        private FieldType ChangedType;
-        private Version ACEVersion;
+        private readonly List<ChangeRecord> consistencyChanges = new List<ChangeRecord>();
+        private int indexForChange = -1;
+        private FieldType changedType;
+        private readonly Version aceVersion;
         
         #region pricing
 
-        private async void bPricingInit_Click(object sender, EventArgs e)
+        private async void BPricingInitClick(object sender, EventArgs e)
         {
             Engine.Login.GetRights();
             if (Engine.Login.Rights.Pricing)
@@ -82,44 +74,54 @@ namespace Desktop
                 return;
             }
 
-            List<string> manufacturersList; // = new List<string>();
+            List<string> manufacturersList;
             manufacturersList = Engine.Manufacturers.GetManufacturersList();
             manufacturersList.Insert(0, "Jakýkoliv výrobce");
             cPricingManufacturers.Items.AddRange(manufacturersList.ToArray());
             cPricingManufacturers.SelectedIndex = 0;
 
-            List<string> suppliersList; // = new List<string>();
+            List<string> suppliersList; 
             suppliersList = Engine.Suppliers.GetSupplierList();
             suppliersList.Insert(0, "Jakýkoliv dodavatel");
             cPricingSuppliers.Items.AddRange(suppliersList.ToArray());
             cPricingSuppliers.SelectedIndex = 0;
 
             treePricing.Nodes.Clear();
-            
-            //todo
-            //foreach (category item in Engine.Categories.Categories.ToList())
-            //{
-            //    TreeNode node = new TreeNode();
-            //    node.Text = item.name;
-            //    node.Name = item.id.ToString();
-                    
-            //    if (item.level_depth == 0)
-            //    {
-            //        treePricing.Nodes.Add(node);
-            //    }
-            //    else
-            //    {
-            //        TreeNode parent = treePricing.Nodes.Find(item.id_parent.ToString(), true).FirstOrDefault();
-            //        parent.Nodes.Add(node);
-            //    }
-            //}
-            //treePricing.ExpandAll();
+
+            foreach (CategoryViewModel item in Engine.Categories.Categories)
+            {
+                TreeNode node = new TreeNode();
+                node.Text = item.name;
+                node.Name = item.id.ToString();
+
+                if (item.level_depth == 0)
+                {
+                    treePricing.Nodes.Add(node);
+                }
+                else
+                {
+                    TreeNode parent = treePricing.Nodes.Find(item.id_parent.ToString(), true).FirstOrDefault();
+                    parent.Nodes.Add(node);
+                }
+            }
+            treePricing.ExpandAll();
         }
         
-        private void bReprice_Click_1(object sender, EventArgs e)
+
+        private void BRepriceClick(object sender, EventArgs e)
         {
+            if (chPricingSupplier.Checked)
+            {
+                Engine.Pricing.UpdatePrices();
+            }
+
             if (rbPricingProcent.Checked)
-            { 
+            {
+                Engine.Pricing.ProcentReprice(Convert.ToDecimal(ePricingPercent.Text));
+            }
+            else
+            {
+                Engine.Pricing.LimitReprice(Convert.ToDecimal(ePricingLimit.Text), Convert.ToDecimal(ePricingBellowLimit), Convert.ToDecimal(ePricingOverLimit.Text));
             }
         }
 
@@ -189,17 +191,17 @@ namespace Desktop
             lPricingManufacturerIndication.Text = cPricingManufacturers.SelectedItem.ToString();
             lPricingSupplierIndication.Text = cPricingSuppliers.SelectedItem.ToString(); 
             
-            IndexForChange = -1;
+            indexForChange = -1;
             DataGridTools.InitGrid(dgPricing);
 
             DataGridTools.AddColumn(dgPricing, "id", TextResources.Id);
             DataGridTools.AddColumn(dgPricing, "name", TextResources.Name);
             DataGridTools.AddColumn(dgPricing, "id_category_default", TextResources.Category, true, false);
-            DataGridTools.AddComboBoxColumn(dgPricing, "category", TextResources.Category, Engine.Categories.GetCategoryList(), true);
+            DataGridTools.AddColumn(dgPricing, "category", TextResources.Category);
             DataGridTools.AddColumn(dgPricing, "id_manufacturer", TextResources.Manufacturer, true, false);
-            DataGridTools.AddComboBoxColumn(dgPricing, "manufacturer", TextResources.Manufacturer, Engine.Manufacturers.GetManufacturersList(), true);
+            DataGridTools.AddColumn(dgPricing, "manufacturer", TextResources.Manufacturer);
             DataGridTools.AddColumn(dgPricing, "id_supplier", TextResources.Supplier, true, false);
-            DataGridTools.AddComboBoxColumn(dgPricing, "supplier", TextResources.Supplier, Engine.Suppliers.GetSupplierList(), true);
+            DataGridTools.AddColumn(dgPricing, "supplier", TextResources.Supplier);
             DataGridTools.AddColumn(dgPricing, "price", TextResources.SalePrice, true);
             DataGridTools.AddColumn(dgPricing, "wholesale_price", TextResources.WholeSalePrice, true);
             DataGridTools.AddButtonColumn(dgPricing, "link", TextResources.LinkButton);
@@ -234,19 +236,18 @@ namespace Desktop
 
             for (int i = 0; i < dgPricing.Rows.Count; i++)
             {
-                DataGridViewComboBoxCell categoryCell = (DataGridViewComboBoxCell)dgPricing.Rows[i].Cells["category"];
+                DataGridViewTextBoxCell categoryCell = (DataGridViewTextBoxCell)dgPricing.Rows[i].Cells["category"];
                 categoryCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgPricing.Rows[i].Cells["id_category_default"].Value));
 
-                DataGridViewComboBoxCell manufacturerCell = (DataGridViewComboBoxCell)dgPricing.Rows[i].Cells["manufacturer"];
+                DataGridViewTextBoxCell manufacturerCell = (DataGridViewTextBoxCell)dgPricing.Rows[i].Cells["manufacturer"];
                 manufacturerCell.Value = Engine.Manufacturers.GetManufacturerName(System.Convert.ToInt32(dgPricing.Rows[i].Cells["id_manufacturer"].Value));
 
-                DataGridViewComboBoxCell supplierCell = (DataGridViewComboBoxCell)dgPricing.Rows[i].Cells["supplier"];
+                DataGridViewTextBoxCell supplierCell = (DataGridViewTextBoxCell)dgPricing.Rows[i].Cells["supplier"];
                 supplierCell.Value = Engine.Suppliers.GetSupplierName(System.Convert.ToInt32(dgPricing.Rows[i].Cells["id_supplier"].Value));
             };
 
-            IndexForChange = 3;
-            ChangedType = FieldType.category;
-
+            indexForChange = 8;  //9
+            changedType = FieldType.category;
         }
 
         #endregion
@@ -255,11 +256,11 @@ namespace Desktop
 
         private void eshopSettings_SuppliersChanged(object sender, EshopEventArgs e)
         {
-            mainSettings.UpdateSelectedEshop(e.Eshop, selectedEshopIndex);
+            MainSettings.UpdateSelectedEshop(e.Eshop, selectedEshopIndex);
             RefreshStatusBar();
-            mainSettings.SaveSettings();
+            MainSettings.SaveSettings();
 
-            if (mainSettings.ActiveEshop() == mainSettings.Eshops.Eshops[selectedEshopIndex])
+            if (MainSettings.ActiveEshop() == MainSettings.Eshops.Eshops[selectedEshopIndex])
             {
                 InitializeEshopConnection();
             }
@@ -269,11 +270,11 @@ namespace Desktop
         {
             DisableGroupBoxOnReload();
             ClearGridsOnReload();
-            if (mainSettings.ActiveEshop() != null)
+            if (MainSettings.ActiveEshop() != null)
             {
-                if (mainSettings.ActiveEshop().Type == EshopType.Prestashop)
+                if (MainSettings.ActiveEshop().Type == EshopType.Prestashop)
                 {
-                    Engine.InitPrestaServices(mainSettings.ActiveEshop().BaseUrl, mainSettings.ActiveEshop().Password);
+                    Engine.InitPrestaServices(MainSettings.ActiveEshop().BaseUrl, MainSettings.ActiveEshop().Password);
                 }
             }
         }
@@ -282,34 +283,34 @@ namespace Desktop
         {
             InitializeComponent();
             Engine = new EngineService();
-            mainSettings = new ACESettings();
-            selectedEshopIndex = mainSettings.Eshops.ActiveEshopIndex;
+            MainSettings = new ACESettings();
+            selectedEshopIndex = MainSettings.Eshops.ActiveEshopIndex;
             eshopSettings.SuppliersChanged += new SupplierEventHandler(this.eshopSettings_SuppliersChanged);
          
-            ACEVersion = GetVersion();
-            this.Text = "ACE Desktop " + ACEVersion.ToString();
+            aceVersion = GetVersion();
+            this.Text = "ACE Desktop " + aceVersion.ToString();
             this.statusAgent.ForeColor = Color.Red;
 
-            if (mainSettings.Eshops.Eshops.Count == 0)
+            if (MainSettings.Eshops.Eshops.Count == 0)
             {
-                MessageBox.Show(TextResources.msgEmptyConfigurationValue, TextResources.msgEmptyConfigurationTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(TextResources.MsgEmptyConfigurationValue, TextResources.MsgEmptyConfigurationTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                eshopSettings.SetEshop(mainSettings.ActiveEshop());
+                eshopSettings.SetEshop(MainSettings.ActiveEshop());
             }
 
             InitializeEshopConnection();
 
             RefreshStatusBar();
 
-            Size mainFormSize = mainSettings.GetSize("main");
+            Size mainFormSize = MainSettings.GetSize("main");
             if (mainFormSize != new Size(0,0))
             {
                 this.Size = mainFormSize;
             }
 
-            DataGridTools.SetMainSettings(mainSettings);
+            DataGridTools.SetMainSettings(MainSettings);
             InitDisplayEshopConfiguration();
             InitModuleInfo();
             InitStatusBar();
@@ -328,7 +329,7 @@ namespace Desktop
             }
             else
             {
-                eshopSettings.SetEshop(mainSettings.Eshops.Eshops[selectedEshopIndex]);
+                eshopSettings.SetEshop(MainSettings.Eshops.Eshops[selectedEshopIndex]);
             }
         }
 
@@ -341,29 +342,29 @@ namespace Desktop
             toolTip.ReshowDelay = 500;
             toolTip.ShowAlways = true;
 
-            toolTip.SetToolTip(this.bLoadProducts, TextResources.hintLoadProducts);
-            toolTip.SetToolTip(this.bEmptyCategory, TextResources.hintEmptyCategory);
-            toolTip.SetToolTip(this.bEmptyManufacturer, TextResources.hintEmptyManufacturer);
-            toolTip.SetToolTip(this.bWithoutImage, TextResources.hintWithoutImage);
-            toolTip.SetToolTip(this.bWithoutShortDescription, TextResources.hintWithoutShortDescription);
-            toolTip.SetToolTip(this.bWithoutLongDescription, TextResources.hintWithoutLongDescription);
-            toolTip.SetToolTip(this.bWithoutPrice, TextResources.hintWithoutPrice);
-            toolTip.SetToolTip(this.bWithoutWholeSalePrice, TextResources.hintWithoutWholeSalePrice);
-            toolTip.SetToolTip(this.bWithoutWeight, TextResources.hintWithoutWeight);
-            toolTip.SetToolTip(this.bWithoutSupplier, TextResources.hintWithoutSupplier);
+            toolTip.SetToolTip(this.bLoadProducts, TextResources.HintLoadProducts);
+            toolTip.SetToolTip(this.bEmptyCategory, TextResources.HintEmptyCategory);
+            toolTip.SetToolTip(this.bEmptyManufacturer, TextResources.HintEmptyManufacturer);
+            toolTip.SetToolTip(this.bWithoutImage, TextResources.HintWithoutImage);
+            toolTip.SetToolTip(this.bWithoutShortDescription, TextResources.HintWithoutShortDescription);
+            toolTip.SetToolTip(this.bWithoutLongDescription, TextResources.HintWithoutLongDescription);
+            toolTip.SetToolTip(this.bWithoutPrice, TextResources.HintWithoutPrice);
+            toolTip.SetToolTip(this.bWithoutWholeSalePrice, TextResources.HintWithoutWholeSalePrice);
+            toolTip.SetToolTip(this.bWithoutWeight, TextResources.HintWithoutWeight);
+            toolTip.SetToolTip(this.bWithoutSupplier, TextResources.HintWithoutSupplier);
 
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            mainSettings.SetSize("main", this.Size);
+            MainSettings.SetSize("main", this.Size);
             
             foreach (DataGridViewColumn item in dgConsistency.Columns)
             {
-                mainSettings.SetWidth(dgConsistency.Name + item.Name, item.Width);
+                MainSettings.SetWidth(dgConsistency.Name + item.Name, item.Width);
             }
 
-            mainSettings.SaveSettings();
+            MainSettings.SaveSettings();
         }
 
         public void ACERightsError()
@@ -381,11 +382,15 @@ namespace Desktop
         public void DisableControlsWhenAccesingEshop()
         {
             cbActiveEshop.Enabled = false;
+            bLoadProducts.Enabled = false;
+            bPricingInit.Enabled = false;
         }
 
         public void EnableControlsAfterAccesingEshop()
         {
             cbActiveEshop.Enabled = true;
+            bLoadProducts.Enabled = true;
+            bPricingInit.Enabled = true;
         }
         
         public void ClearGridsOnReload()
@@ -410,18 +415,18 @@ namespace Desktop
 
         private void dgConsistency_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == IndexForChange)
+            if (e.ColumnIndex == indexForChange)
             {
                 string value = dgConsistency[e.ColumnIndex, e.RowIndex].Value.ToString();
                 int id = System.Convert.ToInt32(dgConsistency["id", e.RowIndex].Value);
 
                 ChangeRecord record = new ChangeRecord();
                 record.Type = RecordType.product;
-                record.Field = ChangedType;
+                record.Field = changedType;
                 record.Id = id;
                 record.Value = value;
 
-                ConsistencyChanges.Add(record);
+                consistencyChanges.Add(record);
             }
         }
 
@@ -517,8 +522,8 @@ namespace Desktop
 
         private async void bSaveChanges_Click(object sender, EventArgs e)
         {
-            ChangesView changes = new ChangesView(ConsistencyChanges);
-            if (ConsistencyChanges.Count == 0)
+            ChangesView changes = new ChangesView(consistencyChanges);
+            if (consistencyChanges.Count == 0)
             {
                 MessageBox.Show("Nejsou žádné změny k zápisu.", "Žádné změny", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -534,9 +539,9 @@ namespace Desktop
                         this.statusMessage.Text = "Ukladám změny, prosím čekejte...";
                         this.gbConsistency.Enabled = false;
 
-                        await Task.Factory.StartNew(() => this.SaveChangesAsync(ConsistencyChanges));
+                        await Task.Factory.StartNew(() => this.SaveChangesAsync(consistencyChanges));
 
-                        ConsistencyChanges.Clear();
+                        consistencyChanges.Clear();
 
                         bool result;
 
@@ -587,16 +592,16 @@ namespace Desktop
             statusAskino.Visible = false;
             statusNoviko.Visible = false;
 
-            if (mainSettings.Eshops.ActiveEshopIndex != -1)
+            if (MainSettings.Eshops.ActiveEshopIndex != -1)
             {
-                statusActiveEshop.Text = "Aktivní eshop: " + mainSettings.ActiveEshop().EshopName;
+                statusActiveEshop.Text = "Aktivní eshop: " + MainSettings.ActiveEshop().EshopName;
 
-                if (File.Exists(mainSettings.ActiveEshop().AskinoFilePath) == true)
+                if (File.Exists(MainSettings.ActiveEshop().Suppliers[MainSettings.ActiveEshop().AskinoIndex()].SupplierFileName) == true)
                 {
                     statusAskino.Visible = true;
                 }
 
-                if (File.Exists(mainSettings.ActiveEshop().NovikoFilePath) == true)
+                if (File.Exists(MainSettings.ActiveEshop().Suppliers[MainSettings.ActiveEshop().NovikoIndex()].SupplierFileName) == true)
                 {
                     statusNoviko.Visible = true;
                 }
@@ -622,14 +627,14 @@ namespace Desktop
         private void bAddEshop_Click(object sender, EventArgs e)
         {
             EshopConfiguration eshop = new EshopConfiguration();
-            eshop.EshopName = "Eshop" + mainSettings.Eshops.Eshops.Count();
+            eshop.EshopName = "Eshop" + MainSettings.Eshops.Eshops.Count();
             eshop.Type = EshopType.Prestashop;
             TreeNode treeNode = new TreeNode();
-            mainSettings.Eshops.Eshops.Add(eshop);
+            MainSettings.Eshops.Eshops.Add(eshop);
             treeConfiguration.Nodes.Add(treeNode);
-            if (mainSettings.Eshops.ActiveEshopIndex == -1)
+            if (MainSettings.Eshops.ActiveEshopIndex == -1)
             {
-                mainSettings.Eshops.ActiveEshopIndex = 0;
+                MainSettings.Eshops.ActiveEshopIndex = 0;
                 selectedEshopIndex = 0;
             }
             InitDisplayEshopConfiguration();
@@ -637,8 +642,8 @@ namespace Desktop
 
         private void cbActiveEshop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mainSettings.Eshops.ActiveEshopIndex = cbActiveEshop.SelectedIndex;
-            if (mainSettings.ActiveEshop() != null)
+            MainSettings.Eshops.ActiveEshopIndex = cbActiveEshop.SelectedIndex;
+            if (MainSettings.ActiveEshop() != null)
             {
                 InitializeEshopConnection();
             }
@@ -648,34 +653,34 @@ namespace Desktop
         private void InitEshopList()
         {
             cbActiveEshop.Items.Clear();
-            foreach (EshopConfiguration eshop in mainSettings.Eshops.Eshops)
+            foreach (EshopConfiguration eshop in MainSettings.Eshops.Eshops)
             {
                 cbActiveEshop.Items.Add(eshop.EshopName);
             }
 
-            if ((mainSettings.Eshops.ActiveEshopIndex != -1) && (mainSettings.Eshops.ActiveEshopIndex < mainSettings.Eshops.Eshops.Count))
+            if ((MainSettings.Eshops.ActiveEshopIndex != -1) && (MainSettings.Eshops.ActiveEshopIndex < MainSettings.Eshops.Eshops.Count))
             {
-                cbActiveEshop.SelectedIndex = mainSettings.Eshops.ActiveEshopIndex;
+                cbActiveEshop.SelectedIndex = MainSettings.Eshops.ActiveEshopIndex;
             }
         }
 
         private void InitDisplayEshopConfiguration()
         {
-            if (mainSettings.Eshops.Eshops.Count > 0)
+            if (MainSettings.Eshops.Eshops.Count > 0)
             {
                 InitEshopList();
                                                 
                 treeConfiguration.Nodes.Clear();
-                foreach (EshopConfiguration eshop in mainSettings.Eshops.Eshops)
+                foreach (EshopConfiguration eshop in MainSettings.Eshops.Eshops)
                 {
                     TreeNode treeNode = new TreeNode(eshop.EshopName);
                     treeConfiguration.Nodes.Add(treeNode);
                 }
-                if ((mainSettings.Eshops.ActiveEshopIndex < treeConfiguration.Nodes.Count) && (mainSettings.Eshops.ActiveEshopIndex != -1))
+                if ((MainSettings.Eshops.ActiveEshopIndex < treeConfiguration.Nodes.Count) && (MainSettings.Eshops.ActiveEshopIndex != -1))
                 {
-                    ShowNode(treeConfiguration.Nodes[mainSettings.Eshops.ActiveEshopIndex]);
+                    ShowNode(treeConfiguration.Nodes[MainSettings.Eshops.ActiveEshopIndex]);
 
-                    treeConfiguration.SelectedNode = treeConfiguration.Nodes[mainSettings.Eshops.ActiveEshopIndex];
+                    treeConfiguration.SelectedNode = treeConfiguration.Nodes[MainSettings.Eshops.ActiveEshopIndex];
                     DisplayEshop();
                 }
             }
@@ -683,10 +688,10 @@ namespace Desktop
 
         private void ShowNode(TreeNode node)
         {
-                EshopConfiguration eshop = mainSettings.Eshops.Eshops.Where(n => n.EshopName == node.Text).SingleOrDefault();
+                EshopConfiguration eshop = MainSettings.Eshops.Eshops.Where(n => n.EshopName == node.Text).SingleOrDefault();
                 if (eshop != null)
                 {
-                    selectedEshopIndex = mainSettings.Eshops.Eshops.IndexOf(eshop);
+                    selectedEshopIndex = MainSettings.Eshops.Eshops.IndexOf(eshop);
                     eshopSettings.SetEshop(eshop);
                     RefreshStatusBar();
                 }
@@ -709,6 +714,23 @@ namespace Desktop
         private void treeConfiguration_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             e.Node.EndEdit(false);
+            if (e.Label != null)
+            {
+                UpdateEshopName(e.Node.Index, e.Label);
+                RefreshActiveEshopCombo();
+            }
+        }
+
+        private void RefreshActiveEshopCombo()
+        {
+            int index = cbActiveEshop.SelectedIndex;
+            InitEshopList();
+            cbActiveEshop.SelectedIndex = index;
+        }
+
+        private void UpdateEshopName(int eshopIndex, string newName)
+        {
+            MainSettings.Eshops.Eshops[eshopIndex].EshopName = newName;
         }
 
         private void bDelEshop_Click(object sender, EventArgs e)
@@ -717,17 +739,17 @@ namespace Desktop
             {
                 if (treeConfiguration.SelectedNode.Parent == null)
                 {
-                    DialogResult dialogResult = MessageBox.Show(String.Format("{0} {1} ?", TextResources.msgDeleteEshopValue, treeConfiguration.SelectedNode.Text), TextResources.msgDeleteEshopTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBox.Show(String.Format("{0} {1} ?", TextResources.MsgDeleteEshopValue, treeConfiguration.SelectedNode.Text), TextResources.MsgDeleteEshopTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        if (mainSettings.Eshops.ActiveEshopIndex == treeConfiguration.Nodes.IndexOf(treeConfiguration.SelectedNode))
+                        if (MainSettings.Eshops.ActiveEshopIndex == treeConfiguration.Nodes.IndexOf(treeConfiguration.SelectedNode))
                         {
-                            mainSettings.Eshops.ActiveEshopIndex = -1;
-                            selectedEshopIndex = mainSettings.Eshops.ActiveEshopIndex;
+                            MainSettings.Eshops.ActiveEshopIndex = -1;
+                            selectedEshopIndex = MainSettings.Eshops.ActiveEshopIndex;
                             DisplayEshop();
                         }
 
-                        mainSettings.Eshops.Eshops.RemoveAll(n => n.EshopName == treeConfiguration.SelectedNode.Text);
+                        MainSettings.Eshops.Eshops.RemoveAll(n => n.EshopName == treeConfiguration.SelectedNode.Text);
                         treeConfiguration.Nodes.Remove(treeConfiguration.SelectedNode);
                         
                         RefreshActiveEshop();
@@ -738,7 +760,7 @@ namespace Desktop
 
         private void RefreshActiveEshop()
         {
-            cbActiveEshop.SelectedIndex = mainSettings.Eshops.ActiveEshopIndex;
+            cbActiveEshop.SelectedIndex = MainSettings.Eshops.ActiveEshopIndex;
         }
 
         private void treeConfiguration_DoubleClick(object sender, EventArgs e)
@@ -765,16 +787,16 @@ namespace Desktop
         {
             if (Engine.Login.Logged())
             {
-                Engine.Login.logout();
+                Engine.Login.Logout();
                 this.statusAgent.ForeColor = Color.Red;
             }
             else
             {
-                var LoginForm = new Login(Engine, mainSettings.DesktopUserName, mainSettings.DesktopPassword);
+                var LoginForm = new Login(Engine, MainSettings.DesktopUserName, MainSettings.DesktopPassword);
                 if (LoginForm.ShowDialog() == DialogResult.OK)
                 {
-                    this.mainSettings.DesktopUserName = LoginForm.username;
-                    this.mainSettings.DesktopPassword = LoginForm.password;
+                    this.MainSettings.DesktopUserName = LoginForm.Username;
+                    this.MainSettings.DesktopPassword = LoginForm.Password;
                     this.bLogin.Text = "Odhlášení";
                     this.statusAgent.ForeColor = Color.Green;
                 }
@@ -853,12 +875,23 @@ namespace Desktop
                 var productId = dgConsistency[0, e.RowIndex].Value;
                 Engine.OpenProductInBrowser(System.Convert.ToInt32(productId));
             }
+
+            if (dgConsistency.Columns[e.ColumnIndex].Name == "delete")
+            {
+                DialogResult dialogResult = MessageBox.Show(TextResources.MsgDeleteProductValue, TextResources.MsgDeleteProductTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    var productId = dgConsistency[0, e.RowIndex].Value;
+                    Engine.Products.DeleteProduct(System.Convert.ToInt32(productId));
+                    this.ConsistencySuppliers_Click(null, new EventArgs());
+                }
+            }
         }
 
         private void bEmptyCategory_Click(object sender, EventArgs e)
         {
-            IndexForChange = -1;
-            lListOf.Text = TextResources.titleEmptyCategory;
+            indexForChange = -1;
+            lListOf.Text = TextResources.TitleEmptyCategory;
             DataGridTools.InitGrid(dgConsistency);
 
             DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
@@ -875,13 +908,13 @@ namespace Desktop
                 comboCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
             };
 
-            IndexForChange = 3;
-            ChangedType = FieldType.category;
+            indexForChange = 3;
+            changedType = FieldType.category;
         }
 
         private void bEmptyManufacturer_Click(object sender, EventArgs e)
         {
-            IndexForChange = -1;
+            indexForChange = -1;
             lListOf.Text = "Zobrazuji produkty s prázdným výrobcem.";
             DataGridTools.InitGrid(dgConsistency);
 
@@ -904,13 +937,13 @@ namespace Desktop
                 comboCell.Value = Engine.Manufacturers.GetManufacturerName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_manufacturer"].Value));
             };
 
-            IndexForChange = 5;
-            ChangedType = FieldType.manufacturer;
+            indexForChange = 5;
+            changedType = FieldType.manufacturer;
         }
 
         private void bWithoutImage_Click(object sender, EventArgs e)
         {
-            IndexForChange = -1;
+            indexForChange = -1;
             lListOf.Text = "Zobrazuji produkty bez obrázku.";
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyImage();
@@ -928,16 +961,16 @@ namespace Desktop
             {
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
-            };
+            }
 
-            IndexForChange = 5;
-            ChangedType = FieldType.image;
+            indexForChange = 5;
+            changedType = FieldType.image;
         }
 
         private void bWithoutShortDescription_Click(object sender, EventArgs e)
         {
-            IndexForChange = -1;
-            lListOf.Text = "Zobrazuji produkty s prázdným krátkým popisem.";
+            indexForChange = -1;
+            lListOf.Text = TextResources.TitleEmptyDescription;
             DataGridTools.InitGrid(dgConsistency);
 
             DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
@@ -955,13 +988,13 @@ namespace Desktop
                 categoryCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
             };
 
-            IndexForChange = 4;
-            ChangedType = FieldType.shortDescription;
+            indexForChange = 4;
+            changedType = FieldType.shortDescription;
         }
 
         private void bWithoutLongDescription_Click(object sender, EventArgs e)
         {
-            IndexForChange = -1;
+            indexForChange = -1;
             lListOf.Text = "Zobrazuji produkty s prázdným dlouhým popisem.";
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyLongDescription();
@@ -979,13 +1012,13 @@ namespace Desktop
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
             };
 
-            IndexForChange = 4;
-            ChangedType = FieldType.longDescription;
+            indexForChange = 4;
+            changedType = FieldType.longDescription;
         }
 
         private void bWithoutPrice_Click(object sender, EventArgs e)
         {
-            IndexForChange = -1;
+            indexForChange = -1;
             lListOf.Text = "Zobrazuji produkty bez maloobchodní ceny.";
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyPrice();
@@ -1003,13 +1036,13 @@ namespace Desktop
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
             };
 
-            IndexForChange = 4;
-            ChangedType = FieldType.price;
+            indexForChange = 4;
+            changedType = FieldType.price;
         }
 
         private void bWithoutWeight_Click(object sender, EventArgs e)
         {
-            IndexForChange = -1;
+            indexForChange = -1;
             lListOf.Text = "Zobrazuji produkty bez udané váhy.";
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWeight();
@@ -1026,13 +1059,13 @@ namespace Desktop
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
             };
-            IndexForChange = 4;
-            ChangedType = FieldType.weight;
+            indexForChange = 4;
+            changedType = FieldType.weight;
         }
 
         private void bWithoutWholeSalePrice_Click(object sender, EventArgs e)
         {
-            IndexForChange = -1;
+            indexForChange = -1;
             lListOf.Text = "Zobrazuji produkty bez velkoobchodní ceny.";
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWholesalePrice();
@@ -1050,13 +1083,13 @@ namespace Desktop
                 textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
             };
 
-            IndexForChange = 4;
-            ChangedType = FieldType.wholesalePrice;
+            indexForChange = 4;
+            changedType = FieldType.wholesalePrice;
         }
 
         private void bConsistencySupplier_Click(object sender, EventArgs e)
         {
-            IndexForChange = -1;
+            indexForChange = -1;
             lListOf.Text = "Zobrazuji produkty bez zadaného dodavatele.";
             DataGridTools.InitGrid(dgConsistency);
 
@@ -1079,55 +1112,52 @@ namespace Desktop
                 comboCell.Value = Engine.Manufacturers.GetManufacturerName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_supplier"].Value));
             };
 
-            IndexForChange = 5;
-            ChangedType = FieldType.manufacturer;
+            indexForChange = 5;
+            changedType = FieldType.manufacturer;
         }
 
-        private void bConsistencySuppliers_Click_1(object sender, EventArgs e)
+        private void ConsistencySuppliers_Click(object sender, EventArgs e)
         {
-            if (mainSettings.ActiveEshop().UseAskino)
+            foreach (SupplierConfiguration supplier in MainSettings.ActiveEshop().Suppliers)
             {
-                if (File.Exists(mainSettings.ActiveEshop().NovikoFilePath) == false)
+                if (supplier.UseSupplier)
                 {
-                    MessageBox.Show(TextResources.msgNoPriceListValue + " Askina", TextResources.msgNoPriceListTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (File.Exists(supplier.SupplierFileName) == false)
+                    {
+                        MessageBox.Show(TextResources.MsgNoPriceListValue + " Askina", TextResources.MsgNoPriceListTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
             
-            if (mainSettings.ActiveEshop().UseNoviko)
-            {
-                if (File.Exists(mainSettings.ActiveEshop().NovikoFilePath) == false)
-                {
-                    MessageBox.Show(TextResources.msgNoPriceListValue + " Novika", TextResources.msgNoPriceListTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-
-            Engine.PriceLists.AddPriceLists(mainSettings.ActiveEshop());
-            //Engine.PriceLists.priceLists
-            
-            IndexForChange = -1;
-            lListOf.Text = TextResources.titleWithoutSupplier;
+            Engine.PriceLists.AddPriceLists(MainSettings.ActiveEshop());
+                        
+            indexForChange = -1;
+            lListOf.Text = TextResources.TitleWithoutSupplier;
             DataGridTools.InitGrid(dgConsistency);
 
-            dgConsistency.DataSource = Engine.Products.GetNonAvailableProductOfSuppliers(Engine.PriceLists);
+            dgConsistency.DataSource = Engine.Products.GetNonAvailableProductOfSuppliers(Engine.PriceLists, Engine.Suppliers.GetAskinoId(), Engine.Suppliers.GetNovikoId());
 
             DataGridTools.AddColumn(dgConsistency, "id", TextResources.Id);
             DataGridTools.AddColumn(dgConsistency, "name", TextResources.Name);
             DataGridTools.AddColumn(dgConsistency, "id_category_default", TextResources.Category, true, false);
             DataGridTools.AddColumn(dgConsistency, "category", TextResources.Category);
-            DataGridTools.AddColumn(dgConsistency, "id_supplier", TextResources.Supplier, false);
+            DataGridTools.AddColumn(dgConsistency, "id_supplier_default", TextResources.Supplier, false);
+            DataGridTools.AddColumn(dgConsistency, "supplier", TextResources.Supplier, true, false);
             DataGridTools.AddButtonColumn(dgConsistency, "link", TextResources.LinkButton);
             DataGridTools.AddButtonColumn(dgConsistency, "delete", TextResources.DeleteButton);
 
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
             {
-                DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
-                textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
+                DataGridViewTextBoxCell categoryCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["category"];
+                categoryCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_category_default"].Value));
+
+                DataGridViewTextBoxCell supplierCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["supplier"];
+                supplierCell.Value = Engine.Suppliers.GetSupplierName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["id_supplier_default"].Value));
             };
 
-            IndexForChange = -1;
-            ChangedType = FieldType.image;
+            indexForChange = -1;
+            changedType = FieldType.image;
         }
 
         #endregion

@@ -260,18 +260,17 @@ namespace Desktop.UserSettings
             if (File.Exists(ACESettings.EshopsSettingsPath))
             {
                 LoadEshops();
-                if (this.Eshops == null)
-                {
-                    Eshops = new EshopList();
-                    Eshops.ActiveEshopIndex = -1;
-                }
             }
             else
             {
                 CreateFile(ACESettings.EshopsSettingsPath); 
+            }
+            if (this.Eshops == null)
+            {
+                Eshops = new EshopList();
                 Eshops.ActiveEshopIndex = -1;
             }
-
+            
             if (File.Exists(ACESettings.ColumnsSettingsPath))
             {
                 LoadColumnWidth();

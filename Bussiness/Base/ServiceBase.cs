@@ -1,65 +1,56 @@
 ﻿using Bussiness.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Bussiness.Services
+namespace Bussiness.Base
 {
     public abstract class ServiceBase : IService
     {
         public const int StepCount = 500;
 
-        public ServiceBase()
+        protected ServiceBase()
         {
-            loaded = false;
+            ServiceLoaded = false;
         }
 
-        protected bool loaded;
+        protected bool ServiceLoaded;
         public bool Loaded
         {
             get
             {
-                return loaded;
+                return ServiceLoaded;
             }
         }
 
-        protected long? activePrestaLanguage;
+        protected long? ServiceActivePrestaLanguage;
         
         public long? ActivePrestaLanguage
         {
             get
             {
-                return activePrestaLanguage;
+                return ServiceActivePrestaLanguage;
             }
         }
 
-        protected string baseUrl;
-        protected string apiToken;
-
+        protected string ServiceBaseUrl;
         public string BaseUrl
         {
             get
             {
-                return baseUrl;
+                return ServiceBaseUrl;
             }
         }
 
+        protected string ServiceApiToken;
         public string ApiToken
         {
             get
             {
-                return apiToken;
+                return ServiceApiToken;
             }
         }
 
         public void SetupLanguage(long? activeLanguage)
         {
-            this.activePrestaLanguage = activeLanguage;
+            ServiceActivePrestaLanguage = activeLanguage;
         }
-
-        //list
-        //accesor
-
     }
 }

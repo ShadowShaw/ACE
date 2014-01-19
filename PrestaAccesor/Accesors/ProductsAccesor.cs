@@ -67,6 +67,12 @@ namespace PrestaAccesor.Accesors
             this.Execute<Entities.product>(request);
         }
 
+        public void Delete(long? productId)
+        {
+            RestRequest request = this.RequestForDelete("products", productId);
+            this.Execute<Entities.product>(request);
+        }
+
         public List<int> GetIds()
         {
             RestRequest request = this.RequestForGet("products", null, "prestashop");

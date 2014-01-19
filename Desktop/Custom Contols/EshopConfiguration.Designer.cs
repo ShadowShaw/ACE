@@ -196,6 +196,7 @@
             this.ePrestaUrl.TabIndex = 2;
             this.ePrestaUrl.Text = "http://testpresta.mzf.cz/prestashop/";
             this.ePrestaUrl.TextChanged += new System.EventHandler(this.eshop_Changed);
+            this.ePrestaUrl.Validating += new System.ComponentModel.CancelEventHandler(this.ePrestaUrl_Validating);
             // 
             // lPrestaToken
             // 
