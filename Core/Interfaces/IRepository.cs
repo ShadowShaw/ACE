@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 namespace Core.Interfaces
 {
-    public interface IRepository<T, ID> where T : class, IEntity<ID> where ID : struct
+    public interface IRepository<T, in TID> where T : class, IEntity<TID> where TID : struct
     {
         IQueryable<T> GetAll();
-        T GetByID(ID id);
+        T GetByID(TID id);
         void Add(T entity);
         void Delete(T entity);
         void Edit(T entity);

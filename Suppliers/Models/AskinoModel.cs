@@ -1,6 +1,4 @@
 ﻿using LINQtoCSV;
-using Suppliers.Interfaces;
-using System;
 
 namespace Suppliers.Models
 {

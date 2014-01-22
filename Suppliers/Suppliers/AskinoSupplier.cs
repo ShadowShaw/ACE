@@ -4,14 +4,13 @@ using Suppliers.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace Suppliers
+namespace Suppliers.Suppliers
 {
     public class AskinoSupplier : ISupplier
     {
         private IEnumerable<AskinoModel> askinoPriceList;
-        private CSVAccessor accessor;
+        private readonly CSVAccessor accessor;
         public string Path { get; private set;}
         public int SupplierId { get; set;}
 
@@ -23,77 +22,35 @@ namespace Suppliers
 
         public void OpenPriceList()
         {
-            askinoPriceList = accessor.loadCSV<AskinoModel>(Path);
+            askinoPriceList = accessor.LoadCSV<AskinoModel>(Path);
         }
 
         public IEnumerable<Object> GetPriceList()
         {
-            return askinoPriceList.ToList() as IEnumerable<AskinoModel>;
+            return askinoPriceList.ToList();
         }
 
         public bool HasReference(string reference)
         {
+            bool result = false;
             var item = askinoPriceList.Where(x => x.Reference == reference);
-            if (item.ToList().Count > 0)
+            if (item.Any())
             {
-                return true;
+                result = true;
             }
-            return false;
+            return result;
         }
 
-        //private decimal GetPrice(string reference)
-        //{
-        //    var item = askinoPriceList.Where(x => x.Reference == reference).FirstOrDefault(); //.Select(x => x.PriceWithDph).Distinct();
-        //    return System.Convert.ToDecimal(item.PriceWithDph);
-        //}
-
-        public void repriceAskino(string operation, int idManufacturer)
+        public decimal GetPrice(string reference)
         {
-            //List<Product> items = products.Where(x => x.IdManufacturer == askinoIdSupplier).ToList();
-
-            //var r = getOperation(operation);
-            //operation = operation.Substring(1);
-
-            //foreach (Product p in items)
-            //{
-            //    if (isReferenceInAskino(p.Reference))
-            //    {
-            //        if (p.IdManufacturer == idManufacturer)
-            //        {
-            //            decimal askinoPrice = getNovikoPrice(p.Reference);
-
-            //            if (r == "+")
-            //            {
-            //                p.Price = askinoPrice + System.Convert.ToDecimal(operation);
-            //            }
-
-            //            if (r == "%")
-            //            {
-            //                p.Price = askinoPrice * System.Convert.ToDecimal(operation);
-            //            }
-            //        }
-            //    }
-            //}
+            var item = askinoPriceList.Single(x => x.Reference == reference);
+            return Convert.ToDecimal(item.PriceWithDph);
         }
 
-        //public List<ProductViewModel> checkConsistencyAskino()
-        //{
-        //    List<ProductViewModel> result = new List<ProductViewModel>();
-
-        //    List<ProductViewModel> productListAskino = products.Select(x => x).Where(x => x.IdSupplier == GetAskinoId()).ToList();
-        //    List<AskinoModel> askinoList = askinoPriceList.Select(x => x).ToList();
-
-        //    foreach (ProductViewModel s in productListAskino)
-        //    {
-        //        var result1 = askinoList.Where(y => y.Reference == s.id.ToString()).ToList();
-        //        if (result1.Count == 0)
-        //        {
-        //            result.Add(s);
-        //        }
-        //    }
-
-        //    return result;
-        //}
-
+        public decimal GetWholeSalePrice(string reference)
+        {
+            var item = askinoPriceList.Single(x => x.Reference == reference);
+            return Convert.ToDecimal(item.UnitPrice);
+        }
     }
 } 

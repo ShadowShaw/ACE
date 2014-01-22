@@ -68,18 +68,18 @@ namespace Bussiness.Services
                 return "";
             }
 
-            CategoryViewModel result = Categories.FirstOrDefault(x => x.id == id);
-            return result.name;
+            CategoryViewModel result = Categories.FirstOrDefault(x => x.Id == id);
+            return result.Name;
         }
 
         public List<int> GetSubcategories(int idCategory, List<int> categories)
         {
             foreach (CategoryViewModel item in Categories)
             {
-                if (item.id_parent == idCategory)
+                if (item.IdParent == idCategory)
                 {
-                    categories.Add(Convert.ToInt32(item.id));
-                    categories = GetSubcategories(Convert.ToInt32(item.id), categories);
+                    categories.Add(Convert.ToInt32(item.Id));
+                    categories = GetSubcategories(Convert.ToInt32(item.Id), categories);
                 }
             }
             
@@ -90,7 +90,7 @@ namespace Bussiness.Services
         {
             if (categoryName != "")
             {
-                return Categories.FirstOrDefault(x => x.name == categoryName).id;
+                return Categories.FirstOrDefault(x => x.Name == categoryName).Id;
             }
 
             return 0;
@@ -98,12 +98,12 @@ namespace Bussiness.Services
 
         public List<string> GetCategoryList()
         {
-            return Categories.Select(item => item.name).ToList();
+            return Categories.Select(item => item.Name).ToList();
         }
 
         public CategoryViewModel GetById(int id)
         {
-            return Categories.FirstOrDefault(x => x.id == id);
+            return Categories.FirstOrDefault(x => x.Id == id);
         }
 
         private CategoryViewModel CategoryFromPresta(category entity)
@@ -112,16 +112,16 @@ namespace Bussiness.Services
 
             int languageIndex = entity.description.FindIndex(language => language.id == ServiceActivePrestaLanguage);
 
-            result.id = entity.id;
-            result.link_rewrite = entity.link_rewrite[languageIndex].Value;
+            result.Id = entity.id;
+            result.LinkRewrite = entity.link_rewrite[languageIndex].Value;
 
-            result.name = entity.name;
+            result.Name = entity.name;
             //result.name = entity.name[languageIndex].Value;
 
-            result.id_parent = entity.id_parent;
-            result.id_shop_default = entity.id_shop_default;
-            result.level_depth = entity.level_depth;
-            result.is_root_category = entity.is_root_category;
+            result.IdParent = entity.id_parent;
+            result.IdShopDefault = entity.id_shop_default;
+            result.LevelDepth = entity.level_depth;
+            result.IsRootCategory = entity.is_root_category;
 
             return result;
         }

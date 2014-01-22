@@ -43,26 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="603136">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="604672">
       <assemblyIdentity name="ACEDesktop" version="1.4.1.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>p/J9zX7b/4q6AAcS1wV6LFI0NTE=</dsig:DigestValue>
+        <dsig:DigestValue>hmtfJ+zcO5d825tBDf9kJv+eAtk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bussiness.dll" size="42496">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bussiness.dll" size="46080">
       <assemblyIdentity name="Bussiness" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>EzqB0/1Q0rQM1SyS0xBKwb7AklQ=</dsig:DigestValue>
+        <dsig:DigestValue>vJDIEm7TVSDyqwE6Df+oBYEeD7Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>bE5nbTReCBgAfvMaCnYkBtSp5qM=</dsig:DigestValue>
+        <dsig:DigestValue>B30Ag9vj0hfSF3xPpQMcUz7CTQU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -139,14 +139,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrestaAccesor.dll" size="29184">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrestaAccesor.dll" size="29696">
       <assemblyIdentity name="PrestaAccesor" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Db6BtQ4XEkjHv8zouuA9R2XtfZw=</dsig:DigestValue>
+        <dsig:DigestValue>D74JkQVZvtCm4a8TW92rXvVRGcY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -163,14 +163,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Suppliers.dll" size="13312">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Suppliers.dll" size="14336">
       <assemblyIdentity name="Suppliers" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>dlT7Trv/wa2zJmdXHFcBHWukKF8=</dsig:DigestValue>
+        <dsig:DigestValue>x1z6D0iHav3LiPYb0YZPtC9EDJA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

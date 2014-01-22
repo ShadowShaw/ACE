@@ -1,4 +1,5 @@
 ﻿using Bussiness.ViewModels;
+using Suppliers.Interfaces;
 using System.Collections.Generic;
 
 namespace Bussiness.Services
@@ -11,11 +12,20 @@ namespace Bussiness.Services
     public class PricingService
     {
         private List<ProductViewModel> productToReprice;
+        private SupplierService supplierService;
+        private PriceListsService priceListsService;
+
         public delegate int BinaryOp(int x, int y);
         
         public PricingService()
         {
             productToReprice = new List<ProductViewModel>();
+        }
+
+        public void Setup(SupplierService suppliers, PriceListsService priceLists)
+        {
+            supplierService = suppliers;
+            priceListsService = priceLists;
         }
 
         public List<ProductViewModel> GetProducts()
@@ -30,11 +40,15 @@ namespace Bussiness.Services
 
         public void UpdatePrices()
         {
-            //foreach (ProductViewModel product in productToReprice)
+            foreach (ProductViewModel product in productToReprice)
             {
-                //product.id_supplier
-                //product.price = product.price * procent;
-                //product.wholesale_price = product.wholesale_price * procent;
+                string supplierName = supplierService.GetSupplierName(product.IdSupplier);
+                ISupplier priceList = priceListsService[supplierName];
+                if (priceList.HasReference(product.Reference))
+                {
+                    product.Price = priceListsService[supplierName].GetPrice(product.Reference);
+                    product.WholesalePrice = priceListsService[supplierName].GetWholeSalePrice(product.Reference);
+                }
             }
         }
 
@@ -42,8 +56,8 @@ namespace Bussiness.Services
         {
             foreach (ProductViewModel product in productToReprice)
             {
-                product.price = product.price * procent;
-                product.wholesale_price = product.wholesale_price * procent;
+                product.Price = product.Price * procent;
+                product.WholesalePrice = product.WholesalePrice * procent;
             }
         }
 
@@ -56,22 +70,22 @@ namespace Bussiness.Services
         {
             foreach (ProductViewModel product in productToReprice)
             {
-                if (product.price > limit)
+                if (product.Price > limit)
                 {
-                    product.price = product.price + above;
+                    product.Price = product.Price + above;
                 }
                 else
                 {
-                    product.price = product.price + below;
+                    product.Price = product.Price + below;
                 }
 
-                if (product.wholesale_price > limit)
+                if (product.WholesalePrice > limit)
                 {
-                    product.wholesale_price = product.wholesale_price + above;
+                    product.WholesalePrice = product.WholesalePrice + above;
                 }
                 else
                 {
-                    product.wholesale_price = product.wholesale_price + below;
+                    product.WholesalePrice = product.WholesalePrice + below;
                 }
             }
         }

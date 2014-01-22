@@ -1,9 +1,4 @@
-﻿using Desktop.UserSettings;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Xml.Serialization;
 
 namespace Desktop.Utils
@@ -12,7 +7,7 @@ namespace Desktop.Utils
     {
         public static void SaveSettings<T>(string path, T toSerialize)
         {
-            if (toSerialize == null)
+            if (Equals(toSerialize , default(T)))
             {
                 return;
             }

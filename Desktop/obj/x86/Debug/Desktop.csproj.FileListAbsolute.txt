@@ -44,7 +44,6 @@ C:\Card\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.TrustInfo.xml
 C:\Card\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.exe.manifest
 C:\Card\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.application
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.csproj.App.config
-C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.ChangesView.resources
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Properties.Resources.resources
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.csproj.GenerateResource.Cache
 C:\GitHub\ACE\Desktop\bin\Debug\ACEDesktop.exe.config
@@ -88,3 +87,4 @@ C:\GitHub\ACE\Desktop\bin\Debug\LINQtoCSV.pdb
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Custom_Contols.EshopConfigurationControl.resources
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Forms.Main.resources
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Forms.Login.resources
+C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Forms.ChangesView.resources

@@ -1,50 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Core.Interfaces;
+﻿using Core.Interfaces;
 using Core.Models;
 
 namespace Core.Data
 {
-    public class UnitOfWork : IDisposable, IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         //////////////////////////////////////////////////////////////////////////
         // Entity framework repository
         //////////////////////////////////////////////////////////////////////////
 
-        private IRepository<UserProfile, int> userRepository;
-        private IRepository<MemberShip, int> memberShipRepository;
+        private readonly IRepository<UserProfile, int> userRepository;
+        private readonly IRepository<MemberShip, int> memberShipRepository;
         //private IRepository<Role, int> userRoleRepository;
-        private IRepository<ACEModule, int> aceModuleRepository;
-        private IRepository<Payment, int> paymentRepository;
+        private readonly IRepository<ACEModule, int> aceModuleRepository;
+        private readonly IRepository<Payment, int> paymentRepository;
         //private IRepository<UsersInRole, int> usersInRoleRepository;
-        private IRepository<ModuleOrder, int> moduleOrderRepository;
+        private readonly IRepository<ModuleOrder, int> moduleOrderRepository;
         
-        public UnitOfWork(ACEContext ef_context)
+        public UnitOfWork(ACEContext efContext)
         {
-            this.EfContext = ef_context;
+            EfContext = efContext;
 
             //////////////////////////////////////////////////////////////////////////
             // Entity Framework repositories
             //////////////////////////////////////////////////////////////////////////
-            this.userRepository = new EFRepository<UserProfile>(this);
-            this.memberShipRepository = new EFRepository<MemberShip>(this);
+            userRepository = new EFRepository<UserProfile>(this);
+            memberShipRepository = new EFRepository<MemberShip>(this);
             //this.userRoleRepository = new EFRepository<Role>(this);
-            this.aceModuleRepository = new EFRepository<ACEModule>(this);
-            this.paymentRepository = new EFRepository<Payment>(this);
+            aceModuleRepository = new EFRepository<ACEModule>(this);
+            paymentRepository = new EFRepository<Payment>(this);
             //this.usersInRoleRepository = new EFRepository<UsersInRole>(this);
-            this.moduleOrderRepository = new EFRepository<ModuleOrder>(this);
+            moduleOrderRepository = new EFRepository<ModuleOrder>(this);
         }
 
         public IRepository<UserProfile, int> Users
         {
-            get { return this.userRepository; }
+            get { return userRepository; }
         }
 
         public IRepository<MemberShip, int> MemberShips
         {
-            get { return this.memberShipRepository; }
+            get { return memberShipRepository; }
         }
 
         //public IRepository<Role, int> UserRoles
@@ -54,17 +50,17 @@ namespace Core.Data
 
         public IRepository<ACEModule, int> ACEModules
         {
-            get { return this.aceModuleRepository; }
+            get { return aceModuleRepository; }
         }
 
         public IRepository<Payment, int> Payments
         {
-            get { return this.paymentRepository; }
+            get { return paymentRepository; }
         }
 
         public IRepository<ModuleOrder, int> ModuleOrders
         {
-            get { return this.moduleOrderRepository; }
+            get { return moduleOrderRepository; }
         }
 
         //public IRepository<UsersInRole, int> UsersInRoles
@@ -79,7 +75,7 @@ namespace Core.Data
 
         public virtual void Commit()
         {
-           this.EfContext.SaveChanges();
+           EfContext.SaveChanges();
         }
 
         public void Dispose()

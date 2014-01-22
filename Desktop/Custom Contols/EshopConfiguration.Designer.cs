@@ -68,7 +68,6 @@
             this.gbPrestaSetup.TabIndex = 1;
             this.gbPrestaSetup.TabStop = false;
             this.gbPrestaSetup.Text = "Konfigurace eshopu";
-            this.gbPrestaSetup.Paint += new System.Windows.Forms.PaintEventHandler(this.gbPrestaSetup_Paint);
             // 
             // lNovikoPath
             // 
@@ -100,7 +99,7 @@
             this.bOpenNoviko.TabIndex = 14;
             this.bOpenNoviko.Text = "Otevřít ceník Novika";
             this.bOpenNoviko.UseVisualStyleBackColor = true;
-            this.bOpenNoviko.Click += new System.EventHandler(this.bOpenNoviko_Click);
+            this.bOpenNoviko.Click += new System.EventHandler(this.BOpenNovikoClick);
             // 
             // bOpenAskino
             // 
@@ -112,7 +111,7 @@
             this.bOpenAskino.TabIndex = 13;
             this.bOpenAskino.Text = "Otevřít ceník Askina";
             this.bOpenAskino.UseVisualStyleBackColor = true;
-            this.bOpenAskino.Click += new System.EventHandler(this.bOpenAskino_Click);
+            this.bOpenAskino.Click += new System.EventHandler(this.BOpenAskinoClick);
             // 
             // lSupplierSetup
             // 
@@ -135,7 +134,7 @@
             this.chAskinoSetup.TabIndex = 9;
             this.chAskinoSetup.Text = "Askino";
             this.chAskinoSetup.UseVisualStyleBackColor = true;
-            this.chAskinoSetup.CheckedChanged += new System.EventHandler(this.eshop_Changed);
+            this.chAskinoSetup.CheckedChanged += new System.EventHandler(this.EshopChanged);
             // 
             // chNovikoSetup
             // 
@@ -148,7 +147,7 @@
             this.chNovikoSetup.TabIndex = 8;
             this.chNovikoSetup.Text = "Noviko";
             this.chNovikoSetup.UseVisualStyleBackColor = true;
-            this.chNovikoSetup.CheckedChanged += new System.EventHandler(this.eshop_Changed);
+            this.chNovikoSetup.CheckedChanged += new System.EventHandler(this.EshopChanged);
             // 
             // lEshopType
             // 
@@ -183,7 +182,7 @@
             this.ePrestaToken.Size = new System.Drawing.Size(283, 20);
             this.ePrestaToken.TabIndex = 3;
             this.ePrestaToken.Text = "BYWM7NA5NKVNZ873VJTFLUXGQ4WI9YT8";
-            this.ePrestaToken.TextChanged += new System.EventHandler(this.eshop_Changed);
+            this.ePrestaToken.TextChanged += new System.EventHandler(this.EshopChanged);
             // 
             // ePrestaUrl
             // 
@@ -195,8 +194,7 @@
             this.ePrestaUrl.Size = new System.Drawing.Size(283, 20);
             this.ePrestaUrl.TabIndex = 2;
             this.ePrestaUrl.Text = "http://testpresta.mzf.cz/prestashop/";
-            this.ePrestaUrl.TextChanged += new System.EventHandler(this.eshop_Changed);
-            this.ePrestaUrl.Validating += new System.ComponentModel.CancelEventHandler(this.ePrestaUrl_Validating);
+            this.ePrestaUrl.TextChanged += new System.EventHandler(this.EshopChanged);
             // 
             // lPrestaToken
             // 

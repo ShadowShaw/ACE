@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.IO;
 using LINQtoCSV;
 
 namespace Suppliers.Accesors
 {
     public class CSVAccessor
     {
-        private CsvFileDescription inputFileDescription;
+        private readonly CsvFileDescription inputFileDescription;
         private CsvFileDescription outputFileDescription;
-        private CsvContext context;
+        private readonly CsvContext context;
        
         public CSVAccessor()
         {
@@ -36,7 +34,7 @@ namespace Suppliers.Accesors
             context = new CsvContext();
         }
 
-        public IEnumerable<T> loadCSV<T>(string filename) where T : class, new()
+        public IEnumerable<T> LoadCSV<T>(string filename) where T : class, new()
         {
             IEnumerable<T> result = null;
             try

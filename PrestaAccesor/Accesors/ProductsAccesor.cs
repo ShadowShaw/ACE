@@ -29,31 +29,31 @@ namespace PrestaAccesor.Accesors
 
         }
 
-        public Entities.PrestashopEntity Get(long? EntityId)
+        public Entities.PrestashopEntity Get(long? entityId)
         {
-            RestRequest request = this.RequestForGet("products", EntityId, "product");
-            return this.Execute<Entities.product>(request);
+            RestRequest request = this.RequestForGet("products", entityId, "product");
+            return this.Execute<Entities.Product>(request);
         }
 
-        public void Add(Entities.PrestashopEntity Product)
+        public void Add(Entities.PrestashopEntity category)
         {
-            Product.id = null;
-            RestRequest request = this.RequestForAdd("products", Product);
-            this.Execute<Entities.product>(request);
+            category.id = null;
+            RestRequest request = this.RequestForAdd("products", category);
+            this.Execute<Entities.Product>(request);
         }
 
         public void AddImage(int ProductId, string ProductImagePath)
         {
             RestRequest request = this.RequestForAddImage("products", ProductId, ProductImagePath);
-            this.Execute<Entities.product>(request);
+            this.Execute<Entities.Product>(request);
         }
 
-        public void Update(Entities.PrestashopEntity Product)
+        public void Update(PrestashopEntity product)
         {
-            RestRequest request = this.RequestForUpdate("products", Product.id, Product);
+            RestRequest request = RequestForUpdate("products", product.id, product);
             try
             {
-                this.Execute<Entities.product>(request);
+                Execute<Entities.Product>(request);
             }
             catch (ApplicationException ex)
             {
@@ -61,16 +61,16 @@ namespace PrestaAccesor.Accesors
             }
         }
 
-        public void Delete(Entities.PrestashopEntity Product)
+        public void Delete(PrestashopEntity product)
         {
-            RestRequest request = this.RequestForDelete("products", Product.id);
-            this.Execute<Entities.product>(request);
+            RestRequest request = RequestForDelete("products", product.id);
+            Execute<Entities.Product>(request);
         }
 
         public void Delete(long? productId)
         {
             RestRequest request = this.RequestForDelete("products", productId);
-            this.Execute<Entities.product>(request);
+            this.Execute<Entities.Product>(request);
         }
 
         public List<int> GetIds()
@@ -113,13 +113,13 @@ namespace PrestaAccesor.Accesors
         /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
         /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
         /// <returns></returns>
-        public List<Entities.product> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
+        public List<Entities.Product> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
         {
             RestRequest request = this.RequestForFilter("products", "full", Filter, Sort, Limit, "products");
-            return this.Execute<List<Entities.product>>(request);
+            return this.Execute<List<Entities.Product>>(request);
         }
 
-        public List<Entities.product> GetAll()
+        public List<Entities.Product> GetAll()
         {
             return this.GetByFilter(null, null, null);
         }

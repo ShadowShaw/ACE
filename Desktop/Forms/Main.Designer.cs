@@ -166,7 +166,7 @@
             this.ukončitACEDesktopToolStripMenuItem.Name = "ukončitACEDesktopToolStripMenuItem";
             this.ukončitACEDesktopToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.ukončitACEDesktopToolStripMenuItem.Text = "Ukončit ACE Desktop";
-            this.ukončitACEDesktopToolStripMenuItem.Click += new System.EventHandler(this.ukončitACEDesktopToolStripMenuItem_Click);
+            this.ukončitACEDesktopToolStripMenuItem.Click += new System.EventHandler(this.UkončitACEDesktopToolStripMenuItemClick);
             // 
             // toolsToolStripMenuItem
             // 
@@ -182,14 +182,14 @@
             this.menuShowChangeLog.Name = "menuShowChangeLog";
             this.menuShowChangeLog.Size = new System.Drawing.Size(175, 22);
             this.menuShowChangeLog.Text = "Zobraz seznam změn";
-            this.menuShowChangeLog.Click += new System.EventHandler(this.menuShowChangeLog_Click);
+            this.menuShowChangeLog.Click += new System.EventHandler(this.MenuShowChangeLogClick);
             // 
             // menuShowHome
             // 
             this.menuShowHome.Name = "menuShowHome";
             this.menuShowHome.Size = new System.Drawing.Size(175, 22);
             this.menuShowHome.Text = "Zobraz home stránku";
-            this.menuShowHome.Click += new System.EventHandler(this.menuShowHome_Click);
+            this.menuShowHome.Click += new System.EventHandler(this.MenuShowHomeClick);
             // 
             // status
             // 
@@ -268,6 +268,7 @@
             this.tc.SelectedIndex = 0;
             this.tc.Size = new System.Drawing.Size(1031, 617);
             this.tc.TabIndex = 17;
+            this.tc.SelectedIndexChanged += new System.EventHandler(this.TcSelectedIndexChanged);
             // 
             // tpHome
             // 
@@ -486,7 +487,7 @@
             this.bLogin.TabIndex = 2;
             this.bLogin.Text = "Přihlášení";
             this.bLogin.UseVisualStyleBackColor = true;
-            this.bLogin.Click += new System.EventHandler(this.bLogin_Click);
+            this.bLogin.Click += new System.EventHandler(this.BLoginClick);
             // 
             // homeBrowser
             // 
@@ -531,7 +532,7 @@
             this.bLoadProducts.Tag = "";
             this.bLoadProducts.Text = "Načti produkty";
             this.bLoadProducts.UseVisualStyleBackColor = true;
-            this.bLoadProducts.Click += new System.EventHandler(this.bLoadProducts_Click);
+            this.bLoadProducts.Click += new System.EventHandler(this.BLoadProductsClick);
             // 
             // dgConsistency
             // 
@@ -570,8 +571,8 @@
             this.dgConsistency.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgConsistency.Size = new System.Drawing.Size(828, 552);
             this.dgConsistency.TabIndex = 22;
-            this.dgConsistency.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellClick);
-            this.dgConsistency.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgConsistency_CellValueChanged);
+            this.dgConsistency.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgConsistencyCellClick);
+            this.dgConsistency.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgConsistencyCellValueChanged);
             // 
             // gbConsistency
             // 
@@ -614,7 +615,7 @@
             this.bSaveChanges.TabIndex = 29;
             this.bSaveChanges.Text = "Zapiš změny";
             this.bSaveChanges.UseVisualStyleBackColor = true;
-            this.bSaveChanges.Click += new System.EventHandler(this.bSaveChanges_Click);
+            this.bSaveChanges.Click += new System.EventHandler(this.BSaveChangesClick);
             // 
             // bWithoutWholeSalePrice
             // 
@@ -636,7 +637,7 @@
             this.bWithoutLongDescription.TabIndex = 27;
             this.bWithoutLongDescription.Text = "bez dlouhého popisu";
             this.bWithoutLongDescription.UseVisualStyleBackColor = true;
-            this.bWithoutLongDescription.Click += new System.EventHandler(this.bWithoutLongDescription_Click);
+            this.bWithoutLongDescription.Click += new System.EventHandler(this.BWithoutLongDescriptionClick);
             // 
             // bWithoutPrice
             // 
@@ -647,7 +648,7 @@
             this.bWithoutPrice.TabIndex = 26;
             this.bWithoutPrice.Text = " bez maloobchodní ceny";
             this.bWithoutPrice.UseVisualStyleBackColor = true;
-            this.bWithoutPrice.Click += new System.EventHandler(this.bWithoutPrice_Click);
+            this.bWithoutPrice.Click += new System.EventHandler(this.BWithoutPriceClick);
             // 
             // bConsistencySuppliers
             // 
@@ -658,7 +659,7 @@
             this.bConsistencySuppliers.TabIndex = 12;
             this.bConsistencySuppliers.Text = "jenž se nedodávají";
             this.bConsistencySuppliers.UseVisualStyleBackColor = true;
-            this.bConsistencySuppliers.Click += new System.EventHandler(this.ConsistencySuppliers_Click);
+            this.bConsistencySuppliers.Click += new System.EventHandler(this.ConsistencySuppliersClick);
             // 
             // bWithoutWeight
             // 
@@ -680,7 +681,7 @@
             this.bEmptyManufacturer.TabIndex = 15;
             this.bEmptyManufacturer.Text = "s prázdným výrobcem";
             this.bEmptyManufacturer.UseVisualStyleBackColor = true;
-            this.bEmptyManufacturer.Click += new System.EventHandler(this.bEmptyManufacturer_Click);
+            this.bEmptyManufacturer.Click += new System.EventHandler(this.BEmptyManufacturerClick);
             // 
             // bWithoutShortDescription
             // 
@@ -691,7 +692,7 @@
             this.bWithoutShortDescription.TabIndex = 24;
             this.bWithoutShortDescription.Text = "bez krátkého popisu";
             this.bWithoutShortDescription.UseVisualStyleBackColor = true;
-            this.bWithoutShortDescription.Click += new System.EventHandler(this.bWithoutShortDescription_Click);
+            this.bWithoutShortDescription.Click += new System.EventHandler(this.BWithoutShortDescriptionClick);
             // 
             // bEmptyCategory
             // 
@@ -702,7 +703,7 @@
             this.bEmptyCategory.TabIndex = 14;
             this.bEmptyCategory.Text = "s prázdnou kategorií";
             this.bEmptyCategory.UseVisualStyleBackColor = true;
-            this.bEmptyCategory.Click += new System.EventHandler(this.bEmptyCategory_Click);
+            this.bEmptyCategory.Click += new System.EventHandler(this.BEmptyCategoryClick);
             // 
             // bWithoutImage
             // 
@@ -714,7 +715,7 @@
             this.bWithoutImage.TabIndex = 23;
             this.bWithoutImage.Text = "bez obrázku";
             this.bWithoutImage.UseVisualStyleBackColor = true;
-            this.bWithoutImage.Click += new System.EventHandler(this.bWithoutImage_Click);
+            this.bWithoutImage.Click += new System.EventHandler(this.BWithoutImageClick);
             // 
             // tpPriceUpdate
             // 
@@ -832,7 +833,7 @@
             this.bPricingShow.TabIndex = 29;
             this.bPricingShow.Text = "Zobraz vybrané";
             this.bPricingShow.UseVisualStyleBackColor = true;
-            this.bPricingShow.Click += new System.EventHandler(this.bPricingShow_Click);
+            this.bPricingShow.Click += new System.EventHandler(this.BPricingShowClick);
             // 
             // lPricingOverLimit
             // 
@@ -892,7 +893,7 @@
             this.bPricingSave.TabIndex = 18;
             this.bPricingSave.Text = "Ulož přeceněné produkty";
             this.bPricingSave.UseVisualStyleBackColor = true;
-            this.bPricingSave.Click += new System.EventHandler(this.bPricingSave_Click);
+            this.bPricingSave.Click += new System.EventHandler(this.BPricingSaveClick);
             // 
             // rbPricingProcent
             // 
@@ -943,6 +944,7 @@
             // 
             // bReprice
             // 
+            this.bReprice.Enabled = false;
             this.bReprice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bReprice.Location = new System.Drawing.Point(9, 475);
             this.bReprice.Name = "bReprice";
@@ -1060,7 +1062,7 @@
             this.cbActiveEshop.Name = "cbActiveEshop";
             this.cbActiveEshop.Size = new System.Drawing.Size(199, 21);
             this.cbActiveEshop.TabIndex = 5;
-            this.cbActiveEshop.SelectedIndexChanged += new System.EventHandler(this.cbActiveEshop_SelectedIndexChanged);
+            this.cbActiveEshop.SelectedIndexChanged += new System.EventHandler(this.CbActiveEshopSelectedIndexChanged);
             // 
             // bDelEshop
             // 
@@ -1072,7 +1074,7 @@
             this.bDelEshop.TabIndex = 4;
             this.bDelEshop.Text = "Smaž konfiguraci eshopu";
             this.bDelEshop.UseVisualStyleBackColor = true;
-            this.bDelEshop.Click += new System.EventHandler(this.bDelEshop_Click);
+            this.bDelEshop.Click += new System.EventHandler(this.BDelEshopClick);
             // 
             // bAddEshop
             // 
@@ -1084,7 +1086,7 @@
             this.bAddEshop.TabIndex = 3;
             this.bAddEshop.Text = "Přidej konfiguraci eshopu";
             this.bAddEshop.UseVisualStyleBackColor = true;
-            this.bAddEshop.Click += new System.EventHandler(this.bAddEshop_Click);
+            this.bAddEshop.Click += new System.EventHandler(this.BAddEshopClick);
             // 
             // treeConfiguration
             // 
@@ -1097,9 +1099,9 @@
             this.treeConfiguration.Name = "treeConfiguration";
             this.treeConfiguration.Size = new System.Drawing.Size(278, 544);
             this.treeConfiguration.TabIndex = 0;
-            this.treeConfiguration.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeConfiguration_AfterLabelEdit);
-            this.treeConfiguration.DoubleClick += new System.EventHandler(this.treeConfiguration_DoubleClick);
-            this.treeConfiguration.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeConfiguration_MouseDown);
+            this.treeConfiguration.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.TreeConfigurationAfterLabelEdit);
+            this.treeConfiguration.DoubleClick += new System.EventHandler(this.TreeConfigurationDoubleClick);
+            this.treeConfiguration.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TreeConfigurationMouseDown);
             // 
             // bPrestaTest
             // 
@@ -1111,7 +1113,7 @@
             this.bPrestaTest.TabIndex = 5;
             this.bPrestaTest.Text = "Test připojení";
             this.bPrestaTest.UseVisualStyleBackColor = true;
-            this.bPrestaTest.Click += new System.EventHandler(this.bPrestaTest_Click);
+            this.bPrestaTest.Click += new System.EventHandler(this.BPrestaTestClick);
             // 
             // Main
             // 
@@ -1126,8 +1128,8 @@
             this.MainMenuStrip = this.menu;
             this.Name = "Main";
             this.Text = "ACE Desktop";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
-            this.Load += new System.EventHandler(this.Main_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormClosing);
+            this.Load += new System.EventHandler(this.MainLoad);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.status.ResumeLayout(false);

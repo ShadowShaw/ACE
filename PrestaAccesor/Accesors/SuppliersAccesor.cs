@@ -1,11 +1,6 @@
-﻿using PrestaAccesor.Accesors;
-using RestSharp;
+﻿using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace PrestaAccesor.Accesors
 {
@@ -27,16 +22,16 @@ namespace PrestaAccesor.Accesors
 
         }
 
-        public Entities.PrestashopEntity Get(long? EntityId)
+        public Entities.PrestashopEntity Get(long? entityId)
         {
-            RestRequest request = this.RequestForGet("suppliers", EntityId, "supplier");
+            RestRequest request = this.RequestForGet("suppliers", entityId, "supplier");
             return this.Execute<Entities.supplier>(request);
         }
 
-        public void Add(Entities.PrestashopEntity Supplier)
+        public void Add(Entities.PrestashopEntity category)
         {
-            Supplier.id = null;
-            RestRequest request = this.RequestForAdd("suppliers", Supplier);
+            category.id = null;
+            RestRequest request = this.RequestForAdd("suppliers", category);
             this.Execute<Entities.supplier>(request);
         }
 
@@ -46,9 +41,9 @@ namespace PrestaAccesor.Accesors
             this.Execute<Entities.supplier>(request);
         }
 
-        public void Update(Entities.PrestashopEntity Supplier)
+        public void Update(Entities.PrestashopEntity product)
         {
-            RestRequest request = this.RequestForUpdate("suppliers", Supplier.id, Supplier);
+            RestRequest request = this.RequestForUpdate("suppliers", product.id, product);
             try
             {
                 this.Execute<Entities.supplier>(request);
@@ -59,9 +54,9 @@ namespace PrestaAccesor.Accesors
             }
         }
 
-        public void Delete(Entities.PrestashopEntity Supplier)
+        public void Delete(Entities.PrestashopEntity product)
         {
-            RestRequest request = this.RequestForDelete("suppliers", Supplier.id);
+            RestRequest request = this.RequestForDelete("suppliers", product.id);
             this.Execute<Entities.supplier>(request);
         }
 

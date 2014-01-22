@@ -5,11 +5,17 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
 
 namespace Desktop.UserSettings
 {
+    public enum ACETabType
+    {
+        Home,
+        Consistency,
+        Repricing,
+        Setup
+    }
+
     public class EshopList
     {
         public List<EshopConfiguration> Eshops { get; set; }
@@ -51,8 +57,10 @@ namespace Desktop.UserSettings
     public class GenericKeyValueList
     { 
         public List<GenericKeyValueItem> Values { get; set; }
+        public ACETabType ACETab;
         public GenericKeyValueList()
         {
+            ACETab = ACETabType.Home;
             Values = new List<GenericKeyValueItem>();
         }
     }
@@ -82,22 +90,22 @@ namespace Desktop.UserSettings
         public string DesktopUserName { 
             get
             {
-                return this.GetValue("DesktopUserName");
+                return GetValue("DesktopUserName");
             }
             set
             {
-                this.SetValue("DesktopUserName", value);
+                SetValue("DesktopUserName", value);
             }
          }
         public string DesktopPassword
         {
             get
             {
-                return this.GetValue("DesktopPassword");
+                return GetValue("DesktopPassword");
             }
             set
             {
-                this.SetValue("DesktopPassword", value);
+                SetValue("DesktopPassword", value);
             }
         }
 
@@ -107,10 +115,8 @@ namespace Desktop.UserSettings
             {
                 return Eshops.Eshops[Eshops.ActiveEshopIndex];
             }
-            else
-            {
-                return null;
-            }
+            
+            return null;
         }
 
         public void UpdateSelectedEshop(EshopConfiguration eshop, int selectedIndex)
@@ -123,7 +129,7 @@ namespace Desktop.UserSettings
             Size result;
             if (FormSizes.FormSizes.Exists(x => x.Name == formName))
             {
-                result = FormSizes.FormSizes.Where(x => x.Name == formName).FirstOrDefault().FSize;
+                result = FormSizes.FormSizes.FirstOrDefault(x => x.Name == formName).FSize;
             }
             else
             {
@@ -139,7 +145,7 @@ namespace Desktop.UserSettings
             {
                 FormSizes = new FormSizesList();
             }
-            if (FormSizes.FormSizes.Where(x => x.Name == formName).FirstOrDefault() == null)
+            if (FormSizes.FormSizes.FirstOrDefault(x => x.Name == formName) == null)
             {
                 FormSize item = new FormSize();
                 item.Name = formName;
@@ -148,7 +154,7 @@ namespace Desktop.UserSettings
             }
             else
             {
-                FormSizes.FormSizes.Where(x => x.Name == formName).FirstOrDefault().FSize = formSize;
+                FormSizes.FormSizes.FirstOrDefault(x => x.Name == formName).FSize = formSize;
             }
         }
 
@@ -157,7 +163,7 @@ namespace Desktop.UserSettings
             int result = 100;
             if (ColumnWidth.ColumnWidths.Exists(x => x.Name == widthName))
             {
-                result = ColumnWidth.ColumnWidths.Where(x => x.Name == widthName).FirstOrDefault().Width;
+                result = ColumnWidth.ColumnWidths.FirstOrDefault(x => x.Name == widthName).Width;
             }
                         
             return result;
@@ -169,7 +175,7 @@ namespace Desktop.UserSettings
             {
                 ColumnWidth = new ColumnWidthList();
             }
-            if (ColumnWidth.ColumnWidths.Where(x => x.Name == widthName).FirstOrDefault() == null)
+            if (ColumnWidth.ColumnWidths.FirstOrDefault(x => x.Name == widthName) == null)
             {
                 ColumnWidth item = new ColumnWidth();
                 item.Name = widthName;
@@ -178,7 +184,7 @@ namespace Desktop.UserSettings
             }
             else
             {
-                ColumnWidth.ColumnWidths.Where(x => x.Name == widthName).FirstOrDefault().Width = width;
+                ColumnWidth.ColumnWidths.FirstOrDefault(x => x.Name == widthName).Width = width;
             }
         }
 
@@ -188,7 +194,7 @@ namespace Desktop.UserSettings
 
             if (Values.Values.Exists(x => x.Key == key))
             {
-                result = Values.Values.Where(v => v.Key == key).FirstOrDefault().Value;
+                result = Values.Values.FirstOrDefault(v => v.Key == key).Value;
             }
             
             return result;
@@ -201,7 +207,7 @@ namespace Desktop.UserSettings
             {
                 Values = new GenericKeyValueList();
             }
-            if (Values.Values.Where(x => x.Key == key).FirstOrDefault() == null)
+            if (Values.Values.FirstOrDefault(x => x.Key == key) == null)
             {
                 GenericKeyValueItem item = new GenericKeyValueItem();
                 item.Key = key;
@@ -210,92 +216,92 @@ namespace Desktop.UserSettings
             }
             else
             {
-                Values.Values.Where(x => x.Key == key).FirstOrDefault().Value = value;
+                Values.Values.FirstOrDefault(x => x.Key == key).Value = value;
             }
         }
 
         private void LoadColumnWidth()
         {
-            this.ColumnWidth = ACESettingsTools.LoadSettings<ColumnWidthList>(ColumnsSettingsPath);
+            ColumnWidth = ACESettingsTools.LoadSettings<ColumnWidthList>(ColumnsSettingsPath);
         }
 
         private void SaveColumnWidth()
         {
-            ACESettingsTools.SaveSettings<ColumnWidthList>(ColumnsSettingsPath, ColumnWidth);
+            ACESettingsTools.SaveSettings(ColumnsSettingsPath, ColumnWidth);
         }
 
         private void LoadValues()
         {
-            this.Values = ACESettingsTools.LoadSettings<GenericKeyValueList>(DesktopSettingsPath);
+            Values = ACESettingsTools.LoadSettings<GenericKeyValueList>(DesktopSettingsPath);
         }
 
         private void SaveValues()
         {
-            ACESettingsTools.SaveSettings<GenericKeyValueList>(DesktopSettingsPath, Values);
+            ACESettingsTools.SaveSettings(DesktopSettingsPath, Values);
         }
         
         private void LoadEshops()
         {
-            this.Eshops = ACESettingsTools.LoadSettings<EshopList>(EshopsSettingsPath);
+            Eshops = ACESettingsTools.LoadSettings<EshopList>(EshopsSettingsPath);
         }
 
         private void SaveEshops()
         {
-            ACESettingsTools.SaveSettings<EshopList>(EshopsSettingsPath, Eshops);
+            ACESettingsTools.SaveSettings(EshopsSettingsPath, Eshops);
         }
 
         private void LoadFormSizes()
         {
-            this.FormSizes = ACESettingsTools.LoadSettings<FormSizesList>(SizesSettingsPath);
+            FormSizes = ACESettingsTools.LoadSettings<FormSizesList>(SizesSettingsPath);
         }
 
         private void SaveFormSizes()
         {
-            ACESettingsTools.SaveSettings<FormSizesList>(SizesSettingsPath, FormSizes);
+            ACESettingsTools.SaveSettings(SizesSettingsPath, FormSizes);
         }
 
 
         public ACESettings()
         {
-            if (File.Exists(ACESettings.EshopsSettingsPath))
+            if (File.Exists(EshopsSettingsPath))
             {
                 LoadEshops();
             }
             else
             {
-                CreateFile(ACESettings.EshopsSettingsPath); 
+                CreateFile(EshopsSettingsPath); 
             }
-            if (this.Eshops == null)
+            if (Eshops == null)
             {
                 Eshops = new EshopList();
                 Eshops.ActiveEshopIndex = -1;
             }
             
-            if (File.Exists(ACESettings.ColumnsSettingsPath))
+            if (File.Exists(ColumnsSettingsPath))
             {
                 LoadColumnWidth();
             }
             else
             {
-                CreateFile(ACESettings.ColumnsSettingsPath);
+                CreateFile(ColumnsSettingsPath);
             }
 
-            if (File.Exists(ACESettings.SizesSettingsPath))
+            if (File.Exists(SizesSettingsPath))
             {
                 LoadFormSizes();
             }
             else
             {
-                CreateFile(ACESettings.SizesSettingsPath);
+                CreateFile(SizesSettingsPath);
             }
 
-            if (File.Exists(ACESettings.DesktopSettingsPath))
+            if (File.Exists(DesktopSettingsPath))
             {
                 LoadValues();
             }
             else
             {
-                CreateFile(ACESettings.DesktopSettingsPath);
+                CreateFile(DesktopSettingsPath);
             }
 
             if (Eshops == null)

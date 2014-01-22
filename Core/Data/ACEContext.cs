@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Data.Objects;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.ComponentModel.DataAnnotations.Schema;
-using Core.Interfaces;
+﻿using System.Data.Entity;
 using Core.Models;
 using Core.Migrations;
 
@@ -38,10 +27,10 @@ namespace Core.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<ModuleOrder> ModuleOrders { get; set; }
         
-        public override int SaveChanges()
-        {
-            return base.SaveChanges();
-        }
+        //public override int SaveChanges()
+        //{
+        //    return base.SaveChanges();
+        //}
 
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -1,6 +1,4 @@
 ﻿using LINQtoCSV;
-using Suppliers.Interfaces;
-using System;
 
 namespace Suppliers.Models
 {
@@ -28,10 +26,10 @@ namespace Suppliers.Models
         public string Manufacturer { get; set; }
 
         [CsvColumn(FieldIndex = 8)]
-        public string Field_1 { get; set; }
+        public string Field1 { get; set; }
 
         [CsvColumn(FieldIndex = 9)]
-        public string Field_2 { get; set; }
+        public string Field2 { get; set; }
         
         [CsvColumn(FieldIndex = 10)]
         public float Dph { get; set; }

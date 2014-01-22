@@ -1,11 +1,6 @@
-﻿using PrestaAccesor.Accesors;
-using RestSharp;
+﻿using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace PrestaAccesor.Accesors
 {
@@ -16,59 +11,59 @@ namespace PrestaAccesor.Accesors
 
     public class Manufacturer
     {
-        public string id { get; set; }
+        public string Id { get; set; }
     }
 
     public class ManufacturersAccesor : RestSharpAccesor, IRestAccesor
     {
-        public ManufacturersAccesor(string BaseUrl, string Account, string SecretKey)
-            : base(BaseUrl, Account, SecretKey)
+        public ManufacturersAccesor(string baseUrl, string account, string secretKey)
+            : base(baseUrl, account, secretKey)
         {
 
         }
 
-        public Entities.PrestashopEntity Get(long? EntityId)
+        public Entities.PrestashopEntity Get(long? entityId)
         {
-            RestRequest request = this.RequestForGet("manufacturers", EntityId, "manufacturer");
-            return this.Execute<Entities.manufacturer>(request);
+            RestRequest request = RequestForGet("manufacturers", entityId, "manufacturer");
+            return Execute<Entities.manufacturer>(request);
         }
 
-        public void Add(Entities.PrestashopEntity Manufacturer)
+        public void Add(Entities.PrestashopEntity category)
         {
-            Manufacturer.id = null;
-            RestRequest request = this.RequestForAdd("manufacturers", Manufacturer);
-            this.Execute<Entities.manufacturer>(request);
+            category.id = null;
+            RestRequest request = RequestForAdd("manufacturers", category);
+            Execute<Entities.manufacturer>(request);
         }
 
-        public void AddImage(int ManufacturerId, string ManufacturerImagePath)
+        public void AddImage(int manufacturerId, string manufacturerImagePath)
         {
-            RestRequest request = this.RequestForAddImage("manufacturers", ManufacturerId, ManufacturerImagePath);
-            this.Execute<Entities.manufacturer>(request);
+            RestRequest request = RequestForAddImage("manufacturers", manufacturerId, manufacturerImagePath);
+            Execute<Entities.manufacturer>(request);
         }
 
-        public void Update(Entities.PrestashopEntity Manufacturer)
+        public void Update(Entities.PrestashopEntity product)
         {
-            RestRequest request = this.RequestForUpdate("manufacturers", Manufacturer.id, Manufacturer);
+            RestRequest request = RequestForUpdate("manufacturers", product.id, product);
             try
             {
-                this.Execute<Entities.manufacturer>(request);
+                Execute<Entities.manufacturer>(request);
             }
             catch (ApplicationException ex)
             {
-                ex.ToString();
+                Console.WriteLine(ex.ToString());
             }
         }
 
-        public void Delete(Entities.PrestashopEntity Manufacturer)
+        public void Delete(Entities.PrestashopEntity product)
         {
-            RestRequest request = this.RequestForDelete("manufacturers", Manufacturer.id);
-            this.Execute<Entities.manufacturer>(request);
+            RestRequest request = RequestForDelete("manufacturers", product.id);
+            Execute<Entities.manufacturer>(request);
         }
 
         public List<int> GetIds()
         {
-            RestRequest request = this.RequestForGet("manufacturers", null, "prestashop");
-            return this.ExecuteForGetIds<List<int>>(request, "manufacturer");
+            RestRequest request = RequestForGet("manufacturers", null, "prestashop");
+            return ExecuteForGetIds<List<int>>(request, "manufacturer");
         }
 
         public List<int> GetIdsPartial()
@@ -76,20 +71,20 @@ namespace PrestaAccesor.Accesors
             int startItem = 0;
             
             List<int> result = new List<int>();
-            ManufacturerList IdList = new ManufacturerList();
+            ManufacturerList idList;
             do
             {
                 string requestString = String.Format("manufacturers/?display=[id]&limit={0},{1}", startItem, StepCount);
                 IRestRequest request = new RestRequest(requestString, Method.GET);
 
-                IdList = client.Execute<ManufacturerList>(request).Data;
+                idList = client.Execute<ManufacturerList>(request).Data;
                 startItem = startItem + StepCount;
 
-                foreach (var item in IdList.Manufacturers)
+                foreach (var item in idList.Manufacturers)
                 {
-                    result.Add(System.Convert.ToInt32(item.id));
+                    result.Add(Convert.ToInt32(item.Id));
                 }
-            } while (IdList.Manufacturers.Count == 500);
+            } while (idList.Manufacturers.Count == 500);
 
             return result;
         }
@@ -97,14 +92,14 @@ namespace PrestaAccesor.Accesors
         /// <summary>
         /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
         /// </summary>
-        /// <param name="Filter">Example: key:name value:Apple</param>
-        /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
-        /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
+        /// <param name="filter">Example: key:name value:Apple</param>
+        /// <param name="sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
+        /// <param name="limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
         /// <returns></returns>
-        public List<Entities.manufacturer> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
+        public List<Entities.manufacturer> GetByFilter(Dictionary<string, string> filter, string sort, string limit)
         {
-            RestRequest request = this.RequestForFilter("manufacturers", "full", Filter, Sort, Limit, "manufacturers");
-            return this.Execute<List<Entities.manufacturer>>(request);
+            RestRequest request = RequestForFilter("manufacturers", "full", filter, sort, limit, "manufacturers");
+            return Execute<List<Entities.manufacturer>>(request);
         }
 
         /// <summary>
@@ -113,7 +108,7 @@ namespace PrestaAccesor.Accesors
         /// <returns>A list of manufacturers</returns>
         public List<Entities.manufacturer> GetAll()
         {
-            return this.GetByFilter(null, null, null);
+            return GetByFilter(null, null, null);
         }
     }
 }

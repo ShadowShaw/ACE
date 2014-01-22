@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Bussiness.UserSettings
 {
     public enum EshopType
     {
         Prestashop = 0,
-        MySQLDatabase = 1
+        MySqlDatabase = 1
     }
 
     public class SupplierConfiguration
@@ -42,15 +38,6 @@ namespace Bussiness.UserSettings
         public EshopConfiguration()
         {
             Suppliers = new List<SupplierConfiguration>();
-            //SupplierConfiguration askino = new SupplierConfiguration();
-            //askino.SupplierName = "Askino";
-
-            //SupplierConfiguration noviko = new SupplierConfiguration();
-            //noviko.SupplierName = "Noviko";
-
-            //Suppliers.Add(askino);
-            //Suppliers.Add(noviko);
-
         }
 
         public int AskinoIndex()

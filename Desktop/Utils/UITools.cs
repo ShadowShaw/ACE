@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Desktop.Utils
 {
@@ -15,8 +11,8 @@ namespace Desktop.Utils
 
         public static string GetBaseUrlFromEditBox(TextBox editBox)
         {
-            string result;
-            result = editBox.Text.Trim();
+            string result = editBox.Text.Trim();
+
             result = result.ToLower();
             if (result.EndsWith("/") == false)
             {

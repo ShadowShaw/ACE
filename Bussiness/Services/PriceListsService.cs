@@ -1,18 +1,13 @@
 ﻿using Bussiness.UserSettings;
-using Suppliers;
 using Suppliers.Interfaces;
-using Suppliers.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Suppliers.Suppliers;
 
 namespace Bussiness.Services
 {
     public class PriceListsService
     {
-        //TODO zmenit na private, mozna property
-        public Dictionary<string, ISupplier> priceLists;
+        private readonly Dictionary<string, ISupplier> priceLists;
 
         public PriceListsService()
         {
@@ -23,7 +18,13 @@ namespace Bussiness.Services
         {
             get
             {
-                return this.priceLists[key];
+                ISupplier result = null;
+                if (priceLists.ContainsKey(key))
+                {
+                    result = priceLists[key];    
+                }
+                
+                return result;
             }
         }
 

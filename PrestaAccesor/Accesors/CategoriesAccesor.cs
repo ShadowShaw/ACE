@@ -1,11 +1,6 @@
-﻿using PrestaAccesor.Accesors;
-using RestSharp;
+﻿using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace PrestaAccesor.Accesors
 {
@@ -16,60 +11,60 @@ namespace PrestaAccesor.Accesors
 
     public class Category
     {
-        public string id { get; set; }
+        public string Id { get; set; }
     }
 
 
     public class CategoriesAccesor : RestSharpAccesor, IRestAccesor
     {
-        public CategoriesAccesor(string BaseUrl, string Account, string SecretKey)
-            : base(BaseUrl, Account, SecretKey)
+        public CategoriesAccesor(string baseUrl, string account, string secretKey)
+            : base(baseUrl, account, secretKey)
         {
 
         }
 
-        public Entities.PrestashopEntity Get(long? EntityId)
+        public Entities.PrestashopEntity Get(long? entityId)
         {
-            RestRequest request = this.RequestForGet("categories", EntityId, "category");
-            return this.Execute<Entities.category>(request);
+            RestRequest request = RequestForGet("categories", entityId, "category");
+            return Execute<Entities.category>(request);
         }
 
-        public void Add(Entities.PrestashopEntity Category)
+        public void Add(Entities.PrestashopEntity category)
         {
-            Category.id = null;
-            RestRequest request = this.RequestForAdd("categories", Category);
-            this.Execute<Entities.category>(request);
+            category.id = null;
+            RestRequest request = RequestForAdd("categories", category);
+            Execute<Entities.category>(request);
         }
 
-        public void AddImage(int CategoryId, string CategoryImagePath)
+        public void AddImage(int categoryId, string categoryImagePath)
         {
-            RestRequest request = this.RequestForAddImage("categories", CategoryId, CategoryImagePath);
-            this.Execute<Entities.manufacturer>(request);
+            RestRequest request = RequestForAddImage("categories", categoryId, categoryImagePath);
+            Execute<Entities.manufacturer>(request);
         }
 
-        public void Update(Entities.PrestashopEntity Category)
+        public void Update(Entities.PrestashopEntity product)
         {
-            RestRequest request = this.RequestForUpdate("categories", Category.id, Category);
+            RestRequest request = RequestForUpdate("categories", product.id, product);
             try
             {
-                this.Execute<Entities.category>(request);
+                Execute<Entities.category>(request);
             }
             catch (ApplicationException ex)
             {
-                ex.ToString();
+                Console.WriteLine(ex.Message);
             }
         }
 
-        public void Delete(Entities.PrestashopEntity Category)
+        public void Delete(Entities.PrestashopEntity product)
         {
-            RestRequest request = this.RequestForDelete("categories", Category.id);
-            this.Execute<Entities.category>(request);
+            RestRequest request = RequestForDelete("categories", product.id);
+            Execute<Entities.category>(request);
         }
 
         public List<int> GetIds()
         {
-            RestRequest request = this.RequestForGet("categories", null, "prestashop");
-            return this.ExecuteForGetIds<List<int>>(request, "category");
+            RestRequest request = RequestForGet("categories", null, "prestashop");
+            return ExecuteForGetIds<List<int>>(request, "category");
         }
 
         public List<int> GetIdsPartial()
@@ -77,20 +72,21 @@ namespace PrestaAccesor.Accesors
             int startItem = 0;
 
             List<int> result = new List<int>();
-            CategoryList IdList = new CategoryList();
+            CategoryList idList;
             do
             {
                 string requestString = String.Format("categories/?display=[id]&limit={0},{1}", startItem, StepCount);
                 IRestRequest request = new RestRequest(requestString, Method.GET);
 
-                IdList = client.Execute<CategoryList>(request).Data;
+                idList = client.Execute<CategoryList>(request).Data;
                 startItem = startItem + StepCount;
 
-                foreach (var item in IdList.Categories)
+                foreach (var item in idList.Categories)
                 {
-                    result.Add(System.Convert.ToInt32(item.id));
+                    result.Add(Convert.ToInt32(item.Id));
                 }
-            } while (IdList.Categories.Count == 500);
+
+            } while (idList.Categories.Count == 500);
 
             return result;
         }
@@ -98,14 +94,14 @@ namespace PrestaAccesor.Accesors
         /// <summary>
         /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
         /// </summary>
-        /// <param name="Filter">Example: key:name value:Apple</param>
-        /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
-        /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
+        /// <param name="filter">Example: key:name value:Apple</param>
+        /// <param name="sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
+        /// <param name="limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
         /// <returns></returns>
-        public List<Entities.category> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
+        public List<Entities.category> GetByFilter(Dictionary<string, string> filter, string sort, string limit)
         {
-            RestRequest request = this.RequestForFilter("categories", "full", Filter, Sort, Limit, "categories");
-            return this.Execute<List<Entities.category>>(request);
+            RestRequest request = RequestForFilter("categories", "full", filter, sort, limit, "categories");
+            return Execute<List<Entities.category>>(request);
         }
 
         /// <summary>
@@ -114,7 +110,7 @@ namespace PrestaAccesor.Accesors
         /// <returns>A list of manufacturers</returns>
         public List<Entities.category> GetAll()
         {
-            return this.GetByFilter(null, null, null);
+            return GetByFilter(null, null, null);
         }
     }
 }

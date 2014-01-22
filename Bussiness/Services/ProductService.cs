@@ -1,34 +1,30 @@
 ﻿using Bussiness.Base;
 using Bussiness.ViewModels;
 using PrestaAccesor.Accesors;
-using PrestaAccesor.Entities;
 using PrestaAccesor.Utils;
-using Suppliers;
-using Suppliers.Accesors;
 using Suppliers.Interfaces;
-using Suppliers.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Product = PrestaAccesor.Entities.Product;
 
 namespace Bussiness.Services
 {
     public class ProductService : ServiceBase
     {
         public List<ProductViewModel> Products;
-        public ProductsAccesor productsAccesor;
+        private readonly ProductsAccesor productsAccesor;
 
         public ProductViewModel GetById(int id)
         {
-            return Products.Where(x => x.id == id).FirstOrDefault();
+            return Products.FirstOrDefault(x => x.Id == id);
         }
 
-        public ProductService(string BaseUrl, string apiToken, string Password)
+        public ProductService(string baseUrl, string apiToken, string password)
         {
-            productsAccesor = new ProductsAccesor(BaseUrl, apiToken, "");
+            productsAccesor = new ProductsAccesor(baseUrl, apiToken, password);
             Products = new List<ProductViewModel>();
         }
 
@@ -40,7 +36,7 @@ namespace Bussiness.Services
 
         public void DeleteProduct(long? productId)
         {
-            Products.Remove(Products.Where(x => x.id == productId).FirstOrDefault());
+            Products.Remove(Products.FirstOrDefault(x => x.Id == productId));
             productsAccesor.Delete(productId);
         }
 
@@ -53,8 +49,7 @@ namespace Bussiness.Services
             }
             catch (Exception ex)
             {
-                //TODO
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
             return false;
         }
@@ -63,7 +58,7 @@ namespace Bussiness.Services
         {
             int startItem = 0;
             
-            List<product> items = new List<product>();
+            List<Product> items;
             do
             {
                 items = productsAccesor.GetByFilter(null, null, startItem + "," + StepCount);
@@ -74,7 +69,7 @@ namespace Bussiness.Services
                     return false;
                 }
                 
-                foreach (product item in items)
+                foreach (Product item in items)
                 {
                     Products.Add(ProductFromPresta(item));
                 }
@@ -86,11 +81,11 @@ namespace Bussiness.Services
 
         public List<ProductViewModel> GetProductWithEmptyManufacturer()
         {
-                List<ProductViewModel> result = new List<ProductViewModel>();
+            List<ProductViewModel> result = new List<ProductViewModel>();
  
-            foreach (ProductViewModel item in this.Products)
+            foreach (ProductViewModel item in Products)
             {
-                if ((item.id_manufacturer.HasValue == false) || (item.id_manufacturer == 0))
+                if ((item.IdManufacturer.HasValue == false) || (item.IdManufacturer == 0))
                 {
                     result.Add(item);
                 }
@@ -103,9 +98,9 @@ namespace Bussiness.Services
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (ProductViewModel item in this.Products)
+            foreach (ProductViewModel item in Products)
             {
-                if ((item.id_category_default.HasValue == false) || (item.id_category_default == 1) || (item.id_category_default == 2))
+                if ((item.IdCategoryDefault.HasValue == false) || (item.IdCategoryDefault == 1) || (item.IdCategoryDefault == 2))
                 {
                     result.Add(item);
                 }
@@ -118,9 +113,9 @@ namespace Bussiness.Services
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (ProductViewModel item in this.Products)
+            foreach (ProductViewModel item in Products)
             {
-                if (item.id_image == 0)
+                if (item.IdImage == 0)
                 {
                     result.Add(item);
                 }
@@ -133,9 +128,9 @@ namespace Bussiness.Services
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (ProductViewModel item in this.Products)
+            foreach (ProductViewModel item in Products)
             {
-                if (item.description_short == "")
+                if (item.DescriptionShort == "")
                 {
                     result.Add(item);
                 }
@@ -148,9 +143,9 @@ namespace Bussiness.Services
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (ProductViewModel item in this.Products)
+            foreach (ProductViewModel item in Products)
             {
-                if (item.description == "")
+                if (item.Description == "")
                 {
                     result.Add(item);
                 }
@@ -163,9 +158,9 @@ namespace Bussiness.Services
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (ProductViewModel item in this.Products)
+            foreach (ProductViewModel item in Products)
             {
-                if ((item.price.HasValue == false) || (item.price == Decimal.Zero))
+                if ((item.Price.HasValue == false) || (item.Price == Decimal.Zero))
                 {
                     result.Add(item);
                 }
@@ -178,9 +173,9 @@ namespace Bussiness.Services
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (ProductViewModel item in this.Products)
+            foreach (ProductViewModel item in Products)
             {
-                if ((item.wholesale_price.HasValue == false) || (item.wholesale_price == Decimal.Zero))
+                if ((item.WholesalePrice.HasValue == false) || (item.WholesalePrice == Decimal.Zero))
                 {
                     result.Add(item);
                 }
@@ -189,13 +184,13 @@ namespace Bussiness.Services
             return result;
         }
 
-        public List<ProductViewModel> GetProductWithoutSupplier()
+        public IEnumerable<ProductViewModel> GetProductWithoutSupplier()
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (ProductViewModel item in this.Products)
+            foreach (ProductViewModel item in Products)
             {
-                if ((item.id_supplier.HasValue == false) || (item.id_supplier == 0))
+                if ((item.IdSupplier.HasValue == false) || (item.IdSupplier == 0))
                 {
                     result.Add(item);
                 }
@@ -205,13 +200,13 @@ namespace Bussiness.Services
         }
 
 
-        public List<ProductViewModel> GetProductWithEmptyWeight()
+        public IEnumerable<ProductViewModel> GetProductWithEmptyWeight()
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (ProductViewModel item in this.Products)
+            foreach (ProductViewModel item in Products)
             {
-                if ((item.weight.HasValue == false) || (item.weight <= 0))
+                if ((item.Weight.HasValue == false) || (item.Weight <= 0))
                 {
                     result.Add(item);
                 }
@@ -220,12 +215,12 @@ namespace Bussiness.Services
             return result;
         }
 
-        private List<ProductViewModel> GetProductsOfSupplier(long? supplierId)
+        private IEnumerable<ProductViewModel> GetProductsOfSupplier(long? supplierId)
         {
-            return Products.Select(x => x).Where(x => x.id_supplier == supplierId).ToList();
+            return Products.Select(x => x).Where(x => x.IdSupplier == supplierId).ToList();
         }
 
-        public List<ProductViewModel> GetNonAvailableProductOfSuppliers(PriceListsService priceLists, long? askinoId, long? novikoId)
+        public IEnumerable<ProductViewModel> GetNonAvailableProductOfSuppliers(PriceListsService priceLists, long? askinoId, long? novikoId)
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
             
@@ -233,13 +228,13 @@ namespace Bussiness.Services
             {
                 if (priceLists.HasSupplier("Noviko"))
                 {
-                    List<ProductViewModel> productToCheck = GetProductsOfSupplier(novikoId); //id dodavatele
+                    IEnumerable<ProductViewModel> productToCheck = GetProductsOfSupplier(novikoId); //id dodavatele
                     ISupplier supplier = priceLists["Noviko"]; //name dodavatele
                     supplier.OpenPriceList();
 
                     foreach (ProductViewModel product in productToCheck)
                     {
-                        if (supplier.HasReference(product.id.ToString()) == false)
+                        if (supplier.HasReference(product.Id.ToString()) == false)
                         {
                             result.Add(product);
                         }
@@ -250,13 +245,13 @@ namespace Bussiness.Services
             {
                 if (priceLists.HasSupplier("Askino"))
                 {
-                    List<ProductViewModel> productToCheck = GetProductsOfSupplier(askinoId); //id dodavatele
+                    IEnumerable<ProductViewModel> productToCheck = GetProductsOfSupplier(askinoId); //id dodavatele
                     ISupplier supplier2 = priceLists["Askino"]; //name dodavatele
                     supplier2.OpenPriceList();
 
                     foreach (ProductViewModel product in productToCheck)
                     {
-                        if (supplier2.HasReference(product.id.ToString()) == false)
+                        if (supplier2.HasReference(product.Id.ToString()) == false)
                         {
                             result.Add(product);
                         }
@@ -272,11 +267,11 @@ namespace Bussiness.Services
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
 
-            foreach (ProductViewModel item in this.Products)
+            foreach (ProductViewModel item in Products)
             {
-                if ((idManufacturer == 0) || (item.id_manufacturer == idManufacturer))
+                if ((idManufacturer == 0) || (item.IdManufacturer == idManufacturer))
                 {
-                    if ((idSupplier == 0) || (item.id_supplier == idSupplier))
+                    if ((idSupplier == 0) || (item.IdSupplier == idSupplier))
                     {
                         if (idCategories.Count == 0)
                         {
@@ -284,7 +279,7 @@ namespace Bussiness.Services
                         }
                         else
                         {
-                            if (idCategories.Contains(System.Convert.ToInt32(item.id_category_default)))
+                            if (idCategories.Contains(Convert.ToInt32(item.IdCategoryDefault)))
                             {
                                 result.Add(item);
                             }
@@ -301,70 +296,72 @@ namespace Bussiness.Services
             productsAccesor.Update(ProductToPresta(entity));
         }
 
-        public void Add(product entity)
+        public void Add(Product entity)
         {
             productsAccesor.Add(entity);
         }
 
-        private ProductViewModel ProductFromPresta(product entity)
+        private ProductViewModel ProductFromPresta(Product entity)
         {
             ProductViewModel result = new ProductViewModel();
 
             int languageIndex = entity.description.FindIndex(language => language.id == ServiceActivePrestaLanguage);
 
-            result.description = entity.description[languageIndex].Value;
-            result.description_short = entity.description_short[languageIndex].Value;
-            result.id = entity.id;
-            result.id_category_default = entity.id_category_default;
+            result.Description = entity.description[languageIndex].Value;
+            result.DescriptionShort = entity.description_short[languageIndex].Value;
+            result.Id = entity.id;
+            result.IdCategoryDefault = entity.id_category_default;
+            result.Reference = entity.reference;
             //result.id_image = 0;
-            result.id_manufacturer = entity.id_manufacturer;
-            result.id_supplier = entity.id_supplier;
-            result.name = entity.name[languageIndex].Value;
-            result.price = entity.price;
-            result.weight = entity.weight;
-            result.wholesale_price = entity.wholesale_price;
-            result.link_rewrite = entity.link_rewrite[languageIndex].Value;
+            result.IdManufacturer = entity.id_manufacturer;
+            result.IdSupplier = entity.id_supplier;
+            result.Name = entity.name[languageIndex].Value;
+            result.Price = entity.price;
+            result.Weight = entity.weight;
+            result.WholesalePrice = entity.wholesale_price;
+            result.LinkRewrite = entity.link_rewrite[languageIndex].Value;
 
             return result;
         }
 
-        private product ProductToPresta(ProductViewModel entity)
+        private Product ProductToPresta(ProductViewModel entity)
         {
-            product result = productsAccesor.Get(entity.id) as product;
+            Product result = productsAccesor.Get(entity.Id) as Product;
 
-            PrestaValues.SetValueForLanguage(result.description, ServiceActivePrestaLanguage, entity.description);
-            PrestaValues.SetValueForLanguage(result.description_short, ServiceActivePrestaLanguage, entity.description_short);
-            PrestaValues.SetValueForLanguage(result.link_rewrite, ServiceActivePrestaLanguage, entity.link_rewrite);
-            result.id_category_default = entity.id_category_default;
+            PrestaValues.SetValueForLanguage(result.description, ServiceActivePrestaLanguage, entity.Description);
+            PrestaValues.SetValueForLanguage(result.description_short, ServiceActivePrestaLanguage, entity.DescriptionShort);
+            PrestaValues.SetValueForLanguage(result.link_rewrite, ServiceActivePrestaLanguage, entity.LinkRewrite);
+            result.id_category_default = entity.IdCategoryDefault;
+            result.reference = entity.Reference;
             //result.id_image = 0;
-            result.id_manufacturer = entity.id_manufacturer;
-            result.id_supplier = entity.id_supplier;
-            PrestaValues.SetValueForLanguage(result.name, ServiceActivePrestaLanguage, entity.name);
-            if (entity.price == null)
+            result.id_manufacturer = entity.IdManufacturer;
+            result.id_supplier = entity.IdSupplier;
+            PrestaValues.SetValueForLanguage(result.name, ServiceActivePrestaLanguage, entity.Name);
+            if (entity.Price == null)
             {
-                entity.price = 0;
+                entity.Price = 0;
             }
             else
             {
-                result.price = entity.price;
+                result.price = entity.Price;
             }
 
-            if (entity.wholesale_price == null)
+            if (entity.WholesalePrice == null)
             {
-                entity.wholesale_price = 0;
+                entity.WholesalePrice = 0;
             }
             else
             {
-                result.wholesale_price = entity.wholesale_price;
+                result.wholesale_price = entity.WholesalePrice;
             }
 
-            if (entity.weight == null)
+            if (entity.Weight == null)
             {
-                entity.weight = 0;
+                entity.Weight = 0;
             }
             else
             {
-                result.weight = entity.weight;
+                result.weight = entity.Weight;
             }
 
             return result;

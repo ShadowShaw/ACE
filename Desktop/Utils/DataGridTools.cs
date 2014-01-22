@@ -1,48 +1,45 @@
 ﻿using Desktop.UserSettings;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Desktop.Utils
 {
     public enum RecordType
     {
-        product = 0
+        Product = 0
     }
 
     public enum FieldType
     {
-        category = 0,
-        manufacturer = 1,
-        image,
-        shortDescription,
-        longDescription,
-        price,
-        weight,
-        wholesalePrice,
-        supplier
+        Category = 0,
+        Manufacturer = 1,
+        Image,
+        ShortDescription,
+        LongDescription,
+        Price,
+        Weight,
+        WholesalePrice,
+        Supplier
     }
-
+    
     public class ChangeRecord
     {
         public RecordType Type;
-        public FieldType Field;
         public int Id;
+        public FieldType Field;
         public string Value;
     }
     
     public sealed class DataGridTools
     {
-        private ACESettings MainSettings;
+        private ACESettings mainSettings;
 
         public static void SetMainSettings(ACESettings settings)
         {
-            instance.MainSettings = settings;
+            Instance.mainSettings = settings;
         }
 
-        static readonly DataGridTools instance = new DataGridTools();
+        private static readonly DataGridTools Instance = new DataGridTools();
 
         static DataGridTools()
         {
@@ -52,11 +49,11 @@ namespace Desktop.Utils
         {
         }
 
-        public static DataGridTools Instance
+        public static DataGridTools ToolsInstance
         {
             get
             {
-                return instance;
+                return Instance;
             }
         }
 
@@ -115,8 +112,9 @@ namespace Desktop.Utils
             column.ReadOnly = readOnly;
             column.Visible = visibility;
             column.Name = dataProperty;
-            column.Width = instance.MainSettings.GetWidth(grid.Name+dataProperty);
+            column.Width = Instance.mainSettings.GetWidth(grid.Name+dataProperty);
             column.DataPropertyName = dataProperty;
+            column.DefaultCellStyle.Format = "0.00";
             
             grid.Columns.Add(column);
         }
@@ -124,6 +122,10 @@ namespace Desktop.Utils
         public static void InitGrid(DataGridView grid)
         {
             grid.Columns.Clear();
+            grid.MultiSelect = false;
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grid.RowHeadersVisible = false;
+            grid.ReadOnly = false;
             grid.AutoGenerateColumns = false;
         }
     }

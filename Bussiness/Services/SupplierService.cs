@@ -5,17 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Bussiness.Services
 {
     public class SupplierService : ServiceBase
     {
         public List<supplier> Suppliers;
-        public SupplierAccesor supplierAccesor;
+        private readonly SupplierAccesor supplierAccesor;
         
-        public SupplierService(string BaseUrl, string Account, string Password)
+        public SupplierService(string baseUrl, string account, string password)
         {
-            supplierAccesor = new SupplierAccesor(BaseUrl, Account, "");
+            supplierAccesor = new SupplierAccesor(baseUrl, account, password);
             Suppliers = new List<supplier>();
             ServiceLoaded = false;
         }
@@ -35,8 +36,7 @@ namespace Bussiness.Services
             }
             catch (Exception ex)
             {
-                //TODO
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
             return false;
         }
@@ -53,9 +53,7 @@ namespace Bussiness.Services
 
         private bool LoadSuppliers()
         {
-            List<int> ids = new List<int>();
-
-            ids = supplierAccesor.GetIds();
+            List<int> ids = supplierAccesor.GetIds();
 
             if (ids == null)
             {
@@ -72,27 +70,24 @@ namespace Bussiness.Services
             return true;
         }
 
-
         public string GetSupplierName(int id)
         {
             if (id == 0)
             {
                 return "";
             }
-            supplier result = Suppliers.Where(x => x.id == id).FirstOrDefault();
+            supplier result = Suppliers.FirstOrDefault(x => x.id == id);
             return result.name;
+        }
+
+        public string GetSupplierName(long? id)
+        {
+            return GetSupplierName(Convert.ToInt32(id));
         }
 
         public List<string> GetSupplierList()
         {
-            List<string> result = new List<string>();
-
-            foreach (supplier item in Suppliers)
-            {
-                result.Add(item.name);
-            }
-
-            return result;
+            return Suppliers.Select(item => item.name).ToList();
         }
 
         public long? GetSupplierId(string supplierName)

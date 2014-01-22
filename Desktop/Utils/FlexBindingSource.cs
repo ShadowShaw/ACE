@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Desktop.Utils
@@ -37,11 +34,11 @@ namespace Desktop.Utils
                     throw new ArgumentException("The expression is not a member access or method call expression");
             }
 
-            if (expression.Body.NodeType == ExpressionType.MemberAccess)
-            {
-                return (expression.Body as MemberExpression).Member.Name;
-            }
-            throw new NotSupportedException("This overload accepts only member access lambda expressions");
+            //if (expression.Body.NodeType == ExpressionType.MemberAccess)
+            //{
+            //    return (expression.Body as MemberExpression).Member.Name;
+            //}
+            //throw new NotSupportedException("This overload accepts only member access lambda expressions");
         }
 
         private static string GetMemberName(Expression expression)
@@ -119,11 +116,11 @@ namespace Desktop.Utils
 
     public class FlexBindingSource<TDataSource>
     {
-        private BindingSource _winFormsBindingSource;
+        private readonly BindingSource winFormsBindingSource;
         public FlexBindingSource()
         {
-            this._winFormsBindingSource = new BindingSource();
-            _winFormsBindingSource.DataSource = typeof(TDataSource);
+            winFormsBindingSource = new BindingSource();
+            winFormsBindingSource.DataSource = typeof(TDataSource);
         }
 
         /// <summary>
@@ -135,7 +132,7 @@ namespace Desktop.Utils
         /// <param name="datasourceMemberAccesor">A lambda expression which specifies the datasource property (something like datasource => datasource.Property) </param>
         public void CreateBinding<TControl>(TControl controlInstance, Expression<Func<TControl, object>> controlPropertyAccessor, Expression<Func<TDataSource, object>> datasourceMemberAccesor) where TControl : Control
         {
-            this.CreateBinding(controlInstance, controlPropertyAccessor, datasourceMemberAccesor, DataSourceUpdateMode.OnValidation);
+            CreateBinding(controlInstance, controlPropertyAccessor, datasourceMemberAccesor, DataSourceUpdateMode.OnValidation);
         }
 
         /// <summary>
@@ -151,24 +148,25 @@ namespace Desktop.Utils
         {
             string controlPropertyName = FlexReflector.GetPropertyName(controlPropertyAccessor);
             string sourcePropertyName = FlexReflector.GetPropertyName(datasourceMemberAccesor);
-            controlInstance.DataBindings.Add(controlPropertyName, _winFormsBindingSource, sourcePropertyName, true, dataSourceUpdateMode);
+            controlInstance.DataBindings.Add(controlPropertyName, winFormsBindingSource, sourcePropertyName, true, dataSourceUpdateMode);
         }
 
-        private TDataSource _currentItem = default(TDataSource);
+        private TDataSource currentItem;
+
         public TDataSource CurrentItem
         {
             get
             {
-                return _currentItem;
+                return currentItem;
             }
             set
             {
-                _currentItem = value;
+                currentItem = value;
 
-                if (value == null)
-                    this._winFormsBindingSource.DataSource = typeof(TDataSource);
+                if (Equals(value, default(TDataSource)))
+                    winFormsBindingSource.DataSource = typeof(TDataSource);
                 else
-                    this._winFormsBindingSource.DataSource = value;
+                    winFormsBindingSource.DataSource = value;
             }
         }
     }

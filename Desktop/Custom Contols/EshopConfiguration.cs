@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Linq.Expressions;
-using Desktop.Utils;
+using Bussiness;
 using Bussiness.UserSettings;
 
 namespace Desktop.Custom_Contols
@@ -17,16 +10,16 @@ namespace Desktop.Custom_Contols
     public partial class EshopConfigurationControl : UserControl
     {
         public event SupplierEventHandler SuppliersChanged;
-        private bool disableCallBack = false;
+        private bool disableCallBack;
 
         protected virtual void OnSuppliersChanged(EshopEventArgs e)
         {
             SuppliersChanged(this, e);
         }
 
-        private Bussiness.UserSettings.EshopConfiguration eshop;
-        private const string labelPathToAskinoPriceList = "cesta k ceníku Askina";
-        private const string labelPathToNovikoPriceList = "cesta k ceníku Novika";
+        private EshopConfiguration eshop;
+        private const string LabelPathToAskinoPriceList = "cesta k ceníku Askina";
+        private const string LabelPathToNovikoPriceList = "cesta k ceníku Novika";
                 
         public EshopConfigurationControl()
         {
@@ -79,7 +72,7 @@ namespace Desktop.Custom_Contols
             chNovikoSetup.Checked = eshop.Suppliers[eshop.NovikoIndex()].UseSupplier;
             if (String.IsNullOrEmpty(eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName))
             {
-                lAskinoPath.Text = labelPathToAskinoPriceList;
+                lAskinoPath.Text = LabelPathToAskinoPriceList;
             }
             else
             {
@@ -88,14 +81,14 @@ namespace Desktop.Custom_Contols
 
             if (String.IsNullOrEmpty(eshop.Suppliers[eshop.NovikoIndex()].SupplierFileName))
             {
-                lNovikoPath.Text = labelPathToNovikoPriceList;
+                lNovikoPath.Text = LabelPathToNovikoPriceList;
             }
             else
             {
                 lNovikoPath.Text = eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName;
             }
             
-            gbPrestaSetup.Text = "Konfigurace eshopu " + eshop.EshopName;
+            gbPrestaSetup.Text =  TextResources.EUCPrestaSetup + eshop.EshopName;
             
             disableCallBack = false;
         }
@@ -117,7 +110,7 @@ namespace Desktop.Custom_Contols
             //lNovikoPath.DataBindings.Add("Text", this.eshop, "NovikoFilePath", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
-        private void bOpenAskino_Click(object sender, EventArgs e)
+        private void BOpenAskinoClick(object sender, EventArgs e)
         {
             if (openDialog.ShowDialog() == DialogResult.OK)
             {
@@ -127,11 +120,11 @@ namespace Desktop.Custom_Contols
                 lAskinoPath.Text = eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName;
                 chAskinoSetup.Checked = true;
                 
-                OnSuppliersChanged(new EshopEventArgs(this.eshop));
+                OnSuppliersChanged(new EshopEventArgs(eshop));
             }
         }
 
-        private void bOpenNoviko_Click(object sender, EventArgs e)
+        private void BOpenNovikoClick(object sender, EventArgs e)
         {
             if (openDialog.ShowDialog() == DialogResult.OK)
             {
@@ -139,16 +132,11 @@ namespace Desktop.Custom_Contols
                 lNovikoPath.Text = eshop.Suppliers[eshop.NovikoIndex()].SupplierFileName;
                 eshop.Suppliers[eshop.NovikoIndex()].UseSupplier = true;
                 chNovikoSetup.Checked = true;
-                OnSuppliersChanged(new EshopEventArgs(this.eshop));
+                OnSuppliersChanged(new EshopEventArgs(eshop));
             }
         }
 
-        private void gbPrestaSetup_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void eshop_Changed(object sender, EventArgs e)
+        private void EshopChanged(object sender, EventArgs e)
         {
             if (disableCallBack)
             {
@@ -161,16 +149,11 @@ namespace Desktop.Custom_Contols
             eshop.Suppliers[eshop.NovikoIndex()].UseSupplier = chNovikoSetup.Checked;
             eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName = lAskinoPath.Text;
             eshop.Suppliers[eshop.NovikoIndex()].SupplierFileName = lNovikoPath.Text;
-            OnSuppliersChanged(new EshopEventArgs(this.eshop));
-        }
-
-        private void ePrestaUrl_Validating(object sender, CancelEventArgs e)
-        {
-            //GetBaseUrlFromEditBox
+            OnSuppliersChanged(new EshopEventArgs(eshop));
         }
     }
 
-    public class EshopEventArgs : System.EventArgs
+    public class EshopEventArgs : EventArgs
     {
         public EshopEventArgs(EshopConfiguration eshop)
         {

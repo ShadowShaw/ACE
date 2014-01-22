@@ -3,21 +3,20 @@ using PrestaAccesor.Accesors;
 using PrestaAccesor.Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Bussiness.Services
 {
     public class ManufactuerService : ServiceBase
     {
         public List<manufacturer> Manufacturers;
-        public ManufacturersAccesor manufacturerAccesor;
+        private readonly ManufacturersAccesor manufacturerAccesor;
 
-        public ManufactuerService(string BaseUrl, string Account, string Password)
+        public ManufactuerService(string baseUrl, string account, string password)
         {
-            manufacturerAccesor = new ManufacturersAccesor(BaseUrl, Account, "");
+            manufacturerAccesor = new ManufacturersAccesor(baseUrl, account, password);
             Manufacturers = new List<manufacturer>();
             ServiceLoaded = false;
         }
@@ -37,17 +36,14 @@ namespace Bussiness.Services
             }
             catch (Exception ex)
             {
-                //TODO
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
             return false;
         }
         
         private bool LoadManufacturers()
         {
-            List<int> ids = new List<int>();
-            
-            ids = manufacturerAccesor.GetIds();
+            List<int> ids = manufacturerAccesor.GetIds();
             
             if (ids == null)
             {
@@ -71,27 +67,20 @@ namespace Bussiness.Services
             {
                 return "";
             }
-            manufacturer result = Manufacturers.Where(x => x.id == id).FirstOrDefault();
+            manufacturer result = Manufacturers.FirstOrDefault(x => x.id == id);
             return result.name;
         }
         
         public List<string> GetManufacturersList()
         {
-            List<string> result = new List<string>();
-
-            foreach (manufacturer item in Manufacturers)
-            {
-                result.Add(item.name);
-            }
-
-            return result;
+            return Manufacturers.Select(item => item.name).ToList();
         }
 
         public long? GetManufacturerId(string manufacturerName)
         {
             if (manufacturerName != "")
             {
-                return Manufacturers.Where(x => x.name == manufacturerName).FirstOrDefault().id;
+                return Manufacturers.FirstOrDefault(x => x.name == manufacturerName).id;
             }
 
             return 0;

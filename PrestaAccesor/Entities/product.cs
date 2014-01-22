@@ -1,29 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace PrestaAccesor.Entities
 {
-    public class product : PrestashopEntity
+    public class Product : PrestashopEntity
     {
         public long id_product { get; set; }
         //public long id_shop { get; set; }
         public long id_lang { get; set; }
-        public List<Entities.language> description { get; set; }
-        public List<Entities.language> description_short { get; set; }
-        public List<Entities.language> link_rewrite { get; set; }
-        public List<Entities.language> meta_description { get; set; }
-        public List<Entities.language> meta_keywords { get; set; }
-        public List<Entities.language> meta_title { get; set; }
-        public List<Entities.language> name { get; set; }
+        public List<language> description { get; set; }
+        public List<language> description_short { get; set; }
+        public List<language> link_rewrite { get; set; }
+        public List<language> meta_description { get; set; }
+        public List<language> meta_keywords { get; set; }
+        public List<language> meta_title { get; set; }
+        public List<language> name { get; set; }
         //public string available_now { get; set; }
         //public string available_later { get; set; }
 
 ////        public long id_product { get; set; }
-        public Nullable<long> id_supplier { get; set; }
-        public Nullable<long> id_manufacturer { get; set; }
-        public Nullable<long> id_category_default { get; set; }
+        public long? id_supplier { get; set; }
+        public long? id_manufacturer { get; set; }
+        public long? id_category_default { get; set; }
           //public long id_shop_default { get; set; }
         //public long id_tax_rules_group { get; set; }
         //public bool on_sale { get; set; }
@@ -33,18 +30,18 @@ namespace PrestaAccesor.Entities
         //public decimal ecotax { get; set; }
         //public int quantity { get; set; }
         //public long minimal_quantity { get; set; }
-        public Nullable<decimal> price { get; set; }
-        public Nullable<decimal> wholesale_price { get; set; }
+        public decimal? price { get; set; }
+        public decimal? wholesale_price { get; set; }
         //public string unity { get; set; }
         //public Nullable<decimal> unit_price_ratio { get; set; }
         //public Nullable<decimal> additional_shipping_cost { get; set; }
-        //public string reference { get; set; }
-        //public string supplier_reference { get; set; }
+        public string reference { get; set; }
+        public string supplier_reference { get; set; }
         //public string location { get; set; }
         //public Nullable<decimal> width { get; set; }
         //public Nullable<decimal> height { get; set; }
         //public Nullable<decimal> depth { get; set; }
-        public Nullable<decimal> weight { get; set; }
+        public decimal? weight { get; set; }
         //public long out_of_stock { get; set; }
         //public Nullable<bool> quantity_discount { get; set; }
         //public sbyte customizable { get; set; }

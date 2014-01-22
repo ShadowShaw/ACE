@@ -1,4 +1,4 @@
-﻿namespace Desktop
+﻿namespace Desktop.Forms
 {
     partial class ChangesView
     {
@@ -49,7 +49,7 @@
             this.bCancel.TabIndex = 1;
             this.bCancel.Text = "Cancel";
             this.bCancel.UseVisualStyleBackColor = true;
-            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            this.bCancel.Click += new System.EventHandler(this.BCancelClick);
             // 
             // bOk
             // 
@@ -60,11 +60,11 @@
             this.bOk.TabIndex = 2;
             this.bOk.Text = "Zapsat všechny změny";
             this.bOk.UseVisualStyleBackColor = true;
-            this.bOk.Click += new System.EventHandler(this.bOk_Click);
+            this.bOk.Click += new System.EventHandler(this.BOkClick);
             // 
             // changesViewBindingSource
             // 
-            this.changesViewBindingSource.DataSource = typeof(Desktop.ChangesView);
+            this.changesViewBindingSource.DataSource = typeof(ChangesView);
             // 
             // dgChanges
             // 
@@ -116,7 +116,7 @@
             this.Controls.Add(this.bCancel);
             this.Name = "ChangesView";
             this.Text = "Seznam změn";
-            this.Load += new System.EventHandler(this.ChangesView_Load);
+            this.Load += new System.EventHandler(this.ChangesViewLoad);
             ((System.ComponentModel.ISupportInitialize)(this.changesViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgChanges)).EndInit();
             this.ResumeLayout(false);

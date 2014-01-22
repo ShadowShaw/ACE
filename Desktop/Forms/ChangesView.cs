@@ -1,33 +1,29 @@
 ﻿using Bussiness;
-using Desktop.UserSettings;
 using Desktop.Utils;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
-namespace Desktop
+namespace Desktop.Forms
 {
     public partial class ChangesView : Form
     {
-        private List<ChangeRecord> Changes;
+        private readonly List<ChangeRecord> changes;
         
         public ChangesView(List<ChangeRecord> history)
         {
             InitializeComponent();
-            Changes = history;    
+            changes = history;    
         }
 
-        private void bCancel_Click(object sender, EventArgs e)
+        private void BCancelClick(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
-        private void ChangesView_Load(object sender, EventArgs e)
+        private void ChangesViewLoad(object sender, EventArgs e)
         {
             DataGridTools.InitGrid(dgChanges);
 
@@ -44,7 +40,7 @@ namespace Desktop
             table.Columns.Add("Value", typeof(string));
             table.Columns.Add("Confirmation", typeof(bool));
 
-            foreach (ChangeRecord change in Changes)
+            foreach (ChangeRecord change in changes)
             {
                 table.Rows.Add(change.Id, GetChangeType(change.Type), GetChangeField(change.Field), change.Value, true);
             }
@@ -60,7 +56,7 @@ namespace Desktop
         private string GetChangeType(RecordType type)
         {
             string result = "Neznamý";
-            if (type == RecordType.product)
+            if (type == RecordType.Product)
             {
                 result = "Produkt";
             }
@@ -70,49 +66,49 @@ namespace Desktop
         private string GetChangeField(FieldType field)
         {
             string result = "Neznamé";
-            if (field == FieldType.category)
+            if (field == FieldType.Category)
             {
                 result = TextResources.Category;
             }
-            if (field == FieldType.image)
+            if (field == FieldType.Image)
             {
                 result = TextResources.ProductImage;
             }
-            if (field == FieldType.longDescription)
+            if (field == FieldType.LongDescription)
             {
                 result = TextResources.Description;
             }
-            if (field == FieldType.manufacturer)
+            if (field == FieldType.Manufacturer)
             {
                 result = TextResources.Manufacturer;
             }
-            if (field == FieldType.price)
+            if (field == FieldType.Price)
             {
                 result = TextResources.SalePrice;
             }
-            if (field == FieldType.shortDescription)
+            if (field == FieldType.ShortDescription)
             {
                 result = TextResources.ShortDescription;
             }
-            if (field == FieldType.weight)
+            if (field == FieldType.Weight)
             {
                 result = TextResources.Weight;
             }
-            if (field == FieldType.wholesalePrice)
+            if (field == FieldType.WholesalePrice)
             {
                 result = TextResources.WholeSalePrice;
             }
-            if (field == FieldType.supplier)
+            if (field == FieldType.Supplier)
             {
                 result = TextResources.Supplier;
             }
             return result;
         }
         
-        private void bOk_Click(object sender, EventArgs e)
+        private void BOkClick(object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.Close();
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

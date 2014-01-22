@@ -1,20 +1,17 @@
 namespace Core.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
-    using Core.Models;
+    using Models;
     using Core;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Core.Data.ACEContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Data.ACEContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Core.Data.ACEContext context)
+        protected override void Seed(Data.ACEContext context)
         {
             //  This method will be called after migrating to the latest version.
 

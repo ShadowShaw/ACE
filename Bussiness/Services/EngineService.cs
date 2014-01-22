@@ -76,10 +76,10 @@ namespace Bussiness.Services
         public void OpenProductInBrowser(int productId)
         {
             ProductViewModel product = Products.GetById(System.Convert.ToInt32(productId));
-            CategoryViewModel cat = Categories.GetById(System.Convert.ToInt32(product.id_category_default));
-            string categoryLink = cat.link_rewrite;
+            CategoryViewModel cat = Categories.GetById(System.Convert.ToInt32(product.IdCategoryDefault));
+            string categoryLink = cat.LinkRewrite;
             string eshopUrl = BaseUrl.Substring(0, BaseUrl.Length - 4);
-            string productUrl = eshopUrl + categoryLink + "/" + product.id + "-" + product.link_rewrite + ".html";
+            string productUrl = eshopUrl + categoryLink + "/" + product.Id + "-" + product.LinkRewrite + ".html";
             ProcessStartInfo sInfo = new ProcessStartInfo(productUrl);
             Process.Start(sInfo);
         }
