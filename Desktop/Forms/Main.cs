@@ -13,6 +13,7 @@ using Bussiness;
 using Bussiness.ViewModels;
 using Bussiness.UserSettings;
 using Desktop.Custom_Contols;
+using Bussiness.RePricing;
 
 namespace Desktop.Forms
 {
@@ -36,7 +37,7 @@ namespace Desktop.Forms
             {
                 if ((String.IsNullOrEmpty(Engine.ApiToken)) || (String.IsNullOrEmpty(Engine.BaseUrl)))
                 {
-                    MessageBox.Show(TextResources.MsgEmptyConfigurationValue, TextResources.MsgEmptyConfigurationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageEshopConfigurationMissing();
                 }
                 else
                 {
@@ -49,17 +50,17 @@ namespace Desktop.Forms
                         bPricingShow.Enabled = false;                        
 
                         statusProgress.Visible = true;
-                        statusMessage.Text = TextResources.MsgStatusLoadingLanguages;
+                        statusMessage.Text = TextResources.StatusLoadingLanguages;
                         result = await Engine.Languages.LoadLanguagesAsync();
                         Engine.Languages.GetActiveLanguage();
                         Engine.SetupPrestaLanguages();
-                        statusMessage.Text = TextResources.MsgStatusLoadingManufacturers;
+                        statusMessage.Text = TextResources.StatusLoadingManufacturers;
                         result = await Engine.Manufacturers.LoadManufacturersAsync();
-                        statusMessage.Text = TextResources.MsgStatusLoadingCategories;
+                        statusMessage.Text = TextResources.StatusLoadingCategories;
                         result = await Engine.Categories.LoadCategoriesAsync();
-                        statusMessage.Text = TextResources.MsgStatusLoadingSuppliers;
+                        statusMessage.Text = TextResources.StatusLoadingSuppliers;
                         result = await Engine.Suppliers.LoadSuppliersAsync();
-                        statusMessage.Text = TextResources.MsgStatusLoadingProducts;
+                        statusMessage.Text = TextResources.StatusLoadingProducts;
                         result = await Engine.Products.LoadProductsAsync();
 
                         statusProgress.Visible = false;
@@ -81,12 +82,12 @@ namespace Desktop.Forms
 
             List<string> manufacturersList = Engine.Manufacturers.GetManufacturersList();
             manufacturersList.Insert(0, TextResources.ComboAnyManufacturer);
-            cPricingManufacturers.Items.AddRange(manufacturersList.ToArray());
+            manufacturersList.ForEach(manufacturer => cPricingManufacturers.Items.Add(manufacturer));
             cPricingManufacturers.SelectedIndex = 0;
 
             List<string> suppliersList = Engine.Suppliers.GetSupplierList();
             suppliersList.Insert(0, TextResources.ComboAnySupplier);
-            cPricingSuppliers.Items.AddRange(suppliersList.ToArray());
+            suppliersList.ForEach(supplier => cPricingSuppliers.Items.Add(supplier));
             cPricingSuppliers.SelectedIndex = 0;
 
             treePricing.Nodes.Clear();
@@ -114,7 +115,7 @@ namespace Desktop.Forms
             try
             {
                 dgPricing.EndEdit();
-                statusMessage.Text = TextResources.MsgStatusRepriceInProgress;
+                statusMessage.Text = TextResources.StatusRepriceInProgress;
                 statusProgress.Visible = true;
 
                 Engine.Pricing.Setup(Engine.Suppliers, Engine.PriceLists);
@@ -144,56 +145,54 @@ namespace Desktop.Forms
             }
         }
 
-        private void BPricingSaveClick(object sender, EventArgs e)
+        private async void BPricingSaveClick(object sender, EventArgs e)
         {
             try
             {
                 DisableControlsWhenAccesingEshop();
 
-                //ChangesView changes = new ChangesView(ConsistencyChanges);
-                //if (ConsistencyChanges.Count == 0)
-                //{
-                //    MessageBox.Show("Nejsou žádné změny k zápisu.", "Žádné změny", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //}
-                //else
-                //{
-                //    if (changes.ShowDialog() == DialogResult.OK)
-                //    {
-                //        this.statusProgress.Visible = true;
-                //        this.statusMessage.Text = "Ukladám změny, prosím čekejte...";
-                //        this.gbConsistency.Enabled = false;
+                if (Engine.Pricing.ConsistencyChanges.Count == 0)
+                {
+                    MessageBox.Show(TextResources.MsgNoChangesToSaveValue, TextResources.MsgNoChangesToSaveTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    ChangesView changes = new ChangesView(Engine.Pricing.ConsistencyChanges);
 
-                //        await Task.Factory.StartNew(() => this.SaveChangesAsync(ConsistencyChanges));
+                    if (changes.ShowDialog() == DialogResult.OK)
+                    {
+                        statusProgress.Visible = true;
+                        statusMessage.Text = TextResources.StatusSavingChanges;
+                        gbConsistency.Enabled = false;
 
-                //        ConsistencyChanges.Clear();
+                        await Task.Factory.StartNew(() => SaveChangesAsync(Engine.Pricing.ConsistencyChanges));
 
-                //        bool result;
+                        Engine.Pricing.ConsistencyChanges.Clear();
 
-                //        this.statusProgress.Visible = true;
-                //        this.statusMessage.Text = "NahrĂĄvĂĄm jazyky, prosĂ­m Ä?ekejte...";
-                //        this.gbConsistency.Enabled = false;
+                        bool result;
 
-                //        result = await Engine.Languages.LoadLanguagesAsync();
-                //        Engine.Languages.GetActiveLanguage();
-                //        Engine.SetupPrestaLanguages();
-                //        this.statusMessage.Text = "NahrĂĄvĂĄm vĂ˝robce, prosĂ­m Ä?ekejte...";
-                //        result = await Engine.Manufacturers.LoadManufacturersAsync();
-                //        this.statusMessage.Text = "NahrĂĄvĂĄm kategorie, prosĂ­m Ä?ekejte...";
-                //        result = await Engine.Categories.LoadCategoriesAsync();
-                //        this.statusMessage.Text = "NahrĂĄvĂĄm produkty, prosĂ­m Ä?ekejte...";
-                //        result = await Engine.Products.LoadProductsAsync();
+                        statusProgress.Visible = true;
+                        statusMessage.Text = TextResources.StatusLoadingLanguages;
+                        
+                        // disable controls
 
-                //        this.statusProgress.Visible = false;
-                //        this.statusMessage.Text = "";
-                //        this.gbConsistency.Enabled = true;
+                        result = await Engine.Languages.LoadLanguagesAsync();
+                        Engine.Languages.GetActiveLanguage();
+                        Engine.SetupPrestaLanguages();
+                        statusMessage.Text = TextResources.StatusLoadingManufacturers;
+                        result = await Engine.Manufacturers.LoadManufacturersAsync();
+                        statusMessage.Text = TextResources.StatusLoadingCategories;
+                        result = await Engine.Categories.LoadCategoriesAsync();
+                        statusMessage.Text = TextResources.StatusLoadingProducts;
+                        result = await Engine.Products.LoadProductsAsync();
 
-                //        dgConsistency.DataSource = null;
-                //    }
-                //    else
-                //    {
-                //        //do nothing
-                //    }
-                //}
+                        statusProgress.Visible = false;
+                        statusMessage.Text = String.Empty;
+                        gbConsistency.Enabled = true;
+
+                        dgPricing.DataSource = null;
+                    }
+                }
             }
             finally
             {
@@ -354,6 +353,11 @@ namespace Desktop.Forms
             Text = "ACE Desktop " + aceVersion;
         }
 
+        private void MessageEshopConfigurationMissing()
+        {
+            MessageBox.Show(TextResources.MsgEmptyConfigurationValue, TextResources.MsgEmptyConfigurationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
         public Main()
         {
             InitializeComponent();
@@ -367,7 +371,7 @@ namespace Desktop.Forms
 
             if (MainSettings.Eshops.Eshops.Count == 0)
             {
-                MessageBox.Show(TextResources.MsgEmptyConfigurationValue, TextResources.MsgEmptyConfigurationTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageEshopConfigurationMissing();
             }
             else
             {
@@ -419,8 +423,8 @@ namespace Desktop.Forms
             ToolTip toolTip = new ToolTip {AutoPopDelay = 5000, InitialDelay = 1000, ReshowDelay = 500, ShowAlways = true};
 
             toolTip.SetToolTip(bLoadProducts, TextResources.HintLoadProducts);
-            toolTip.SetToolTip(bEmptyCategory, TextResources.HintEmptyCategory);
-            toolTip.SetToolTip(bEmptyManufacturer, TextResources.HintEmptyManufacturer);
+            toolTip.SetToolTip(bEmptyCategory, TextResources.HintWithoutCategory);
+            toolTip.SetToolTip(bEmptyManufacturer, TextResources.HintWithoutManufacturer);
             toolTip.SetToolTip(bWithoutImage, TextResources.HintWithoutImage);
             toolTip.SetToolTip(bWithoutShortDescription, TextResources.HintWithoutShortDescription);
             toolTip.SetToolTip(bWithoutLongDescription, TextResources.HintWithoutLongDescription);
@@ -509,7 +513,7 @@ namespace Desktop.Forms
             {
                 if ((String.IsNullOrEmpty(Engine.ApiToken)) || (String.IsNullOrEmpty(Engine.BaseUrl)))
                 {
-                    MessageBox.Show("Adresa eshopu, nebo API Token jsou prázdné.", "Chyba připojení", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageEshopConfigurationMissing();
                 }
                 else
                 {
@@ -608,7 +612,7 @@ namespace Desktop.Forms
                         DisableControlsWhenAccesingEshop();
 
                         statusProgress.Visible = true;
-                        statusMessage.Text = TextResources.MsgStatusSavingChanges;
+                        statusMessage.Text = TextResources.StatusSavingChanges;
                         gbConsistency.Enabled = false;
 
                         await Task.Factory.StartNew(() => SaveChangesAsync(consistencyChanges));
@@ -618,17 +622,17 @@ namespace Desktop.Forms
                         bool result;
 
                         statusProgress.Visible = true;
-                        statusMessage.Text = TextResources.MsgStatusLoadingLanguages;
+                        statusMessage.Text = TextResources.StatusLoadingLanguages;
                         gbConsistency.Enabled = false;
 
                         result = await Engine.Languages.LoadLanguagesAsync();
                         Engine.Languages.GetActiveLanguage();
                         Engine.SetupPrestaLanguages();
-                        statusMessage.Text = TextResources.MsgStatusLoadingManufacturers;
+                        statusMessage.Text = TextResources.StatusLoadingManufacturers;
                         result = await Engine.Manufacturers.LoadManufacturersAsync();
-                        statusMessage.Text = TextResources.MsgStatusLoadingCategories;
+                        statusMessage.Text = TextResources.StatusLoadingCategories;
                         result = await Engine.Categories.LoadCategoriesAsync();
-                        statusMessage.Text = TextResources.MsgStatusLoadingProducts;
+                        statusMessage.Text = TextResources.StatusLoadingProducts;
                         result = await Engine.Products.LoadProductsAsync();
 
                         statusProgress.Visible = false;
@@ -655,14 +659,14 @@ namespace Desktop.Forms
 
         private void RefreshStatusBar()
         {
-            statusActiveEshop.Text = TextResources.MsgStatusNoActiveEshop;
+            statusActiveEshop.Text = TextResources.StatusNoActiveEshop;
 
             statusAskino.Visible = false;
             statusNoviko.Visible = false;
 
             if (MainSettings.Eshops.ActiveEshopIndex != -1)
             {
-                statusActiveEshop.Text = TextResources.MsgStatusActiveEshop + MainSettings.ActiveEshop().EshopName;
+                statusActiveEshop.Text = TextResources.StatusActiveEshop + MainSettings.ActiveEshop().EshopName;
 
                 if (File.Exists(MainSettings.ActiveEshop().Suppliers[MainSettings.ActiveEshop().AskinoIndex()].SupplierFileName) == true)
                 {
@@ -956,7 +960,7 @@ namespace Desktop.Forms
         private void BEmptyCategoryClick(object sender, EventArgs e)
         {
             indexForChange = -1;
-            lListOf.Text = TextResources.TitleEmptyCategory;
+            lListOf.Text = TextResources.GridTitleEmptyCategory;
             DataGridTools.InitGrid(dgConsistency);
 
             DataGridTools.AddColumn(dgConsistency, "Id", TextResources.Id);
@@ -970,8 +974,8 @@ namespace Desktop.Forms
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
             {
                 DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)dgConsistency.Rows[i].Cells["Category"];
-                comboCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
-            };
+                comboCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
+            }
 
             indexForChange = 3;
             changedType = FieldType.Category;
@@ -980,7 +984,7 @@ namespace Desktop.Forms
         private void BEmptyManufacturerClick(object sender, EventArgs e)
         {
             indexForChange = -1;
-            lListOf.Text = "Zobrazuji produkty s prázdným výrobcem.";
+            lListOf.Text = TextResources.GridTitleEmptyManufacturer;
             DataGridTools.InitGrid(dgConsistency);
 
             DataGridTools.AddColumn(dgConsistency, "Id", TextResources.Id);
@@ -1009,7 +1013,7 @@ namespace Desktop.Forms
         private void BWithoutImageClick(object sender, EventArgs e)
         {
             indexForChange = -1;
-            lListOf.Text = "Zobrazuji produkty bez obrázku.";
+            lListOf.Text = TextResources.GridTitleEmptyImage;
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyImage();
 
@@ -1025,7 +1029,7 @@ namespace Desktop.Forms
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
             {
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["Category"];
-                textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
+                textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
             }
 
             indexForChange = 5;
@@ -1035,7 +1039,7 @@ namespace Desktop.Forms
         private void BWithoutShortDescriptionClick(object sender, EventArgs e)
         {
             indexForChange = -1;
-            lListOf.Text = TextResources.TitleEmptyDescription;
+            lListOf.Text = TextResources.GridTitleEmptyShortDescription;
             DataGridTools.InitGrid(dgConsistency);
 
             DataGridTools.AddColumn(dgConsistency, "Id", TextResources.Id);
@@ -1060,7 +1064,7 @@ namespace Desktop.Forms
         private void BWithoutLongDescriptionClick(object sender, EventArgs e)
         {
             indexForChange = -1;
-            lListOf.Text = "Zobrazuji produkty s prázdným dlouhým popisem.";
+            lListOf.Text = TextResources.GridTitleEmptyLongDescription;
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyLongDescription();
 
@@ -1084,7 +1088,7 @@ namespace Desktop.Forms
         private void BWithoutPriceClick(object sender, EventArgs e)
         {
             indexForChange = -1;
-            lListOf.Text = "Zobrazuji produkty bez maloobchodní ceny.";
+            lListOf.Text = TextResources.GridTitleEmptyPrice;
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyPrice();
 
@@ -1098,17 +1102,17 @@ namespace Desktop.Forms
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
             {
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["Category"];
-                textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
+                textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
             }
 
             indexForChange = 4;
             changedType = FieldType.Price;
         }
 
-        private void bWithoutWeight_Click(object sender, EventArgs e)
+        private void BWithoutWeightClick(object sender, EventArgs e)
         {
             indexForChange = -1;
-            lListOf.Text = "Zobrazuji produkty bez udané váhy.";
+            lListOf.Text = TextResources.GridTitleEmptyWeight;
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWeight();
 
@@ -1122,16 +1126,16 @@ namespace Desktop.Forms
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
             {
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["Category"];
-                textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
+                textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
             }
             indexForChange = 4;
             changedType = FieldType.Weight;
         }
 
-        private void bWithoutWholeSalePrice_Click(object sender, EventArgs e)
+        private void BWithoutWholeSalePriceClick(object sender, EventArgs e)
         {
             indexForChange = -1;
-            lListOf.Text = "Zobrazuji produkty bez velkoobchodní ceny.";
+            lListOf.Text = TextResources.GridTitleEmptyWholeSalePrice;
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWholesalePrice();
 
@@ -1145,17 +1149,17 @@ namespace Desktop.Forms
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
             {
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["Category"];
-                textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
-            };
+                textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
+            }
 
             indexForChange = 4;
             changedType = FieldType.WholesalePrice;
         }
 
-        private void bConsistencySupplier_Click(object sender, EventArgs e)
+        private void BConsistencySupplierClick(object sender, EventArgs e)
         {
             indexForChange = -1;
-            lListOf.Text = "Zobrazuji produkty bez zadaného dodavatele.";
+            lListOf.Text = TextResources.GridTitleEmptySupplier;
             DataGridTools.InitGrid(dgConsistency);
 
             dgConsistency.DataSource = Engine.Products.GetProductWithoutSupplier();
@@ -1171,11 +1175,11 @@ namespace Desktop.Forms
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
             {
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["Category"];
-                textCell.Value = Engine.Categories.GetCategoryName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
+                textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
 
                 DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)dgConsistency.Rows[i].Cells["Supplier"];
-                comboCell.Value = Engine.Manufacturers.GetManufacturerName(System.Convert.ToInt32(dgConsistency.Rows[i].Cells["IdSupplier"].Value));
-            };
+                comboCell.Value = Engine.Manufacturers.GetManufacturerName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdSupplier"].Value));
+            }
 
             indexForChange = 5;
             changedType = FieldType.Manufacturer;
@@ -1198,7 +1202,7 @@ namespace Desktop.Forms
             Engine.PriceLists.AddPriceLists(MainSettings.ActiveEshop());
                         
             indexForChange = -1;
-            lListOf.Text = TextResources.TitleWithoutSupplier;
+            lListOf.Text = TextResources.GridTitleWithoutAnySupplier;
             DataGridTools.InitGrid(dgConsistency);
 
             dgConsistency.DataSource = Engine.Products.GetNonAvailableProductOfSuppliers(Engine.PriceLists, Engine.Suppliers.GetAskinoId(), Engine.Suppliers.GetNovikoId());

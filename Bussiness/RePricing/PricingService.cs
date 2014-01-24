@@ -1,8 +1,9 @@
-﻿using Bussiness.ViewModels;
+﻿using Bussiness.Services;
+using Bussiness.ViewModels;
 using Suppliers.Interfaces;
 using System.Collections.Generic;
 
-namespace Bussiness.Services
+namespace Bussiness.RePricing
 {
     public class RepriceLimits
     {
@@ -14,12 +15,14 @@ namespace Bussiness.Services
         private List<ProductViewModel> productToReprice;
         private SupplierService supplierService;
         private PriceListsService priceListsService;
+        public List<ChangeRecord> ConsistencyChanges { get; private set; }
 
         public delegate int BinaryOp(int x, int y);
         
         public PricingService()
         {
             productToReprice = new List<ProductViewModel>();
+            ConsistencyChanges = new List<ChangeRecord>();
         }
 
         public void Setup(SupplierService suppliers, PriceListsService priceLists)

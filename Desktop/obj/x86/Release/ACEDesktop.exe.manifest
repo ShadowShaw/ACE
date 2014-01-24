@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ixSTwtiLkbM7Lvr/HrLVpdlxdTs=</dsig:DigestValue>
+        <dsig:DigestValue>ZD3IFBqneF4OKcvppBLSafMu8hI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bussiness.dll" size="43008">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bussiness.dll" size="43520">
       <assemblyIdentity name="Bussiness" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>QFlCxXP2JTRZsMaK4q1MsnbyB1E=</dsig:DigestValue>
+        <dsig:DigestValue>pVJVBxPzm6axp/EYJzK2nh7TcNI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>kaxH/WsiGvn545Dwgtg2MPOEkRU=</dsig:DigestValue>
+        <dsig:DigestValue>o2O7a+IuMZcOQS2ag9szJ5UoX4Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -146,7 +146,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>9TPPUYs/Bq89cqbbdWPYOsZz4kw=</dsig:DigestValue>
+        <dsig:DigestValue>Qb3Seub3G5uQbcl0dHURqXHPiwY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

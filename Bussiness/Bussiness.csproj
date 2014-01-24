@@ -80,13 +80,14 @@
     <Compile Include="Base\ServiceBase.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
+    <Compile Include="RePricing\ChangeRecord.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\EngineService.cs" />
     <Compile Include="Services\LanguageService.cs" />
     <Compile Include="Services\LoginService.cs" />
     <Compile Include="Services\ManufacturerService.cs" />
     <Compile Include="Services\PriceListsService.cs" />
-    <Compile Include="Services\PricingService.cs" />
+    <Compile Include="RePricing\PricingService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

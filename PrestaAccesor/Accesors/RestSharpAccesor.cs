@@ -1,11 +1,10 @@
-﻿using RestSharp;
+﻿using PrestaAccesor.Entities;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace PrestaAccesor.Accesors
@@ -14,100 +13,99 @@ namespace PrestaAccesor.Accesors
     {
         public const int StepCount = 500;
 
-        protected RestClient client;
-        protected string BaseUrl{get;set;}
-        protected string Account{get;set;}
-        protected string Password{get;set;}
+        protected RestClient Client;
+        protected string BaseUrl { get; set; }
+        protected string Account { get; set; }
+        protected string Password { get; set; }
 
-        public RestSharpAccesor(string BaseUrl, string Account, string Password)
+        protected RestSharpAccesor(string baseUrl, string account, string password)
         {
-            this.BaseUrl = BaseUrl;
-            this.Account = Account;
-            this.Password = Password;
+            BaseUrl = baseUrl;
+            Account = account;
+            Password = password;
 
-            client = new RestClient();
-            client.BaseUrl = this.BaseUrl;
-            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Client = new RestClient();
+            Client.BaseUrl = BaseUrl;
+            Client.Authenticator = new HttpBasicAuthenticator(Account, Password);
         }
 
-        public void Setup(string BaseUrl, string Account, string Password)
+        public void Setup(string baseUrl, string account, string password)
         {
-            this.BaseUrl = BaseUrl;
-            this.Account = Account;
-            this.Password = Password;
+            BaseUrl = baseUrl;
+            Account = account;
+            Password = password;
             
-            client.BaseUrl = this.BaseUrl;
-            client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+            Client.BaseUrl = BaseUrl;
+            Client.Authenticator = new HttpBasicAuthenticator(Account, Password);
         }
 
-        protected T Execute<T>(RestRequest Request) where T : new()
+        protected T Execute<T>(RestRequest request) where T : new()
         {
-            Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
-            Request.RequestFormat = DataFormat.Json;
-            var response = client.Execute<T>(Request);
+            request.AddParameter("Account", Account, ParameterType.UrlSegment);
+            request.RequestFormat = DataFormat.Json;
+            var response = Client.Execute<T>(request);
             if (response.ErrorException != null)
             {
                 const string message = "Error retrieving response.  Check inner details for more info.";
-                var Exception = new ApplicationException(message, response.ErrorException);
-                throw Exception;
+                var exception = new ApplicationException(message, response.ErrorException);
+                throw exception;
             }
             return response.Data;
         }
 
-        protected void ExecuteAsync<T>(RestRequest Request) where T : new()
+        protected void ExecuteAsync(RestRequest request)
         {
             try
             {
-                client.ExecuteAsync(Request, response =>
+                Client.ExecuteAsync(request, response =>
                 {
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
-                        //Console.WriteLine(response.ToString());
+                        Console.WriteLine(response.ToString());
                     }
                     else
                     {
-                        //Console.WriteLine(response.ToString());
+                        Console.WriteLine(response.ToString());
                     }
                 });
             }
             catch (Exception error)
             {
-                error.ToString();
+                Console.WriteLine(error.ToString());
             }
         }
 
-        protected RestRequest RequestForGet(string Resource, long? Id, string RootElement)
+        protected RestRequest RequestForGet(string resource, long? id, string rootElement)
         {
             var request = new RestRequest();
-            //request.XmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(Entities.product)) as RestSharp.Serializers.ISerializer;
-            request.Resource = Resource + "/" + Id;
-            request.RootElement = RootElement;
+            request.Resource = resource + "/" + id;
+            request.RootElement = rootElement;
             return request;
         }
 
-        protected List<int> ExecuteForGetIds<T>(RestRequest Request, string RootElement) where T : new()
+        protected List<int> ExecuteForGetIds<T>(RestRequest request, string rootElement) where T : new()
         {
-            Request.AddParameter("Account", this.Account, ParameterType.UrlSegment);
-            Request.RequestFormat = DataFormat.Json;
-            var response = client.Execute<T>(Request);
-            if ((response.Content == null) || (response.Content == ""))
+            request.AddParameter("Account", Account, ParameterType.UrlSegment);
+            request.RequestFormat = DataFormat.Json;
+            var response = Client.Execute<T>(request);
+            if (string.IsNullOrEmpty(response.Content))
             {
                 return null;
             }
             XDocument xDcoument = XDocument.Parse(response.Content);
-            var ids = (from doc in xDcoument.Descendants(RootElement)
+            var ids = (from doc in xDcoument.Descendants(rootElement)
                        select int.Parse(doc.Attribute("id").Value)).ToList();
             return ids;
         }
         
-        protected RestRequest RequestForAdd(string Resource, Entities.PrestashopEntity Entity)
+        protected RestRequest RequestForAdd(string resource, PrestashopEntity entity)
         {
             var request = new RestRequest();
-            request.Resource = Resource;
+            request.Resource = resource;
             request.Method = Method.POST;
             request.RequestFormat = DataFormat.Xml;
             request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
-            string serialized = request.XmlSerializer.Serialize(Entity);
+            string serialized = request.XmlSerializer.Serialize(entity);
             serialized = serialized.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<prestashop>");
             serialized += "\n</prestashop>";
             request.AddParameter("xml", serialized);
@@ -117,50 +115,50 @@ namespace PrestaAccesor.Accesors
         /// <summary>
         /// More information about image management: http://doc.prestashop.com/display/PS15/Chapter+9+-+Image+management
         /// </summary>
-        /// <param name="Resource"></param>
-        /// <param name="Id"></param>
-        /// <param name="ImagePath"></param>
+        /// <param name="resource"></param>
+        /// <param name="id"></param>
+        /// <param name="imagePath"></param>
         /// <returns></returns>
-        protected RestRequest RequestForAddImage(string Resource, int Id, string ImagePath)
+        protected RestRequest RequestForAddImage(string resource, int id, string imagePath)
         {
             var request = new RestRequest();
-            request.Resource = "/images/" + Resource + "/" + Id;
+            request.Resource = "/images/" + resource + "/" + id;
             request.Method = Method.POST;
             request.RequestFormat = DataFormat.Xml;
             request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
-            byte[] ImgBytes = ImageToBinary(ImagePath);
-            request.AddParameter("images", ImgBytes);
+            byte[] imgBytes = ImageToBinary(imagePath);
+            request.AddParameter("images", imgBytes);
             return request;
         }
 
-        protected RestRequest RequestForUpdate(string Resource, long? Id, Entities.PrestashopEntity PrestashopEntity)
+        protected RestRequest RequestForUpdate(string resource, long? id, PrestashopEntity prestashopEntity)
         {
-            if (Id == null)
+            if (id == null)
             {
                 throw new ApplicationException("Id is required to update something.");
             }
             var request = new RestRequest();
             request.RootElement = "prestashop";
-            request.Resource = Resource;
-            request.AddParameter("id", Id, ParameterType.UrlSegment);
+            request.Resource = resource;
+            request.AddParameter("id", id, ParameterType.UrlSegment);
             request.Method = Method.PUT;
             request.RequestFormat = DataFormat.Xml;
             request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
-            request.AddBody(PrestashopEntity);
-            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("<" + PrestashopEntity.GetType().Name+">", "<prestashop>\n<" + PrestashopEntity.GetType().Name + ">");
-            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</" + PrestashopEntity.GetType().Name + ">", "</" + PrestashopEntity.GetType().Name + "></prestashop>");
+            request.AddBody(prestashopEntity);
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("<" + prestashopEntity.GetType().Name+">", "<prestashop>\n<" + prestashopEntity.GetType().Name + ">");
+            request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</" + prestashopEntity.GetType().Name + ">", "</" + prestashopEntity.GetType().Name + "></prestashop>");
             return request;
         }
 
-        protected RestRequest RequestForDelete(string Resource, long? Id)
+        protected RestRequest RequestForDelete(string resource, long? id)
         {
-            if (Id == null)
+            if (id == null)
             {
                 throw new ApplicationException("Id is required to delete something.");
             }
             var request = new RestRequest();
             request.RootElement = "prestashop";
-            request.Resource = Resource + "/" + Id;
+            request.Resource = resource + "/" + id;
             request.Method = Method.DELETE;
             request.RequestFormat = DataFormat.Xml;
             return request;
@@ -169,36 +167,36 @@ namespace PrestaAccesor.Accesors
         /// <summary>
         /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
         /// </summary>
-        /// <param name="Resource"></param>
-        /// <param name="Display"></param>
-        /// <param name="Filter"></param>
-        /// <param name="Sort"></param>
-        /// <param name="Limit"></param>
-        /// <param name="RootElement"></param>
+        /// <param name="resource"></param>
+        /// <param name="display"></param>
+        /// <param name="filter"></param>
+        /// <param name="sort"></param>
+        /// <param name="limit"></param>
+        /// <param name="rootElement"></param>
         /// <returns></returns>
-        protected RestRequest RequestForFilter(string Resource, string Display, Dictionary<string,string> Filter, string Sort, string Limit, string RootElement)
+        protected RestRequest RequestForFilter(string resource, string display, Dictionary<string,string> filter, string sort, string limit, string rootElement)
         {
             var request = new RestRequest();
-            request.Resource = Resource;
-            request.RootElement = RootElement;
-            if (Display != null)
+            request.Resource = resource;
+            request.RootElement = rootElement;
+            if (display != null)
             {
-                request.AddParameter("display", Display);
+                request.AddParameter("display", display);
             }
-            if (Filter != null)
+            if (filter != null)
             {
-                foreach (string Key in Filter.Keys)
+                foreach (string key in filter.Keys)
                 {
-                    request.AddParameter("filter[" + Key + "]", Filter[Key]);
+                    request.AddParameter("filter[" + key + "]", filter[key]);
                 }
             }
-            if (Sort != null)
+            if (sort != null)
             {
-                request.AddParameter("sort", Sort);
+                request.AddParameter("sort", sort);
             }
-            if (Limit != null)
+            if (limit != null)
             {
-                request.AddParameter("limit", Limit);
+                request.AddParameter("limit", limit);
             }
             return request;
         }

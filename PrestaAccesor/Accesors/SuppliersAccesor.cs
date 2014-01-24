@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using PrestaAccesor.Entities;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 
@@ -11,59 +12,59 @@ namespace PrestaAccesor.Accesors
 
     public class Supplier
     {
-        public string id { get; set; }
+        public string Id { get; set; }
     }
 
     public class SupplierAccesor : RestSharpAccesor, IRestAccesor
     {
-        public SupplierAccesor(string BaseUrl, string Account, string SecretKey)
-            : base(BaseUrl, Account, SecretKey)
+        public SupplierAccesor(string baseUrl, string account, string secretKey)
+            : base(baseUrl, account, secretKey)
         {
 
         }
 
-        public Entities.PrestashopEntity Get(long? entityId)
+        public PrestashopEntity Get(long? entityId)
         {
-            RestRequest request = this.RequestForGet("suppliers", entityId, "supplier");
-            return this.Execute<Entities.supplier>(request);
+            RestRequest request = RequestForGet("suppliers", entityId, "supplier");
+            return Execute<supplier>(request);
         }
 
-        public void Add(Entities.PrestashopEntity category)
+        public void Add(PrestashopEntity category)
         {
             category.id = null;
-            RestRequest request = this.RequestForAdd("suppliers", category);
-            this.Execute<Entities.supplier>(request);
+            RestRequest request = RequestForAdd("suppliers", category);
+            Execute<supplier>(request);
         }
 
-        public void AddImage(int SupplierId, string SupplierImagePath)
+        public void AddImage(int supplierId, string supplierImagePath)
         {
-            RestRequest request = this.RequestForAddImage("suppliers", SupplierId, SupplierImagePath);
-            this.Execute<Entities.supplier>(request);
+            RestRequest request = RequestForAddImage("suppliers", supplierId, supplierImagePath);
+            Execute<supplier>(request);
         }
 
-        public void Update(Entities.PrestashopEntity product)
+        public void Update(PrestashopEntity product)
         {
-            RestRequest request = this.RequestForUpdate("suppliers", product.id, product);
+            RestRequest request = RequestForUpdate("suppliers", product.id, product);
             try
             {
-                this.Execute<Entities.supplier>(request);
+                Execute<supplier>(request);
             }
             catch (ApplicationException ex)
             {
-                ex.ToString();
+                Console.WriteLine(ex.ToString());
             }
         }
 
-        public void Delete(Entities.PrestashopEntity product)
+        public void Delete(PrestashopEntity product)
         {
-            RestRequest request = this.RequestForDelete("suppliers", product.id);
-            this.Execute<Entities.supplier>(request);
+            RestRequest request = RequestForDelete("suppliers", product.id);
+            Execute<supplier>(request);
         }
 
         public List<int> GetIds()
         {
-            RestRequest request = this.RequestForGet("suppliers", null, "prestashop");
-            return this.ExecuteForGetIds<List<int>>(request, "supplier");
+            RestRequest request = RequestForGet("suppliers", null, "prestashop");
+            return ExecuteForGetIds<List<int>>(request, "supplier");
         }
 
         public List<int> GetIdsPartial()
@@ -71,20 +72,20 @@ namespace PrestaAccesor.Accesors
             int startItem = 0;
 
             List<int> result = new List<int>();
-            SupplierList IdList = new SupplierList();
+            SupplierList idList;
             do
             {
                 string requestString = String.Format("suppliers/?display=[id]&limit={0},{1}", startItem, StepCount);
                 IRestRequest request = new RestRequest(requestString, Method.GET);
 
-                IdList = client.Execute<SupplierList>(request).Data;
+                idList = Client.Execute<SupplierList>(request).Data;
                 startItem = startItem + StepCount;
 
-                foreach (var item in IdList.Suppliers)
+                foreach (var item in idList.Suppliers)
                 {
-                    result.Add(System.Convert.ToInt32(item.id));
+                    result.Add(Convert.ToInt32(item.Id));
                 }
-            } while (IdList.Suppliers.Count == 500);
+            } while (idList.Suppliers.Count == 500);
 
             return result;
         }
@@ -92,23 +93,23 @@ namespace PrestaAccesor.Accesors
         /// <summary>
         /// More information about filtering: http://doc.prestashop.com/display/PS14/Chapter+8+-+Advanced+Use
         /// </summary>
-        /// <param name="Filter">Example: key:name value:Apple</param>
-        /// <param name="Sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
-        /// <param name="Limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
+        /// <param name="filter">Example: key:name value:Apple</param>
+        /// <param name="sort">Field_ASC or Field_DESC. Example: name_ASC or name_DESC</param>
+        /// <param name="limit">Example: 5 limit to 5. 9,5 Only include the first 5 elements starting from the 10th element.</param>
         /// <returns></returns>
-        public List<Entities.supplier> GetByFilter(Dictionary<string, string> Filter, string Sort, string Limit)
+        public List<supplier> GetByFilter(Dictionary<string, string> filter, string sort, string limit)
         {
-            RestRequest request = this.RequestForFilter("suppliers", "full", Filter, Sort, Limit, "suppliers");
-            return this.Execute<List<Entities.supplier>>(request);
+            RestRequest request = RequestForFilter("suppliers", "full", filter, sort, limit, "suppliers");
+            return Execute<List<supplier>>(request);
         }
 
         /// <summary>
         /// Get all suppliers.
         /// </summary>
         /// <returns>A list of supplier</returns>
-        public List<Entities.supplier> GetAll()
+        public List<supplier> GetAll()
         {
-            return this.GetByFilter(null, null, null);
+            return GetByFilter(null, null, null);
         }
     }
 }

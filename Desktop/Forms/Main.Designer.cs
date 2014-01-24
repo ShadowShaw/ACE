@@ -604,7 +604,7 @@
             this.bWithoutSupplier.TabIndex = 30;
             this.bWithoutSupplier.Text = " bez dodavatele";
             this.bWithoutSupplier.UseVisualStyleBackColor = true;
-            this.bWithoutSupplier.Click += new System.EventHandler(this.bConsistencySupplier_Click);
+            this.bWithoutSupplier.Click += new System.EventHandler(this.BConsistencySupplierClick);
             // 
             // bSaveChanges
             // 
@@ -626,7 +626,7 @@
             this.bWithoutWholeSalePrice.TabIndex = 28;
             this.bWithoutWholeSalePrice.Text = " bez velkoobchodni ceny";
             this.bWithoutWholeSalePrice.UseVisualStyleBackColor = true;
-            this.bWithoutWholeSalePrice.Click += new System.EventHandler(this.bWithoutWholeSalePrice_Click);
+            this.bWithoutWholeSalePrice.Click += new System.EventHandler(this.BWithoutWholeSalePriceClick);
             // 
             // bWithoutLongDescription
             // 
@@ -670,7 +670,7 @@
             this.bWithoutWeight.TabIndex = 25;
             this.bWithoutWeight.Text = "s nulovou váhou";
             this.bWithoutWeight.UseVisualStyleBackColor = true;
-            this.bWithoutWeight.Click += new System.EventHandler(this.bWithoutWeight_Click);
+            this.bWithoutWeight.Click += new System.EventHandler(this.BWithoutWeightClick);
             // 
             // bEmptyManufacturer
             // 

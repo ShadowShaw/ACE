@@ -28,8 +28,8 @@
 
         //button context help
         public const string HintLoadProducts = "Načte databázi produktů eshopu";
-        public const string HintEmptyCategory = "Vypíše produkty, které nejsou přiřazeny v žádné kategorii, tedy jsou v root kategorii";
-        public const string HintEmptyManufacturer = "Vypíše produkty, u kterých není přiřazen žádný výrobce";
+        public const string HintWithoutCategory = "Vypíše produkty, které nejsou přiřazeny v žádné kategorii, tedy jsou v root kategorii";
+        public const string HintWithoutManufacturer = "Vypíše produkty, u kterých není přiřazen žádný výrobce";
         public const string HintWithoutImage = "Vypíše produkty u kterých není přiřazen žádný obrázek";
         public const string HintWithoutShortDescription = "Vypíše produkty bez krátkého popisu";
         public const string HintWithoutLongDescription = "Vypíše produkty bez dlouhého popisu";
@@ -39,17 +39,17 @@
         public const string HintWithoutSupplier = "Vypíše produkty u kterých není zadán dodavatel";
         
         //consistency grid titles
-        public const string TitleLoadProducts = "Načte databázi produktů eshopu";
-        public const string TitleEmptyCategory = "Zobrazuji produkty s prázdnou kategorii.";
-        public const string TitleEmptyManufacturer = "Vypíše produkty, u kterých není přiřazen žádný výrobce";
-        public const string TitleWithoutImage = "Vypíše produkty u kterých není přiřazen žádný obrázek";
-        public const string TitleWithoutShortDescription = "Vypíše produkty bez krátkého popisu";
-        public const string TitleWithoutLongDescription = "Vypíše produkty bez dlouhého popisu";
-        public const string TitleWithoutPrice = "Vypíše produkty bez maloobchodní prodejní ceny";
-        public const string TitleWithoutWholeSalePrice = "Vypíše produkty bez velkoobchodní prodejní ceny";
-        public const string TitleWithoutWeight = "Vypíše produkty u kterých není zadána váha";
-        public const string TitleWithoutSupplier = "Zobrazuji produkty jenž dodavatelé již nedodávají.";
-        public const string TitleEmptyDescription = "Zobrazuji produkty s prázdným krátkým popisem.";
+        public const string GridTitleLoadProducts = "Načte databázi produktů eshopu";
+        public const string GridTitleEmptyCategory = "Zobrazuji produkty s prázdnou kategorii.";
+        public const string GridTitleEmptyManufacturer = "Zobrazuji produkty s prázdným výrobcem.";
+        public const string GridTitleEmptyImage = "Zobrazuji produkty u kterých není přiřazen žádný obrázek";
+        public const string GridTitleEmptyLongDescription = "Zobrazuji produkty s prázdným dlouhým popisem.";
+        public const string GridTitleEmptyPrice = "Zobrazuji produkty bez maloobchodní ceny.";
+        public const string GridTitleEmptyWholeSalePrice = "Zobrazuji produkty bez velkoobchodní ceny.";
+        public const string GridTitleEmptyWeight = "Zobrazuji produkty bez udané váhy.";
+        public const string GridTitleEmptySupplier = "Zobrazuji produkty bez zadaného dodavatele.";
+        public const string GridTitleEmptyShortDescription = "Zobrazuji produkty s prázdným krátkým popisem.";
+        public const string GridTitleWithoutAnySupplier = "Zobrazuji produkty, jenž již dodavatelé nedodávají";
 
         //label strings
         
@@ -61,21 +61,21 @@
         public const string ComboAnySupplier = "Jakýkoliv dodavatel";
 
         // Status bar
-        public const string MsgStatusNoActiveEshop = "Aktivní eshop: žádný";
-        public const string MsgStatusActiveEshop = "Aktivní eshop: ";
-        public const string MsgStatusSavingChanges = "Ukladám změny, prosím čekejte...";
-        public const string MsgStatusLoadingLanguages = "Nahrávám jazyky, prosí­m čekejte...";
-        public const string MsgStatusLoadingManufacturers = "Nahrávám výrobce, prosí­m čekejte...";
-        public const string MsgStatusLoadingCategories = "Nahrávám kategorie, prosí­m čekejte...";
-        public const string MsgStatusLoadingProducts = "Nahrávám produkty, prosí­m čekejte...";
-        public const string MsgStatusLoadingSuppliers = "Nahrávám dodavatele, prosí­m čekejte...";
-        public const string MsgStatusRepriceInProgress = "Přeceňuji produkty, prosí­m čekejte...";
+        public const string StatusNoActiveEshop = "Aktivní eshop: žádný";
+        public const string StatusActiveEshop = "Aktivní eshop: ";
+        public const string StatusSavingChanges = "Ukladám změny, prosím čekejte...";
+        public const string StatusLoadingLanguages = "Nahrávám jazyky, prosí­m čekejte...";
+        public const string StatusLoadingManufacturers = "Nahrávám výrobce, prosí­m čekejte...";
+        public const string StatusLoadingCategories = "Nahrávám kategorie, prosí­m čekejte...";
+        public const string StatusLoadingProducts = "Nahrávám produkty, prosí­m čekejte...";
+        public const string StatusLoadingSuppliers = "Nahrávám dodavatele, prosí­m čekejte...";
+        public const string StatusRepriceInProgress = "Přeceňuji produkty, prosí­m čekejte...";
 
         // Message boxes
         public const string MsgNoChangesToSaveValue = "Nejsou žádné změny k zápisu.";
         public const string MsgNoChangesToSaveTitle = "Žádné změny";
-        public const string MsgEmptyConfigurationValue = "Nenalezena konfigurace připojení k eshopům. Prosím nastavte připojení.";
-        public const string MsgEmptyConfigurationTitle = "Nenalezena konfigurace připojení k eshopům.";
+        public const string MsgEmptyConfigurationValue = "Nenalezena konfigurace připojení k eshopu. Prosím nastavte připojení.";
+        public const string MsgEmptyConfigurationTitle = "Nenalezena konfigurace připojení k eshopu.";
         public const string MsgNoPriceListTitle = "Ceník není k dispozici";
         public const string MsgNoPriceListValue = "Ceník není k dispozici, otevřete ceník";
         public const string MsgDeleteEshopTitle = "Odstranit konfiguraci eshopu";

@@ -77,7 +77,7 @@ namespace PrestaAccesor.Accesors
                 string requestString = String.Format("manufacturers/?display=[id]&limit={0},{1}", startItem, StepCount);
                 IRestRequest request = new RestRequest(requestString, Method.GET);
 
-                idList = client.Execute<ManufacturerList>(request).Data;
+                idList = Client.Execute<ManufacturerList>(request).Data;
                 startItem = startItem + StepCount;
 
                 foreach (var item in idList.Manufacturers)
