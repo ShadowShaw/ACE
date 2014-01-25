@@ -23,6 +23,7 @@
         public RecordType Type;
         public int Id;
         public FieldType Field;
+        public string OldValue;
         public string Value;
     }
 }

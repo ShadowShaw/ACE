@@ -119,18 +119,14 @@ namespace Desktop.Forms
                 statusProgress.Visible = true;
 
                 Engine.Pricing.Setup(Engine.Suppliers, Engine.PriceLists);
-                if (chPricingSupplier.Checked)
-                {
-                    Engine.Pricing.UpdatePrices();
-                }
-
+                
                 if (rbPricingProcent.Checked)
                 {
-                    Engine.Pricing.ProcentReprice(Convert.ToDecimal(ePricingPercent.Text));
+                    Engine.Pricing.ProcentReprice(Convert.ToDecimal(ePricingPercent.Text), chPricingSupplier.Checked);
                 }
                 else
                 {
-                    Engine.Pricing.LimitReprice(Convert.ToDecimal(ePricingLimit.Text), Convert.ToDecimal(ePricingBellowLimit.Text), Convert.ToDecimal(ePricingOverLimit.Text));
+                    Engine.Pricing.LimitReprice(Convert.ToDecimal(ePricingLimit.Text), Convert.ToDecimal(ePricingBellowLimit.Text), Convert.ToDecimal(ePricingOverLimit.Text), chPricingSupplier.Checked);
                 }
 
                 dgPricing.EndEdit();
@@ -157,7 +153,7 @@ namespace Desktop.Forms
                 }
                 else
                 {
-                    ChangesView changes = new ChangesView(Engine.Pricing.ConsistencyChanges);
+                    ChangesView changes = new ChangesView(Engine.Pricing.ConsistencyChanges.OrderBy(i => i.Id).ToList());
 
                     if (changes.ShowDialog() == DialogResult.OK)
                     {
@@ -268,6 +264,7 @@ namespace Desktop.Forms
 
             indexForChange = 8;  //9
             changedType = FieldType.Category;
+            bReprice.Enabled = true;
         }
 
         #endregion
@@ -598,7 +595,7 @@ namespace Desktop.Forms
 
         private async void BSaveChangesClick(object sender, EventArgs e)
         {
-            ChangesView changes = new ChangesView(consistencyChanges);
+            ChangesView changes = new ChangesView(consistencyChanges.OrderBy(o => o.Id).ToList());
             if (consistencyChanges.Count == 0)
             {
                 MessageBox.Show(TextResources.MsgNoChangesToSaveValue, TextResources.MsgNoChangesToSaveTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);

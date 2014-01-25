@@ -17,8 +17,6 @@ namespace Bussiness.RePricing
         private PriceListsService priceListsService;
         public List<ChangeRecord> ConsistencyChanges { get; private set; }
 
-        public delegate int BinaryOp(int x, int y);
-        
         public PricingService()
         {
             productToReprice = new List<ProductViewModel>();
@@ -41,26 +39,60 @@ namespace Bussiness.RePricing
             productToReprice = products;
         }
 
-        public void UpdatePrices()
+        private void AddDecimalChange(decimal? oldValue, decimal? newValue, long? id, FieldType field)
         {
-            foreach (ProductViewModel product in productToReprice)
+            if (oldValue != newValue)
             {
-                string supplierName = supplierService.GetSupplierName(product.IdSupplier);
-                ISupplier priceList = priceListsService[supplierName];
-                if (priceList.HasReference(product.Reference))
+                ChangeRecord change = new ChangeRecord();
+
+                change.Value = newValue.ToString();
+                change.OldValue = oldValue.ToString();
+                change.Type = RecordType.Product;
+                change.Field = field;
+                if (id != null)
                 {
-                    product.Price = priceListsService[supplierName].GetPrice(product.Reference);
-                    product.WholesalePrice = priceListsService[supplierName].GetWholeSalePrice(product.Reference);
+                    change.Id = (int)id;
+                    ConsistencyChanges.Add(change);    
                 }
             }
         }
-
-        public void ProcentReprice(decimal procent)
+        
+        public void ProcentReprice(decimal procent, bool usePriceLists)
         {
             foreach (ProductViewModel product in productToReprice)
             {
-                product.Price = product.Price * procent;
-                product.WholesalePrice = product.WholesalePrice * procent;
+                decimal? productPrice = product.Price;
+                decimal? productWholesalePrice = product.WholesalePrice;
+                
+                if (usePriceLists)
+                {
+                    string supplierName = supplierService.GetSupplierName(product.IdSupplier);
+                    ISupplier priceList = priceListsService[supplierName];
+
+                    if ((priceList != null) && (priceList.HasReference(product.Reference)))
+                    {
+                        productPrice = priceListsService[supplierName].GetPrice(product.Reference);
+                        productWholesalePrice = priceListsService[supplierName].GetWholeSalePrice(product.Reference);
+
+                        decimal? newPrice = productPrice * procent;
+                        AddDecimalChange(product.Price, newPrice, product.Id, FieldType.Price);
+                        product.Price = newPrice;
+
+                        decimal? newWholeSalePrice = productWholesalePrice * procent;
+                        AddDecimalChange(product.WholesalePrice, newWholeSalePrice, product.Id, FieldType.Price);
+                        product.WholesalePrice = newWholeSalePrice;
+                    }
+                }
+                else
+                {
+                    decimal? newPrice = productPrice * procent;
+                    AddDecimalChange(product.Price, newPrice, product.Id, FieldType.Price);
+                    product.Price = newPrice;
+
+                    decimal? newWholeSalePrice = productWholesalePrice * procent;
+                    AddDecimalChange(product.WholesalePrice, newWholeSalePrice, product.Id, FieldType.Price);
+                    product.WholesalePrice = newWholeSalePrice;
+                }
             }
         }
 
@@ -69,50 +101,78 @@ namespace Bussiness.RePricing
             
         }
 
-        public void LimitReprice(decimal limit, decimal below, decimal above)
+        public void LimitReprice(decimal limit, decimal below, decimal above, bool usePriceLists)
         {
             foreach (ProductViewModel product in productToReprice)
             {
-                if (product.Price > limit)
-                {
-                    product.Price = product.Price + above;
-                }
-                else
-                {
-                    product.Price = product.Price + below;
-                }
+                decimal? productPrice = product.Price;
+                decimal? productWholesalePrice = product.WholesalePrice;
 
-                if (product.WholesalePrice > limit)
+                if (usePriceLists)
                 {
-                    product.WholesalePrice = product.WholesalePrice + above;
+                    string supplierName = supplierService.GetSupplierName(product.IdSupplier);
+                    ISupplier priceList = priceListsService[supplierName];
+
+                    if ((priceList != null) && (priceList.HasReference(product.Reference)))
+                    {
+                        productPrice = priceListsService[supplierName].GetPrice(product.Reference);
+                        productWholesalePrice = priceListsService[supplierName].GetWholeSalePrice(product.Reference);
+                
+                        decimal? newPrice;
+                        decimal? newWholeSalePrice;
+                
+                        if (productPrice > limit)
+                        {
+                            newPrice = productPrice + above; 
+                        }
+                        else
+                        {
+                            newPrice = productPrice + below; 
+                        }
+
+                        AddDecimalChange(product.Price, newPrice, product.Id, FieldType.Price);
+                        product.Price = newPrice;
+                        
+                        if (productWholesalePrice > limit)
+                        {
+                            newWholeSalePrice = productWholesalePrice + above;
+                        }
+                        else
+                        {
+                            newWholeSalePrice = productWholesalePrice + below;
+                        }
+
+                        AddDecimalChange(product.WholesalePrice, newWholeSalePrice, product.Id, FieldType.Price);
+                        product.WholesalePrice = newWholeSalePrice;
+                    }
                 }
                 else
                 {
-                    product.WholesalePrice = product.WholesalePrice + below;
+                    decimal? newPrice;
+                    decimal? newWholeSalePrice;
+                    if (productPrice > limit)
+                    {
+                        newPrice = productPrice + above; 
+                    }
+                    else
+                    {
+                        newPrice = productPrice + below; 
+                    }
+                    AddDecimalChange(product.Price, newPrice, product.Id, FieldType.Price);
+                    product.Price = newPrice;
+                    
+                    if (productWholesalePrice > limit)
+                    {
+                        newWholeSalePrice = productWholesalePrice + above;
+                    }
+                    else
+                    {
+                        newWholeSalePrice = productWholesalePrice + below;
+                    }
+                    AddDecimalChange(product.WholesalePrice, newWholeSalePrice, product.Id, FieldType.Price);
+                    product.WholesalePrice = newWholeSalePrice;
                 }
             }
         }
-//        //Delegate can point to any method which takes 2 int and returns single int
-
-
-////Delegate can point to any method in this class
-//public class SimpleMath
-//{
-//   public static int Add(int x, int y)
-//   {
-//      return x + y;
-//   }
-
-//   public static int Subtract(int x, int y)
-//   {
-//      return x - y;
-//   }
-//}
-
-////Create instance of delegate type and call
-//BinaryOp b = new BinaryOp(SimpleMath.Add);
-//Console.WriteLine("10 + 10 is {0}", b(10, 10));
-
-        
     }
 }
