@@ -39,6 +39,28 @@ namespace Bussiness.RePricing
             productToReprice = products;
         }
 
+        public void UndoChanges()
+        {
+            if (ConsistencyChanges.Count > 0)
+            {
+                foreach (ChangeRecord change in ConsistencyChanges)
+                {
+                    if (change.Type == RecordType.Product)
+                    {
+                        if (change.Field == FieldType.Price)
+                        {
+                         //   Product.
+                        }
+
+                        if (change.Field == FieldType.WholesalePrice)
+                        {
+                            
+                        }
+                    }
+                }
+            }
+        }
+
         private void AddDecimalChange(decimal? oldValue, decimal? newValue, long? id, FieldType field)
         {
             if (oldValue != newValue)

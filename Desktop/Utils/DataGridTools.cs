@@ -88,8 +88,24 @@ namespace Desktop.Utils
             column.Name = dataProperty;
             column.Width = Instance.mainSettings.GetWidth(grid.Name+dataProperty);
             column.DataPropertyName = dataProperty;
-            column.DefaultCellStyle.Format = "0.00";
             
+            grid.Columns.Add(column);
+        }
+
+        public static void AddNumberColumn(DataGridView grid, string dataProperty, string header, bool readOnly = true, bool visibility = true)
+        {
+            DataGridViewColumn column = new DataGridViewColumn();
+
+            DataGridViewCell cell = new DataGridViewTextBoxCell();
+            column.CellTemplate = cell;
+            column.HeaderText = header;
+            column.ReadOnly = readOnly;
+            column.Visible = visibility;
+            column.Name = dataProperty;
+            column.Width = Instance.mainSettings.GetWidth(grid.Name + dataProperty);
+            column.DataPropertyName = dataProperty;
+            column.DefaultCellStyle.Format = "0.00";
+
             grid.Columns.Add(column);
         }
 

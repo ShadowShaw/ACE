@@ -31,7 +31,7 @@ namespace Desktop.Forms
             DataGridTools.AddColumn(dgChanges, "Id", TextResources.Id);
             DataGridTools.AddColumn(dgChanges, "Type", TextResources.Type);
             DataGridTools.AddColumn(dgChanges, "Field", TextResources.Field);
-            DataGridTools.AddColumn(dgChanges, "Value", TextResources.Value);
+            DataGridTools.AddNumberColumn(dgChanges, "Value", TextResources.Value);
             DataGridTools.AddCheckBoxColumn(dgChanges, "Confirmation", TextResources.Confirmation);
 
             DataTable table = new DataTable();

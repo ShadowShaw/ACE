@@ -14,6 +14,7 @@ using Bussiness.ViewModels;
 using Bussiness.UserSettings;
 using Desktop.Custom_Contols;
 using Bussiness.RePricing;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Desktop.Forms
 {
@@ -198,6 +199,10 @@ namespace Desktop.Forms
 
         private void BPricingShowClick(object sender, EventArgs e)
         {
+            Engine.Pricing.UndoChanges();
+            Engine.Pricing.ConsistencyChanges.Clear();
+            dgPricing.Refresh();
+                
             if (treePricing.SelectedNode != null)
             {
                 lPricingCategoryIndication.Text = treePricing.SelectedNode.Text;
@@ -217,8 +222,8 @@ namespace Desktop.Forms
             DataGridTools.AddColumn(dgPricing, "Manufacturer", TextResources.Manufacturer);
             DataGridTools.AddColumn(dgPricing, "IdSupplier", TextResources.Supplier, true, false);
             DataGridTools.AddColumn(dgPricing, "Supplier", TextResources.Supplier);
-            DataGridTools.AddColumn(dgPricing, "Price", TextResources.SalePrice, false);
-            DataGridTools.AddColumn(dgPricing, "WholesalePrice", TextResources.WholeSalePrice, false);
+            DataGridTools.AddNumberColumn(dgPricing, "Price", TextResources.SalePrice, false);
+            DataGridTools.AddNumberColumn(dgPricing, "WholesalePrice", TextResources.WholeSalePrice, false);
             DataGridTools.AddButtonColumn(dgPricing, "Link", TextResources.LinkButton);
 
             int idManufacturer = 0;
@@ -240,7 +245,10 @@ namespace Desktop.Forms
                 idCategories.Add(Convert.ToInt32(Engine.Categories.GetCategoryId(treePricing.SelectedNode.Text)));
             }
 
-            Engine.Pricing.SetProducts(Engine.Products.GetProductForRepricing(idManufacturer, idSupplier, idCategories));
+            //Engine.Pricing.SetProducts(Engine.Products.GetProductForRepricing(idManufacturer, idSupplier, idCategories));
+            List<ProductViewModel> a = Engine.Products.GetProductForRepricing(idManufacturer, idSupplier, idCategories);
+            List<ProductViewModel> deepCopiedList = GenericCopier<List<ProductViewModel>>.DeepCopy(a);
+            Engine.Pricing.SetProducts(deepCopiedList);
             dgPricing.DataSource = Engine.Pricing.GetProducts(); 
 
             lPricingManufacturerIndication.Text = cPricingManufacturers.SelectedItem.ToString();
@@ -461,6 +469,14 @@ namespace Desktop.Forms
             cbActiveEshop.Enabled = false;
             bLoadProducts.Enabled = false;
             bPricingInit.Enabled = false;
+            gbConsistency.Enabled = false;
+            bSaveChanges.Enabled = false;
+            bPricingInit.Enabled = false;
+            bPricingShow.Enabled = false;
+            gbSelectProduct.Enabled = false;
+            bPricingShow.Enabled = false;
+            bReprice.Enabled = false;
+            bPricingSave.Enabled = false;
         }
 
         public void EnableControlsAfterAccesingEshop()
@@ -468,6 +484,14 @@ namespace Desktop.Forms
             cbActiveEshop.Enabled = true;
             bLoadProducts.Enabled = true;
             bPricingInit.Enabled = true;
+            gbConsistency.Enabled = true;
+            bSaveChanges.Enabled = true;
+            bPricingInit.Enabled = true;
+            bPricingShow.Enabled = true;
+            gbSelectProduct.Enabled = true;
+            bPricingShow.Enabled = true;
+            bReprice.Enabled = true;
+            bPricingSave.Enabled = true;
         }
         
         public void ClearGridsOnReload()
@@ -1093,7 +1117,7 @@ namespace Desktop.Forms
             DataGridTools.AddColumn(dgConsistency, "Name", TextResources.Name);
             DataGridTools.AddColumn(dgConsistency, "IdCategoryDefault", TextResources.Category, true, false);
             DataGridTools.AddColumn(dgConsistency, "Category", TextResources.Category);
-            DataGridTools.AddColumn(dgConsistency, "Price", TextResources.SalePrice, false);
+            DataGridTools.AddNumberColumn(dgConsistency, "Price", TextResources.SalePrice, false);
             DataGridTools.AddButtonColumn(dgConsistency, "Link", TextResources.LinkButton);
 
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
@@ -1117,7 +1141,7 @@ namespace Desktop.Forms
             DataGridTools.AddColumn(dgConsistency, "Name", TextResources.Name);
             DataGridTools.AddColumn(dgConsistency, "IdCategoryDefault", TextResources.Category, true, false);
             DataGridTools.AddColumn(dgConsistency, "Category", TextResources.Category);
-            DataGridTools.AddColumn(dgConsistency, "Weight", TextResources.Weight, false);
+            DataGridTools.AddNumberColumn(dgConsistency, "Weight", TextResources.Weight, false);
             DataGridTools.AddButtonColumn(dgConsistency, "Link", TextResources.LinkButton);
 
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
@@ -1140,7 +1164,7 @@ namespace Desktop.Forms
             DataGridTools.AddColumn(dgConsistency, "Name", TextResources.Name);
             DataGridTools.AddColumn(dgConsistency, "IdCategoryDefault", TextResources.Category, true, false);
             DataGridTools.AddColumn(dgConsistency, "Category", TextResources.Category);
-            DataGridTools.AddColumn(dgConsistency, "WholesalePrice", TextResources.WholeSalePrice, false);
+            DataGridTools.AddNumberColumn(dgConsistency, "WholesalePrice", TextResources.WholeSalePrice, false);
             DataGridTools.AddButtonColumn(dgConsistency, "link", TextResources.LinkButton);
 
             for (int i = 0; i < dgConsistency.Rows.Count; i++)
@@ -1227,5 +1251,19 @@ namespace Desktop.Forms
         }
 
         #endregion
+    }
+
+    public static class GenericCopier<T>
+    {
+        public static T DeepCopy(object objectToCopy)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                binaryFormatter.Serialize(memoryStream, objectToCopy);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                return (T)binaryFormatter.Deserialize(memoryStream);
+            }
+        }
     }
 }

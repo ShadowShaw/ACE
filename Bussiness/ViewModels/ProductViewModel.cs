@@ -1,7 +1,9 @@
-﻿using Bussiness.Interfaces;
+﻿using System;
+using Bussiness.Interfaces;
 
 namespace Bussiness.ViewModels
 {
+    [Serializable]
     public class ProductViewModel : IViewModel
     {
         public long? Id { get; set; }
