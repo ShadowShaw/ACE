@@ -86,7 +86,10 @@ namespace Desktop.Utils
             column.ReadOnly = readOnly;
             column.Visible = visibility;
             column.Name = dataProperty;
-            column.Width = Instance.mainSettings.GetWidth(grid.Name+dataProperty);
+            if (Instance.mainSettings != null)
+            {
+                column.Width = Instance.mainSettings.GetWidth(grid.Name + dataProperty);                
+            }
             column.DataPropertyName = dataProperty;
             
             grid.Columns.Add(column);

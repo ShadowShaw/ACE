@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="ACEDesktop.exe" version="0.1.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="ACEDesktop.exe" version="0.1.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="ACE.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -43,38 +43,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="607232">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ACEDesktop.exe" size="610816">
       <assemblyIdentity name="ACEDesktop" version="1.5.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>8BjNw2zWBBSDcsmkbWeW4wDALQQ=</dsig:DigestValue>
+        <dsig:DigestValue>cmt2iE5sjaVpNINrUl7K0T7MzHA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bussiness.dll" size="48128">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bussiness.dll" size="49664">
       <assemblyIdentity name="Bussiness" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>mDcqhMJt6uNoRcpZhC+QQiMlVJI=</dsig:DigestValue>
+        <dsig:DigestValue>Bntrhq4vo5WmQUkgKkNOMz/pu3I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="22528">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Core.dll" size="23040">
       <assemblyIdentity name="Core" version="1.4.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>DId3XkGnEX4YMn0LjX/uvoArt3Q=</dsig:DigestValue>
+        <dsig:DigestValue>2fHWmv2jt/hOOHAfQOH+xJ52yLI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -192,22 +192,22 @@
       <dsig:DigestValue>Bc67B/rQgbtV33AMygWcxSB8SbE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="HtmlDocs\Home.html" size="174">
+  <file name="HtmlDocs\Home.html" size="987">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>fe0lhFAccWMcuPmIEToIUasITEY=</dsig:DigestValue>
+      <dsig:DigestValue>7Bxeg2gXeKn6Wss6Us7t66N+dI8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="HtmlDocs\ChangeLog.html" size="383">
+  <file name="HtmlDocs\ChangeLog.html" size="371">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>w2vBskjKwDgXNQ+MD4omHGDxaWE=</dsig:DigestValue>
+      <dsig:DigestValue>2NFUOUJwqfeHGFbMm4EVzmpX1CM=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

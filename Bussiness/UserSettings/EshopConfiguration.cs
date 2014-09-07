@@ -15,6 +15,12 @@ namespace Bussiness.UserSettings
         public string SupplierFileName { get; set; }
     }
 
+    public class Limit
+    {
+        public decimal LowLimit { get; set; }
+        public decimal HiLimit { get; set; }
+        public decimal Value { get; set; }
+    }
 
     public class EshopConfiguration //: INotifyPropertyChanged
     {
@@ -23,6 +29,7 @@ namespace Bussiness.UserSettings
         public string BaseUrl { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public List<Limit> RepriceLimits { get; set; }
         public List<SupplierConfiguration> Suppliers { get; set; }
         
         //public event PropertyChangedEventHandler PropertyChanged;

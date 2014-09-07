@@ -93,16 +93,14 @@ namespace Bussiness.RePricing
 
                     if ((priceList != null) && (priceList.HasReference(product.Reference)))
                     {
-                        productPrice = priceListsService[supplierName].GetPrice(product.Reference);
                         productWholesalePrice = priceListsService[supplierName].GetWholeSalePrice(product.Reference);
+                        
+                        AddDecimalChange(product.WholesalePrice, productWholesalePrice, product.Id, FieldType.WholesalePrice);
+                        product.WholesalePrice = productWholesalePrice;
 
-                        decimal? newPrice = productPrice * procent;
+                        decimal? newPrice = productWholesalePrice * procent;
                         AddDecimalChange(product.Price, newPrice, product.Id, FieldType.Price);
                         product.Price = newPrice;
-
-                        decimal? newWholeSalePrice = productWholesalePrice * procent;
-                        AddDecimalChange(product.WholesalePrice, newWholeSalePrice, product.Id, FieldType.Price);
-                        product.WholesalePrice = newWholeSalePrice;
                     }
                 }
                 else
@@ -112,7 +110,7 @@ namespace Bussiness.RePricing
                     product.Price = newPrice;
 
                     decimal? newWholeSalePrice = productWholesalePrice * procent;
-                    AddDecimalChange(product.WholesalePrice, newWholeSalePrice, product.Id, FieldType.Price);
+                    AddDecimalChange(product.WholesalePrice, newWholeSalePrice, product.Id, FieldType.WholesalePrice);
                     product.WholesalePrice = newWholeSalePrice;
                 }
             }
@@ -137,35 +135,24 @@ namespace Bussiness.RePricing
 
                     if ((priceList != null) && (priceList.HasReference(product.Reference)))
                     {
-                        productPrice = priceListsService[supplierName].GetPrice(product.Reference);
                         productWholesalePrice = priceListsService[supplierName].GetWholeSalePrice(product.Reference);
+
+                        AddDecimalChange(product.WholesalePrice, productWholesalePrice, product.Id, FieldType.Price);
+                        product.WholesalePrice = productWholesalePrice;
                 
                         decimal? newPrice;
-                        decimal? newWholeSalePrice;
-                
-                        if (productPrice > limit)
+
+                        if (productWholesalePrice > limit)
                         {
-                            newPrice = productPrice + above; 
+                            newPrice = productWholesalePrice + above; 
                         }
                         else
                         {
-                            newPrice = productPrice + below; 
+                            newPrice = productWholesalePrice + below; 
                         }
 
                         AddDecimalChange(product.Price, newPrice, product.Id, FieldType.Price);
                         product.Price = newPrice;
-                        
-                        if (productWholesalePrice > limit)
-                        {
-                            newWholeSalePrice = productWholesalePrice + above;
-                        }
-                        else
-                        {
-                            newWholeSalePrice = productWholesalePrice + below;
-                        }
-
-                        AddDecimalChange(product.WholesalePrice, newWholeSalePrice, product.Id, FieldType.Price);
-                        product.WholesalePrice = newWholeSalePrice;
                     }
                 }
                 else

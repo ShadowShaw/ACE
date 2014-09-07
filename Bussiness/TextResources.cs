@@ -16,7 +16,6 @@
         public const string LinkButton = "Otevřít produkt";
         public const string DeleteButton = "Smazat produkt";
 
-
         //dgPricing
         public const string Supplier = "Dodavatel";
 
@@ -64,18 +63,20 @@
         public const string StatusNoActiveEshop = "Aktivní eshop: žádný";
         public const string StatusActiveEshop = "Aktivní eshop: ";
         public const string StatusSavingChanges = "Ukladám změny, prosím čekejte...";
-        public const string StatusLoadingLanguages = "Nahrávám jazyky, prosí­m čekejte...";
-        public const string StatusLoadingManufacturers = "Nahrávám výrobce, prosí­m čekejte...";
-        public const string StatusLoadingCategories = "Nahrávám kategorie, prosí­m čekejte...";
-        public const string StatusLoadingProducts = "Nahrávám produkty, prosí­m čekejte...";
-        public const string StatusLoadingSuppliers = "Nahrávám dodavatele, prosí­m čekejte...";
-        public const string StatusRepriceInProgress = "Přeceňuji produkty, prosí­m čekejte...";
+        public const string StatusLoadingLanguages = "Nahrávám jazyky, prosím čekejte...";
+        public const string StatusLoadingManufacturers = "Nahrávám výrobce, prosím čekejte...";
+        public const string StatusLoadingCategories = "Nahrávám kategorie, prosím čekejte...";
+        public const string StatusLoadingProducts = "Nahrávám produkty, prosím čekejte...";
+        public const string StatusLoadingSuppliers = "Nahrávám dodavatele, prosím čekejte...";
+        public const string StatusRepriceInProgress = "Přeceňuji produkty, prosím čekejte...";
 
         // Message boxes
         public const string MsgNoChangesToSaveValue = "Nejsou žádné změny k zápisu.";
         public const string MsgNoChangesToSaveTitle = "Žádné změny";
         public const string MsgEmptyConfigurationValue = "Nenalezena konfigurace připojení k eshopu. Prosím nastavte připojení.";
         public const string MsgEmptyConfigurationTitle = "Nenalezena konfigurace připojení k eshopu.";
+        public const string MsgNotOnlineValue = "Pro tuto činnosti připojte počítač do sítě internet.";
+        public const string MsgNotOnlineTitle = "Nedetekováno připojení k internetu.";
         public const string MsgNoPriceListTitle = "Ceník není k dispozici";
         public const string MsgNoPriceListValue = "Ceník není k dispozici, otevřete ceník";
         public const string MsgDeleteEshopTitle = "Odstranit konfiguraci eshopu";
@@ -89,11 +90,14 @@
         public const string MsgConnectionTestPass = "Server eshopu odpovídá.";
         public const string MsgConnectionTestFail = "Server eshopu neodpovídá.";
         public const string MsgConnectionTestTitle = "Test připojení";
+        public const string MsgErrorInConnectionParameters = "Před testem připojení zadejte validiní parametry.";
         public const string MsgLoginRequiredValue = "Pro použití ACE se musíte přihlásit.";
         public const string MsgLoginRequiredTitle = "Vyžadováno přihlášení";
         
         // Eshop Configuration User Control
         public const string EUCPrestaSetup = "Konfigurace eshopu ";
+        public const string EUCValidUrl = "Adresa eshopu není ve správném tvaru, nebo je neplatná.";
+        public const string EUCEmptyToken = "Token pro autorizaci připojení k eshopu nemůže být prázdný.";
 
     }
 }

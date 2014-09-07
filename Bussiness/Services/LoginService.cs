@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System.Net;
+using Core;
 using Core.Data;
 using Core.Interfaces;
 using Core.Models;
@@ -100,37 +101,56 @@ namespace Bussiness.Services
 
         public DataGridView GetModuleInfo(DataGridView grid)
         {
-            if (Logged())
+            if (IsOnline())
             {
-                using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+                if (Logged())
                 {
-                    foreach (ACEModule item in uow.ACEModules.GetAll().ToList())
+                    using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
                     {
-                        bool active = IsModuleActive(item.Id);
-
-                        DateTime? date = GetActiveDate(item.Id);
-                        string dateInString = "";
-                        if (date != null)
+                        foreach (ACEModule item in uow.ACEModules.GetAll().ToList())
                         {
-                            dateInString = date.ToString();
-                        }
+                            bool active = IsModuleActive(item.Id);
 
-                        grid.Rows.Add(item.Name, active, dateInString);
+                            DateTime? date = GetActiveDate(item.Id);
+                            string dateInString = "";
+                            if (date != null)
+                            {
+                                dateInString = date.ToString();
+                            }
+
+                            grid.Rows.Add(item.Name, active, dateInString);
+                        }
                     }
                 }
-            }
-            else
-            {
-                using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+                else
                 {
-                    foreach (ACEModule item in uow.ACEModules.GetAll().ToList())
+                    using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
                     {
-                        grid.Rows.Add(item.Name, false, "");
+                        foreach (ACEModule item in uow.ACEModules.GetAll().ToList())
+                        {
+                            grid.Rows.Add(item.Name, false, "");
+                        }
                     }
                 }
             }
-                        
+
             return grid;
+        }
+
+        public bool IsOnline()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (var stream = client.OpenRead("http://www.google.com"))
+                {
+                   return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private DateTime? GetActiveDate(int moduleId)

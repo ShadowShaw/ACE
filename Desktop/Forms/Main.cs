@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.IO;
 using System.Windows.Forms;
+using Core.Utils;
 using Desktop.UserSettings;
 using Desktop.Utils;
 using System.Threading.Tasks;
@@ -14,7 +14,6 @@ using Bussiness.ViewModels;
 using Bussiness.UserSettings;
 using Desktop.Custom_Contols;
 using Bussiness.RePricing;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Desktop.Forms
 {
@@ -28,6 +27,16 @@ namespace Desktop.Forms
         private int indexForChange = -1;
         private FieldType changedType;
         private Version aceVersion;
+
+        private bool activeEshopEnabled;
+        private bool loadProductEnabled;
+        private bool pricingInitEnabled;
+        private bool consistencyEnabled;
+        private bool saveChangesEnabled;
+        private bool pricingShowEnabled;
+        private bool selectProductEnabled;
+        private bool repriceEnabled;
+        private bool pricingSaveEnabled;
         
         #region pricing
 
@@ -36,6 +45,12 @@ namespace Desktop.Forms
             Engine.Login.GetRights();
             if (Engine.Login.Rights.Pricing)
             {
+                if (Engine.Login.IsOnline() == false)
+                {
+                    MessageIsOffline();
+                    return;
+                }
+
                 if ((String.IsNullOrEmpty(Engine.ApiToken)) || (String.IsNullOrEmpty(Engine.BaseUrl)))
                 {
                     MessageEshopConfigurationMissing();
@@ -48,7 +63,7 @@ namespace Desktop.Forms
                         bool result;
                         bPricingSave.Enabled = false;
                         bReprice.Enabled = false;
-                        bPricingShow.Enabled = false;                        
+                        bPricingShow.Enabled = false;
 
                         statusProgress.Visible = true;
                         statusMessage.Text = TextResources.StatusLoadingLanguages;
@@ -66,12 +81,12 @@ namespace Desktop.Forms
 
                         statusProgress.Visible = false;
                         statusMessage.Text = "";
-                        gbSelectProduct.Enabled = true;
+                        selectProductEnabled = true;
                     }
                     finally
                     {
+                        pricingShowEnabled = true;
                         EnableControlsAfterAccesingEshop();
-                        bPricingShow.Enabled = true;
                     }
                 }
             }
@@ -185,7 +200,7 @@ namespace Desktop.Forms
 
                         statusProgress.Visible = false;
                         statusMessage.Text = String.Empty;
-                        gbConsistency.Enabled = true;
+                        consistencyEnabled = true;
 
                         dgPricing.DataSource = null;
                     }
@@ -193,6 +208,8 @@ namespace Desktop.Forms
             }
             finally
             {
+                consistencyEnabled = false;
+                saveChangesEnabled = false;
                 EnableControlsAfterAccesingEshop();
             }
         }
@@ -363,6 +380,11 @@ namespace Desktop.Forms
             MessageBox.Show(TextResources.MsgEmptyConfigurationValue, TextResources.MsgEmptyConfigurationTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        private void MessageIsOffline()
+        {
+            MessageBox.Show(TextResources.MsgNotOnlineValue, TextResources.MsgNotOnlineTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
         public Main()
         {
             InitializeComponent();
@@ -397,18 +419,38 @@ namespace Desktop.Forms
             InitDisplayEshopConfiguration();
             InitModuleInfo();
             InitStatusBar();
-            
-            homeBrowser.Url = new Uri(ACESettings.ChangeLogPath);
+            ShowHomeBrowser();
             
             openDialog.InitialDirectory = Application.StartupPath;
             saveDialog.InitialDirectory = Application.StartupPath;
         }
 
-        [Localizable(false)]
-        public override sealed string Text
+        private void ShowHomeBrowser()
         {
-            get { return base.Text; }
-            set { base.Text = value; }
+            if (Engine.Login.IsOnline())
+            {
+                homeBrowser.Url = new Uri(ACESettings.HomePath);                    
+            }
+            else
+            {
+                String appdir = Path.GetDirectoryName(Application.ExecutablePath);
+                String myfile = Path.Combine(appdir, "HtmlDocs/Home.html");
+                homeBrowser.Url = new Uri("file:///" + myfile);
+            }
+        }
+
+        private void ShowChangeLogBrowser()
+        {
+            if (Engine.Login.IsOnline())
+            {
+                homeBrowser.Url = new Uri(ACESettings.ChangeLogPath);
+            }
+            else
+            {
+                String appdir = Path.GetDirectoryName(Application.ExecutablePath);
+                String myfile = Path.Combine(appdir, "HtmlDocs/ChangeLog.html");
+                homeBrowser.Url = new Uri("file:///" + myfile);
+            }
         }
 
         private void DisplayEshop()
@@ -466,32 +508,38 @@ namespace Desktop.Forms
 
         public void DisableControlsWhenAccesingEshop()
         {
+            activeEshopEnabled = cbActiveEshop.Enabled;
+            loadProductEnabled = bLoadProducts.Enabled;
+            pricingInitEnabled = bPricingInit.Enabled;
+            consistencyEnabled = gbConsistency.Enabled;
+            saveChangesEnabled = bSaveChanges.Enabled;
+            pricingShowEnabled = bPricingShow.Enabled;
+            selectProductEnabled = gbSelectProduct.Enabled;
+            repriceEnabled = bReprice.Enabled;
+            pricingSaveEnabled = bPricingSave.Enabled;
+            
             cbActiveEshop.Enabled = false;
             bLoadProducts.Enabled = false;
             bPricingInit.Enabled = false;
             gbConsistency.Enabled = false;
             bSaveChanges.Enabled = false;
-            bPricingInit.Enabled = false;
             bPricingShow.Enabled = false;
             gbSelectProduct.Enabled = false;
-            bPricingShow.Enabled = false;
             bReprice.Enabled = false;
             bPricingSave.Enabled = false;
         }
 
         public void EnableControlsAfterAccesingEshop()
         {
-            cbActiveEshop.Enabled = true;
-            bLoadProducts.Enabled = true;
-            bPricingInit.Enabled = true;
-            gbConsistency.Enabled = true;
-            bSaveChanges.Enabled = true;
-            bPricingInit.Enabled = true;
-            bPricingShow.Enabled = true;
-            gbSelectProduct.Enabled = true;
-            bPricingShow.Enabled = true;
-            bReprice.Enabled = true;
-            bPricingSave.Enabled = true;
+            cbActiveEshop.Enabled = activeEshopEnabled;
+            bLoadProducts.Enabled = loadProductEnabled;
+            bPricingInit.Enabled = pricingInitEnabled;
+            gbConsistency.Enabled = consistencyEnabled;
+            bSaveChanges.Enabled = saveChangesEnabled;
+            bPricingShow.Enabled = pricingShowEnabled;
+            gbSelectProduct.Enabled = selectProductEnabled;
+            bReprice.Enabled = repriceEnabled;
+            bPricingSave.Enabled = pricingSaveEnabled;
         }
         
         public void ClearGridsOnReload()
@@ -532,6 +580,11 @@ namespace Desktop.Forms
             Engine.Login.GetRights();
             if (Engine.Login.Rights.Consistency)
             {
+                if (Engine.Login.IsOnline() == false)
+                {
+                    MessageIsOffline();
+                    return;
+                }
                 if ((String.IsNullOrEmpty(Engine.ApiToken)) || (String.IsNullOrEmpty(Engine.BaseUrl)))
                 {
                     MessageEshopConfigurationMissing();
@@ -544,25 +597,25 @@ namespace Desktop.Forms
                         
                         DisableControlsWhenAccesingEshop();
 
-                        this.statusProgress.Visible = true;
-                        this.statusMessage.Text = "Nahrávám jazyky, prosím čekejte...";
-                        this.gbConsistency.Enabled = false;
+                        statusProgress.Visible = true;
+                        statusMessage.Text = "Nahrávám jazyky, prosím čekejte...";
 
                         result = await Engine.Languages.LoadLanguagesAsync();
                         Engine.Languages.GetActiveLanguage();
                         Engine.SetupPrestaLanguages();
-                        this.statusMessage.Text = "Nahrávám výrobce, prosím čekejte...";
+                        statusMessage.Text = "Nahrávám výrobce, prosím čekejte...";
                         result = await Engine.Manufacturers.LoadManufacturersAsync();
-                        this.statusMessage.Text = "Nahrávám dodavatele, prosím čekejte...";
+                        statusMessage.Text = "Nahrávám dodavatele, prosím čekejte...";
                         result = await Engine.Suppliers.LoadSuppliersAsync();
-                        this.statusMessage.Text = "Nahrávám kategorie, prosím čekejte...";
+                        statusMessage.Text = "Nahrávám kategorie, prosím čekejte...";
                         result = await Engine.Categories.LoadCategoriesAsync();
-                        this.statusMessage.Text = "Nahrávám produkty, prosím čekejte...";
+                        statusMessage.Text = "Nahrávám produkty, prosím čekejte...";
                         result = await Engine.Products.LoadProductsAsync();
 
-                        this.statusProgress.Visible = false;
-                        this.statusMessage.Text = "";
-                        this.gbConsistency.Enabled = true;
+                        statusProgress.Visible = false;
+                        statusMessage.Text = "";
+                        consistencyEnabled = true;
+                        saveChangesEnabled = true;
                     }
                     finally
                     {
@@ -644,8 +697,7 @@ namespace Desktop.Forms
 
                         statusProgress.Visible = true;
                         statusMessage.Text = TextResources.StatusLoadingLanguages;
-                        gbConsistency.Enabled = false;
-
+                        
                         result = await Engine.Languages.LoadLanguagesAsync();
                         Engine.Languages.GetActiveLanguage();
                         Engine.SetupPrestaLanguages();
@@ -658,12 +710,16 @@ namespace Desktop.Forms
 
                         statusProgress.Visible = false;
                         statusMessage.Text = "";
-                        gbConsistency.Enabled = true;
+                        consistencyEnabled = true;
 
                         dgConsistency.DataSource = null;
                     }
                     finally
                     {
+                        pricingSaveEnabled = false;
+                        repriceEnabled = false;
+                        pricingShowEnabled = false;
+                        selectProductEnabled = false;
                         EnableControlsAfterAccesingEshop();
                     }
                 }
@@ -707,13 +763,20 @@ namespace Desktop.Forms
         
         private void BPrestaTestClick(object sender, EventArgs e)
         {
-            if (Engine.TestPrestaAccess())
+            if (eshopSettings.IsValid)
             {
-                MessageBox.Show(TextResources.MsgConnectionTestPass, TextResources.MsgConnectionTestTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (Engine.TestPrestaAccess())
+                {
+                    MessageBox.Show(TextResources.MsgConnectionTestPass, TextResources.MsgConnectionTestTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(TextResources.MsgConnectionTestFail, TextResources.MsgConnectionTestTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }                
             }
             else
             {
-                MessageBox.Show(TextResources.MsgConnectionTestFail, TextResources.MsgConnectionTestTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(TextResources.MsgErrorInConnectionParameters, TextResources.MsgConnectionTestTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -940,13 +1003,13 @@ namespace Desktop.Forms
         private void MenuShowHomeClick(object sender, EventArgs e)
         {
             tc.SelectedTab = tpHome;
-            homeBrowser.Url = new Uri(ACESettings.HomePath);
+            ShowHomeBrowser();
         }
 
         private void MenuShowChangeLogClick(object sender, EventArgs e)
         {
             tc.SelectedTab = tpHome;
-            homeBrowser.Url = new Uri(ACESettings.ChangeLogPath);
+            ShowChangeLogBrowser();
         }
 
         #endregion
@@ -1251,19 +1314,5 @@ namespace Desktop.Forms
         }
 
         #endregion
-    }
-
-    public static class GenericCopier<T>
-    {
-        public static T DeepCopy(object objectToCopy)
-        {
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-                binaryFormatter.Serialize(memoryStream, objectToCopy);
-                memoryStream.Seek(0, SeekOrigin.Begin);
-                return (T)binaryFormatter.Deserialize(memoryStream);
-            }
-        }
     }
 }
