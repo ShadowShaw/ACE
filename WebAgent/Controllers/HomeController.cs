@@ -22,6 +22,14 @@ namespace ACEAgent.Controllers
             return View();
         }
 
+        public ActionResult HelpPage()
+        {
+            ViewBag.Message = "Nápověda:";
+
+            return View();
+        }
+
+
         public ActionResult Terms()
         {
             ViewBag.Message = "Obchodní podmínky:";
