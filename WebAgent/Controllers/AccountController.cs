@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Transactions;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -127,6 +128,8 @@ namespace ACEAgent.Controllers
                     {
                         System.Web.Security.Roles.AddUserToRole(model.UserName, "admins");
                     }
+
+//                    SendEmailConfirmation(model.Email, model.UserName, confirmationToken);
 
                     return RedirectToAction("Index", "Home");
                 }

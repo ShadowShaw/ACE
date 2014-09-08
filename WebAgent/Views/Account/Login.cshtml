@@ -8,54 +8,58 @@
 
 
 <div>
-<img class="img-thumbnailNoBorder" src="/Images/login.gif" data-src="holder.js/250x250" alt="250x250" style="width: 250px; height: 250px; float:left">
+    <img class="img-thumbnailNoBorder" src="/Images/login.gif" data-src="holder.js/250x250" alt="250x250" style="width: 250px; height: 250px; float:left">
 
-<section id="loginForm">
-@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    <section id="loginForm">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
 
-    <fieldset>
-        <ul>
-            <li>
-                <div>
-                    @Html.LabelFor(m => m.UserName, new{@class = "control-label"})
-                </div>
-                <div>
-                    @Html.TextBoxFor(m => m.UserName, new{@class = "control-group"})
-                </div>
-                <div>
-                    @Html.ValidationMessageFor(m => m.UserName)
-                </div>
-            </li>
-            <li>
-                <div>
-                    @Html.LabelFor(m => m.Password, new{@class = "control-label"})
-                </div>
-                <div>
-                    @Html.PasswordFor(m => m.Password, new{@class = "control-group"})
-                </div>
-                <div>
-                    @Html.ValidationMessageFor(m => m.Password)
-                </div>
-            </li>
-            <li>
-                <div>
-                    @Html.LabelFor(m => m.RememberMe, new{@class = "control-label"})
-                    @Html.CheckBoxFor(m => m.RememberMe, new{@class = "control-group"})
-                </div>
-            </li>
-        </ul>
-        <input type="submit" class="btn btn-primary" value="Přihlásit" />
-    </fieldset>
+            <fieldset>
+                <ul>
+                    <li>
+                        <div>
+                            @Html.LabelFor(m => m.UserName, new{@class = "control-label"})
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(m => m.UserName, new{@class = "control-group"})
+                        </div>
+                        <div>
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            @Html.LabelFor(m => m.Password, new{@class = "control-label"})
+                        </div>
+                        <div>
+                            @Html.PasswordFor(m => m.Password, new{@class = "control-group"})
+                        </div>
+                        <div>
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            @Html.LabelFor(m => m.RememberMe, new{@class = "control-label"})
+                            @Html.CheckBoxFor(m => m.RememberMe, new{@class = "control-group"})
+                        </div>
+                    </li>
+                </ul>
+                <input type="submit" class="btn btn-primary" value="Přihlásit" />
+            </fieldset>
                    
-    <br></br>
-    <p>
-        @Html.ActionLink("Registrace", "Register") pokud nemáte účet.
-    </p>
-}
-</section>
+            <br></br>
+            <p>
+                @Html.ActionLink("Registrace", "Register") pokud nemáte účet.
+            </p>
+        }
+    </section>
+</div>
+
+<div>
+  Pokud jste zapoměli Vaše přihlašovácí údaje, kontaktujte nás.
 </div>
 
 @*<section class="social" id="socialLoginForm">
