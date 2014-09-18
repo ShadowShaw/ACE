@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Globalization;
-using System.Web.Mvc;
-using System.Web.Security;
 
 namespace ACEAgent.Models
 {
@@ -15,6 +9,9 @@ namespace ACEAgent.Models
         
         [Display(Name = "Jméno modulu")]
         public string ModuleName { get; set; }
+
+        [Display(Name = "Popis modulu")]
+        public string ModuleDescription { get; set; }
 
         [Display(Name = "Cena modulu za měsíc")]
         public decimal MonthPrice { get; set; }

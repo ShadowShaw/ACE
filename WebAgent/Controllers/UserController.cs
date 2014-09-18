@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Core.Models;
 using Core.Data;
@@ -29,11 +26,11 @@ namespace ACEAgent.Controllers
             }
         }
 
-        public string GetModuleNameForId(int Id)
+        public string GetModuleNameForId(int id)
         {
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return uow.ACEModules.GetAll().Where(m => m.Id == Id).FirstOrDefault().Name;
+                return uow.ACEModules.GetAll().Where(m => m.Id == id).FirstOrDefault().Name;
             }
         }
 
@@ -83,6 +80,7 @@ namespace ACEAgent.Controllers
                 {
                     ModuleOrders item = new ModuleOrders();
                     item.ModuleId = module.Id;
+                    item.ModuleDescription = module.Description;
                     item.ModuleName = module.Name;
                     item.MonthPrice = module.MonthPrice;
 
@@ -130,7 +128,6 @@ namespace ACEAgent.Controllers
                     uow.Commit();
                     ViewBag.StatusMessage = "Modul úspěšně objednán.";
                     return RedirectToAction("OrderModule");
-
                 }
                 else
                 {

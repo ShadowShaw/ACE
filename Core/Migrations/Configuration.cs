@@ -26,11 +26,11 @@ namespace Core.Migrations
             //    );
             //
 
-            context.ACEModules.AddOrUpdate(
-                  p => p.Name,
-                  new ACEModule { Name = "Pøeceòování", Description = ModuleInfo.PricingModuleDescription, MonthPrice = ModuleInfo.PricingModulePrice },
-                  new ACEModule { Name = "Kontrola databáze", Description = ModuleInfo.ConsistencyModuleDescription, MonthPrice = ModuleInfo.ConsistencyModulePrice }
-                );
+            //context.ACEModules.AddOrUpdate(
+            //      p => p.Name,
+            //      new ACEModule { Name = "Pøeceòování", Description = ModuleInfo.PricingModuleDescription, MonthPrice = ModuleInfo.PricingModulePrice },
+            //      new ACEModule { Name = "Kontrola databáze", Description = ModuleInfo.ConsistencyModuleDescription, MonthPrice = ModuleInfo.ConsistencyModulePrice }
+            //    );
         }
     }
 }

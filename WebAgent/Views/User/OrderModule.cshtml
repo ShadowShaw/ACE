@@ -20,6 +20,9 @@
             @Html.DisplayNameFor(model => model.ModuleName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ModuleDescription)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.MonthPrice)
         </th>
         <th>
@@ -37,6 +40,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.ModuleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModuleDescription)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MonthPrice)
