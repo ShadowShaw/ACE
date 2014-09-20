@@ -30,7 +30,15 @@ namespace ACEAgent.Controllers
         {
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return uow.ACEModules.GetAll().Where(m => m.Id == id).FirstOrDefault().Name;
+                if (uow.ACEModules.GetAll().Where(m => m.Id == id).Any())
+                {
+                    return uow.ACEModules.GetAll().Where(m => m.Id == id).FirstOrDefault().Name;    
+                }
+                else
+                {
+                    return "Modul již neexistuje";
+                }
+                
             }
         }
 
