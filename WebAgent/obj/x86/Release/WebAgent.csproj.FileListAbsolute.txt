@@ -13,11 +13,8 @@ C:\GitHub\ACE\WebAgent\bin\Microsoft.Web.Infrastructure.dll
 C:\GitHub\ACE\WebAgent\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\GitHub\ACE\WebAgent\bin\Newtonsoft.Json.dll
 C:\GitHub\ACE\WebAgent\bin\System.Net.Http.dll
-C:\GitHub\ACE\WebAgent\bin\System.Net.Http.Formatting.dll
 C:\GitHub\ACE\WebAgent\bin\System.Net.Http.WebRequest.dll
 C:\GitHub\ACE\WebAgent\bin\System.Web.Helpers.dll
-C:\GitHub\ACE\WebAgent\bin\System.Web.Http.dll
-C:\GitHub\ACE\WebAgent\bin\System.Web.Http.WebHost.dll
 C:\GitHub\ACE\WebAgent\bin\System.Web.Mvc.dll
 C:\GitHub\ACE\WebAgent\bin\System.Web.Optimization.dll
 C:\GitHub\ACE\WebAgent\bin\System.Web.Razor.dll
@@ -31,11 +28,8 @@ C:\GitHub\ACE\WebAgent\bin\Core.pdb
 C:\GitHub\ACE\WebAgent\bin\EntityFramework.xml
 C:\GitHub\ACE\WebAgent\bin\Newtonsoft.Json.xml
 C:\GitHub\ACE\WebAgent\bin\System.Net.Http.xml
-C:\GitHub\ACE\WebAgent\bin\System.Net.Http.Formatting.xml
 C:\GitHub\ACE\WebAgent\bin\System.Net.Http.WebRequest.xml
 C:\GitHub\ACE\WebAgent\bin\System.Web.Helpers.xml
-C:\GitHub\ACE\WebAgent\bin\System.Web.Http.xml
-C:\GitHub\ACE\WebAgent\bin\System.Web.Http.WebHost.xml
 C:\GitHub\ACE\WebAgent\bin\System.Web.Mvc.xml
 C:\GitHub\ACE\WebAgent\bin\System.Web.Razor.xml
 C:\GitHub\ACE\WebAgent\bin\System.Web.WebPages.xml

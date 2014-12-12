@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using LINQtoCSV;
+using Suppliers.Interfaces;
 
 namespace Suppliers.Accesors
 {
-    public class CSVAccessor
+    public class CSVAccessor : IAccessor
     {
         private readonly CsvFileDescription inputFileDescription;
-        private CsvFileDescription outputFileDescription;
         private readonly CsvContext context;
        
         public CSVAccessor()
@@ -22,19 +22,10 @@ namespace Suppliers.Accesors
                 FileCultureName = "en-US"
             };
 
-            outputFileDescription = new CsvFileDescription
-            {
-                SeparatorChar = ';', // tab delimited
-                FirstLineHasColumnNames = false, // no column names in first record
-                EnforceCsvColumnAttribute = true,
-                MaximumNbrExceptions = 50,
-                FileCultureName = "en-US"
-            };
-
             context = new CsvContext();
         }
 
-        public IEnumerable<T> LoadCSV<T>(string filename) where T : class, new()
+        public IEnumerable<T> Load<T>(string filename) where T : class, new()
         {
             IEnumerable<T> result = null;
             try

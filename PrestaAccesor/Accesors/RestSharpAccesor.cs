@@ -92,7 +92,7 @@ namespace PrestaAccesor.Accesors
             {
                 return null;
             }
-            XDocument xDcoument = XDocument.Parse(response.Content);
+                XDocument xDcoument = XDocument.Parse(response.Content);
             var ids = (from doc in xDcoument.Descendants(rootElement)
                        select int.Parse(doc.Attribute("id").Value)).ToList();
             return ids;

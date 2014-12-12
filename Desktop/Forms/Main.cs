@@ -5,15 +5,14 @@ using System.Linq;
 using System.IO;
 using System.Windows.Forms;
 using Core.Utils;
-using Desktop.UserSettings;
 using Desktop.Utils;
 using System.Threading.Tasks;
 using Bussiness.Services;
 using Bussiness;
 using Bussiness.ViewModels;
-using Bussiness.UserSettings;
 using Desktop.Custom_Contols;
 using Bussiness.RePricing;
+using UserSettings;
 
 namespace Desktop.Forms
 {
@@ -313,19 +312,19 @@ namespace Desktop.Forms
             switch (tc.SelectedIndex)
             {
                 case 0:
-                    MainSettings.Values.ACETab = ACETabType.Home;
+                    MainSettings.Values.ACETab = Enums.ACETabType.Home;
                     break;
                 case 1:
-                    MainSettings.Values.ACETab = ACETabType.Consistency;
+                    MainSettings.Values.ACETab = Enums.ACETabType.Consistency;
                     break;
                 case 2:
-                    MainSettings.Values.ACETab = ACETabType.Repricing;
+                    MainSettings.Values.ACETab = Enums.ACETabType.Repricing;
                     break;
                 case 3:
-                    MainSettings.Values.ACETab = ACETabType.Setup;
+                    MainSettings.Values.ACETab = Enums.ACETabType.Setup;
                     break;
                 default:
-                    MainSettings.Values.ACETab = ACETabType.Home;
+                    MainSettings.Values.ACETab = Enums.ACETabType.Home;
                     break;
             }
         }
@@ -334,13 +333,13 @@ namespace Desktop.Forms
         {
             switch (MainSettings.Values.ACETab)
             {
-                case ACETabType.Consistency:
+                case Enums.ACETabType.Consistency:
                     tc.SelectTab(1);
                     break;
-                case ACETabType.Repricing:
+                case Enums.ACETabType.Repricing:
                     tc.SelectTab(2);
                     break;
-                case ACETabType.Setup:
+                case Enums.ACETabType.Setup:
                     tc.SelectTab(3);
                     break;
                 default:
@@ -356,7 +355,7 @@ namespace Desktop.Forms
             ClearGridsOnReload();
             if (MainSettings.ActiveEshop() != null)
             {
-                if (MainSettings.ActiveEshop().Type == EshopType.Prestashop)
+                if (MainSettings.ActiveEshop().Type == Enums.EshopType.Prestashop)
                 {
                     Engine.InitPrestaServices(MainSettings.ActiveEshop().BaseUrl, MainSettings.ActiveEshop().Password);
                 }
@@ -737,24 +736,6 @@ namespace Desktop.Forms
         private void RefreshStatusBar()
         {
             statusActiveEshop.Text = TextResources.StatusNoActiveEshop;
-
-            statusAskino.Visible = false;
-            statusNoviko.Visible = false;
-
-            if (MainSettings.Eshops.ActiveEshopIndex != -1)
-            {
-                statusActiveEshop.Text = TextResources.StatusActiveEshop + MainSettings.ActiveEshop().EshopName;
-
-                if (File.Exists(MainSettings.ActiveEshop().Suppliers[MainSettings.ActiveEshop().AskinoIndex()].SupplierFileName) == true)
-                {
-                    statusAskino.Visible = true;
-                }
-
-                if (File.Exists(MainSettings.ActiveEshop().Suppliers[MainSettings.ActiveEshop().NovikoIndex()].SupplierFileName) == true)
-                {
-                    statusNoviko.Visible = true;
-                }
-            }
         }
 
         #endregion
@@ -784,7 +765,7 @@ namespace Desktop.Forms
         {
             EshopConfiguration eshop = new EshopConfiguration();
             eshop.EshopName = "Eshop" + MainSettings.Eshops.Eshops.Count();
-            eshop.Type = EshopType.Prestashop;
+            eshop.Type = Enums.EshopType.Prestashop;
             TreeNode treeNode = new TreeNode();
             MainSettings.Eshops.Eshops.Add(eshop);
             treeConfiguration.Nodes.Add(treeNode);
@@ -1262,34 +1243,31 @@ namespace Desktop.Forms
                 textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
 
                 DataGridViewComboBoxCell comboCell = (DataGridViewComboBoxCell)dgConsistency.Rows[i].Cells["Supplier"];
-                comboCell.Value = Engine.Manufacturers.GetManufacturerName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdSupplier"].Value));
+                comboCell.Value = Engine.Suppliers.GetSupplierName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdSupplier"].Value));
             }
 
             indexForChange = 5;
-            changedType = FieldType.Manufacturer;
+            changedType = FieldType.Supplier;
         }
 
         private void ConsistencySuppliersClick(object sender, EventArgs e)
         {
             foreach (SupplierConfiguration supplier in MainSettings.ActiveEshop().Suppliers)
             {
-                if (supplier.UseSupplier)
+                if (File.Exists(supplier.PathToFile) == false)
                 {
-                    if (File.Exists(supplier.SupplierFileName) == false)
-                    {
-                        MessageBox.Show(string.Format("{0} Askina", TextResources.MsgNoPriceListValue), TextResources.MsgNoPriceListTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    MessageBox.Show(string.Format("{0} Askina", TextResources.MsgNoPriceListValue), TextResources.MsgNoPriceListTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             
-            Engine.PriceLists.AddPriceLists(MainSettings.ActiveEshop());
+            Engine.PriceLists.LoadPriceLists(MainSettings.ActiveEshop());
                         
             indexForChange = -1;
             lListOf.Text = TextResources.GridTitleWithoutAnySupplier;
             DataGridTools.InitGrid(dgConsistency);
 
-            dgConsistency.DataSource = Engine.Products.GetNonAvailableProductOfSuppliers(Engine.PriceLists, Engine.Suppliers.GetAskinoId(), Engine.Suppliers.GetNovikoId());
+            dgConsistency.DataSource = Engine.Products.GetNonAvailableProductOfSuppliers(Engine.PriceLists, Engine.Suppliers);
 
             DataGridTools.AddColumn(dgConsistency, "Id", TextResources.Id);
             DataGridTools.AddColumn(dgConsistency, "Name", TextResources.Name);

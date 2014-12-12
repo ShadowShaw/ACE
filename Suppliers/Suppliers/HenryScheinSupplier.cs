@@ -7,22 +7,29 @@ using System.Linq;
 
 namespace Suppliers.Suppliers
 {
-    public class NovikoSupplier : ISupplier
+    public class HenryScheinSupplier : ISupplier
     {
-        private IEnumerable<NovikoModel> novikoPriceList;
-        private readonly CSVAccessor accessor;
+        private IEnumerable<HenryScheinModel> novikoPriceList;
+        private IAccessor accessor;
         public string Path { get; private set; }
         public int SupplierId { get; set; }
 
-        public NovikoSupplier(string pathToFile)
+        public HenryScheinSupplier(string pathToFile)
         {
-            accessor = new CSVAccessor();
             Path = pathToFile;
         }
 
         public void OpenPriceList()
         {
-            novikoPriceList = accessor.LoadCSV<NovikoModel>(Path);
+            if (Path.EndsWith("csv"))
+            {
+                accessor = new CSVAccessor();
+            }
+            if (Path.EndsWith("xls"))
+            {
+                accessor = new XLSAccessor();
+            }
+            novikoPriceList = accessor.Load<HenryScheinModel>(Path);
         }
 
         public IEnumerable<Object> GetPriceList()

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserSettings;
 using Product = PrestaAccesor.Entities.Product;
 
 namespace Bussiness.Services
@@ -220,45 +221,28 @@ namespace Bussiness.Services
             return Products.Select(x => x).Where(x => x.IdSupplier == supplierId).ToList();
         }
 
-        public IEnumerable<ProductViewModel> GetNonAvailableProductOfSuppliers(PriceListsService priceLists, long? askinoId, long? novikoId)
+        public IEnumerable<ProductViewModel> GetNonAvailableProductOfSuppliers(PriceListsService priceLists, SupplierService suppliers)
         {
             List<ProductViewModel> result = new List<ProductViewModel>();
-            
-            //foreach (dodavatel in dodavatele)
+
+            foreach (Enums.Suppliers supplier in Enum.GetValues(typeof(Enums.Suppliers)))
             {
-                if (priceLists.HasSupplier("Noviko"))
+                if (priceLists.HasSupplier(supplier))
                 {
-                    IEnumerable<ProductViewModel> productToCheck = GetProductsOfSupplier(novikoId); //id dodavatele
-                    ISupplier supplier = priceLists["Noviko"]; //name dodavatele
-                    supplier.OpenPriceList();
+                    long? supplierId = suppliers.GetSupplierId(supplier.ToString());
+                    IEnumerable<ProductViewModel> productToCheck = GetProductsOfSupplier(supplierId); 
+                    ISupplier supplierPriceList = priceLists[supplier];
+                    supplierPriceList.OpenPriceList();
 
                     foreach (ProductViewModel product in productToCheck)
                     {
-                        if (supplier.HasReference(product.Id.ToString()) == false)
+                        if (supplierPriceList.HasReference(product.Id.ToString()) == false)
                         {
                             result.Add(product);
                         }
                     }
                 }
             }
-
-            {
-                if (priceLists.HasSupplier("Askino"))
-                {
-                    IEnumerable<ProductViewModel> productToCheck = GetProductsOfSupplier(askinoId); //id dodavatele
-                    ISupplier supplier2 = priceLists["Askino"]; //name dodavatele
-                    supplier2.OpenPriceList();
-
-                    foreach (ProductViewModel product in productToCheck)
-                    {
-                        if (supplier2.HasReference(product.Id.ToString()) == false)
-                        {
-                            result.Add(product);
-                        }
-                    }
-                }
-            }
-            
             return result;
         }
 

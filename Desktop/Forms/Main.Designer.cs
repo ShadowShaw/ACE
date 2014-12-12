@@ -52,8 +52,6 @@
             this.statusActiveEshop = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.statusMessage = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusAskino = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusNoviko = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveDialog = new System.Windows.Forms.SaveFileDialog();
             this.tc = new System.Windows.Forms.TabControl();
             this.tpHome = new System.Windows.Forms.TabPage();
@@ -198,9 +196,7 @@
             this.statusLogin,
             this.statusActiveEshop,
             this.statusProgress,
-            this.statusMessage,
-            this.statusAskino,
-            this.statusNoviko});
+            this.statusMessage});
             this.status.Location = new System.Drawing.Point(0, 647);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(1031, 22);
@@ -240,18 +236,6 @@
             // 
             this.statusMessage.Name = "statusMessage";
             this.statusMessage.Size = new System.Drawing.Size(0, 17);
-            // 
-            // statusAskino
-            // 
-            this.statusAskino.Name = "statusAskino";
-            this.statusAskino.Size = new System.Drawing.Size(38, 17);
-            this.statusAskino.Text = "Askino";
-            // 
-            // statusNoviko
-            // 
-            this.statusNoviko.Name = "statusNoviko";
-            this.statusNoviko.Size = new System.Drawing.Size(39, 17);
-            this.statusNoviko.Text = "Noviko";
             // 
             // tc
             // 
@@ -1041,9 +1025,9 @@
             this.eshopSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.eshopSettings.Location = new System.Drawing.Point(292, 6);
+            this.eshopSettings.Location = new System.Drawing.Point(296, 6);
             this.eshopSettings.Name = "eshopSettings";
-            this.eshopSettings.Size = new System.Drawing.Size(721, 544);
+            this.eshopSettings.Size = new System.Drawing.Size(721, 576);
             this.eshopSettings.TabIndex = 7;
             // 
             // lActiveEshop
@@ -1071,9 +1055,9 @@
             // 
             this.bDelEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bDelEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bDelEshop.Location = new System.Drawing.Point(449, 559);
+            this.bDelEshop.Location = new System.Drawing.Point(11, 527);
             this.bDelEshop.Name = "bDelEshop";
-            this.bDelEshop.Size = new System.Drawing.Size(151, 23);
+            this.bDelEshop.Size = new System.Drawing.Size(275, 23);
             this.bDelEshop.TabIndex = 4;
             this.bDelEshop.Text = "Smaž konfiguraci eshopu";
             this.bDelEshop.UseVisualStyleBackColor = true;
@@ -1083,9 +1067,9 @@
             // 
             this.bAddEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bAddEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bAddEshop.Location = new System.Drawing.Point(292, 559);
+            this.bAddEshop.Location = new System.Drawing.Point(11, 498);
             this.bAddEshop.Name = "bAddEshop";
-            this.bAddEshop.Size = new System.Drawing.Size(151, 23);
+            this.bAddEshop.Size = new System.Drawing.Size(275, 23);
             this.bAddEshop.TabIndex = 3;
             this.bAddEshop.Text = "Přidej konfiguraci eshopu";
             this.bAddEshop.UseVisualStyleBackColor = true;
@@ -1098,9 +1082,9 @@
             this.treeConfiguration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.treeConfiguration.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.treeConfiguration.LabelEdit = true;
-            this.treeConfiguration.Location = new System.Drawing.Point(8, 6);
+            this.treeConfiguration.Location = new System.Drawing.Point(11, 6);
             this.treeConfiguration.Name = "treeConfiguration";
-            this.treeConfiguration.Size = new System.Drawing.Size(278, 544);
+            this.treeConfiguration.Size = new System.Drawing.Size(275, 457);
             this.treeConfiguration.TabIndex = 0;
             this.treeConfiguration.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.TreeConfigurationAfterLabelEdit);
             this.treeConfiguration.DoubleClick += new System.EventHandler(this.TreeConfigurationDoubleClick);
@@ -1108,11 +1092,12 @@
             // 
             // bPrestaTest
             // 
-            this.bPrestaTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bPrestaTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.bPrestaTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPrestaTest.Location = new System.Drawing.Point(893, 559);
+            this.bPrestaTest.Location = new System.Drawing.Point(11, 469);
             this.bPrestaTest.Name = "bPrestaTest";
-            this.bPrestaTest.Size = new System.Drawing.Size(121, 23);
+            this.bPrestaTest.Size = new System.Drawing.Size(275, 23);
             this.bPrestaTest.TabIndex = 5;
             this.bPrestaTest.Text = "Test připojení";
             this.bPrestaTest.UseVisualStyleBackColor = true;
@@ -1245,8 +1230,6 @@
          private System.Windows.Forms.Label label2;
          private System.Windows.Forms.CheckBox chPricingSupplier;
          private System.Windows.Forms.Label lActiveEshop;
-         private System.Windows.Forms.ToolStripStatusLabel statusAskino;
-         private System.Windows.Forms.ToolStripStatusLabel statusNoviko;
          private System.Windows.Forms.Button bWithoutSupplier;
          private Custom_Contols.EshopConfigurationControl eshopSettings;
      }

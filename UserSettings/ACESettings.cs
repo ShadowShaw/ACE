@@ -1,79 +1,10 @@
-﻿using Bussiness.UserSettings;
-using Desktop.Utils;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 
-namespace Desktop.UserSettings
+namespace UserSettings
 {
-    public enum ACETabType
-    {
-        Home,
-        Consistency,
-        Repricing,
-        Setup
-    }
-
-    public class EshopList
-    {
-        public List<EshopConfiguration> Eshops { get; set; }
-        public EshopList()
-        {
-            Eshops = new List<EshopConfiguration>();
-        }
-        public int ActiveEshopIndex { get; set; }
-    }
-        
-    public class FormSize
-    {
-        public string Name { get; set; }
-        public Size FSize { get; set; }
-    }
-
-    public class ColumnWidth
-    {
-        public string Name { get; set; }
-        public int Width { get; set; }
-    }
-
-
-    public class FormSizesList
-    {
-        public List<FormSize> FormSizes { get; set; }
-        public FormSizesList()
-        {
-            FormSizes = new List<FormSize>();
-        }
-    }
-
-    public class GenericKeyValueItem
-    {
-        public string Key { get; set; }
-        public string Value { get; set; }
-    }
-
-    public class GenericKeyValueList
-    { 
-        public List<GenericKeyValueItem> Values { get; set; }
-        public ACETabType ACETab;
-        public GenericKeyValueList()
-        {
-            ACETab = ACETabType.Home;
-            Values = new List<GenericKeyValueItem>();
-        }
-    }
-
-    public class ColumnWidthList
-    {
-        public List<ColumnWidth> ColumnWidths { get; set; }
-        public ColumnWidthList()
-        {
-            ColumnWidths = new List<ColumnWidth>();
-        }
-    }
-
     public class ACESettings
     {
         public const string HomePath = "http://ace-2.apphb.com/HtmlDocs/Home.html";
@@ -87,6 +18,7 @@ namespace Desktop.UserSettings
         public FormSizesList FormSizes { get; set; }
         public ColumnWidthList ColumnWidth { get; set; }
         public GenericKeyValueList Values { get; set; }
+
         public string DesktopUserName { 
             get
             {
@@ -222,42 +154,42 @@ namespace Desktop.UserSettings
 
         private void LoadColumnWidth()
         {
-            ColumnWidth = ACESettingsTools.LoadSettings<ColumnWidthList>(ColumnsSettingsPath);
+            ColumnWidth = SerializationTools.LoadSettings<ColumnWidthList>(ColumnsSettingsPath);
         }
 
         private void SaveColumnWidth()
         {
-            ACESettingsTools.SaveSettings(ColumnsSettingsPath, ColumnWidth);
+            SerializationTools.SaveSettings(ColumnsSettingsPath, ColumnWidth);
         }
 
         private void LoadValues()
         {
-            Values = ACESettingsTools.LoadSettings<GenericKeyValueList>(DesktopSettingsPath);
+            Values = SerializationTools.LoadSettings<GenericKeyValueList>(DesktopSettingsPath);
         }
 
         private void SaveValues()
         {
-            ACESettingsTools.SaveSettings(DesktopSettingsPath, Values);
+            SerializationTools.SaveSettings(DesktopSettingsPath, Values);
         }
         
         private void LoadEshops()
         {
-            Eshops = ACESettingsTools.LoadSettings<EshopList>(EshopsSettingsPath);
+            Eshops = SerializationTools.LoadSettings<EshopList>(EshopsSettingsPath);
         }
 
         private void SaveEshops()
         {
-            ACESettingsTools.SaveSettings(EshopsSettingsPath, Eshops);
+            SerializationTools.SaveSettings(EshopsSettingsPath, Eshops);
         }
 
         private void LoadFormSizes()
         {
-            FormSizes = ACESettingsTools.LoadSettings<FormSizesList>(SizesSettingsPath);
+            FormSizes = SerializationTools.LoadSettings<FormSizesList>(SizesSettingsPath);
         }
 
         private void SaveFormSizes()
         {
-            ACESettingsTools.SaveSettings(SizesSettingsPath, FormSizes);
+            SerializationTools.SaveSettings(SizesSettingsPath, FormSizes);
         }
 
 

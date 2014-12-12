@@ -1,18 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
-namespace Bussiness.UserSettings
+namespace UserSettings
 {
-    public enum EshopType
-    {
-        Prestashop = 0,
-        MySqlDatabase = 1
-    }
-
     public class SupplierConfiguration
-    { 
-        public string SupplierName { get; set; }
-        public bool UseSupplier { get; set; }
-        public string SupplierFileName { get; set; }
+    {
+        public Enums.Suppliers Supplier { get; set; }
+        public string PathToFile { get; set; }
     }
 
     public class Limit
@@ -25,12 +19,12 @@ namespace Bussiness.UserSettings
     public class EshopConfiguration //: INotifyPropertyChanged
     {
         public string EshopName { get; set; }
-        public EshopType Type { get; set; }
+        public Enums.EshopType Type { get; set; }
         public string BaseUrl { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public List<Limit> RepriceLimits { get; set; }
-        public List<SupplierConfiguration> Suppliers { get; set; }
+        public BindingList<Limit> RepriceLimits { get; set; }
+        public BindingList<SupplierConfiguration> Suppliers { get; set; }
         
         //public event PropertyChangedEventHandler PropertyChanged;
 
@@ -44,17 +38,8 @@ namespace Bussiness.UserSettings
 
         public EshopConfiguration()
         {
-            Suppliers = new List<SupplierConfiguration>();
-        }
-
-        public int AskinoIndex()
-        {
-            return 0;
-        }
-
-        public int NovikoIndex()
-        {
-            return 1;
+            Suppliers = new BindingList<SupplierConfiguration>();
+            RepriceLimits = new BindingList<Limit>();
         }
     }
 }

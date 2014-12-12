@@ -1,6 +1,6 @@
-﻿using Desktop.UserSettings;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using UserSettings;
 
 namespace Desktop.Utils
 {
@@ -76,7 +76,7 @@ namespace Desktop.Utils
             grid.Columns.Add(column);
         }
 
-        public static void AddColumn(DataGridView grid, string dataProperty, string header, bool readOnly = true, bool visibility = true)
+        public static void AddColumn(DataGridView grid, string dataProperty, string header, bool readOnly = true, bool visibility = true, int width = 100)
         {
             DataGridViewColumn column = new DataGridViewColumn();
             
@@ -86,6 +86,8 @@ namespace Desktop.Utils
             column.ReadOnly = readOnly;
             column.Visible = visibility;
             column.Name = dataProperty;
+            column.DataPropertyName = dataProperty;
+            column.Width = width;
             if (Instance.mainSettings != null)
             {
                 column.Width = Instance.mainSettings.GetWidth(grid.Name + dataProperty);                
@@ -112,9 +114,10 @@ namespace Desktop.Utils
             grid.Columns.Add(column);
         }
 
-        public static void InitGrid(DataGridView grid)
+        public static void InitGrid(DataGridView grid, bool readOnly = false)
         {
             grid.Columns.Clear();
+            grid.ReadOnly = readOnly;
             grid.MultiSelect = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.RowHeadersVisible = false;

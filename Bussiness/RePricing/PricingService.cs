@@ -1,7 +1,9 @@
-﻿using Bussiness.Services;
+﻿using System;
+using Bussiness.Services;
 using Bussiness.ViewModels;
 using Suppliers.Interfaces;
 using System.Collections.Generic;
+using UserSettings;
 
 namespace Bussiness.RePricing
 {
@@ -25,8 +27,8 @@ namespace Bussiness.RePricing
 
         public void Setup(SupplierService suppliers, PriceListsService priceLists)
         {
-            supplierService = suppliers;
             priceListsService = priceLists;
+            supplierService = suppliers;
         }
 
         public List<ProductViewModel> GetProducts()
@@ -89,12 +91,14 @@ namespace Bussiness.RePricing
                 if (usePriceLists)
                 {
                     string supplierName = supplierService.GetSupplierName(product.IdSupplier);
-                    ISupplier priceList = priceListsService[supplierName];
+                    Enums.Suppliers supplier;
+                    Enum.TryParse(supplierName, true, out supplier);
+                    ISupplier priceList = priceListsService[supplier];
 
                     if ((priceList != null) && (priceList.HasReference(product.Reference)))
                     {
-                        productWholesalePrice = priceListsService[supplierName].GetWholeSalePrice(product.Reference);
-                        
+                        productWholesalePrice = priceListsService[supplier].GetWholeSalePrice(product.Reference);
+
                         AddDecimalChange(product.WholesalePrice, productWholesalePrice, product.Id, FieldType.WholesalePrice);
                         product.WholesalePrice = productWholesalePrice;
 
@@ -131,24 +135,27 @@ namespace Bussiness.RePricing
                 if (usePriceLists)
                 {
                     string supplierName = supplierService.GetSupplierName(product.IdSupplier);
-                    ISupplier priceList = priceListsService[supplierName];
+                    Enums.Suppliers supplier;
+                    Enum.TryParse(supplierName, true, out supplier);
+
+                    ISupplier priceList = priceListsService[supplier];
 
                     if ((priceList != null) && (priceList.HasReference(product.Reference)))
                     {
-                        productWholesalePrice = priceListsService[supplierName].GetWholeSalePrice(product.Reference);
+                        productWholesalePrice = priceListsService[supplier].GetWholeSalePrice(product.Reference);
 
                         AddDecimalChange(product.WholesalePrice, productWholesalePrice, product.Id, FieldType.Price);
                         product.WholesalePrice = productWholesalePrice;
-                
+
                         decimal? newPrice;
 
                         if (productWholesalePrice > limit)
                         {
-                            newPrice = productWholesalePrice + above; 
+                            newPrice = productWholesalePrice + above;
                         }
                         else
                         {
-                            newPrice = productWholesalePrice + below; 
+                            newPrice = productWholesalePrice + below;
                         }
 
                         AddDecimalChange(product.Price, newPrice, product.Id, FieldType.Price);

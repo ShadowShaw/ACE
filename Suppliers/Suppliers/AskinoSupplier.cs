@@ -10,19 +10,26 @@ namespace Suppliers.Suppliers
     public class AskinoSupplier : ISupplier
     {
         private IEnumerable<AskinoModel> askinoPriceList;
-        private readonly CSVAccessor accessor;
+        private IAccessor accessor;
         public string Path { get; private set;}
         public int SupplierId { get; set;}
 
         public AskinoSupplier(string pathToFile)
         {
-            accessor = new CSVAccessor();
             Path = pathToFile;
         }
 
         public void OpenPriceList()
         {
-            askinoPriceList = accessor.LoadCSV<AskinoModel>(Path);
+            if (Path.EndsWith("csv"))
+            {
+                accessor = new CSVAccessor();
+            }
+            if (Path.EndsWith("xls"))
+            {
+                accessor = new XLSAccessor();
+            }
+            askinoPriceList = accessor.Load<AskinoModel>(Path);    
         }
 
         public IEnumerable<Object> GetPriceList()

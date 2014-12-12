@@ -13,10 +13,9 @@ namespace Bussiness.Services
         private CategoryService categoryService;
         private LanguageService languageService;
         private SupplierService supplierService;
-        private readonly PriceListsService priceListService;
         private readonly PricingService pricingService;
+        private PriceListsService priceListsService;
 
-        public PriceListsService PriceLists {  get { return priceListService; } }
         public LoginService Login { get { return loginService; } }
         public ProductService Products { get { return productService; } }
         public SupplierService Suppliers { get { return supplierService; } }
@@ -24,11 +23,12 @@ namespace Bussiness.Services
         public CategoryService Categories { get { return categoryService; } }
         public LanguageService Languages { get { return languageService; } }
         public PricingService Pricing { get { return pricingService; } }
+        public PriceListsService PriceLists { get { return priceListsService; } }
 
         public EngineService()
         {
             loginService = new LoginService();
-            priceListService = new PriceListsService();
+            priceListsService = new PriceListsService();
             pricingService = new PricingService();
         }
 

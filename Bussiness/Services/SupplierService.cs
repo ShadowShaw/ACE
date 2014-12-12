@@ -41,16 +41,6 @@ namespace Bussiness.Services
             return false;
         }
 
-        public long? GetAskinoId()
-        {
-            return GetSupplierId("Askino");
-        }
-
-        public long? GetNovikoId()
-        {
-            return GetSupplierId("Noviko");
-        }
-
         private bool LoadSuppliers()
         {
             List<int> ids = supplierAccesor.GetIds();

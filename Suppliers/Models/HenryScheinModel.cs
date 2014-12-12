@@ -2,7 +2,7 @@
 
 namespace Suppliers.Models
 {
-    public class NovikoModel
+    public class HenryScheinModel
     {
         [CsvColumn(FieldIndex = 1)]
         public string Reference { get; set; }

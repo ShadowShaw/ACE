@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 
-namespace Desktop.Utils
+namespace UserSettings
 {
-    public static class ACESettingsTools
+    public static class SerializationTools
     {
         public static void SaveSettings<T>(string path, T toSerialize)
         {

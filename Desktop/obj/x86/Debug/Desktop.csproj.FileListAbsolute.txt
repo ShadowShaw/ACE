@@ -88,3 +88,5 @@ C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Custom_Contols.EshopConfigurationCon
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Forms.Main.resources
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Forms.Login.resources
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Forms.ChangesView.resources
+C:\GitHub\ACE\Desktop\bin\Debug\UserSettings.dll
+C:\GitHub\ACE\Desktop\bin\Debug\UserSettings.pdb

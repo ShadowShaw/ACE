@@ -111,11 +111,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Custom Contols\EshopConfiguration.cs">
+    <Compile Include="Custom Contols\EshopConfigurationUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Custom Contols\EshopConfiguration.Designer.cs">
-      <DependentUpon>EshopConfiguration.cs</DependentUpon>
+    <Compile Include="Custom Contols\EshopConfigurationUserControl.Designer.cs">
+      <DependentUpon>EshopConfigurationUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ChangesView.cs">
       <SubType>Form</SubType>
@@ -138,13 +138,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="UserSettings\ACESettings.cs" />
-    <Compile Include="Utils\ACESettingsTools.cs" />
     <Compile Include="Utils\DataGridTools.cs" />
     <Compile Include="Utils\FlexBindingSource.cs" />
     <Compile Include="Utils\UITools.cs" />
-    <EmbeddedResource Include="Custom Contols\EshopConfiguration.resx">
-      <DependentUpon>EshopConfiguration.cs</DependentUpon>
+    <EmbeddedResource Include="Custom Contols\EshopConfigurationUserControl.resx">
+      <DependentUpon>EshopConfigurationUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangesView.resx">
       <DependentUpon>ChangesView.cs</DependentUpon>
@@ -230,6 +228,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{7c146499-374c-4a00-a35e-97d2d1cec397}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserSettings\UserSettings.csproj">
+      <Project>{8b542a11-91ef-4c68-aef5-8a769ea5dbd2}</Project>
+      <Name>UserSettings</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

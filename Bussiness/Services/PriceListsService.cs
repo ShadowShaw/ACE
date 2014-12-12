@@ -1,20 +1,20 @@
-﻿using Bussiness.UserSettings;
-using Suppliers.Interfaces;
+﻿using Suppliers.Interfaces;
 using System.Collections.Generic;
 using Suppliers.Suppliers;
+using UserSettings;
 
 namespace Bussiness.Services
 {
     public class PriceListsService
     {
-        private readonly Dictionary<string, ISupplier> priceLists;
+        private readonly Dictionary<Enums.Suppliers, ISupplier> priceLists;
 
         public PriceListsService()
         {
-            priceLists = new Dictionary<string, ISupplier>();
+            priceLists = new Dictionary<Enums.Suppliers, ISupplier>();
         }
 
-        public ISupplier this[string key]
+        public ISupplier this[Enums.Suppliers key]
         {
             get
             {
@@ -28,33 +28,32 @@ namespace Bussiness.Services
             }
         }
 
-        public bool HasSupplier(string supplierName)
+        public bool HasSupplier(Enums.Suppliers supplier)
         {
-            return priceLists.ContainsKey(supplierName);
+            return priceLists.ContainsKey(supplier);
         }
         
-        public void AddPriceLists(EshopConfiguration eshop)
+        public void LoadPriceLists(EshopConfiguration eshop)
         {
-            // TODO zjednodusit
-            if (eshop.Suppliers[eshop.NovikoIndex()].UseSupplier)
+            foreach (SupplierConfiguration supplierConfiguration in eshop.Suppliers)
             {
-                if (priceLists.ContainsKey("Noviko") == false)
+                ISupplier supplier = null;
+                if (supplierConfiguration.Supplier == Enums.Suppliers.Askino)
                 {
-                    NovikoSupplier noviko = new NovikoSupplier(eshop.Suppliers[eshop.NovikoIndex()].SupplierFileName);
-                    priceLists.Add("Noviko", noviko);
+                    supplier = new AskinoSupplier(supplierConfiguration.PathToFile);
                 }
-            }
-
-            if (eshop.Suppliers[eshop.AskinoIndex()].UseSupplier)
-            {
-                if (priceLists.ContainsKey("Askino") == false)
+                if (supplierConfiguration.Supplier == Enums.Suppliers.HenrySchein)
                 {
-                    AskinoSupplier askino = new AskinoSupplier(eshop.Suppliers[eshop.AskinoIndex()].SupplierFileName);
-                    priceLists.Add("Askino", askino);
+                    supplier = new HenryScheinSupplier(supplierConfiguration.PathToFile);
+                }
+                if (supplier != null)
+                {
+                    if (priceLists.ContainsValue(supplier) == false)
+                    {
+                        priceLists.Add(supplierConfiguration.Supplier, supplier);
+                    }    
                 }
             }
         }
-
-
     }
 }
