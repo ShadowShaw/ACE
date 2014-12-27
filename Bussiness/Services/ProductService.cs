@@ -229,14 +229,14 @@ namespace Bussiness.Services
             {
                 if (priceLists.HasSupplier(supplier))
                 {
-                    long? supplierId = suppliers.GetSupplierId(supplier.ToString());
+                    long? supplierId = suppliers.GetSupplierIdFromEnum(supplier.ToString());
                     IEnumerable<ProductViewModel> productToCheck = GetProductsOfSupplier(supplierId); 
                     ISupplier supplierPriceList = priceLists[supplier];
                     supplierPriceList.OpenPriceList();
 
                     foreach (ProductViewModel product in productToCheck)
                     {
-                        if (supplierPriceList.HasReference(product.Id.ToString()) == false)
+                        if (supplierPriceList.HasReference(product.Reference) == false)
                         {
                             result.Add(product);
                         }

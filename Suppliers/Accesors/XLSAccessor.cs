@@ -40,12 +40,9 @@ namespace Suppliers.Accesors
             if (excelReader != null)
             {
                 DataSet dataset = excelReader.AsDataSet();
-                if ((dataset.Tables.Count-1) < tableIndex) // Adjustment for second part of Askino
-                {
-                    tableIndex = 0;
-                }
                 
-                result = dataset.Tables[tableIndex].ToList<T>(new T().GetMapping());
+                int referenceColumnIndex = new T().GetReferenceColumnIndex();
+                result = dataset.Tables[tableIndex].ToList<T>(new T().GetMapping(), referenceColumnIndex);
 
                 excelReader.Close();    
             }

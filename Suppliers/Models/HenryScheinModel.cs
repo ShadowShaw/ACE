@@ -35,6 +35,11 @@ namespace Suppliers.Models
             return 0;
         }
 
+        public int GetReferenceColumnIndex()
+        {
+            return 0;
+        }
+
         public string GetReference()
         {
             return Reference;
@@ -56,16 +61,16 @@ namespace Suppliers.Models
         public string Name { get; set; }
 
         [CsvColumn(FieldIndex = 3)]
-        public decimal PriceWithoutDph { get; set; }
+        public string PriceWithoutDph { get; set; }
 
         [CsvColumn(FieldIndex = 4)]
-        public decimal PriceWithDph { get; set; }
+        public string PriceWithDph { get; set; }
 
         [CsvColumn(FieldIndex = 5)]
-        public decimal SalePriceWithoutDph { get; set; }
+        public string SalePriceWithoutDph { get; set; }
 
         [CsvColumn(FieldIndex = 6)]
-        public decimal SalePriceWithDph { get; set; }
+        public string SalePriceWithDph { get; set; }
 
         [CsvColumn(FieldIndex = 7)]
         public string Manufacturer { get; set; }
@@ -77,7 +82,7 @@ namespace Suppliers.Models
         public string Field2 { get; set; }
         
         [CsvColumn(FieldIndex = 10)]
-        public float Dph { get; set; }
+        public string Dph { get; set; }
 
         [CsvColumn(FieldIndex = 11)]
         public string Category { get; set; }
@@ -93,8 +98,5 @@ namespace Suppliers.Models
 
         [CsvColumn(FieldIndex = 15)]
         public string CategoryField4 { get; set; }
-
-        [CsvColumn(FieldIndex = 16)]
-        public string EmptyField { get; set; }
     }
 }

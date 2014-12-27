@@ -8,11 +8,11 @@ namespace Bussiness.Services
 {
     public class PriceListsService
     {
-        private readonly Dictionary<Enums.Suppliers, ISupplier> priceLists;
+        private readonly Dictionary<Enums.Suppliers, ISupplier> _priceLists;
 
         public PriceListsService()
         {
-            priceLists = new Dictionary<Enums.Suppliers, ISupplier>();
+            _priceLists = new Dictionary<Enums.Suppliers, ISupplier>();
         }
 
         public ISupplier this[Enums.Suppliers key]
@@ -20,9 +20,9 @@ namespace Bussiness.Services
             get
             {
                 ISupplier result = null;
-                if (priceLists.ContainsKey(key))
+                if (_priceLists.ContainsKey(key))
                 {
-                    result = priceLists[key];    
+                    result = _priceLists[key];    
                 }
                 
                 return result;
@@ -31,11 +31,13 @@ namespace Bussiness.Services
 
         public bool HasSupplier(Enums.Suppliers supplier)
         {
-            return priceLists.ContainsKey(supplier);
+            return _priceLists.ContainsKey(supplier);
         }
         
         public void LoadPriceLists(EshopConfiguration eshop)
         {
+            _priceLists.Clear();
+
             foreach (SupplierConfiguration supplierConfiguration in eshop.Suppliers)
             {
                 ISupplier supplier = null;
@@ -43,16 +45,17 @@ namespace Bussiness.Services
                 {
                     supplier = new GenericSupplier<AskinoModel>(supplierConfiguration.PathToFile);
                 }
+                if (supplierConfiguration.Supplier == Enums.Suppliers.AskinoTrixie)
+                {
+                    supplier = new GenericSupplier<AskinoTrixieModel>(supplierConfiguration.PathToFile);
+                }
                 if (supplierConfiguration.Supplier == Enums.Suppliers.HenrySchein)
                 {
                     supplier = new GenericSupplier<HenryScheinModel>(supplierConfiguration.PathToFile);
                 }
                 if (supplier != null)
                 {
-                    if (priceLists.ContainsValue(supplier) == false)
-                    {
-                        priceLists.Add(supplierConfiguration.Supplier, supplier);
-                    }    
+                    _priceLists.Add(supplierConfiguration.Supplier, supplier);
                 }
             }
         }

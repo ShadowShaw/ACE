@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>53qS+E+8tAk9f+97HmRnDWm13s8=</dsig:DigestValue>
+        <dsig:DigestValue>I6w8iVl7elltVLP9DFTM9eMdQ/0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bussiness.dll" size="47104">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bussiness.dll" size="47616">
       <assemblyIdentity name="Bussiness" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>C3gw6kE//y6h0soriTxkZiITOF4=</dsig:DigestValue>
+        <dsig:DigestValue>n7PZhPY+Oiu/kY6caEpu5RVAoaE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -187,26 +187,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Suppliers.dll" size="17920">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Suppliers.dll" size="19456">
       <assemblyIdentity name="Suppliers" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Dqh833RsEVwxp/SSzXVt1/iMlL4=</dsig:DigestValue>
+        <dsig:DigestValue>0Z3c5EgltSi0rxmYvOgzogLw7RY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UserSettings.dll" size="16384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UserSettings.dll" size="16896">
       <assemblyIdentity name="UserSettings" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>629DsCEeiQNDd5Be52QOVtsTWV4=</dsig:DigestValue>
+        <dsig:DigestValue>CFNwWqfjmgcrwU7pIhqSKYmHJdc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

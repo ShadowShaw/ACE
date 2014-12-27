@@ -36,16 +36,20 @@ namespace Suppliers.Accesors
             return result;
         }
 
-        public static IList<T> ToList<T>(this DataTable table, Dictionary<int, string> mappings) where T : new()
+        public static IList<T> ToList<T>(this DataTable table, Dictionary<int, string> mappings, int referenceColumnIndex) where T : new()
         {
             IList<PropertyInfo> properties = typeof(T).GetProperties().ToList();
             IList<T> result = new List<T>();
 
             for (int i = 1; i < table.Rows.Count; i++)
             {
-                var row = table.Rows[i];
-                var item = CreateItemFromRow<T>((DataRow)row, properties, mappings);
-                result.Add(item);
+                DataRow row = table.Rows[i];
+                if (row[referenceColumnIndex].ToString() != String.Empty)
+                {
+                  var item = CreateItemFromRow<T>((DataRow)row, properties, mappings);
+                  result.Add(item);    
+                }
+                
             }
 
             //foreach (var row in table.Rows)
@@ -87,17 +91,6 @@ namespace Suppliers.Accesors
                 {
                     int index = mappings.FirstOrDefault(x => x.Value == property.Name).Key;
                     var value = row[index].ToString();
-                    //if (property.PropertyType == "String")
-                    {
-
-                    }
-                    //else
-                    {
-                      //  if (value == DBNull.Value)
-                        {
-                        //    value = String.Empty;
-                        }
-                    }
                     property.SetValue(item, value, null);
                 }
             }

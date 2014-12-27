@@ -80,6 +80,23 @@ namespace Bussiness.Services
             return Suppliers.Select(item => item.name).ToList();
         }
 
+        public long? GetSupplierIdFromEnum(string supplierName)
+        {
+            string searchedString = supplierName;
+            
+            if (supplierName == "HenrySchein")
+            {
+                searchedString = "Henry Schein";
+            }
+
+            if (supplierName == "AskinoTrixie")
+            {
+                searchedString = "Askino";
+            }
+
+            return GetSupplierId(searchedString);
+        }
+
         public long? GetSupplierId(string supplierName)
         {
             if ((supplierName != "") && (Suppliers.Exists(s => s.name == supplierName)))

@@ -13,6 +13,7 @@
         public enum Suppliers
         {
             Askino,
+            AskinoTrixie,
             HenrySchein
         }
 

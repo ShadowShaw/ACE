@@ -6,6 +6,7 @@ namespace Suppliers.Interfaces
     {
         Dictionary<int, string> GetMapping();
         int GetFileTableIndex();
+        int GetReferenceColumnIndex();
         string GetReference();
         decimal GetPrice();
         decimal GetWholeSalePrice();
