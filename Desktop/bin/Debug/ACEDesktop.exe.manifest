@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>I6w8iVl7elltVLP9DFTM9eMdQ/0=</dsig:DigestValue>
+        <dsig:DigestValue>gHL0E2AjYcQKmKFkWoAoMGqHQxM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bussiness.dll" size="47616">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bussiness.dll" size="48128">
       <assemblyIdentity name="Bussiness" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>n7PZhPY+Oiu/kY6caEpu5RVAoaE=</dsig:DigestValue>
+        <dsig:DigestValue>M/HUMm6dpE5yBAxfDSyc+WRMT4M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -194,7 +194,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>0Z3c5EgltSi0rxmYvOgzogLw7RY=</dsig:DigestValue>
+        <dsig:DigestValue>guVxY8bKj5/RWiTptjzgYVtZv3M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

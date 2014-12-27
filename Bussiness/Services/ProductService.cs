@@ -223,29 +223,31 @@ namespace Bussiness.Services
 
         public IEnumerable<ProductViewModel> GetNonAvailableProductOfSuppliers(PriceListsService priceLists, SupplierService suppliers)
         {
-            List<ProductViewModel> result = new List<ProductViewModel>();
+            List<ProductViewModel> productToCheck = Products.Where(i => i.Reference != String.Empty).ToList();
+            List<ProductViewModel> result = productToCheck.ToList();
 
             foreach (Enums.Suppliers supplier in Enum.GetValues(typeof(Enums.Suppliers)))
             {
                 if (priceLists.HasSupplier(supplier))
                 {
-                    long? supplierId = suppliers.GetSupplierIdFromEnum(supplier.ToString());
-                    IEnumerable<ProductViewModel> productToCheck = GetProductsOfSupplier(supplierId); 
                     ISupplier supplierPriceList = priceLists[supplier];
                     supplierPriceList.OpenPriceList();
+                    long? supplierId = suppliers.GetSupplierIdFromEnum(supplier.ToString());
 
                     foreach (ProductViewModel product in productToCheck)
                     {
-                        if (supplierPriceList.HasReference(product.Reference) == false)
+                        if (product.IdSupplier == supplierId)
                         {
-                            result.Add(product);
+                            if (supplierPriceList.HasReference(product.Reference))
+                            {
+                                result.Remove(product);
+                            }    
                         }
                     }
                 }
             }
             return result;
         }
-
 
         public List<ProductViewModel> GetProductForRepricing(int idManufacturer, int idSupplier, List<int> idCategories)
         {
@@ -350,5 +352,14 @@ namespace Bussiness.Services
 
             return result;
         }
+    }
+}
+
+
+static class Extensions
+{
+    public static IList<T> Clone<T>(this IList<T> listToClone) where T : ICloneable
+    {
+        return listToClone.Select(item => (T)item.Clone()).ToList();
     }
 }

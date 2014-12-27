@@ -20,22 +20,22 @@ namespace Desktop.Forms
     {
         public EngineService Engine;
         public ACESettings MainSettings;
-        private int selectedEshopIndex;
+        private int _selectedEshopIndex;
         
-        private readonly List<ChangeRecord> consistencyChanges = new List<ChangeRecord>();
-        private int indexForChange = -1;
-        private FieldType changedType;
-        private Version aceVersion;
+        private readonly List<ChangeRecord> _consistencyChanges = new List<ChangeRecord>();
+        private int _indexForChange = -1;
+        private FieldType _changedType;
+        private Version _aceVersion;
 
-        private bool activeEshopEnabled;
-        private bool loadProductEnabled;
-        private bool pricingInitEnabled;
-        private bool consistencyEnabled;
-        private bool saveChangesEnabled;
-        private bool pricingShowEnabled;
-        private bool selectProductEnabled;
-        private bool repriceEnabled;
-        private bool pricingSaveEnabled;
+        private bool _activeEshopEnabled;
+        private bool _loadProductEnabled;
+        private bool _pricingInitEnabled;
+        private bool _consistencyEnabled;
+        private bool _saveChangesEnabled;
+        private bool _pricingShowEnabled;
+        private bool _selectProductEnabled;
+        private bool _repriceEnabled;
+        private bool _pricingSaveEnabled;
         
         #region pricing
 
@@ -80,11 +80,11 @@ namespace Desktop.Forms
 
                         statusProgress.Visible = false;
                         statusMessage.Text = "";
-                        selectProductEnabled = true;
+                        _selectProductEnabled = true;
                     }
                     finally
                     {
-                        pricingShowEnabled = true;
+                        _pricingShowEnabled = true;
                         EnableControlsAfterAccesingEshop();
                     }
                 }
@@ -199,7 +199,7 @@ namespace Desktop.Forms
 
                         statusProgress.Visible = false;
                         statusMessage.Text = String.Empty;
-                        consistencyEnabled = true;
+                        _consistencyEnabled = true;
 
                         dgPricing.DataSource = null;
                     }
@@ -207,8 +207,8 @@ namespace Desktop.Forms
             }
             finally
             {
-                consistencyEnabled = false;
-                saveChangesEnabled = false;
+                _consistencyEnabled = false;
+                _saveChangesEnabled = false;
                 EnableControlsAfterAccesingEshop();
             }
         }
@@ -227,7 +227,7 @@ namespace Desktop.Forms
             lPricingManufacturerIndication.Text = cPricingManufacturers.SelectedItem.ToString();
             lPricingSupplierIndication.Text = cPricingSuppliers.SelectedItem.ToString(); 
             
-            indexForChange = -1;
+            _indexForChange = -1;
             DataGridTools.InitGrid(dgPricing);
 
             DataGridTools.AddColumn(dgPricing, "Id", TextResources.Id);
@@ -286,8 +286,8 @@ namespace Desktop.Forms
                 supplierCell.Value = Engine.Suppliers.GetSupplierName(Convert.ToInt32(dgPricing.Rows[i].Cells["IdSupplier"].Value));
             }
 
-            indexForChange = 8;  //9
-            changedType = FieldType.Category;
+            _indexForChange = 8;  //9
+            _changedType = FieldType.Category;
             bReprice.Enabled = true;
         }
 
@@ -297,11 +297,11 @@ namespace Desktop.Forms
 
         private void EshopSettingsSuppliersChanged(object sender, EshopEventArgs e)
         {
-            MainSettings.UpdateSelectedEshop(e.Eshop, selectedEshopIndex);
+            MainSettings.UpdateSelectedEshop(e.Eshop, _selectedEshopIndex);
             RefreshStatusBar();
             MainSettings.SaveSettings();
 
-            if (MainSettings.ActiveEshop() == MainSettings.Eshops.Eshops[selectedEshopIndex])
+            if (MainSettings.ActiveEshop() == MainSettings.Eshops.Eshops[_selectedEshopIndex])
             {
                 InitializeEshopConnection();
             }
@@ -364,14 +364,14 @@ namespace Desktop.Forms
 
         private void RegisterEvents()
         {
-            selectedEshopIndex = MainSettings.Eshops.ActiveEshopIndex;
+            _selectedEshopIndex = MainSettings.Eshops.ActiveEshopIndex;
             eshopSettings.SuppliersChanged += EshopSettingsSuppliersChanged;
         }
 
         private void SetVersion()
         {
-            aceVersion = GetVersion();
-            Text = "ACE Desktop " + aceVersion;
+            _aceVersion = GetVersion();
+            Text = "ACE Desktop " + _aceVersion;
         }
 
         private void MessageEshopConfigurationMissing()
@@ -454,13 +454,13 @@ namespace Desktop.Forms
 
         private void DisplayEshop()
         {
-            if (selectedEshopIndex == -1)
+            if (_selectedEshopIndex == -1)
             {
                 eshopSettings.SetEshop(null);
             }
             else
             {
-                eshopSettings.SetEshop(MainSettings.Eshops.Eshops[selectedEshopIndex]);
+                eshopSettings.SetEshop(MainSettings.Eshops.Eshops[_selectedEshopIndex]);
             }
         }
 
@@ -507,15 +507,15 @@ namespace Desktop.Forms
 
         public void DisableControlsWhenAccesingEshop()
         {
-            activeEshopEnabled = cbActiveEshop.Enabled;
-            loadProductEnabled = bLoadProducts.Enabled;
-            pricingInitEnabled = bPricingInit.Enabled;
-            consistencyEnabled = gbConsistency.Enabled;
-            saveChangesEnabled = bSaveChanges.Enabled;
-            pricingShowEnabled = bPricingShow.Enabled;
-            selectProductEnabled = gbSelectProduct.Enabled;
-            repriceEnabled = bReprice.Enabled;
-            pricingSaveEnabled = bPricingSave.Enabled;
+            _activeEshopEnabled = cbActiveEshop.Enabled;
+            _loadProductEnabled = bLoadProducts.Enabled;
+            _pricingInitEnabled = bPricingInit.Enabled;
+            _consistencyEnabled = gbConsistency.Enabled;
+            _saveChangesEnabled = bSaveChanges.Enabled;
+            _pricingShowEnabled = bPricingShow.Enabled;
+            _selectProductEnabled = gbSelectProduct.Enabled;
+            _repriceEnabled = bReprice.Enabled;
+            _pricingSaveEnabled = bPricingSave.Enabled;
             
             cbActiveEshop.Enabled = false;
             bLoadProducts.Enabled = false;
@@ -530,15 +530,15 @@ namespace Desktop.Forms
 
         public void EnableControlsAfterAccesingEshop()
         {
-            cbActiveEshop.Enabled = activeEshopEnabled;
-            bLoadProducts.Enabled = loadProductEnabled;
-            bPricingInit.Enabled = pricingInitEnabled;
-            gbConsistency.Enabled = consistencyEnabled;
-            bSaveChanges.Enabled = saveChangesEnabled;
-            bPricingShow.Enabled = pricingShowEnabled;
-            gbSelectProduct.Enabled = selectProductEnabled;
-            bReprice.Enabled = repriceEnabled;
-            bPricingSave.Enabled = pricingSaveEnabled;
+            cbActiveEshop.Enabled = _activeEshopEnabled;
+            bLoadProducts.Enabled = _loadProductEnabled;
+            bPricingInit.Enabled = _pricingInitEnabled;
+            gbConsistency.Enabled = _consistencyEnabled;
+            bSaveChanges.Enabled = _saveChangesEnabled;
+            bPricingShow.Enabled = _pricingShowEnabled;
+            gbSelectProduct.Enabled = _selectProductEnabled;
+            bReprice.Enabled = _repriceEnabled;
+            bPricingSave.Enabled = _pricingSaveEnabled;
         }
         
         public void ClearGridsOnReload()
@@ -563,14 +563,14 @@ namespace Desktop.Forms
 
         private void DgConsistencyCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == indexForChange)
+            if (e.ColumnIndex == _indexForChange)
             {
                 string value = dgConsistency[e.ColumnIndex, e.RowIndex].Value.ToString();
                 int id = Convert.ToInt32(dgConsistency["id", e.RowIndex].Value);
 
-                ChangeRecord record = new ChangeRecord {Type = RecordType.Product, Field = changedType, Id = id, Value = value};
+                ChangeRecord record = new ChangeRecord {Type = RecordType.Product, Field = _changedType, Id = id, Value = value};
 
-                consistencyChanges.Add(record);
+                _consistencyChanges.Add(record);
             }
         }
 
@@ -613,8 +613,8 @@ namespace Desktop.Forms
 
                         statusProgress.Visible = false;
                         statusMessage.Text = "";
-                        consistencyEnabled = true;
-                        saveChangesEnabled = true;
+                        _consistencyEnabled = true;
+                        _saveChangesEnabled = true;
                     }
                     finally
                     {
@@ -671,8 +671,8 @@ namespace Desktop.Forms
 
         private async void BSaveChangesClick(object sender, EventArgs e)
         {
-            ChangesView changes = new ChangesView(consistencyChanges.OrderBy(o => o.Id).ToList());
-            if (consistencyChanges.Count == 0)
+            ChangesView changes = new ChangesView(_consistencyChanges.OrderBy(o => o.Id).ToList());
+            if (_consistencyChanges.Count == 0)
             {
                 MessageBox.Show(TextResources.MsgNoChangesToSaveValue, TextResources.MsgNoChangesToSaveTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -688,9 +688,9 @@ namespace Desktop.Forms
                         statusMessage.Text = TextResources.StatusSavingChanges;
                         gbConsistency.Enabled = false;
 
-                        await Task.Factory.StartNew(() => SaveChangesAsync(consistencyChanges));
+                        await Task.Factory.StartNew(() => SaveChangesAsync(_consistencyChanges));
 
-                        consistencyChanges.Clear();
+                        _consistencyChanges.Clear();
 
                         bool result;
 
@@ -709,16 +709,16 @@ namespace Desktop.Forms
 
                         statusProgress.Visible = false;
                         statusMessage.Text = "";
-                        consistencyEnabled = true;
+                        _consistencyEnabled = true;
 
                         dgConsistency.DataSource = null;
                     }
                     finally
                     {
-                        pricingSaveEnabled = false;
-                        repriceEnabled = false;
-                        pricingShowEnabled = false;
-                        selectProductEnabled = false;
+                        _pricingSaveEnabled = false;
+                        _repriceEnabled = false;
+                        _pricingShowEnabled = false;
+                        _selectProductEnabled = false;
                         EnableControlsAfterAccesingEshop();
                     }
                 }
@@ -772,7 +772,7 @@ namespace Desktop.Forms
             if (MainSettings.Eshops.ActiveEshopIndex == -1)
             {
                 MainSettings.Eshops.ActiveEshopIndex = 0;
-                selectedEshopIndex = 0;
+                _selectedEshopIndex = 0;
             }
             InitDisplayEshopConfiguration();
         }
@@ -828,7 +828,7 @@ namespace Desktop.Forms
                 EshopConfiguration eshop = MainSettings.Eshops.Eshops.SingleOrDefault(n => n.EshopName == node.Text);
                 if (eshop != null)
                 {
-                    selectedEshopIndex = MainSettings.Eshops.Eshops.IndexOf(eshop);
+                    _selectedEshopIndex = MainSettings.Eshops.Eshops.IndexOf(eshop);
                     eshopSettings.SetEshop(eshop);
                     RefreshStatusBar();
                 }
@@ -881,7 +881,7 @@ namespace Desktop.Forms
                         if (MainSettings.Eshops.ActiveEshopIndex == treeConfiguration.Nodes.IndexOf(treeConfiguration.SelectedNode))
                         {
                             MainSettings.Eshops.ActiveEshopIndex = -1;
-                            selectedEshopIndex = MainSettings.Eshops.ActiveEshopIndex;
+                            _selectedEshopIndex = MainSettings.Eshops.ActiveEshopIndex;
                             DisplayEshop();
                         }
 
@@ -1004,13 +1004,13 @@ namespace Desktop.Forms
                 return;
             }
 
-            if (dgConsistency.Columns[e.ColumnIndex].Name == "link")
+            if (dgConsistency.Columns[e.ColumnIndex].Name == "Link")
             {
                 var productId = dgConsistency[0, e.RowIndex].Value;
                 Engine.OpenProductInBrowser(Convert.ToInt32(productId));
             }
 
-            if (dgConsistency.Columns[e.ColumnIndex].Name == "delete")
+            if (dgConsistency.Columns[e.ColumnIndex].Name == "Delete")
             {
                 DialogResult dialogResult = MessageBox.Show(TextResources.MsgDeleteProductValue, TextResources.MsgDeleteProductTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
@@ -1024,7 +1024,7 @@ namespace Desktop.Forms
 
         private void BEmptyCategoryClick(object sender, EventArgs e)
         {
-            indexForChange = -1;
+            _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleEmptyCategory;
             DataGridTools.InitGrid(dgConsistency);
 
@@ -1042,13 +1042,13 @@ namespace Desktop.Forms
                 comboCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
             }
 
-            indexForChange = 3;
-            changedType = FieldType.Category;
+            _indexForChange = 3;
+            _changedType = FieldType.Category;
         }
 
         private void BEmptyManufacturerClick(object sender, EventArgs e)
         {
-            indexForChange = -1;
+            _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleEmptyManufacturer;
             DataGridTools.InitGrid(dgConsistency);
 
@@ -1071,13 +1071,13 @@ namespace Desktop.Forms
                 comboCell.Value = Engine.Manufacturers.GetManufacturerName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdManufacturer"].Value));
             }
 
-            indexForChange = 5;
-            changedType = FieldType.Manufacturer;
+            _indexForChange = 5;
+            _changedType = FieldType.Manufacturer;
         }
 
         private void BWithoutImageClick(object sender, EventArgs e)
         {
-            indexForChange = -1;
+            _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleEmptyImage;
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyImage();
@@ -1097,13 +1097,13 @@ namespace Desktop.Forms
                 textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
             }
 
-            indexForChange = 5;
-            changedType = FieldType.Image;
+            _indexForChange = 5;
+            _changedType = FieldType.Image;
         }
 
         private void BWithoutShortDescriptionClick(object sender, EventArgs e)
         {
-            indexForChange = -1;
+            _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleEmptyShortDescription;
             DataGridTools.InitGrid(dgConsistency);
 
@@ -1122,13 +1122,13 @@ namespace Desktop.Forms
                 categoryCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
             }
 
-            indexForChange = 4;
-            changedType = FieldType.ShortDescription;
+            _indexForChange = 4;
+            _changedType = FieldType.ShortDescription;
         }
 
         private void BWithoutLongDescriptionClick(object sender, EventArgs e)
         {
-            indexForChange = -1;
+            _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleEmptyLongDescription;
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyLongDescription();
@@ -1146,13 +1146,13 @@ namespace Desktop.Forms
                 textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
             }
 
-            indexForChange = 4;
-            changedType = FieldType.LongDescription;
+            _indexForChange = 4;
+            _changedType = FieldType.LongDescription;
         }
 
         private void BWithoutPriceClick(object sender, EventArgs e)
         {
-            indexForChange = -1;
+            _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleEmptyPrice;
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyPrice();
@@ -1170,13 +1170,13 @@ namespace Desktop.Forms
                 textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
             }
 
-            indexForChange = 4;
-            changedType = FieldType.Price;
+            _indexForChange = 4;
+            _changedType = FieldType.Price;
         }
 
         private void BWithoutWeightClick(object sender, EventArgs e)
         {
-            indexForChange = -1;
+            _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleEmptyWeight;
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWeight();
@@ -1193,13 +1193,13 @@ namespace Desktop.Forms
                 DataGridViewTextBoxCell textCell = (DataGridViewTextBoxCell)dgConsistency.Rows[i].Cells["Category"];
                 textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
             }
-            indexForChange = 4;
-            changedType = FieldType.Weight;
+            _indexForChange = 4;
+            _changedType = FieldType.Weight;
         }
 
         private void BWithoutWholeSalePriceClick(object sender, EventArgs e)
         {
-            indexForChange = -1;
+            _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleEmptyWholeSalePrice;
             DataGridTools.InitGrid(dgConsistency);
             dgConsistency.DataSource = Engine.Products.GetProductWithEmptyWholesalePrice();
@@ -1217,13 +1217,13 @@ namespace Desktop.Forms
                 textCell.Value = Engine.Categories.GetCategoryName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdCategoryDefault"].Value));
             }
 
-            indexForChange = 4;
-            changedType = FieldType.WholesalePrice;
+            _indexForChange = 4;
+            _changedType = FieldType.WholesalePrice;
         }
 
         private void BConsistencySupplierClick(object sender, EventArgs e)
         {
-            indexForChange = -1;
+            _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleEmptySupplier;
             DataGridTools.InitGrid(dgConsistency);
 
@@ -1246,8 +1246,8 @@ namespace Desktop.Forms
                 comboCell.Value = Engine.Suppliers.GetSupplierName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdSupplier"].Value));
             }
 
-            indexForChange = 5;
-            changedType = FieldType.Supplier;
+            _indexForChange = 5;
+            _changedType = FieldType.Supplier;
         }
 
         private void ConsistencySuppliersClick(object sender, EventArgs e)
@@ -1263,13 +1263,14 @@ namespace Desktop.Forms
             
             Engine.PriceLists.LoadPriceLists(MainSettings.ActiveEshop());
                         
-            indexForChange = -1;
+            _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleWithoutAnySupplier;
             DataGridTools.InitGrid(dgConsistency);
 
             dgConsistency.DataSource = Engine.Products.GetNonAvailableProductOfSuppliers(Engine.PriceLists, Engine.Suppliers);
 
             DataGridTools.AddColumn(dgConsistency, "Id", TextResources.Id);
+            DataGridTools.AddColumn(dgConsistency, "Reference", TextResources.Reference);
             DataGridTools.AddColumn(dgConsistency, "Name", TextResources.Name);
             DataGridTools.AddColumn(dgConsistency, "IdCategoryDefault", TextResources.Category, true, false);
             DataGridTools.AddColumn(dgConsistency, "Category", TextResources.Category);
@@ -1287,8 +1288,8 @@ namespace Desktop.Forms
                 supplierCell.Value = Engine.Suppliers.GetSupplierName(Convert.ToInt32(dgConsistency.Rows[i].Cells["IdSupplier"].Value));
             }
 
-            indexForChange = -1;
-            changedType = FieldType.Image;
+            _indexForChange = -1;
+            _changedType = FieldType.Image;
         }
 
         #endregion

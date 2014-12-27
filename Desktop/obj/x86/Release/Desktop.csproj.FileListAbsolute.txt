@@ -45,3 +45,6 @@ C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Forms.Main.resources
 C:\GitHub\ACE\Desktop\obj\x86\Release\Desktop.Forms.ChangesView.resources
 C:\GitHub\ACE\Desktop\bin\Release\UserSettings.dll
 C:\GitHub\ACE\Desktop\bin\Release\UserSettings.pdb
+C:\GitHub\ACE\Desktop\bin\Release\Excel.dll
+C:\GitHub\ACE\Desktop\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\GitHub\ACE\Desktop\bin\Release\Excel.pdb

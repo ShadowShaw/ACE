@@ -15,6 +15,7 @@
         public const string Id = "Id";
         public const string LinkButton = "Otevřít produkt";
         public const string DeleteButton = "Smazat produkt";
+        public const string Reference = "Reference";
 
         //dgPricing
         public const string Supplier = "Dodavatel";
@@ -98,6 +99,6 @@
         public const string EUCPrestaSetup = "Konfigurace eshopu ";
         public const string EUCValidUrl = "Adresa eshopu není ve správném tvaru, nebo je neplatná.";
         public const string EUCEmptyToken = "Token pro autorizaci připojení k eshopu nemůže být prázdný.";
-
+        
     }
 }
