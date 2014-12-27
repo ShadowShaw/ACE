@@ -53,6 +53,37 @@ namespace PrestaAccesor.Accesors
             return response.Data;
         }
 
+        //protected T Execute<T>(RestRequest request) where T : new()
+        //{
+        //    Client.BaseUrl = BaseUrl;
+        //    Client.Authenticator = new HttpBasicAuthenticator(this.Account, this.Password);
+        //    request.AddParameter("Account", Account, ParameterType.UrlSegment); // used on every request
+        //    if (request.Method == Method.GET)
+        //    {
+        //        Client.ClearHandlers();
+        //        Client.AddHandler("text/xml", new Bukimedia.PrestaSharp.Deserializers.PrestaSharpDeserializer());
+        //    }
+        //    var response = Client.Execute<T>(request);
+        //    if (response.StatusCode == HttpStatusCode.InternalServerError
+        //        || response.StatusCode == HttpStatusCode.ServiceUnavailable
+        //        || response.StatusCode == HttpStatusCode.BadRequest
+        //        || response.StatusCode == HttpStatusCode.Unauthorized
+        //        || response.StatusCode == HttpStatusCode.MethodNotAllowed
+        //        || response.StatusCode == HttpStatusCode.Forbidden
+        //        || response.StatusCode == HttpStatusCode.NotFound
+        //        || response.StatusCode == 0)
+        //    {
+        //        string requestParameters = Environment.NewLine;
+        //        foreach (Parameter parameter in request.Parameters)
+        //        {
+        //            requestParameters += parameter.Value + Environment.NewLine + Environment.NewLine;
+        //        }
+        //        PrestaSharpException exception = new PrestaSharpException(requestParameters + response.Content, response.ErrorMessage, response.StatusCode, response.ErrorException);
+        //        throw exception;
+        //    }
+        //    return response.Data;
+        //}
+
         protected void ExecuteAsync(RestRequest request)
         {
             try
@@ -149,6 +180,29 @@ namespace PrestaAccesor.Accesors
             request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("</" + prestashopEntity.GetType().Name + ">", "</" + prestashopEntity.GetType().Name + "></prestashop>");
             return request;
         }
+
+        //protected RestRequest RequestForUpdate(string Resource, long? Id, PrestashopEntity PrestashopEntity)
+        //{
+        //    if (Id == null)
+        //    {
+        //        throw new ApplicationException("Id is required to update something.");
+        //    }
+        //    var request = new RestRequest();
+        //    request.RootElement = "prestashop";
+        //    request.Resource = Resource;
+        //    request.AddParameter("id", Id, ParameterType.UrlSegment);
+        //    request.Method = Method.PUT;
+        //    request.RequestFormat = DataFormat.Xml;
+        //    request.XmlSerializer = new RestSharp.Serializers.DotNetXmlSerializer();
+        //    request.AddBody(PrestashopEntity);
+        //    //issue #81, #54 fixed
+        //    request.Parameters[1].Value = Functions.ReplaceFirstOccurrence(request.Parameters[1].Value.ToString(), "<" + PrestashopEntity.GetType().Name + ">", "<prestashop>\n<" + PrestashopEntity.GetType().Name + ">");
+        //    request.Parameters[1].Value = Functions.ReplaceLastOccurrence(request.Parameters[1].Value.ToString(), "</" + PrestashopEntity.GetType().Name + ">", "</" + PrestashopEntity.GetType().Name + ">\n</prestashop>");
+        //    //issue #36 fixed
+        //    request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("xmlns=\"Bukimedia/PrestaSharp/Entities\"", "xmlns=\"\"");
+        //    request.Parameters[1].Value = request.Parameters[1].Value.ToString().Replace("xmlns=\"Bukimedia/PrestaSharp/Entities/AuxEntities\"", "xmlns=\"\"");
+        //    return request;
+        //}
 
         protected RestRequest RequestForDelete(string resource, long? id)
         {

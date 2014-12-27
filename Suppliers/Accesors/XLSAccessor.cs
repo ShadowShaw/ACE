@@ -1,67 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Data.OleDb;
 using System.IO;
+using Excel;
 using Suppliers.Interfaces;
 
 namespace Suppliers.Accesors
 {
-    public class XLSAccessor : IAccessor
+    public class XlsAccessor : IAccessor
     {
-        public IEnumerable<T> Load<T>(string filename) where T : class, new()
+        public IEnumerable<T> Load<T>(string fileName) where T : class, ISupplierModel, new()
         {
-            IEnumerable<T> result = null;
-            ConvertExcelToCsv(filename);
-            return result;
-        }
-
-        static void ConvertExcelToCsv(string excelFilePath, int worksheetNumber = 1)
-        {
-            if (!File.Exists(excelFilePath))
+            T item;
+            int tableIndex = new T().GetFileTableIndex();
+            
+            if (!File.Exists(fileName))
             {
-                throw new FileNotFoundException(excelFilePath);
+                throw new FileNotFoundException(fileName);
             }
 
-            // connection string
-            string connectioString = String.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties=\"Excel 8.0;IMEX=1;HDR=NO\"", excelFilePath);
-            OleDbConnection connection = new OleDbConnection(connectioString);
+            FileStream stream = File.Open(fileName, FileMode.Open, FileAccess.Read);
 
-            // get schema, then data
-            DataTable dataTable = new DataTable();
-            try
+            IExcelDataReader excelReader = null;
+            string extension = Path.GetExtension(fileName);
+
+            if (extension == ".xls")
             {
-                connection.Open();
-                DataTable schemaTable = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                if (schemaTable.Rows.Count < worksheetNumber) throw new ArgumentException("The worksheet number provided cannot be found in the spreadsheet");
-                string worksheet = schemaTable.Rows[worksheetNumber - 1]["table_name"].ToString().Replace("'", "");
-                string sql = String.Format("select * from [{0}]", worksheet);
-                OleDbDataAdapter da = new OleDbDataAdapter(sql, connection);
-                da.Fill(dataTable);
-            }
-            catch (Exception e)
-            {
-                // ???
-                throw e;
-            }
-            finally
-            {
-                // free resources
-                connection.Close();
+                // Reading from a binary Excel file ('97-2003 format; *.xls).
+                excelReader = ExcelReaderFactory.CreateBinaryReader(stream);    
             }
 
-            // write out CSV data
-            foreach (DataRow row in dataTable.Rows)
+            if (extension == ".xlsx")
             {
-                bool firstLine = true;
-                foreach (DataColumn col in dataTable.Columns)
+                //Reading from a OpenXml Excel file (2007 format; *.xlsx).
+                excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+            }
+
+            IList<T> result = null;
+
+            if (excelReader != null)
+            {
+                DataSet dataset = excelReader.AsDataSet();
+                if ((dataset.Tables.Count-1) < tableIndex) // Adjustment for second part of Askino
                 {
-                //    if (!firstLine) { wtr.Write(","); } else { firstLine = false; }
-                //    var data = row[col.ColumnName].ToString().Replace("\"", "\"\"");
-                //    wtr.Write(String.Format("\"{0}\"", data));
+                    tableIndex = 0;
                 }
-                //wtr.WriteLine();
+                
+                result = dataset.Tables[tableIndex].ToList<T>(new T().GetMapping());
+
+                excelReader.Close();    
             }
+            
+            return result;
         }
     }
 }

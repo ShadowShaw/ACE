@@ -90,3 +90,6 @@ C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Forms.Login.resources
 C:\GitHub\ACE\Desktop\obj\x86\Debug\Desktop.Forms.ChangesView.resources
 C:\GitHub\ACE\Desktop\bin\Debug\UserSettings.dll
 C:\GitHub\ACE\Desktop\bin\Debug\UserSettings.pdb
+C:\GitHub\ACE\Desktop\bin\Debug\Excel.dll
+C:\GitHub\ACE\Desktop\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\GitHub\ACE\Desktop\bin\Debug\Excel.pdb

@@ -198,7 +198,7 @@ namespace Desktop.Custom_Contols
                     selectedSupplier.PathToFile = openDialog.FileName;
                 }
             }
-            
+            eshop.Suppliers.ResetBindings();
         }
 
         private SupplierConfiguration GetSelectedSupplier()

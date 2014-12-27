@@ -1,5 +1,6 @@
 ﻿using Suppliers.Interfaces;
 using System.Collections.Generic;
+using Suppliers.Models;
 using Suppliers.Suppliers;
 using UserSettings;
 
@@ -40,11 +41,11 @@ namespace Bussiness.Services
                 ISupplier supplier = null;
                 if (supplierConfiguration.Supplier == Enums.Suppliers.Askino)
                 {
-                    supplier = new AskinoSupplier(supplierConfiguration.PathToFile);
+                    supplier = new GenericSupplier<AskinoModel>(supplierConfiguration.PathToFile);
                 }
                 if (supplierConfiguration.Supplier == Enums.Suppliers.HenrySchein)
                 {
-                    supplier = new HenryScheinSupplier(supplierConfiguration.PathToFile);
+                    supplier = new GenericSupplier<HenryScheinModel>(supplierConfiguration.PathToFile);
                 }
                 if (supplier != null)
                 {
