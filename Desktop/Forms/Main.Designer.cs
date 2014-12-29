@@ -100,16 +100,11 @@
             this.gbSelectProduct = new System.Windows.Forms.GroupBox();
             this.chPricingSupplier = new System.Windows.Forms.CheckBox();
             this.bPricingShow = new System.Windows.Forms.Button();
-            this.lPricingOverLimit = new System.Windows.Forms.Label();
             this.rbPricingLimit = new System.Windows.Forms.RadioButton();
-            this.ePricingOverLimit = new System.Windows.Forms.TextBox();
-            this.lPricingBellowLimit = new System.Windows.Forms.Label();
-            this.ePricingBellowLimit = new System.Windows.Forms.TextBox();
             this.bPricingSave = new System.Windows.Forms.Button();
             this.rbPricingProcent = new System.Windows.Forms.RadioButton();
             this.treePricing = new System.Windows.Forms.TreeView();
             this.lPricingSupplier = new System.Windows.Forms.Label();
-            this.ePricingLimit = new System.Windows.Forms.TextBox();
             this.cPricingSuppliers = new System.Windows.Forms.ComboBox();
             this.bReprice = new System.Windows.Forms.Button();
             this.lPricingManufacturer = new System.Windows.Forms.Label();
@@ -774,16 +769,11 @@
             // 
             this.gbSelectProduct.Controls.Add(this.chPricingSupplier);
             this.gbSelectProduct.Controls.Add(this.bPricingShow);
-            this.gbSelectProduct.Controls.Add(this.lPricingOverLimit);
             this.gbSelectProduct.Controls.Add(this.rbPricingLimit);
-            this.gbSelectProduct.Controls.Add(this.ePricingOverLimit);
-            this.gbSelectProduct.Controls.Add(this.lPricingBellowLimit);
-            this.gbSelectProduct.Controls.Add(this.ePricingBellowLimit);
             this.gbSelectProduct.Controls.Add(this.bPricingSave);
             this.gbSelectProduct.Controls.Add(this.rbPricingProcent);
             this.gbSelectProduct.Controls.Add(this.treePricing);
             this.gbSelectProduct.Controls.Add(this.lPricingSupplier);
-            this.gbSelectProduct.Controls.Add(this.ePricingLimit);
             this.gbSelectProduct.Controls.Add(this.cPricingSuppliers);
             this.gbSelectProduct.Controls.Add(this.bReprice);
             this.gbSelectProduct.Controls.Add(this.lPricingManufacturer);
@@ -811,7 +801,7 @@
             // bPricingShow
             // 
             this.bPricingShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPricingShow.Location = new System.Drawing.Point(9, 314);
+            this.bPricingShow.Location = new System.Drawing.Point(9, 366);
             this.bPricingShow.Name = "bPricingShow";
             this.bPricingShow.Size = new System.Drawing.Size(270, 23);
             this.bPricingShow.TabIndex = 29;
@@ -819,51 +809,15 @@
             this.bPricingShow.UseVisualStyleBackColor = true;
             this.bPricingShow.Click += new System.EventHandler(this.BPricingShowClick);
             // 
-            // lPricingOverLimit
-            // 
-            this.lPricingOverLimit.AutoSize = true;
-            this.lPricingOverLimit.Location = new System.Drawing.Point(6, 425);
-            this.lPricingOverLimit.Name = "lPricingOverLimit";
-            this.lPricingOverLimit.Size = new System.Drawing.Size(53, 13);
-            this.lPricingOverLimit.TabIndex = 24;
-            this.lPricingOverLimit.Text = "Nad mezí";
-            // 
             // rbPricingLimit
             // 
             this.rbPricingLimit.AutoSize = true;
-            this.rbPricingLimit.Location = new System.Drawing.Point(9, 371);
+            this.rbPricingLimit.Location = new System.Drawing.Point(9, 423);
             this.rbPricingLimit.Name = "rbPricingLimit";
             this.rbPricingLimit.Size = new System.Drawing.Size(77, 17);
             this.rbPricingLimit.TabIndex = 27;
             this.rbPricingLimit.Text = "podle mezí";
             this.rbPricingLimit.UseVisualStyleBackColor = true;
-            // 
-            // ePricingOverLimit
-            // 
-            this.ePricingOverLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ePricingOverLimit.Location = new System.Drawing.Point(104, 423);
-            this.ePricingOverLimit.Name = "ePricingOverLimit";
-            this.ePricingOverLimit.Size = new System.Drawing.Size(175, 20);
-            this.ePricingOverLimit.TabIndex = 18;
-            this.ePricingOverLimit.Text = "20";
-            // 
-            // lPricingBellowLimit
-            // 
-            this.lPricingBellowLimit.AutoSize = true;
-            this.lPricingBellowLimit.Location = new System.Drawing.Point(6, 399);
-            this.lPricingBellowLimit.Name = "lPricingBellowLimit";
-            this.lPricingBellowLimit.Size = new System.Drawing.Size(52, 13);
-            this.lPricingBellowLimit.TabIndex = 23;
-            this.lPricingBellowLimit.Text = "Pod mezí";
-            // 
-            // ePricingBellowLimit
-            // 
-            this.ePricingBellowLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ePricingBellowLimit.Location = new System.Drawing.Point(104, 397);
-            this.ePricingBellowLimit.Name = "ePricingBellowLimit";
-            this.ePricingBellowLimit.Size = new System.Drawing.Size(175, 20);
-            this.ePricingBellowLimit.TabIndex = 17;
-            this.ePricingBellowLimit.Text = "10";
             // 
             // bPricingSave
             // 
@@ -883,7 +837,7 @@
             // 
             this.rbPricingProcent.AutoSize = true;
             this.rbPricingProcent.Checked = true;
-            this.rbPricingProcent.Location = new System.Drawing.Point(9, 345);
+            this.rbPricingProcent.Location = new System.Drawing.Point(9, 397);
             this.rbPricingProcent.Name = "rbPricingProcent";
             this.rbPricingProcent.Size = new System.Drawing.Size(124, 17);
             this.rbPricingProcent.TabIndex = 26;
@@ -896,7 +850,7 @@
             this.treePricing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.treePricing.Location = new System.Drawing.Point(9, 73);
             this.treePricing.Name = "treePricing";
-            this.treePricing.Size = new System.Drawing.Size(270, 235);
+            this.treePricing.Size = new System.Drawing.Size(270, 287);
             this.treePricing.TabIndex = 15;
             // 
             // lPricingSupplier
@@ -907,15 +861,6 @@
             this.lPricingSupplier.Size = new System.Drawing.Size(59, 13);
             this.lPricingSupplier.TabIndex = 14;
             this.lPricingSupplier.Text = "Dodavatel:";
-            // 
-            // ePricingLimit
-            // 
-            this.ePricingLimit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ePricingLimit.Location = new System.Drawing.Point(104, 371);
-            this.ePricingLimit.Name = "ePricingLimit";
-            this.ePricingLimit.Size = new System.Drawing.Size(175, 20);
-            this.ePricingLimit.TabIndex = 19;
-            this.ePricingLimit.Text = "100";
             // 
             // cPricingSuppliers
             // 
@@ -959,7 +904,7 @@
             // ePricingPercent
             // 
             this.ePricingPercent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ePricingPercent.Location = new System.Drawing.Point(139, 345);
+            this.ePricingPercent.Location = new System.Drawing.Point(139, 397);
             this.ePricingPercent.Name = "ePricingPercent";
             this.ePricingPercent.Size = new System.Drawing.Size(140, 20);
             this.ePricingPercent.TabIndex = 16;
@@ -1211,12 +1156,7 @@
          private System.Windows.Forms.DataGridViewCheckBoxColumn ModuleActive;
          private System.Windows.Forms.DataGridViewTextBoxColumn OrderedTo;
          private System.Windows.Forms.ToolStripMenuItem ukončitACEDesktopToolStripMenuItem;
-         private System.Windows.Forms.Label lPricingOverLimit;
-         private System.Windows.Forms.Label lPricingBellowLimit;
          private System.Windows.Forms.Button bReprice;
-         private System.Windows.Forms.TextBox ePricingLimit;
-         private System.Windows.Forms.TextBox ePricingOverLimit;
-         private System.Windows.Forms.TextBox ePricingBellowLimit;
          private System.Windows.Forms.TextBox ePricingPercent;
          private System.Windows.Forms.RadioButton rbPricingLimit;
          private System.Windows.Forms.RadioButton rbPricingProcent;

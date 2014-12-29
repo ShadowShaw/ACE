@@ -26,10 +26,24 @@ namespace ACEAgent.Models
 
     public class PaymentFacture
     {
-        public int FactureId { get; set; }
+        public string IssuerName  { get; set; }
+        public string IssuerAddress  { get; set; }
+        public string ReceiverName  { get; set; }
+        public string ReceiverAddress  { get; set; }
         
-        public string FactureName { get; set; }
+        [Display(Name = "Datum vydání")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime IssueDate  { get; set; }
 
+        [Display(Name = "Datum splatnosti")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime PaymentDate  { get; set; }
+
+        [Display(Name = "Datum zdanitelného plnění")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime FillingDate  { get; set; }
+
+        public string FactureNumber  { get; set; }
         public decimal Price { get; set; }
     }
 

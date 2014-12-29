@@ -1,4 +1,5 @@
-﻿using Suppliers.Interfaces;
+﻿using System.ComponentModel;
+using Suppliers.Interfaces;
 using System.Collections.Generic;
 using Suppliers.Models;
 using Suppliers.Suppliers;
@@ -34,11 +35,11 @@ namespace Bussiness.Services
             return _priceLists.ContainsKey(supplier);
         }
         
-        public void LoadPriceLists(EshopConfiguration eshop)
+        public void LoadPriceLists(BindingList<SupplierConfiguration> suppliers)
         {
             _priceLists.Clear();
 
-            foreach (SupplierConfiguration supplierConfiguration in eshop.Suppliers)
+            foreach (SupplierConfiguration supplierConfiguration in suppliers)
             {
                 ISupplier supplier = null;
                 if (supplierConfiguration.Supplier == Enums.Suppliers.Askino)

@@ -41,6 +41,7 @@ namespace Desktop.Forms
 
         private async void BPricingInitClick(object sender, EventArgs e)
         {
+            ClearPricingGrid();
             Engine.Login.GetRights();
             if (Engine.Login.Rights.Pricing)
             {
@@ -137,11 +138,21 @@ namespace Desktop.Forms
                 
                 if (rbPricingProcent.Checked)
                 {
-                    Engine.Pricing.ProcentReprice(Convert.ToDecimal(ePricingPercent.Text), chPricingSupplier.Checked);
+                    decimal value;
+                    if (decimal.TryParse(ePricingPercent.Text, out value))
+                    {
+                        Engine.Pricing.ProcentReprice(Convert.ToDecimal(ePricingPercent.Text), chPricingSupplier.Checked, MainSettings.ActiveEshop().Suppliers);    
+                    }
+                    else
+                    {
+                        MessageBox.Show("Zadán neplatný procentní koeficient.");
+                    }
+                    
                 }
                 else
                 {
-                    Engine.Pricing.LimitReprice(Convert.ToDecimal(ePricingLimit.Text), Convert.ToDecimal(ePricingBellowLimit.Text), Convert.ToDecimal(ePricingOverLimit.Text), chPricingSupplier.Checked);
+                    Engine.Pricing.LimitReprice(MainSettings.ActiveEshop().RepriceLimits, chPricingSupplier.Checked, MainSettings.ActiveEshop().Suppliers);
+                    //Engine.Pricing.LimitReprice(Convert.ToDecimal(ePricingLimit.Text), Convert.ToDecimal(ePricingBellowLimit.Text), Convert.ToDecimal(ePricingOverLimit.Text), chPricingSupplier.Checked);
                 }
 
                 dgPricing.EndEdit();
@@ -215,7 +226,6 @@ namespace Desktop.Forms
 
         private void BPricingShowClick(object sender, EventArgs e)
         {
-            Engine.Pricing.UndoChanges();
             Engine.Pricing.ConsistencyChanges.Clear();
             dgPricing.Refresh();
                 
@@ -261,7 +271,6 @@ namespace Desktop.Forms
                 idCategories.Add(Convert.ToInt32(Engine.Categories.GetCategoryId(treePricing.SelectedNode.Text)));
             }
 
-            //Engine.Pricing.SetProducts(Engine.Products.GetProductForRepricing(idManufacturer, idSupplier, idCategories));
             List<ProductViewModel> a = Engine.Products.GetProductForRepricing(idManufacturer, idSupplier, idCategories);
             List<ProductViewModel> deepCopiedList = GenericCopier<List<ProductViewModel>>.DeepCopy(a);
             Engine.Pricing.SetProducts(deepCopiedList);
@@ -543,13 +552,23 @@ namespace Desktop.Forms
         
         public void ClearGridsOnReload()
         {
+            ClearConsistencyGrid();
+            ClearPricingGrid();
+        }
+
+        private void ClearConsistencyGrid()
+        {
             dgConsistency.Rows.Clear();
             dgConsistency.Refresh();
+        }
 
+        private void ClearPricingGrid()
+        {
             dgPricing.Rows.Clear();
             dgPricing.Refresh();
         }
         
+
         private Version GetVersion()
         {
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetEntryAssembly();
@@ -1261,7 +1280,7 @@ namespace Desktop.Forms
                 }
             }
             
-            Engine.PriceLists.LoadPriceLists(MainSettings.ActiveEshop());
+            Engine.PriceLists.LoadPriceLists(MainSettings.ActiveEshop().Suppliers);
                         
             _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleWithoutAnySupplier;

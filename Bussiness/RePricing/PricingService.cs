@@ -1,66 +1,42 @@
 ﻿using System;
+using System.ComponentModel;
 using Bussiness.Services;
 using Bussiness.ViewModels;
+using Core.Utils;
 using Suppliers.Interfaces;
 using System.Collections.Generic;
 using UserSettings;
 
 namespace Bussiness.RePricing
 {
-    public class RepriceLimits
-    {
-        public int Limit;
-        public int Value;
-    }
     public class PricingService
     {
-        private List<ProductViewModel> productToReprice;
-        private SupplierService supplierService;
-        private PriceListsService priceListsService;
+        private List<ProductViewModel> _productToReprice;
+        private SupplierService _suppliers;
+        private PriceListsService _priceLists;
         public List<ChangeRecord> ConsistencyChanges { get; private set; }
+        public EshopConfiguration _activeEshop;
 
         public PricingService()
         {
-            productToReprice = new List<ProductViewModel>();
+            _productToReprice = new List<ProductViewModel>();
             ConsistencyChanges = new List<ChangeRecord>();
         }
 
         public void Setup(SupplierService suppliers, PriceListsService priceLists)
         {
-            priceListsService = priceLists;
-            supplierService = suppliers;
+            _priceLists = priceLists;
+            _suppliers = suppliers;
         }
 
         public List<ProductViewModel> GetProducts()
         {
-            return productToReprice;
+            return _productToReprice;
         }
 
         public void SetProducts(List<ProductViewModel> products)
         {
-            productToReprice = products;
-        }
-
-        public void UndoChanges()
-        {
-            if (ConsistencyChanges.Count > 0)
-            {
-                foreach (ChangeRecord change in ConsistencyChanges)
-                {
-                    if (change.Type == RecordType.Product)
-                    {
-                        if (change.Field == FieldType.Price)
-                        {
-                         //   Product.
-                        }
-
-                        if (change.Field == FieldType.WholesalePrice)
-                        {
-                            
-                        }
-                    }
-                }
-            }
+            _productToReprice = products;
         }
 
         private void AddDecimalChange(decimal? oldValue, decimal? newValue, long? id, FieldType field)
@@ -81,23 +57,36 @@ namespace Bussiness.RePricing
             }
         }
         
-        public void ProcentReprice(decimal procent, bool usePriceLists)
+        public void ProcentReprice(decimal procent, bool usePriceLists, BindingList<SupplierConfiguration> suppliers)
         {
-            foreach (ProductViewModel product in productToReprice)
+            if (usePriceLists)
+            {
+                _priceLists.LoadPriceLists(suppliers);
+                foreach (SupplierConfiguration supplierConfiguration in suppliers)
+                {
+                    _priceLists[supplierConfiguration.Supplier].OpenPriceList();
+                }
+            }
+
+            foreach (ProductViewModel product in _productToReprice)
             {
                 decimal? productPrice = product.Price;
                 decimal? productWholesalePrice = product.WholesalePrice;
                 
                 if (usePriceLists)
                 {
-                    string supplierName = supplierService.GetSupplierName(product.IdSupplier);
+                    string supplierName = _suppliers.GetSupplierName(product.IdSupplier);
+                    if (supplierName == "Henry Schein")
+                    {
+                        supplierName = "HenrySchein";
+                    }
                     Enums.Suppliers supplier;
                     Enum.TryParse(supplierName, true, out supplier);
-                    ISupplier priceList = priceListsService[supplier];
-
+                    ISupplier priceList = _priceLists[supplier];
+                    
                     if ((priceList != null) && (priceList.HasReference(product.Reference)))
                     {
-                        productWholesalePrice = priceListsService[supplier].GetWholeSalePrice(product.Reference);
+                        productWholesalePrice = _priceLists[supplier].GetWholeSalePrice(product.Reference);
 
                         AddDecimalChange(product.WholesalePrice, productWholesalePrice, product.Id, FieldType.WholesalePrice);
                         product.WholesalePrice = productWholesalePrice;
@@ -120,43 +109,55 @@ namespace Bussiness.RePricing
             }
         }
 
-        public void LimitReprice(List<RepriceLimits> limits)
+        private decimal? UpdatePriceAccordingTheLimits(decimal? price, IEnumerable<RepriceLimit> limits)
         {
-            
+            foreach (RepriceLimit limit in limits)
+            {
+                if ((price > limit.LowLimit) && (price < limit.HiLimit))
+                {
+                    price = price + limit.Value;
+                }
+            }
+
+            return price;
         }
 
-        public void LimitReprice(decimal limit, decimal below, decimal above, bool usePriceLists)
+        public void LimitReprice(IList<RepriceLimit> limits, bool usePriceLists, BindingList<SupplierConfiguration> suppliers)
         {
-            foreach (ProductViewModel product in productToReprice)
+            if (usePriceLists)
+            {
+                _priceLists.LoadPriceLists(suppliers);
+                foreach (SupplierConfiguration supplierConfiguration in suppliers)
+                {
+                    _priceLists[supplierConfiguration.Supplier].OpenPriceList();
+                }
+            }
+
+            foreach (ProductViewModel product in _productToReprice)
             {
                 decimal? productPrice = product.Price;
                 decimal? productWholesalePrice = product.WholesalePrice;
 
                 if (usePriceLists)
                 {
-                    string supplierName = supplierService.GetSupplierName(product.IdSupplier);
+                    string supplierName = _suppliers.GetSupplierName(product.IdSupplier);
+                    if (supplierName == "Henry Schein")
+                    {
+                        supplierName = "HenrySchein";
+                    }
                     Enums.Suppliers supplier;
                     Enum.TryParse(supplierName, true, out supplier);
 
-                    ISupplier priceList = priceListsService[supplier];
+                    ISupplier priceList = _priceLists[supplier];
 
                     if ((priceList != null) && (priceList.HasReference(product.Reference)))
                     {
-                        productWholesalePrice = priceListsService[supplier].GetWholeSalePrice(product.Reference);
+                        productWholesalePrice = _priceLists[supplier].GetWholeSalePrice(product.Reference);
 
                         AddDecimalChange(product.WholesalePrice, productWholesalePrice, product.Id, FieldType.Price);
                         product.WholesalePrice = productWholesalePrice;
 
-                        decimal? newPrice;
-
-                        if (productWholesalePrice > limit)
-                        {
-                            newPrice = productWholesalePrice + above;
-                        }
-                        else
-                        {
-                            newPrice = productWholesalePrice + below;
-                        }
+                        decimal? newPrice = UpdatePriceAccordingTheLimits(productWholesalePrice, limits);
 
                         AddDecimalChange(product.Price, newPrice, product.Id, FieldType.Price);
                         product.Price = newPrice;
@@ -164,31 +165,16 @@ namespace Bussiness.RePricing
                 }
                 else
                 {
-                    decimal? newPrice;
-                    decimal? newWholeSalePrice;
-                    if (productPrice > limit)
-                    {
-                        newPrice = productPrice + above; 
-                    }
-                    else
-                    {
-                        newPrice = productPrice + below; 
-                    }
+                    decimal? newPrice = UpdatePriceAccordingTheLimits(productPrice, limits);
+                    decimal? newWholeSalePrice = UpdatePriceAccordingTheLimits(productWholesalePrice, limits);
+                    
                     AddDecimalChange(product.Price, newPrice, product.Id, FieldType.Price);
                     product.Price = newPrice;
                     
-                    if (productWholesalePrice > limit)
-                    {
-                        newWholeSalePrice = productWholesalePrice + above;
-                    }
-                    else
-                    {
-                        newWholeSalePrice = productWholesalePrice + below;
-                    }
                     AddDecimalChange(product.WholesalePrice, newWholeSalePrice, product.Id, FieldType.Price);
                     product.WholesalePrice = newWholeSalePrice;
                 }
             }
         }
-    }
+    }   
 }

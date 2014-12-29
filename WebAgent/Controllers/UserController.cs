@@ -170,12 +170,27 @@ namespace ACEAgent.Controllers
             return View();
         }
 
-        public ActionResult MakeFacture(string id)
+        public ActionResult MakeFacture(string paymentId)
         {
             PaymentFacture facture = new PaymentFacture();
+            using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            {
+                Payment payment = uow.Payments.GetByID(Convert.ToInt32(paymentId));
+                facture.FactureNumber = paymentId;
+                facture.IssuerAddress = "Dvořákova 8, 602 00, Brno";
+                facture.IssuerName = "Veronika Navrátilová";
+                facture.IssueDate = payment.PaymentDate;
+                facture.PaymentDate = payment.PaymentDate.AddMonths(1);
+                //facture.FillingDate = "xxx";
+                facture.Price = payment.Amount;
+                UserProfile user = uow.Users.GetAll().SingleOrDefault(u => u.PaymentSymbol == payment.PaymentSymbol);
+                facture.ReceiverAddress = user.FacturationAddress;
+                facture.ReceiverName = user.FirstName + " " + user.LastName;
+            }
+            
             var pdf = new PdfResult(facture, "PdfFacture");
 
-            pdf.ViewBag.Title = "Title from ViewBag";
+            pdf.ViewBag.Title = "Faktura - daňový doklad";
 
             return pdf;
         }

@@ -65,6 +65,7 @@
     <Compile Include="ModuleInfo.cs" />
     <Compile Include="Utils\AgentUtils.cs" />
     <Compile Include="Utils\GenericCopier.cs" />
+    <Compile Include="Utils\RepriceLimit.cs" />
     <Compile Include="Utils\TreeItem.cs" />
     <Compile Include="Data\EFEntity.cs" />
     <Compile Include="Data\ACEContext.cs" />

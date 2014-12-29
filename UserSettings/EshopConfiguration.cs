@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using Core.Utils;
 
 namespace UserSettings
 {
@@ -9,13 +9,6 @@ namespace UserSettings
         public string PathToFile { get; set; }
     }
 
-    public class Limit
-    {
-        public decimal LowLimit { get; set; }
-        public decimal HiLimit { get; set; }
-        public decimal Value { get; set; }
-    }
-
     public class EshopConfiguration //: INotifyPropertyChanged
     {
         public string EshopName { get; set; }
@@ -23,7 +16,7 @@ namespace UserSettings
         public string BaseUrl { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public BindingList<Limit> RepriceLimits { get; set; }
+        public BindingList<RepriceLimit> RepriceLimits { get; set; }
         public BindingList<SupplierConfiguration> Suppliers { get; set; }
         
         //public event PropertyChangedEventHandler PropertyChanged;
@@ -39,7 +32,7 @@ namespace UserSettings
         public EshopConfiguration()
         {
             Suppliers = new BindingList<SupplierConfiguration>();
-            RepriceLimits = new BindingList<Limit>();
+            RepriceLimits = new BindingList<RepriceLimit>();
         }
     }
 }
