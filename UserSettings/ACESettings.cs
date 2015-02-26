@@ -53,7 +53,10 @@ namespace UserSettings
 
         public void UpdateSelectedEshop(EshopConfiguration eshop, int selectedIndex)
         {
-            Eshops.Eshops[selectedIndex] = eshop;
+            if (selectedIndex > -1 && selectedIndex < (Eshops.Eshops.Count - 1))
+            {
+                Eshops.Eshops[selectedIndex] = eshop;    
+            }
         }
 
         public Size GetSize(string formName)

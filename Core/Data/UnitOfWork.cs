@@ -9,13 +9,13 @@ namespace Core.Data
         // Entity framework repository
         //////////////////////////////////////////////////////////////////////////
 
-        private readonly IRepository<UserProfile, int> userRepository;
-        private readonly IRepository<MemberShip, int> memberShipRepository;
+        private readonly IRepository<UserProfile, int> _userRepository;
+        private readonly IRepository<MemberShip, int> _memberShipRepository;
         //private IRepository<Role, int> userRoleRepository;
-        private readonly IRepository<ACEModule, int> aceModuleRepository;
-        private readonly IRepository<Payment, int> paymentRepository;
+        private readonly IRepository<ACEModule, int> _aceModuleRepository;
+        private readonly IRepository<Payment, int> _paymentRepository;
         //private IRepository<UsersInRole, int> usersInRoleRepository;
-        private readonly IRepository<ModuleOrder, int> moduleOrderRepository;
+        private readonly IRepository<ModuleOrder, int> _moduleOrderRepository;
         
         public UnitOfWork(ACEContext efContext)
         {
@@ -24,23 +24,23 @@ namespace Core.Data
             //////////////////////////////////////////////////////////////////////////
             // Entity Framework repositories
             //////////////////////////////////////////////////////////////////////////
-            userRepository = new EFRepository<UserProfile>(this);
-            memberShipRepository = new EFRepository<MemberShip>(this);
+            _userRepository = new EfRepository<UserProfile>(this);
+            _memberShipRepository = new EfRepository<MemberShip>(this);
             //this.userRoleRepository = new EFRepository<Role>(this);
-            aceModuleRepository = new EFRepository<ACEModule>(this);
-            paymentRepository = new EFRepository<Payment>(this);
+            _aceModuleRepository = new EfRepository<ACEModule>(this);
+            _paymentRepository = new EfRepository<Payment>(this);
             //this.usersInRoleRepository = new EFRepository<UsersInRole>(this);
-            moduleOrderRepository = new EFRepository<ModuleOrder>(this);
+            _moduleOrderRepository = new EfRepository<ModuleOrder>(this);
         }
 
         public IRepository<UserProfile, int> Users
         {
-            get { return userRepository; }
+            get { return _userRepository; }
         }
 
         public IRepository<MemberShip, int> MemberShips
         {
-            get { return memberShipRepository; }
+            get { return _memberShipRepository; }
         }
 
         //public IRepository<Role, int> UserRoles
@@ -50,17 +50,17 @@ namespace Core.Data
 
         public IRepository<ACEModule, int> ACEModules
         {
-            get { return aceModuleRepository; }
+            get { return _aceModuleRepository; }
         }
 
         public IRepository<Payment, int> Payments
         {
-            get { return paymentRepository; }
+            get { return _paymentRepository; }
         }
 
         public IRepository<ModuleOrder, int> ModuleOrders
         {
-            get { return moduleOrderRepository; }
+            get { return _moduleOrderRepository; }
         }
 
         //public IRepository<UsersInRole, int> UsersInRoles

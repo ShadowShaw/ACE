@@ -306,13 +306,16 @@ namespace Desktop.Forms
 
         private void EshopSettingsSuppliersChanged(object sender, EshopEventArgs e)
         {
-            MainSettings.UpdateSelectedEshop(e.Eshop, _selectedEshopIndex);
-            RefreshStatusBar();
-            MainSettings.SaveSettings();
-
-            if (MainSettings.ActiveEshop() == MainSettings.Eshops.Eshops[_selectedEshopIndex])
+            if (_selectedEshopIndex > -1 && _selectedEshopIndex < (MainSettings.Eshops.Eshops.Count - 1))
             {
-                InitializeEshopConnection();
+                MainSettings.UpdateSelectedEshop(e.Eshop, _selectedEshopIndex);
+                RefreshStatusBar();
+                MainSettings.SaveSettings();
+
+                if (MainSettings.ActiveEshop() == MainSettings.Eshops.Eshops[_selectedEshopIndex])
+                {
+                    InitializeEshopConnection();
+                }
             }
         }
 
@@ -425,7 +428,6 @@ namespace Desktop.Forms
 
             DataGridTools.SetMainSettings(MainSettings);
             InitDisplayEshopConfiguration();
-            InitModuleInfo();
             InitStatusBar();
             ShowHomeBrowser();
             
@@ -822,6 +824,8 @@ namespace Desktop.Forms
 
         private void InitDisplayEshopConfiguration()
         {
+            EnableEshopSettingsControls();
+
             if (MainSettings.Eshops.Eshops.Count > 0)
             {
                 InitEshopList();
@@ -839,6 +843,20 @@ namespace Desktop.Forms
                     treeConfiguration.SelectedNode = treeConfiguration.Nodes[MainSettings.Eshops.ActiveEshopIndex];
                     DisplayEshop();
                 }
+            }
+        }
+
+        private void EnableEshopSettingsControls()
+        {
+            if (MainSettings.Eshops.Eshops.Count < 1)
+            {
+                eshopSettings.DisableControls(false);
+                bPrestaTest.Enabled = false;
+            }
+            else
+            {
+                eshopSettings.DisableControls(true);
+                bPrestaTest.Enabled = true;
             }
         }
 
@@ -878,6 +896,8 @@ namespace Desktop.Forms
 
         private void RefreshActiveEshopCombo()
         {
+            EnableEshopSettingsControls();
+
             int index = cbActiveEshop.SelectedIndex;
             InitEshopList();
             cbActiveEshop.SelectedIndex = index;
@@ -915,6 +935,7 @@ namespace Desktop.Forms
 
         private void RefreshActiveEshop()
         {
+            EnableEshopSettingsControls();
             cbActiveEshop.SelectedIndex = MainSettings.Eshops.ActiveEshopIndex;
         }
 
@@ -942,6 +963,7 @@ namespace Desktop.Forms
             if (Engine.Login.Logged())
             {
                 Engine.Login.Logout();
+                bInitModuleInfo.Enabled = false;
                 statusAgent.ForeColor = Color.Red;
             }
             else
@@ -960,7 +982,7 @@ namespace Desktop.Forms
                 }
             }
             InitUserInfo();
-            InitModuleInfo();
+            bInitModuleInfo.Enabled = true;
         }
 
 
@@ -1312,5 +1334,11 @@ namespace Desktop.Forms
         }
 
         #endregion
+
+        private void bInitModuleInfo_Click(object sender, EventArgs e)
+        {
+            InitModuleInfo();
+        }
+
     }
 }

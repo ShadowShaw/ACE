@@ -10,7 +10,6 @@ namespace Suppliers.Accesors
     {
         public IEnumerable<T> Load<T>(string fileName) where T : class, ISupplierModel, new()
         {
-            T item;
             int tableIndex = new T().GetFileTableIndex();
             
             if (!File.Exists(fileName))

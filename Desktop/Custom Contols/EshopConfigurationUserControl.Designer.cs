@@ -46,12 +46,10 @@
             this.lPrestaUrl = new System.Windows.Forms.Label();
             this.openDialog = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbPrestaSetup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSuppliers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRepricingLimits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // gbPrestaSetup
@@ -232,12 +230,10 @@
             // 
             // errorProvider
             // 
+            this.errorProvider.BlinkRate = 0;
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider.ContainerControl = this;
             this.errorProvider.RightToLeft = true;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
             // 
             // EshopConfigurationControl
             // 
@@ -251,7 +247,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgSuppliers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRepricingLimits)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -271,7 +266,6 @@
         private System.Windows.Forms.OpenFileDialog openDialog;
         private System.Windows.Forms.DataGridView dgRepricingLimits;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DataGridView dgSuppliers;
         private System.Windows.Forms.Label lRepricingLimits;
         private System.Windows.Forms.Button bDelSupplier;

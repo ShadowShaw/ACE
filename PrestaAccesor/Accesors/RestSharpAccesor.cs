@@ -25,7 +25,7 @@ namespace PrestaAccesor.Accesors
             Password = password;
 
             Client = new RestClient();
-            Client.BaseUrl = BaseUrl;
+            Client.BaseUrl = new Uri(BaseUrl);
             Client.Authenticator = new HttpBasicAuthenticator(Account, Password);
         }
 
@@ -34,8 +34,8 @@ namespace PrestaAccesor.Accesors
             BaseUrl = baseUrl;
             Account = account;
             Password = password;
-            
-            Client.BaseUrl = BaseUrl;
+
+            Client.BaseUrl = new Uri(BaseUrl);
             Client.Authenticator = new HttpBasicAuthenticator(Account, Password);
         }
 

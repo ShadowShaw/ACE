@@ -59,7 +59,6 @@ C:\GitHub\ACE\Desktop\bin\Debug\EntityFramework.dll
 C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.dll
 C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
-C:\GitHub\ACE\Desktop\bin\Debug\System.Data.Entity.dll
 C:\GitHub\ACE\Desktop\bin\Debug\System.Runtime.dll
 C:\GitHub\ACE\Desktop\bin\Debug\System.Threading.Tasks.dll
 C:\GitHub\ACE\Desktop\bin\Debug\PrestaAccesor.dll
@@ -93,3 +92,5 @@ C:\GitHub\ACE\Desktop\bin\Debug\UserSettings.pdb
 C:\GitHub\ACE\Desktop\bin\Debug\Excel.dll
 C:\GitHub\ACE\Desktop\bin\Debug\ICSharpCode.SharpZipLib.dll
 C:\GitHub\ACE\Desktop\bin\Debug\Excel.pdb
+C:\GitHub\ACE\Desktop\bin\Debug\System.IO.dll
+C:\GitHub\ACE\Desktop\bin\Debug\System.IO.xml

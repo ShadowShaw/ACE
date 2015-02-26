@@ -17,7 +17,22 @@ namespace Desktop.Custom_Contols
 
         protected virtual void OnSuppliersChanged(EshopEventArgs e)
         {
-            SuppliersChanged(this, e);
+            if (eshop != null)
+            {
+                SuppliersChanged(this, e);    
+            }
+        }
+
+        public void DisableControls(bool state)
+        {
+            cbTypeEshop.Enabled = state;
+            ePrestaUrl.Enabled = state;
+            gbPrestaSetup.Enabled = state;
+            if (state == false)
+            {
+                errorProvider.SetError(ePrestaUrl, String.Empty);
+                errorProvider.SetError(ePrestaToken, String.Empty);    
+            }
         }
 
         private EshopConfiguration eshop;

@@ -39,24 +39,6 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\ModuleOrder.cs" />
@@ -85,39 +67,31 @@
     <Compile Include="Security\DesktopLogin.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks.Extensions">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.IO.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Runtime">
-      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\net40\System.Runtime.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks">
-      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\net40\System.Threading.Tasks.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.Threading.Tasks.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.XML" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PrestaAccesor\PrestaAccesor.csproj">
-      <Project>{3d494a24-06ba-475b-a158-162745683ec3}</Project>
-      <Name>PrestaAccesor</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -125,10 +99,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
