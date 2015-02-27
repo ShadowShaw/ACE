@@ -6,7 +6,7 @@ namespace Core.Data
     {
         public IUnitOfWork CreateNew()
         {
-            return new UnitOfWork(new ACEContext());
+            return new UnitOfWork(new AceContext());
         }
     }
 }

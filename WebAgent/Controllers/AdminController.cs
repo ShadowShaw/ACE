@@ -13,7 +13,7 @@ namespace ACEAgent.Controllers
 {
     public class AdminController : Controller
     {
-        private ACEContext db = new ACEContext();
+        private AceContext db = new AceContext();
 
         //
         // GET: /Admin/

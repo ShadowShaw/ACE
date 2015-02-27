@@ -26,11 +26,11 @@ namespace ACEAgent.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<ACEContext>(null);
+                Database.SetInitializer<AceContext>(null);
 
                 try
                 {
-                    using (var context = new ACEContext())
+                    using (var context = new AceContext())
                     {
                         if (!context.Database.Exists())
                         {

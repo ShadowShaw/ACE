@@ -2,6 +2,7 @@ C:\GitHub\ACE\Core\bin\Release\Core.dll.config
 C:\GitHub\ACE\Core\bin\Release\Core.dll
 C:\GitHub\ACE\Core\bin\Release\Core.pdb
 C:\GitHub\ACE\Core\bin\Release\EntityFramework.dll
+C:\GitHub\ACE\Core\bin\Release\EntityFramework.SqlServer.dll
 C:\GitHub\ACE\Core\bin\Release\Microsoft.Threading.Tasks.dll
 C:\GitHub\ACE\Core\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 C:\GitHub\ACE\Core\bin\Release\Microsoft.Threading.Tasks.Extensions.dll
@@ -9,6 +10,7 @@ C:\GitHub\ACE\Core\bin\Release\System.IO.dll
 C:\GitHub\ACE\Core\bin\Release\System.Runtime.dll
 C:\GitHub\ACE\Core\bin\Release\System.Threading.Tasks.dll
 C:\GitHub\ACE\Core\bin\Release\EntityFramework.xml
+C:\GitHub\ACE\Core\bin\Release\EntityFramework.SqlServer.xml
 C:\GitHub\ACE\Core\bin\Release\Microsoft.Threading.Tasks.xml
 C:\GitHub\ACE\Core\bin\Release\Microsoft.Threading.Tasks.Extensions.xml
 C:\GitHub\ACE\Core\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.xml

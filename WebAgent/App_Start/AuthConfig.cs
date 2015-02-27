@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using Microsoft.Web.WebPages.OAuth;
-using ACEAgent.Models;
 using Core.Data;
 using Core.Models;
-using System.Data.Entity.Infrastructure;
+using WebMatrix.WebData;
 
 namespace ACEAgent
 {
@@ -14,11 +11,11 @@ namespace ACEAgent
     {
         public static void InitRoles()
         {
-            System.Data.Entity.Database.SetInitializer<ACEContext>(null);
+            Database.SetInitializer<AceContext>(null);
 
             try
             {
-                using (var context = new ACEContext())
+                using (var context = new AceContext())
                 {
                     if (!context.Database.Exists())
                     {
@@ -27,14 +24,12 @@ namespace ACEAgent
                     }
                     else
                     {
-                        if (context.Roles.Count() == 0)
+                        if (!context.Roles.Any())
                         {
-                            Role userRole = new Role();
-                            userRole.RoleName = "user";
+                            Role userRole = new Role {RoleName = "user"};
                             context.Roles.Add(userRole);
-                            
-                            Role adminRole = new Role();
-                            adminRole.RoleName = "admin";
+
+                            Role adminRole = new Role {RoleName = "admin"};
                             context.Roles.Add(adminRole);
 
                             context.SaveChanges();
@@ -42,7 +37,7 @@ namespace ACEAgent
                     }
                 }
 
-                WebMatrix.WebData.WebSecurity.InitializeDatabaseConnection("ACEContext", "UserProfile", "Id", "UserName", autoCreateTables: true);
+                WebSecurity.InitializeDatabaseConnection("ACEContext", "UserProfile", "Id", "UserName", autoCreateTables: true);
             }
             catch (Exception ex)
             {

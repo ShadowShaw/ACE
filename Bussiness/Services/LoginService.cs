@@ -8,51 +8,54 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace Bussiness.Services
 {
-    public class ACERights
+    public class AceRights
     {
-        public bool Pricing = false;
-        public bool Consistency = false;
+        public bool Pricing;
+        public bool Consistency;
     }
 
     public class LoginService
     {
-        private readonly UnitOfWorkProvider uowProvider;
+        private readonly UnitOfWorkProvider _uowProvider;
         public UserProfile CurrentUser { get; private set;}
-        public ACERights Rights;
+        public AceRights Rights;
         
         public LoginService()
         {
-            uowProvider = new UnitOfWorkProvider();
-            Rights = new ACERights();
+            _uowProvider = new UnitOfWorkProvider();
+            Rights = new AceRights();
             CurrentUser = null;
         }
 
         public bool CheckDesktopLogin(string username, string password)
         {
+            var connStringFromConfig = ConfigurationManager.ConnectionStrings;
+
             bool result = false;
             
             if ((username != "") && (password != ""))
             {
                 int userId = 0;
                 string hashedPassword = "";
-                using (IUnitOfWork uow = uowProvider.CreateNew())
+                using (IUnitOfWork uow = _uowProvider.CreateNew())
                 {
                     var userList = uow.Users.GetAll().Where(x => x.UserName == username);
                     if (userList.Count() == 1)
                     {
                         userId = userList.First().Id;
-                        hashedPassword = uow.MemberShips.GetByID(userId).Password;
+                        hashedPassword = uow.MemberShips.GetAll().First(i => i.UserId == userId).Password;
                     }
                 }
 
                 if (DesktopLogin.VerifyHashedPassword(hashedPassword, password))
                 {
                     result = true;
-                    CurrentUser = uowProvider.CreateNew().Users.GetByID(userId);
+                    CurrentUser = _uowProvider.CreateNew().Users.GetByID(userId);
                     GetRights();
                 }
             }
@@ -69,10 +72,19 @@ namespace Bussiness.Services
             }
             else
             {
-                using (IUnitOfWork uow = uowProvider.CreateNew())
+                using (IUnitOfWork uow = _uowProvider.CreateNew())
                 {
-                    Rights.Pricing = IsModuleActive(uow.ACEModules.GetAll().FirstOrDefault(m => m.Name == ModuleInfo.PricingModuleName).Id);
-                    Rights.Consistency = IsModuleActive(uow.ACEModules.GetAll().FirstOrDefault(m => m.Name == ModuleInfo.ConsistencyModuleName).Id);
+                    ACEModule pricingModule = uow.ACEModules.GetAll().FirstOrDefault(m => m.Name == ModuleInfo.PricingModuleName);
+                    if (pricingModule != null)
+                    {
+                        Rights.Pricing = IsModuleActive(pricingModule.Id);
+                    }
+
+                    ACEModule consistencyModule = uow.ACEModules.GetAll().FirstOrDefault(m => m.Name == ModuleInfo.ConsistencyModuleName);
+                    if (consistencyModule != null)
+                    {
+                        Rights.Consistency = IsModuleActive(consistencyModule.Id);
+                    }
                 }
             }
         }
@@ -83,7 +95,7 @@ namespace Bussiness.Services
 
             if (CurrentUser != null)
             {
-                using (IUnitOfWork uow = uowProvider.CreateNew())
+                using (IUnitOfWork uow = _uowProvider.CreateNew())
                 {
                     List<ModuleOrder> orders = uow.ModuleOrders.GetAll().Where(u => u.UserId == CurrentUser.Id).Where(m => m.ModuleId == moduleId).ToList();
                     foreach (ModuleOrder order in orders)
@@ -141,10 +153,15 @@ namespace Bussiness.Services
         {
             try
             {
-                using (var client = new WebClient())
-                using (var stream = client.OpenRead("http://www.google.com"))
+                using (WebClient client = new WebClient())
+                using (Stream stream = client.OpenRead("http://www.google.com"))
                 {
-                   return true;
+                    if (stream != null)
+                    {
+                        stream.Close();
+                    }
+
+                    return true;
                 }
             }
             catch
@@ -159,7 +176,7 @@ namespace Bussiness.Services
 
             if (CurrentUser != null)
             {
-                using (IUnitOfWork uow = uowProvider.CreateNew())
+                using (IUnitOfWork uow = _uowProvider.CreateNew())
                 {
                     List<ModuleOrder> orders = uow.ModuleOrders.GetAll().Where(u => u.UserId == CurrentUser.Id).Where(m => m.ModuleId == moduleId).ToList();
                     foreach (ModuleOrder order in orders)

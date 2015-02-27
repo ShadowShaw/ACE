@@ -19,7 +19,7 @@ namespace Desktop.Forms
     public partial class Main : Form
     {
         public EngineService Engine;
-        public ACESettings MainSettings;
+        public ACESettings Settings;
         private int _selectedEshopIndex;
         
         private readonly List<ChangeRecord> _consistencyChanges = new List<ChangeRecord>();
@@ -141,7 +141,7 @@ namespace Desktop.Forms
                     decimal value;
                     if (decimal.TryParse(ePricingPercent.Text, out value))
                     {
-                        Engine.Pricing.ProcentReprice(Convert.ToDecimal(ePricingPercent.Text), chPricingSupplier.Checked, MainSettings.ActiveEshop().Suppliers);    
+                        Engine.Pricing.ProcentReprice(Convert.ToDecimal(ePricingPercent.Text), chPricingSupplier.Checked, Settings.ActiveEshop().Suppliers);    
                     }
                     else
                     {
@@ -151,7 +151,7 @@ namespace Desktop.Forms
                 }
                 else
                 {
-                    Engine.Pricing.LimitReprice(MainSettings.ActiveEshop().RepriceLimits, chPricingSupplier.Checked, MainSettings.ActiveEshop().Suppliers);
+                    Engine.Pricing.LimitReprice(Settings.ActiveEshop().RepriceLimits, chPricingSupplier.Checked, Settings.ActiveEshop().Suppliers);
                     //Engine.Pricing.LimitReprice(Convert.ToDecimal(ePricingLimit.Text), Convert.ToDecimal(ePricingBellowLimit.Text), Convert.ToDecimal(ePricingOverLimit.Text), chPricingSupplier.Checked);
                 }
 
@@ -306,13 +306,13 @@ namespace Desktop.Forms
 
         private void EshopSettingsSuppliersChanged(object sender, EshopEventArgs e)
         {
-            if (_selectedEshopIndex > -1 && _selectedEshopIndex < (MainSettings.Eshops.Eshops.Count - 1))
+            if (_selectedEshopIndex > -1 && _selectedEshopIndex < (Settings.Eshops.Eshops.Count - 1))
             {
-                MainSettings.UpdateSelectedEshop(e.Eshop, _selectedEshopIndex);
+                Settings.UpdateSelectedEshop(e.Eshop, _selectedEshopIndex);
                 RefreshStatusBar();
-                MainSettings.SaveSettings();
+                Settings.SaveSettings();
 
-                if (MainSettings.ActiveEshop() == MainSettings.Eshops.Eshops[_selectedEshopIndex])
+                if (Settings.ActiveEshop() == Settings.Eshops.Eshops[_selectedEshopIndex])
                 {
                     InitializeEshopConnection();
                 }
@@ -324,26 +324,26 @@ namespace Desktop.Forms
             switch (tc.SelectedIndex)
             {
                 case 0:
-                    MainSettings.Values.ACETab = Enums.ACETabType.Home;
+                    Settings.Values.ACETab = Enums.ACETabType.Home;
                     break;
                 case 1:
-                    MainSettings.Values.ACETab = Enums.ACETabType.Consistency;
+                    Settings.Values.ACETab = Enums.ACETabType.Consistency;
                     break;
                 case 2:
-                    MainSettings.Values.ACETab = Enums.ACETabType.Repricing;
+                    Settings.Values.ACETab = Enums.ACETabType.Repricing;
                     break;
                 case 3:
-                    MainSettings.Values.ACETab = Enums.ACETabType.Setup;
+                    Settings.Values.ACETab = Enums.ACETabType.Setup;
                     break;
                 default:
-                    MainSettings.Values.ACETab = Enums.ACETabType.Home;
+                    Settings.Values.ACETab = Enums.ACETabType.Home;
                     break;
             }
         }
 
         private void SetTab()
         {
-            switch (MainSettings.Values.ACETab)
+            switch (Settings.Values.ACETab)
             {
                 case Enums.ACETabType.Consistency:
                     tc.SelectTab(1);
@@ -365,18 +365,21 @@ namespace Desktop.Forms
         {
             DisableGroupBoxOnReload();
             ClearGridsOnReload();
-            if (MainSettings.ActiveEshop() != null)
+            if (Settings.ActiveEshop() != null)
             {
-                if (MainSettings.ActiveEshop().Type == Enums.EshopType.Prestashop)
+                if (Settings.ActiveEshop().Type == Enums.EshopType.Prestashop)
                 {
-                    Engine.InitPrestaServices(MainSettings.ActiveEshop().BaseUrl, MainSettings.ActiveEshop().Password);
+                    if (String.IsNullOrEmpty(Settings.ActiveEshop().Password) == false && String.IsNullOrEmpty(Settings.ActiveEshop().BaseUrl) == false)
+                    {
+                        Engine.InitPrestaServices(Settings.ActiveEshop().BaseUrl, Settings.ActiveEshop().Password);                        
+                    }
                 }
             }
         }
 
         private void RegisterEvents()
         {
-            _selectedEshopIndex = MainSettings.Eshops.ActiveEshopIndex;
+            _selectedEshopIndex = Settings.Eshops.ActiveEshopIndex;
             eshopSettings.SuppliersChanged += EshopSettingsSuppliersChanged;
         }
 
@@ -400,33 +403,33 @@ namespace Desktop.Forms
         {
             InitializeComponent();
             Engine = new EngineService();
-            MainSettings = new ACESettings();
+            Settings = new ACESettings();
             SetTab();
             SetVersion();
             RegisterEvents();
          
             statusAgent.ForeColor = Color.Red;
 
-            if (MainSettings.Eshops.Eshops.Count == 0)
+            if (Settings.Eshops.Eshops.Count == 0)
             {
                 MessageEshopConfigurationMissing();
             }
             else
             {
-                eshopSettings.SetEshop(MainSettings.ActiveEshop());
+                eshopSettings.SetEshop(Settings.ActiveEshop());
             }
 
             InitializeEshopConnection();
 
             RefreshStatusBar();
 
-            Size mainFormSize = MainSettings.GetSize("main");
+            Size mainFormSize = Settings.GetSize("main");
             if (mainFormSize != new Size(0,0))
             {
                 Size = mainFormSize;
             }
 
-            DataGridTools.SetMainSettings(MainSettings);
+            DataGridTools.SetMainSettings(Settings);
             InitDisplayEshopConfiguration();
             InitStatusBar();
             ShowHomeBrowser();
@@ -471,7 +474,7 @@ namespace Desktop.Forms
             }
             else
             {
-                eshopSettings.SetEshop(MainSettings.Eshops.Eshops[_selectedEshopIndex]);
+                eshopSettings.SetEshop(Settings.Eshops.Eshops[_selectedEshopIndex]);
             }
         }
 
@@ -494,14 +497,14 @@ namespace Desktop.Forms
 
         private void MainFormClosing(object sender, FormClosingEventArgs e)
         {
-            MainSettings.SetSize("main", Size);
+            Settings.SetSize("main", Size);
             
             foreach (DataGridViewColumn item in dgConsistency.Columns)
             {
-                MainSettings.SetWidth(dgConsistency.Name + item.Name, item.Width);
+                Settings.SetWidth(dgConsistency.Name + item.Name, item.Width);
             }
 
-            MainSettings.SaveSettings();
+            Settings.SaveSettings();
         }
 
         public void ACERightsError()
@@ -785,14 +788,14 @@ namespace Desktop.Forms
         private void BAddEshopClick(object sender, EventArgs e)
         {
             EshopConfiguration eshop = new EshopConfiguration();
-            eshop.EshopName = "Eshop" + MainSettings.Eshops.Eshops.Count();
+            eshop.EshopName = "Eshop" + Settings.Eshops.Eshops.Count();
             eshop.Type = Enums.EshopType.Prestashop;
             TreeNode treeNode = new TreeNode();
-            MainSettings.Eshops.Eshops.Add(eshop);
+            Settings.Eshops.Eshops.Add(eshop);
             treeConfiguration.Nodes.Add(treeNode);
-            if (MainSettings.Eshops.ActiveEshopIndex == -1)
+            if (Settings.Eshops.ActiveEshopIndex == -1)
             {
-                MainSettings.Eshops.ActiveEshopIndex = 0;
+                Settings.Eshops.ActiveEshopIndex = 0;
                 _selectedEshopIndex = 0;
             }
             InitDisplayEshopConfiguration();
@@ -800,8 +803,8 @@ namespace Desktop.Forms
 
         private void CbActiveEshopSelectedIndexChanged(object sender, EventArgs e)
         {
-            MainSettings.Eshops.ActiveEshopIndex = cbActiveEshop.SelectedIndex;
-            if (MainSettings.ActiveEshop() != null)
+            Settings.Eshops.ActiveEshopIndex = cbActiveEshop.SelectedIndex;
+            if (Settings.ActiveEshop() != null)
             {
                 InitializeEshopConnection();
             }
@@ -811,14 +814,14 @@ namespace Desktop.Forms
         private void InitEshopList()
         {
             cbActiveEshop.Items.Clear();
-            foreach (EshopConfiguration eshop in MainSettings.Eshops.Eshops)
+            foreach (EshopConfiguration eshop in Settings.Eshops.Eshops)
             {
                 cbActiveEshop.Items.Add(eshop.EshopName);
             }
 
-            if ((MainSettings.Eshops.ActiveEshopIndex != -1) && (MainSettings.Eshops.ActiveEshopIndex < MainSettings.Eshops.Eshops.Count))
+            if ((Settings.Eshops.ActiveEshopIndex != -1) && (Settings.Eshops.ActiveEshopIndex < Settings.Eshops.Eshops.Count))
             {
-                cbActiveEshop.SelectedIndex = MainSettings.Eshops.ActiveEshopIndex;
+                cbActiveEshop.SelectedIndex = Settings.Eshops.ActiveEshopIndex;
             }
         }
 
@@ -826,21 +829,21 @@ namespace Desktop.Forms
         {
             EnableEshopSettingsControls();
 
-            if (MainSettings.Eshops.Eshops.Count > 0)
+            if (Settings.Eshops.Eshops.Count > 0)
             {
                 InitEshopList();
                                                 
                 treeConfiguration.Nodes.Clear();
-                foreach (EshopConfiguration eshop in MainSettings.Eshops.Eshops)
+                foreach (EshopConfiguration eshop in Settings.Eshops.Eshops)
                 {
                     TreeNode treeNode = new TreeNode(eshop.EshopName);
                     treeConfiguration.Nodes.Add(treeNode);
                 }
-                if ((MainSettings.Eshops.ActiveEshopIndex < treeConfiguration.Nodes.Count) && (MainSettings.Eshops.ActiveEshopIndex != -1))
+                if ((Settings.Eshops.ActiveEshopIndex < treeConfiguration.Nodes.Count) && (Settings.Eshops.ActiveEshopIndex != -1))
                 {
-                    ShowNode(treeConfiguration.Nodes[MainSettings.Eshops.ActiveEshopIndex]);
+                    ShowNode(treeConfiguration.Nodes[Settings.Eshops.ActiveEshopIndex]);
 
-                    treeConfiguration.SelectedNode = treeConfiguration.Nodes[MainSettings.Eshops.ActiveEshopIndex];
+                    treeConfiguration.SelectedNode = treeConfiguration.Nodes[Settings.Eshops.ActiveEshopIndex];
                     DisplayEshop();
                 }
             }
@@ -848,7 +851,7 @@ namespace Desktop.Forms
 
         private void EnableEshopSettingsControls()
         {
-            if (MainSettings.Eshops.Eshops.Count < 1)
+            if (Settings.Eshops.Eshops.Count < 1)
             {
                 eshopSettings.DisableControls(false);
                 bPrestaTest.Enabled = false;
@@ -862,10 +865,10 @@ namespace Desktop.Forms
 
         private void ShowNode(TreeNode node)
         {
-                EshopConfiguration eshop = MainSettings.Eshops.Eshops.SingleOrDefault(n => n.EshopName == node.Text);
+                EshopConfiguration eshop = Settings.Eshops.Eshops.SingleOrDefault(n => n.EshopName == node.Text);
                 if (eshop != null)
                 {
-                    _selectedEshopIndex = MainSettings.Eshops.Eshops.IndexOf(eshop);
+                    _selectedEshopIndex = Settings.Eshops.Eshops.IndexOf(eshop);
                     eshopSettings.SetEshop(eshop);
                     RefreshStatusBar();
                 }
@@ -905,7 +908,7 @@ namespace Desktop.Forms
 
         private void UpdateEshopName(int eshopIndex, string newName)
         {
-            MainSettings.Eshops.Eshops[eshopIndex].EshopName = newName;
+            Settings.Eshops.Eshops[eshopIndex].EshopName = newName;
         }
 
         private void BDelEshopClick(object sender, EventArgs e)
@@ -917,14 +920,14 @@ namespace Desktop.Forms
                     DialogResult dialogResult = MessageBox.Show(String.Format("{0} {1} ?", TextResources.MsgDeleteEshopValue, treeConfiguration.SelectedNode.Text), TextResources.MsgDeleteEshopTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        if (MainSettings.Eshops.ActiveEshopIndex == treeConfiguration.Nodes.IndexOf(treeConfiguration.SelectedNode))
+                        if (Settings.Eshops.ActiveEshopIndex == treeConfiguration.Nodes.IndexOf(treeConfiguration.SelectedNode))
                         {
-                            MainSettings.Eshops.ActiveEshopIndex = -1;
-                            _selectedEshopIndex = MainSettings.Eshops.ActiveEshopIndex;
+                            Settings.Eshops.ActiveEshopIndex = -1;
+                            _selectedEshopIndex = Settings.Eshops.ActiveEshopIndex;
                             DisplayEshop();
                         }
 
-                        MainSettings.Eshops.Eshops.RemoveAll(n => n.EshopName == treeConfiguration.SelectedNode.Text);
+                        Settings.Eshops.Eshops.RemoveAll(n => n.EshopName == treeConfiguration.SelectedNode.Text);
                         treeConfiguration.Nodes.Remove(treeConfiguration.SelectedNode);
                         
                         RefreshActiveEshop();
@@ -936,7 +939,7 @@ namespace Desktop.Forms
         private void RefreshActiveEshop()
         {
             EnableEshopSettingsControls();
-            cbActiveEshop.SelectedIndex = MainSettings.Eshops.ActiveEshopIndex;
+            cbActiveEshop.SelectedIndex = Settings.Eshops.ActiveEshopIndex;
         }
 
         private void TreeConfigurationDoubleClick(object sender, EventArgs e)
@@ -968,11 +971,11 @@ namespace Desktop.Forms
             }
             else
             {
-                var loginForm = new Login(Engine, MainSettings.DesktopUserName, MainSettings.DesktopPassword);
+                var loginForm = new Login(Engine, Settings.DesktopUserName, Settings.DesktopPassword);
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
-                    MainSettings.DesktopUserName = loginForm.Username;
-                    MainSettings.DesktopPassword = loginForm.Password;
+                    Settings.DesktopUserName = loginForm.Username;
+                    Settings.DesktopPassword = loginForm.Password;
                     bLogin.Text = TextResources.ButtonLogout;
                     statusAgent.ForeColor = Color.Green;
                 }
@@ -1293,7 +1296,7 @@ namespace Desktop.Forms
 
         private void ConsistencySuppliersClick(object sender, EventArgs e)
         {
-            foreach (SupplierConfiguration supplier in MainSettings.ActiveEshop().Suppliers)
+            foreach (SupplierConfiguration supplier in Settings.ActiveEshop().Suppliers)
             {
                 if (File.Exists(supplier.PathToFile) == false)
                 {
@@ -1302,7 +1305,7 @@ namespace Desktop.Forms
                 }
             }
             
-            Engine.PriceLists.LoadPriceLists(MainSettings.ActiveEshop().Suppliers);
+            Engine.PriceLists.LoadPriceLists(Settings.ActiveEshop().Suppliers);
                         
             _indexForChange = -1;
             lListOf.Text = TextResources.GridTitleWithoutAnySupplier;

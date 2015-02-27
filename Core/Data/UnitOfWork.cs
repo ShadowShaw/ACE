@@ -17,7 +17,7 @@ namespace Core.Data
         //private IRepository<UsersInRole, int> usersInRoleRepository;
         private readonly IRepository<ModuleOrder, int> _moduleOrderRepository;
         
-        public UnitOfWork(ACEContext efContext)
+        public UnitOfWork(AceContext efContext)
         {
             EfContext = efContext;
 
@@ -71,7 +71,7 @@ namespace Core.Data
         // Methods & Members
         //////////////////////////////////////////////////////////////////////////
 
-        internal ACEContext EfContext { get; private set; }
+        internal AceContext EfContext { get; private set; }
 
         public virtual void Commit()
         {

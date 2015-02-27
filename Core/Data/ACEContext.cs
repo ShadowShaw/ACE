@@ -5,11 +5,11 @@ using Core.Migrations;
 
 namespace Core.Data
 {
-    public class ACEContext : DbContext
+    public class AceContext : DbContext
     {
-        public ACEContext() : base("ACEContext")
+        public AceContext() : base("ACEContext")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ACEContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AceContext, Configuration>());
         }
 
         //////////////////////////////////////////////////////////////////////////
@@ -23,7 +23,7 @@ namespace Core.Data
         public DbSet<MemberShip> MemberShips { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UsersInRole> UsersInRole { get; set; }
-        public DbSet<ACEModule> ACEModules { get; set; }
+        public DbSet<ACEModule> AceModules { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<ModuleOrder> ModuleOrders { get; set; }
         
