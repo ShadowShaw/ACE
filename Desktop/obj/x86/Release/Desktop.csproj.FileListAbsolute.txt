@@ -8,7 +8,6 @@ C:\GitHub\ACE\Desktop\bin\Release\ACEDesktop.pdb
 C:\GitHub\ACE\Desktop\bin\Release\Bussiness.dll
 C:\GitHub\ACE\Desktop\bin\Release\Core.dll
 C:\GitHub\ACE\Desktop\bin\Release\EntityFramework.dll
-C:\GitHub\ACE\Desktop\bin\Release\EntityFramework.SqlServer.dll
 C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.dll
 C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.Extensions.dll
@@ -25,7 +24,6 @@ C:\GitHub\ACE\Desktop\bin\Release\Bussiness.pdb
 C:\GitHub\ACE\Desktop\bin\Release\Core.pdb
 C:\GitHub\ACE\Desktop\bin\Release\UserSettings.pdb
 C:\GitHub\ACE\Desktop\bin\Release\EntityFramework.xml
-C:\GitHub\ACE\Desktop\bin\Release\EntityFramework.SqlServer.xml
 C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.xml
 C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.Extensions.xml
 C:\GitHub\ACE\Desktop\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.xml

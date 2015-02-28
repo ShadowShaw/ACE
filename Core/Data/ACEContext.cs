@@ -5,6 +5,15 @@ using Core.Migrations;
 
 namespace Core.Data
 {
+    //public class AceConfiguration : DbConfiguration
+    //{
+    //    public AceConfiguration()
+    //    {
+    //        SetProviderServices("System.Data.SqlClient", System.Data.Entity.SqlServer.SqlProviderServices.Instance);
+    //    }
+    //} 
+
+    //[DbConfigurationType(typeof(AceConfiguration))]
     public class AceContext : DbContext
     {
         public AceContext() : base("ACEContext")

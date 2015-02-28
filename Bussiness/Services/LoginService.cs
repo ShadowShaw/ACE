@@ -1,15 +1,14 @@
-﻿using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Windows.Forms;
 using Core;
 using Core.Data;
 using Core.Interfaces;
 using Core.Models;
 using Core.Security;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Configuration;
-using System.Windows.Forms;
 
 namespace Bussiness.Services
 {
@@ -34,8 +33,6 @@ namespace Bussiness.Services
 
         public bool CheckDesktopLogin(string username, string password)
         {
-            var connStringFromConfig = ConfigurationManager.ConnectionStrings;
-
             bool result = false;
             
             if ((username != "") && (password != ""))

@@ -25,7 +25,11 @@ namespace PrestaAccesor.Accesors
             Password = password;
 
             Client = new RestClient();
-            Client.BaseUrl = new Uri(BaseUrl);
+            if (Uri.IsWellFormedUriString(baseUrl, UriKind.RelativeOrAbsolute))
+            {
+                Client.BaseUrl = new Uri(BaseUrl);    
+            }
+            
             Client.Authenticator = new HttpBasicAuthenticator(Account, Password);
         }
 

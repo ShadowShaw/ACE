@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Data;
 using Core.Interfaces;
 
 namespace Core.Data
@@ -40,7 +41,8 @@ namespace Core.Data
         {
             _unitOfWork.EfContext.Set<T>().Attach(entity);
             
-            _unitOfWork.EfContext.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            //_unitOfWork.EfContext.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            _unitOfWork.EfContext.Entry(entity).State = EntityState.Modified;
             //entity = entity.Clone();
         }
     }

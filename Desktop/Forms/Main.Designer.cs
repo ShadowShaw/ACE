@@ -56,6 +56,7 @@
             this.tc = new System.Windows.Forms.TabControl();
             this.tpHome = new System.Windows.Forms.TabPage();
             this.gbModuleInfo = new System.Windows.Forms.GroupBox();
+            this.bInitModuleInfo = new System.Windows.Forms.Button();
             this.dgHomeModules = new System.Windows.Forms.DataGridView();
             this.Module = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModuleActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -119,7 +120,6 @@
             this.bAddEshop = new System.Windows.Forms.Button();
             this.treeConfiguration = new System.Windows.Forms.TreeView();
             this.bPrestaTest = new System.Windows.Forms.Button();
-            this.bInitModuleInfo = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.status.SuspendLayout();
             this.tc.SuspendLayout();
@@ -274,6 +274,18 @@
             this.gbModuleInfo.TabIndex = 4;
             this.gbModuleInfo.TabStop = false;
             this.gbModuleInfo.Text = "Info o modulech";
+            // 
+            // bInitModuleInfo
+            // 
+            this.bInitModuleInfo.Enabled = false;
+            this.bInitModuleInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bInitModuleInfo.Location = new System.Drawing.Point(7, 292);
+            this.bInitModuleInfo.Name = "bInitModuleInfo";
+            this.bInitModuleInfo.Size = new System.Drawing.Size(370, 23);
+            this.bInitModuleInfo.TabIndex = 1;
+            this.bInitModuleInfo.Text = "Načíst informace o objednaných modulech";
+            this.bInitModuleInfo.UseVisualStyleBackColor = true;
+            this.bInitModuleInfo.Click += new System.EventHandler(this.bInitModuleInfo_Click);
             // 
             // dgHomeModules
             // 
@@ -993,7 +1005,7 @@
             // 
             this.lActiveEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lActiveEshop.AutoSize = true;
-            this.lActiveEshop.Location = new System.Drawing.Point(8, 564);
+            this.lActiveEshop.Location = new System.Drawing.Point(8, 529);
             this.lActiveEshop.Name = "lActiveEshop";
             this.lActiveEshop.Size = new System.Drawing.Size(73, 13);
             this.lActiveEshop.TabIndex = 6;
@@ -1004,7 +1016,7 @@
             this.cbActiveEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbActiveEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbActiveEshop.FormattingEnabled = true;
-            this.cbActiveEshop.Location = new System.Drawing.Point(87, 561);
+            this.cbActiveEshop.Location = new System.Drawing.Point(87, 526);
             this.cbActiveEshop.Name = "cbActiveEshop";
             this.cbActiveEshop.Size = new System.Drawing.Size(199, 21);
             this.cbActiveEshop.TabIndex = 5;
@@ -1014,7 +1026,7 @@
             // 
             this.bDelEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bDelEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bDelEshop.Location = new System.Drawing.Point(11, 527);
+            this.bDelEshop.Location = new System.Drawing.Point(11, 497);
             this.bDelEshop.Name = "bDelEshop";
             this.bDelEshop.Size = new System.Drawing.Size(275, 23);
             this.bDelEshop.TabIndex = 4;
@@ -1026,7 +1038,7 @@
             // 
             this.bAddEshop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bAddEshop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bAddEshop.Location = new System.Drawing.Point(11, 498);
+            this.bAddEshop.Location = new System.Drawing.Point(11, 469);
             this.bAddEshop.Name = "bAddEshop";
             this.bAddEshop.Size = new System.Drawing.Size(275, 23);
             this.bAddEshop.TabIndex = 3;
@@ -1053,25 +1065,13 @@
             // 
             this.bPrestaTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bPrestaTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bPrestaTest.Location = new System.Drawing.Point(11, 469);
+            this.bPrestaTest.Location = new System.Drawing.Point(11, 553);
             this.bPrestaTest.Name = "bPrestaTest";
             this.bPrestaTest.Size = new System.Drawing.Size(275, 23);
             this.bPrestaTest.TabIndex = 5;
             this.bPrestaTest.Text = "Test připojení";
             this.bPrestaTest.UseVisualStyleBackColor = true;
             this.bPrestaTest.Click += new System.EventHandler(this.BPrestaTestClick);
-            // 
-            // bInitModuleInfo
-            // 
-            this.bInitModuleInfo.Enabled = false;
-            this.bInitModuleInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bInitModuleInfo.Location = new System.Drawing.Point(7, 292);
-            this.bInitModuleInfo.Name = "bInitModuleInfo";
-            this.bInitModuleInfo.Size = new System.Drawing.Size(370, 23);
-            this.bInitModuleInfo.TabIndex = 1;
-            this.bInitModuleInfo.Text = "Načíst informace o objednaných modulech";
-            this.bInitModuleInfo.UseVisualStyleBackColor = true;
-            this.bInitModuleInfo.Click += new System.EventHandler(this.bInitModuleInfo_Click);
             // 
             // Main
             // 

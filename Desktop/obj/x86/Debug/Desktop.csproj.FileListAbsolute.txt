@@ -53,7 +53,6 @@ C:\GitHub\ACE\Desktop\bin\Debug\ACEDesktop.pdb
 C:\GitHub\ACE\Desktop\bin\Debug\Bussiness.dll
 C:\GitHub\ACE\Desktop\bin\Debug\Core.dll
 C:\GitHub\ACE\Desktop\bin\Debug\EntityFramework.dll
-C:\GitHub\ACE\Desktop\bin\Debug\EntityFramework.SqlServer.dll
 C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.dll
 C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
@@ -70,7 +69,6 @@ C:\GitHub\ACE\Desktop\bin\Debug\Bussiness.pdb
 C:\GitHub\ACE\Desktop\bin\Debug\Core.pdb
 C:\GitHub\ACE\Desktop\bin\Debug\UserSettings.pdb
 C:\GitHub\ACE\Desktop\bin\Debug\EntityFramework.xml
-C:\GitHub\ACE\Desktop\bin\Debug\EntityFramework.SqlServer.xml
 C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.xml
 C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
 C:\GitHub\ACE\Desktop\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
@@ -94,3 +92,5 @@ C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.exe.manifest
 C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.application
 C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.exe
 C:\GitHub\ACE\Desktop\obj\x86\Debug\ACEDesktop.pdb
+C:\GitHub\ACE\Desktop\bin\Debug\EntityFramework.SqlServer.dll
+C:\GitHub\ACE\Desktop\bin\Debug\EntityFramework.SqlServer.xml
