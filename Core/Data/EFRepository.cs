@@ -15,8 +15,7 @@ namespace Core.Data
 
         public virtual IQueryable<T> GetAll()
         {
-            IQueryable<T> query = _unitOfWork.EfContext.Set<T>(); //.AsNoTracking();
-            //IQueryable<T> query = this.unitOfWork.EfContext.ObjectSetAsNoTracking<T>();
+            IQueryable<T> query = _unitOfWork.EfContext.Set<T>(); 
             return query;
         }
         
@@ -41,7 +40,6 @@ namespace Core.Data
         {
             _unitOfWork.EfContext.Set<T>().Attach(entity);
             
-            //_unitOfWork.EfContext.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             _unitOfWork.EfContext.Entry(entity).State = EntityState.Modified;
             //entity = entity.Clone();
         }

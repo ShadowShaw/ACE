@@ -12,7 +12,7 @@ namespace Core.Data
         private readonly IRepository<UserProfile, int> _userRepository;
         private readonly IRepository<MemberShip, int> _memberShipRepository;
         //private IRepository<Role, int> userRoleRepository;
-        private readonly IRepository<ACEModule, int> _aceModuleRepository;
+        private readonly IRepository<AceModule, int> _aceModuleRepository;
         private readonly IRepository<Payment, int> _paymentRepository;
         //private IRepository<UsersInRole, int> usersInRoleRepository;
         private readonly IRepository<ModuleOrder, int> _moduleOrderRepository;
@@ -27,7 +27,7 @@ namespace Core.Data
             _userRepository = new EfRepository<UserProfile>(this);
             _memberShipRepository = new EfRepository<MemberShip>(this);
             //this.userRoleRepository = new EFRepository<Role>(this);
-            _aceModuleRepository = new EfRepository<ACEModule>(this);
+            _aceModuleRepository = new EfRepository<AceModule>(this);
             _paymentRepository = new EfRepository<Payment>(this);
             //this.usersInRoleRepository = new EFRepository<UsersInRole>(this);
             _moduleOrderRepository = new EfRepository<ModuleOrder>(this);
@@ -48,7 +48,7 @@ namespace Core.Data
         //    get { return this.userRoleRepository; }
         //}
 
-        public IRepository<ACEModule, int> ACEModules
+        public IRepository<AceModule, int> AceModules
         {
             get { return _aceModuleRepository; }
         }

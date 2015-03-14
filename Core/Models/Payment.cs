@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Core.Models
 {
     [Table("payments")]
-    public class Payment : EFEntity<int>
+    public class Payment : EfEntity<int>
     {
         [Display(Name = "Částka")]
         public decimal Amount { get; set; }

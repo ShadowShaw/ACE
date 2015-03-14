@@ -8,7 +8,7 @@ namespace Core.Interfaces
         IRepository<UserProfile, int> Users { get; }
         IRepository<MemberShip, int> MemberShips { get; }
         
-        IRepository<ACEModule, int> ACEModules { get; }
+        IRepository<AceModule, int> AceModules { get; }
         IRepository<Payment, int> Payments { get; }
         IRepository<ModuleOrder, int> ModuleOrders { get; }
         

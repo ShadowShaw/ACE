@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Core.Models
 {
     [Table("acemodules")]
-    public class ACEModule : EFEntity<int>
+    public class AceModule : EfEntity<int>
     {
         [Display(Name = "Jméno modulu")]
         public string Name { get; set; }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Core.Models
 {
     [Table("UserProfile")]
-    public class UserProfile : EFEntity<int>
+    public class UserProfile : EfEntity<int>
     {
         //[Key]
         //[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]

@@ -71,13 +71,13 @@ namespace Bussiness.Services
             {
                 using (IUnitOfWork uow = _uowProvider.CreateNew())
                 {
-                    ACEModule pricingModule = uow.ACEModules.GetAll().FirstOrDefault(m => m.Name == ModuleInfo.PricingModuleName);
+                    AceModule pricingModule = uow.AceModules.GetAll().FirstOrDefault(m => m.Name == ModuleInfo.PricingModuleName);
                     if (pricingModule != null)
                     {
                         Rights.Pricing = IsModuleActive(pricingModule.Id);
                     }
 
-                    ACEModule consistencyModule = uow.ACEModules.GetAll().FirstOrDefault(m => m.Name == ModuleInfo.ConsistencyModuleName);
+                    AceModule consistencyModule = uow.AceModules.GetAll().FirstOrDefault(m => m.Name == ModuleInfo.ConsistencyModuleName);
                     if (consistencyModule != null)
                     {
                         Rights.Consistency = IsModuleActive(consistencyModule.Id);
@@ -116,7 +116,7 @@ namespace Bussiness.Services
                 {
                     using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
                     {
-                        foreach (ACEModule item in uow.ACEModules.GetAll().ToList())
+                        foreach (AceModule item in uow.AceModules.GetAll().ToList())
                         {
                             bool active = IsModuleActive(item.Id);
 
@@ -135,7 +135,7 @@ namespace Bussiness.Services
                 {
                     using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
                     {
-                        foreach (ACEModule item in uow.ACEModules.GetAll().ToList())
+                        foreach (AceModule item in uow.AceModules.GetAll().ToList())
                         {
                             grid.Rows.Add(item.Name, false, "");
                         }

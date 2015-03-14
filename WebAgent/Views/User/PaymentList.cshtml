@@ -40,7 +40,7 @@
             @Html.DisplayFor(modelItem => item.PaymentDate)
         </td>
         <td>
-            @Html.ActionLink("Zobrazit fakturu", "MakeFacture", new { paymentId=item.Id}, htmlAttributes: new { @class="btn btn-default btn-xs" })
+            @Html.ActionLink("Zobrazit fakturu", "MakeFacture", new { paymentId=item.Id}, htmlAttributes: new { @class="btn btn-default btn-xs", target="_blank" })
         </td>
     </tr>
 }

@@ -87,9 +87,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RazorPDF">
-      <HintPath>..\packages\RazorPDF.1.0.0\lib\net40\RazorPDF.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -187,7 +184,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BinaryContentResult.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HtmlViewRenderer.cs" />
+    <Compile Include="Controllers\PdfViewController.cs" />
+    <Compile Include="Controllers\StandardPdfRenderer.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -359,9 +360,9 @@
     <Content Include="Views\User\PaymentList.cshtml" />
     <Content Include="Views\User\OrderModule.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
-    <Content Include="Views\User\MakeFacture.cshtml" />
+    <Content Include="Views\User\MakeFacture2.cshtml" />
     <Content Include="Views\Shared\_PdfLayout.cshtml" />
-    <Content Include="Views\User\PdfFacture.cshtml" />
+    <Content Include="Views\User\PdfFacture2.cshtml" />
     <Content Include="Views\Shared\_Carousel.cshtml" />
     <Content Include="Views\Home\Download.cshtml" />
     <Content Include="Views\Home\Info.cshtml" />
@@ -371,6 +372,7 @@
     <Content Include="Views\User\ConfirmOrder.cshtml" />
     <Content Include="Views\Home\HelpPage.cshtml" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <Content Include="Views\User\PdfFacture.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

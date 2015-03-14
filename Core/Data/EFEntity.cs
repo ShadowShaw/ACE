@@ -6,7 +6,7 @@ using Core.Interfaces;
 namespace Core.Data
 {
     [Serializable]
-    public class EFEntity<T> : IEntity<T> where T : struct
+    public class EfEntity<T> : IEntity<T> where T : struct
     {
         /// <summary>
         /// Gets or sets ID of object

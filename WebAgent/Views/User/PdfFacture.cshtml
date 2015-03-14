@@ -1,36 +1,115 @@
 ﻿@model ACEAgent.Models.PaymentFacture
-@{
-    Layout = "~/Views/Shared/_PdfLayout.cshtml";
-}
-<paragraph style="font-family:Helvetica;font-size:18;font-style:italic;">
-    <chunk style="font-weight:bold;">@ViewBag.Title</chunk>
-</paragraph>
 
+<p class=MsoNormal>FAKTURA – Daňový doklad</p>
 
-Označení Faktura, v případě, že fakturujete s DPH je označení Faktura nepovinné, ale musí být uvedeno označení Daňový doklad
-Jméno a adresu toho, kdo ji vydal
-Jméno (název firmy) a adresu toho, komu je určena
-Datum vydání a datum splatnosti
-Pokud je faktura určena plátci DPH, musí obsahovat datum zdanitelného plnění
-Pořadové číslo, to musí být jedinečné
-
-
-<table width="100%" cellpadding="0.5" cellspacing="0.5" widths="30;60" borderwidth="1.0" left="true" right="true" top="true" bottom="true" red="0" green="0" blue="0">
-    <row>
-        <cell>
-            <chunk style="font-weight:bold;">Dodavatel:</chunk>
-        </cell>
-        <cell>
-            <chunk style="">@Model.IssuerName</chunk>
-        </cell>
-    </row>
-    <row>
-        <cell>
-            <chunk style="font-weight:bold;">Odběratel:</chunk>
-        </cell>
-        <cell>
-            <chunk style="">@Model.ReceiverName</chunk>
-        </cell>
-    </row>
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=614 colspan=3 valign=top style='width:460.6pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>Dodavatel:</p>
+  </td>
+ </tr>
+ <tr style='height:7.85pt'>
+  <td width=205 rowspan=4 valign=top style='width:153.5pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.85pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>Navrátilová Veronika Dvořákova 8 </p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>60200 Brno</p>
+  </td>
+  <td width=266 valign=top style='width:199.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.85pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>Datum splatnosti :</p>
+  </td>
+  <td width=144 valign=top style='width:107.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.85pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>19.12.2013 </p>
+  </td>
+ </tr>
+ <tr style='height:7.75pt'>
+  <td width=266 valign=top style='width:199.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>Forma úhrady :</p>
+  </td>
+  <td width=144 valign=top style='width:107.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>přev.příkazem</p>
+  </td>
+ </tr>
+ <tr style='height:7.75pt'>
+  <td width=266 valign=top style='width:199.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>Datum uskutečnění zdanit.plnění:</p>
+  </td>
+  <td width=144 valign=top style='width:107.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>05.12.2013</p>
+  </td>
+ </tr>
+ <tr style='height:7.75pt'>
+  <td width=266 valign=top style='width:199.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>Datum vystavení faktury:</p>
+  </td>
+  <td width=144 valign=top style='width:107.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.75pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>05.12.2013</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=614 colspan=3 valign=top style='width:460.6pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>Příjemce:</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=205 valign=top style='width:153.5pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>Dogs and fun, s.r.o.</p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>Roudnická 447 </p>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>182 00 Praha 8 </p>
+  </td>
+  <td width=409 colspan=2 valign=top style='width:307.1pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+ <tr style='height:55.2pt'>
+  <td width=205 valign=top style='width:153.5pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:55.2pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=409 colspan=2 valign=top style='width:307.1pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:55.2pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
 </table>
 

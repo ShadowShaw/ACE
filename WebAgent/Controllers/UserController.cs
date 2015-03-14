@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Core.Models;
-using Core.Data;
-using WebMatrix.WebData;
 using ACEAgent.Models;
-using RazorPDF;
+using Core.Data;
 using Core.Interfaces;
+using Core.Models;
+using WebMatrix.WebData;
 
 namespace ACEAgent.Controllers
 {
-    public class UserController : Controller
+    public class UserController : PdfViewController
     {
-        private AceContext db = new AceContext();
+        private readonly AceContext _db = new AceContext();
 
         private UserProfile GetCurrentUser()
         {
@@ -21,7 +20,7 @@ namespace ACEAgent.Controllers
 
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                UserProfile currentUser = uow.Users.GetAll().Where(u => u.Id == currentUserId).FirstOrDefault();
+                UserProfile currentUser = uow.Users.GetAll().FirstOrDefault(u => u.Id == currentUserId);
                 return currentUser;
             }
         }
@@ -30,9 +29,9 @@ namespace ACEAgent.Controllers
         {
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                if (uow.ACEModules.GetAll().Where(m => m.Id == id).Any())
+                if (uow.AceModules.GetAll().Any(m => m.Id == id))
                 {
-                    return uow.ACEModules.GetAll().Where(m => m.Id == id).FirstOrDefault().Name;    
+                    return uow.AceModules.GetAll().First(m => m.Id == id).Name;    
                 }
                 else
                 {
@@ -80,11 +79,11 @@ namespace ACEAgent.Controllers
             int currentUserId = WebSecurity.GetUserId(User.Identity.Name);
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                ViewBag.Modules = uow.ACEModules.GetAll().ToList();
-                ViewBag.Credit = uow.Users.GetAll().Where(u => u.Id == currentUserId).FirstOrDefault().Credit;
-                ViewBag.PaymentSymbol = uow.Users.GetAll().Where(u => u.Id == currentUserId).FirstOrDefault().PaymentSymbol;
-                List<ACEAgent.Models.ModuleOrders> viewModel = new List<ACEAgent.Models.ModuleOrders>();
-                foreach (ACEModule module in ViewBag.Modules)
+                ViewBag.Modules = uow.AceModules.GetAll().ToList();
+                ViewBag.Credit = uow.Users.GetAll().FirstOrDefault(u => u.Id == currentUserId).Credit;
+                ViewBag.PaymentSymbol = uow.Users.GetAll().FirstOrDefault(u => u.Id == currentUserId).PaymentSymbol;
+                List<ModuleOrders> viewModel = new List<ModuleOrders>();
+                foreach (AceModule module in ViewBag.Modules)
                 {
                     ModuleOrders item = new ModuleOrders();
                     item.ModuleId = module.Id;
@@ -120,7 +119,7 @@ namespace ACEAgent.Controllers
                 int currentUserId = WebSecurity.GetUserId(User.Identity.Name);
                 UserProfile user = uow.Users.GetByID(currentUserId);
 
-                decimal moduleCost = uow.ACEModules.GetAll().Where(m => m.Id == moduleId).FirstOrDefault().MonthPrice;
+                decimal moduleCost = uow.AceModules.GetAll().FirstOrDefault(m => m.Id == moduleId).MonthPrice;
 
                 if (user.Credit >= moduleCost)
                 {
@@ -149,7 +148,7 @@ namespace ACEAgent.Controllers
         {
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                ACEModule module = uow.ACEModules.GetByID(moduleId);
+                AceModule module = uow.AceModules.GetByID(moduleId);
                 ViewBag.ModuleName = module.Name;
                 ViewBag.ModuleId = module.Id;
                 UserProfile currentUser = GetCurrentUser();
@@ -172,6 +171,29 @@ namespace ACEAgent.Controllers
 
         public ActionResult MakeFacture(string paymentId)
         {
+            //PaymentFacture facture = new PaymentFacture();
+            //using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
+            //{
+            //    Payment payment = uow.Payments.GetByID(Convert.ToInt32(paymentId));
+            //    facture.FactureNumber = paymentId;
+            //    facture.IssuerAddress = "Dvořákova 8, 602 00, Brno";
+            //    facture.IssuerName = "Veronika Navrátilová";
+            //    facture.IssueDate = payment.PaymentDate;
+            //    facture.PaymentDate = payment.PaymentDate.AddMonths(1);
+            //    //facture.FillingDate = "xxx";
+            //    facture.Price = payment.Amount;
+            //    UserProfile user = uow.Users.GetAll().SingleOrDefault(u => u.PaymentSymbol == payment.PaymentSymbol);
+            //    facture.ReceiverAddress = user.FacturationAddress;
+            //    facture.ReceiverName = user.FirstName + " " + user.LastName;
+            //}
+
+            PaymentFacture facture = CreateFacture(paymentId);
+            return ViewPdf("Faktura", "PdfFacture", facture);
+        }
+
+
+        private PaymentFacture CreateFacture(string paymentId)
+        {
             PaymentFacture facture = new PaymentFacture();
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
@@ -187,17 +209,26 @@ namespace ACEAgent.Controllers
                 facture.ReceiverAddress = user.FacturationAddress;
                 facture.ReceiverName = user.FirstName + " " + user.LastName;
             }
-            
-            var pdf = new PdfResult(facture, "PdfFacture");
 
-            pdf.ViewBag.Title = "Faktura - daňový doklad";
+            return facture;
 
-            return pdf;
+   //         return new ProviderList()
+   // {
+   // new Provider {Id=1,Name="Inexis Consulting",Address="Colombo 4",Place="Sri Lanka"},
+   // new Provider {Id=2,Name="Microsoft",Address ="Washington",Place="USA"},
+   // new Provider {Id=3,Name="IBM",Address="Armonk, New York",Place="USA" },
+   // new Provider {Id=4,Name="HP",Address="California",Place="USA"},
+   // new Provider {Id=5,Name="Novell",Address="Provo,Utah",Place="USA"},
+   // new Provider {Id=6,Name="Google",Address="California",Place="USA"},
+   // new Provider {Id=7,Name="Oracle",Address="Redwood City",Place="USA"},
+   // new Provider {Id=8,Name="Apple",Address="California",Place="USA"},
+   // new Provider {Id=9,Name="SAP",Address="Walldorf",Place="Germany"},
+   //};
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _db.Dispose();
             base.Dispose(disposing);
         }
     }

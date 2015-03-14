@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Core.Models
 {
     [Table("moduleOrder")]
-    public class ModuleOrder : EFEntity<int>
+    public class ModuleOrder : EfEntity<int>
     {
         [Display(Name = "Uživatel")]
         public int UserId { get; set; }

@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
-using Core.Models;
 using Core.Data;
 using Core.Interfaces;
+using Core.Models;
 
 namespace ACEAgent.Controllers
 {
     public class AdminController : Controller
     {
-        private AceContext db = new AceContext();
+        private readonly AceContext _db = new AceContext();
 
         //
         // GET: /Admin/
@@ -27,7 +22,7 @@ namespace ACEAgent.Controllers
         {
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return View(uow.ACEModules.GetAll().ToList());
+                return View(uow.AceModules.GetAll().ToList());
             }
         }
 
@@ -39,20 +34,33 @@ namespace ACEAgent.Controllers
             }
         }
 
-        public string GetUserNameForId(int Id)
+        public string GetUserNameForId(int id)
         {
+            string result = string.Empty;
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return uow.Users.GetAll().Where(u => u.Id == Id).FirstOrDefault().UserName; 
+                UserProfile userProfile = uow.Users.GetAll().FirstOrDefault(u => u.Id == id);
+                if (userProfile != null)
+                {
+                    result = userProfile.UserName;
+                }
             }
+
+            return result;
         }
 
-        public string GetModuleNameForId(int Id)
+        public string GetModuleNameForId(int id)
         {
+            string result = string.Empty;
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                return uow.ACEModules.GetAll().Where(m => m.Id == Id).FirstOrDefault().Name;
+                AceModule aceModule = uow.AceModules.GetAll().FirstOrDefault(m => m.Id == id);
+                if (aceModule != null)
+                {
+                    result = aceModule.Name;        
+                }
             }
+            return result;
         }
 
         public ActionResult ModuleOrders()
@@ -75,13 +83,13 @@ namespace ACEAgent.Controllers
         // POST: /Admin/Create
 
         [HttpPost]
-        public ActionResult CreateModule(ACEModule acemodule)
+        public ActionResult CreateModule(AceModule acemodule)
         {
             if (ModelState.IsValid)
             {
                 using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
                 {
-                    uow.ACEModules.Add(acemodule);
+                    uow.AceModules.Add(acemodule);
                     uow.Commit();
                 }
                 return RedirectToAction("Modules");
@@ -98,7 +106,7 @@ namespace ACEAgent.Controllers
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
                 decimal invoiceNumber;
-                if (uow.Payments.GetAll().Select(x => x.InvoiceNumber).Count() == 0)
+                if (!uow.Payments.GetAll().Select(x => x.InvoiceNumber).Any())
                 {
                     invoiceNumber = 1;
                 }
@@ -106,7 +114,7 @@ namespace ACEAgent.Controllers
                 {
                     invoiceNumber = uow.Payments.GetAll().Select(x => x.InvoiceNumber).Max() + 1;
                 }
-                var n = uow.Payments.GetAll().Select(x => x.InvoiceNumber != null);
+                
                 ViewBag.UserList = uow.Users.GetAll().ToList();
                 ViewBag.InvoiceNumber = invoiceNumber;
             }
@@ -124,7 +132,7 @@ namespace ACEAgent.Controllers
             {
                 using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
                 {
-                    UserProfile user = uow.Users.GetAll().Where(u => u.PaymentSymbol == payment.PaymentSymbol).FirstOrDefault();
+                    UserProfile user = uow.Users.GetAll().FirstOrDefault(u => u.PaymentSymbol == payment.PaymentSymbol);
 
                     uow.Payments.Add(payment);
 
@@ -147,7 +155,7 @@ namespace ACEAgent.Controllers
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
                 ViewBag.UserList = uow.Users.GetAll().ToList();
-                ViewBag.ModuleList = uow.ACEModules.GetAll().ToList();
+                ViewBag.ModuleList = uow.AceModules.GetAll().ToList();
             }
             
             return View();
@@ -179,7 +187,7 @@ namespace ACEAgent.Controllers
         {
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                ACEModule acemodule = uow.ACEModules.GetByID(id);
+                AceModule acemodule = uow.AceModules.GetByID(id);
                 if (acemodule == null)
                 {
                     return HttpNotFound();
@@ -193,13 +201,13 @@ namespace ACEAgent.Controllers
         // POST: /Admin/Edit/5
 
         [HttpPost]
-        public ActionResult EditModule(ACEModule acemodule)
+        public ActionResult EditModule(AceModule acemodule)
         {
             if (ModelState.IsValid)
             {
                 using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
                 {
-                    uow.ACEModules.Edit(acemodule); // db.Entry(acemodule).State = EntityState.Modified;
+                    uow.AceModules.Edit(acemodule); // db.Entry(acemodule).State = EntityState.Modified;
                     uow.Commit();
                 }
                 return RedirectToAction("Modules");
@@ -258,7 +266,7 @@ namespace ACEAgent.Controllers
                 }
                 
                 ViewBag.UserList = uow.Users.GetAll().ToList();
-                ViewBag.ModuleList = uow.ACEModules.GetAll().ToList();
+                ViewBag.ModuleList = uow.AceModules.GetAll().ToList();
                 
                 return View(order);
             }
@@ -289,7 +297,7 @@ namespace ACEAgent.Controllers
         {
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                ACEModule acemodule = uow.ACEModules.GetByID(id);
+                AceModule acemodule = uow.AceModules.GetByID(id);
                 if (acemodule == null)
                 {
                     return HttpNotFound();
@@ -307,8 +315,8 @@ namespace ACEAgent.Controllers
         {
             using (IUnitOfWork uow = new UnitOfWorkProvider().CreateNew())
             {
-                ACEModule acemodule = uow.ACEModules.GetByID(id);
-                uow.ACEModules.Delete(acemodule);
+                AceModule acemodule = uow.AceModules.GetByID(id);
+                uow.AceModules.Delete(acemodule);
                 uow.Commit();
                 return RedirectToAction("Modules");
             }
@@ -376,7 +384,7 @@ namespace ACEAgent.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _db.Dispose();
             base.Dispose(disposing);
         }
     }

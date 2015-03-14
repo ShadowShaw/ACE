@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Core.Models
 {
     [Table("webpages_Membership")]
-    public class MemberShip : EFEntity<int>
+    public class MemberShip : EfEntity<int>
     {
         public int UserId { get; set; }
         public DateTime CreateDate { get; set; }

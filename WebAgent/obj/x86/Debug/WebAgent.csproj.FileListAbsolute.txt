@@ -128,14 +128,12 @@ C:\GitHub\ACE\WebAgent\bin\DotNetOpenAuth.OpenId.dll
 C:\GitHub\ACE\WebAgent\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
 C:\GitHub\ACE\WebAgent\bin\EntityFramework.dll
 C:\GitHub\ACE\WebAgent\bin\EntityFramework.SqlServer.dll
-C:\GitHub\ACE\WebAgent\bin\itextsharp.dll
 C:\GitHub\ACE\WebAgent\bin\Microsoft.Threading.Tasks.dll
 C:\GitHub\ACE\WebAgent\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 C:\GitHub\ACE\WebAgent\bin\Microsoft.Threading.Tasks.Extensions.dll
 C:\GitHub\ACE\WebAgent\bin\Microsoft.Web.Infrastructure.dll
 C:\GitHub\ACE\WebAgent\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\GitHub\ACE\WebAgent\bin\Newtonsoft.Json.dll
-C:\GitHub\ACE\WebAgent\bin\RazorPDF.dll
 C:\GitHub\ACE\WebAgent\bin\System.IO.dll
 C:\GitHub\ACE\WebAgent\bin\System.Net.Http.dll
 C:\GitHub\ACE\WebAgent\bin\System.Net.Http.Extensions.dll
@@ -165,7 +163,6 @@ C:\GitHub\ACE\WebAgent\bin\DotNetOpenAuth.OpenId.xml
 C:\GitHub\ACE\WebAgent\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\GitHub\ACE\WebAgent\bin\EntityFramework.xml
 C:\GitHub\ACE\WebAgent\bin\EntityFramework.SqlServer.xml
-C:\GitHub\ACE\WebAgent\bin\itextsharp.xml
 C:\GitHub\ACE\WebAgent\bin\Microsoft.Threading.Tasks.xml
 C:\GitHub\ACE\WebAgent\bin\Microsoft.Threading.Tasks.Extensions.xml
 C:\GitHub\ACE\WebAgent\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
@@ -193,3 +190,5 @@ C:\GitHub\ACE\WebAgent\obj\x86\Debug\WebAgent.csproj.App.config
 C:\GitHub\ACE\WebAgent\obj\x86\Debug\WebAgent.csprojResolveAssemblyReference.cache
 C:\GitHub\ACE\WebAgent\obj\x86\Debug\PriceUpdater.dll
 C:\GitHub\ACE\WebAgent\obj\x86\Debug\PriceUpdater.pdb
+C:\GitHub\ACE\WebAgent\bin\itextsharp.dll
+C:\GitHub\ACE\WebAgent\bin\itextsharp.xml

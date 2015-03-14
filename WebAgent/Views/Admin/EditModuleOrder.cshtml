@@ -27,7 +27,7 @@
         </div>
         <div class="editor-field">
             @{
-                List<Core.Models.ACEModule> moduleList = ViewBag.ModuleList;
+                List<Core.Models.AceModule> moduleList = ViewBag.ModuleList;
                 var modules = new SelectList(moduleList, "Id", "Name");
             }
             @Html.DropDownListFor(model => model.ModuleId, @modules)
